@@ -1,0 +1,21 @@
+---
+layout: default
+title: Blog
+---
+<h1>Latest Posts</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
+
+<!--
+    このコードのメモです。
+    post.urlはJekyllが自動でセットするポストの出力するパスです。
+    post.titleはポストのファイル名から取得され、front matterでtitleを設定することで上書きできます。
+    post.excerptはデフォルトではポストの内容の最初の段落です。
+-->
