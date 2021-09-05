@@ -2,3 +2,5 @@
 ---
 /* @import "main"は、Sassへのsassディレクトリ（デフォルトではサイトのrootの_sass/）のmain.scssというファイルを探すようにという指示 */
 @import "main";
+@import "list";
+@import "spp";
