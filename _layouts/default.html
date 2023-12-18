@@ -5,15 +5,14 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
   </head>
-  <body>
-    {% include navigation.html %}
-    {{ content }}
-  </body>
-</html>
-
-<script>
+  <script>
 var JEKYLLPLUS_REPO = 'ORG/REPO/BRANCH';
 var JEKYLLPLUS_PATH = '{{ page.path }}';
 </script>
 <script src='//cms.jekyllplus.com/assets/widget.js'/></script>
 <link rel='stylesheet' href='//cms.jekyllplus.com/assets/widget.css'/>
+  <body>
+    {% include navigation.html %}
+    {{ content }}
+  </body>
+</html>
