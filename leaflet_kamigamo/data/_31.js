@@ -1,0 +1,1 @@
+var json__31 = {"type":"FeatureCollection","name":"_31","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"プロット":"C","ID":"44","経度":135.76315,"緯度":35.07404,"樹種":"アオハダ","DBH(cm)":5.0},"geometry":{"type":"Point","coordinates":[135.763152,35.07403929]}}]}

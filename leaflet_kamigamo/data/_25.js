@@ -1,0 +1,1 @@
+var json__25 = {"type":"FeatureCollection","name":"_25","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"プロット":"旧A","ID":"126","経度":135.76322,"緯度":35.07381,"樹種":"カナメモチ","DBH(cm)":7.0},"geometry":{"type":"Point","coordinates":[135.7632221,35.07381314]}}]}
