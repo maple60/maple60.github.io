@@ -4,9 +4,7 @@ layout: post
 author: Kaede Konrai
 ---
 
-<head>
-               <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>
-</head>
+輪郭形状の解析のための楕円フーリエ解析について、理論から実装までのメモです。
 
 ## 楕円フーリエ解析とは
 
@@ -33,151 +31,59 @@ $$
 ここでは以下の図のように、右方向から時計回りに8方向に伸びる矢印にそれぞれ0~7までの数字を当てはめます。
 
 <div id="chaincode" style="width:600px;height:600px;"></div>
-<script>
-var CHAINCODE = document.getElementById('chaincode');
+<script src="{{ site.baseurl }}/assets/js/chaincode.js"></script>
 
-var data = [{
-  x: [1, 1, 0, -1, -1, -1, 0, 1],
-  y: [0, 1, 1, 1, 0, -1, -1, -1],
-  mode: 'text',
-  text: ['0', '1', '2', '3', '4', '5', '6', '7'],
-  textposition: ['right', 'topright', 'top', 'topleft', 'left', 'bottomleft', 'bottom', 'bottomright']
-}];
+簡単な例を挙げて輪郭形状をチェインコードで表してみます。
 
-var layout = {
-    xaxis: {
-        zeroline: false,
-        showticklabels: false
-    },
-    yaxis: {
-        showline: false,
-        showgrid: true,
-        zeroline: false,
-        showticklabels: false
-    },
-    annotations: [
-        { // 0
-            x: 1,
-            y: 0,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 1
-            x: 1,
-            y: 1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 2
-            x: 0,
-            y: 1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 3
-            x: -1,
-            y: 1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 4
-            x: -1,
-            y: 0,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 5
-            x: -1,
-            y: -1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 6
-            x: 0,
-            y: -1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        },
-        { // 7
-            x: 1,
-            y: -1,
-            ax: 0,
-            ay: 0,
-            axref: 'x',
-            ayref: 'y',
-            text: '',
-            showarrow: true,
-            arrowhead: 3,
-            arrowsize: 1,
-            arrowwidth: 2,
-            arrowcolor: '#636363'
-        }
-    ]
-};
+ここでは、すべての方向を含むような単純な八角形を考えます。
 
-Plotly.newPlot(CHAINCODE, data, layout)
-</script>
+チェインコードは以下のように表されます。
 
+$$
+V = 07654321
+$$
+
+図示すると以下のようになります。
+
+<div id="chaincode_ex" style="width:600px;height:600px;"></div>
+<script src="{{ site.baseurl }}/assets/js/chaincode_ex.js"></script>
+
+この八角形は正八角形ではないことに注意が必要です。
+
+すなわち、すべての辺の長さが同じではないということです。
+
+縦横に移動する場合は長さが$$1$$になりますが、斜めに移動する場合は長さは$$\sqrt{2}$$になります。
+
+それぞれのチェインの$$x$$座標と$$y$$座標の移動とその長さの対応は以下の表のようになります。
+
+<style>
+table {
+ border-collapse: collapse; /*隣接する枠線を重ねて表示*/
+ border-spacing: 0; /*枠線を間隔をなしに*/
+ text-align: center;
+}
+table th {
+ background: #e3f6f5;
+ border: solid 1px #666666;
+ padding: 10px;
+}
+table td {
+ border: solid 1px #666666;
+ padding: 10px;
+}
+</style>
+| チェイン | $$x$$方向変位 | $$y$$方向変位 | 長さ           |
+| ---- | --------- | --------- | ------------ |
+| 0    | 1         | 0         | 1            |
+| 1    | 1         | 1         | $$\sqrt{2}$$ |
+| 2    | 0         | 1         | 1            |
+| 3    | -1        | 1         | $$\sqrt{2}$$ |
+| 4    | 0         | -1        | 1            |
+| 5    | -1        | -1        | $$\sqrt{2}$$ |
+| 6    | 0         | -1        | 1            |
+| 7    | 1         | -1        | $$\sqrt{2}$$ |
 
 ## 楕円フーリエ係数の算出
-
-
 
 ## 説明力
 
