@@ -1,1 +1,0 @@
-var json__29 = {"type":"FeatureCollection","name":"_29","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"プロット":"旧A","ID":"50","経度":135.7634,"緯度":35.07385,"樹種":"アラカシ","DBH(cm)":17.2},"geometry":{"type":"Point","coordinates":[135.7634036,35.07384781]}}]}

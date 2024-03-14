@@ -1,1 +1,0 @@
-var json__6 = {"type":"FeatureCollection","name":"_6","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"プロット":"D","ID":"1","経度":135.76344,"緯度":35.07401,"樹種":"ブナ","DBH(cm)":0.0},"geometry":{"type":"Point","coordinates":[135.7634371,35.0740119]}}]}
