@@ -1,4 +1,4 @@
-title: Homepage
+title: Maple60のホームページ
 timezone: JST
 collections:
   authors:
@@ -7,7 +7,7 @@ description: >-
   Rを含むプログラミングなどのメモを書いていきます。
 baseurl: ''
 url: ''
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
 highlighter: rouge
@@ -26,11 +26,6 @@ kramdown:
 defaults:
   - scope:
       path: ''
-      type: authors
-    values:
-      layout: author
-  - scope:
-      path: ''
       type: posts
     values:
       layout: post
@@ -42,5 +37,3 @@ defaults:
       path: assets/img
     values:
       image: true
-jekyll_admin:
-  hidden_links: null
