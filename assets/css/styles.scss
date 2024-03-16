@@ -1,8 +1,14 @@
 ---
 ---
 /* @import "main"は、Sassへのsassディレクトリ（デフォルトではサイトのrootの_sass/）のmain.scssというファイルを探すようにという指示 */
-@import "main";
+ /* チュートリアル */
+/*  https://jekyllrb-ja.github.io/docs/step-by-step/07-assets/ */
+
+@import "main"; 
 @import "list";
 @import "spp";
 @import "map";
 @import "syntax_hilight";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

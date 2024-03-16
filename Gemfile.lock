@@ -135,6 +135,7 @@ GEM
     jekyll-optional-front-matter (0.3.2)
       jekyll (>= 3.0, < 5.0)
     jekyll-paginate (1.1.0)
+    jekyll-postcss (0.5.0)
     jekyll-readme-index (0.3.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-redirect-from (0.16.0)
@@ -284,6 +285,7 @@ DEPENDENCIES
   i18n (~> 0.7)
   jekyll-admin
   jekyll-feed (~> 0.12)
+  jekyll-postcss
   jekyll-sass-converter (= 1.5.2)
   mercenary (~> 0.3.3)
   minima (~> 2.5)

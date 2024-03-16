@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.scss">
     <!-- MathJaxの読み込み -->
     <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <!-- Plotly読み込み -->
     <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script> 
+    <!-- Tailwind CSSの読み込み 本番ではローカルから読み込む -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
   <body>
     {% include navigation.html %}

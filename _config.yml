@@ -7,9 +7,10 @@ description: >-
   Rを含むプログラミングなどのメモを書いていきます。
 baseurl: ''
 url: ''
-# theme: minima
+theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-postcss # Tailwind cssを使えるようにするプラグイン
 highlighter: rouge
 markdown: kramdown
 kramdown:
@@ -37,3 +38,6 @@ defaults:
       path: assets/img
     values:
       image: true
+
+postcss:
+  cache: false
