@@ -94,8 +94,8 @@ figure pre {
 .highlight,
 .highlight pre,
 .highlight table {
-    background: $code-bg;
-    color: $gray-200;
+    // background: $code-bg;
+    color: $gray-200; // 平文と行番号の色
     border-radius: 4px;
     font-size: 1rem;
 }
@@ -168,8 +168,9 @@ figure pre {
 
 /* 右上に言語名を表示する */
 [data-lang]::before {
+    color: #e9ecef;
     content: attr(data-lang);
     display: block;
     text-align: right;
-    text-transform: capitalize; /* 最初は大文字にする */
+    // text-transform: capitalize; /* 最初は大文字にする */
   }

@@ -59,22 +59,6 @@ $$
 
 それぞれのチェインの$$x$$座標と$$y$$座標の移動とその長さの対応は以下の表のようになります。
 
-<style>
-table {
- border-collapse: collapse; /*隣接する枠線を重ねて表示*/
- border-spacing: 0; /*枠線を間隔をなしに*/
- text-align: center;
-}
-table th {
- background: #e3f6f5;
- border: solid 1px #666666;
- padding: 10px;
-}
-table td {
- border: solid 1px #666666;
- padding: 10px;
-}
-</style>
 | チェイン | $$x$$方向変位 | $$y$$方向変位 | 長さ           |
 | ---- | --------- | --------- | ------------ |
 | 0    | 1         | 0         | 1            |
