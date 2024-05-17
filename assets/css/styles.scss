@@ -1,8 +1,7 @@
 ---
 ---
 /* @import "main"は、Sassへのsassディレクトリ（デフォルトではサイトのrootの_sass/）のmain.scssというファイルを探すようにという指示 */
+@import "mvp";
 @import "main";
-@import "list";
-@import "spp";
 @import "map";
 @import "syntax_hilight";
