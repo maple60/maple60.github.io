@@ -1,10 +1,8 @@
 - name: Home
-  link: /
+  link: /index.html
 - name: R
   link: /r.html
 - name: Blog
   link: /blog.html
-- name: Species List
-  link: /list.html
 - name: Map
   link: /map.html
