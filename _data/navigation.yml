@@ -1,8 +1,6 @@
 - name: Home
   link: /
-# - name: R
-#   link: /r.html
-- name: Blog
+- name: Post
   link: /blog.html
-- name: Map
-  link: /map.html
+# - name: Map
+#   link: /map.html
