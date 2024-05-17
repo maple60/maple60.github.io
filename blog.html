@@ -4,14 +4,24 @@ title: Blog
 ---
 <h1>Latest Posts</h1>
 
-<ul>
+<!-- <ul>
   {% for post in site.posts %}
     <li>
       <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
       {{ post.excerpt }}
     </li>
   {% endfor %}
-</ul>
+</ul> -->
+
+<section>
+  {% for post in site.posts %}
+  <aside>
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <small>{{ post.excerpt }}</small>
+  </aside>
+  {% endfor %}
+</section>
+
 
 <!--
     このコードのメモです。
