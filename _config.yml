@@ -1,5 +1,8 @@
 title: Maple60のホームページ
 timezone: JST
+collections:
+  authors:
+    output: true
 description: >-
   Rを含むプログラミングなどのメモを書いていきます。
 baseurl: ''
