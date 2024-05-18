@@ -1,7 +1,7 @@
 ---
 title: Plotlyを使ってみる
 layout: post
-author: Kaede Konrai
+tags: [JavaScript, R, Python]
 ---
 
 [Plotly](https://plotly.com/graphing-libraries/)はいろいろな言語で使用できる、オープンソースのインタラクティブグラフ作成ライブラリです。

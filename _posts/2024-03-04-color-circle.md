@@ -1,7 +1,7 @@
 ---
 title: Rで色相環を作成する
 layout: post
-author: Kaede Konrai
+tags: R
 ---
 
 もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。
