@@ -9,10 +9,14 @@
     <!-- Plotly読み込み -->
     <script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script> 
   </head>
-  <header>
-    {% include navigation.html %}
-  </header>
   <body>
-    {{ content }} <!-- ここにコンテンツを書く-->
+  <!-- ヘッダー領域 -->
+    <header>
+      {% include navigation.html %}
+    </header>
+    <!-- メイン領域 -->
+    <main>
+      {{ content }} <!-- ここにコンテンツを書く-->
+    </main>
   </body>
 </html>
