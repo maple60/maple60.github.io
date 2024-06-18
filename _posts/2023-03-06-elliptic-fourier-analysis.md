@@ -1,7 +1,6 @@
 ---
 title: 楕円フーリエ解析
 layout: post
-author: Kaede Konrai
 ---
 
 輪郭形状の解析のための楕円フーリエ解析について、理論から実装までのメモです。
