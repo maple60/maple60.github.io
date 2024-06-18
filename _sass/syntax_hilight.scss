@@ -21,6 +21,13 @@ pre.highlight {
     position: relative;
 }
 
+// インラインコード
+h2 code.highlighter-rouge,
+h3 code.highlighter-rouge,
+h4 code.highlighter-rouge,
+h5 code.highlighter-rouge,
+h6 code.highlighter-rouge,
+ul code.highlighter-rouge,
 p code.highlighter-rouge,
 p kbd {
     color: #cc6666;
@@ -96,7 +103,6 @@ figure pre {
 .highlight table {
     //background: $code-bg;
     color: $gray-200;
-    background: $code-bg;
     color: $gray-200;
     border-radius: 4px;
     font-size: 1rem;
@@ -171,6 +177,7 @@ figure pre {
 /* 右上に言語名を表示する */
 [data-lang]::before {
     content: attr(data-lang);
+    color: $tea;
     display: block;
     text-align: right;
     text-transform: capitalize; /* 最初は大文字にする */
