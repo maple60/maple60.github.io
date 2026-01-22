@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "github_pages",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "myblog",
+    "section": "",
+    "text": "My Post\n\n\n\n\n\nPost description\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/00_template.html",
+    "href": "posts/00_template.html",
+    "title": "My Post",
+    "section": "",
+    "text": "blog\na"
+  },
+  {
+    "objectID": "posts/00_template.html#section",
+    "href": "posts/00_template.html#section",
+    "title": "My Post",
+    "section": "",
+    "text": "My Post\na"
+  },
+  {
+    "objectID": "posts/00_template.html#みだｓい",
+    "href": "posts/00_template.html#みだｓい",
+    "title": "My Post",
+    "section": "",
+    "text": "My Post\na"
+  },
+  {
+    "objectID": "posts/00_template.html#見出し",
+    "href": "posts/00_template.html#見出し",
+    "title": "My Post",
+    "section": "",
+    "text": "blog\na"
+  }
+]
