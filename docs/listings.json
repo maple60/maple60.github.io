@@ -2,15 +2,12 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/00_template.html",
       "/posts/2025-01-01-imager.html",
       "/posts/2024-06-18-basic_authentification.html",
       "/posts/2024-06-18-r-vector.html",
       "/posts/2024-06-19-bookdown_url.html",
       "/posts/2024-03-14-cumsum.html",
-      "/posts/2024-03-05-r-api.html",
-      "/posts/2024-03-04-color-circle.html",
-      "/posts/2023-03-06-elliptic-fourier-analysis.html"
+      "/posts/2024-03-04-color-circle.html"
     ]
   }
 ]
