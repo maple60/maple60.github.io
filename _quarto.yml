@@ -1,6 +1,5 @@
 project:
   type: website
-  output-dir: docs # for GitHub Pages
 
 website:
   title: "Maple60’s website"
@@ -19,5 +18,6 @@ format:
       - custom.scss
     toc: true
 
-
+execute:
+  freeze: auto # re-render only when source changes
 

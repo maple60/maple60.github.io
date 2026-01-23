@@ -1,0 +1,64 @@
+---
+title: "QuartoでGitHub Pagesにブログを公開するときの注意点"
+description: "単純にQuartoでレンダリングするだけではうまくいかないようです"
+date: "2026-01-23"
+draft: true
+categories: [r,quarto,github]
+---
+
+Quartoでブログを作成して、GitHub Pagesで公開しようとしたときの注意点についてのメモです。
+
+## レンダリング先を`docs/`にする
+
+GitHub Pagesの公開先は、リポジトリのルートか`docs/`フォルダのどちらかを選択できます。
+Quartoでは、デフォルトではレンダリング先が`_site/`となるため、そのままではGitHub Pagesで公開できません。
+このため、レンダリング先のフォルダ名を`docs/`に変更する必要があります。
+
+Quartoの設定ファイル（`_quarto.yml`）で以下のように指定する必要があります。
+
+```yaml
+project:
+  type: website
+  output-dir: docs # for GitHub Pages
+```
+
+これで、Quartoでレンダリングした際に`docs/`フォルダに出力されるようになります。
+
+次に、GitHubリポジトリの設定で、GitHub Pagesの公開先を`docs/`に設定します。
+これで、Quartoで作成したブログをGitHub Pagesで公開できるようになります。
+
+## `.nojekyll`ファイルの追加
+
+GitHub Pagesでは、デフォルトでJekyllという静的サイトジェネレーターが有効になっています。
+Quartoで作成したサイトはJekyllとは互換性がないため、`.nojekyll`という空のファイルを`docs/`フォルダに追加する必要があります。
+これにより、GitHub PagesはJekyllを無効化し、Quartoで作成したサイトを正しく表示できるようになります。
+
+`.nojekyll`ファイルは、以下のコマンドで作成できます。
+
+- Mac/Linux:
+
+```bash
+touch .nojekyll
+```
+
+- Windows (PowerShell):
+
+```powershell
+New-Item .nojekyll -ItemType File
+```
+
+- Windows (コマンドプロンプト):
+
+```cmd
+type nul > .nojekyll
+```
+
+もしくは、手動で空のテキストファイルを作成し、名前を`.nojekyll`に変更しても構いません。
+
+## Publishコマンドの利用
+
+Quartoには、GitHub Pagesに直接公開するための`quarto publish gh-pages`コマンドがあります。
+
+## 参考
+
+- [Quarto Documentation – GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
