@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs # for GitHub Pages
 
 website:
   title: "Maple60’s website"
