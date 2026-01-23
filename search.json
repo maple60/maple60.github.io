@@ -7,11 +7,11 @@
     "text": "画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\nMar 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\nMar 4, 2024\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/2025-01-01-imager.html",
-    "href": "posts/2025-01-01-imager.html",
-    "title": "画像処理のためのRパッケージimagerの使い方",
+    "objectID": "posts/2024-03-04-color-circle.html",
+    "href": "posts/2024-03-04-color-circle.html",
+    "title": "Rで色相環を作成する",
     "section": "",
-    "text": "概要\nRで画像解析をしたいとなったときに、{imager}というパッケージがあることを知った。 いろいろと試した結果を記す。\n\n\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n\n\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\n\n\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
+    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
   },
   {
     "objectID": "posts/2024-06-18-r-vector.html",
@@ -56,18 +56,11 @@
     "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
   },
   {
-    "objectID": "posts/2024-03-14-cumsum.html",
-    "href": "posts/2024-03-14-cumsum.html",
-    "title": "Rで累積和を求める",
+    "objectID": "posts/2024-06-18-basic_authentification.html",
+    "href": "posts/2024-06-18-basic_authentification.html",
+    "title": "BASIIC認証でつまったこと",
     "section": "",
-    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
-  },
-  {
-    "objectID": "posts/2024-03-04-color-circle.html",
-    "href": "posts/2024-03-04-color-circle.html",
-    "title": "Rで色相環を作成する",
-    "section": "",
-    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
+    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
   },
   {
     "objectID": "index.html",
@@ -77,11 +70,11 @@
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nHello World!\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
   },
   {
-    "objectID": "posts/2024-06-18-basic_authentification.html",
-    "href": "posts/2024-06-18-basic_authentification.html",
-    "title": "BASIIC認証でつまったこと",
+    "objectID": "posts/2024-03-14-cumsum.html",
+    "href": "posts/2024-03-14-cumsum.html",
+    "title": "Rで累積和を求める",
     "section": "",
-    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
   },
   {
     "objectID": "posts/2024-06-19-bookdown-url.html",
@@ -124,5 +117,12 @@
     "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
     "section": "参考",
     "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
+  },
+  {
+    "objectID": "posts/2025-01-01-imager.html",
+    "href": "posts/2025-01-01-imager.html",
+    "title": "画像処理のためのRパッケージimagerの使い方",
+    "section": "",
+    "text": "概要\nRで画像解析をしたいとなったときに、{imager}というパッケージがあることを知った。 いろいろと試した結果を記す。\n\n\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n\n\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\n\n\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
   }
 ]
