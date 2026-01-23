@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Maple60’s website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: posts.qmd
+        text: Posts
+  draft-mode: gone # https://quarto.org/docs/websites/website-drafts.html
+
+format:
+  html:
+    theme:
+      - default
+      - custom.scss
+    toc: true
+
+
+
