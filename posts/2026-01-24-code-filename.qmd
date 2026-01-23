@@ -29,4 +29,5 @@ print("Hello, World!")
 
 ## 参考
 
-[HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html)
+- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html#code-filename)
+- [Markdown Basics - Quarto](https://quarto.org/docs/authoring/markdown-basics.html#source-code)
