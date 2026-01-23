@@ -1,9 +1,10 @@
 ---
-title: "My Post"
-description: "Post description"
+title: "画像処理のためのRパッケージimagerの使い方"
+description: "imagerパッケージについての基本的な使い方の紹介です"
 date: "2026-01-01"
+date-modified: "2026-01-01"
 draft: false
-categories: []
+categories: [r]
 ---
 
 # 概要
@@ -56,7 +57,7 @@ plot(list_img)
 サンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。
 `load.dir()`の場合も同様。
 
-```{r, eval=FALSE}
+```r
 file <- "/imagefile/hoge.jpg"
 img <- load.image(file)
 ```

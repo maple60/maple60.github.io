@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-18">
+<meta name="description" content="Bookdownで日本語を使うときはURLエンコードに注意です">
 
-<title>github_pages – Maple60’s website</title>
+<title>Bookdownで404エラーが出たときの原因の一つはURLエンコード – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6140a175fba8049c967024bf79b4ad7e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6140a175fba8049c967024bf79b4ad7e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -90,11 +92,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
@@ -108,23 +110,53 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#状況" id="toc-状況" class="nav-link active" data-scroll-target="#状況">状況</a></li>
+  <li><a href="#原因とその背景" id="toc-原因とその背景" class="nav-link" data-scroll-target="#原因とその背景">原因とその背景</a></li>
+  <li><a href="#対策" id="toc-対策" class="nav-link" data-scroll-target="#対策">対策</a></li>
+  <li><a href="#最後に" id="toc-最後に" class="nav-link" data-scroll-target="#最後に">最後に</a></li>
+  <li><a href="#参考" id="toc-参考" class="nav-link" data-scroll-target="#参考">参考</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">github_pages</h1>
-</div>
+<h1 class="title">Bookdownで404エラーが出たときの原因の一つはURLエンコード</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">r</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Bookdownで日本語を使うときはURLエンコードに注意です
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 18, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 18, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -133,63 +165,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<h1>
-Hello World!
-</h1>
-<h2 class="anchored">
-About
-</h2>
-<p>
-I will blog contents mainly about programming I learned.
-</p>
-<p>
-Please note that the contents may include misinformation because I am not an expert.
-</p>
-<p>
-I mainly use below languages;
-</p>
+<p>Rの<a href="https://bookdown.org">{bookdown}</a>パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。</p>
+<section id="状況" class="level2">
+<h2 class="anchored" data-anchor-id="状況">状況</h2>
+<p>Synology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で<code>_book</code>)の中身をすべてコピーして外部からアクセスをできるようにしていました。</p>
+<p>普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。</p>
+</section>
+<section id="原因とその背景" class="level2">
+<h2 class="anchored" data-anchor-id="原因とその背景">原因とその背景</h2>
+<p>結論としては、URLエンコードの問題でした。 そのファイルは<code>〇〇マップ.html</code>という名前のファイルで、日本語が入っていました。</p>
+<p>ASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、<strong>URLエンコード</strong>という処理で、URL内に表現できる形に置き換えられます。</p>
+<p>例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これを<strong>パーセントエンコーディング</strong>と呼ぶらしいです。</p>
+<p>「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、</p>
 <ul>
-<li>
-R
-</li>
-<li>
-Python
-</li>
-<li>
-Javascript
-</li>
+<li>マ: %E3%83%9E</li>
+<li>ッ: %E3%83%83</li>
+<li>プ: %E3%83%97</li>
 </ul>
-<p>
-This blog is made with <a href="https://quarto.org/">Quarto</a>.
-</p>
-<hr>
-<h2 class="anchored">
-このページについて
-</h2>
-<p>
-主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。
-</p>
-<p>
-内容については、誤りも含む可能性もございますのでご了承ください。
-</p>
-<p>
-筆者は以下のプログラミング言語を主に使用します。
-</p>
-<ul>
-<li>
-R
-</li>
-<li>
-Python
-</li>
-<li>
-JavaScript
-</li>
-</ul>
+<p>という感じです。</p>
+<p>ですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。</p>
+<p>つまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。</p>
+</section>
+<section id="対策" class="level2">
+<h2 class="anchored" data-anchor-id="対策">対策</h2>
+<p>とりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。</p>
+<p>bookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。</p>
+<p>Rmdファイルのheader1(<code>#</code>)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。</p>
+<p>濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。</p>
+</section>
+<section id="最後に" class="level2">
+<h2 class="anchored" data-anchor-id="最後に">最後に</h2>
+<p>見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。</p>
+<p>気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。</p>
+<p>日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。</p>
+</section>
+<section id="参考" class="level2">
+<h2 class="anchored" data-anchor-id="参考">参考</h2>
+<p>URLエンコードについては、以下のサイト様を利用させていただきました。</p>
+<p><a href="https://tech-unlimited.com/urlencode.html">URLエンコード・デコード</a></p>
+<p>ありがとうございました。</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,7 +1,10 @@
 ---
-title:  BASIIC認証でつまったこと
-layout: post
-tags: [BASIC認証]
+title: "BASIIC認証でつまったこと"
+description: "BASIIC認証を使用したときの注意点についてのメモ"
+date: "2024-06-18"
+date-modified: "2024-06-18"
+draft: false
+categories: [misc]
 ---
 
 BASIC認証を使用したときのメモです。

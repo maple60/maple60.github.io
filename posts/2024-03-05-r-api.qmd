@@ -1,7 +1,10 @@
 ---
-title: RでAPIを利用する
-layout: post
-tags: [R]
+title: "RでWebAPIを利用する"
+description: "RでWebAPIを利用するする方法についてのメモ"
+date: "2024-03-05"
+date-modified: "2024-03-05"
+draft: true
+categories: [r]
 ---
 
 RでWebAPIを利用する方法についてのメモです。

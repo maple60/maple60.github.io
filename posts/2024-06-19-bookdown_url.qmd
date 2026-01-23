@@ -1,7 +1,10 @@
 ---
-title: Bookdownで404エラーが出たときの原因の一つはURLエンコード
-layout: post
-tags: [R]
+title: "Bookdownで404エラーが出たときの原因の一つはURLエンコード"
+description: "Bookdownで日本語を使うときはURLエンコードに注意です"
+date: "2024-06-18"
+date-modified: "2024-06-18"
+draft: false
+categories: [r]
 ---
 
 Rの[{bookdown}](https://bookdown.org)パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。

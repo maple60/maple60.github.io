@@ -19,7 +19,7 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
   <li>Javascript</li>
 </ul>
 
-<p>This blog is made with <a href="https://jekyllrb.com">Jekyll</a>.</p>
+<p>This blog is made with <a href="https://quarto.org/">Quarto</a>.</p>
 
 <hr>
 

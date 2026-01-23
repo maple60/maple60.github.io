@@ -1,6 +1,10 @@
 ---
-title: 楕円フーリエ解析
-layout: post
+title: "楕円フーリエ解析"
+description: "楕円フーリエ解析についての理論とRによる実装"
+date: "2023-03-06"
+date-modified: "2023-03-06"
+draft: true
+categories: [r]
 ---
 
 輪郭形状の解析のための楕円フーリエ解析について、理論から実装までのメモです。
