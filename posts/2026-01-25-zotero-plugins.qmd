@@ -1,0 +1,90 @@
+---
+title: "導入しているZoteroプラグインのまとめ"
+description: "文献管理ソフトZoteroで導入しているプラグインのまとめです"
+date: "2026-01-25"
+date-modified: "2026-01-25"
+draft: false
+categories: [zotero]
+---
+
+文献管理ソフトZoteroで使用しているプラグインのまとめです。
+いろいろ試しましたが、以下のプラグインが便利だと感じています。
+(アルファベット順)
+
+::: {.callout-note}
+少しずつ個別のプラグインについても記事を書いていく予定です。
+:::
+
+## Better BibTeX for Zotero
+
+- [ウェブサイト](https://retorque.re/zotero-better-bibtex/)
+
+ZoteroでBibTeX形式で文献情報をエクスポートする際に便利なプラグインです。
+特に、文献情報のキーをカスタマイズしたり、BibTeXファイルを自動的に更新したりする機能があります。
+これ単体を使うというよりは、ほかのソフトウェアやツールと連携して使うことが多いです。
+
+## Ethereal Style
+
+- [GitHubリポジトリ](https://github.com/MuiseDestiny/zotero-style)
+
+Zoteroの見た目をカスタマイズしたり、インターフェースを改善したりするプラグインです。
+論文一覧画面の列に新しいカスタム列を追加したり、関連論文をネットワークグラフで表示したり、PDFのスタイルを変更したりといった、様々な機能があります。
+
+個人的には、論文の読んだ進捗を表示する機能が便利で、どの論文をどれだけ読んだかを一目で把握できるため、重宝しています。
+
+::: {.callout-note}
+かつてはZotero Styleという名前だった気がします。
+:::
+
+## Translate for Zotero
+
+- [GitHubリポジトリ](https://github.com/windingwind/zotero-pdf-translate)
+
+文献のPDFやEPubなどを翻訳するプラグインです。
+翻訳したい部分を選択するだけで、Google翻訳やDeepL翻訳を使って翻訳結果を表示してくれます。
+翻訳結果はノートや注釈として保存することができます。
+
+## ZotCard
+
+- [GitHubリポジトリ](https://github.com/018/zotcard)
+
+カードのような形式でノートをまとめることができるプラグインです。
+テンプレートを作る機能があり、この機能をよく使っています。
+
+## Zotero Annanger
+
+- [GitHubリポジトリ](https://github.com/MuiseDestiny/zotero-attanger)
+
+文献の添付ファイルを管理するためのプラグインです。
+添付ファイルを指定したファイルに移動したり、ファイルのリネームをしたりしてくれます。
+DropboxやGoogle Driveなどのクラウドストレージと連携して使う際に便利です。
+
+::: {.callout-note}
+Zotero6まではZotFileというプラグインが有名でしたが、Zotero7になってからは対応しておらず、こちらのプラグインを使用しております。
+:::
+
+## Zotero Reading List
+
+- [GitHubリポジトリ](https://github.com/Dominic-DallOsto/zotero-reading-list)
+
+文献の読書ステータスを管理するためのプラグインです。
+文献に⭐ New, 📙 To Read, 📖 In Progress, 📗 Read, 📕 Not Reading のステータスをつけてくれます。
+自分でカスタムステータスを追加することも可能です。
+
+## ZotSeek
+
+- [GitHubリポジトリ](https://github.com/introfini/ZotSeek)
+
+ローカルAIを使用して、特定の語句や論文に意味合いが近い論文を検索する(AI semantic search)プラグインです。
+ローカルAIを使用しているため、インターネット接続が不要で、情報が外部に送信されることもありません。
+
+特に、似ている論文を探す機能が便利で、ある論文を基準にして、その論文と内容が似ている論文をZoteroライブラリ内から探し出すことができます。
+
+ローカルAIを使用するということで、速度が心配でしたが、実際に使ってみると非常に高速で、ストレスなく使用できています。(100ミリ秒未満で応答されるとのことです。)
+さらに、現在はCPUベースで動作しますが、将来的にはGPUベースでの動作もサポートされる予定とのことです。
+
+## 感謝
+
+これらのプラグインを開発・提供してくださっている方々に深く感謝いたします。
+Zotero自体もオープンソースで提供されており、非常に便利な文献管理ツールです。
+Zoteroコミュニティの皆様にも感謝申し上げます。
