@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Quartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nPost description\n\n\n\n\n\nJan 24, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\nMar 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\nMar 4, 2024\n\n\n\n\n\nNo matching items"
+    "text": "導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\nJan 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\nJan 24, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\nJan 1, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\nJun 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\nMar 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\nMar 4, 2024\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2024-03-04-color-circle.html",
@@ -14,25 +14,18 @@
     "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
   },
   {
-    "objectID": "posts/2024-03-14-cumsum.html",
-    "href": "posts/2024-03-14-cumsum.html",
-    "title": "Rで累積和を求める",
+    "objectID": "posts/2026-01-24-code-filename.html",
+    "href": "posts/2026-01-24-code-filename.html",
+    "title": "Quartoでコードブロックのファイル名を表示する",
     "section": "",
-    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
+    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "github_pages",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nHello World!\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
-  },
-  {
-    "objectID": "posts/2024-06-18-basic_authentification.html",
-    "href": "posts/2024-06-18-basic_authentification.html",
-    "title": "BASIIC認証でつまったこと",
-    "section": "",
-    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+    "objectID": "posts/2026-01-24-code-filename.html#参考",
+    "href": "posts/2026-01-24-code-filename.html#参考",
+    "title": "Quartoでコードブロックのファイル名を表示する",
+    "section": "参考",
+    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
   },
   {
     "objectID": "posts/2024-06-18-r-vector.html",
@@ -77,18 +70,88 @@
     "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
   },
   {
-    "objectID": "posts/2026-01-24-code-filename.html",
-    "href": "posts/2026-01-24-code-filename.html",
-    "title": "Quartoでコードブロックのファイル名を表示する",
+    "objectID": "posts/2024-06-18-basic_authentification.html",
+    "href": "posts/2024-06-18-basic_authentification.html",
+    "title": "BASIIC認証でつまったこと",
     "section": "",
-    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
+    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
   },
   {
-    "objectID": "posts/2026-01-24-code-filename.html#参考",
-    "href": "posts/2026-01-24-code-filename.html#参考",
-    "title": "Quartoでコードブロックのファイル名を表示する",
-    "section": "参考",
-    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "github_pages",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nHello World!\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
+  },
+  {
+    "objectID": "posts/2024-03-14-cumsum.html",
+    "href": "posts/2024-03-14-cumsum.html",
+    "title": "Rで累積和を求める",
+    "section": "",
+    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html",
+    "href": "posts/2026-01-25-zotero-plugins.html",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "",
+    "text": "文献管理ソフトZoteroで使用しているプラグインのまとめです。 いろいろ試しましたが、以下のプラグインが便利だと感じています。 (アルファベット順)"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#better-bibtex-for-zotero",
+    "href": "posts/2026-01-25-zotero-plugins.html#better-bibtex-for-zotero",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "Better BibTeX for Zotero",
+    "text": "Better BibTeX for Zotero\n\nウェブサイト\n\nZoteroでBibTeX形式で文献情報をエクスポートする際に便利なプラグインです。 特に、文献情報のキーをカスタマイズしたり、BibTeXファイルを自動的に更新したりする機能があります。 これ単体を使うというよりは、ほかのソフトウェアやツールと連携して使うことが多いです。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#ethereal-style",
+    "href": "posts/2026-01-25-zotero-plugins.html#ethereal-style",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "Ethereal Style",
+    "text": "Ethereal Style\n\nGitHubリポジトリ\n\nZoteroの見た目をカスタマイズしたり、インターフェースを改善したりするプラグインです。 論文一覧画面の列に新しいカスタム列を追加したり、関連論文をネットワークグラフで表示したり、PDFのスタイルを変更したりといった、様々な機能があります。\n個人的には、論文の読んだ進捗を表示する機能が便利で、どの論文をどれだけ読んだかを一目で把握できるため、重宝しています。\n\n\n\n\n\n\nNote\n\n\n\nかつてはZotero Styleという名前だった気がします。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#translate-for-zotero",
+    "href": "posts/2026-01-25-zotero-plugins.html#translate-for-zotero",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "Translate for Zotero",
+    "text": "Translate for Zotero\n\nGitHubリポジトリ\n\n文献のPDFやEPubなどを翻訳するプラグインです。 翻訳したい部分を選択するだけで、Google翻訳やDeepL翻訳を使って翻訳結果を表示してくれます。 翻訳結果はノートや注釈として保存することができます。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#zotcard",
+    "href": "posts/2026-01-25-zotero-plugins.html#zotcard",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "ZotCard",
+    "text": "ZotCard\n\nGitHubリポジトリ\n\nカードのような形式でノートをまとめることができるプラグインです。 テンプレートを作る機能があり、この機能をよく使っています。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#zotero-annanger",
+    "href": "posts/2026-01-25-zotero-plugins.html#zotero-annanger",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "Zotero Annanger",
+    "text": "Zotero Annanger\n\nGitHubリポジトリ\n\n文献の添付ファイルを管理するためのプラグインです。 添付ファイルを指定したファイルに移動したり、ファイルのリネームをしたりしてくれます。 DropboxやGoogle Driveなどのクラウドストレージと連携して使う際に便利です。\n\n\n\n\n\n\nNote\n\n\n\nZotero6まではZotFileというプラグインが有名でしたが、Zotero7になってからは対応しておらず、こちらのプラグインを使用しております。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#zotero-reading-list",
+    "href": "posts/2026-01-25-zotero-plugins.html#zotero-reading-list",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "Zotero Reading List",
+    "text": "Zotero Reading List\n\nGitHubリポジトリ\n\n文献の読書ステータスを管理するためのプラグインです。 文献に⭐ New, 📙 To Read, 📖 In Progress, 📗 Read, 📕 Not Reading のステータスをつけてくれます。 自分でカスタムステータスを追加することも可能です。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#zotseek",
+    "href": "posts/2026-01-25-zotero-plugins.html#zotseek",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "ZotSeek",
+    "text": "ZotSeek\n\nGitHubリポジトリ\n\nローカルAIを使用して、特定の語句や論文に意味合いが近い論文を検索する(AI semantic search)プラグインです。 ローカルAIを使用しているため、インターネット接続が不要で、情報が外部に送信されることもありません。\n特に、似ている論文を探す機能が便利で、ある論文を基準にして、その論文と内容が似ている論文をZoteroライブラリ内から探し出すことができます。\nローカルAIを使用するということで、速度が心配でしたが、実際に使ってみると非常に高速で、ストレスなく使用できています。(100ミリ秒未満で応答されるとのことです。) さらに、現在はCPUベースで動作しますが、将来的にはGPUベースでの動作もサポートされる予定とのことです。"
+  },
+  {
+    "objectID": "posts/2026-01-25-zotero-plugins.html#感謝",
+    "href": "posts/2026-01-25-zotero-plugins.html#感謝",
+    "title": "導入しているZoteroプラグインのまとめ",
+    "section": "感謝",
+    "text": "感謝\nこれらのプラグインを開発・提供してくださっている方々に深く感謝いたします。 Zotero自体もオープンソースで提供されており、非常に便利な文献管理ツールです。 Zoteroコミュニティの皆様にも感謝申し上げます。"
   },
   {
     "objectID": "posts/2024-06-19-bookdown-url.html",
