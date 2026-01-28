@@ -1,0 +1,15 @@
+{
+  "hash": "a149f989f425f8c92d95fc65aacce7b2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Rでベクトルの重複を取り除く方法\"\ndescription: \"`make.unique()`関数を使ってベクトルの重複を取り除く方法についてのメモです\"\ndate: \"2026-01-27\"\ndate-modified: \"2026-01-27\"\ndraft: false\ncategories: [r]\n---\n\n## `make.unique()`関数の使用法\n\nRでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。\n`make.unique()`関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。\n使用法は以下のようになります。\n\n```{.r}\nmake.unique(names, sep = \".\")\n```\n\n- `names`: ユニークにしたい文字ベクトル\n- `sep`: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット `.`）\n\n## 使用例\n\n例えば、以下のようなベクトルがあるとします。\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- c(\"apple\", \"banana\", \"apple\", \"orange\", \"banana\")\n```\n:::\n\n\nこのベクトルに対して`make.unique()`を適用すると、以下のようになります。\n\n\n::: {.cell}\n\n```{.r .cell-code}\nunique_x <- make.unique(x)\nprint(unique_x)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"apple\"    \"banana\"   \"apple.1\"  \"orange\"   \"banana.1\"\n```\n\n\n:::\n:::\n\n\n`apple`と`banana`が重複しているため、単語の後ろに`.1`が追加されています。\n\n## 最後に\n\nどこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。\n活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
