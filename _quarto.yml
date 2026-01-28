@@ -17,6 +17,7 @@ format:
       - default
       - custom.scss
     toc: true
+    code-link: true
 
 execute:
   freeze: auto # re-render only when source changes
