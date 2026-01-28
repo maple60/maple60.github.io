@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-27">
-<meta name="description" content="make.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです">
+<meta name="dcterms.date" content="2026-01-28">
+<meta name="description" content="code-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです">
 
-<title>Rでベクトルの重複を取り除く方法 – Maple60’s website</title>
+<title>Quartoのコードブロック内の関数にドキュメントリンクをつける方法 – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,9 +150,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#make.unique関数の使用法" id="toc-make.unique関数の使用法" class="nav-link active" data-scroll-target="#make.unique関数の使用法"><code>make.unique()</code>関数の使用法</a></li>
-  <li><a href="#使用例" id="toc-使用例" class="nav-link" data-scroll-target="#使用例">使用例</a></li>
-  <li><a href="#最後に" id="toc-最後に" class="nav-link" data-scroll-target="#最後に">最後に</a></li>
+  <li><a href="#使用例" id="toc-使用例" class="nav-link active" data-scroll-target="#使用例">使用例</a></li>
+  <li><a href="#注意点" id="toc-注意点" class="nav-link" data-scroll-target="#注意点">注意点</a></li>
+  <li><a href="#参考" id="toc-参考" class="nav-link" data-scroll-target="#参考">参考</a></li>
   </ul>
 </nav>
     </div>
@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Rでベクトルの重複を取り除く方法</h1>
+<h1 class="title">Quartoのコードブロック内の関数にドキュメントリンクをつける方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
   </div>
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    <code>make.unique()</code>関数を使ってベクトルの重複を取り除く方法についてのメモです
+    <code>code-link</code>オプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです
   </div>
 </div>
 
@@ -180,14 +180,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 27, 2026</p>
+      <p class="date">January 28, 2026</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 27, 2026</p>
+      <p class="date-modified">January 28, 2026</p>
     </div>
   </div>
     
@@ -198,34 +198,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="make.unique関数の使用法" class="level2">
-<h2 class="anchored" data-anchor-id="make.unique関数の使用法"><code>make.unique()</code>関数の使用法</h2>
-<p>Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 <code>make.unique()</code> 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make.unique</span>(names, <span class="at">sep =</span> <span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><code>names</code>: ユニークにしたい文字ベクトル</li>
-<li><code>sep</code>: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット <code>.</code>）</li>
-</ul>
-</section>
+<p>Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 <code>code-link</code>オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。</p>
+<p><code>_quarto.yml</code>ファイルに以下のように設定を追加します。</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>"_quarto.yml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="&quot;_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-link</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>これにより、HTML出力時にコードブロック内の関数名がリンク付きで表示されるようになります。</p>
 <section id="使用例" class="level2">
 <h2 class="anchored" data-anchor-id="使用例">使用例</h2>
-<p>例えば、以下のようなベクトルがあるとします。</p>
+<p>インラインコードやコードブロック内で関数を使用すると、リンクが自動的に追加されます。例えば、以下のようにRコードブロックを記述します。</p>
+<ul>
+<li>例文： このように<code>unique()</code>関数を使用すると、ベクトルの重複を取り除くことができます。</li>
+</ul>
+<p>また、コードブロック内でも同様にリンクが追加されます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"banana"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>このベクトルに対して<code>make.unique()</code>を適用すると、以下のようになります。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>unique_x <span class="ot">&lt;-</span> <span class="fu">make.unique</span>(x)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"banana"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>unique_x <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "apple"    "banana"   "apple.1"  "orange"   "banana.1"</code></pre>
+<pre><code>[1] "apple"  "banana" "orange"</code></pre>
 </div>
 </div>
-<p><code>apple</code>と<code>banana</code>が重複しているため、単語の後ろに<code>.1</code>が追加されています。</p>
+<p>それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、<code>c()</code>、<code>unique()</code>、<code>print()</code>関数にリンクが追加されているのではないでしょうか。</p>
 </section>
-<section id="最後に" class="level2">
-<h2 class="anchored" data-anchor-id="最後に">最後に</h2>
-<p>どこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。 活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。</p>
+<section id="注意点" class="level2">
+<h2 class="anchored" data-anchor-id="注意点">注意点</h2>
+<ul>
+<li><code>code-link</code>オプションは<a href="https://yihui.org/knitr/">knitr</a>エンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部で<a href="https://downlit.r-lib.org/">downlit</a>パッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。</li>
+<li><code>code-line-numbers</code>オプションや<code>code-annotations</code>オプションとは併用ができないようです。これらのオプションを有効にしている場合、<code>code-link</code>オプションは無視されます。</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>code-line-numbers</code>オプションは、コードブロックに行番号を追加するためのオプションです。</p>
+<p><code>code-annotations</code>オプションは、コードブロックに注釈を追加するためのオプションです。</p>
+</div>
+</div>
+</section>
+<section id="参考" class="level2">
+<h2 class="anchored" data-anchor-id="参考">参考</h2>
+<ul>
+<li><a href="https://yihui.org/knitr/">knitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie | 谢益辉</a></li>
+<li><a href="https://cran.r-project.org/web/packages/knitr/index.html">CRAN: Package knitr</a></li>
+<li><a href="https://quarto.org/docs/output-formats/html-code.html">HTML Code Blocks - Quarto</a></li>
+<li><a href="https://quarto.org/docs/authoring/code-annotation.html">Code Annotation - Quarto</a></li>
+</ul>
 
 
 </section>
