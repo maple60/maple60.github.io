@@ -3,7 +3,7 @@ title: "Quartoで表示される日付型を変更する"
 description: "`date-format`オプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです"
 date: "2026-01-30"
 date-modified: "2026-01-30"
-draft: true
+draft: false
 categories: [r, quarto]
 ---
 
