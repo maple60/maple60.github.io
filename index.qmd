@@ -1,12 +1,8 @@
 ---
-title: "github_pages"
+title: "Maple60's Website"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-<h1>Hello World!</h1>
+<h1>Hello World</h1>
 
 <h2>About</h2>
 <p>I will blog contents mainly about programming I learned.</p>
