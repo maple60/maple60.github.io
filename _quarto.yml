@@ -1,5 +1,10 @@
 project:
   type: website
+  output-dir: _site
+  resources: 
+    - posts/
+    - "*.qmd"
+    - "*.png"
 
 website:
   title: "Maple60’s website"
@@ -20,7 +25,7 @@ format:
     code-link: true
     code-line-numbers: false 
     code-annotations: false
+    code-copy: true
 
 execute:
   freeze: auto # re-render only when source changes
-
