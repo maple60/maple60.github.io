@@ -2,17 +2,17 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2026-01-29-quarto-code-linking-github-action.html",
-      "/posts/2026-01-28-quarto-code-linking.html",
-      "/posts/2026-01-27-make-unique.html",
-      "/posts/2026-01-25-zotero-plugins.html",
-      "/posts/2026-01-24-code-filename.html",
-      "/posts/2025-01-01-imager.html",
-      "/posts/2024-06-18-basic_authentification.html",
-      "/posts/2024-06-18-r-vector.html",
-      "/posts/2024-06-19-bookdown-url.html",
-      "/posts/2024-03-14-cumsum.html",
-      "/posts/2024-03-04-color-circle.html"
+      "/posts/2026-01-29-quarto-code-linking-github-action/index.html",
+      "/posts/2026-01-28-quarto-code-linking/index.html",
+      "/posts/2026-01-27-make-unique/index.html",
+      "/posts/2026-01-25-zotero-plugins/index.html",
+      "/posts/2026-01-24-code-filename/index.html",
+      "/posts/2025-01-01-imager/index.html",
+      "/posts/2024-06-19-bookdown-url/index.html",
+      "/posts/2024-06-18-basic_authentification/index.html",
+      "/posts/2024-06-18-r-vector/index.html",
+      "/posts/2024-03-14-cumsum/index.html",
+      "/posts/2024-03-04-color-circle/index.html"
     ]
   }
 ]
