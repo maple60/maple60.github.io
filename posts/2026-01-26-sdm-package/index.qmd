@@ -1,0 +1,48 @@
+---
+title: "Rのsdmパッケージについて"
+description: "sdmパッケージの概要と基本的な使い方の紹介についてのメモです"
+date: "2026-01-26"
+date-modified: "2026-01-26"
+draft: true
+categories: [r]
+---
+
+## インストール
+
+```{.r}
+install.packages('sdm')
+```
+
+もしくは、最新の開発版をGitHubからインストールする場合は、以下のコマンドを使用します。
+
+```{.r}
+devtools::install_github("babaknaimi/sdm")
+```
+
+SDMsを実行するにあたり、モデリング用のパッケージが必要になります。
+これらのパッケージをまとめてインストールするには、`installAll()`関数を使用します。
+
+```{.r}
+installAll()
+```
+
+
+## 参考になるリンク集
+
+公式のドキュメント。更新日が2016年とリリース直後のようです。もしかしたら情報が古い可能性があります。
+- [getting started with sdm package](https://sdm.r-forge.r-project.org/)
+
+公式ではないですが、sdmパッケージのチュートリアル記事。
+- [Rpubs - SDM](https://rpubs.com/Wyclife/sdm_ensemble)
+
+GitHubリポジトリ。
+- [GitHub - babaknaimi sdm](https://github.com/babaknaimi/sdm?tab=readme-ov-file)
+
+論文
+- Naimi, B., Araujo, M.B. (2016) sdm: a reproducible and extensible R platform for species distribution modelling, Ecography, 39:368-375, DOI: [10.1111/ecog.01881](https://doi.org/10.1111/ecog.01881)
+
+パッケージのドキュメント
+- [Help for palcage sdm](https://cran.r-project.org/web/packages/sdm/refman/sdm.html#background)
+
+パッケージのCRAN(リポジトリ)
+- [CRAN - Package sdm](https://cran.r-project.org/web/packages/sdm/index.html)
