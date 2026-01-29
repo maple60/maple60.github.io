@@ -11,7 +11,7 @@
     "href": "posts/2026-01-28-quarto-code-linking.html",
     "title": "Quartoのコードブロック内の関数にドキュメントリンクをつける方法",
     "section": "",
-    "text": "library(downlit)\nlibrary(xml2)\nrenv::snapshot()\n\n- The lockfile is already up to date.\nQuartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 code-linkオプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。\n_quarto.ymlファイルに以下のように設定を追加します。\nこれにより、HTML出力時にコードブロック内の関数名がリンク付きで表示されるようになります。"
+    "text": "Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 code-linkオプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。\n_quarto.ymlファイルに以下のように設定を追加します。\nこれにより、HTML出力時にコードブロック内の関数名がリンク付きで表示されるようになります。"
   },
   {
     "objectID": "posts/2026-01-28-quarto-code-linking.html#使用例",

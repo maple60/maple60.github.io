@@ -7,12 +7,6 @@ draft: false
 categories: [r]
 ---
 
-```{r}
-library(downlit)
-library(xml2)
-renv::snapshot()
-```
-
 Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。
 `code-link`オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。
 
