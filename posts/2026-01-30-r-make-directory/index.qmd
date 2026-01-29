@@ -1,0 +1,46 @@
+---
+title: "Rでディレクトリを作成する方法"
+description: "`dir.create()`関数を使用してRでディレクトリを作成する方法についてのメモです"
+date: "2026-01-30"
+date-modified: "2026-01-30"
+draft: false
+categories: [r]
+---
+
+Rでは、`dir.create()`関数を使用してディレクトリを作成することができます。
+
+## `dir.create()`関数
+
+文法は以下の通りです。
+
+```{.r}
+dir.create(path, showWarnings = TRUE, recursive = FALSE, mode = "0777")
+```
+
+- `path`: 作成するディレクトリのパスを指定します。`~`はホームディレクトリを表します。
+- `showWarnings`: TRUEに設定すると、ディレクトリが既に存在する場合に警告を表示します。デフォルトはTRUEです。
+- `recursive`: TRUEに設定すると、必要に応じて親ディレクトリも作成します。デフォルトはFALSEです。
+- `mode`: 作成するディレクトリのアクセス権(パーミッション)を指定します。デフォルトは"0777"です。
+
+::: {.callout-note}
+`mode`引数はUNIX系システムでのみ意味を持ちます。Windowsでは無視されます。
+基本的にはデフォルトのままで問題ありません。
+ここでは詳しく説明しません。
+
+もし詳しく知りたい場合は、`?dir.create`でヘルプを参照していただくか、以下のドキュメントを参照してください。
+
+- [files2: Manipulaton of Directories and File Permissions](https://www.rdocumentation.org/packages/base/versions/3.1.0/topics/files2)
+:::
+
+## 使用例
+
+例えば、以下のコードは`save/path/to/directory`というディレクトリを作成します。
+このとき、親ディレクトリが存在しない場合でも`recursive = TRUE`を指定することで、必要な親ディレクトリも一緒に作成されます。
+また、もしディレクトリが既に存在していても警告を表示しないように`showWarnings = FALSE`を指定しています。
+
+```{.r}
+save_dir <- "save/path/to/directory"
+dir.create(save_dir, showWarnings = FALSE, recursive = TRUE)
+```
+
+このコードを実行すると、`save`ディレクトリが存在しない場合でも、`save/path/to/directory`というディレクトリが作成されます。
