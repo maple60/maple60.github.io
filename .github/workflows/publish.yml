@@ -31,6 +31,8 @@ jobs:
             libtiff-dev \
             libfftw3-dev \
             libglpk-dev \
+            libx11-dev \
+            libxt-dev \
             pandoc
 
       - name: Install R Dependencies
