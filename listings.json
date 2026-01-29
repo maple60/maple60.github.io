@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2026-01-29-quarto-code-linking-github-action.html",
       "/posts/2026-01-28-quarto-code-linking.html",
       "/posts/2026-01-27-make-unique.html",
       "/posts/2026-01-25-zotero-plugins.html",
