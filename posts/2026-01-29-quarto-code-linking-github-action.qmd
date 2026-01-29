@@ -1,0 +1,361 @@
+---
+title: "Github ActionsでQuartoのコードリンク機能を有効にする方法"
+description: "Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです"
+date: "2026-01-29"
+date-modified: "2026-01-29"
+draft: false
+categories: [r, quarto]
+---
+
+Quartoでウェブサイトを作成する際に、`code-link`オプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。
+この問題を解決した際のメモを残します。
+まとまりのない文章になってしまっていること、あらかじめご了承ください。
+
+::: {.callout-caution}
+`code-link`オプションはknitrエンジンのみでサポートされています。
+そのため、Rコードブロックでのみ機能します。
+:::
+
+## `code-link`オプションとは
+
+`code-link`オプションは、Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加するためのオプションです。
+このオプションを有効にすると、コードブロック内の関数名がリンク付きで表示され、対応するドキュメントページに移動できるようになります。
+
+例えば、`plot()`と書くと、関数にマウスを合わせた際にリンクが表示され、クリックするとRの公式ドキュメントの`plot()`関数のページに移動します。
+うまくリンクが追加されているでしょうか。
+
+::: {.callout-note}
+`code-link`オプションについては以下の公式ドキュメントを参照してください。
+
+- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html#code-linking)
+- [HTML Options - Quarto](https://quarto.org/docs/reference/formats/html.html#code)
+:::
+
+## 現在の状況
+
+現在、Github ActionsでQuartoのwebsiteをビルドしています。
+
+::: {.callout-note}
+GitHub ActionsでQuartoのwebsiteをビルドする方法については、以下の公式ドキュメントを参照してください。
+
+- [GitHub Pages - Quarto](https://quarto.org/docs/publishing/github-pages.html#github-action)
+:::
+
+`_quarto.yml`ファイルを一部抜粋します。
+
+```{.yaml filename="_quarto.yml"}
+format:
+  html:
+    code-link: true
+    code-line-numbers: false 
+    code-annotations: false
+```
+
+これで`code-link`は有効化されるはずです。
+実際に、**ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。**
+
+しかし、**Github Actionsでビルドした際には、コードリンクが追加されていませんでした。**
+実際にソースコードを確認したところ、関数へのリンクが生成されていませんでした。
+
+
+## 考えられる原因と解決策
+
+GitHub Actionsのビルドでは、code linkingに必要な[downlit](https://downlit.r-lib.org/)パッケージがうまく動作していないのではないかと考えました。
+
+そこで、以下のように`.github/workflows/publish.yml`ファイルを修正しました。
+
+```{.yaml filename=".github/workflows/publish.yml"}
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.5.2"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev \
+            libjpeg-dev \
+            libtiff-dev \
+            libfftw3-dev \
+            libglpk-dev \
+            libx11-dev \
+            libxt-dev \
+            pandoc
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+これは、Quartoドキュメントの[Example: Knitr with renv](https://quarto.org/docs/publishing/github-pages.html#example-knitr-with-renv)を参考にしつつ、生じたエラーをもとに調整したものです。
+
+`r-version: "4.5.2"`と`Install system dependencies`の部分が具体的な変更点です。
+
+## 具体的な解決までの流れ
+
+以下に具体的な流れを示します。
+
+### 1. freezeの確認
+
+`_quarto.yml`内で`freeze: auto`が設定されていることを確認します。
+
+```{.yaml filename="_quarto.yml"}
+execute:
+  freeze: auto
+```
+
+::: {.callout-note}
+freezeオプションについては以下の公式ドキュメントを参照してください。
+
+- [Managing Execution - Quarto](https://quarto.org/docs/projects/code-execution.html#freeze)
+:::
+
+その後、一度ローカル環境でサイトをレンダリングします。
+
+```{.bash filename="Terminal"}
+quarto render
+```
+
+レンダリング後、`_freeze`フォルダが生成されていることを確認します。
+
+### 2. renvのセットアップ
+
+まだ`renv`を使用していない場合、プロジェクトに`renv`をセットアップします。
+もし、`renv`パッケージがインストールされていない場合、以下のコマンドでインストールします。
+
+```{.r}
+install.packages("renv")
+```
+
+::: {.callout-note}
+`renv`パッケージについては以下の公式ドキュメントを参照してください。
+
+- [Introduction to renv - renv](https://rstudio.github.io/renv/articles/renv.html)
+:::
+
+インストールが完了したら、以下のコマンドで`renv`を初期化します。
+
+```{.r}
+renv::init()
+```
+
+`renv`が初期化されると、プロジェクトに`renv.lock`ファイルなどの関連ファイルやフォルダが生成されます。
+これらのファイルはGitHubリポジトリにコミットします。
+
+::: {.callout-note}
+`renv/library`などは`renv/.gitignore`に含まれているため、コミットされません。デフォルトのままコミットして構いません。
+:::
+
+### 3. 公開用サイトの初期化とブランチの作成
+
+以下のコマンドを実行します。
+
+```{.bash filename="Terminal"}
+quarto publish gh-pages
+```
+
+### 4. Github Actionsワークフローファイルの作成
+
+`.github/workflows/publish.yml`ファイルを作成し、以下のように設定します。
+
+```{.yaml filename=".github/workflows/publish.yml"}
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.5.2"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev \
+            libjpeg-dev \
+            libtiff-dev \
+            libfftw3-dev \
+            libglpk-dev \
+            libx11-dev \
+            libxt-dev \
+            pandoc
+
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+このファイルで行っていることを簡単に列挙すると以下の通りです。
+
+- リポジトリのチェックアウト
+- Quartoのセットアップ
+- Rのインストール
+- 必要なシステム依存関係のインストール
+- `renv`を使用してRパッケージのインストール
+- Quartoドキュメントのレンダリングと公開
+
+また、以下の部分のRのバージョンについては、`renv`で使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。
+
+```{.yaml filename=".github/workflows/publish.yml"}
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.5.2"
+```
+
+また、`Install system dependencies`の部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。
+
+```{.yaml filename=".github/workflows/publish.yml"}
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev \
+            libjpeg-dev \
+            libtiff-dev \
+            libfftw3-dev \
+            libglpk-dev \
+            libx11-dev \
+            libxt-dev \
+            pandoc
+```
+
+### 5. Githubリポジトリへのコミットとプッシュ
+
+ここまでの変更をGithubリポジトリにコミットし、プッシュします。
+
+```{.bash filename="Terminal"}
+git add .
+git commit -m "Set up GitHub Actions for Quarto with code-linking"
+git push origin main
+```
+
+私は最近は[GitHub Desktop](https://github.com/apps/desktop)を使用しているため、GUIでコミットとプッシュを行いました。
+
+これで、GitHub Actionsがトリガーされ、Quartoのwebsiteがビルドされます。
+GitHub上でActionsタブを確認します。
+
+[公式ドキュメントの例](https://quarto.org/docs/publishing/github-pages.html#github-action)では、`Install system dependencies`の部分は入っていません。
+
+しかし、私の環境ではこの部分を追加しないと`Install R Dependencies`の部分でエラーが生じ、ビルドが失敗しました。
+
+具体的には、`Error: Error: Error installing package 'tiff':`のようなエラーが発生しました。
+
+このようなエラーが生じたら、`Install system dependencies`の部分を追加してみてください。
+
+例えば、`Error: Error: Error installing package 'tiff':`のエラーが生じたときには、`libtiff-dev`を追加することで解決しました。
+
+```{.yaml filename=".github/workflows/publish.yml"}
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libtiff-dev \
+```
+
+このような試行錯誤を何度か繰り返し、最終的な`.github/workflows/publish.yml`ファイルが先述のように完成しました。
+
+::: {.callout-note}
+これらのビルドのためのActionでは一回で約8分くらいかかりました。
+粘り強い試行錯誤が必要になるかもしれません。
+私の書いた`.github/workflows/publish.yml`ファイルがそのまま使えるかはわかりませんが、参考にしてみてください。
+:::
+
+### 6. `downlit`と`xml2`パッケージの`renv`への追加
+
+ここまでの手順で、Github ActionsでQuartoのwebsiteをビルドした際に、エラーは生じず、コードリンクが正しく機能すると考えていましたが、これでもうまくいきませんでした。
+
+`Render and Publish`のステップで以下のような警告が出ていました。
+
+```{.bash}
+Warning message:
+The downlit and xml2 packages are required for code linking 
+```
+
+どうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。
+
+そこで、レンダリングする`.qmd`ファイルの先頭に以下のように追記しました。
+
+```{.r}
+renv::install(c("downlit", "xml2"))
+library(downlit)
+library(xml2)
+renv::snapshot()
+```
+
+この状態でいったんローカルでビルドし、`renv.lock`ファイルが更新されたことを確認します。
+その後、`renv.lock`ファイルをGitHubリポジトリにコミットし、プッシュします。
+このとき、GitHub Actionsのログを確認すると、先ほどの警告は生じないことがわかりました。
+また、実際にGithub上でビルドされたwebsiteを確認すると、コードリンクが正しく機能していることがわかりました。
+
+その後、先ほど挿入した
+
+```{.r}
+renv::install(c("downlit", "xml2"))
+library(downlit)
+library(xml2)
+renv::snapshot()
+```
+
+を消去しても問題なくコードリンクが機能していました。
+
+::: {.callout-note}
+このやり方が最適なのかはわかりませんが、私の場合はこれでうまくいきました。
+もっと良い方法があるのかもしれません。
+:::
+
+## 最後に
+
+とりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。
+この記事が同じ問題に直面している方の参考になれば幸いです。
