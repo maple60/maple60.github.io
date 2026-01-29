@@ -1,0 +1,109 @@
+---
+title: "Quartoで表示される日付型を変更する"
+description: "`date-format`オプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです"
+date: "2026-01-30"
+date-modified: "2026-01-30"
+draft: true
+categories: [r, quarto]
+---
+
+Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。
+これは、**Jan 30, 2026**のような形式です。
+しかし、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)形式の**2026-01-30**のような形式で表示したい場合があります。
+
+## `data-format`オプション
+
+Quartoで日付の表示形式を変更するには、`date-format`オプションを設定します。
+YAMLヘッダーや`_quarto.yml`ファイルでこのオプションを指定することで、日付の表示形式を変更できます。
+一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。
+
+ブログ記事のように複数の記事を一覧表示する場合、`posts.qmd`ファイルのYAMLヘッダーに`date-format`オプションを追加します。
+
+```{.yaml filename="posts.qmd"}
+---
+title: "Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  date-format: iso
+---
+```
+
+もし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーに`date-format`オプションを追加します。
+
+```{.yaml filename="posts/2026-01-30-quarto-data-format.qmd"}
+---
+title: "Quartoで表示される日付型を変更する"
+date: "2026-01-30"
+date-modified: "2026-01-30"
+date-format: iso
+---
+```
+
+また、`_quarto.yml`ファイルにグローバル設定として追加することも可能です。
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: website
+  date-format: iso
+```
+## 日付フォーマットの種類
+
+表示形式の変更には、以下の2つの方法があります。
+1. 日付スタイルを指定する
+2. カスタムフォーマットを指定する方法があります。
+
+### 日付スタイルの指定
+
+Quartoでは、以下のような日付スタイルを指定できます。
+
+- `short`: 短い形式 (例: 1/30/26)
+- `medium`: 中程度の形式 (例: Jan 30, 2026)
+- `long`: 長い形式 (例: January 30, 2026)
+- `full`: 完全な形式 (例: Friday, January 30, 2026)
+- `iso`: ISO 8601形式 (例: 2026-01-30)
+
+### カスタムフォーマットの指定
+
+自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。
+カスタムフォーマットを指定する場合、以下のように`date-format`オプションにフォーマット文字列を設定します。
+例えば、`2026/01/30`のように表示したい場合は、以下のように指定します。
+
+```{.yaml}
+date-format: "yyyy/MM/dd"
+```
+
+::: {.callout-note}
+カスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。
+
+- [Quarto Dates and Date Formatting](https://quarto.org/docs/reference/dates.html)
+:::
+
+### 言語による表示形式の違い
+
+Quartoでは、表示される日付の形式は言語設定によっても影響を受けます。
+例えば、日本語設定の場合、`medium`スタイルは**2026年1月30日**のように表示されます。
+言語設定を変更するには、YAMLヘッダーや`_quarto.yml`ファイルで`lang`オプションを設定します。
+
+```{.yaml filename="_quarto.yml"}
+format:
+  html:
+    lang: ja
+```
+
+もしかしたらトップレベルにおいても良いかもしれません。
+
+::: {.callout-note}
+`lang`オプションについては、詳しくは以下の公式ドキュメントを参照してください
+
+- [Document Language - Quarto](https://quarto.org/docs/authoring/language.html)
+:::
+
+## 参考
+
+- [Document Listings- Quarto](https://quarto.org/docs/websites/website-listings.html#listing-options)
+- [Quarto Dates and Date Formatting](https://quarto.org/docs/reference/dates.html)
+- [Document Language - Quarto](https://quarto.org/docs/authoring/language.html)
+- [HTML Options - Quarto](https://quarto.org/docs/reference/formats/html.html#language)
