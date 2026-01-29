@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Github ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
+    "text": "Quartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2025-01-01-imager/index.html",
@@ -299,5 +299,33 @@
     "title": "Quartoのコードブロック内の関数にドキュメントリンクをつける方法",
     "section": "参考",
     "text": "参考\n\nknitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie | 谢益辉\nCRAN: Package knitr\nHTML Code Blocks - Quarto\nCode Annotation - Quarto"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html",
+    "href": "posts/2026-01-30-quarto-data-format/index.html",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "",
+    "text": "Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、Jan 30, 2026のような形式です。 しかし、ISO 8601形式の2026-01-30のような形式で表示したい場合があります。"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "data-formatオプション",
+    "text": "data-formatオプション\nQuartoで日付の表示形式を変更するには、date-formatオプションを設定します。 YAMLヘッダーや_quarto.ymlファイルでこのオプションを指定することで、日付の表示形式を変更できます。 一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。\nブログ記事のように複数の記事を一覧表示する場合、posts.qmdファイルのYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts.qmd\n\n---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  date-format: iso\n---\n\nもし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts/2026-01-30-quarto-data-format.qmd\n\n---\ntitle: \"Quartoで表示される日付型を変更する\"\ndate: \"2026-01-30\"\ndate-modified: \"2026-01-30\"\ndate-format: iso\n---\n\nまた、_quarto.ymlファイルにグローバル設定として追加することも可能です。\n\n\n_quarto.yml\n\nproject:\n  type: website\n  date-format: iso"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "日付フォーマットの種類",
+    "text": "日付フォーマットの種類\n表示形式の変更には、以下の2つの方法があります。 1. 日付スタイルを指定する 2. カスタムフォーマットを指定する方法があります。\n\n日付スタイルの指定\nQuartoでは、以下のような日付スタイルを指定できます。\n\nshort: 短い形式 (例: 1/30/26)\nmedium: 中程度の形式 (例: Jan 30, 2026)\nlong: 長い形式 (例: January 30, 2026)\nfull: 完全な形式 (例: Friday, January 30, 2026)\niso: ISO 8601形式 (例: 2026-01-30)\n\n\n\nカスタムフォーマットの指定\n自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。 カスタムフォーマットを指定する場合、以下のようにdate-formatオプションにフォーマット文字列を設定します。 例えば、2026/01/30のように表示したい場合は、以下のように指定します。\ndate-format: \"yyyy/MM/dd\"\n\n\n\n\n\n\nNote\n\n\n\nカスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。\n\nQuarto Dates and Date Formatting\n\n\n\n\n\n言語による表示形式の違い\nQuartoでは、表示される日付の形式は言語設定によっても影響を受けます。 例えば、日本語設定の場合、mediumスタイルは2026年1月30日のように表示されます。 言語設定を変更するには、YAMLヘッダーや_quarto.ymlファイルでlangオプションを設定します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    lang: ja\n\nもしかしたらトップレベルにおいても良いかもしれません。\n\n\n\n\n\n\nNote\n\n\n\nlangオプションについては、詳しくは以下の公式ドキュメントを参照してください\n\nDocument Language - Quarto"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "参考",
+    "text": "参考\n\nDocument Listings- Quarto\nQuarto Dates and Date Formatting\nDocument Language - Quarto\nHTML Options - Quarto"
   }
 ]
