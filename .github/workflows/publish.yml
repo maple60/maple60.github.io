@@ -28,6 +28,7 @@ jobs:
           sudo apt-get install -y \
             libpng-dev \
             libjpeg-dev \
+            libtiff-dev \
             libfftw3-dev \
             libglpk-dev \
             pandoc
