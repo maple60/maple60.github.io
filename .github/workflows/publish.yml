@@ -22,6 +22,16 @@ jobs:
         with:
           r-version: "4.5.2"
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev \
+            libjpeg-dev \
+            libfftw3-dev \
+            libglpk-dev \
+            pandoc
+
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
         with:
