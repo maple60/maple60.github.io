@@ -45,9 +45,7 @@ date-format: iso
 また、`_quarto.yml`ファイルにグローバル設定として追加することも可能です。
 
 ```{.yaml filename="_quarto.yml"}
-project:
-  type: website
-  date-format: iso
+date-format: iso
 ```
 ## 日付フォーマットの種類
 
