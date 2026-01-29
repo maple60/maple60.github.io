@@ -12,7 +12,7 @@ Quartoのコードブロック内で使用されている関数にドキュメ�
 
 `_quarto.yml`ファイルに以下のように設定を追加します。
 
-```{.yaml filename="_quarto.yml}
+```{.yaml filename="_quarto.yml"}
 format:
   html:
     code-link: true
