@@ -9,15 +9,25 @@ project:
 website:
   title: "Maple60’s website"
   navbar:
+    search: true
     left:
       - href: index.qmd
         text: Home
       - href: posts.qmd
         text: Posts
   draft-mode: gone # https://quarto.org/docs/websites/website-drafts.html
-  body-footer: |
-    <a href="https://maple60.github.io">Maple60's Website</a> © 2026 by <a href="https://example.com">Maple</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-
+  page-footer:
+    left: |
+      <a href="https://maple60.github.io">Maple60's Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
+    right:
+      - icon: github
+        href: https://github.com/maple60
+    center: "Built with [Quarto](https://quarto.org/)"
+  reader-mode: true
+  bread-crumbs: true
+  
+date-format: iso
+  
 format:
   html:
     theme:
