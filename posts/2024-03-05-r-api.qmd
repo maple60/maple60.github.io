@@ -1,0 +1,12 @@
+---
+title: "RでWebAPIを利用する"
+description: "RでWebAPIを利用するする方法についてのメモ"
+date: "2024-03-05"
+date-modified: "2024-03-05"
+draft: true
+categories: [r]
+---
+
+RでWebAPIを利用する方法についてのメモです。
+
+今回はWebAPIを利用して任意の日付における日の出と日没の時刻を得ることを目標にします。
