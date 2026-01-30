@@ -26,6 +26,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            cmake \
+            gdal-bin \
+            libgdal-dev \
+            libcurl4-openssl-dev \
+            libudunits2-dev\
             libpng-dev \
             libjpeg-dev \
             libtiff-dev \
