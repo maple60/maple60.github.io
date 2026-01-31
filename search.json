@@ -4,147 +4,70 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Rでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
+    "text": "Rで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/2026-01-24-code-filename/index.html",
-    "href": "posts/2026-01-24-code-filename/index.html",
-    "title": "Quartoでコードブロックのファイル名を表示する",
+    "objectID": "posts/2025-01-01-imager/index.html",
+    "href": "posts/2025-01-01-imager/index.html",
+    "title": "画像処理のためのRパッケージimagerの使い方",
     "section": "",
-    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
+    "text": "概要\nRで画像解析をしたいとなったときに、imagerというパッケージがあることを知った。 いろいろと試した結果を記す。\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
   },
   {
-    "objectID": "posts/2026-01-24-code-filename/index.html#参考",
-    "href": "posts/2026-01-24-code-filename/index.html#参考",
-    "title": "Quartoでコードブロックのファイル名を表示する",
+    "objectID": "posts/2024-03-14-cumsum/index.html",
+    "href": "posts/2024-03-14-cumsum/index.html",
+    "title": "Rで累積和を求める",
+    "section": "",
+    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
+  },
+  {
+    "objectID": "posts/2024-06-18-basic_authentification/index.html",
+    "href": "posts/2024-06-18-basic_authentification/index.html",
+    "title": "BASIIC認証でつまったこと",
+    "section": "",
+    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html",
+    "href": "posts/2024-06-19-bookdown-url/index.html",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "",
+    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "状況",
+    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "原因とその背景",
+    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "対策",
+    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "最後に",
+    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
     "section": "参考",
-    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html",
-    "href": "posts/2024-06-18-r-vector/index.html",
-    "title": "Rでベクトルを作成する",
-    "section": "",
-    "text": "Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html#cと",
-    "href": "posts/2024-06-18-r-vector/index.html#cと",
-    "title": "Rでベクトルを作成する",
-    "section": "c()と:",
-    "text": "c()と:\nRで最も簡単なベクトルの作成方法はc()と:を使用することです。\nc()の中にカンマ(,)区切りで値を並べるとベクトルになります。 cはcombine(結合する)に由来しています。\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n[start]:[end]という感じで、始点と終点を指定してベクトルを作成することもできます。\n\n1:3\n\n[1] 1 2 3\n\n\nこれらは非常に頻繁に使用するので、覚えておくと便利です。"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html#seq",
-    "href": "posts/2024-06-18-r-vector/index.html#seq",
-    "title": "Rでベクトルを作成する",
-    "section": "seq()",
-    "text": "seq()\nseq()関数はsequence(~を順番に並べる)ことに由来しており、その名の通り、()内に指定した通りに値を並べてくれます。\n最も基本的な使い方は、始めと終わりの数を指定してベクトルを作成する方法です。\n\nseq(1, 3) # seq(start, end)\n\n[1] 1 2 3\n\n\n\nseq(from = 1, to = 3) # 丁寧な書き方\n\n[1] 1 2 3\n\n\n値を一つだけ指定すると、1からその数まで1ずつ増加するベクトルを作成します。\n\nseq(3)\n\n[1] 1 2 3\n\n\n1から始まる場合は、seq_len()関数を使用したほうが速く動きます。\n\nseq_len(5) # 1~5までのベクトル\n\n[1] 1 2 3 4 5\n\n\n\n上昇幅を指定してベクトルを作成する\nデフォルトでは1ずつ上昇しますが、引数byを変更すると上昇数値を変更できます。\n\nseq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加\n\n[1] 1.0 1.5 2.0 2.5 3.0\n\n\n\n\n長さを指定してベクトルを作成する\n引数length.outを指定すると、長さを指定してベクトルを作成できます。 始めと終わりの値を等間隔に分割してくれます。\n\nseq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル\n\n[1] 1.0 1.4 1.8 2.2 2.6 3.0\n\n\nあるベクトルと同じ長さのベクトルを作成するにはseq_along()を使用します。\n\nx &lt;- seq_along(c(\"A\", \"B\", \"C\", \"D\", \"E\"))\nseq_along(x)\n\n[1] 1 2 3 4 5\n\n\nこれは、forループを使用する際に便利です。 forループを書く時、下のように書くことが多いと思います。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in 1:length(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nこれをseq_along()を用いて書き直すと、以下のようになります。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in seq_along(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nあまり違いはありませんが、ループに用いるベクトルの長さが0(空ベクトル)の場合の処理が変わります。"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html#rep",
-    "href": "posts/2024-06-18-r-vector/index.html#rep",
-    "title": "Rでベクトルを作成する",
-    "section": "rep()",
-    "text": "rep()\n同じ値を繰り返すベクトルを作成するには、rep()関数を使用します。 repeatに由来します。\n\nrep(3, 5) # 3を5回繰り返す\n\n[1] 3 3 3 3 3\n\n\nベクトルを繰り返すこともできます。\n\nrep(1:3, 3) # 1~3を3回繰り返す\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, times = 3) # 上と同じ\n\n[1] 1 2 3 1 2 3 1 2 3\n\n\nそれぞれの値をまとめて繰り返すこともできます。\n\nrep(1:3, each = 3) # それぞれの値を3回繰り返す\n\n[1] 1 1 1 2 2 2 3 3 3\n\n\n繰り返す回数を値ごとに指定できます。\n\nrep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回\n\n[1] 1 2 2 3\n\n\n長さを指定することもできます。 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。\n\nrep(1:3, length.out = 5) # 長さ5まで繰り返す\n\n[1] 1 2 3 1 2"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html#活用例",
-    "href": "posts/2024-06-18-r-vector/index.html#活用例",
-    "title": "Rでベクトルを作成する",
-    "section": "活用例",
-    "text": "活用例\nこれらのベクトルの作成は、データフレームでIDやグループを作成したり、プロットの点を補完したりするときに活用されます。 例えば、A~Cまでのグループをデータシートの各行に振りたい時はrep(c(\"A\", \"B\", \"C\"), each = 5)とすれば、簡単にグループを作成することができます。 また、サインカーブなどの関数を描画したいときは、以下のようにすると簡単に関数を描画できます。\n\nx &lt;- seq(from = 0, to = pi, length.out = 100)\nplot(x, sin(x))"
-  },
-  {
-    "objectID": "posts/2024-06-18-r-vector/index.html#まとめ",
-    "href": "posts/2024-06-18-r-vector/index.html#まとめ",
-    "title": "Rでベクトルを作成する",
-    "section": "まとめ",
-    "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
-  },
-  {
-    "objectID": "posts/2026-01-27-make-unique/index.html",
-    "href": "posts/2026-01-27-make-unique/index.html",
-    "title": "Rでベクトルの重複を取り除く方法",
-    "section": "",
-    "text": "Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 make.unique() 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。\nmake.unique(names, sep = \".\")\n\nnames: ユニークにしたい文字ベクトル\nsep: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット .）"
-  },
-  {
-    "objectID": "posts/2026-01-27-make-unique/index.html#make.unique関数の使用法",
-    "href": "posts/2026-01-27-make-unique/index.html#make.unique関数の使用法",
-    "title": "Rでベクトルの重複を取り除く方法",
-    "section": "",
-    "text": "Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 make.unique() 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。\nmake.unique(names, sep = \".\")\n\nnames: ユニークにしたい文字ベクトル\nsep: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット .）"
-  },
-  {
-    "objectID": "posts/2026-01-27-make-unique/index.html#使用例",
-    "href": "posts/2026-01-27-make-unique/index.html#使用例",
-    "title": "Rでベクトルの重複を取り除く方法",
-    "section": "使用例",
-    "text": "使用例\n例えば、以下のようなベクトルがあるとします。\n\nx &lt;- c(\"apple\", \"banana\", \"apple\", \"orange\", \"banana\")\n\nこのベクトルに対してmake.unique()を適用すると、以下のようになります。\n\nunique_x &lt;- make.unique(x)\nprint(unique_x)\n\n[1] \"apple\"    \"banana\"   \"apple.1\"  \"orange\"   \"banana.1\"\n\n\nappleとbananaが重複しているため、単語の後ろに.1が追加されています。"
-  },
-  {
-    "objectID": "posts/2026-01-27-make-unique/index.html#最後に",
-    "href": "posts/2026-01-27-make-unique/index.html#最後に",
-    "title": "Rでベクトルの重複を取り除く方法",
-    "section": "最後に",
-    "text": "最後に\nどこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。 活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "",
-    "text": "Quartoでウェブサイトを作成する際に、code-linkオプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "code-linkオプションとは",
-    "text": "code-linkオプションとは\ncode-linkオプションは、Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加するためのオプションです。 このオプションを有効にすると、コードブロック内の関数名がリンク付きで表示され、対応するドキュメントページに移動できるようになります。\n例えば、plot()と書くと、関数にマウスを合わせた際にリンクが表示され、クリックするとRの公式ドキュメントのplot()関数のページに移動します。 うまくリンクが追加されているでしょうか。\n\n\n\n\n\n\nNote\n\n\n\ncode-linkオプションについては以下の公式ドキュメントを参照してください。\n\nHTML Code Blocks - Quarto\nHTML Options - Quarto"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "現在の状況",
-    "text": "現在の状況\n現在、Github ActionsでQuartoのwebsiteをビルドしています。\n\n\n\n\n\n\nNote\n\n\n\nGitHub ActionsでQuartoのwebsiteをビルドする方法については、以下の公式ドキュメントを参照してください。\n\nGitHub Pages - Quarto\n\n\n\n_quarto.ymlファイルを一部抜粋します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    code-link: true\n    code-line-numbers: false \n    code-annotations: false\n\nこれでcode-linkは有効化されるはずです。 実際に、ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。\nしかし、Github Actionsでビルドした際には、コードリンクが追加されていませんでした。 実際にソースコードを確認したところ、関数へのリンクが生成されていませんでした。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "考えられる原因と解決策",
-    "text": "考えられる原因と解決策\nGitHub Actionsのビルドでは、code linkingに必要なdownlitパッケージがうまく動作していないのではないかと考えました。\nそこで、以下のように.github/workflows/publish.ymlファイルを修正しました。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこれは、QuartoドキュメントのExample: Knitr with renvを参考にしつつ、生じたエラーをもとに調整したものです。\nr-version: \"4.5.2\"とInstall system dependenciesの部分が具体的な変更点です。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "具体的な解決までの流れ",
-    "text": "具体的な解決までの流れ\n以下に具体的な流れを示します。\n\n1. freezeの確認\n_quarto.yml内でfreeze: autoが設定されていることを確認します。\n\n\n_quarto.yml\n\nexecute:\n  freeze: auto\n\n\n\n\n\n\n\nNote\n\n\n\nfreezeオプションについては以下の公式ドキュメントを参照してください。\n\nManaging Execution - Quarto\n\n\n\nその後、一度ローカル環境でサイトをレンダリングします。\n\n\nTerminal\n\nquarto render\n\nレンダリング後、_freezeフォルダが生成されていることを確認します。\n\n\n2. renvのセットアップ\nまだrenvを使用していない場合、プロジェクトにrenvをセットアップします。 もし、renvパッケージがインストールされていない場合、以下のコマンドでインストールします。\ninstall.packages(\"renv\")\n\n\n\n\n\n\nNote\n\n\n\nrenvパッケージについては以下の公式ドキュメントを参照してください。\n\nIntroduction to renv - renv\n\n\n\nインストールが完了したら、以下のコマンドでrenvを初期化します。\nrenv::init()\nrenvが初期化されると、プロジェクトにrenv.lockファイルなどの関連ファイルやフォルダが生成されます。 これらのファイルはGitHubリポジトリにコミットします。\n\n\n\n\n\n\nNote\n\n\n\nrenv/libraryなどはrenv/.gitignoreに含まれているため、コミットされません。デフォルトのままコミットして構いません。\n\n\n\n\n3. 公開用サイトの初期化とブランチの作成\n以下のコマンドを実行します。\n\n\nTerminal\n\nquarto publish gh-pages\n\n\n\n4. Github Actionsワークフローファイルの作成\n.github/workflows/publish.ymlファイルを作成し、以下のように設定します。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこのファイルで行っていることを簡単に列挙すると以下の通りです。\n\nリポジトリのチェックアウト\nQuartoのセットアップ\nRのインストール\n必要なシステム依存関係のインストール\nrenvを使用してRパッケージのインストール\nQuartoドキュメントのレンダリングと公開\n\nまた、以下の部分のRのバージョンについては、renvで使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。\n\n\n.github/workflows/publish.yml\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\nまた、Install system dependenciesの部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n\n\n5. Githubリポジトリへのコミットとプッシュ\nここまでの変更をGithubリポジトリにコミットし、プッシュします。\n\n\nTerminal\n\ngit add .\ngit commit -m \"Set up GitHub Actions for Quarto with code-linking\"\ngit push origin main\n\n私は最近はGitHub Desktopを使用しているため、GUIでコミットとプッシュを行いました。\nこれで、GitHub Actionsがトリガーされ、Quartoのwebsiteがビルドされます。 GitHub上でActionsタブを確認します。\n公式ドキュメントの例では、Install system dependenciesの部分は入っていません。\nしかし、私の環境ではこの部分を追加しないとInstall R Dependenciesの部分でエラーが生じ、ビルドが失敗しました。\n具体的には、Error: Error: Error installing package 'tiff':のようなエラーが発生しました。\nこのようなエラーが生じたら、Install system dependenciesの部分を追加してみてください。\n例えば、Error: Error: Error installing package 'tiff':のエラーが生じたときには、libtiff-devを追加することで解決しました。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libtiff-dev \\\n\nこのような試行錯誤を何度か繰り返し、最終的な.github/workflows/publish.ymlファイルが先述のように完成しました。\n\n\n\n\n\n\nNote\n\n\n\nこれらのビルドのためのActionでは一回で約8分くらいかかりました。 粘り強い試行錯誤が必要になるかもしれません。 私の書いた.github/workflows/publish.ymlファイルがそのまま使えるかはわかりませんが、参考にしてみてください。\n\n\n\n\n6. downlitとxml2パッケージのrenvへの追加\nここまでの手順で、Github ActionsでQuartoのwebsiteをビルドした際に、エラーは生じず、コードリンクが正しく機能すると考えていましたが、これでもうまくいきませんでした。\nRender and Publishのステップで以下のような警告が出ていました。\nWarning message:\nThe downlit and xml2 packages are required for code linking \nどうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。\nそこで、レンダリングする.qmdファイルの先頭に以下のように追記しました。\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nこの状態でいったんローカルでビルドし、renv.lockファイルが更新されたことを確認します。 その後、renv.lockファイルをGitHubリポジトリにコミットし、プッシュします。 このとき、GitHub Actionsのログを確認すると、先ほどの警告は生じないことがわかりました。 また、実際にGithub上でビルドされたwebsiteを確認すると、コードリンクが正しく機能していることがわかりました。\nその後、先ほど挿入した\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nを消去しても問題なくコードリンクが機能していました。\n\n\n\n\n\n\nNote\n\n\n\nこのやり方が最適なのかはわかりませんが、私の場合はこれでうまくいきました。 もっと良い方法があるのかもしれません。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "最後に",
-    "text": "最後に\nとりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。 この記事が同じ問題に直面している方の参考になれば幸いです。"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Maple60’s Website",
-    "section": "",
-    "text": "Hello World\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
-  },
-  {
-    "objectID": "posts/2024-03-04-color-circle/index.html",
-    "href": "posts/2024-03-04-color-circle/index.html",
-    "title": "Rで色相環を作成する",
-    "section": "",
-    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
+    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
   },
   {
     "objectID": "posts/2026-01-25-zotero-plugins/index.html",
@@ -210,67 +133,179 @@
     "text": "感謝\nこれらのプラグインを開発・提供してくださっている方々に深く感謝いたします。 Zotero自体もオープンソースで提供されており、非常に便利な文献管理ツールです。 Zoteroコミュニティの皆様にも感謝申し上げます。"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html",
-    "href": "posts/2024-06-19-bookdown-url/index.html",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "objectID": "posts/2024-03-04-color-circle/index.html",
+    "href": "posts/2024-03-04-color-circle/index.html",
+    "title": "Rで色相環を作成する",
     "section": "",
-    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
+    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "状況",
-    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Maple60’s Website",
+    "section": "",
+    "text": "Hello World\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "原因とその背景",
-    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "",
+    "text": "Quartoでウェブサイトを作成する際に、code-linkオプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "対策",
-    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "code-linkオプションとは",
+    "text": "code-linkオプションとは\ncode-linkオプションは、Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加するためのオプションです。 このオプションを有効にすると、コードブロック内の関数名がリンク付きで表示され、対応するドキュメントページに移動できるようになります。\n例えば、plot()と書くと、関数にマウスを合わせた際にリンクが表示され、クリックするとRの公式ドキュメントのplot()関数のページに移動します。 うまくリンクが追加されているでしょうか。\n\n\n\n\n\n\nNote\n\n\n\ncode-linkオプションについては以下の公式ドキュメントを参照してください。\n\nHTML Code Blocks - Quarto\nHTML Options - Quarto"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "現在の状況",
+    "text": "現在の状況\n現在、Github ActionsでQuartoのwebsiteをビルドしています。\n\n\n\n\n\n\nNote\n\n\n\nGitHub ActionsでQuartoのwebsiteをビルドする方法については、以下の公式ドキュメントを参照してください。\n\nGitHub Pages - Quarto\n\n\n\n_quarto.ymlファイルを一部抜粋します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    code-link: true\n    code-line-numbers: false \n    code-annotations: false\n\nこれでcode-linkは有効化されるはずです。 実際に、ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。\nしかし、Github Actionsでビルドした際には、コードリンクが追加されていませんでした。 実際にソースコードを確認したところ、関数へのリンクが生成されていませんでした。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "考えられる原因と解決策",
+    "text": "考えられる原因と解決策\nGitHub Actionsのビルドでは、code linkingに必要なdownlitパッケージがうまく動作していないのではないかと考えました。\nそこで、以下のように.github/workflows/publish.ymlファイルを修正しました。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこれは、QuartoドキュメントのExample: Knitr with renvを参考にしつつ、生じたエラーをもとに調整したものです。\nr-version: \"4.5.2\"とInstall system dependenciesの部分が具体的な変更点です。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "具体的な解決までの流れ",
+    "text": "具体的な解決までの流れ\n以下に具体的な流れを示します。\n\n1. freezeの確認\n_quarto.yml内でfreeze: autoが設定されていることを確認します。\n\n\n_quarto.yml\n\nexecute:\n  freeze: auto\n\n\n\n\n\n\n\nNote\n\n\n\nfreezeオプションについては以下の公式ドキュメントを参照してください。\n\nManaging Execution - Quarto\n\n\n\nその後、一度ローカル環境でサイトをレンダリングします。\n\n\nTerminal\n\nquarto render\n\nレンダリング後、_freezeフォルダが生成されていることを確認します。\n\n\n2. renvのセットアップ\nまだrenvを使用していない場合、プロジェクトにrenvをセットアップします。 もし、renvパッケージがインストールされていない場合、以下のコマンドでインストールします。\ninstall.packages(\"renv\")\n\n\n\n\n\n\nNote\n\n\n\nrenvパッケージについては以下の公式ドキュメントを参照してください。\n\nIntroduction to renv - renv\n\n\n\nインストールが完了したら、以下のコマンドでrenvを初期化します。\nrenv::init()\nrenvが初期化されると、プロジェクトにrenv.lockファイルなどの関連ファイルやフォルダが生成されます。 これらのファイルはGitHubリポジトリにコミットします。\n\n\n\n\n\n\nNote\n\n\n\nrenv/libraryなどはrenv/.gitignoreに含まれているため、コミットされません。デフォルトのままコミットして構いません。\n\n\n\n\n3. 公開用サイトの初期化とブランチの作成\n以下のコマンドを実行します。\n\n\nTerminal\n\nquarto publish gh-pages\n\n\n\n4. Github Actionsワークフローファイルの作成\n.github/workflows/publish.ymlファイルを作成し、以下のように設定します。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこのファイルで行っていることを簡単に列挙すると以下の通りです。\n\nリポジトリのチェックアウト\nQuartoのセットアップ\nRのインストール\n必要なシステム依存関係のインストール\nrenvを使用してRパッケージのインストール\nQuartoドキュメントのレンダリングと公開\n\nまた、以下の部分のRのバージョンについては、renvで使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。\n\n\n.github/workflows/publish.yml\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\nまた、Install system dependenciesの部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n\n\n5. Githubリポジトリへのコミットとプッシュ\nここまでの変更をGithubリポジトリにコミットし、プッシュします。\n\n\nTerminal\n\ngit add .\ngit commit -m \"Set up GitHub Actions for Quarto with code-linking\"\ngit push origin main\n\n私は最近はGitHub Desktopを使用しているため、GUIでコミットとプッシュを行いました。\nこれで、GitHub Actionsがトリガーされ、Quartoのwebsiteがビルドされます。 GitHub上でActionsタブを確認します。\n公式ドキュメントの例では、Install system dependenciesの部分は入っていません。\nしかし、私の環境ではこの部分を追加しないとInstall R Dependenciesの部分でエラーが生じ、ビルドが失敗しました。\n具体的には、Error: Error: Error installing package 'tiff':のようなエラーが発生しました。\nこのようなエラーが生じたら、Install system dependenciesの部分を追加してみてください。\n例えば、Error: Error: Error installing package 'tiff':のエラーが生じたときには、libtiff-devを追加することで解決しました。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libtiff-dev \\\n\nこのような試行錯誤を何度か繰り返し、最終的な.github/workflows/publish.ymlファイルが先述のように完成しました。\n\n\n\n\n\n\nNote\n\n\n\nこれらのビルドのためのActionでは一回で約8分くらいかかりました。 粘り強い試行錯誤が必要になるかもしれません。 私の書いた.github/workflows/publish.ymlファイルがそのまま使えるかはわかりませんが、参考にしてみてください。\n\n\n\n\n6. downlitとxml2パッケージのrenvへの追加\nここまでの手順で、Github ActionsでQuartoのwebsiteをビルドした際に、エラーは生じず、コードリンクが正しく機能すると考えていましたが、これでもうまくいきませんでした。\nRender and Publishのステップで以下のような警告が出ていました。\nWarning message:\nThe downlit and xml2 packages are required for code linking \nどうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。\nそこで、レンダリングする.qmdファイルの先頭に以下のように追記しました。\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nこの状態でいったんローカルでビルドし、renv.lockファイルが更新されたことを確認します。 その後、renv.lockファイルをGitHubリポジトリにコミットし、プッシュします。 このとき、GitHub Actionsのログを確認すると、先ほどの警告は生じないことがわかりました。 また、実際にGithub上でビルドされたwebsiteを確認すると、コードリンクが正しく機能していることがわかりました。\nその後、先ほど挿入した\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nを消去しても問題なくコードリンクが機能していました。\n\n\n\n\n\n\nNote\n\n\n\nこのやり方が最適なのかはわかりませんが、私の場合はこれでうまくいきました。 もっと良い方法があるのかもしれません。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
     "section": "最後に",
-    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
+    "text": "最後に\nとりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。 この記事が同じ問題に直面している方の参考になれば幸いです。"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "objectID": "posts/2026-01-27-make-unique/index.html",
+    "href": "posts/2026-01-27-make-unique/index.html",
+    "title": "Rでベクトルの重複を取り除く方法",
+    "section": "",
+    "text": "Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 make.unique() 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。\nmake.unique(names, sep = \".\")\n\n\nnames: ユニークにしたい文字ベクトル\n\nsep: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット .）"
+  },
+  {
+    "objectID": "posts/2026-01-27-make-unique/index.html#make.unique関数の使用法",
+    "href": "posts/2026-01-27-make-unique/index.html#make.unique関数の使用法",
+    "title": "Rでベクトルの重複を取り除く方法",
+    "section": "",
+    "text": "Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 make.unique() 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。\nmake.unique(names, sep = \".\")\n\n\nnames: ユニークにしたい文字ベクトル\n\nsep: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット .）"
+  },
+  {
+    "objectID": "posts/2026-01-27-make-unique/index.html#使用例",
+    "href": "posts/2026-01-27-make-unique/index.html#使用例",
+    "title": "Rでベクトルの重複を取り除く方法",
+    "section": "使用例",
+    "text": "使用例\n例えば、以下のようなベクトルがあるとします。\n\nx &lt;- c(\"apple\", \"banana\", \"apple\", \"orange\", \"banana\")\n\nこのベクトルに対してmake.unique()を適用すると、以下のようになります。\n\nunique_x &lt;- make.unique(x)\nprint(unique_x)\n\n[1] \"apple\"    \"banana\"   \"apple.1\"  \"orange\"   \"banana.1\"\n\n\nappleとbananaが重複しているため、単語の後ろに.1が追加されています。"
+  },
+  {
+    "objectID": "posts/2026-01-27-make-unique/index.html#最後に",
+    "href": "posts/2026-01-27-make-unique/index.html#最後に",
+    "title": "Rでベクトルの重複を取り除く方法",
+    "section": "最後に",
+    "text": "最後に\nどこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。 活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html",
+    "href": "posts/2024-06-18-r-vector/index.html",
+    "title": "Rでベクトルを作成する",
+    "section": "",
+    "text": "Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#cと",
+    "href": "posts/2024-06-18-r-vector/index.html#cと",
+    "title": "Rでベクトルを作成する",
+    "section": "\nc()と:\n",
+    "text": "c()と:\n\nRで最も簡単なベクトルの作成方法はc()と:を使用することです。\nc()の中にカンマ(,)区切りで値を並べるとベクトルになります。 cはcombine(結合する)に由来しています。\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n[start]:[end]という感じで、始点と終点を指定してベクトルを作成することもできます。\n\n1:3\n\n[1] 1 2 3\n\n\nこれらは非常に頻繁に使用するので、覚えておくと便利です。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#seq",
+    "href": "posts/2024-06-18-r-vector/index.html#seq",
+    "title": "Rでベクトルを作成する",
+    "section": "seq()",
+    "text": "seq()\nseq()関数はsequence(~を順番に並べる)ことに由来しており、その名の通り、()内に指定した通りに値を並べてくれます。\n最も基本的な使い方は、始めと終わりの数を指定してベクトルを作成する方法です。\n\nseq(1, 3) # seq(start, end)\n\n[1] 1 2 3\n\n\n\nseq(from = 1, to = 3) # 丁寧な書き方\n\n[1] 1 2 3\n\n\n値を一つだけ指定すると、1からその数まで1ずつ増加するベクトルを作成します。\n\nseq(3)\n\n[1] 1 2 3\n\n\n1から始まる場合は、seq_len()関数を使用したほうが速く動きます。\n\nseq_len(5) # 1~5までのベクトル\n\n[1] 1 2 3 4 5\n\n\n上昇幅を指定してベクトルを作成する\nデフォルトでは1ずつ上昇しますが、引数byを変更すると上昇数値を変更できます。\n\nseq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加\n\n[1] 1.0 1.5 2.0 2.5 3.0\n\n\n長さを指定してベクトルを作成する\n引数length.outを指定すると、長さを指定してベクトルを作成できます。 始めと終わりの値を等間隔に分割してくれます。\n\nseq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル\n\n[1] 1.0 1.4 1.8 2.2 2.6 3.0\n\n\nあるベクトルと同じ長さのベクトルを作成するにはseq_along()を使用します。\n\nx &lt;- seq_along(c(\"A\", \"B\", \"C\", \"D\", \"E\"))\nseq_along(x)\n\n[1] 1 2 3 4 5\n\n\nこれは、forループを使用する際に便利です。 forループを書く時、下のように書くことが多いと思います。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in 1:length(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nこれをseq_along()を用いて書き直すと、以下のようになります。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in seq_along(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nあまり違いはありませんが、ループに用いるベクトルの長さが0(空ベクトル)の場合の処理が変わります。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#rep",
+    "href": "posts/2024-06-18-r-vector/index.html#rep",
+    "title": "Rでベクトルを作成する",
+    "section": "rep()",
+    "text": "rep()\n同じ値を繰り返すベクトルを作成するには、rep()関数を使用します。 repeatに由来します。\n\nrep(3, 5) # 3を5回繰り返す\n\n[1] 3 3 3 3 3\n\n\nベクトルを繰り返すこともできます。\n\nrep(1:3, 3) # 1~3を3回繰り返す\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, times = 3) # 上と同じ\n\n[1] 1 2 3 1 2 3 1 2 3\n\n\nそれぞれの値をまとめて繰り返すこともできます。\n\nrep(1:3, each = 3) # それぞれの値を3回繰り返す\n\n[1] 1 1 1 2 2 2 3 3 3\n\n\n繰り返す回数を値ごとに指定できます。\n\nrep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回\n\n[1] 1 2 2 3\n\n\n長さを指定することもできます。 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。\n\nrep(1:3, length.out = 5) # 長さ5まで繰り返す\n\n[1] 1 2 3 1 2"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#活用例",
+    "href": "posts/2024-06-18-r-vector/index.html#活用例",
+    "title": "Rでベクトルを作成する",
+    "section": "活用例",
+    "text": "活用例\nこれらのベクトルの作成は、データフレームでIDやグループを作成したり、プロットの点を補完したりするときに活用されます。 例えば、A~Cまでのグループをデータシートの各行に振りたい時はrep(c(\"A\", \"B\", \"C\"), each = 5)とすれば、簡単にグループを作成することができます。 また、サインカーブなどの関数を描画したいときは、以下のようにすると簡単に関数を描画できます。\n\nx &lt;- seq(from = 0, to = pi, length.out = 100)\nplot(x, sin(x))"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#まとめ",
+    "href": "posts/2024-06-18-r-vector/index.html#まとめ",
+    "title": "Rでベクトルを作成する",
+    "section": "まとめ",
+    "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
+  },
+  {
+    "objectID": "posts/2026-01-24-code-filename/index.html",
+    "href": "posts/2026-01-24-code-filename/index.html",
+    "title": "Quartoでコードブロックのファイル名を表示する",
+    "section": "",
+    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
+  },
+  {
+    "objectID": "posts/2026-01-24-code-filename/index.html#参考",
+    "href": "posts/2026-01-24-code-filename/index.html#参考",
+    "title": "Quartoでコードブロックのファイル名を表示する",
     "section": "参考",
-    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
+    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
   },
   {
-    "objectID": "posts/2024-06-18-basic_authentification/index.html",
-    "href": "posts/2024-06-18-basic_authentification/index.html",
-    "title": "BASIIC認証でつまったこと",
+    "objectID": "posts/2026-01-31-r-japan-map/index.html",
+    "href": "posts/2026-01-31-r-japan-map/index.html",
+    "title": "Rで日本地図を描く",
     "section": "",
-    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
   },
   {
-    "objectID": "posts/2024-03-14-cumsum/index.html",
-    "href": "posts/2024-03-14-cumsum/index.html",
-    "title": "Rで累積和を求める",
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
+    "href": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
+    "title": "Rで日本地図を描く",
     "section": "",
-    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
+    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
   },
   {
-    "objectID": "posts/2025-01-01-imager/index.html",
-    "href": "posts/2025-01-01-imager/index.html",
-    "title": "画像処理のためのRパッケージimagerの使い方",
-    "section": "",
-    "text": "概要\nRで画像解析をしたいとなったときに、{imager}というパッケージがあることを知った。 いろいろと試した結果を記す。\n\n\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n\n\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\n\n\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
+    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
+    "title": "Rで日本地図を描く",
+    "section": "日本地図の描画",
+    "text": "日本地図の描画\n地図を描画するには、rnaturalearthdataパッケージも必要です。以下のコードで日本の地図を取得し、描画します。\ninstall.packages(\"rnaturalearthdata\")\nrenv::install(\"rnaturalearthdata\") # renvを使用している場合\nライブラリを読み込まなくても問題ありませんが、念のため読み込みます。\n\nlibrary(rnaturalearthdata)\n\n\nAttaching package: 'rnaturalearthdata'\n\n\nThe following object is masked from 'package:rnaturalearth':\n\n    countries110\n\n\nne_countries()関数を使って日本の地図データを取得し、plot()関数で描画します。\n\njapan &lt;- ne_countries(\n  scale = \"medium\",\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan[\"geometry\"])\n\n\n\n\n\n\n\n引数は、以下のように設定しています。\n\n\nscale = \"medium\": 中程度の解像度の地図データを取得します。他にsmallやlargeも選択可能です。\n\ncountry = \"Japan\": 日本の地図データを指定します。\n\nreturnclass = \"sf\": 地図データをsfオブジェクトとして返します。\n\nこれでRを使って日本地図を描くことができます。必要に応じて、地図のスタイルや詳細をカスタマイズしてください。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nne_countries()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world country polygons — ne_countries • rnaturalearth"
+  },
+  {
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
+    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
+    "title": "Rで日本地図を描く",
+    "section": "日本地図を県別に描画する",
+    "text": "日本地図を県別に描画する\n県別の日本地図を描画するには、rnaturalearthhiresパッケージを使用します。 インストールは、GitHubもしくはR-universeから行います。\n\n\n\n\n\n\nNoteCRANからインストールができない理由\n\n\n\nパッケージのサイズがCRANの推奨を超えているため、CRANからのインストールができないようです。\n\n\nremotes::install_github(\"ropensci/rnaturalearthhires\")\nまたは、以下のコードでインストールします。\ninstall.packages(\n  \"rnaturalearthhires\",\n  repos = \"https://ropensci.r-universe.dev\",\n  type = \"source\"\n)\nもしくは、renvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"ropensci/rnaturalearthhires\")\nパッケージを読み込みます。\n\nlibrary(rnaturalearthhires)\n\n県別の日本地図を取得し、描画します。\n\njapan_prefectures &lt;- ne_states(\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan_prefectures[\"name_ja\"])\n\n\n\n\n\n\n\n海岸線もきれいに描画されていますね。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nna_states()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world state (admin level 1) polygons — ne_states • rnaturalearth"
+  },
+  {
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#参考",
+    "href": "posts/2026-01-31-r-japan-map/index.html#参考",
+    "title": "Rで日本地図を描く",
+    "section": "参考",
+    "text": "参考\n\nHigh Resolution World Vector Map Data from Natural Earth used in rnaturalearth • rnaturalearthhires\nrnaturalearthhires - GitHub"
   },
   {
     "objectID": "posts/2026-01-30-r-make-directory/index.html",
@@ -312,7 +347,7 @@
     "href": "posts/2026-01-28-quarto-code-linking/index.html#注意点",
     "title": "Quartoのコードブロック内の関数にドキュメントリンクをつける方法",
     "section": "注意点",
-    "text": "注意点\n\ncode-linkオプションはknitrエンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部でdownlitパッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。\ncode-line-numbersオプションやcode-annotationsオプションとは併用ができないようです。これらのオプションを有効にしている場合、code-linkオプションは無視されます。\n\n\n\n\n\n\n\nTip\n\n\n\ncode-line-numbersオプションは、コードブロックに行番号を追加するためのオプションです。\ncode-annotationsオプションは、コードブロックに注釈を追加するためのオプションです。"
+    "text": "注意点\n\n\ncode-linkオプションはknitrエンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部でdownlitパッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。\n\ncode-line-numbersオプションやcode-annotationsオプションとは併用ができないようです。これらのオプションを有効にしている場合、code-linkオプションは無視されます。\n\n\n\n\n\n\n\nTip\n\n\n\ncode-line-numbersオプションは、コードブロックに行番号を追加するためのオプションです。\ncode-annotationsオプションは、コードブロックに注釈を追加するためのオプションです。"
   },
   {
     "objectID": "posts/2026-01-28-quarto-code-linking/index.html#参考",
