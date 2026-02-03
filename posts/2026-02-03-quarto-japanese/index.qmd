@@ -1,0 +1,102 @@
+---
+title: "QuartoのPDF出力で日本語を使う"
+description: "CJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。"
+date: "2026-02-03"
+date-modified: "2026-02-03"
+draft: false
+categories: [quarto]
+---
+
+[Quarto](https://quarto.org/)でPDFを出力する際、デフォルトの設定では日本語が正しく表示されないことがあります。
+これは、LaTeXの設定が日本語に対応していないためです。
+この記事では、Quartoで日本語を使うための設定方法を紹介します。
+
+## PDF出力をするための準備
+
+PDF出力には、[LaTex](https://www.latex-project.org/)をインストールする必要があります。
+公式で推奨されているのは[TinyTeX](https://yihui.org/tinytex/)です。
+
+ターミナルで以下のコマンドを実行してインストールします。
+
+```{.bash filename="Terminal"}
+quarto install tinytex
+```
+
+::: {.callout-note}
+## LaTeXとは
+
+LaTeXは、高品質な文書を作成するための組版システムです。
+特に学術論文や技術文書の作成に広く使用されています。
+たくさんのコマンドを覚える必要がありますが、QuartoでPDF出力を行う際は、そこまで深く理解する必要はありません。
+:::
+
+::: {.callout-note}
+LaTeXがインストールされていない状態で、PDF出力を試みると、エラーが発生します。
+この時、`quarto install tinytex`を実行してTexをインストールするようにメッセージが表示されます。
+:::
+
+## PDF出力にする方法
+
+QuartoでPDFを出力するには、YAMLヘッダーに以下のように`format: pdf`を指定します。
+
+```yaml
+---
+title: "ドキュメントのタイトル"
+format: pdf
+---
+```
+
+このようにすると、QuartoはPDF形式でドキュメントを生成します。
+しかし、このままでは日本語が正しく表示されないことがあります。
+
+## 日本語を正しく表示するための設定
+
+日本語を正しく表示するためには、YAMLヘッダーに以下の設定を追加します。
+
+```yaml
+---
+title: "ドキュメントのタイトル"
+format:
+  pdf:
+    CJKmainfont: "BIZ UDPGothic"  # 使用する日本語フォントを指定
+---
+```
+
+CJKmainfontには、システムにインストールされている日本語フォントの名前を指定します。
+例えば、`"BIZ UDPGothic"`や`"Noto Sans CJK JP"`などがあります。
+
+`mainfont: "Font Name"`で指定することもできますが、その場合は英字や数字も指定したフォントで表示されるため、注意が必要です。
+
+::: {.callout-note}
+## CJKmainfontについて
+
+CJKmainfontは、LaTeXで日本語を表示するために使用されるフォントを指定するオプションです。
+ちなみにCはChinese、JはJapanese、KはKoreanの略です。
+これらの言語は文字が多いため、専用のフォントが必要となります。
+:::
+
+::: {.callout-note}
+## 利用できるフォントファイルを確認する方法
+
+LaTeXで利用できるフォントファイルを確認するには、ターミナルで以下のコマンドを実行します。
+
+### Windowsの場合
+
+```{.bash filename="Terminal"}
+Get-ChildItem C:\Windows\Fonts | Select-Object Name
+```
+
+### macOS/Linuxの場合
+
+未確認ですが、以下のコマンドで確認できると思いました。
+
+```{.bash filename="Terminal"}
+ls /Library/Fonts/
+```
+
+:::
+
+## 参考
+
+- [PDF Basics – Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
+- [PDF Options – Quarto](https://quarto.org/docs/reference/formats/pdf.html)
