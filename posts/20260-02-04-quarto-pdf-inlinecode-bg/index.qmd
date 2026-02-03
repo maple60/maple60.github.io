@@ -1,0 +1,68 @@
+---
+title: "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法"
+description: "LaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。"
+date: "2026-02-04"
+date-modified: "2026-02-04"
+draft: false
+categories: [quatro, latex]
+---
+
+QuartoでPDFを出力する際はHTML出力と異なり、インラインコードブロックに背景色を付ける設定がデフォルトでは用意されていません。
+
+そこで、LaTeXの[xcolor](https://ctan.org/pkg/xcolor)パッケージを利用して、インラインコードブロックに背景色を付けたので、その方法をまとめます。
+
+## プリアンブルの設定
+
+まず、YAMLヘッダーに以下のように`include-in-header`オプションを追加し、[xcolor](https://ctan.org/pkg/xcolor)パッケージや背景色の設定を行うプリアンブルが書かれたファイル(ここでは`preamble.tex`)を指定します。
+
+```yaml
+---
+format: 
+  pdf:
+    include-in-header: preamble.tex
+---
+```
+
+`inculude-in-header`オプションを使うことで、指定した内容がドキュメントの前に追加されます。
+LaTeXでいうところの、プリアンブル(preamble)に相当します。
+
+今回の`preamble.tex`ファイルは、ドキュメントと同じディレクトリに保存されていることが想定されています。
+もし別のディレクトリに保存する場合は、相対パスや絶対パスで指定してください。
+また、ファイル名は任意の名前に変更しても問題ありません。
+
+## プリアンブルの内容
+
+次に、`preamble.tex`ファイルを作成し、以下の内容を記述します。
+
+```latex
+\usepackage{xcolor}
+
+\definecolor{inlinecodebg}{RGB}{245,245,245}
+
+\let\OldTexttt\texttt
+\renewcommand{\texttt}[1]{%
+  \colorbox{inlinecodebg}{\OldTexttt{#1}}%
+}
+```
+
+::: {.callout-note}
+## 解説
+
+- `\usepackage{xcolor}`: xcolorパッケージを読み込みます。これにより、色の定義や背景色の設定が可能になります。  
+- `\definecolor{inlinecodebg}{RGB}{245,245,245}`: `inlinecodebg`という名前で背景色を定義しています。ここでは薄いグレーを指定していますが、RGB値を変更することで好きな色に変更できます。  
+- `\let\OldTexttt\texttt`と`\renewcommand{\texttt}[1]{...}`: 既存の`\texttt`コマンドを保存し、新たに背景色付きの`\texttt`コマンドを定義しています。これにより、インラインコードブロックが背景色付きで表示されるようになります。  
+ここで、`\OldTextt`を使う理由は、元の`\texttt`コマンドの機能を保持しつつ、新しい機能を追加するためです。
+
+また、`\textt`は等幅フォント(typewriter text)でテキストを表示するためのLaTeXコマンドであり、Quartoではインラインコードブロックに対応しています。
+:::
+
+## 動作確認
+
+上記の設定を行った後、以下のようなインラインコードブロックを含むQuartoドキュメントを作成し、PDF出力を行います。
+色を変更する場合はPDF出力を行って色を確認しながら、RGB値を調整してください。
+
+## 参考
+
+- [CTAN: Package xcolor](https://ctan.org/pkg/xcolor)
+- [PDF Basics – Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
+- [PDF Options – Quarto](https://quarto.org/docs/reference/formats/pdf.html)
