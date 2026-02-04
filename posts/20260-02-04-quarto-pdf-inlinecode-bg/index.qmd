@@ -34,7 +34,7 @@ LaTeXでいうところの、プリアンブル(preamble)に相当します。
 
 次に、`preamble.tex`ファイルを作成し、以下の内容を記述します。
 
-```latex
+```{.latex filename="preamble.tex"}
 \usepackage{xcolor}
 
 \definecolor{inlinecodebg}{RGB}{245,245,245}
