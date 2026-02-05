@@ -4,98 +4,42 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
+    "text": "Rでファイル名を抽出する方法\n\n\n\nr\n\n\n\nbasename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。\n\n\n\n\n\n2026-02-06\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットのアスペクト比を設定する方法\n\n\n\nr\n\n\n\naspパラメータを使ってRのプロットのアスペクト比を調整する方法についてです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html",
-    "href": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html",
+    "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html",
+    "href": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html",
     "title": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法",
     "section": "",
     "text": "QuartoでPDFを出力する際はHTML出力と異なり、インラインコードブロックに背景色を付ける設定がデフォルトでは用意されていません。\nそこで、LaTeXのxcolorパッケージを利用して、インラインコードブロックに背景色を付けたので、その方法をまとめます。"
   },
   {
-    "objectID": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの設定",
-    "href": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの設定",
+    "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの設定",
+    "href": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの設定",
     "title": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法",
     "section": "プリアンブルの設定",
     "text": "プリアンブルの設定\nまず、YAMLヘッダーに以下のようにinclude-in-headerオプションを追加し、xcolorパッケージや背景色の設定を行うプリアンブルが書かれたファイル(ここではpreamble.tex)を指定します。\n---\nformat: \n  pdf:\n    include-in-header: preamble.tex\n---\ninculude-in-headerオプションを使うことで、指定した内容がドキュメントの前に追加されます。 LaTeXでいうところの、プリアンブル(preamble)に相当します。\n今回のpreamble.texファイルは、ドキュメントと同じディレクトリに保存されていることが想定されています。 もし別のディレクトリに保存する場合は、相対パスや絶対パスで指定してください。 また、ファイル名は任意の名前に変更しても問題ありません。"
   },
   {
-    "objectID": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの内容",
-    "href": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの内容",
+    "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの内容",
+    "href": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#プリアンブルの内容",
     "title": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法",
     "section": "プリアンブルの内容",
     "text": "プリアンブルの内容\n次に、preamble.texファイルを作成し、以下の内容を記述します。\n\n\npreamble.tex\n\n\\usepackage{xcolor}\n\n\\definecolor{inlinecodebg}{RGB}{245,245,245}\n\n\\let\\OldTexttt\\texttt\n\\renewcommand{\\texttt}[1]{%\n  \\colorbox{inlinecodebg}{\\OldTexttt{#1}}%\n}\n\n\n\n\n\n\n\nNote解説\n\n\n\n\n\\usepackage{xcolor}: xcolorパッケージを読み込みます。これにより、色の定義や背景色の設定が可能になります。\n\n\\definecolor{inlinecodebg}{RGB}{245,245,245}: inlinecodebgという名前で背景色を定義しています。ここでは薄いグレーを指定していますが、RGB値を変更することで好きな色に変更できます。\n\n\\let\\OldTexttt\\textttと\\renewcommand{\\texttt}[1]{...}: 既存の\\textttコマンドを保存し、新たに背景色付きの\\textttコマンドを定義しています。これにより、インラインコードブロックが背景色付きで表示されるようになります。\nここで、\\OldTexttを使う理由は、元の\\textttコマンドの機能を保持しつつ、新しい機能を追加するためです。\n\nまた、\\texttは等幅フォント(typewriter text)でテキストを表示するためのLaTeXコマンドであり、Quartoではインラインコードブロックに対応しています。"
   },
   {
-    "objectID": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#動作確認",
-    "href": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#動作確認",
+    "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#動作確認",
+    "href": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#動作確認",
     "title": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法",
     "section": "動作確認",
     "text": "動作確認\n上記の設定を行った後、以下のようなインラインコードブロックを含むQuartoドキュメントを作成し、PDF出力を行います。 色を変更する場合はPDF出力を行って色を確認しながら、RGB値を調整してください。"
   },
   {
-    "objectID": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#参考",
-    "href": "posts/20260-02-04-quarto-pdf-inlinecode-bg/index.html#参考",
+    "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#参考",
+    "href": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html#参考",
     "title": "QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法",
     "section": "参考",
     "text": "参考\n\nCTAN: Package xcolor\nPDF Basics – Quarto\nPDF Options – Quarto"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html",
-    "title": "RでLorenz attractorを描く",
-    "section": "",
-    "text": "Lorenz attractorは、Edward Lorenz氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。\n以下に、RのdeSolveパッケージを使用してLorenz attractorを描く方法を示します。"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz方程式の定義",
-    "text": "Lorenz方程式の定義\nLorenz方程式は以下の3つの常微分方程式から構成されます。\n\\[\n\\begin{align}\n  \\frac{dx}{dt} &= \\sigma (y - x) \\\\\n  \\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n  \\frac{dz}{dt} &= xy - \\beta z\n\\end{align}\n\\]\nここで、\\(x\\)、\\(y\\)、および\\(z\\)はシステムの状態変数であり、\\(\\sigma\\)、\\(\\rho\\)、および\\(\\beta\\)はパラメータです。一般的に使用されるパラメータ値は以下の通りです。\n\n\\(\\sigma = 10\\)\n\\(\\rho = 28\\)\n\\(\\beta = \\frac{8}{3}\\)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
-    "title": "RでLorenz attractorを描く",
-    "section": "deSolveパッケージのインストールと読み込み",
-    "text": "deSolveパッケージのインストールと読み込み\nまず、deSolveパッケージをインストールし、読み込みます。\ninstall.packages(\"deSolve\")  # まだインストールしていない場合\nlibrary(deSolve)\nrenvパッケージを使用している場合は、以下のようにします。\nrenv::install(\"deSolve\") # まだインストールしていない場合\n\nlibrary(deSolve)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz方程式の実装",
-    "text": "Lorenz方程式の実装\nまずは、Lorenz方程式をRの関数として実装します。\n\nlorenz &lt;- function(t, state, parameters) {\n  with(as.list(c(state, parameters)), {\n    dx &lt;- sigma * (y - x)\n    dy &lt;- x * (rho - z) - y\n    dz &lt;- x * y - beta * z\n    list(c(dx, dy, dz))\n  })\n}\n\n次に、初期状態、パラメータ、時間の範囲を設定します。\n\nstate &lt;- c(x = -10, y = -10, z = 30)\nparameters &lt;- c(sigma = 10, rho = 28, beta = 8 / 3)\ntimes &lt;- seq(0, 100, by = 0.01)\n\node()関数を使用してLorenz方程式を解きます。\n\nout &lt;- ode(y = state, times = times, func = lorenz, parms = parameters)\nout &lt;- as.data.frame(out)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz attractorの描画",
-    "text": "Lorenz attractorの描画\nまずは二次元のプロットを作成します。 x-y平面、x-z平面、y-z平面の3つのプロットを描きます。\n\nplot(out$x, out$z, type = \"l\", xlab = \"x\", ylab = \"z\")\n\n\n\n\n\n\nplot(out$x, out$y, type = \"l\", xlab = \"x\", ylab = \"y\")\n\n\n\n\n\n\nplot(out$y, out$z, type = \"l\", xlab = \"y\", ylab = \"z\")"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
-    "title": "RでLorenz attractorを描く",
-    "section": "3Dプロットの作成",
-    "text": "3Dプロットの作成\nRのscatterplot3dパッケージを使用して、3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"scatterplot3d\")  # まだインストールしていない場合\nrenv::install(\"scatterplot3d\") # renvを使用している場合\n\nlibrary(scatterplot3d)\nscatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor\"\n)\n\n\n\n\n\n\n\nまた、それぞれの面に投影した2Dプロットも描いてみます。\n\ns3d &lt;- scatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor with Projections\"\n)\ns3d$points3d(out$x, out$y, out$z, type = \"l\", col = \"#FF4B00\") # Lorenz attractor本体\ns3d$points3d(\n  out$x,\n  out$y,\n  rep(min(out$z), nrow(out)),\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-y平面への投影\ns3d$points3d(\n  out$x,\n  rep(max(out$y), nrow(out)),\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-z平面への投影\ns3d$points3d(\n  rep(min(out$x), nrow(out)),\n  out$y,\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # y-z平面への投影"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
-    "title": "RでLorenz attractorを描く",
-    "section": "Plotlyを使ったインタラクティブな3Dプロット",
-    "text": "Plotlyを使ったインタラクティブな3Dプロット\nRのplotlyパッケージを使用して、インタラクティブな3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"plotly\")  # まだインストールしていない場合\nrenv::install(\"plotly\") # renvを使用している場合\n\nlibrary(plotly)\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\nfig &lt;- plot_ly(\n  x = out$x,\n  y = out$y,\n  z = out$z,\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig &lt;- fig %&gt;%\n  layout(\n    title = \"Lorenz Attractor\",\n    scene = list(\n      xaxis = list(title = 'X'),\n      yaxis = list(title = 'Y'),\n      zaxis = list(title = 'Z')\n    )\n  )\nfig\n\n\n\n\n\n時間まで含めた色変化も可能です。\n\nfig &lt;- plot_ly(\n  data = out,\n  x = ~x,\n  y = ~y,\n  z = ~z,\n  color = ~time,\n  colors = colorRamp(c(\"blue\", \"red\")),\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig\n\n\n\n\n\nまた、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。\n\nidx &lt;- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き\nout2 &lt;- out[idx, ]\n\nfig &lt;- plot_ly() %&gt;%\n  # 静的な軌跡（線）\n  add_trace(\n    data = out,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    type = \"scatter3d\",\n    mode = \"lines\",\n    line = list(color = \"gray\")\n  ) %&gt;%\n  # 動く点\n  add_trace(\n    data = out2,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    frame = ~time,\n    type = \"scatter3d\",\n    mode = \"markers\",\n    marker = list(size = 3, color = \"#FF4B00\")\n  ) %&gt;%\n  animation_opts(\n    frame = 50, # 1フレームの表示時間（ms）\n    transition = 0 # 補間アニメーションを切ることで軽量化する\n  )\n\nfig"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
-    "title": "RでLorenz attractorを描く",
-    "section": "参考になるページ",
-    "text": "参考になるページ\n\nLorenz system - Wikipedia\nCRAN: Package deSolve\nPlotly r graphing library in R"
   },
   {
     "objectID": "posts/2025-01-01-imager/index.html",
@@ -105,46 +49,95 @@
     "text": "概要\nRで画像解析をしたいとなったときに、imagerというパッケージがあることを知った。 いろいろと試した結果を記す。\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
   },
   {
-    "objectID": "posts/2024-03-14-cumsum/index.html",
-    "href": "posts/2024-03-14-cumsum/index.html",
-    "title": "Rで累積和を求める",
+    "objectID": "posts/2026-02-06-r-extract-filename/index.html",
+    "href": "posts/2026-02-06-r-extract-filename/index.html",
+    "title": "Rでファイル名を抽出する方法",
     "section": "",
-    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
+    "text": "Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、basename()やtools::file_path_sans_ext()を使って、Rでファイル名を抽出する方法についてまとめます。"
   },
   {
-    "objectID": "posts/2024-06-18-basic_authentification/index.html",
-    "href": "posts/2024-06-18-basic_authentification/index.html",
-    "title": "BASIIC認証でつまったこと",
+    "objectID": "posts/2026-02-06-r-extract-filename/index.html#ファイル名の抽出",
+    "href": "posts/2026-02-06-r-extract-filename/index.html#ファイル名の抽出",
+    "title": "Rでファイル名を抽出する方法",
+    "section": "ファイル名の抽出",
+    "text": "ファイル名の抽出\nファイルパスからファイル名を抽出するには、basename()関数を使用します。\n\nfile_path &lt;- \"/path/to/your/file/data.csv\"\nfile_name &lt;- basename(file_path)\nprint(file_name)\n\n[1] \"data.csv\"\n\n\nディレクトリパスを含むファイルパスから、ファイル名だけが抽出されました。"
+  },
+  {
+    "objectID": "posts/2026-02-06-r-extract-filename/index.html#拡張子を除いたファイル名の抽出",
+    "href": "posts/2026-02-06-r-extract-filename/index.html#拡張子を除いたファイル名の抽出",
+    "title": "Rでファイル名を抽出する方法",
+    "section": "拡張子を除いたファイル名の抽出",
+    "text": "拡張子を除いたファイル名の抽出\n拡張子を除いたファイル名を取得するには、toolsパッケージのfile_path_sans_ext()関数を使用します。\n\nlibrary(tools)\nfile_path &lt;- \"/path/to/your/file/data.csv\"\nfile_name_no_ext &lt;- file_path_sans_ext(basename(file_path))\nprint(file_name_no_ext)\n\n[1] \"data\"\n\n\nこれにより、拡張子を除いたファイル名が取得できます。\n\n\n\n\n\n\nNotefile_path_sans_ext()の名前について\n\n\n\n少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 sansはフランス語で「〜なし」を意味します。 英語のwithoutに相当します。 また、extは「拡張子(extension)」の略です。 したがって、file_path_sans_ext()は「拡張子なしのファイルパス」を意味しています。"
+  },
+  {
+    "objectID": "posts/2026-02-06-r-extract-filename/index.html#使用例",
+    "href": "posts/2026-02-06-r-extract-filename/index.html#使用例",
+    "title": "Rでファイル名を抽出する方法",
+    "section": "使用例",
+    "text": "使用例\nデータと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。\n\nfile_paths &lt;- c(\n  \"/path/to/your/file/data1.csv\",\n  \"/path/to/your/file/data2.csv\",\n  \"/path/to/your/file/data3.csv\"\n)\nfile_names &lt;- basename(file_paths)\nfile_names_no_ext &lt;- file_path_sans_ext(file_names)\ndf &lt;- data.frame(value = c(10, 20, 30), file_name = file_names_no_ext)\nprint(df)\n\n  value file_name\n1    10     data1\n2    20     data2\n3    30     data3\n\n\nこのようにして、ファイル名をデータフレームに含めることができます。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html",
+    "href": "posts/2024-06-18-r-vector/index.html",
+    "title": "Rでベクトルを作成する",
     "section": "",
-    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+    "text": "Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。"
   },
   {
-    "objectID": "posts/2026-02-01-chain-code/index.html",
-    "href": "posts/2026-02-01-chain-code/index.html",
-    "title": "Chain codeについて",
+    "objectID": "posts/2024-06-18-r-vector/index.html#cと",
+    "href": "posts/2024-06-18-r-vector/index.html#cと",
+    "title": "Rでベクトルを作成する",
+    "section": "\nc()と:\n",
+    "text": "c()と:\n\nRで最も簡単なベクトルの作成方法はc()と:を使用することです。\nc()の中にカンマ(,)区切りで値を並べるとベクトルになります。 cはcombine(結合する)に由来しています。\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n[start]:[end]という感じで、始点と終点を指定してベクトルを作成することもできます。\n\n1:3\n\n[1] 1 2 3\n\n\nこれらは非常に頻繁に使用するので、覚えておくと便利です。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#seq",
+    "href": "posts/2024-06-18-r-vector/index.html#seq",
+    "title": "Rでベクトルを作成する",
+    "section": "seq()",
+    "text": "seq()\nseq()関数はsequence(~を順番に並べる)ことに由来しており、その名の通り、()内に指定した通りに値を並べてくれます。\n最も基本的な使い方は、始めと終わりの数を指定してベクトルを作成する方法です。\n\nseq(1, 3) # seq(start, end)\n\n[1] 1 2 3\n\n\n\nseq(from = 1, to = 3) # 丁寧な書き方\n\n[1] 1 2 3\n\n\n値を一つだけ指定すると、1からその数まで1ずつ増加するベクトルを作成します。\n\nseq(3)\n\n[1] 1 2 3\n\n\n1から始まる場合は、seq_len()関数を使用したほうが速く動きます。\n\nseq_len(5) # 1~5までのベクトル\n\n[1] 1 2 3 4 5\n\n\n上昇幅を指定してベクトルを作成する\nデフォルトでは1ずつ上昇しますが、引数byを変更すると上昇数値を変更できます。\n\nseq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加\n\n[1] 1.0 1.5 2.0 2.5 3.0\n\n\n長さを指定してベクトルを作成する\n引数length.outを指定すると、長さを指定してベクトルを作成できます。 始めと終わりの値を等間隔に分割してくれます。\n\nseq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル\n\n[1] 1.0 1.4 1.8 2.2 2.6 3.0\n\n\nあるベクトルと同じ長さのベクトルを作成するにはseq_along()を使用します。\n\nx &lt;- seq_along(c(\"A\", \"B\", \"C\", \"D\", \"E\"))\nseq_along(x)\n\n[1] 1 2 3 4 5\n\n\nこれは、forループを使用する際に便利です。 forループを書く時、下のように書くことが多いと思います。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in 1:length(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nこれをseq_along()を用いて書き直すと、以下のようになります。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in seq_along(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nあまり違いはありませんが、ループに用いるベクトルの長さが0(空ベクトル)の場合の処理が変わります。"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#rep",
+    "href": "posts/2024-06-18-r-vector/index.html#rep",
+    "title": "Rでベクトルを作成する",
+    "section": "rep()",
+    "text": "rep()\n同じ値を繰り返すベクトルを作成するには、rep()関数を使用します。 repeatに由来します。\n\nrep(3, 5) # 3を5回繰り返す\n\n[1] 3 3 3 3 3\n\n\nベクトルを繰り返すこともできます。\n\nrep(1:3, 3) # 1~3を3回繰り返す\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, times = 3) # 上と同じ\n\n[1] 1 2 3 1 2 3 1 2 3\n\n\nそれぞれの値をまとめて繰り返すこともできます。\n\nrep(1:3, each = 3) # それぞれの値を3回繰り返す\n\n[1] 1 1 1 2 2 2 3 3 3\n\n\n繰り返す回数を値ごとに指定できます。\n\nrep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回\n\n[1] 1 2 2 3\n\n\n長さを指定することもできます。 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。\n\nrep(1:3, length.out = 5) # 長さ5まで繰り返す\n\n[1] 1 2 3 1 2"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#活用例",
+    "href": "posts/2024-06-18-r-vector/index.html#活用例",
+    "title": "Rでベクトルを作成する",
+    "section": "活用例",
+    "text": "活用例\nこれらのベクトルの作成は、データフレームでIDやグループを作成したり、プロットの点を補完したりするときに活用されます。 例えば、A~Cまでのグループをデータシートの各行に振りたい時はrep(c(\"A\", \"B\", \"C\"), each = 5)とすれば、簡単にグループを作成することができます。 また、サインカーブなどの関数を描画したいときは、以下のようにすると簡単に関数を描画できます。\n\nx &lt;- seq(from = 0, to = pi, length.out = 100)\nplot(x, sin(x))"
+  },
+  {
+    "objectID": "posts/2024-06-18-r-vector/index.html#まとめ",
+    "href": "posts/2024-06-18-r-vector/index.html#まとめ",
+    "title": "Rでベクトルを作成する",
+    "section": "まとめ",
+    "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
+  },
+  {
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html",
+    "title": "Rのプロットのアスペクト比を設定する方法",
     "section": "",
-    "text": "Chain code（チェインコード）は、2次元画像中の輪郭上の画素について、ある座標から隣接する座標への移動方向を符号化し、それを連続的に記録することで、形状を1次元のコード列として表現する方法です。 主に画像処理やコンピュータビジョンの分野で使用され、輪郭抽出や形状認識に役立ちます。\n例えば、よく用いられる8方向のチェインコードは以下のようになります。\nCodeplot(\n  0,\n  0,\n  xlim = c(-1.5, 1.5),\n  ylim = c(-1.5, 1.5),\n  type = \"n\",\n  xlab = \"\",\n  ylab = \"\",\n  xaxt = \"n\",\n  yaxt = \"n\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\"\n)\naxis(1, at = c(-1, 0, 1), cex.axis = 2)\naxis(2, at = c(-1, 0, 1), las = 1, cex.axis = 2)\n\n\n# グリッド線を引く\nabline(h = -1:1, col = \"lightgray\")\nabline(v = -1:1, col = \"lightgray\")\n\n# ベクトルを描く\nlength_arrow &lt;- 0.2\nlwd_arrow &lt;- 5\narrows(0, 0, 1, 0, length = length_arrow, lwd = lwd_arrow) # 0\narrows(0, 0, 1, 1, length = length_arrow, lwd = lwd_arrow) # 1\narrows(0, 0, 0, 1, length = length_arrow, lwd = lwd_arrow) # 2\narrows(0, 0, -1, 1, length = length_arrow, lwd = lwd_arrow) # 3\narrows(0, 0, -1, 0, length = length_arrow, lwd = lwd_arrow) # 4\narrows(0, 0, -1, -1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6\narrows(0, 0, 1, -1, length = length_arrow, lwd = lwd_arrow) # 7\n\n# ラベルをつける\ncex_text &lt;- 3\ntext(1, 0, \"0\", cex = cex_text, pos = 4)\ntext(1, 1, \"1\", cex = cex_text, pos = 4)\ntext(0, 1, \"2\", cex = cex_text, pos = 3)\ntext(-1, 1, \"3\", cex = cex_text, pos = 2)\ntext(-1, 0, \"4\", cex = cex_text, pos = 2)\ntext(-1, -1, \"5\", cex = cex_text, pos = 2)\ntext(0, -1, \"6\", cex = cex_text, pos = 1)\ntext(1, -1, \"7\", cex = cex_text, pos = 4)\nこのコードは、中心点から8方向への移動を示しています。 各方向には0から7までの番号が割り当てられています。 この番号を使って、形状の輪郭を辿る際の移動を符号化します。"
+    "text": "Rのプロット関数(例えばplot())では、aspパラメータを使用してアスペクト比を設定できます。 アスペクト比は、y軸の単位長さがx軸の単位長さの何倍であるかを指定します。"
   },
   {
-    "objectID": "posts/2026-02-01-chain-code/index.html#輪郭をchain-codeで表現する例",
-    "href": "posts/2026-02-01-chain-code/index.html#輪郭をchain-codeで表現する例",
-    "title": "Chain codeについて",
-    "section": "輪郭をchain codeで表現する例",
-    "text": "輪郭をchain codeで表現する例\n例えば、以下のような輪郭形状があるとします。 猫の顔のイメージです。\n\ndf_contour &lt;- data.frame(\n  x = c(0, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 2, 1, 0, 0),\n  y = c(0, -1, -2, -2, -2, -2, -1, 0, 1, 2, 1, 1, 2, 1, 0)\n)\nplot(\n  df_contour$x,\n  df_contour$y,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\",\n  xlim = c(-1, 6),\n  ylim = c(-3, 3),\n  xaxt = \"n\",\n  yaxt = \"n\",\n  cex.lab = 1.5\n)\naxis(1, at = 0:5, cex.axis = 1.5)\naxis(2, at = -2:2, las = 1, cex.axis = 1.5)\nabline(h = -3:3, col = \"lightgray\")\nabline(v = -1:6, col = \"lightgray\")\nlines(df_contour$x, df_contour$y, lwd = 3)\npoints(df_contour$x, df_contour$y, pch = 19, cex = 1.5)\n\n\n\n\n\n\n\nこの輪郭をchain codeで表現すると、以下のようになります。 開始点を(0,0)とし、時計回りに輪郭を辿るとします。\n(0,0),6,7,0,0,0,1,2,2,3,5,4,3,5,6\n\n\n\n\n\n\nNote輪郭を辿る方向\n\n\n\n今回は時計回りに輪郭を辿る例を示しましたが、反時計回りに辿ることも可能です。\n\n\nここで、各数字は前述の8方向のチェインコードに対応しています。 例えば、最初の「6」は(0,0)から(0,-1)への移動を示し、次の「7」は(0,-1)から(1,-1)への移動を示します。\n先ほどの図にベクトルを重ねてみます。\n\nplot(\n  df_contour$x,\n  df_contour$y,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\",\n  xlim = c(-1, 6),\n  ylim = c(-3, 3),\n  xaxt = \"n\",\n  yaxt = \"n\",\n  cex.lab = 1.5\n)\naxis(1, at = 0:5, cex.axis = 1.5)\naxis(2, at = -2:2, las = 1, cex.axis = 1.5)\nabline(h = -3:3, col = \"lightgray\")\nabline(v = -1:6, col = \"lightgray\")\n\npoints(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = \"red\") # 開始点\n\n# ベクトルを描く\nlength_arrow &lt;- 0.2\nlwd_arrow &lt;- 2\narrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6\narrows(0, -1, 1, -2, length = length_arrow, lwd = lwd_arrow) # 7\narrows(1, -2, 2, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(2, -2, 3, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(3, -2, 4, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(4, -2, 5, -1, length = length_arrow, lwd = lwd_arrow) # 1\narrows(5, -1, 5, 0, length = length_arrow, lwd = lwd_arrow) # 2\narrows(5, 0, 5, 1, length = length_arrow, lwd = lwd_arrow) # 2\narrows(5, 1, 4, 2, length = length_arrow, lwd = lwd_arrow) # 3\narrows(4, 2, 3, 1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(3, 1, 2, 1, length = length_arrow, lwd = lwd_arrow) # 4\narrows(2, 1, 1, 2, length = length_arrow, lwd = lwd_arrow) # 3\narrows(1, 2, 0, 1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(0, 1, 0, 0, length = length_arrow, lwd = lwd_arrow) # 6\n\n# ラベルをつける\ntext(\n  df_contour$x[-1] +\n    c(0, -0.5, -0.5, -0.5, -0.5, -0.5, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0),\n  df_contour$y[-1] +\n    c(0.5, 0.5, 0, 0, 0, -0.5, -0.5, -0.5, -0.5, 0.5, 0, -0.5, 0.5, 0.5),\n  labels = c(\n    \"6\",\n    \"7\",\n    \"0\",\n    \"0\",\n    \"0\",\n    \"1\",\n    \"2\",\n    \"2\",\n    \"3\",\n    \"5\",\n    \"4\",\n    \"3\",\n    \"5\",\n    \"6\"\n  ),\n  offset = c(1, rep(0.5, length(df_contour$x) - 1)),\n  pos = c(2, 2, 1, 1, 1, 1, 4, 4, 4, 3, 3, 3, 3, 2),\n  cex = 2,\n  col = \"blue\"\n)"
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
+    "title": "Rのプロットのアスペクト比を設定する方法",
+    "section": "\naspパラメータの使用例",
+    "text": "aspパラメータの使用例\nplot()内にaspパラメータを指定することで、アスペクト比を調整できます。\n\nplot(1:10, 1:10) # デフォルトのアスペクト比\n\n\n\n\n\n\nplot(1:10, 1:10, asp = 1) # アスペクト比1:1\n\n\n\n\n\n\n\n上記の例では、asp = 1と設定しているため、x軸とy軸の単位長さが等しくなります。 もしasp = 2と設定すると、y軸の単位長さがx軸の単位長さの2倍になります。\n\nplot(1:10, 1:10, asp = 2)"
   },
   {
-    "objectID": "posts/2026-02-01-chain-code/index.html#座標をchain-codeに変換する",
-    "href": "posts/2026-02-01-chain-code/index.html#座標をchain-codeに変換する",
-    "title": "Chain codeについて",
-    "section": "座標をchain codeに変換する",
-    "text": "座標をchain codeに変換する\nRで座標データをchain codeに変換してみます。\n\n# x, yの差分を計算\ndx &lt;- df_contour$x[2:length(df_contour$x)] -\n  df_contour$x[1:(length(df_contour$x) - 1)]\ndy &lt;- df_contour$y[2:length(df_contour$y)] -\n  df_contour$y[1:(length(df_contour$y) - 1)]\n# 差分に基づいてchain codeを決定\nchain_code &lt;- c()\nfor (i in seq_along(dx)) {\n  if (dx[i] == 1 && dy[i] == 0) {\n    chain_code &lt;- c(chain_code, 0)\n  } else if (dx[i] == 1 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 1)\n  } else if (dx[i] == 0 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 2)\n  } else if (dx[i] == -1 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 3)\n  } else if (dx[i] == -1 && dy[i] == 0) {\n    chain_code &lt;- c(chain_code, 4)\n  } else if (dx[i] == -1 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 5)\n  } else if (dx[i] == 0 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 6)\n  } else if (dx[i] == 1 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 7)\n  }\n}\nprint(chain_code)\n\n [1] 6 7 0 0 0 1 2 2 3 5 4 3 5 6\n\n\nこのコードを関数化すると以下のようになります。\n\ncoords_to_chain_code &lt;- function(x, y) {\n  dx &lt;- x[2:length(x)] - x[1:(length(x) - 1)]\n  dy &lt;- y[2:length(y)] - y[1:(length(y) - 1)]\n  # 変位が1より大きい場合はエラー\n  if (any(abs(dx) &gt; 1) || any(abs(dy) &gt; 1)) {\n    stop(\"Invalid step detected: not 8-connected\")\n  }\n  chain_code &lt;- c()\n  for (i in seq_along(dx)) {\n    if (dx[i] == 1 && dy[i] == 0) {\n      chain_code &lt;- c(chain_code, 0)\n    } else if (dx[i] == 1 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 1)\n    } else if (dx[i] == 0 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 2)\n    } else if (dx[i] == -1 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 3)\n    } else if (dx[i] == -1 && dy[i] == 0) {\n      chain_code &lt;- c(chain_code, 4)\n    } else if (dx[i] == -1 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 5)\n    } else if (dx[i] == 0 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 6)\n    } else if (dx[i] == 1 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 7)\n    }\n  }\n  return(chain_code)\n}\n\n先ほどの座標データに対して関数を適用してみます。\n\nresult_chain_code &lt;- coords_to_chain_code(\n  df_contour$x,\n  df_contour$y\n)\nprint(result_chain_code)\n\n [1] 6 7 0 0 0 1 2 2 3 5 4 3 5 6\n\n\n同じchain codeが得られることが確認できます。"
-  },
-  {
-    "objectID": "posts/2026-02-01-chain-code/index.html#chain-codeを座標に変換する",
-    "href": "posts/2026-02-01-chain-code/index.html#chain-codeを座標に変換する",
-    "title": "Chain codeについて",
-    "section": "Chain codeを座標に変換する",
-    "text": "Chain codeを座標に変換する\n今度は、chain codeから座標に変換する方法を示します。 まずは、普通に書いてみます。\n\nchain_code &lt;- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)\n# 開始点の座標\nstart_x &lt;- 0\nstart_y &lt;- 0\n# 座標への変換\nx_coords &lt;- c(start_x)\ny_coords &lt;- c(start_y)\nfor (code in chain_code) {\n  last_x &lt;- tail(x_coords, n = 1)\n  last_y &lt;- tail(y_coords, n = 1)\n  if (code == 0) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 1) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 2) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 3) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 4) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 5) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 6) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 7) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  }\n}\ndf_from_chain &lt;- data.frame(x = x_coords, y = y_coords)\nprint(df_from_chain)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\n\nプロットしてみます。\n\nplot(\n  df_from_chain$x,\n  df_from_chain$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)\n\n\n\n\n\n\n\n関数化します。\n\nchain_code_to_coords &lt;- function(chain_code, start_x = 0, start_y = 0) {\n  x_coords &lt;- c(start_x)\n  y_coords &lt;- c(start_y)\n  for (code in chain_code) {\n    last_x &lt;- tail(x_coords, n = 1)\n    last_y &lt;- tail(y_coords, n = 1)\n    if (code == 0) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 1) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 2) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 3) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 4) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 5) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 6) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 7) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    }\n  }\n  return(data.frame(x = x_coords, y = y_coords))\n}\n\n先ほどのchain codeを使って関数を適用してみます。\n\nresult_coords &lt;- chain_code_to_coords(\n  chain_code,\n  start_x = 0,\n  start_y = 0\n)\nprint(result_coords)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\nplot(\n  result_coords$x,\n  result_coords$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)"
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
+    "title": "Rのプロットのアスペクト比を設定する方法",
+    "section": "プロット領域も含めたアスペクト比の調整",
+    "text": "プロット領域も含めたアスペクト比の調整\nこれは、1:1プロットを作るときに便利です。 1:1の線を描画したい場合などに使用します。 このとき、プロット領域の形状によっては、実際の表示が正方形にならないことがあります。 その場合は、par(pty = \"s\")を使用してプロット領域を正方形に設定することもできます。\n\npar(pty = \"s\") # プロット領域を正方形に設定\n\nx &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\ny &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\n\nplot(x, y, asp = 1)\nplot(x, y, asp = 1)\nabline(0, 1, lty = 2)\n\n\n\n\n\n\npar(pty = \"m\") # プロット領域を元に戻す\n\n\n\n\n\n\n\nNote補足説明\n\n\n\n\n\nrnorm(): 正規分布に従う乱数を生成する関数です。ここでは、平均1、標準偏差0.1の乱数を生成しています。\n\nabline(0, 1, lty = 2): y = xの直線を破線で描画しています。lty = 2は破線を意味します。"
   },
   {
     "objectID": "posts/2024-06-19-bookdown-url/index.html",
@@ -371,46 +364,46 @@
     "text": "参考\n\nPDF Basics – Quarto\nPDF Options – Quarto"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html",
-    "href": "posts/2024-06-18-r-vector/index.html",
-    "title": "Rでベクトルを作成する",
+    "objectID": "posts/2026-02-01-chain-code/index.html",
+    "href": "posts/2026-02-01-chain-code/index.html",
+    "title": "Chain codeについて",
     "section": "",
-    "text": "Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。"
+    "text": "Chain code（チェインコード）は、2次元画像中の輪郭上の画素について、ある座標から隣接する座標への移動方向を符号化し、それを連続的に記録することで、形状を1次元のコード列として表現する方法です。 主に画像処理やコンピュータビジョンの分野で使用され、輪郭抽出や形状認識に役立ちます。\n例えば、よく用いられる8方向のチェインコードは以下のようになります。\nCodeplot(\n  0,\n  0,\n  xlim = c(-1.5, 1.5),\n  ylim = c(-1.5, 1.5),\n  type = \"n\",\n  xlab = \"\",\n  ylab = \"\",\n  xaxt = \"n\",\n  yaxt = \"n\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\"\n)\naxis(1, at = c(-1, 0, 1), cex.axis = 2)\naxis(2, at = c(-1, 0, 1), las = 1, cex.axis = 2)\n\n\n# グリッド線を引く\nabline(h = -1:1, col = \"lightgray\")\nabline(v = -1:1, col = \"lightgray\")\n\n# ベクトルを描く\nlength_arrow &lt;- 0.2\nlwd_arrow &lt;- 5\narrows(0, 0, 1, 0, length = length_arrow, lwd = lwd_arrow) # 0\narrows(0, 0, 1, 1, length = length_arrow, lwd = lwd_arrow) # 1\narrows(0, 0, 0, 1, length = length_arrow, lwd = lwd_arrow) # 2\narrows(0, 0, -1, 1, length = length_arrow, lwd = lwd_arrow) # 3\narrows(0, 0, -1, 0, length = length_arrow, lwd = lwd_arrow) # 4\narrows(0, 0, -1, -1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6\narrows(0, 0, 1, -1, length = length_arrow, lwd = lwd_arrow) # 7\n\n# ラベルをつける\ncex_text &lt;- 3\ntext(1, 0, \"0\", cex = cex_text, pos = 4)\ntext(1, 1, \"1\", cex = cex_text, pos = 4)\ntext(0, 1, \"2\", cex = cex_text, pos = 3)\ntext(-1, 1, \"3\", cex = cex_text, pos = 2)\ntext(-1, 0, \"4\", cex = cex_text, pos = 2)\ntext(-1, -1, \"5\", cex = cex_text, pos = 2)\ntext(0, -1, \"6\", cex = cex_text, pos = 1)\ntext(1, -1, \"7\", cex = cex_text, pos = 4)\nこのコードは、中心点から8方向への移動を示しています。 各方向には0から7までの番号が割り当てられています。 この番号を使って、形状の輪郭を辿る際の移動を符号化します。"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html#cと",
-    "href": "posts/2024-06-18-r-vector/index.html#cと",
-    "title": "Rでベクトルを作成する",
-    "section": "\nc()と:\n",
-    "text": "c()と:\n\nRで最も簡単なベクトルの作成方法はc()と:を使用することです。\nc()の中にカンマ(,)区切りで値を並べるとベクトルになります。 cはcombine(結合する)に由来しています。\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n[start]:[end]という感じで、始点と終点を指定してベクトルを作成することもできます。\n\n1:3\n\n[1] 1 2 3\n\n\nこれらは非常に頻繁に使用するので、覚えておくと便利です。"
+    "objectID": "posts/2026-02-01-chain-code/index.html#輪郭をchain-codeで表現する例",
+    "href": "posts/2026-02-01-chain-code/index.html#輪郭をchain-codeで表現する例",
+    "title": "Chain codeについて",
+    "section": "輪郭をchain codeで表現する例",
+    "text": "輪郭をchain codeで表現する例\n例えば、以下のような輪郭形状があるとします。 猫の顔のイメージです。\n\ndf_contour &lt;- data.frame(\n  x = c(0, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 2, 1, 0, 0),\n  y = c(0, -1, -2, -2, -2, -2, -1, 0, 1, 2, 1, 1, 2, 1, 0)\n)\nplot(\n  df_contour$x,\n  df_contour$y,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\",\n  xlim = c(-1, 6),\n  ylim = c(-3, 3),\n  xaxt = \"n\",\n  yaxt = \"n\",\n  cex.lab = 1.5\n)\naxis(1, at = 0:5, cex.axis = 1.5)\naxis(2, at = -2:2, las = 1, cex.axis = 1.5)\nabline(h = -3:3, col = \"lightgray\")\nabline(v = -1:6, col = \"lightgray\")\nlines(df_contour$x, df_contour$y, lwd = 3)\npoints(df_contour$x, df_contour$y, pch = 19, cex = 1.5)\n\n\n\n\n\n\n\nこの輪郭をchain codeで表現すると、以下のようになります。 開始点を(0,0)とし、時計回りに輪郭を辿るとします。\n(0,0),6,7,0,0,0,1,2,2,3,5,4,3,5,6\n\n\n\n\n\n\nNote輪郭を辿る方向\n\n\n\n今回は時計回りに輪郭を辿る例を示しましたが、反時計回りに辿ることも可能です。\n\n\nここで、各数字は前述の8方向のチェインコードに対応しています。 例えば、最初の「6」は(0,0)から(0,-1)への移動を示し、次の「7」は(0,-1)から(1,-1)への移動を示します。\n先ほどの図にベクトルを重ねてみます。\n\nplot(\n  df_contour$x,\n  df_contour$y,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  xaxs = \"i\",\n  yaxs = \"i\",\n  xlim = c(-1, 6),\n  ylim = c(-3, 3),\n  xaxt = \"n\",\n  yaxt = \"n\",\n  cex.lab = 1.5\n)\naxis(1, at = 0:5, cex.axis = 1.5)\naxis(2, at = -2:2, las = 1, cex.axis = 1.5)\nabline(h = -3:3, col = \"lightgray\")\nabline(v = -1:6, col = \"lightgray\")\n\npoints(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = \"red\") # 開始点\n\n# ベクトルを描く\nlength_arrow &lt;- 0.2\nlwd_arrow &lt;- 2\narrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6\narrows(0, -1, 1, -2, length = length_arrow, lwd = lwd_arrow) # 7\narrows(1, -2, 2, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(2, -2, 3, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(3, -2, 4, -2, length = length_arrow, lwd = lwd_arrow) # 0\narrows(4, -2, 5, -1, length = length_arrow, lwd = lwd_arrow) # 1\narrows(5, -1, 5, 0, length = length_arrow, lwd = lwd_arrow) # 2\narrows(5, 0, 5, 1, length = length_arrow, lwd = lwd_arrow) # 2\narrows(5, 1, 4, 2, length = length_arrow, lwd = lwd_arrow) # 3\narrows(4, 2, 3, 1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(3, 1, 2, 1, length = length_arrow, lwd = lwd_arrow) # 4\narrows(2, 1, 1, 2, length = length_arrow, lwd = lwd_arrow) # 3\narrows(1, 2, 0, 1, length = length_arrow, lwd = lwd_arrow) # 5\narrows(0, 1, 0, 0, length = length_arrow, lwd = lwd_arrow) # 6\n\n# ラベルをつける\ntext(\n  df_contour$x[-1] +\n    c(0, -0.5, -0.5, -0.5, -0.5, -0.5, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0),\n  df_contour$y[-1] +\n    c(0.5, 0.5, 0, 0, 0, -0.5, -0.5, -0.5, -0.5, 0.5, 0, -0.5, 0.5, 0.5),\n  labels = c(\n    \"6\",\n    \"7\",\n    \"0\",\n    \"0\",\n    \"0\",\n    \"1\",\n    \"2\",\n    \"2\",\n    \"3\",\n    \"5\",\n    \"4\",\n    \"3\",\n    \"5\",\n    \"6\"\n  ),\n  offset = c(1, rep(0.5, length(df_contour$x) - 1)),\n  pos = c(2, 2, 1, 1, 1, 1, 4, 4, 4, 3, 3, 3, 3, 2),\n  cex = 2,\n  col = \"blue\"\n)"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html#seq",
-    "href": "posts/2024-06-18-r-vector/index.html#seq",
-    "title": "Rでベクトルを作成する",
-    "section": "seq()",
-    "text": "seq()\nseq()関数はsequence(~を順番に並べる)ことに由来しており、その名の通り、()内に指定した通りに値を並べてくれます。\n最も基本的な使い方は、始めと終わりの数を指定してベクトルを作成する方法です。\n\nseq(1, 3) # seq(start, end)\n\n[1] 1 2 3\n\n\n\nseq(from = 1, to = 3) # 丁寧な書き方\n\n[1] 1 2 3\n\n\n値を一つだけ指定すると、1からその数まで1ずつ増加するベクトルを作成します。\n\nseq(3)\n\n[1] 1 2 3\n\n\n1から始まる場合は、seq_len()関数を使用したほうが速く動きます。\n\nseq_len(5) # 1~5までのベクトル\n\n[1] 1 2 3 4 5\n\n\n上昇幅を指定してベクトルを作成する\nデフォルトでは1ずつ上昇しますが、引数byを変更すると上昇数値を変更できます。\n\nseq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加\n\n[1] 1.0 1.5 2.0 2.5 3.0\n\n\n長さを指定してベクトルを作成する\n引数length.outを指定すると、長さを指定してベクトルを作成できます。 始めと終わりの値を等間隔に分割してくれます。\n\nseq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル\n\n[1] 1.0 1.4 1.8 2.2 2.6 3.0\n\n\nあるベクトルと同じ長さのベクトルを作成するにはseq_along()を使用します。\n\nx &lt;- seq_along(c(\"A\", \"B\", \"C\", \"D\", \"E\"))\nseq_along(x)\n\n[1] 1 2 3 4 5\n\n\nこれは、forループを使用する際に便利です。 forループを書く時、下のように書くことが多いと思います。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in 1:length(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nこれをseq_along()を用いて書き直すと、以下のようになります。\n\nx &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\")\nfor (i in seq_along(x)) {\n  print(x[i])\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"D\"\n[1] \"E\"\n\n\nあまり違いはありませんが、ループに用いるベクトルの長さが0(空ベクトル)の場合の処理が変わります。"
+    "objectID": "posts/2026-02-01-chain-code/index.html#座標をchain-codeに変換する",
+    "href": "posts/2026-02-01-chain-code/index.html#座標をchain-codeに変換する",
+    "title": "Chain codeについて",
+    "section": "座標をchain codeに変換する",
+    "text": "座標をchain codeに変換する\nRで座標データをchain codeに変換してみます。\n\n# x, yの差分を計算\ndx &lt;- df_contour$x[2:length(df_contour$x)] -\n  df_contour$x[1:(length(df_contour$x) - 1)]\ndy &lt;- df_contour$y[2:length(df_contour$y)] -\n  df_contour$y[1:(length(df_contour$y) - 1)]\n# 差分に基づいてchain codeを決定\nchain_code &lt;- c()\nfor (i in seq_along(dx)) {\n  if (dx[i] == 1 && dy[i] == 0) {\n    chain_code &lt;- c(chain_code, 0)\n  } else if (dx[i] == 1 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 1)\n  } else if (dx[i] == 0 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 2)\n  } else if (dx[i] == -1 && dy[i] == 1) {\n    chain_code &lt;- c(chain_code, 3)\n  } else if (dx[i] == -1 && dy[i] == 0) {\n    chain_code &lt;- c(chain_code, 4)\n  } else if (dx[i] == -1 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 5)\n  } else if (dx[i] == 0 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 6)\n  } else if (dx[i] == 1 && dy[i] == -1) {\n    chain_code &lt;- c(chain_code, 7)\n  }\n}\nprint(chain_code)\n\n [1] 6 7 0 0 0 1 2 2 3 5 4 3 5 6\n\n\nこのコードを関数化すると以下のようになります。\n\ncoords_to_chain_code &lt;- function(x, y) {\n  dx &lt;- x[2:length(x)] - x[1:(length(x) - 1)]\n  dy &lt;- y[2:length(y)] - y[1:(length(y) - 1)]\n  # 変位が1より大きい場合はエラー\n  if (any(abs(dx) &gt; 1) || any(abs(dy) &gt; 1)) {\n    stop(\"Invalid step detected: not 8-connected\")\n  }\n  chain_code &lt;- c()\n  for (i in seq_along(dx)) {\n    if (dx[i] == 1 && dy[i] == 0) {\n      chain_code &lt;- c(chain_code, 0)\n    } else if (dx[i] == 1 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 1)\n    } else if (dx[i] == 0 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 2)\n    } else if (dx[i] == -1 && dy[i] == 1) {\n      chain_code &lt;- c(chain_code, 3)\n    } else if (dx[i] == -1 && dy[i] == 0) {\n      chain_code &lt;- c(chain_code, 4)\n    } else if (dx[i] == -1 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 5)\n    } else if (dx[i] == 0 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 6)\n    } else if (dx[i] == 1 && dy[i] == -1) {\n      chain_code &lt;- c(chain_code, 7)\n    }\n  }\n  return(chain_code)\n}\n\n先ほどの座標データに対して関数を適用してみます。\n\nresult_chain_code &lt;- coords_to_chain_code(\n  df_contour$x,\n  df_contour$y\n)\nprint(result_chain_code)\n\n [1] 6 7 0 0 0 1 2 2 3 5 4 3 5 6\n\n\n同じchain codeが得られることが確認できます。"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html#rep",
-    "href": "posts/2024-06-18-r-vector/index.html#rep",
-    "title": "Rでベクトルを作成する",
-    "section": "rep()",
-    "text": "rep()\n同じ値を繰り返すベクトルを作成するには、rep()関数を使用します。 repeatに由来します。\n\nrep(3, 5) # 3を5回繰り返す\n\n[1] 3 3 3 3 3\n\n\nベクトルを繰り返すこともできます。\n\nrep(1:3, 3) # 1~3を3回繰り返す\n\n[1] 1 2 3 1 2 3 1 2 3\n\nrep(1:3, times = 3) # 上と同じ\n\n[1] 1 2 3 1 2 3 1 2 3\n\n\nそれぞれの値をまとめて繰り返すこともできます。\n\nrep(1:3, each = 3) # それぞれの値を3回繰り返す\n\n[1] 1 1 1 2 2 2 3 3 3\n\n\n繰り返す回数を値ごとに指定できます。\n\nrep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回\n\n[1] 1 2 2 3\n\n\n長さを指定することもできます。 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。\n\nrep(1:3, length.out = 5) # 長さ5まで繰り返す\n\n[1] 1 2 3 1 2"
+    "objectID": "posts/2026-02-01-chain-code/index.html#chain-codeを座標に変換する",
+    "href": "posts/2026-02-01-chain-code/index.html#chain-codeを座標に変換する",
+    "title": "Chain codeについて",
+    "section": "Chain codeを座標に変換する",
+    "text": "Chain codeを座標に変換する\n今度は、chain codeから座標に変換する方法を示します。 まずは、普通に書いてみます。\n\nchain_code &lt;- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)\n# 開始点の座標\nstart_x &lt;- 0\nstart_y &lt;- 0\n# 座標への変換\nx_coords &lt;- c(start_x)\ny_coords &lt;- c(start_y)\nfor (code in chain_code) {\n  last_x &lt;- tail(x_coords, n = 1)\n  last_y &lt;- tail(y_coords, n = 1)\n  if (code == 0) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 1) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 2) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 3) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 4) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 5) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 6) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 7) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  }\n}\ndf_from_chain &lt;- data.frame(x = x_coords, y = y_coords)\nprint(df_from_chain)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\n\nプロットしてみます。\n\nplot(\n  df_from_chain$x,\n  df_from_chain$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)\n\n\n\n\n\n\n\n関数化します。\n\nchain_code_to_coords &lt;- function(chain_code, start_x = 0, start_y = 0) {\n  x_coords &lt;- c(start_x)\n  y_coords &lt;- c(start_y)\n  for (code in chain_code) {\n    last_x &lt;- tail(x_coords, n = 1)\n    last_y &lt;- tail(y_coords, n = 1)\n    if (code == 0) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 1) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 2) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 3) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 4) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 5) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 6) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 7) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    }\n  }\n  return(data.frame(x = x_coords, y = y_coords))\n}\n\n先ほどのchain codeを使って関数を適用してみます。\n\nresult_coords &lt;- chain_code_to_coords(\n  chain_code,\n  start_x = 0,\n  start_y = 0\n)\nprint(result_coords)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\nplot(\n  result_coords$x,\n  result_coords$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html#活用例",
-    "href": "posts/2024-06-18-r-vector/index.html#活用例",
-    "title": "Rでベクトルを作成する",
-    "section": "活用例",
-    "text": "活用例\nこれらのベクトルの作成は、データフレームでIDやグループを作成したり、プロットの点を補完したりするときに活用されます。 例えば、A~Cまでのグループをデータシートの各行に振りたい時はrep(c(\"A\", \"B\", \"C\"), each = 5)とすれば、簡単にグループを作成することができます。 また、サインカーブなどの関数を描画したいときは、以下のようにすると簡単に関数を描画できます。\n\nx &lt;- seq(from = 0, to = pi, length.out = 100)\nplot(x, sin(x))"
+    "objectID": "posts/2024-06-18-basic_authentification/index.html",
+    "href": "posts/2024-06-18-basic_authentification/index.html",
+    "title": "BASIIC認証でつまったこと",
+    "section": "",
+    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
   },
   {
-    "objectID": "posts/2024-06-18-r-vector/index.html#まとめ",
-    "href": "posts/2024-06-18-r-vector/index.html#まとめ",
-    "title": "Rでベクトルを作成する",
-    "section": "まとめ",
-    "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
+    "objectID": "posts/2024-03-14-cumsum/index.html",
+    "href": "posts/2024-03-14-cumsum/index.html",
+    "title": "Rで累積和を求める",
+    "section": "",
+    "text": "Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\(1+2=3\\)、3つ目は\\(3+3=6\\)になるので、結果は1,3,6ということになります。 Rではcumsum関数を用いて以下のように簡単に計算ができます。\n\nx &lt;- c(1, 2, 3)\ncumsum(x)\n\n[1] 1 3 6"
   },
   {
     "objectID": "posts/2026-01-24-code-filename/index.html",
@@ -509,6 +502,62 @@
     "title": "Quartoのコードブロック内の関数にドキュメントリンクをつける方法",
     "section": "参考",
     "text": "参考\n\nknitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie | 谢益辉\nCRAN: Package knitr\nHTML Code Blocks - Quarto\nCode Annotation - Quarto"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html",
+    "title": "RでLorenz attractorを描く",
+    "section": "",
+    "text": "Lorenz attractorは、Edward Lorenz氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。\n以下に、RのdeSolveパッケージを使用してLorenz attractorを描く方法を示します。"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz方程式の定義",
+    "text": "Lorenz方程式の定義\nLorenz方程式は以下の3つの常微分方程式から構成されます。\n\\[\n\\begin{align}\n  \\frac{dx}{dt} &= \\sigma (y - x) \\\\\n  \\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n  \\frac{dz}{dt} &= xy - \\beta z\n\\end{align}\n\\]\nここで、\\(x\\)、\\(y\\)、および\\(z\\)はシステムの状態変数であり、\\(\\sigma\\)、\\(\\rho\\)、および\\(\\beta\\)はパラメータです。一般的に使用されるパラメータ値は以下の通りです。\n\n\\(\\sigma = 10\\)\n\\(\\rho = 28\\)\n\\(\\beta = \\frac{8}{3}\\)"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
+    "title": "RでLorenz attractorを描く",
+    "section": "deSolveパッケージのインストールと読み込み",
+    "text": "deSolveパッケージのインストールと読み込み\nまず、deSolveパッケージをインストールし、読み込みます。\ninstall.packages(\"deSolve\")  # まだインストールしていない場合\nlibrary(deSolve)\nrenvパッケージを使用している場合は、以下のようにします。\nrenv::install(\"deSolve\") # まだインストールしていない場合\n\nlibrary(deSolve)"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz方程式の実装",
+    "text": "Lorenz方程式の実装\nまずは、Lorenz方程式をRの関数として実装します。\n\nlorenz &lt;- function(t, state, parameters) {\n  with(as.list(c(state, parameters)), {\n    dx &lt;- sigma * (y - x)\n    dy &lt;- x * (rho - z) - y\n    dz &lt;- x * y - beta * z\n    list(c(dx, dy, dz))\n  })\n}\n\n次に、初期状態、パラメータ、時間の範囲を設定します。\n\nstate &lt;- c(x = -10, y = -10, z = 30)\nparameters &lt;- c(sigma = 10, rho = 28, beta = 8 / 3)\ntimes &lt;- seq(0, 100, by = 0.01)\n\node()関数を使用してLorenz方程式を解きます。\n\nout &lt;- ode(y = state, times = times, func = lorenz, parms = parameters)\nout &lt;- as.data.frame(out)"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz attractorの描画",
+    "text": "Lorenz attractorの描画\nまずは二次元のプロットを作成します。 x-y平面、x-z平面、y-z平面の3つのプロットを描きます。\n\nplot(out$x, out$z, type = \"l\", xlab = \"x\", ylab = \"z\")\n\n\n\n\n\n\nplot(out$x, out$y, type = \"l\", xlab = \"x\", ylab = \"y\")\n\n\n\n\n\n\nplot(out$y, out$z, type = \"l\", xlab = \"y\", ylab = \"z\")"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
+    "title": "RでLorenz attractorを描く",
+    "section": "3Dプロットの作成",
+    "text": "3Dプロットの作成\nRのscatterplot3dパッケージを使用して、3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"scatterplot3d\")  # まだインストールしていない場合\nrenv::install(\"scatterplot3d\") # renvを使用している場合\n\nlibrary(scatterplot3d)\nscatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor\"\n)\n\n\n\n\n\n\n\nまた、それぞれの面に投影した2Dプロットも描いてみます。\n\ns3d &lt;- scatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor with Projections\"\n)\ns3d$points3d(out$x, out$y, out$z, type = \"l\", col = \"#FF4B00\") # Lorenz attractor本体\ns3d$points3d(\n  out$x,\n  out$y,\n  rep(min(out$z), nrow(out)),\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-y平面への投影\ns3d$points3d(\n  out$x,\n  rep(max(out$y), nrow(out)),\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-z平面への投影\ns3d$points3d(\n  rep(min(out$x), nrow(out)),\n  out$y,\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # y-z平面への投影"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
+    "title": "RでLorenz attractorを描く",
+    "section": "Plotlyを使ったインタラクティブな3Dプロット",
+    "text": "Plotlyを使ったインタラクティブな3Dプロット\nRのplotlyパッケージを使用して、インタラクティブな3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"plotly\")  # まだインストールしていない場合\nrenv::install(\"plotly\") # renvを使用している場合\n\nlibrary(plotly)\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\nfig &lt;- plot_ly(\n  x = out$x,\n  y = out$y,\n  z = out$z,\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig &lt;- fig %&gt;%\n  layout(\n    title = \"Lorenz Attractor\",\n    scene = list(\n      xaxis = list(title = 'X'),\n      yaxis = list(title = 'Y'),\n      zaxis = list(title = 'Z')\n    )\n  )\nfig\n\n\n\n\n\n時間まで含めた色変化も可能です。\n\nfig &lt;- plot_ly(\n  data = out,\n  x = ~x,\n  y = ~y,\n  z = ~z,\n  color = ~time,\n  colors = colorRamp(c(\"blue\", \"red\")),\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig\n\n\n\n\n\nまた、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。\n\nidx &lt;- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き\nout2 &lt;- out[idx, ]\n\nfig &lt;- plot_ly() %&gt;%\n  # 静的な軌跡（線）\n  add_trace(\n    data = out,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    type = \"scatter3d\",\n    mode = \"lines\",\n    line = list(color = \"gray\")\n  ) %&gt;%\n  # 動く点\n  add_trace(\n    data = out2,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    frame = ~time,\n    type = \"scatter3d\",\n    mode = \"markers\",\n    marker = list(size = 3, color = \"#FF4B00\")\n  ) %&gt;%\n  animation_opts(\n    frame = 50, # 1フレームの表示時間（ms）\n    transition = 0 # 補間アニメーションを切ることで軽量化する\n  )\n\nfig"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
+    "title": "RでLorenz attractorを描く",
+    "section": "参考になるページ",
+    "text": "参考になるページ\n\nLorenz system - Wikipedia\nCRAN: Package deSolve\nPlotly r graphing library in R"
   },
   {
     "objectID": "posts/2026-01-30-quarto-data-format/index.html",
