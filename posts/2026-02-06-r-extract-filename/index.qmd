@@ -31,7 +31,6 @@ library(tools)
 file_path <- "/path/to/your/file/data.csv"
 file_name_no_ext <- file_path_sans_ext(basename(file_path))
 print(file_name_no_ext)
-test
 ```
 
 これにより、拡張子を除いたファイル名が取得できます。
