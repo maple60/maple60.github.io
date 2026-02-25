@@ -2,10 +2,14 @@
 title: "Quartoを用いた解析プロジェクト管理について"
 description: "QuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。"
 date: "2026-02-11"
-date-modified: "2026-02-11"
+date-modified: "2026-02-25"
 draft: false
 categories: [quarto]
 ---
+
+::: {.callout-warning}
+この記事は書きかけの状態で公開しています。時間があるときに更新します。
+:::
 
 [Quarto](https://quarto.org/)は、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。
 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。
