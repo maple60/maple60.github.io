@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="dcterms.date" content="2026-01-28">
 <meta name="description" content="code-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです">
-
 <title>Quartoのコードブロック内の関数にドキュメントリンクをつける方法 – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3e9517d07d62cb8b1aa03a3148474486.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3e9517d07d62cb8b1aa03a3148474486.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,16 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
@@ -126,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -135,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -144,28 +134,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#使用例" id="toc-使用例" class="nav-link active" data-scroll-target="#使用例">使用例</a></li>
-  <li><a href="#注意点" id="toc-注意点" class="nav-link" data-scroll-target="#注意点">注意点</a></li>
-  <li><a href="#参考" id="toc-参考" class="nav-link" data-scroll-target="#参考">参考</a></li>
-  </ul>
-</nav>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B" id="toc-使用例" class="nav-link active" data-scroll-target="#%E4%BD%BF%E7%94%A8%E4%BE%8B">使用例</a></li>
+  <li><a href="#%E6%B3%A8%E6%84%8F%E7%82%B9" id="toc-注意点" class="nav-link" data-scroll-target="#%E6%B3%A8%E6%84%8F%E7%82%B9">注意点</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83" id="toc-参考" class="nav-link" data-scroll-target="#%E5%8F%82%E8%80%83">参考</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Quartoのコードブロック内の関数にドキュメントリンクをつける方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
@@ -200,10 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<p>Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 <code>code-link</code>オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。</p>
+</header><p>Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 <code>code-link</code>オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。</p>
 <p><code>_quarto.yml</code>ファイルに以下のように設定を追加します。</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -214,28 +193,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-link</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>これにより、HTML出力時にコードブロック内の関数名がリンク付きで表示されるようになります。</p>
-<section id="使用例" class="level2">
-<h2 class="anchored" data-anchor-id="使用例">使用例</h2>
+<section id="使用例" class="level2"><h2 class="anchored" data-anchor-id="使用例">使用例</h2>
 <p>インラインコードやコードブロック内で関数を使用すると、リンクが自動的に追加されます。例えば、以下のようにRコードブロックを記述します。</p>
 <ul>
-<li>例文： このように<code>unique()</code>関数を使用すると、ベクトルの重複を取り除くことができます。</li>
+<li>例文： このように<code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>関数を使用すると、ベクトルの重複を取り除くことができます。</li>
 </ul>
 <p>また、コードブロック内でも同様にリンクが追加されます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"banana"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>unique_x <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(unique_x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"banana"</span><span class="op">)</span></span>
+<span><span class="va">unique_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">unique_x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"  "banana" "orange"</code></pre>
 </div>
 </div>
-<p>それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、<code>c()</code>、<code>unique()</code>、<code>print()</code>関数にリンクが追加されているのではないでしょうか。</p>
-</section>
-<section id="注意点" class="level2">
-<h2 class="anchored" data-anchor-id="注意点">注意点</h2>
+<p>それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、<code><a href="https://rdrr.io/r/base/c.html">c()</a></code>、<code><a href="https://rdrr.io/r/base/unique.html">unique()</a></code>、<code><a href="https://rdrr.io/r/base/print.html">print()</a></code>関数にリンクが追加されているのではないでしょうか。</p>
+</section><section id="注意点" class="level2"><h2 class="anchored" data-anchor-id="注意点">注意点</h2>
 <ul>
-<li><code>code-link</code>オプションは<a href="https://yihui.org/knitr/">knitr</a>エンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部で<a href="https://downlit.r-lib.org/">downlit</a>パッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。</li>
-<li><code>code-line-numbers</code>オプションや<code>code-annotations</code>オプションとは併用ができないようです。これらのオプションを有効にしている場合、<code>code-link</code>オプションは無視されます。</li>
+<li>
+<code>code-link</code>オプションは<a href="https://yihui.org/knitr/">knitr</a>エンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部で<a href="https://downlit.r-lib.org/">downlit</a>パッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。</li>
+<li>
+<code>code-line-numbers</code>オプションや<code>code-annotations</code>オプションとは併用ができないようです。これらのオプションを有効にしている場合、<code>code-link</code>オプションは無視されます。</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -251,9 +229,7 @@ Tip
 <p><code>code-annotations</code>オプションは、コードブロックに注釈を追加するためのオプションです。</p>
 </div>
 </div>
-</section>
-<section id="参考" class="level2">
-<h2 class="anchored" data-anchor-id="参考">参考</h2>
+</section><section id="参考" class="level2"><h2 class="anchored" data-anchor-id="参考">参考</h2>
 <ul>
 <li><a href="https://yihui.org/knitr/">knitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie | 谢益辉</a></li>
 <li><a href="https://cran.r-project.org/web/packages/knitr/index.html">CRAN: Package knitr</a></li>
@@ -262,10 +238,7 @@ Tip
 </ul>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -666,8 +639,7 @@ Tip
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><a href="https://maple60.github.io">Maple60’s Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
 </div>   
@@ -676,18 +648,16 @@ Tip
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/maple60">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

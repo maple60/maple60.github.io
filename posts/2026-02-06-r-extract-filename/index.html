@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="dcterms.date" content="2026-02-06">
 <meta name="description" content="basename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。">
-
 <title>Rでファイル名を抽出する方法 – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3e9517d07d62cb8b1aa03a3148474486.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3e9517d07d62cb8b1aa03a3148474486.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,16 +100,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
@@ -126,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -135,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -144,28 +134,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ファイル名の抽出" id="toc-ファイル名の抽出" class="nav-link active" data-scroll-target="#ファイル名の抽出">ファイル名の抽出</a></li>
-  <li><a href="#拡張子を除いたファイル名の抽出" id="toc-拡張子を除いたファイル名の抽出" class="nav-link" data-scroll-target="#拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</a></li>
-  <li><a href="#使用例" id="toc-使用例" class="nav-link" data-scroll-target="#使用例">使用例</a></li>
-  </ul>
-</nav>
+<li><a href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AE%E6%8A%BD%E5%87%BA" id="toc-ファイル名の抽出" class="nav-link active" data-scroll-target="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AE%E6%8A%BD%E5%87%BA">ファイル名の抽出</a></li>
+  <li><a href="#%E6%8B%A1%E5%BC%B5%E5%AD%90%E3%82%92%E9%99%A4%E3%81%84%E3%81%9F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AE%E6%8A%BD%E5%87%BA" id="toc-拡張子を除いたファイル名の抽出" class="nav-link" data-scroll-target="#%E6%8B%A1%E5%BC%B5%E5%AD%90%E3%82%92%E9%99%A4%E3%81%84%E3%81%9F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%E3%81%AE%E6%8A%BD%E5%87%BA">拡張子を除いたファイル名の抽出</a></li>
+  <li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B" id="toc-使用例" class="nav-link" data-scroll-target="#%E4%BD%BF%E7%94%A8%E4%BE%8B">使用例</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Rでファイル名を抽出する方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
@@ -200,31 +182,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code>basename()</code>や<code>tools::file_path_sans_ext()</code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
-<section id="ファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="ファイル名の抽出">ファイル名の抽出</h2>
-<p>ファイルパスからファイル名を抽出するには、<code>basename()</code>関数を使用します。</p>
+</header><p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code>や<code><a href="https://rdrr.io/r/tools/fileutils.html">tools::file_path_sans_ext()</a></code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
+<section id="ファイル名の抽出" class="level2"><h2 class="anchored" data-anchor-id="ファイル名の抽出">ファイル名の抽出</h2>
+<p>ファイルパスからファイル名を抽出するには、<code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code>関数を使用します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_path)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">file_path</span> <span class="op">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
+<span><span class="va">file_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span><span class="op">(</span><span class="va">file_path</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">file_name</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.csv"</code></pre>
 </div>
 </div>
 <p>ディレクトリパスを含むファイルパスから、ファイル名だけが抽出されました。</p>
-</section>
-<section id="拡張子を除いたファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</h2>
-<p>拡張子を除いたファイル名を取得するには、<code>tools</code>パッケージの<code>file_path_sans_ext()</code>関数を使用します。</p>
+</section><section id="拡張子を除いたファイル名の抽出" class="level2"><h2 class="anchored" data-anchor-id="拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</h2>
+<p>拡張子を除いたファイル名を取得するには、<code>tools</code>パッケージの<code><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext()</a></code>関数を使用します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>file_name_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(file_path))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name_no_ext)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tools</span><span class="op">)</span></span>
+<span><span class="va">file_path</span> <span class="op">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
+<span><span class="va">file_name_no_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span><span class="op">(</span><span class="va">file_path</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">file_name_no_ext</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data"</code></pre>
 </div>
@@ -236,27 +212,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><code>file_path_sans_ext()</code>の名前について
+<span class="screen-reader-only">Note</span><code><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext()</a></code>の名前について
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 <code>sans</code>はフランス語で「〜なし」を意味します。 英語の<code>without</code>に相当します。 また、<code>ext</code>は「拡張子(extension)」の略です。 したがって、<code>file_path_sans_ext()</code>は「拡張子なしのファイルパス」を意味しています。</p>
+<p>少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 <code>sans</code>はフランス語で「〜なし」を意味します。 英語の<code>without</code>に相当します。 また、<code>ext</code>は「拡張子(extension)」の略です。 したがって、<code><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext()</a></code>は「拡張子なしのファイルパス」を意味しています。</p>
 </div>
 </div>
-</section>
-<section id="使用例" class="level2">
-<h2 class="anchored" data-anchor-id="使用例">使用例</h2>
+</section><section id="使用例" class="level2"><h2 class="anchored" data-anchor-id="使用例">使用例</h2>
 <p>データと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>file_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data1.csv"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data2.csv"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data3.csv"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_paths)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>file_names_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(file_names)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>), <span class="at">file_name =</span> file_names_no_ext)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">file_paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"/path/to/your/file/data1.csv"</span>,</span>
+<span>  <span class="st">"/path/to/your/file/data2.csv"</span>,</span>
+<span>  <span class="st">"/path/to/your/file/data3.csv"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">file_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html">basename</a></span><span class="op">(</span><span class="va">file_paths</span><span class="op">)</span></span>
+<span><span class="va">file_names_no_ext</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/tools/fileutils.html">file_path_sans_ext</a></span><span class="op">(</span><span class="va">file_names</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, file_name <span class="op">=</span> <span class="va">file_names_no_ext</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  value file_name
 1    10     data1
@@ -267,10 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>このようにして、ファイル名をデータフレームに含めることができます。</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -671,8 +642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><a href="https://maple60.github.io">Maple60’s Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
 </div>   
@@ -681,18 +651,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/maple60">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>
