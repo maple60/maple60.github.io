@@ -3,7 +3,7 @@ title: "GitHub Actionsとrenvを使ってr-universeのパッケージを利用�
 description: "GitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。"
 date: "2026-02-24"
 date-modified: "2026-02-24"
-draft: true
+draft: false
 categories: [github, r]
 ---
 
