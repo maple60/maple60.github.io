@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-06">
-<meta name="description" content="basename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。">
+<meta name="dcterms.date" content="2026-02-25">
+<meta name="description" content="adjustcolor()やrgb()を使い、Rのプロットで色に透明度を指定する方法についてまとめます。">
 
-<title>Rでファイル名を抽出する方法 – Maple60’s website</title>
+<title>Rのプロットで色に透明度を指定する方法 – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,9 +155,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ファイル名の抽出" id="toc-ファイル名の抽出" class="nav-link active" data-scroll-target="#ファイル名の抽出">ファイル名の抽出</a></li>
-  <li><a href="#拡張子を除いたファイル名の抽出" id="toc-拡張子を除いたファイル名の抽出" class="nav-link" data-scroll-target="#拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</a></li>
-  <li><a href="#使用例" id="toc-使用例" class="nav-link" data-scroll-target="#使用例">使用例</a></li>
+  <li><a href="#進数のカラーコードの後ろに透明度を指定する方法" id="toc-進数のカラーコードの後ろに透明度を指定する方法" class="nav-link active" data-scroll-target="#進数のカラーコードの後ろに透明度を指定する方法">16進数のカラーコードの後ろに透明度を指定する方法</a></li>
+  <li><a href="#adjustcolorを使う方法" id="toc-adjustcolorを使う方法" class="nav-link" data-scroll-target="#adjustcolorを使う方法"><code>adjustcolor()</code>を使う方法</a></li>
+  <li><a href="#rgbを使う方法" id="toc-rgbを使う方法" class="nav-link" data-scroll-target="#rgbを使う方法"><code>rgb()</code>を使う方法</a></li>
+  <li><a href="#個人的な好み" id="toc-個人的な好み" class="nav-link" data-scroll-target="#個人的な好み">個人的な好み</a></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Rでファイル名を抽出する方法</h1>
+<h1 class="title">Rのプロットで色に透明度を指定する方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
   </div>
@@ -174,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    basename(), <code>file.path_sans_ext()</code>を使ってRでファイル名を抽出する方法についてまとめます。
+    <code>adjustcolor()</code>や<code>rgb()</code>を使い、Rのプロットで色に透明度を指定する方法についてまとめます。
   </div>
 </div>
 
@@ -185,14 +186,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-02-06</p>
+      <p class="date">2026-02-25</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-02-06</p>
+      <p class="date-modified">2026-02-25</p>
     </div>
   </div>
     
@@ -203,68 +204,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code>basename()</code>や<code>tools::file_path_sans_ext()</code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
-<section id="ファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="ファイル名の抽出">ファイル名の抽出</h2>
-<p>ファイルパスからファイル名を抽出するには、<code>basename()</code>関数を使用します。</p>
+<p>Rのプロットで、色に透明度を指定する方法についてまとめます。 例えば、散布図を描くときに、点が重なっている部分がわかりづらいことがあります。 例えば、以下のような散布図を描いたとします。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_path)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data.csv"</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>ディレクトリパスを含むファイルパスから、ファイル名だけが抽出されました。</p>
-</section>
-<section id="拡張子を除いたファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</h2>
-<p>拡張子を除いたファイル名を取得するには、<code>tools</code>パッケージの<code>file_path_sans_ext()</code>関数を使用します。</p>
+</div>
+<p>塗りつぶしをすると、なおさら点が重なっている部分がわかりづらくなります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>file_name_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(file_path))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name_no_ext)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data"</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>これにより、拡張子を除いたファイル名が取得できます。</p>
+</div>
+<p>このように点が重なっている部分が多い場合、点の色に透明度を指定することで、重なっている部分がわかりやすくなります。 Rでは主に以下の方法で、色に透明度を指定することができます。</p>
+<ul>
+<li>16進数のカラーコードの後ろに透明度を指定する方法</li>
+<li><code>adjustcolor()</code>を使う方法</li>
+<li><code>rgb()</code>を使う方法</li>
+</ul>
+<section id="進数のカラーコードの後ろに透明度を指定する方法" class="level2">
+<h2 class="anchored" data-anchor-id="進数のカラーコードの後ろに透明度を指定する方法">16進数のカラーコードの後ろに透明度を指定する方法</h2>
+<p>Rでは、16進数のカラーコードの後ろに透明度を指定することができます。 例えば、<code>#RRGGBBAA</code>の形式で、<code>AA</code>の部分に透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><code>file_path_sans_ext()</code>の名前について
+<span class="screen-reader-only">Note</span>カラーコード
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 <code>sans</code>はフランス語で「〜なし」を意味します。 英語の<code>without</code>に相当します。 また、<code>ext</code>は「拡張子(extension)」の略です。 したがって、<code>file_path_sans_ext()</code>は「拡張子なしのファイルパス」を意味しています。</p>
+<p>カラーコードは、色を表すためのコードで、通常は<code>#RRGGBB</code>の形式で表されます。</p>
+<ul>
+<li><code>RR</code>は赤の値を16進数で表したもの（00からFFまで）</li>
+<li><code>GG</code>は緑の値を16進数で表したもの（00からFFまで）</li>
+<li><code>BB</code>は青の値を16進数で表したもの（00からFFまで）</li>
+</ul>
+<p>例えば、<code>#0000FF</code>は青を表すカラーコードです。</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0000FF80"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="使用例" class="level2">
-<h2 class="anchored" data-anchor-id="使用例">使用例</h2>
-<p>データと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。</p>
+<section id="adjustcolorを使う方法" class="level2">
+<h2 class="anchored" data-anchor-id="adjustcolorを使う方法"><code>adjustcolor()</code>を使う方法</h2>
+<p><code>adjustcolor()</code>は、既存の色を微調整するための関数です。 <code>alpha.f</code>引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>file_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data1.csv"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data2.csv"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data3.csv"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_paths)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>file_names_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(file_names)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>), <span class="at">file_name =</span> file_names_no_ext)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  value file_name
-1    10     data1
-2    20     data2
-3    30     data3</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"blue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>このようにして、ファイル名をデータフレームに含めることができます。</p>
+</div>
+<p>このようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、このほうであれば、色の名前を直接指定できるため、カラーコードを覚える必要がありません。 一つの色を複数の透明度で使いたい場合などは、<code>adjustcolor()</code>を使う方法が便利です。 例えば、以下のようにして、点や線の色に異なる透明度を指定することができます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"blue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.9</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 95%信頼区間を描く</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ord <span class="ot">&lt;-</span> <span class="fu">order</span>(x)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x_sorted <span class="ot">&lt;-</span> x[ord]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>conf <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>conf_sorted <span class="ot">&lt;-</span> conf[ord, ]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(x_sorted, <span class="fu">rev</span>(x_sorted)),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(conf_sorted[, <span class="dv">2</span>], <span class="fu">rev</span>(conf_sorted[, <span class="dv">3</span>])),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"blue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.5</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="cn">NA</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 回帰線を描く</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model, <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"blue"</span>, <span class="at">alpha.f =</span> <span class="fl">0.8</span>), <span class="at">lwd =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="rgbを使う方法" class="level2">
+<h2 class="anchored" data-anchor-id="rgbを使う方法"><code>rgb()</code>を使う方法</h2>
+<p><code>rgb()</code>は、赤、緑、青の値を指定して色を作成する関数です。 <code>alpha</code>引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>このようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、この方法では、赤、緑、青の値を直接指定できるため、細かい色の調整が可能です。 注意点としては、各色の値は0から1の範囲で指定する必要があることです。</p>
+</section>
+<section id="個人的な好み" class="level2">
+<h2 class="anchored" data-anchor-id="個人的な好み">個人的な好み</h2>
+<p>個人的には、<code>adjustcolor()</code>を使う方法が便利で、よく使用しています。 その次に直接カラーコードを指定する方法を使用することが多いです。 <code>rgb()</code> はほとんど使用したことがありません。</p>
+<p><code>adjustcolor()</code>を使う場合は、既存の色名を直接指定できるのがとても便利だと思っております。 色名だけでなく、デフォルトカラーのインデックスを指定することもできます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="dv">2</span>, <span class="at">alpha.f =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>覚えておくと便利です。</p>
 
 
 </section>

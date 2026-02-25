@@ -1,0 +1,178 @@
+---
+title: "Quartoでウェブサイトを作成する方法"
+description: "QuartoのインストールからGitHub Pagesでの公開まで、Quartoでウェブサイトを作成する方法についてまとめます。"
+date: "2026-02-07"
+date-modified: "2026-02-07"
+draft: true
+categories: [quarto]
+---
+
+[Quarto](https://quarto.org/)は、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。
+ここでは、QuartoのインストールからGitHub Pagesでの公開まで、Quartoでウェブサイトを作成する方法についてまとめます。
+
+大体は[公式ドキュメント](https://quarto.org/)に従っていますが、一部補足や注意点を加えています。
+
+## Quartoについて
+
+### 概要
+
+簡単にまとめると、RやPythonで書いたコードを含むドキュメントを、HTMLやPDF、Wordなどの形式で出力できるツールです。
+特に、[R Markdown](https://rmarkdown.rstudio.com/)の後継として位置付けられており、Rユーザーにとっては馴染みやすいです。
+QuartoはRStudioやVSCodeなどの統合開発環境(IDE)とも連携しており、使いやすいです。
+
+### R Markdownとの違い
+
+R MarkdownとQuartoは似ていますが、Quartoはより柔軟で強力な機能を提供しています。
+
+[FAQ for R Markdown Users – Quarto](https://quarto.org/docs/faq/rmarkdown.html)を参考に、自分なりにまとめます。
+
+#### 統一されたドキュメント作成システム
+
+もともと、Rコードを含んだマークダウンファイルを扱える、R Markdownというものがありました。
+また、これを用いてウェブサイトを作成する[`blogdown`](https://pkgs.rstudio.com/blogdown/)や[`distill`](https://rstudio.github.io/distill/figures.html)、本を作成する[`bookdown`](https://pkgs.rstudio.com/bookdown/)などのパッケージもありました。
+このように、R Markdownを用いて多様なドキュメントを作成するシステムが分散していた現状を、Quartoにより統一することが目的の一つです。
+
+#### R言語以外のプログラミング言語への対応
+
+R言語以外への対応も大きな特徴です。
+R Markdownはその名の通り、R言語に特化していましたが、QuartoはPythonやJuliaなど、他の言語もサポートしています。
+これにより、異なる言語を使うユーザーもQuartoを利用できるようになり、複数の言語を扱う人にとっても、Quarto一つで複数の言語を扱ったドキュメントを作成できるようになりました。
+
+::: {.callout-note}
+筆者もRとPythonを併用しているため、Quartoのこの特徴は非常に魅力的でした。
+私がQuartoに乗り換えることを決めたのも、この点が大きいです。
+:::
+
+#### R Markdownの今後について
+
+QuartoによりR Markdownの機能が統合された形になりますが、R Markdown自体が廃止されるわけではありません。
+R Markdownはすでに多くのユーザーが使用しており、これらのドキュメントがなくなったり、新しく作成することができなくなることはありません。
+
+しかし、新しい機能を拡大するのはQuartoに集中する方針のようです。
+これらの点については、Yihui Xie氏の[With Quarto Coming, is R Markdown Going Away? No.](https://yihui.org/en/2022/04/quarto-r-markdown/) をご覧ください。
+
+::: {.callout-note}
+Yihui Xie氏は2023年までRStudio/Positで働いており、R Markdownの主要な開発者の一人です。
+:::
+
+#### Quartoの学習コスト
+
+QuartoはR Markdownと書き方がとても似ており、ほとんどの場合、R Markdownの知識をそのまま活かすことができます。
+Quarto特有の機能もありますが、基本的な使い方はR Markdownと同じです。
+このため、R Markdownに慣れている人にとっては、Quartoの学習コストは低いです。
+
+また、現在R Markdownを使用している方が無理にQuartoに乗り換える必要はありません(これは公式ドキュメントでも強調されています)。
+しかし、新しいプロジェクトを始める際には、Quartoを検討する価値があります。
+
+::: {.callout-note}
+筆者もQuartoが出始めたころ、R Markdownを使用していました。
+しばらくはR Markdownを使いながら、少しずつQuartoを試していきました。
+最近は新しいプロジェクトではQuartoを使うようにしています。
+:::
+
+### Quartoについてのまとめ
+
+- R Markdownの後継
+- R Markdownでは分散していたドキュメント作成システムを統一
+- RやPythonなど、複数のプログラミング言語に対応
+- 無理してR Markdown移行する必要はないが、学習コストはそこまで高くない
+
+## Quartoのインストール
+
+[Get Started – Quarto](https://quarto.org/docs/get-started/) に従ってインストールします。
+
+Quartoはスタンドアロンのアプリケーションとして提供されており、RやPythonとは独立しています。
+先ほどのリンクから、自身のOSに対応するQuarto CLIをダウンロードしてインストールします。
+
+::: {.callout-note}
+## CLIとは
+
+CLIはCommand Line Interfaceの略で、コマンドラインインターフェースを意味します。
+簡単に言うと、ターミナルやコマンドプロンプトのような黒い画面にコマンドを入力して実行する方法です。
+
+対義語はGUI(Graphical User Interface)で、こちらはマウスやキーボードを使って視覚的に操作する方法です。
+QuartoはCLIとして提供されていますが、複雑なコマンドを覚える必要はなく、GUIでも大体の操作ができます。
+:::
+
+## エディタでQuartoを使う
+
+QuartoはRStudioやVSCodeなどの統合開発環境(IDE)と連携して使用できます。
+公式ドキュメントでは以下のツールについての説明が用意されています。
+
+- Positron
+- Visual Studio Code (VSCode)
+- Jupyter
+- RStudio
+- Neovim
+- Text Editor
+
+筆者はPositronを主に使用しています。
+ここでは、PositronとRStudioについてまとめます。
+
+### PositronでQuartoを使う
+
+#### Positronとは
+
+Positronは、Posit社が提供する無料のIDEで、Quartoとの連携が強化されています。
+[Visual Studio Code](https://code.visualstudio.com/)のオープンソース版である[Code - OSS](https://github.com/microsoft/vscode)をベースにして、RとPythonに特化した機能が追加されています。
+
+RStudioの後継のような立ち位置ではありますが、完全にとってかわるものではありません。
+
+Rstudioとの違いなど、詳しくは以下の公式のドキュメントをご覧ください。
+
+- [Frequently Asked Questions – Positron](https://positron.posit.co/faqs.html#how-is-positron-different-from-rstudio-vs-code-or-jupyter-notebooks)
+
+#### qmdファイルの作成
+
+新しいファイルを作成し、適当な名前で保存します。
+この時、拡張子を`.qmd`にします。
+例えば、`test.qmd`などです。
+
+#### Quartoドキュメントの作成
+
+作成したqmdファイルを開き、以下のように記述します。
+
+```{.r filename="test.qmd"}
+---
+title: "My First Quarto Document"
+format: html
+---
+
+# 見出し1
+
+## 見出し2
+
+### 見出し3
+
+This is my first Quarto document.
+日本語も書けます。
+
+## コード
+
+コードブロックは以下のように書きます。
+
+```{r}
+#| label: example
+plot(iris[, 1:2], col = iris$Species)
+```
+
+## 箇条書き
+
+- アイテム1
+- アイテム2
+- アイテム3
+
+```
+
+適当な内容を書いたら、左上の「Preview」ボタンをクリックします。
+
+::: {.callout-note}
+Previewのショートカットキーは`Ctrl+Shift+K`(Windows/Linux)または`Cmd+Shift+K`(Mac)です。
+:::
+
+
+
+
+## 参考
+
+- [Quarto](https://quarto.org/)

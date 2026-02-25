@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-06">
-<meta name="description" content="basename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。">
+<meta name="dcterms.date" content="2026-02-11">
+<meta name="description" content="QuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。">
 
-<title>Rでファイル名を抽出する方法 – Maple60’s website</title>
+<title>Quartoを用いた解析プロジェクト管理について – Maple60’s website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -155,9 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ファイル名の抽出" id="toc-ファイル名の抽出" class="nav-link active" data-scroll-target="#ファイル名の抽出">ファイル名の抽出</a></li>
-  <li><a href="#拡張子を除いたファイル名の抽出" id="toc-拡張子を除いたファイル名の抽出" class="nav-link" data-scroll-target="#拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</a></li>
-  <li><a href="#使用例" id="toc-使用例" class="nav-link" data-scroll-target="#使用例">使用例</a></li>
+  <li><a href="#解析における課題" id="toc-解析における課題" class="nav-link active" data-scroll-target="#解析における課題">解析における課題</a></li>
+  <li><a href="#quartoのbook形式とは" id="toc-quartoのbook形式とは" class="nav-link" data-scroll-target="#quartoのbook形式とは">QuartoのBook形式とは</a></li>
+  <li><a href="#既存の解析プロジェクトの構成例" id="toc-既存の解析プロジェクトの構成例" class="nav-link" data-scroll-target="#既存の解析プロジェクトの構成例">既存の解析プロジェクトの構成例</a></li>
+  <li><a href="#quarto-bookの作成" id="toc-quarto-bookの作成" class="nav-link" data-scroll-target="#quarto-bookの作成">Quarto Bookの作成</a></li>
   </ul>
 </nav>
     </div>
@@ -166,15 +132,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Rでファイル名を抽出する方法</h1>
+<h1 class="title">Quartoを用いた解析プロジェクト管理について</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">r</div>
+    <div class="quarto-category">quarto</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    basename(), <code>file.path_sans_ext()</code>を使ってRでファイル名を抽出する方法についてまとめます。
+    QuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。
   </div>
 </div>
 
@@ -185,14 +151,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-02-06</p>
+      <p class="date">2026-02-11</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-02-06</p>
+      <p class="date-modified">2026-02-11</p>
     </div>
   </div>
     
@@ -203,68 +169,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code>basename()</code>や<code>tools::file_path_sans_ext()</code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
-<section id="ファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="ファイル名の抽出">ファイル名の抽出</h2>
-<p>ファイルパスからファイル名を抽出するには、<code>basename()</code>関数を使用します。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_path)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data.csv"</code></pre>
-</div>
-</div>
-<p>ディレクトリパスを含むファイルパスから、ファイル名だけが抽出されました。</p>
-</section>
-<section id="拡張子を除いたファイル名の抽出" class="level2">
-<h2 class="anchored" data-anchor-id="拡張子を除いたファイル名の抽出">拡張子を除いたファイル名の抽出</h2>
-<p>拡張子を除いたファイル名を取得するには、<code>tools</code>パッケージの<code>file_path_sans_ext()</code>関数を使用します。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tools)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">"/path/to/your/file/data.csv"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>file_name_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(file_path))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(file_name_no_ext)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data"</code></pre>
-</div>
-</div>
-<p>これにより、拡張子を除いたファイル名が取得できます。</p>
+<p><a href="https://quarto.org/">Quarto</a>は、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。 これを使って、解析に順番のあるプロジェクトを管理できるのではないかと思いついたので、メモとして残します。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><code>file_path_sans_ext()</code>の名前について
+<span class="screen-reader-only">Note</span>前提条件
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 <code>sans</code>はフランス語で「〜なし」を意味します。 英語の<code>without</code>に相当します。 また、<code>ext</code>は「拡張子(extension)」の略です。 したがって、<code>file_path_sans_ext()</code>は「拡張子なしのファイルパス」を意味しています。</p>
+<ul>
+<li>ここでは、<strong>qmdファイルでRコードを実行する</strong>ことを前提としています。<br>
+</li>
+<li>Quartoの基本的な使い方についてもできるだけ触れますが、詳細は<a href="https://quarto.org/">公式ドキュメント</a>をご覧ください。<br>
+</li>
+</ul>
 </div>
 </div>
+<section id="解析における課題" class="level2">
+<h2 class="anchored" data-anchor-id="解析における課題">解析における課題</h2>
+<p>多くの解析プロジェクトでは、複数のステップが順番に実行されます。 例えば、データの前処理、解析、可視化、レポート作成などです。</p>
+<p>この時、処理ごとにスクリプトを分けて管理することが一般的です。 しかし、スクリプトが増えると、どの順番で実行すればよいのか分かりづらくなります。</p>
+<p>これまで、私は<code>00_data_preprocessing.R</code>、<code>01_analysis.R</code>、<code>02_visualization.R</code>のように、ファイル名に番号を振って順番を管理してきました。 しかし、ファイルが増えると番号の管理が煩雑になり、ミスが起こりやすくなります。 例えば、新しい解析を追加したとき、順番が変わった場合、ファイル名の番号をすべて変更する必要があります。</p>
+<p>また、一つのqmdファイル内でも、コードセルごとに実行ができるため、いざ上から順番に実行したときに、変数が存在しないなどのエラーが発生することもあります。 例えば、前処理のコードセルを実行せずに解析のコードセルを実行すると、必要なデータが存在しないためエラーになります。</p>
+<p>これらの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理する方法を考えました。 まだ試している段階ですが、以下にその方法をまとめておきます。</p>
 </section>
-<section id="使用例" class="level2">
-<h2 class="anchored" data-anchor-id="使用例">使用例</h2>
-<p>データと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>file_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data1.csv"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data2.csv"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"/path/to/your/file/data3.csv"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">basename</span>(file_paths)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>file_names_no_ext <span class="ot">&lt;-</span> <span class="fu">file_path_sans_ext</span>(file_names)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>), <span class="at">file_name =</span> file_names_no_ext)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  value file_name
-1    10     data1
-2    20     data2
-3    30     data3</code></pre>
-</div>
-</div>
-<p>このようにして、ファイル名をデータフレームに含めることができます。</p>
+<section id="quartoのbook形式とは" class="level2">
+<h2 class="anchored" data-anchor-id="quartoのbook形式とは">QuartoのBook形式とは</h2>
+<p>QuartoのBook形式は、複数のqmdファイルをまとめて一つのドキュメントとして出力できる機能です。 例えば、Rの入門書として有名な<a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a>はQuartoのBook形式で作成されています。</p>
+<p>そのほかにも最近は多くのR関連の書籍がQuartoのBook形式で作成されています。 実際に<a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a>などを見ていただくと、実際の本のように、順番だってページが並び、途中途中にセクションがあることがわかります。</p>
+<p>順番に実行する必要のある解析コードについても、同じようにBook形式で管理できるのではないかと考えました。</p>
+</section>
+<section id="既存の解析プロジェクトの構成例" class="level2">
+<h2 class="anchored" data-anchor-id="既存の解析プロジェクトの構成例">既存の解析プロジェクトの構成例</h2>
+<p>今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。</p>
+<pre class="plaintext"><code>notebooks/
+├── 01_data_preprocessing_AA.qmd
+├── 02_data_preprocessing_BB.qmd
+├── 03_analysis_CC.qmd
+├── 04_analysis_DD.qmd
+├── 05_visualization_EE.qmd
+└── 06_visualization_FF.qmd</code></pre>
+<p>このように、各ステップごとにqmdファイルを分けて管理しています。 しかし、ある時、<code>02_data_preprocessing_BB</code>の前に新しい前処理ステップを追加したいとします。 この場合、ファイル名の番号をすべて変更する必要があり、非常に面倒です。</p>
+</section>
+<section id="quarto-bookの作成" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-bookの作成">Quarto Bookの作成</h2>
+<p>この課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理します。</p>
+<p><code>Ctrl+Shift+P</code>でコマンドパレットを開き、“Quarto: Create New Book Project”を選択します。 プロジェクト名を入力し、保存先フォルダを指定します。</p>
 
 
 </section>
