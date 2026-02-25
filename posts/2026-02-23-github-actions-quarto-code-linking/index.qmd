@@ -3,7 +3,7 @@ title: "QuartoのサイトをGitHub Actionsでビルドする際、code linking�
 description: "Quartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。"
 date: "2026-02-25"
 date-modified: "2026-02-25"
-draft: true
+draft: false
 categories: [quarto, github]
 ---
 
