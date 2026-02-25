@@ -1,0 +1,68 @@
+---
+title: "QuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法"
+description: "Quartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。"
+date: "2026-02-25"
+date-modified: "2026-02-25"
+draft: true
+categories: [quarto, github]
+---
+
+## 症状
+
+本サイトでは、Quartoを使ってサイトを構築しています。
+Quartoでは、code linkingという機能を使って、関数にドキュメントへのリンクを自動的に追加することができます。
+例えば、`plot()`関数をコードブロック内で使用すると、`plot()`関数のドキュメントへのリンクが自動的に追加されます。
+
+::: {.callout-note}
+Code linkingについては、以下の公式ドキュメントを参照してください。
+
+- [HTML Code Blocks – Quarto](https://quarto.org/docs/output-formats/html-code.html#code-linking)
+:::
+
+筆者はこの機能を利用してサイトを構築していましたが、GitHub Actionsでビルドすると、code linkingが正しく動作しない問題が発生しました。
+しかし、ローカル環境でのプレビューではcode linkingが正しく動作しており、GitHub Actionsでビルドしたときだけcode linkingが正しく動作しないことがわかりました。
+
+また、GitHub Actionsのビルドログを確認すると、以下のような警告が表示されていました。
+
+```bash
+Warning message:
+The downlit and xml2 packages are required for code linking 
+```
+
+## 対処法
+
+どうやら、GitHub Actionsの環境で、code linkingに必要な`downlit`と`xml2`のパッケージがインストールされていないことが原因でした。
+
+renvを利用してパッケージ管理をしていますが、renvがパッケージを管理する`renv.lock`ファイルの "Packages" の部分に、`downlit`と`xml2`のパッケージが含まれていませんでした。
+
+以下のコードを実行します。
+
+```r
+renv::install(c("downlit", "xml2"))
+renv::snapshot(type = "all")
+```
+
+これにより、`downlit`と`xml2`のパッケージがインストールされ、`renv.lock`ファイルにも追加されます。
+
+::: {.callout-note}
+## renv::snapshot(type = "all")について
+
+普段は`renv::snapshot()`を実行して、`renv.lock`ファイルを更新しますが、コード内で`libary()`で呼び出されない場合、`renv.lock`にはパッケージが追加されません。
+このため、`renv::snapshot(type = "all")`を実行して、インストールしたすべてのパッケージを`renv.lock`ファイルに追加する必要があります。
+
+もしそうでない場合は、明示的にこれらのパッケージをどこかで呼び出す必要があります。
+:::
+
+`renv.lock`ファイルを更新した後、コミットしてGitHubにプッシュします。
+GitHub Actionsでビルドしたときに、code linkingが正しく動作するようになりました。
+
+## 感想
+
+ローカルではcode linkingが動作するが、ビルドされたサイトでは動作していないことに気づくのに時間がかかりました。
+また、この解決も結構な時間がかかりました。
+
+解決の糸口は、GitHub Actionsのビルドログに表示されていた警告でした。
+この警告をもとに、code linkingに必要なパッケージがインストールされていないことがわかりました。
+このような問題が発生したときは、ビルドログを確認することが重要だと改めて感じました。
+
+意図しない挙動が起きたら、丁寧にログを確認することが大切ですね。
