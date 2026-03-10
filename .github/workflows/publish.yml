@@ -30,7 +30,7 @@ jobs:
             gdal-bin \
             libgdal-dev \
             libcurl4-openssl-dev \
-            libudunits2-dev\
+            libudunits2-dev \
             libpng-dev \
             libjpeg-dev \
             libtiff-dev \
@@ -38,6 +38,7 @@ jobs:
             libglpk-dev \
             libx11-dev \
             libxt-dev \
+            libmagick++-dev \
             pandoc
 
       - name: Install R Dependencies
