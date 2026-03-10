@@ -5,6 +5,7 @@ date: "2026-03-03"
 date-modified: "2026-03-03"
 draft: true
 categories: [r]
+eval: false
 ---
 
 ## 大津の二値化とは
