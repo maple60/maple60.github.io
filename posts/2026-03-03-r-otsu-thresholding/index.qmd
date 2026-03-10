@@ -1,0 +1,245 @@
+---
+title: "Rで大津の二値化を行う方法"
+description: "Rで大津の二値化を実装"
+date: "2026-03-03"
+date-modified: "2026-03-03"
+draft: true
+categories: [r]
+---
+
+## 大津の二値化とは
+
+大津の二値化は、画像処理において、グレースケール画像を二値化するための方法の一つです。
+この方法は、画像のヒストグラムを分析して、最適な閾値を自動的に決定することで、画像を二値化します。
+大津の二値化は、画像のコントラストが高い場合に特に効果的であり、背景と前景を明確に分けることができます。
+
+大津の二値化はシンプルでありながら、効果的な方法であるため、画像処理の分野で広く使用されています。
+
+::: {.callout-note}
+筆者が初めて大津の二値化について学んだとき、感動したことを覚えています。
+シンプルでありながら、効果的な方法で、美しいなと思いました。
+今もよく使う方法の一つです。
+:::
+
+## Rで大津の二値化を実装する方法
+
+今回二値化する画像は、以下のようなものを用意しました。
+
+![二値化する画像](bird.jpg)
+
+この画像は、私の家でかつて飼っていたセキセイインコの写真です。
+名前は愛子ちゃんです。
+とてもかわいいですね。
+
+[`imager`](https://dahtah.github.io/imager/)のような画像処理のパッケージを使うと、Rで大津の二値化を簡単に実装できます。
+しかし、今回は大津の二値化のアルゴリズムを理解するために、手動で実装してみたいと思います。
+
+### 画像の読み込み
+
+まずは画像を読み込みます。
+画像の読み込みを手動で実装するのは大変なので、二値化以外の部分には、[`magick`](https://docs.ropensci.org/magick/)パッケージを使います。
+
+::: {.callout-note}
+## `magick`について
+
+`magick`は、Rで画像処理を行うためのパッケージです。
+画像の読み込み、変換、編集など、様々な機能を提供しています。
+`magick`自体はもともとRの画像処理ライブラリではなく、CやC++で書かれたImageMagickという画像処理ライブラリのRバインディングです。
+:::
+
+```{r}
+#renv::install("magick") もしインストールされていなかったら
+library(magick)
+img <- image_read("posts/2026-03-03-r-otsu-thresholding/bird.jpg")
+```
+
+## グレースケール画像への変換
+
+`image_convert()`関数を使って、画像をグレースケールに変換します。
+
+```{r}
+img_gray <- image_convert(img, colorspace = "gray")
+plot(img_gray)
+```
+
+## ピクセル値の取得
+
+次に、グレースケール画像のピクセル値を取得します。
+併せて、画像の幅と高さも取得します。
+
+```{r}
+dat <- image_data(img_gray, channels = "gray") # ピクセル値を取得
+vals <- as.integer(dat) # ピクセル値を整数に変換
+
+# Image size
+img_width <- dim(dat)[2] # width
+img_height <- dim(dat)[3] # height
+```
+
+## ヒストグラムの作成
+
+ピクセル値の頻度をヒストグラムにまとめます。
+ピクセル値は0から255の範囲にあるため、256個のビンを用意します。
+
+```{r}
+h <- hist(vals, breaks = (-0.5):(255.5))
+```
+
+## 大津の二値化の実装
+
+大津の二値化のアルゴリズムを実装します。
+大津の二値化では、すべての可能な閾値について、クラス内分散とクラス間分散を計算し、クラス間分散が最大になる閾値を選択します。
+
+以下のコードは、閾値を0から255まで変化させながら、クラス内分散とクラス間分散を計算する例です。
+
+```{r}
+t <- 0 # 閾値の初期値
+p <- h$counts / sum(h$counts) # ピクセル値の確率分布
+L <- length(p) # ピクセル値の種類数
+idx0 <- if (t >= 0) 0:t else integer(0) # 画素値の添字（0基準）
+idx1 <- if (t + 1 <= L - 1) (t + 1):(L - 1) else integer(0)
+
+omega_0 <- sum(p[idx0 + 1]) # クラス0の確率
+omega_1 <- 1 - omega_0 # クラス1の確率
+
+mu_t <- sum((0:(L - 1)) * p) # 総平均
+
+# クラス平均（空クラスなら計算しない）
+mu_0 <- if (omega_0 > 0) sum(idx0 * p[idx0 + 1]) / omega_0 else 0
+mu_1 <- if (omega_1 > 0) sum(idx1 * p[idx1 + 1]) / omega_1 else 0
+
+# クラス内分散（空クラスは寄与0にする）
+var_0 <- if (omega_0 > 0) sum((idx0 - mu_0)^2 * p[idx0 + 1]) / omega_0 else 0
+var_1 <- if (omega_1 > 0) sum((idx1 - mu_1)^2 * p[idx1 + 1]) / omega_1 else 0
+var_w <- omega_0 * var_0 + omega_1 * var_1 # クラス内分散
+
+# クラス間分散（空クラスの項は0）
+term0 <- if (omega_0 > 0) omega_0 * (mu_0 - mu_t)^2 else 0
+term1 <- if (omega_1 > 0) omega_1 * (mu_1 - mu_t)^2 else 0
+var_b <- term0 + term1
+
+# 全体分散
+var_T <- sum(p * ((0:(L - 1)) - mu_t)^2)
+```
+
+```{r}
+list_otsu <- lapply(seq_along(h$counts), function(i) {
+  t <- i - 1 # 0..L-1
+  p <- h$counts / sum(h$counts)
+  L <- length(p)
+  idx0 <- if (t >= 0) 0:t else integer(0) # 画素値の添字（0基準）
+  idx1 <- if (t + 1 <= L - 1) (t + 1):(L - 1) else integer(0)
+
+  # p は1基準なので +1 して参照
+  omega_0 <- sum(p[idx0 + 1])
+  omega_1 <- 1 - omega_0
+
+  # 総平均
+  mu_t <- sum((0:(L - 1)) * p)
+
+  # クラス平均（空クラスなら計算しない）
+  mu_0 <- if (omega_0 > 0) sum(idx0 * p[idx0 + 1]) / omega_0 else 0
+  mu_1 <- if (omega_1 > 0) sum(idx1 * p[idx1 + 1]) / omega_1 else 0
+
+  # クラス内分散（空クラスは寄与0にする）
+  var_0 <- if (omega_0 > 0) sum((idx0 - mu_0)^2 * p[idx0 + 1]) / omega_0 else 0
+  var_1 <- if (omega_1 > 0) sum((idx1 - mu_1)^2 * p[idx1 + 1]) / omega_1 else 0
+  var_w <- omega_0 * var_0 + omega_1 * var_1
+
+  # クラス間分散（空クラスの項は0）
+  term0 <- if (omega_0 > 0) omega_0 * (mu_0 - mu_t)^2 else 0
+  term1 <- if (omega_1 > 0) omega_1 * (mu_1 - mu_t)^2 else 0
+  var_b <- term0 + term1
+
+  # 全体分散
+  var_T <- sum(p * ((0:(L - 1)) - mu_t)^2)
+
+  c(
+    t = t,
+    omega_0 = omega_0,
+    omega_1 = omega_1,
+    mu_0 = mu_0,
+    mu_1 = mu_1,
+    mu_t = mu_t,
+    var_0 = var_0,
+    var_1 = var_1,
+    var_w = var_w,
+    var_b = var_b,
+    var_T = var_T
+  )
+})
+df_otsu <- as.data.frame(do.call(rbind, list_otsu))
+```
+
+## 最適な閾値の選択
+
+```{r}
+save_dir <- "data/intermediate/histogram"
+if (!dir.exists(save_dir)) {
+  dir.create(save_dir, recursive = TRUE)
+}
+ymax <- max(h$counts) * 1.1
+lapply(seq_along(df_otsu$t), function(i) {
+  t <- df_otsu$t[i]
+  save_path <- paste0(save_dir, "/", sprintf("%03d", t), ".png")
+  png(save_path, width = 480 * 3, height = 480 * 3, res = 72 * 3)
+  par(mar = c(2, 4, 0, 0))
+  plot(
+    NA,
+    xlim = range(h$breaks),
+    ylim = c(0, ymax),
+    xaxt = "n",
+    yaxt = "n",
+    xlab = "",
+    ylab = "",
+    xaxs = "i",
+    yaxs = "i"
+  )
+  axis(1, at = seq(0, 255, by = 15), cex.axis = 1.5, mgp = c(3, 1, 0)) # x axis
+  axis(2, las = 2, cex.axis = 1.5, mgp = c(3, 0.5, 0))
+  rect(
+    par("usr")[1],
+    par("usr")[3],
+    t,
+    par("usr")[4],
+    col = "black",
+    border = NA
+  ) # left = black
+  rect(
+    t,
+    par("usr")[3],
+    par("usr")[2],
+    par("usr")[4],
+    col = "white",
+    border = NA
+  ) # left = black
+
+  # class 1
+  for (j in 1:(t + 1)) {
+    rect(
+      h$mids[j] - 0.5,
+      par("usr")[3],
+      h$mids[j] + 0.5,
+      h$counts[j],
+      col = "white",
+      border = NA
+    )
+  }
+  # class 2
+  for (k in (t + 2):length(df_otsu$t)) {
+    rect(
+      h$mids[k] - 0.5,
+      par("usr")[3],
+      h$mids[k] + 0.5,
+      h$counts[k],
+      col = "black",
+      border = NA
+    )
+  }
+  abline(v = t, col = adjustcolor(7, alpha.f = 0.7), lwd = 3)
+  abline(v = df_otsu$mu_0[i], col = adjustcolor(6, alpha.f = 0.7), lwd = 3)
+  abline(v = df_otsu$mu_1[i], col = adjustcolor(4, alpha.f = 0.7), lwd = 3)
+  abline(v = df_otsu$mu_t[i], col = adjustcolor(8, alpha.f = 0.7), lwd = 3)
+  dev.off()
+})
+```
