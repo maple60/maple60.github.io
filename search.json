@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Rのプロットで色に透明度を指定する方法\n\n\n\nr\n\n\n\nadjustcolor()やrgb()を使い、Rのプロットで色に透明度を指定する方法についてまとめます。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法\n\n\n\nquarto\n\ngithub\n\n\n\nQuartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点\n\n\n\ngithub\n\nr\n\n\n\nGitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-24\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoを用いた解析プロジェクト管理について\n\n\n\nquarto\n\n\n\nQuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。\n\n\n\n\n\n2026-02-11\n\n\n\n\n\n\n\n\n\n\n\n\nRでファイル名を抽出する方法\n\n\n\nr\n\n\n\nbasename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。\n\n\n\n\n\n2026-02-06\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットのアスペクト比を設定する方法\n\n\n\nr\n\n\n\naspパラメータを使ってRのプロットのアスペクト比を調整する方法についてです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
+    "text": "ZoteroでRSSフィードを作成する方法\n\n\n\nzotero\n\n\n\nZoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。\n\n\n\n\n\n2026-03-10\n\n\n\n\n\n\n\n\n\n\n\n\nRで色覚異常のシミュレーションを行う方法\n\n\n\nr\n\n\n\nRでcolorspaceパッケージを使って色覚異常のシミュレーションをする方法をまとめます\n\n\n\n\n\n2026-03-04\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットで色に透明度を指定する方法\n\n\n\nr\n\n\n\nadjustcolor()やrgb()を使い、Rのプロットで色に透明度を指定する方法についてまとめます。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法\n\n\n\nquarto\n\ngithub\n\n\n\nQuartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点\n\n\n\ngithub\n\nr\n\n\n\nGitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-24\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoを用いた解析プロジェクト管理について\n\n\n\nquarto\n\n\n\nQuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。\n\n\n\n\n\n2026-02-11\n\n\n\n\n\n\n\n\n\n\n\n\nRでファイル名を抽出する方法\n\n\n\nr\n\n\n\nbasename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。\n\n\n\n\n\n2026-02-06\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットのアスペクト比を設定する方法\n\n\n\nr\n\n\n\naspパラメータを使ってRのプロットのアスペクト比を調整する方法についてです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2026-01-27-make-unique/index.html",
@@ -105,116 +105,144 @@
     "text": "まとめ\n個人的にはc()や:はほぼ毎日出てきますが、seq()系やrep()はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。"
   },
   {
-    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html",
-    "href": "posts/2026-02-24-github-actions-r-universe/index.html",
-    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
+    "objectID": "posts/2026-02-03-quarto-japanese/index.html",
+    "href": "posts/2026-02-03-quarto-japanese/index.html",
+    "title": "QuartoのPDF出力で日本語を使う",
     "section": "",
-    "text": "このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、r-universeのパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。\n具体的には、rnaturalearthhiresというパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。\n# Downloading packages -------------------------------------------------------\n- Querying repositories for available source packages ... Done!\nError: code 22]\nこのエラーは、GitHub Actionsの環境でrenvがr-universeのパッケージを正しく認識できないことが原因でした。"
+    "text": "QuartoでPDFを出力する際、デフォルトの設定では日本語が正しく表示されないことがあります。 これは、LaTeXの設定が日本語に対応していないためです。 この記事では、Quartoで日本語を使うための設定方法を紹介します。"
   },
   {
-    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html#症状",
-    "href": "posts/2026-02-24-github-actions-r-universe/index.html#症状",
-    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
-    "section": "",
-    "text": "このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、r-universeのパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。\n具体的には、rnaturalearthhiresというパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。\n# Downloading packages -------------------------------------------------------\n- Querying repositories for available source packages ... Done!\nError: code 22]\nこのエラーは、GitHub Actionsの環境でrenvがr-universeのパッケージを正しく認識できないことが原因でした。"
+    "objectID": "posts/2026-02-03-quarto-japanese/index.html#pdf出力をするための準備",
+    "href": "posts/2026-02-03-quarto-japanese/index.html#pdf出力をするための準備",
+    "title": "QuartoのPDF出力で日本語を使う",
+    "section": "PDF出力をするための準備",
+    "text": "PDF出力をするための準備\nPDF出力には、LaTexをインストールする必要があります。 公式で推奨されているのはTinyTeXです。\nターミナルで以下のコマンドを実行してインストールします。\n\n\nTerminal\n\nquarto install tinytex\n\n\n\n\n\n\n\nNoteLaTeXとは\n\n\n\nLaTeXは、高品質な文書を作成するための組版システムです。 特に学術論文や技術文書の作成に広く使用されています。 たくさんのコマンドを覚える必要がありますが、QuartoでPDF出力を行う際は、そこまで深く理解する必要はありません。\n\n\n\n\n\n\n\n\nNote\n\n\n\nLaTeXがインストールされていない状態で、PDF出力を試みると、エラーが発生します。 この時、quarto install tinytexを実行してTexをインストールするようにメッセージが表示されます。"
   },
   {
-    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html#対処法",
-    "href": "posts/2026-02-24-github-actions-r-universe/index.html#対処法",
-    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
-    "section": "対処法",
-    "text": "対処法\nrenv.lock ファイルを確認すると、“Repositories”の部分に、r-universeのURLが含まれていませんでした。 このため、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できないことが原因でした。\n\n\nrenv.lock\n\n{\n  \"R\": {\n    \"Version\": \"4.5.2\",\n    \"Repositories\": [\n      {\n        \"Name\": \"CRAN\",\n        \"URL\": \"https://cran.rstudio.com\"\n      }\n    ]\n  },\n  \"Packages\": {\n\n以下のコードをローカル環境で実行して、renv.lock ファイルの “Repositories” の部分に、r-universeのURLを追加することで、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できるようになりました。\n\noptions(\n  repos = c(\n    CRAN = \"https://cran.rstudio.com\",\n    \"r-universe\" = \"https://ropensci.r-universe.dev\"\n  )\n)\nrenv::snapshot(force = TRUE)\n\n- Lockfile written to \"~/work/maple60.github.io/maple60.github.io/renv.lock\".\n\n\nこのコードでは、options()関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、renv::snapshot(force = TRUE)を実行して、renv.lock ファイルを更新しています。\nこのコードを実行すると、renv.lock ファイルの “Repositories” の部分に、r-universeのURLが追加されます。\n\n\nrenv.lock\n\n{\n  \"R\": {\n    \"Version\": \"4.5.2\",\n    \"Repositories\": [\n      {\n        \"Name\": \"CRAN\",\n        \"URL\": \"https://cran.rstudio.com\"\n      },\n      {\n        \"Name\": \"r-universe\",\n        \"URL\": \"https://ropensci.r-universe.dev\"\n      }\n    ]\n  },\n  \"Packages\": {\n\nその後、変更をコミットして、GitHub Actionsでビルドすると、エラーが解消されて、r-universeのパッケージを利用できるようになりました。"
+    "objectID": "posts/2026-02-03-quarto-japanese/index.html#pdf出力にする方法",
+    "href": "posts/2026-02-03-quarto-japanese/index.html#pdf出力にする方法",
+    "title": "QuartoのPDF出力で日本語を使う",
+    "section": "PDF出力にする方法",
+    "text": "PDF出力にする方法\nQuartoでPDFを出力するには、YAMLヘッダーに以下のようにformat: pdfを指定します。\n---\ntitle: \"ドキュメントのタイトル\"\nformat: pdf\n---\nこのようにすると、QuartoはPDF形式でドキュメントを生成します。 しかし、このままでは日本語が正しく表示されないことがあります。"
   },
   {
-    "objectID": "posts/2025-01-01-imager/index.html",
-    "href": "posts/2025-01-01-imager/index.html",
-    "title": "画像処理のためのRパッケージimagerの使い方",
-    "section": "",
-    "text": "概要\nRで画像解析をしたいとなったときに、{imager}というパッケージがあることを知った。 いろいろと試した結果を記す。\n\n\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n\n\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\n\n\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
+    "objectID": "posts/2026-02-03-quarto-japanese/index.html#日本語を正しく表示するための設定",
+    "href": "posts/2026-02-03-quarto-japanese/index.html#日本語を正しく表示するための設定",
+    "title": "QuartoのPDF出力で日本語を使う",
+    "section": "日本語を正しく表示するための設定",
+    "text": "日本語を正しく表示するための設定\n日本語を正しく表示するためには、YAMLヘッダーに以下の設定を追加します。\n---\ntitle: \"ドキュメントのタイトル\"\nformat:\n  pdf:\n    CJKmainfont: \"BIZ UDPGothic\"  # 使用する日本語フォントを指定\n---\nCJKmainfontには、システムにインストールされている日本語フォントの名前を指定します。 例えば、\"BIZ UDPGothic\"や\"Noto Sans CJK JP\"などがあります。\nmainfont: \"Font Name\"で指定することもできますが、その場合は英字や数字も指定したフォントで表示されるため、注意が必要です。\n\n\n\n\n\n\nNoteCJKmainfontについて\n\n\n\nCJKmainfontは、LaTeXで日本語を表示するために使用されるフォントを指定するオプションです。 ちなみにCはChinese、JはJapanese、KはKoreanの略です。 これらの言語は文字が多いため、専用のフォントが必要となります。\n\n\n\n\n\n\n\n\nNote利用できるフォントファイルを確認する方法\n\n\n\nLaTeXで利用できるフォントファイルを確認するには、ターミナルで以下のコマンドを実行します。\n\nWindowsの場合\n\n\nTerminal\n\nGet-ChildItem C:\\Windows\\Fonts | Select-Object Name\n\n\n\nmacOS/Linuxの場合\n未確認ですが、以下のコマンドで確認できると思いました。\n\n\nTerminal\n\nls /Library/Fonts/"
   },
   {
-    "objectID": "posts/2026-02-25-r-plot-transparent/index.html",
-    "href": "posts/2026-02-25-r-plot-transparent/index.html",
-    "title": "Rのプロットで色に透明度を指定する方法",
-    "section": "",
-    "text": "Rのプロットで、色に透明度を指定する方法についてまとめます。 例えば、散布図を描くときに、点が重なっている部分がわかりづらいことがあります。 例えば、以下のような散布図を描いたとします。\nset.seed(1)\nx &lt;- rnorm(1000)\ny &lt;- rnorm(1000)\nplot(x, y)\n塗りつぶしをすると、なおさら点が重なっている部分がわかりづらくなります。\nplot(x, y, pch = 16)\nこのように点が重なっている部分が多い場合、点の色に透明度を指定することで、重なっている部分がわかりやすくなります。 Rでは主に以下の方法で、色に透明度を指定することができます。"
-  },
-  {
-    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#進数のカラーコードの後ろに透明度を指定する方法",
-    "href": "posts/2026-02-25-r-plot-transparent/index.html#進数のカラーコードの後ろに透明度を指定する方法",
-    "title": "Rのプロットで色に透明度を指定する方法",
-    "section": "16進数のカラーコードの後ろに透明度を指定する方法",
-    "text": "16進数のカラーコードの後ろに透明度を指定する方法\nRでは、16進数のカラーコードの後ろに透明度を指定することができます。 例えば、#RRGGBBAAの形式で、AAの部分に透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\n\n\n\n\n\nNoteカラーコード\n\n\n\nカラーコードは、色を表すためのコードで、通常は#RRGGBBの形式で表されます。\n\nRRは赤の値を16進数で表したもの（00からFFまで）\nGGは緑の値を16進数で表したもの（00からFFまで）\nBBは青の値を16進数で表したもの（00からFFまで）\n\n例えば、#0000FFは青を表すカラーコードです。\n\n\n\nplot(x, y, pch = 16, col = \"#0000FF80\")"
-  },
-  {
-    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#adjustcolorを使う方法",
-    "href": "posts/2026-02-25-r-plot-transparent/index.html#adjustcolorを使う方法",
-    "title": "Rのプロットで色に透明度を指定する方法",
-    "section": "adjustcolor()を使う方法",
-    "text": "adjustcolor()を使う方法\nadjustcolor()は、既存の色を微調整するための関数です。 alpha.f引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\nplot(x, y, pch = 16, col = adjustcolor(\"blue\", alpha.f = 0.5))\n\n\n\n\n\n\n\n\nこのようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、このほうであれば、色の名前を直接指定できるため、カラーコードを覚える必要がありません。 一つの色を複数の透明度で使いたい場合などは、adjustcolor()を使う方法が便利です。 例えば、以下のようにして、点や線の色に異なる透明度を指定することができます。\n\nplot(x, y, pch = 16, col = adjustcolor(\"blue\", alpha.f = 0.9))\n\n# 95%信頼区間を描く\nmodel &lt;- lm(y ~ x)\nord &lt;- order(x)\nx_sorted &lt;- x[ord]\nconf &lt;- predict(model, interval = \"confidence\")\nconf_sorted &lt;- conf[ord, ]\n\npolygon(\n  c(x_sorted, rev(x_sorted)),\n  c(conf_sorted[, 2], rev(conf_sorted[, 3])),\n  col = adjustcolor(\"blue\", alpha.f = 0.5),\n  border = NA\n)\n\n# 回帰線を描く\nabline(model, col = adjustcolor(\"blue\", alpha.f = 0.8), lwd = 5)"
-  },
-  {
-    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#rgbを使う方法",
-    "href": "posts/2026-02-25-r-plot-transparent/index.html#rgbを使う方法",
-    "title": "Rのプロットで色に透明度を指定する方法",
-    "section": "rgb()を使う方法",
-    "text": "rgb()を使う方法\nrgb()は、赤、緑、青の値を指定して色を作成する関数です。 alpha引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\nplot(x, y, pch = 16, col = rgb(0, 0, 1, alpha = 0.5))\n\n\n\n\n\n\n\n\nこのようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、この方法では、赤、緑、青の値を直接指定できるため、細かい色の調整が可能です。 注意点としては、各色の値は0から1の範囲で指定する必要があることです。"
-  },
-  {
-    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#個人的な好み",
-    "href": "posts/2026-02-25-r-plot-transparent/index.html#個人的な好み",
-    "title": "Rのプロットで色に透明度を指定する方法",
-    "section": "個人的な好み",
-    "text": "個人的な好み\n個人的には、adjustcolor()を使う方法が便利で、よく使用しています。 その次に直接カラーコードを指定する方法を使用することが多いです。 rgb() はほとんど使用したことがありません。\nadjustcolor()を使う場合は、既存の色名を直接指定できるのがとても便利だと思っております。 色名だけでなく、デフォルトカラーのインデックスを指定することもできます。\n\nplot(x, y, pch = 16, col = adjustcolor(2, alpha.f = 0.5))\n\n\n\n\n\n\n\n\n覚えておくと便利です。"
-  },
-  {
-    "objectID": "posts/2026-01-24-code-filename/index.html",
-    "href": "posts/2026-01-24-code-filename/index.html",
-    "title": "Quartoでコードブロックのファイル名を表示する",
-    "section": "",
-    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
-  },
-  {
-    "objectID": "posts/2026-01-24-code-filename/index.html#参考",
-    "href": "posts/2026-01-24-code-filename/index.html#参考",
-    "title": "Quartoでコードブロックのファイル名を表示する",
+    "objectID": "posts/2026-02-03-quarto-japanese/index.html#参考",
+    "href": "posts/2026-02-03-quarto-japanese/index.html#参考",
+    "title": "QuartoのPDF出力で日本語を使う",
     "section": "参考",
-    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
+    "text": "参考\n\nPDF Basics – Quarto\nPDF Options – Quarto"
   },
   {
-    "objectID": "posts/2026-01-31-r-japan-map/index.html",
-    "href": "posts/2026-01-31-r-japan-map/index.html",
-    "title": "Rで日本地図を描く",
+    "objectID": "posts/2026-01-30-r-make-directory/index.html",
+    "href": "posts/2026-01-30-r-make-directory/index.html",
+    "title": "Rでディレクトリを作成する方法",
     "section": "",
-    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
+    "text": "Rでは、dir.create()関数を使用してディレクトリを作成することができます。"
   },
   {
-    "objectID": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
-    "href": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
-    "title": "Rで日本地図を描く",
+    "objectID": "posts/2026-01-30-r-make-directory/index.html#dir.create関数",
+    "href": "posts/2026-01-30-r-make-directory/index.html#dir.create関数",
+    "title": "Rでディレクトリを作成する方法",
+    "section": "dir.create()関数",
+    "text": "dir.create()関数\n文法は以下の通りです。\ndir.create(path, showWarnings = TRUE, recursive = FALSE, mode = \"0777\")\n\npath: 作成するディレクトリのパスを指定します。~はホームディレクトリを表します。\nshowWarnings: TRUEに設定すると、ディレクトリが既に存在する場合に警告を表示します。デフォルトはTRUEです。\nrecursive: TRUEに設定すると、必要に応じて親ディレクトリも作成します。デフォルトはFALSEです。\nmode: 作成するディレクトリのアクセス権(パーミッション)を指定します。デフォルトは”0777”です。\n\n\n\n\n\n\n\nNote\n\n\n\nmode引数はUNIX系システムでのみ意味を持ちます。Windowsでは無視されます。 基本的にはデフォルトのままで問題ありません。 ここでは詳しく説明しません。\nもし詳しく知りたい場合は、?dir.createでヘルプを参照していただくか、以下のドキュメントを参照してください。\n\nfiles2: Manipulaton of Directories and File Permissions"
+  },
+  {
+    "objectID": "posts/2026-01-30-r-make-directory/index.html#使用例",
+    "href": "posts/2026-01-30-r-make-directory/index.html#使用例",
+    "title": "Rでディレクトリを作成する方法",
+    "section": "使用例",
+    "text": "使用例\n例えば、以下のコードはsave/path/to/directoryというディレクトリを作成します。 このとき、親ディレクトリが存在しない場合でもrecursive = TRUEを指定することで、必要な親ディレクトリも一緒に作成されます。 また、もしディレクトリが既に存在していても警告を表示しないようにshowWarnings = FALSEを指定しています。\nsave_dir &lt;- \"save/path/to/directory\"\ndir.create(save_dir, showWarnings = FALSE, recursive = TRUE)\nこのコードを実行すると、saveディレクトリが存在しない場合でも、save/path/to/directoryというディレクトリが作成されます。"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html",
+    "title": "RでLorenz attractorを描く",
     "section": "",
-    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
+    "text": "Lorenz attractorは、Edward Lorenz氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。\n以下に、RのdeSolveパッケージを使用してLorenz attractorを描く方法を示します。"
   },
   {
-    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
-    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
-    "title": "Rで日本地図を描く",
-    "section": "日本地図の描画",
-    "text": "日本地図の描画\n地図を描画するには、rnaturalearthdataパッケージも必要です。以下のコードで日本の地図を取得し、描画します。\ninstall.packages(\"rnaturalearthdata\")\nrenv::install(\"rnaturalearthdata\") # renvを使用している場合\nライブラリを読み込まなくても問題ありませんが、念のため読み込みます。\n\nlibrary(rnaturalearthdata)\n\n\nAttaching package: 'rnaturalearthdata'\n\n\nThe following object is masked from 'package:rnaturalearth':\n\n    countries110\n\n\nne_countries()関数を使って日本の地図データを取得し、plot()関数で描画します。\n\njapan &lt;- ne_countries(\n  scale = \"medium\",\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan[\"geometry\"])\n\n\n\n\n\n\n\n\n引数は、以下のように設定しています。\n\nscale = \"medium\": 中程度の解像度の地図データを取得します。他にsmallやlargeも選択可能です。\ncountry = \"Japan\": 日本の地図データを指定します。\nreturnclass = \"sf\": 地図データをsfオブジェクトとして返します。\n\nこれでRを使って日本地図を描くことができます。必要に応じて、地図のスタイルや詳細をカスタマイズしてください。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nne_countries()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world country polygons — ne_countries • rnaturalearth"
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz方程式の定義",
+    "text": "Lorenz方程式の定義\nLorenz方程式は以下の3つの常微分方程式から構成されます。\n\\[\n\\begin{align}\n  \\frac{dx}{dt} &= \\sigma (y - x) \\\\\n  \\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n  \\frac{dz}{dt} &= xy - \\beta z\n\\end{align}\n\\]\nここで、\\(x\\)、\\(y\\)、および\\(z\\)はシステムの状態変数であり、\\(\\sigma\\)、\\(\\rho\\)、および\\(\\beta\\)はパラメータです。一般的に使用されるパラメータ値は以下の通りです。\n\n\\(\\sigma = 10\\)\n\\(\\rho = 28\\)\n\\(\\beta = \\frac{8}{3}\\)"
   },
   {
-    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
-    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
-    "title": "Rで日本地図を描く",
-    "section": "日本地図を県別に描画する",
-    "text": "日本地図を県別に描画する\n県別の日本地図を描画するには、rnaturalearthhiresパッケージを使用します。 インストールは、GitHubもしくはR-universeから行います。\n\n\n\n\n\n\nNoteCRANからインストールができない理由\n\n\n\nパッケージのサイズがCRANの推奨を超えているため、CRANからのインストールができないようです。\n\n\nremotes::install_github(\"ropensci/rnaturalearthhires\")\nまたは、以下のコードでインストールします。\ninstall.packages(\n  \"rnaturalearthhires\",\n  repos = \"https://ropensci.r-universe.dev\",\n  type = \"source\"\n)\nもしくは、renvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"ropensci/rnaturalearthhires\")\nパッケージを読み込みます。\n\nlibrary(rnaturalearthhires)\n\n県別の日本地図を取得し、描画します。\n\njapan_prefectures &lt;- ne_states(\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan_prefectures[\"name_ja\"])\n\n\n\n\n\n\n\n\n海岸線もきれいに描画されていますね。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nna_states()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world state (admin level 1) polygons — ne_states • rnaturalearth"
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
+    "title": "RでLorenz attractorを描く",
+    "section": "deSolveパッケージのインストールと読み込み",
+    "text": "deSolveパッケージのインストールと読み込み\nまず、deSolveパッケージをインストールし、読み込みます。\ninstall.packages(\"deSolve\")  # まだインストールしていない場合\nlibrary(deSolve)\nrenvパッケージを使用している場合は、以下のようにします。\nrenv::install(\"deSolve\") # まだインストールしていない場合\n\nlibrary(deSolve)"
   },
   {
-    "objectID": "posts/2026-01-31-r-japan-map/index.html#参考",
-    "href": "posts/2026-01-31-r-japan-map/index.html#参考",
-    "title": "Rで日本地図を描く",
-    "section": "参考",
-    "text": "参考\n\nHigh Resolution World Vector Map Data from Natural Earth used in rnaturalearth • rnaturalearthhires\nrnaturalearthhires - GitHub"
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz方程式の実装",
+    "text": "Lorenz方程式の実装\nまずは、Lorenz方程式をRの関数として実装します。\n\nlorenz &lt;- function(t, state, parameters) {\n  with(as.list(c(state, parameters)), {\n    dx &lt;- sigma * (y - x)\n    dy &lt;- x * (rho - z) - y\n    dz &lt;- x * y - beta * z\n    list(c(dx, dy, dz))\n  })\n}\n\n次に、初期状態、パラメータ、時間の範囲を設定します。\n\nstate &lt;- c(x = -10, y = -10, z = 30)\nparameters &lt;- c(sigma = 10, rho = 28, beta = 8 / 3)\ntimes &lt;- seq(0, 100, by = 0.01)\n\node()関数を使用してLorenz方程式を解きます。\n\nout &lt;- ode(y = state, times = times, func = lorenz, parms = parameters)\nout &lt;- as.data.frame(out)"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
+    "title": "RでLorenz attractorを描く",
+    "section": "Lorenz attractorの描画",
+    "text": "Lorenz attractorの描画\nまずは二次元のプロットを作成します。 x-y平面、x-z平面、y-z平面の3つのプロットを描きます。\n\nplot(out$x, out$z, type = \"l\", xlab = \"x\", ylab = \"z\")\n\n\n\n\n\n\n\nplot(out$x, out$y, type = \"l\", xlab = \"x\", ylab = \"y\")\n\n\n\n\n\n\n\nplot(out$y, out$z, type = \"l\", xlab = \"y\", ylab = \"z\")"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
+    "title": "RでLorenz attractorを描く",
+    "section": "3Dプロットの作成",
+    "text": "3Dプロットの作成\nRのscatterplot3dパッケージを使用して、3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"scatterplot3d\")  # まだインストールしていない場合\nrenv::install(\"scatterplot3d\") # renvを使用している場合\n\nlibrary(scatterplot3d)\nscatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor\"\n)\n\n\n\n\n\n\n\n\nまた、それぞれの面に投影した2Dプロットも描いてみます。\n\ns3d &lt;- scatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor with Projections\"\n)\ns3d$points3d(out$x, out$y, out$z, type = \"l\", col = \"#FF4B00\") # Lorenz attractor本体\ns3d$points3d(\n  out$x,\n  out$y,\n  rep(min(out$z), nrow(out)),\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-y平面への投影\ns3d$points3d(\n  out$x,\n  rep(max(out$y), nrow(out)),\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-z平面への投影\ns3d$points3d(\n  rep(min(out$x), nrow(out)),\n  out$y,\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # y-z平面への投影"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
+    "title": "RでLorenz attractorを描く",
+    "section": "Plotlyを使ったインタラクティブな3Dプロット",
+    "text": "Plotlyを使ったインタラクティブな3Dプロット\nRのplotlyパッケージを使用して、インタラクティブな3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"plotly\")  # まだインストールしていない場合\nrenv::install(\"plotly\") # renvを使用している場合\n\nlibrary(plotly)\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\nfig &lt;- plot_ly(\n  x = out$x,\n  y = out$y,\n  z = out$z,\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig &lt;- fig %&gt;%\n  layout(\n    title = \"Lorenz Attractor\",\n    scene = list(\n      xaxis = list(title = 'X'),\n      yaxis = list(title = 'Y'),\n      zaxis = list(title = 'Z')\n    )\n  )\nfig\n\n\n\n\n\n時間まで含めた色変化も可能です。\n\nfig &lt;- plot_ly(\n  data = out,\n  x = ~x,\n  y = ~y,\n  z = ~z,\n  color = ~time,\n  colors = colorRamp(c(\"blue\", \"red\")),\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig\n\n\n\n\n\nまた、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。\n\nidx &lt;- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き\nout2 &lt;- out[idx, ]\n\nfig &lt;- plot_ly() %&gt;%\n  # 静的な軌跡（線）\n  add_trace(\n    data = out,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    type = \"scatter3d\",\n    mode = \"lines\",\n    line = list(color = \"gray\")\n  ) %&gt;%\n  # 動く点\n  add_trace(\n    data = out2,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    frame = ~time,\n    type = \"scatter3d\",\n    mode = \"markers\",\n    marker = list(size = 3, color = \"#FF4B00\")\n  ) %&gt;%\n  animation_opts(\n    frame = 50, # 1フレームの表示時間（ms）\n    transition = 0 # 補間アニメーションを切ることで軽量化する\n  )\n\nfig"
+  },
+  {
+    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
+    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
+    "title": "RでLorenz attractorを描く",
+    "section": "参考になるページ",
+    "text": "参考になるページ\n\nLorenz system - Wikipedia\nCRAN: Package deSolve\nPlotly r graphing library in R"
+  },
+  {
+    "objectID": "posts/2024-06-18-basic_authentification/index.html",
+    "href": "posts/2024-06-18-basic_authentification/index.html",
+    "title": "BASIIC認証でつまったこと",
+    "section": "",
+    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+  },
+  {
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html",
+    "title": "Rのプロットのアスペクト比を設定する方法",
+    "section": "",
+    "text": "Rのプロット関数(例えばplot())では、aspパラメータを使用してアスペクト比を設定できます。 アスペクト比は、y軸の単位長さがx軸の単位長さの何倍であるかを指定します。"
+  },
+  {
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
+    "title": "Rのプロットのアスペクト比を設定する方法",
+    "section": "aspパラメータの使用例",
+    "text": "aspパラメータの使用例\nplot()内にaspパラメータを指定することで、アスペクト比を調整できます。\n\nplot(1:10, 1:10) # デフォルトのアスペクト比\n\n\n\n\n\n\n\nplot(1:10, 1:10, asp = 1) # アスペクト比1:1\n\n\n\n\n\n\n\n\n上記の例では、asp = 1と設定しているため、x軸とy軸の単位長さが等しくなります。 もしasp = 2と設定すると、y軸の単位長さがx軸の単位長さの2倍になります。\n\nplot(1:10, 1:10, asp = 2)"
+  },
+  {
+    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
+    "href": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
+    "title": "Rのプロットのアスペクト比を設定する方法",
+    "section": "プロット領域も含めたアスペクト比の調整",
+    "text": "プロット領域も含めたアスペクト比の調整\nこれは、1:1プロットを作るときに便利です。 1:1の線を描画したい場合などに使用します。 このとき、プロット領域の形状によっては、実際の表示が正方形にならないことがあります。 その場合は、par(pty = \"s\")を使用してプロット領域を正方形に設定することもできます。\n\npar(pty = \"s\") # プロット領域を正方形に設定\n\nx &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\ny &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\n\nplot(x, y, asp = 1)\nplot(x, y, asp = 1)\nabline(0, 1, lty = 2)\n\n\n\n\n\n\n\npar(pty = \"m\") # プロット領域を元に戻す\n\n\n\n\n\n\n\nNote補足説明\n\n\n\n\nrnorm(): 正規分布に従う乱数を生成する関数です。ここでは、平均1、標準偏差0.1の乱数を生成しています。\nabline(0, 1, lty = 2): y = xの直線を破線で描画しています。lty = 2は破線を意味します。"
   },
   {
     "objectID": "posts/2026-01-25-zotero-plugins/index.html",
@@ -280,74 +308,116 @@
     "text": "感謝\nこれらのプラグインを開発・提供してくださっている方々に深く感謝いたします。 Zotero自体もオープンソースで提供されており、非常に便利な文献管理ツールです。 Zoteroコミュニティの皆様にも感謝申し上げます。"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html",
-    "href": "posts/2024-06-19-bookdown-url/index.html",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "objectID": "posts/2026-03-10-zotero-rss/index.html",
+    "href": "posts/2026-03-10-zotero-rss/index.html",
+    "title": "ZoteroでRSSフィードを作成する方法",
     "section": "",
-    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
+    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
   },
   {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "状況",
-    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "原因とその背景",
-    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "対策",
-    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "最後に",
-    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "参考",
-    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
-  },
-  {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html",
-    "href": "posts/2026-01-30-quarto-data-format/index.html",
-    "title": "Quartoで表示される日付型を変更する",
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
+    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
+    "title": "ZoteroでRSSフィードを作成する方法",
     "section": "",
-    "text": "Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、Jan 30, 2026のような形式です。 しかし、ISO 8601形式の2026-01-30のような形式で表示したい場合があります。"
+    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
   },
   {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "data-formatオプション",
-    "text": "data-formatオプション\nQuartoで日付の表示形式を変更するには、date-formatオプションを設定します。 YAMLヘッダーや_quarto.ymlファイルでこのオプションを指定することで、日付の表示形式を変更できます。 一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。\nブログ記事のように複数の記事を一覧表示する場合、posts.qmdファイルのYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts.qmd\n\n---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  date-format: iso\n---\n\nもし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts/2026-01-30-quarto-data-format.qmd\n\n---\ntitle: \"Quartoで表示される日付型を変更する\"\ndate: \"2026-01-30\"\ndate-modified: \"2026-01-30\"\ndate-format: iso\n---\n\nまた、_quarto.ymlファイルにグローバル設定として追加することも可能です。\n\n\n_quarto.yml\n\ndate-format: iso"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
+    "href": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "RSSフィードとは",
+    "text": "RSSフィードとは\nRSSフィードは、ウェブサイトの更新情報を配信するためのフォーマットで、ユーザーが特定のウェブサイトの更新情報を受け取ることができます。 今回の場合は、論文雑誌のRSSフィードを作成することで、新しい論文が公開されたときに通知を受け取ることができます。"
   },
   {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "日付フォーマットの種類",
-    "text": "日付フォーマットの種類\n表示形式の変更には、以下の2つの方法があります。 1. 日付スタイルを指定する 2. カスタムフォーマットを指定する方法があります。\n\n日付スタイルの指定\nQuartoでは、以下のような日付スタイルを指定できます。\n\nshort: 短い形式 (例: 1/30/26)\nmedium: 中程度の形式 (例: Jan 30, 2026)\nlong: 長い形式 (例: January 30, 2026)\nfull: 完全な形式 (例: Friday, January 30, 2026)\niso: ISO 8601形式 (例: 2026-01-30)\n\n\n\nカスタムフォーマットの指定\n自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。 カスタムフォーマットを指定する場合、以下のようにdate-formatオプションにフォーマット文字列を設定します。 例えば、2026/01/30のように表示したい場合は、以下のように指定します。\ndate-format: \"yyyy/MM/dd\"\n\n\n\n\n\n\nNote\n\n\n\nカスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。\n\nQuarto Dates and Date Formatting\n\n\n\n\n\n言語による表示形式の違い\nQuartoでは、表示される日付の形式は言語設定によっても影響を受けます。 例えば、日本語設定の場合、mediumスタイルは2026年1月30日のように表示されます。 言語設定を変更するには、YAMLヘッダーや_quarto.ymlファイルでlangオプションを設定します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    lang: ja\n\nもしかしたらトップレベルにおいても良いかもしれません。\n\n\n\n\n\n\nNote\n\n\n\nlangオプションについては、詳しくは以下の公式ドキュメントを参照してください\n\nDocument Language - Quarto"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#方法",
+    "href": "posts/2026-03-10-zotero-rss/index.html#方法",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "方法",
+    "text": "方法\n\nジャーナルのRSSフィードを見つける\n多くのジャーナルは、ウェブサイト上でRSSフィードを提供しています。 例えば、New PhytologistのHPに行ってみます。\n右側に、RSSフィードのアイコンがあるので、これを右クリックします。\n\n\n\nRSSフィードのアイコン\n\n\n右クリックメニュー(コンテキストメニュー)が表示されるため、「リンクのアドレスをコピー (Copy link address)」を選択します。\n\n\n\n右クリックメニュー"
   },
   {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#参考",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#参考",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "参考",
-    "text": "参考\n\nDocument Listings- Quarto\nQuarto Dates and Date Formatting\nDocument Language - Quarto\nHTML Options - Quarto"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
+    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "ZoteroでRSSフィードを購読する",
+    "text": "ZoteroでRSSフィードを購読する\nZoteroを開き、[File] &gt; [New Feed] &gt; [From URL…]を選択します。\n\n\n\nZoteroで新しいフィードを作成\n\n\n現れたダイアログのURLの欄に、先ほどコピーしたRSSフィードのURLを貼り付けます。 もしRSSフィードのURLが正しい場合は、Titleの欄にジャーナルの名前が自動的に入力されます。\nAdvanced Optionsの欄は、以下のようになっています。\n\nフィードの更新頻度 (デフォルトは168時間、つまり1週間)\n既読のフィードのアイテムを削除する間隔 (デフォルトでは3日)\n未読のフィードのアイテムを削除する間隔 (デフォルトでは30日)\n\n\n\n\nZoteroのフィード設定\n\n\n私は以下のように設定を変更しました。\n\nTitle: New Phytologist (ジャーナル名のみ)\nフィードの更新頻度: 24時間 (毎日更新を確認するように設定)\n\nそのほかはデフォルトのままです。\n設定が完了したら、[OK]をクリックします。\n左側のサイドバーにFeedsという項目ができ、その中にNew Phytologistというフィードが追加されていれば成功です。\n\n\n\nZoteroのサイドバー"
+  },
+  {
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
+    "href": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "フィードアイテムを確認する",
+    "text": "フィードアイテムを確認する\nFeedsの欄からフィードアイテムを確認したいジャーナルを選択します。 中央のペインにフィードアイテムのリストが表示されます。\nカーソルを合わせるとRead(既読)になり、行のフォントが太字から通常のものに変わります。 アイテムをダブルクリックすると、ジャーナルのウェブサイトにアクセスできます。\n右側のペインでは、書誌情報が確認できるほか、[Mark As Unread]や[Mark As Read]をクリックして、アイテムの既読/未読を切り替えることができます。 [Add to “My Library…”]をクリックすると、任意のライブラリにアイテムを追加することができます。\n\n\n\nZoteroのフィードアイテム\n\n\n一気にジャーナルごとに既読にしたい場合は、Feedsの欄のジャーナル名を右クリックして、[Mark Feed as Read]を選択します。\n\n\n\nZoteroのフィードを一括既読にする"
+  },
+  {
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#まとめ",
+    "href": "posts/2026-03-10-zotero-rss/index.html#まとめ",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "まとめ",
+    "text": "まとめ\nZoteroを使って、ジャーナルのRSSフィードを購読する方法についてまとめました。 私はこれまで、RSSリーダーを使ってジャーナルの更新情報を確認していましたが、Zoteroを使うことで、フィードアイテムを簡単にライブラリに追加したり、書誌情報を管理したりすることができるようになりました。\n漏れている機能などありましたら、追記したいと思います。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html",
+    "href": "posts/2026-02-11-quarto-project-management/index.html",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "",
+    "text": "Warning\n\n\n\nこの記事は書きかけの状態で公開しています。時間があるときに更新します。\nQuartoは、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。 これを使って、解析に順番のあるプロジェクトを管理できるのではないかと思いついたので、メモとして残します。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "解析における課題",
+    "text": "解析における課題\n多くの解析プロジェクトでは、複数のステップが順番に実行されます。 例えば、データの前処理、解析、可視化、レポート作成などです。\nこの時、処理ごとにスクリプトを分けて管理することが一般的です。 しかし、スクリプトが増えると、どの順番で実行すればよいのか分かりづらくなります。\nこれまで、私は00_data_preprocessing.R、01_analysis.R、02_visualization.Rのように、ファイル名に番号を振って順番を管理してきました。 しかし、ファイルが増えると番号の管理が煩雑になり、ミスが起こりやすくなります。 例えば、新しい解析を追加したとき、順番が変わった場合、ファイル名の番号をすべて変更する必要があります。\nまた、一つのqmdファイル内でも、コードセルごとに実行ができるため、いざ上から順番に実行したときに、変数が存在しないなどのエラーが発生することもあります。 例えば、前処理のコードセルを実行せずに解析のコードセルを実行すると、必要なデータが存在しないためエラーになります。\nこれらの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理する方法を考えました。 まだ試している段階ですが、以下にその方法をまとめておきます。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "QuartoのBook形式とは",
+    "text": "QuartoのBook形式とは\nQuartoのBook形式は、複数のqmdファイルをまとめて一つのドキュメントとして出力できる機能です。 例えば、Rの入門書として有名なR for Data Science (2e)はQuartoのBook形式で作成されています。\nそのほかにも最近は多くのR関連の書籍がQuartoのBook形式で作成されています。 実際にR for Data Science (2e)などを見ていただくと、実際の本のように、順番だってページが並び、途中途中にセクションがあることがわかります。\n順番に実行する必要のある解析コードについても、同じようにBook形式で管理できるのではないかと考えました。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "既存の解析プロジェクトの構成例",
+    "text": "既存の解析プロジェクトの構成例\n今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。\nnotebooks/\n├── 01_data_preprocessing_AA.qmd\n├── 02_data_preprocessing_BB.qmd\n├── 03_analysis_CC.qmd\n├── 04_analysis_DD.qmd\n├── 05_visualization_EE.qmd\n└── 06_visualization_FF.qmd\nこのように、各ステップごとにqmdファイルを分けて管理しています。 しかし、ある時、02_data_preprocessing_BBの前に新しい前処理ステップを追加したいとします。 この場合、ファイル名の番号をすべて変更する必要があり、非常に面倒です。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "Quarto Bookの作成",
+    "text": "Quarto Bookの作成\nこの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理します。\nCtrl+Shift+Pでコマンドパレットを開き、“Quarto: Create New Book Project”を選択します。 プロジェクト名を入力し、保存先フォルダを指定します。"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Maple60’s Website",
+    "section": "",
+    "text": "This website is a personal blog where I will write about various programming topics that I have learned. Please note that the content may include misinformation as I am not an expert."
+  },
+  {
+    "objectID": "index.html#about",
+    "href": "index.html#about",
+    "title": "Maple60’s Website",
+    "section": "",
+    "text": "This website is a personal blog where I will write about various programming topics that I have learned. Please note that the content may include misinformation as I am not an expert."
+  },
+  {
+    "objectID": "index.html#my-interests",
+    "href": "index.html#my-interests",
+    "title": "Maple60’s Website",
+    "section": "My interests",
+    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto.\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
+  },
+  {
+    "objectID": "posts/2024-03-04-color-circle/index.html",
+    "href": "posts/2024-03-04-color-circle/index.html",
+    "title": "Rで色相環を作成する",
+    "section": "",
+    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
   },
   {
     "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
@@ -392,53 +462,74 @@
     "text": "最後に\nとりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。 この記事が同じ問題に直面している方の参考になれば幸いです。"
   },
   {
-    "objectID": "posts/2024-03-04-color-circle/index.html",
-    "href": "posts/2024-03-04-color-circle/index.html",
-    "title": "Rで色相環を作成する",
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html",
+    "href": "posts/2026-01-30-quarto-data-format/index.html",
+    "title": "Quartoで表示される日付型を変更する",
     "section": "",
-    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
+    "text": "Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、Jan 30, 2026のような形式です。 しかし、ISO 8601形式の2026-01-30のような形式で表示したい場合があります。"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Maple60’s Website",
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "data-formatオプション",
+    "text": "data-formatオプション\nQuartoで日付の表示形式を変更するには、date-formatオプションを設定します。 YAMLヘッダーや_quarto.ymlファイルでこのオプションを指定することで、日付の表示形式を変更できます。 一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。\nブログ記事のように複数の記事を一覧表示する場合、posts.qmdファイルのYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts.qmd\n\n---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  date-format: iso\n---\n\nもし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts/2026-01-30-quarto-data-format.qmd\n\n---\ntitle: \"Quartoで表示される日付型を変更する\"\ndate: \"2026-01-30\"\ndate-modified: \"2026-01-30\"\ndate-format: iso\n---\n\nまた、_quarto.ymlファイルにグローバル設定として追加することも可能です。\n\n\n_quarto.yml\n\ndate-format: iso"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "日付フォーマットの種類",
+    "text": "日付フォーマットの種類\n表示形式の変更には、以下の2つの方法があります。 1. 日付スタイルを指定する 2. カスタムフォーマットを指定する方法があります。\n\n日付スタイルの指定\nQuartoでは、以下のような日付スタイルを指定できます。\n\nshort: 短い形式 (例: 1/30/26)\nmedium: 中程度の形式 (例: Jan 30, 2026)\nlong: 長い形式 (例: January 30, 2026)\nfull: 完全な形式 (例: Friday, January 30, 2026)\niso: ISO 8601形式 (例: 2026-01-30)\n\n\n\nカスタムフォーマットの指定\n自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。 カスタムフォーマットを指定する場合、以下のようにdate-formatオプションにフォーマット文字列を設定します。 例えば、2026/01/30のように表示したい場合は、以下のように指定します。\ndate-format: \"yyyy/MM/dd\"\n\n\n\n\n\n\nNote\n\n\n\nカスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。\n\nQuarto Dates and Date Formatting\n\n\n\n\n\n言語による表示形式の違い\nQuartoでは、表示される日付の形式は言語設定によっても影響を受けます。 例えば、日本語設定の場合、mediumスタイルは2026年1月30日のように表示されます。 言語設定を変更するには、YAMLヘッダーや_quarto.ymlファイルでlangオプションを設定します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    lang: ja\n\nもしかしたらトップレベルにおいても良いかもしれません。\n\n\n\n\n\n\nNote\n\n\n\nlangオプションについては、詳しくは以下の公式ドキュメントを参照してください\n\nDocument Language - Quarto"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "参考",
+    "text": "参考\n\nDocument Listings- Quarto\nQuarto Dates and Date Formatting\nDocument Language - Quarto\nHTML Options - Quarto"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html",
+    "href": "posts/2024-06-19-bookdown-url/index.html",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
     "section": "",
-    "text": "Hello World\n\n\nAbout\n\n\nI will blog contents mainly about programming I learned.\n\n\nPlease note that the contents may include misinformation because I am not an expert.\n\n\nI mainly use below languages;\n\n\n\nR\n\n\nPython\n\n\nJavascript\n\n\n\nThis blog is made with Quarto.\n\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
+    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
   },
   {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html",
-    "href": "posts/2026-02-11-quarto-project-management/index.html",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "",
-    "text": "Warning\n\n\n\nこの記事は書きかけの状態で公開しています。時間があるときに更新します。\nQuartoは、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。 これを使って、解析に順番のあるプロジェクトを管理できるのではないかと思いついたので、メモとして残します。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "状況",
+    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
   },
   {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "解析における課題",
-    "text": "解析における課題\n多くの解析プロジェクトでは、複数のステップが順番に実行されます。 例えば、データの前処理、解析、可視化、レポート作成などです。\nこの時、処理ごとにスクリプトを分けて管理することが一般的です。 しかし、スクリプトが増えると、どの順番で実行すればよいのか分かりづらくなります。\nこれまで、私は00_data_preprocessing.R、01_analysis.R、02_visualization.Rのように、ファイル名に番号を振って順番を管理してきました。 しかし、ファイルが増えると番号の管理が煩雑になり、ミスが起こりやすくなります。 例えば、新しい解析を追加したとき、順番が変わった場合、ファイル名の番号をすべて変更する必要があります。\nまた、一つのqmdファイル内でも、コードセルごとに実行ができるため、いざ上から順番に実行したときに、変数が存在しないなどのエラーが発生することもあります。 例えば、前処理のコードセルを実行せずに解析のコードセルを実行すると、必要なデータが存在しないためエラーになります。\nこれらの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理する方法を考えました。 まだ試している段階ですが、以下にその方法をまとめておきます。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "原因とその背景",
+    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
   },
   {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "QuartoのBook形式とは",
-    "text": "QuartoのBook形式とは\nQuartoのBook形式は、複数のqmdファイルをまとめて一つのドキュメントとして出力できる機能です。 例えば、Rの入門書として有名なR for Data Science (2e)はQuartoのBook形式で作成されています。\nそのほかにも最近は多くのR関連の書籍がQuartoのBook形式で作成されています。 実際にR for Data Science (2e)などを見ていただくと、実際の本のように、順番だってページが並び、途中途中にセクションがあることがわかります。\n順番に実行する必要のある解析コードについても、同じようにBook形式で管理できるのではないかと考えました。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "対策",
+    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
   },
   {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "既存の解析プロジェクトの構成例",
-    "text": "既存の解析プロジェクトの構成例\n今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。\nnotebooks/\n├── 01_data_preprocessing_AA.qmd\n├── 02_data_preprocessing_BB.qmd\n├── 03_analysis_CC.qmd\n├── 04_analysis_DD.qmd\n├── 05_visualization_EE.qmd\n└── 06_visualization_FF.qmd\nこのように、各ステップごとにqmdファイルを分けて管理しています。 しかし、ある時、02_data_preprocessing_BBの前に新しい前処理ステップを追加したいとします。 この場合、ファイル名の番号をすべて変更する必要があり、非常に面倒です。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "最後に",
+    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
   },
   {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "Quarto Bookの作成",
-    "text": "Quarto Bookの作成\nこの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理します。\nCtrl+Shift+Pでコマンドパレットを開き、“Quarto: Create New Book Project”を選択します。 プロジェクト名を入力し、保存先フォルダを指定します。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "参考",
+    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
   },
   {
     "objectID": "posts/2026-02-01-chain-code/index.html",
@@ -469,144 +560,158 @@
     "text": "Chain codeを座標に変換する\n今度は、chain codeから座標に変換する方法を示します。 まずは、普通に書いてみます。\n\nchain_code &lt;- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)\n# 開始点の座標\nstart_x &lt;- 0\nstart_y &lt;- 0\n# 座標への変換\nx_coords &lt;- c(start_x)\ny_coords &lt;- c(start_y)\nfor (code in chain_code) {\n  last_x &lt;- tail(x_coords, n = 1)\n  last_y &lt;- tail(y_coords, n = 1)\n  if (code == 0) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 1) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 2) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 3) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y + 1)\n  } else if (code == 4) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y)\n  } else if (code == 5) {\n    x_coords &lt;- c(x_coords, last_x - 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 6) {\n    x_coords &lt;- c(x_coords, last_x)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  } else if (code == 7) {\n    x_coords &lt;- c(x_coords, last_x + 1)\n    y_coords &lt;- c(y_coords, last_y - 1)\n  }\n}\ndf_from_chain &lt;- data.frame(x = x_coords, y = y_coords)\nprint(df_from_chain)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\n\nプロットしてみます。\n\nplot(\n  df_from_chain$x,\n  df_from_chain$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)\n\n\n\n\n\n\n\n\n関数化します。\n\nchain_code_to_coords &lt;- function(chain_code, start_x = 0, start_y = 0) {\n  x_coords &lt;- c(start_x)\n  y_coords &lt;- c(start_y)\n  for (code in chain_code) {\n    last_x &lt;- tail(x_coords, n = 1)\n    last_y &lt;- tail(y_coords, n = 1)\n    if (code == 0) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 1) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 2) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 3) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y + 1)\n    } else if (code == 4) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y)\n    } else if (code == 5) {\n      x_coords &lt;- c(x_coords, last_x - 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 6) {\n      x_coords &lt;- c(x_coords, last_x)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    } else if (code == 7) {\n      x_coords &lt;- c(x_coords, last_x + 1)\n      y_coords &lt;- c(y_coords, last_y - 1)\n    }\n  }\n  return(data.frame(x = x_coords, y = y_coords))\n}\n\n先ほどのchain codeを使って関数を適用してみます。\n\nresult_coords &lt;- chain_code_to_coords(\n  chain_code,\n  start_x = 0,\n  start_y = 0\n)\nprint(result_coords)\n\n   x  y\n1  0  0\n2  0 -1\n3  1 -2\n4  2 -2\n5  3 -2\n6  4 -2\n7  5 -1\n8  5  0\n9  5  1\n10 4  2\n11 3  1\n12 2  1\n13 1  2\n14 0  1\n15 0  0\n\nplot(\n  result_coords$x,\n  result_coords$y,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  asp = 1,\n  las = 1,\n  cex.lab = 1.5,\n  cex.axis = 1.5\n)"
   },
   {
-    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html",
-    "href": "posts/2026-02-05-r-aspect-ratio/index.html",
-    "title": "Rのプロットのアスペクト比を設定する方法",
+    "objectID": "posts/2026-03-04-r-color-blind/index.html",
+    "href": "posts/2026-03-04-r-color-blind/index.html",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
     "section": "",
-    "text": "Rのプロット関数(例えばplot())では、aspパラメータを使用してアスペクト比を設定できます。 アスペクト比は、y軸の単位長さがx軸の単位長さの何倍であるかを指定します。"
+    "text": "色の見え方には個人差があります。 特に、多くの人と大きく異なる見え方をする場合を「色覚異常」と呼びます。\n\n\n\n\n\n\nNote\n\n\n\nかつては色覚異常は「色盲」と呼ばれていましたが、現在では「色覚異常」という呼び方が一般的になっています。 「盲」という字を使うことで、まったく色を識別できないという誤解を生む可能性があるためだと考えられます。 「色覚異常」自体は医学用語のようで、基本的には「色覚異常」や「色覚多様性」といった表現が好まれます。\n様々な日本語が言葉狩りのように変わっているようにも思えますが、少なくとも聞いた相手が不快に感じないような表現を選ぶことは大切かもしれません。\n\n\n\n\n\n\n\n\nNote\n\n\n\n英語では、色覚異常は「color blindness」や「color vision deficiency」と呼ばれます。 論文などでは「color vision deficiency」という表現が一般的で、それぞれの単語をとってCVDと略されることが多いです。"
   },
   {
-    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
-    "href": "posts/2026-02-05-r-aspect-ratio/index.html#aspパラメータの使用例",
-    "title": "Rのプロットのアスペクト比を設定する方法",
-    "section": "aspパラメータの使用例",
-    "text": "aspパラメータの使用例\nplot()内にaspパラメータを指定することで、アスペクト比を調整できます。\n\nplot(1:10, 1:10) # デフォルトのアスペクト比\n\n\n\n\n\n\n\nplot(1:10, 1:10, asp = 1) # アスペクト比1:1\n\n\n\n\n\n\n\n\n上記の例では、asp = 1と設定しているため、x軸とy軸の単位長さが等しくなります。 もしasp = 2と設定すると、y軸の単位長さがx軸の単位長さの2倍になります。\n\nplot(1:10, 1:10, asp = 2)"
-  },
-  {
-    "objectID": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
-    "href": "posts/2026-02-05-r-aspect-ratio/index.html#プロット領域も含めたアスペクト比の調整",
-    "title": "Rのプロットのアスペクト比を設定する方法",
-    "section": "プロット領域も含めたアスペクト比の調整",
-    "text": "プロット領域も含めたアスペクト比の調整\nこれは、1:1プロットを作るときに便利です。 1:1の線を描画したい場合などに使用します。 このとき、プロット領域の形状によっては、実際の表示が正方形にならないことがあります。 その場合は、par(pty = \"s\")を使用してプロット領域を正方形に設定することもできます。\n\npar(pty = \"s\") # プロット領域を正方形に設定\n\nx &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\ny &lt;- rnorm(10, mean = 1, sd = 0.1) * 1:10\n\nplot(x, y, asp = 1)\nplot(x, y, asp = 1)\nabline(0, 1, lty = 2)\n\n\n\n\n\n\n\npar(pty = \"m\") # プロット領域を元に戻す\n\n\n\n\n\n\n\nNote補足説明\n\n\n\n\nrnorm(): 正規分布に従う乱数を生成する関数です。ここでは、平均1、標準偏差0.1の乱数を生成しています。\nabline(0, 1, lty = 2): y = xの直線を破線で描画しています。lty = 2は破線を意味します。"
-  },
-  {
-    "objectID": "posts/2024-06-18-basic_authentification/index.html",
-    "href": "posts/2024-06-18-basic_authentification/index.html",
-    "title": "BASIIC認証でつまったこと",
+    "objectID": "posts/2026-03-04-r-color-blind/index.html#色覚多様性",
+    "href": "posts/2026-03-04-r-color-blind/index.html#色覚多様性",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
     "section": "",
-    "text": "BASIC認証を使用したときのメモです。\n適切な.htacessと.htpasswdを作成したつもりが、500エラー(Internal Server Error)になってしまいました。\n原因は以下でした。\n\nAuthUserFileがAuthUserfileになっていた(fが小文字!)\nAuthNameの文字列のクォーテーションマークが\"(straight quotes)ではなく、“(smart quotes)になっていた。\n\nどちらも細かいですが、気づきにくいですね。\n参考サイトからコピペした弊害です。 コードは最初は手打ちしたほうが良いのかもしれないですね。\nその他もいろいろ落とし穴があるので、慣れないうちは特に細心の注意を払う必要がありますね。"
+    "text": "色の見え方には個人差があります。 特に、多くの人と大きく異なる見え方をする場合を「色覚異常」と呼びます。\n\n\n\n\n\n\nNote\n\n\n\nかつては色覚異常は「色盲」と呼ばれていましたが、現在では「色覚異常」という呼び方が一般的になっています。 「盲」という字を使うことで、まったく色を識別できないという誤解を生む可能性があるためだと考えられます。 「色覚異常」自体は医学用語のようで、基本的には「色覚異常」や「色覚多様性」といった表現が好まれます。\n様々な日本語が言葉狩りのように変わっているようにも思えますが、少なくとも聞いた相手が不快に感じないような表現を選ぶことは大切かもしれません。\n\n\n\n\n\n\n\n\nNote\n\n\n\n英語では、色覚異常は「color blindness」や「color vision deficiency」と呼ばれます。 論文などでは「color vision deficiency」という表現が一般的で、それぞれの単語をとってCVDと略されることが多いです。"
   },
   {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html",
-    "title": "RでLorenz attractorを描く",
+    "objectID": "posts/2026-03-04-r-color-blind/index.html#色覚異常のタイプ",
+    "href": "posts/2026-03-04-r-color-blind/index.html#色覚異常のタイプ",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
+    "section": "色覚異常のタイプ",
+    "text": "色覚異常のタイプ\n色覚異常には、主に以下のようなタイプがあります。\n\n1型色覚 (Protanopia): 赤に感度をもつ錐体（L錐体）が欠けているタイプ。赤が暗く見え、赤と緑の区別が難しくなる。\n2型色覚 (Deuteranopia): 緑に感度をもつ錐体（M錐体）が欠けているタイプ。赤と緑の区別が難しくなるが、明るさの変化は1型ほど大きくない。\n3型色覚 (Tritanopia): 青に感度をもつ錐体（S錐体）が欠けているタイプ。 青と黄色などの区別が難しくなる。\n\n色覚異常の多くは1型と2型であり、これらは赤と緑の識別に関係するため、 まとめて「赤緑色覚異常」と呼ばれることもあります。\nまた、すべての錐体が機能しない「全色盲（achromatopsia）」というタイプもありますが、これは非常に稀です。"
+  },
+  {
+    "objectID": "posts/2026-03-04-r-color-blind/index.html#rで色覚異常のシミュレーションを行う方法",
+    "href": "posts/2026-03-04-r-color-blind/index.html#rで色覚異常のシミュレーションを行う方法",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
+    "section": "Rで色覚異常のシミュレーションを行う方法",
+    "text": "Rで色覚異常のシミュレーションを行う方法\nRのcolorspaceパッケージを使うと、色覚異常のシミュレーションを簡単に行うことができます。 インストールされていなかったら、以下のコードを実行してインストールしてください。 その後、library(colorspace)でパッケージを読み込みます。\n\n# install.packages(\"colorspace\") もしインストールされていなかったら\n# renv::install(\"colorspace\") renvを使っている場合\nlibrary(colorspace)\n\n色のベクトルを用意し、deutan() (2型色覚), protan() (1型色覚), tritan() (3型色覚)を使って、色覚異常のシミュレーションを行います。\n\ncolors &lt;- c(\"red\", \"green\", \"blue\", \"yellow\") # 赤、緑、青、黄の色ベクトル\ncolors_protan &lt;- protan(colors) # 1型色覚のシミュレーション\ncolors_deutan &lt;- deutan(colors) # 2型色覚のシミュレーション\ncolors_tritan &lt;- tritan(colors) # 3型色覚のシミュレーション\n\n\n\n\n\n\n\nNote色覚異常の程度\n\n\n\nシミュレーションの関数には、severityという引数があります。 デフォルトではseverity = 1となっており、完全な色覚異常のシミュレーションが行われます。 この引数を0から1の範囲で調整することで、色覚異常の程度をシミュレーションすることができます。\n\n\nプロットしてみます。\n\npar(mfrow = c(1, 4))\nbarplot(rep(1, length(colors)), col = colors, main = \"Original\")\nbarplot(rep(1, length(colors_protan)), col = colors_protan, main = \"Protanopia\")\nbarplot(\n  rep(1, length(colors_deutan)),\n  col = colors_deutan,\n  main = \"Deuteranopia\"\n)\nbarplot(\n  rep(1, length(colors_tritan)),\n  col = colors_tritan,\n  main = \"Tritanopia\"\n)\n\n\n\n\n\n\n\n\nProtanopiaとDeuteranopiaは、赤と緑の区別が難しくなっていることがわかります。 また、黄色は赤と緑の混合色であるため、ProtanopiaとDeuteranopiaの両方で、黄色も赤や緑と区別が難しくなっています。\nTritanopiaは、青と黄色の区別が難しくなるといわれますが、S錐体が欠けるため、青・シアン・緑の区別も弱くなる場合があります。 緑と青が区別しにくくなっていることがわかります。\n棒グラフだとまだわかりにくいかもしれませんが、プロットの点が多い場合などは致命的な問題になることもあります。\n\nset.seed(1)\nx &lt;- rnorm(100)\ny &lt;- rnorm(100)\npar(mfrow = c(2, 2))\nplot(x, y, col = colors, pch = 16, cex = 2, main = \"Original\")\nplot(x, y, col = colors_protan, pch = 16, cex = 2, main = \"Protanopia\")\nplot(x, y, col = colors_deutan, pch = 16, cex = 2, main = \"Deuteranopia\")\nplot(x, y, col = colors_tritan, pch = 16, cex = 2, main = \"Tritanopia\")\n\n\n\n\n\n\n\n\nRのバージョン4以降のデフォルトカラーパレットでも検証してみます。\n\ncolors_default &lt;- palette() # Rのデフォルトカラーパレット\ncolors_default_protan &lt;- protan(colors_default)\ncolors_default_deutan &lt;- deutan(colors_default)\ncolors_default_tritan &lt;- tritan(colors_default)\n\npar(mfrow = c(1, 4))\nbarplot(rep(1, length(colors_default)), col = colors_default, main = \"Original\")\nbarplot(\n  rep(1, length(colors_default_protan)),\n  col = colors_default_protan,\n  main = \"Protanopia\"\n)\nbarplot(\n  rep(1, length(colors_default_deutan)),\n  col = colors_default_deutan,\n  main = \"Deuteranopia\"\n)\nbarplot(\n  rep(1, length(colors_default_tritan)),\n  col = colors_default_tritan,\n  main = \"Tritanopia\"\n)\n\n\n\n\n\n\n\npar(mfrow = c(2, 2))\nplot(x, y, col = colors_default, pch = 16, cex = 2, main = \"Original\")\nplot(x, y, col = colors_default_protan, pch = 16, cex = 2, main = \"Protanopia\")\nplot(\n  x,\n  y,\n  col = colors_default_deutan,\n  pch = 16,\n  cex = 2,\n  main = \"Deuteranopia\"\n)\nplot(\n  x,\n  y,\n  col = colors_default_tritan,\n  pch = 16,\n  cex = 2,\n  main = \"Tritanopia\"\n)"
+  },
+  {
+    "objectID": "posts/2026-03-04-r-color-blind/index.html#色覚多様性への配慮",
+    "href": "posts/2026-03-04-r-color-blind/index.html#色覚多様性への配慮",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
+    "section": "色覚多様性への配慮",
+    "text": "色覚多様性への配慮\n\nカラーパレットを選ぶ際の注意点\n色覚異常の人にとって、特定の色の組み合わせは区別が難しいことがあります。 このような問題を避けるためには、色覚異常の人にも区別しやすいカラーパレットを選ぶことが重要です。 一番簡単な方法は、palette(\"Okabe-Ito\")のような、色覚異常の人にも区別しやすいカラーパレットを使用することです。 このカラーパレットは、色覚異常の人にも区別しやすい色の組み合わせが選ばれています。\n\ncolors_okabe_ito &lt;- palette(\"Okabe-Ito\")\ncolors_okabe_ito_protan &lt;- protan(colors_okabe_ito)\ncolors_okabe_ito_deutan &lt;- deutan(colors_okabe_ito)\ncolors_okabe_ito_tritan &lt;- tritan(colors_okabe_ito)\npar(mfrow = c(1, 4))\nbarplot(\n  rep(1, length(colors_okabe_ito)),\n  col = colors_okabe_ito,\n  main = \"Original\"\n)\nbarplot(\n  rep(1, length(colors_okabe_ito_protan)),\n  col = colors_okabe_ito_protan,\n  main = \"Protanopia\"\n)\nbarplot(\n  rep(1, length(colors_okabe_ito_deutan)),\n  col = colors_okabe_ito_deutan,\n  main = \"Deuteranopia\"\n)\nbarplot(\n  rep(1, length(colors_okabe_ito_tritan)),\n  col = colors_okabe_ito_tritan,\n  main = \"Tritanopia\"\n)\n\n\n\n\n\n\n\n\n散布図は以下のようになります。\n\npar(mfrow = c(2, 2))\nplot(x, y, col = colors_okabe_ito, pch = 16, cex = 2, main = \"Original\")\nplot(\n  x,\n  y,\n  col = colors_okabe_ito_protan,\n  pch = 16,\n  cex = 2,\n  main = \"Protanopia\"\n)\nplot(\n  x,\n  y,\n  col = colors_okabe_ito_deutan,\n  pch = 16,\n  cex = 2,\n  main = \"Deuteranopia\"\n)\nplot(\n  x,\n  y,\n  col = colors_okabe_ito_tritan,\n  pch = 16,\n  cex = 2,\n  main = \"Tritanopia\"\n)\n\n\n\n\n\n\n\n\n\n\n色覚異常の人にとって重要な情報を色以外の方法で伝える\n色覚異常の人にとって、色だけで情報を伝えるのは難しいことがあります。 そのため、色覚異常の人にとって重要な情報を色以外の方法で伝えることも重要です。\n例えば、グラフの点の形を変える、線の種類を変える、テキストで説明するなどの方法があります。 個人的には、pch引数を使って点の形を変える方法が簡単で効果的だと思い、よく利用しています。\n\nset.seed(1)\nx_circle &lt;- rnorm(100)\ny_circle &lt;- rnorm(100)\nx_square &lt;- rnorm(100)\ny_square &lt;- rnorm(100)\npar(mfrow = c(1, 1))\nplot(\n  x_circle,\n  y_circle,\n  col = protan(2),\n  pch = 16,\n  cex = 2\n)\npoints(\n  x_square,\n  y_square,\n  col = protan(3),\n  pch = 15,\n  cex = 2\n)"
+  },
+  {
+    "objectID": "posts/2026-03-04-r-color-blind/index.html#明度差を確保する",
+    "href": "posts/2026-03-04-r-color-blind/index.html#明度差を確保する",
+    "title": "Rで色覚異常のシミュレーションを行う方法",
+    "section": "明度差を確保する",
+    "text": "明度差を確保する\n赤と緑の区別が難しい場合でも、明度差があれば区別しやすくなります。 例えば、以下のような赤と緑の組み合わせは、明度差が小さいため、protanopiaやdeuteranopiaの人にとって区別が難しいです。\n\ncolors &lt;- c(\"#932922\", \"#526907\")\ncolors_protan &lt;- protan(colors)\ncolors_deutan &lt;- deutan(colors)\nbarplot(rep(1, length(colors)), col = colors, main = \"Original\")\n\n\n\n\n\n\n\nbarplot(rep(1, length(colors_protan)), col = colors_protan, main = \"Protanopia\")\n\n\n\n\n\n\n\nbarplot(\n  rep(1, length(colors_deutan)),\n  col = colors_deutan,\n  main = \"Deuteranopia\"\n)\n\n\n\n\n\n\n\n\n一方、以下のような赤と緑の組み合わせは、明度差が大きいため、protanopiaやdeuteranopiaの人にとって区別しやすいです。\n\ncolors &lt;- c(\"#FF4B00\", \"#03AF7A\")\ncolors_protan &lt;- protan(colors)\ncolors_deutan &lt;- deutan(colors)\nbarplot(rep(1, length(colors)), col = colors, main = \"Original\")\n\n\n\n\n\n\n\nbarplot(rep(1, length(colors_protan)), col = colors_protan, main = \"Protanopia\")\n\n\n\n\n\n\n\nbarplot(\n  rep(1, length(colors_deutan)),\n  col = colors_deutan,\n  main = \"Deuteranopia\"\n)\n\n\n\n\n\n\n\n\nそれでも、色覚異常の人にとっては、多くの人よりも区別は難しいため、明度差だけに頼るのではなく、色以外の方法も併用することが重要です。\nまた、明度差を確保することは、グレースケール印刷の面でも重要です。 明度差が小さいと、色覚多様性に関係なく、グレースケール印刷の際に区別が難しくなります。 そのような意味でも明度差に配慮することは重要です。"
+  },
+  {
+    "objectID": "posts/2026-01-31-r-japan-map/index.html",
+    "href": "posts/2026-01-31-r-japan-map/index.html",
+    "title": "Rで日本地図を描く",
     "section": "",
-    "text": "Lorenz attractorは、Edward Lorenz氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。\n以下に、RのdeSolveパッケージを使用してLorenz attractorを描く方法を示します。"
+    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
   },
   {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の定義",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz方程式の定義",
-    "text": "Lorenz方程式の定義\nLorenz方程式は以下の3つの常微分方程式から構成されます。\n\\[\n\\begin{align}\n  \\frac{dx}{dt} &= \\sigma (y - x) \\\\\n  \\frac{dy}{dt} &= x(\\rho - z) - y \\\\\n  \\frac{dz}{dt} &= xy - \\beta z\n\\end{align}\n\\]\nここで、\\(x\\)、\\(y\\)、および\\(z\\)はシステムの状態変数であり、\\(\\sigma\\)、\\(\\rho\\)、および\\(\\beta\\)はパラメータです。一般的に使用されるパラメータ値は以下の通りです。\n\n\\(\\sigma = 10\\)\n\\(\\rho = 28\\)\n\\(\\beta = \\frac{8}{3}\\)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#desolveパッケージのインストールと読み込み",
-    "title": "RでLorenz attractorを描く",
-    "section": "deSolveパッケージのインストールと読み込み",
-    "text": "deSolveパッケージのインストールと読み込み\nまず、deSolveパッケージをインストールし、読み込みます。\ninstall.packages(\"deSolve\")  # まだインストールしていない場合\nlibrary(deSolve)\nrenvパッケージを使用している場合は、以下のようにします。\nrenv::install(\"deSolve\") # まだインストールしていない場合\n\nlibrary(deSolve)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz方程式の実装",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz方程式の実装",
-    "text": "Lorenz方程式の実装\nまずは、Lorenz方程式をRの関数として実装します。\n\nlorenz &lt;- function(t, state, parameters) {\n  with(as.list(c(state, parameters)), {\n    dx &lt;- sigma * (y - x)\n    dy &lt;- x * (rho - z) - y\n    dz &lt;- x * y - beta * z\n    list(c(dx, dy, dz))\n  })\n}\n\n次に、初期状態、パラメータ、時間の範囲を設定します。\n\nstate &lt;- c(x = -10, y = -10, z = 30)\nparameters &lt;- c(sigma = 10, rho = 28, beta = 8 / 3)\ntimes &lt;- seq(0, 100, by = 0.01)\n\node()関数を使用してLorenz方程式を解きます。\n\nout &lt;- ode(y = state, times = times, func = lorenz, parms = parameters)\nout &lt;- as.data.frame(out)"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#lorenz-attractorの描画",
-    "title": "RでLorenz attractorを描く",
-    "section": "Lorenz attractorの描画",
-    "text": "Lorenz attractorの描画\nまずは二次元のプロットを作成します。 x-y平面、x-z平面、y-z平面の3つのプロットを描きます。\n\nplot(out$x, out$z, type = \"l\", xlab = \"x\", ylab = \"z\")\n\n\n\n\n\n\n\nplot(out$x, out$y, type = \"l\", xlab = \"x\", ylab = \"y\")\n\n\n\n\n\n\n\nplot(out$y, out$z, type = \"l\", xlab = \"y\", ylab = \"z\")"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#dプロットの作成",
-    "title": "RでLorenz attractorを描く",
-    "section": "3Dプロットの作成",
-    "text": "3Dプロットの作成\nRのscatterplot3dパッケージを使用して、3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"scatterplot3d\")  # まだインストールしていない場合\nrenv::install(\"scatterplot3d\") # renvを使用している場合\n\nlibrary(scatterplot3d)\nscatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"l\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor\"\n)\n\n\n\n\n\n\n\n\nまた、それぞれの面に投影した2Dプロットも描いてみます。\n\ns3d &lt;- scatterplot3d(\n  out$x,\n  out$y,\n  out$z,\n  type = \"n\",\n  xlab = \"X\",\n  ylab = \"Y\",\n  zlab = \"Z\",\n  main = \"Lorenz Attractor with Projections\"\n)\ns3d$points3d(out$x, out$y, out$z, type = \"l\", col = \"#FF4B00\") # Lorenz attractor本体\ns3d$points3d(\n  out$x,\n  out$y,\n  rep(min(out$z), nrow(out)),\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-y平面への投影\ns3d$points3d(\n  out$x,\n  rep(max(out$y), nrow(out)),\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # x-z平面への投影\ns3d$points3d(\n  rep(min(out$x), nrow(out)),\n  out$y,\n  out$z,\n  type = \"l\",\n  col = adjustcolor(\"gray50\", alpha.f = 0.5)\n) # y-z平面への投影"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#plotlyを使ったインタラクティブな3dプロット",
-    "title": "RでLorenz attractorを描く",
-    "section": "Plotlyを使ったインタラクティブな3Dプロット",
-    "text": "Plotlyを使ったインタラクティブな3Dプロット\nRのplotlyパッケージを使用して、インタラクティブな3Dプロットを作成します。\nまだインストールしていない場合は、以下のコマンドでインストールしてください。\ninstall.packages(\"plotly\")  # まだインストールしていない場合\nrenv::install(\"plotly\") # renvを使用している場合\n\nlibrary(plotly)\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\nfig &lt;- plot_ly(\n  x = out$x,\n  y = out$y,\n  z = out$z,\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig &lt;- fig %&gt;%\n  layout(\n    title = \"Lorenz Attractor\",\n    scene = list(\n      xaxis = list(title = 'X'),\n      yaxis = list(title = 'Y'),\n      zaxis = list(title = 'Z')\n    )\n  )\nfig\n\n\n\n\n\n時間まで含めた色変化も可能です。\n\nfig &lt;- plot_ly(\n  data = out,\n  x = ~x,\n  y = ~y,\n  z = ~z,\n  color = ~time,\n  colors = colorRamp(c(\"blue\", \"red\")),\n  type = 'scatter3d',\n  mode = 'lines'\n)\nfig\n\n\n\n\n\nまた、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。\n\nidx &lt;- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き\nout2 &lt;- out[idx, ]\n\nfig &lt;- plot_ly() %&gt;%\n  # 静的な軌跡（線）\n  add_trace(\n    data = out,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    type = \"scatter3d\",\n    mode = \"lines\",\n    line = list(color = \"gray\")\n  ) %&gt;%\n  # 動く点\n  add_trace(\n    data = out2,\n    x = ~x,\n    y = ~y,\n    z = ~z,\n    frame = ~time,\n    type = \"scatter3d\",\n    mode = \"markers\",\n    marker = list(size = 3, color = \"#FF4B00\")\n  ) %&gt;%\n  animation_opts(\n    frame = 50, # 1フレームの表示時間（ms）\n    transition = 0 # 補間アニメーションを切ることで軽量化する\n  )\n\nfig"
-  },
-  {
-    "objectID": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
-    "href": "posts/2026-02-02-r-lorenz-attractor/index.html#参考になるページ",
-    "title": "RでLorenz attractorを描く",
-    "section": "参考になるページ",
-    "text": "参考になるページ\n\nLorenz system - Wikipedia\nCRAN: Package deSolve\nPlotly r graphing library in R"
-  },
-  {
-    "objectID": "posts/2026-01-30-r-make-directory/index.html",
-    "href": "posts/2026-01-30-r-make-directory/index.html",
-    "title": "Rでディレクトリを作成する方法",
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
+    "href": "posts/2026-01-31-r-japan-map/index.html#パッケージのインストールと読み込み",
+    "title": "Rで日本地図を描く",
     "section": "",
-    "text": "Rでは、dir.create()関数を使用してディレクトリを作成することができます。"
+    "text": "install.packages(\"rnaturalearth\")\nrenvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"necountries\")\nその後、パッケージを読み込みます。\n\nlibrary(rnaturalearth)"
   },
   {
-    "objectID": "posts/2026-01-30-r-make-directory/index.html#dir.create関数",
-    "href": "posts/2026-01-30-r-make-directory/index.html#dir.create関数",
-    "title": "Rでディレクトリを作成する方法",
-    "section": "dir.create()関数",
-    "text": "dir.create()関数\n文法は以下の通りです。\ndir.create(path, showWarnings = TRUE, recursive = FALSE, mode = \"0777\")\n\npath: 作成するディレクトリのパスを指定します。~はホームディレクトリを表します。\nshowWarnings: TRUEに設定すると、ディレクトリが既に存在する場合に警告を表示します。デフォルトはTRUEです。\nrecursive: TRUEに設定すると、必要に応じて親ディレクトリも作成します。デフォルトはFALSEです。\nmode: 作成するディレクトリのアクセス権(パーミッション)を指定します。デフォルトは”0777”です。\n\n\n\n\n\n\n\nNote\n\n\n\nmode引数はUNIX系システムでのみ意味を持ちます。Windowsでは無視されます。 基本的にはデフォルトのままで問題ありません。 ここでは詳しく説明しません。\nもし詳しく知りたい場合は、?dir.createでヘルプを参照していただくか、以下のドキュメントを参照してください。\n\nfiles2: Manipulaton of Directories and File Permissions"
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
+    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図の描画",
+    "title": "Rで日本地図を描く",
+    "section": "日本地図の描画",
+    "text": "日本地図の描画\n地図を描画するには、rnaturalearthdataパッケージも必要です。以下のコードで日本の地図を取得し、描画します。\ninstall.packages(\"rnaturalearthdata\")\nrenv::install(\"rnaturalearthdata\") # renvを使用している場合\nライブラリを読み込まなくても問題ありませんが、念のため読み込みます。\n\nlibrary(rnaturalearthdata)\n\n\nAttaching package: 'rnaturalearthdata'\n\n\nThe following object is masked from 'package:rnaturalearth':\n\n    countries110\n\n\nne_countries()関数を使って日本の地図データを取得し、plot()関数で描画します。\n\njapan &lt;- ne_countries(\n  scale = \"medium\",\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan[\"geometry\"])\n\n\n\n\n\n\n\n\n引数は、以下のように設定しています。\n\nscale = \"medium\": 中程度の解像度の地図データを取得します。他にsmallやlargeも選択可能です。\ncountry = \"Japan\": 日本の地図データを指定します。\nreturnclass = \"sf\": 地図データをsfオブジェクトとして返します。\n\nこれでRを使って日本地図を描くことができます。必要に応じて、地図のスタイルや詳細をカスタマイズしてください。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nne_countries()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world country polygons — ne_countries • rnaturalearth"
   },
   {
-    "objectID": "posts/2026-01-30-r-make-directory/index.html#使用例",
-    "href": "posts/2026-01-30-r-make-directory/index.html#使用例",
-    "title": "Rでディレクトリを作成する方法",
-    "section": "使用例",
-    "text": "使用例\n例えば、以下のコードはsave/path/to/directoryというディレクトリを作成します。 このとき、親ディレクトリが存在しない場合でもrecursive = TRUEを指定することで、必要な親ディレクトリも一緒に作成されます。 また、もしディレクトリが既に存在していても警告を表示しないようにshowWarnings = FALSEを指定しています。\nsave_dir &lt;- \"save/path/to/directory\"\ndir.create(save_dir, showWarnings = FALSE, recursive = TRUE)\nこのコードを実行すると、saveディレクトリが存在しない場合でも、save/path/to/directoryというディレクトリが作成されます。"
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
+    "href": "posts/2026-01-31-r-japan-map/index.html#日本地図を県別に描画する",
+    "title": "Rで日本地図を描く",
+    "section": "日本地図を県別に描画する",
+    "text": "日本地図を県別に描画する\n県別の日本地図を描画するには、rnaturalearthhiresパッケージを使用します。 インストールは、GitHubもしくはR-universeから行います。\n\n\n\n\n\n\nNoteCRANからインストールができない理由\n\n\n\nパッケージのサイズがCRANの推奨を超えているため、CRANからのインストールができないようです。\n\n\nremotes::install_github(\"ropensci/rnaturalearthhires\")\nまたは、以下のコードでインストールします。\ninstall.packages(\n  \"rnaturalearthhires\",\n  repos = \"https://ropensci.r-universe.dev\",\n  type = \"source\"\n)\nもしくは、renvを使用している場合は、以下のコマンドでインストールします。\nrenv::install(\"ropensci/rnaturalearthhires\")\nパッケージを読み込みます。\n\nlibrary(rnaturalearthhires)\n\n県別の日本地図を取得し、描画します。\n\njapan_prefectures &lt;- ne_states(\n  country = \"Japan\",\n  returnclass = \"sf\"\n)\nplot(japan_prefectures[\"name_ja\"])\n\n\n\n\n\n\n\n\n海岸線もきれいに描画されていますね。\n\n\n\n\n\n\nNote公式ドキュメント\n\n\n\nna_states()関数の詳細については、公式ドキュメントを参照してください。\n\nGet natural earth world state (admin level 1) polygons — ne_states • rnaturalearth"
   },
   {
-    "objectID": "posts/2026-02-03-quarto-japanese/index.html",
-    "href": "posts/2026-02-03-quarto-japanese/index.html",
-    "title": "QuartoのPDF出力で日本語を使う",
-    "section": "",
-    "text": "QuartoでPDFを出力する際、デフォルトの設定では日本語が正しく表示されないことがあります。 これは、LaTeXの設定が日本語に対応していないためです。 この記事では、Quartoで日本語を使うための設定方法を紹介します。"
-  },
-  {
-    "objectID": "posts/2026-02-03-quarto-japanese/index.html#pdf出力をするための準備",
-    "href": "posts/2026-02-03-quarto-japanese/index.html#pdf出力をするための準備",
-    "title": "QuartoのPDF出力で日本語を使う",
-    "section": "PDF出力をするための準備",
-    "text": "PDF出力をするための準備\nPDF出力には、LaTexをインストールする必要があります。 公式で推奨されているのはTinyTeXです。\nターミナルで以下のコマンドを実行してインストールします。\n\n\nTerminal\n\nquarto install tinytex\n\n\n\n\n\n\n\nNoteLaTeXとは\n\n\n\nLaTeXは、高品質な文書を作成するための組版システムです。 特に学術論文や技術文書の作成に広く使用されています。 たくさんのコマンドを覚える必要がありますが、QuartoでPDF出力を行う際は、そこまで深く理解する必要はありません。\n\n\n\n\n\n\n\n\nNote\n\n\n\nLaTeXがインストールされていない状態で、PDF出力を試みると、エラーが発生します。 この時、quarto install tinytexを実行してTexをインストールするようにメッセージが表示されます。"
-  },
-  {
-    "objectID": "posts/2026-02-03-quarto-japanese/index.html#pdf出力にする方法",
-    "href": "posts/2026-02-03-quarto-japanese/index.html#pdf出力にする方法",
-    "title": "QuartoのPDF出力で日本語を使う",
-    "section": "PDF出力にする方法",
-    "text": "PDF出力にする方法\nQuartoでPDFを出力するには、YAMLヘッダーに以下のようにformat: pdfを指定します。\n---\ntitle: \"ドキュメントのタイトル\"\nformat: pdf\n---\nこのようにすると、QuartoはPDF形式でドキュメントを生成します。 しかし、このままでは日本語が正しく表示されないことがあります。"
-  },
-  {
-    "objectID": "posts/2026-02-03-quarto-japanese/index.html#日本語を正しく表示するための設定",
-    "href": "posts/2026-02-03-quarto-japanese/index.html#日本語を正しく表示するための設定",
-    "title": "QuartoのPDF出力で日本語を使う",
-    "section": "日本語を正しく表示するための設定",
-    "text": "日本語を正しく表示するための設定\n日本語を正しく表示するためには、YAMLヘッダーに以下の設定を追加します。\n---\ntitle: \"ドキュメントのタイトル\"\nformat:\n  pdf:\n    CJKmainfont: \"BIZ UDPGothic\"  # 使用する日本語フォントを指定\n---\nCJKmainfontには、システムにインストールされている日本語フォントの名前を指定します。 例えば、\"BIZ UDPGothic\"や\"Noto Sans CJK JP\"などがあります。\nmainfont: \"Font Name\"で指定することもできますが、その場合は英字や数字も指定したフォントで表示されるため、注意が必要です。\n\n\n\n\n\n\nNoteCJKmainfontについて\n\n\n\nCJKmainfontは、LaTeXで日本語を表示するために使用されるフォントを指定するオプションです。 ちなみにCはChinese、JはJapanese、KはKoreanの略です。 これらの言語は文字が多いため、専用のフォントが必要となります。\n\n\n\n\n\n\n\n\nNote利用できるフォントファイルを確認する方法\n\n\n\nLaTeXで利用できるフォントファイルを確認するには、ターミナルで以下のコマンドを実行します。\n\nWindowsの場合\n\n\nTerminal\n\nGet-ChildItem C:\\Windows\\Fonts | Select-Object Name\n\n\n\nmacOS/Linuxの場合\n未確認ですが、以下のコマンドで確認できると思いました。\n\n\nTerminal\n\nls /Library/Fonts/"
-  },
-  {
-    "objectID": "posts/2026-02-03-quarto-japanese/index.html#参考",
-    "href": "posts/2026-02-03-quarto-japanese/index.html#参考",
-    "title": "QuartoのPDF出力で日本語を使う",
+    "objectID": "posts/2026-01-31-r-japan-map/index.html#参考",
+    "href": "posts/2026-01-31-r-japan-map/index.html#参考",
+    "title": "Rで日本地図を描く",
     "section": "参考",
-    "text": "参考\n\nPDF Basics – Quarto\nPDF Options – Quarto"
+    "text": "参考\n\nHigh Resolution World Vector Map Data from Natural Earth used in rnaturalearth • rnaturalearthhires\nrnaturalearthhires - GitHub"
+  },
+  {
+    "objectID": "posts/2026-01-24-code-filename/index.html",
+    "href": "posts/2026-01-24-code-filename/index.html",
+    "title": "Quartoでコードブロックのファイル名を表示する",
+    "section": "",
+    "text": "コードブロックにファイル名を表示する方法についてのメモです。 コードブロックにfilename属性を追加することで、ファイル名を表示できます。\nのように記述します。\n以下のように表示されます。\nちなみに```{.python}の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```pythonと同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。"
+  },
+  {
+    "objectID": "posts/2026-01-24-code-filename/index.html#参考",
+    "href": "posts/2026-01-24-code-filename/index.html#参考",
+    "title": "Quartoでコードブロックのファイル名を表示する",
+    "section": "参考",
+    "text": "参考\n\nHTML Code Blocks - Quarto\nMarkdown Basics - Quarto"
+  },
+  {
+    "objectID": "posts/2026-02-25-r-plot-transparent/index.html",
+    "href": "posts/2026-02-25-r-plot-transparent/index.html",
+    "title": "Rのプロットで色に透明度を指定する方法",
+    "section": "",
+    "text": "Rのプロットで、色に透明度を指定する方法についてまとめます。 例えば、散布図を描くときに、点が重なっている部分がわかりづらいことがあります。 例えば、以下のような散布図を描いたとします。\nset.seed(1)\nx &lt;- rnorm(1000)\ny &lt;- rnorm(1000)\nplot(x, y)\n塗りつぶしをすると、なおさら点が重なっている部分がわかりづらくなります。\nplot(x, y, pch = 16)\nこのように点が重なっている部分が多い場合、点の色に透明度を指定することで、重なっている部分がわかりやすくなります。 Rでは主に以下の方法で、色に透明度を指定することができます。"
+  },
+  {
+    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#進数のカラーコードの後ろに透明度を指定する方法",
+    "href": "posts/2026-02-25-r-plot-transparent/index.html#進数のカラーコードの後ろに透明度を指定する方法",
+    "title": "Rのプロットで色に透明度を指定する方法",
+    "section": "16進数のカラーコードの後ろに透明度を指定する方法",
+    "text": "16進数のカラーコードの後ろに透明度を指定する方法\nRでは、16進数のカラーコードの後ろに透明度を指定することができます。 例えば、#RRGGBBAAの形式で、AAの部分に透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\n\n\n\n\n\nNoteカラーコード\n\n\n\nカラーコードは、色を表すためのコードで、通常は#RRGGBBの形式で表されます。\n\nRRは赤の値を16進数で表したもの（00からFFまで）\nGGは緑の値を16進数で表したもの（00からFFまで）\nBBは青の値を16進数で表したもの（00からFFまで）\n\n例えば、#0000FFは青を表すカラーコードです。\n\n\n\nplot(x, y, pch = 16, col = \"#0000FF80\")"
+  },
+  {
+    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#adjustcolorを使う方法",
+    "href": "posts/2026-02-25-r-plot-transparent/index.html#adjustcolorを使う方法",
+    "title": "Rのプロットで色に透明度を指定する方法",
+    "section": "adjustcolor()を使う方法",
+    "text": "adjustcolor()を使う方法\nadjustcolor()は、既存の色を微調整するための関数です。 alpha.f引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\nplot(x, y, pch = 16, col = adjustcolor(\"blue\", alpha.f = 0.5))\n\n\n\n\n\n\n\n\nこのようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、このほうであれば、色の名前を直接指定できるため、カラーコードを覚える必要がありません。 一つの色を複数の透明度で使いたい場合などは、adjustcolor()を使う方法が便利です。 例えば、以下のようにして、点や線の色に異なる透明度を指定することができます。\n\nplot(x, y, pch = 16, col = adjustcolor(\"blue\", alpha.f = 0.9))\n\n# 95%信頼区間を描く\nmodel &lt;- lm(y ~ x)\nord &lt;- order(x)\nx_sorted &lt;- x[ord]\nconf &lt;- predict(model, interval = \"confidence\")\nconf_sorted &lt;- conf[ord, ]\n\npolygon(\n  c(x_sorted, rev(x_sorted)),\n  c(conf_sorted[, 2], rev(conf_sorted[, 3])),\n  col = adjustcolor(\"blue\", alpha.f = 0.5),\n  border = NA\n)\n\n# 回帰線を描く\nabline(model, col = adjustcolor(\"blue\", alpha.f = 0.8), lwd = 5)"
+  },
+  {
+    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#rgbを使う方法",
+    "href": "posts/2026-02-25-r-plot-transparent/index.html#rgbを使う方法",
+    "title": "Rのプロットで色に透明度を指定する方法",
+    "section": "rgb()を使う方法",
+    "text": "rgb()を使う方法\nrgb()は、赤、緑、青の値を指定して色を作成する関数です。 alpha引数を使って、透明度を指定することができます。 例えば、以下のようにして、点の色に透明度を指定することができます。\n\nplot(x, y, pch = 16, col = rgb(0, 0, 1, alpha = 0.5))\n\n\n\n\n\n\n\n\nこのようにすると、点の色が半透明になり、重なっている部分がわかりやすくなります。 また、この方法では、赤、緑、青の値を直接指定できるため、細かい色の調整が可能です。 注意点としては、各色の値は0から1の範囲で指定する必要があることです。"
+  },
+  {
+    "objectID": "posts/2026-02-25-r-plot-transparent/index.html#個人的な好み",
+    "href": "posts/2026-02-25-r-plot-transparent/index.html#個人的な好み",
+    "title": "Rのプロットで色に透明度を指定する方法",
+    "section": "個人的な好み",
+    "text": "個人的な好み\n個人的には、adjustcolor()を使う方法が便利で、よく使用しています。 その次に直接カラーコードを指定する方法を使用することが多いです。 rgb() はほとんど使用したことがありません。\nadjustcolor()を使う場合は、既存の色名を直接指定できるのがとても便利だと思っております。 色名だけでなく、デフォルトカラーのインデックスを指定することもできます。\n\nplot(x, y, pch = 16, col = adjustcolor(2, alpha.f = 0.5))\n\n\n\n\n\n\n\n\n覚えておくと便利です。"
+  },
+  {
+    "objectID": "posts/2025-01-01-imager/index.html",
+    "href": "posts/2025-01-01-imager/index.html",
+    "title": "画像処理のためのRパッケージimagerの使い方",
+    "section": "",
+    "text": "概要\nRで画像解析をしたいとなったときに、{imager}というパッケージがあることを知った。 いろいろと試した結果を記す。\n\n\nパッケージの読み込み\nインストールは普通にinstall.packages()でOK。\n\ninstall.packages(\"imager\")\n\n読み込みは以下のようにする。\n\nlibrary(\"imager\")\n\n\n\n画像の読み込みと表示\n画像の読み込みにはload.image()を使う。 サンプル画像が5枚(動画が1つ)用意されている。 サンプルの確認は以下のようにする。\n\nlist.files(system.file('extdata', package = 'imager'))\n\n[1] \"coins.png\"           \"HubbleDeepField.jpg\" \"Leonardo_Birds.jpg\" \n[4] \"parrots.png\"         \"tennis_sif.mp4\"     \n\n\nボートのサンプル画像もあるのだが、ここには保存されていないようだ。\nちなみに、system.file()は、指定したパッケージがパソコンのどこに保存されているかを返す関数らしい。package='imagerでパッケージを指定して、第1引数のextdataでextra dataの保存場所を指定する。\n今回はオウムのサンプル画像を読み込み、それを表示させる。 表示は通常のplot()でOK。\n\nfile &lt;- system.file('extdata/parrots.png', package = 'imager')\nimg &lt;- load.image(file)\nplot(img)\n\n\n\n\n\n\n\n\n複数枚の画像をまとめて読み込むには、load.dir()を使う。\n\ndir &lt;- system.file('extdata/', package = 'imager')\nlist_img &lt;- load.dir(dir)\nplot(list_img)\n\n\n\n\n\n\n\n\nサンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。 load.dir()の場合も同様。\nfile &lt;- \"/imagefile/hoge.jpg\"\nimg &lt;- load.image(file)\nまた、サンプルを読み込むときは、専用の関数がある。\n\n# sketch of birds by Leonardo, from Wikimedia\nplot(load.example(\"birds\"))\n\n\n\n\n\n\n\n# Parotts from Kodak\nplot(load.example(\"parrots\"))\n\n\n\n\n\n\n\n# The \"coins\" image comes from scikit-image.\nplot(load.example(\"coins\"))\n\n\n\n\n\n\n\n# The Hubble Deep field (hubble) is from Wikimedia.\nplot(load.example(\"hubble\"))\n\n\n\n\n\n\n\n# Boats from Kodak\nplot(boats)\n\n\n\n\n\n\n\n\nボートだけはそのまま読み込める。 なにか適当に試したいときはboatsが便利。\n\n\n画像の情報確認\n画像はcimgという形式で保存される。 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。\n\nboats\n\nImage. Width: 256 pix Height: 384 pix Depth: 1 Colour channels: 3 \n\n\nboatsは通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。\nここで、深さはフレームのことであり、動画の場合は画像が連続するため、深さがフレーム数ということになる。\nチャンネル数は色付き画像ならRGBの3になり、グレースケールなら1チャンネルとなる。\n\n\nグレースケール変換\nグレースケール変換はgrayscale()で簡単にできる。\n第2引数にmethodがある。 デフォルトは\"Luma\"となっており、この場合は輝度の線形近似によりグレースケール変換をおこなう。 他には\"XYZ\"をとることができるが、この場合は画像がsRGB色空間にあると想定され、CIE輝度 CIE luminanceが使われるとのこと。 特にこだわりがなければ、省略する。\n意外と大事になるのが第3引数。 drop=TRUEとなっている。 TRUEの場合は画像が1チャンネルで出力される。 FALSEの場合は3チャンネルが保持されたままグレースケールに変換される。 あとで色をつけたいときはFALSEにしておくと良いかもしれない。 基本的にはデフォルトのままにしておくと良いと思う。\n\nimg_gray &lt;- grayscale(boats)\nlayout(matrix(c(1, 2), 1, 2, byrow = TRUE))\nplot(boats, main = \"Original\")\nplot(img_gray, main = \"Grayscale\")"
+  },
+  {
+    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html",
+    "href": "posts/2026-02-24-github-actions-r-universe/index.html",
+    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
+    "section": "",
+    "text": "このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、r-universeのパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。\n具体的には、rnaturalearthhiresというパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。\n# Downloading packages -------------------------------------------------------\n- Querying repositories for available source packages ... Done!\nError: code 22]\nこのエラーは、GitHub Actionsの環境でrenvがr-universeのパッケージを正しく認識できないことが原因でした。"
+  },
+  {
+    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html#症状",
+    "href": "posts/2026-02-24-github-actions-r-universe/index.html#症状",
+    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
+    "section": "",
+    "text": "このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、r-universeのパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。\n具体的には、rnaturalearthhiresというパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。\n# Downloading packages -------------------------------------------------------\n- Querying repositories for available source packages ... Done!\nError: code 22]\nこのエラーは、GitHub Actionsの環境でrenvがr-universeのパッケージを正しく認識できないことが原因でした。"
+  },
+  {
+    "objectID": "posts/2026-02-24-github-actions-r-universe/index.html#対処法",
+    "href": "posts/2026-02-24-github-actions-r-universe/index.html#対処法",
+    "title": "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点",
+    "section": "対処法",
+    "text": "対処法\nrenv.lock ファイルを確認すると、“Repositories”の部分に、r-universeのURLが含まれていませんでした。 このため、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できないことが原因でした。\n\n\nrenv.lock\n\n{\n  \"R\": {\n    \"Version\": \"4.5.2\",\n    \"Repositories\": [\n      {\n        \"Name\": \"CRAN\",\n        \"URL\": \"https://cran.rstudio.com\"\n      }\n    ]\n  },\n  \"Packages\": {\n\n以下のコードをローカル環境で実行して、renv.lock ファイルの “Repositories” の部分に、r-universeのURLを追加することで、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できるようになりました。\n\noptions(\n  repos = c(\n    CRAN = \"https://cran.rstudio.com\",\n    \"r-universe\" = \"https://ropensci.r-universe.dev\"\n  )\n)\nrenv::snapshot(force = TRUE)\n\n- Lockfile written to \"~/work/maple60.github.io/maple60.github.io/renv.lock\".\n\n\nこのコードでは、options()関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、renv::snapshot(force = TRUE)を実行して、renv.lock ファイルを更新しています。\nこのコードを実行すると、renv.lock ファイルの “Repositories” の部分に、r-universeのURLが追加されます。\n\n\nrenv.lock\n\n{\n  \"R\": {\n    \"Version\": \"4.5.2\",\n    \"Repositories\": [\n      {\n        \"Name\": \"CRAN\",\n        \"URL\": \"https://cran.rstudio.com\"\n      },\n      {\n        \"Name\": \"r-universe\",\n        \"URL\": \"https://ropensci.r-universe.dev\"\n      }\n    ]\n  },\n  \"Packages\": {\n\nその後、変更をコミットして、GitHub Actionsでビルドすると、エラーが解消されて、r-universeのパッケージを利用できるようになりました。"
   },
   {
     "objectID": "posts/2026-02-04-quarto-pdf-inlinecode-bg/index.html",
