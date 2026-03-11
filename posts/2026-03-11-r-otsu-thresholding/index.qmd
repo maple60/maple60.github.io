@@ -1,11 +1,10 @@
 ---
 title: "Rで大津の二値化を行う方法"
 description: "Rで大津の二値化を実装"
-date: "2026-03-03"
-date-modified: "2026-03-03"
-draft: true
+date: "2026-03-11"
+date-modified: "2026-03-11"
+draft: false
 categories: [r]
-eval: false
 ---
 
 ## 大津の二値化とは
@@ -22,6 +21,37 @@ eval: false
 今もよく使う方法の一つです。
 :::
 
+## 大津の二値化の考え方
+
+基本的な考え方は、すべての可能な閾値について、クラス内分散とクラス間分散を計算し、**クラス間分散が最大になる閾値**を選択することです。
+クラスというのは、二値化された画像において、白と黒の2つのクラスを指します。
+クラス間分散が最大になる閾値は、画像のヒストグラムを最も効果的に分割する点であり、背景と前景を最も明確に分けることができるという考えです。
+
+::: {.callout-note}
+クラスについては、クラス０とクラス1、もしくは背景クラスと前景クラスと呼ぶことがあります。
+:::
+
+とても簡単にまとめた流れは以下のようになります。
+
+1. 画像のヒストグラムを計算
+2. 各閾値でクラス間分散を計算
+3. クラス間分散が最大の閾値を選ぶ
+
+::: {.callout-note}
+## クラス内分散とクラス間分散、そして全体分散
+
+クラス内分散、クラス間分散、全体分散は、画像のヒストグラムを分析するための重要な概念です。
+これらの分散の間には以下の関係性があります。
+
+$$
+\sigma_T^2 = \sigma_W^2 + \sigma_B^2
+$$
+
+ここで、$\sigma_T^2$は全体分散、$\sigma_W^2$はクラス内分散、$\sigma_B^2$はクラス間分散を表します。
+
+つまり、クラス間分散が最大ということは、クラス内分散が最小であることを意味し、クラス内できれいに固まっているとも言えます。
+:::
+
 ## Rで大津の二値化を実装する方法
 
 今回二値化する画像は、以下のようなものを用意しました。
@@ -29,7 +59,7 @@ eval: false
 ![二値化する画像](bird.jpg)
 
 この画像は、私の家でかつて飼っていたセキセイインコの写真です。
-名前は愛子ちゃんです。
+名前は愛子ちゃん(あいちゃん)です。
 とてもかわいいですね。
 
 [`imager`](https://dahtah.github.io/imager/)のような画像処理のパッケージを使うと、Rで大津の二値化を簡単に実装できます。
@@ -51,7 +81,7 @@ eval: false
 ```{r}
 #renv::install("magick") もしインストールされていなかったら
 library(magick)
-img <- image_read("posts/2026-03-03-r-otsu-thresholding/bird.jpg")
+img <- image_read("bird.jpg")
 ```
 
 ## グレースケール画像への変換
@@ -66,15 +96,10 @@ plot(img_gray)
 ## ピクセル値の取得
 
 次に、グレースケール画像のピクセル値を取得します。
-併せて、画像の幅と高さも取得します。
 
 ```{r}
 dat <- image_data(img_gray, channels = "gray") # ピクセル値を取得
 vals <- as.integer(dat) # ピクセル値を整数に変換
-
-# Image size
-img_width <- dim(dat)[2] # width
-img_height <- dim(dat)[3] # height
 ```
 
 ## ヒストグラムの作成
@@ -91,42 +116,13 @@ h <- hist(vals, breaks = (-0.5):(255.5))
 大津の二値化のアルゴリズムを実装します。
 大津の二値化では、すべての可能な閾値について、クラス内分散とクラス間分散を計算し、クラス間分散が最大になる閾値を選択します。
 
+
 以下のコードは、閾値を0から255まで変化させながら、クラス内分散とクラス間分散を計算する例です。
-
-```{r}
-t <- 0 # 閾値の初期値
-p <- h$counts / sum(h$counts) # ピクセル値の確率分布
-L <- length(p) # ピクセル値の種類数
-idx0 <- if (t >= 0) 0:t else integer(0) # 画素値の添字（0基準）
-idx1 <- if (t + 1 <= L - 1) (t + 1):(L - 1) else integer(0)
-
-omega_0 <- sum(p[idx0 + 1]) # クラス0の確率
-omega_1 <- 1 - omega_0 # クラス1の確率
-
-mu_t <- sum((0:(L - 1)) * p) # 総平均
-
-# クラス平均（空クラスなら計算しない）
-mu_0 <- if (omega_0 > 0) sum(idx0 * p[idx0 + 1]) / omega_0 else 0
-mu_1 <- if (omega_1 > 0) sum(idx1 * p[idx1 + 1]) / omega_1 else 0
-
-# クラス内分散（空クラスは寄与0にする）
-var_0 <- if (omega_0 > 0) sum((idx0 - mu_0)^2 * p[idx0 + 1]) / omega_0 else 0
-var_1 <- if (omega_1 > 0) sum((idx1 - mu_1)^2 * p[idx1 + 1]) / omega_1 else 0
-var_w <- omega_0 * var_0 + omega_1 * var_1 # クラス内分散
-
-# クラス間分散（空クラスの項は0）
-term0 <- if (omega_0 > 0) omega_0 * (mu_0 - mu_t)^2 else 0
-term1 <- if (omega_1 > 0) omega_1 * (mu_1 - mu_t)^2 else 0
-var_b <- term0 + term1
-
-# 全体分散
-var_T <- sum(p * ((0:(L - 1)) - mu_t)^2)
-```
 
 ```{r}
 list_otsu <- lapply(seq_along(h$counts), function(i) {
   t <- i - 1 # 0..L-1
-  p <- h$counts / sum(h$counts)
+  p <- h$counts / sum(h$counts) # ヒストグラムを確率分布に変換
   L <- length(p)
   idx0 <- if (t >= 0) 0:t else integer(0) # 画素値の添字（0基準）
   idx1 <- if (t + 1 <= L - 1) (t + 1):(L - 1) else integer(0)
@@ -157,90 +153,88 @@ list_otsu <- lapply(seq_along(h$counts), function(i) {
 
   c(
     t = t,
-    omega_0 = omega_0,
-    omega_1 = omega_1,
-    mu_0 = mu_0,
-    mu_1 = mu_1,
-    mu_t = mu_t,
-    var_0 = var_0,
-    var_1 = var_1,
-    var_w = var_w,
-    var_b = var_b,
-    var_T = var_T
+    omega_0 = omega_0, # クラス0の確率
+    omega_1 = omega_1, # クラス1の確率
+    mu_0 = mu_0, # クラス0の平均
+    mu_1 = mu_1, # クラス1の平均
+    mu_t = mu_t, # 総平均
+    var_0 = var_0, # クラス0の分散
+    var_1 = var_1, # クラス1の分散
+    var_w = var_w, # クラス内分散
+    var_b = var_b, # クラス間分散
+    var_T = var_T # 全体分散
   )
 })
 df_otsu <- as.data.frame(do.call(rbind, list_otsu))
+head(df_otsu)
 ```
 
 ## 最適な閾値の選択
 
-```{r}
-save_dir <- "data/intermediate/histogram"
-if (!dir.exists(save_dir)) {
-  dir.create(save_dir, recursive = TRUE)
-}
-ymax <- max(h$counts) * 1.1
-lapply(seq_along(df_otsu$t), function(i) {
-  t <- df_otsu$t[i]
-  save_path <- paste0(save_dir, "/", sprintf("%03d", t), ".png")
-  png(save_path, width = 480 * 3, height = 480 * 3, res = 72 * 3)
-  par(mar = c(2, 4, 0, 0))
-  plot(
-    NA,
-    xlim = range(h$breaks),
-    ylim = c(0, ymax),
-    xaxt = "n",
-    yaxt = "n",
-    xlab = "",
-    ylab = "",
-    xaxs = "i",
-    yaxs = "i"
-  )
-  axis(1, at = seq(0, 255, by = 15), cex.axis = 1.5, mgp = c(3, 1, 0)) # x axis
-  axis(2, las = 2, cex.axis = 1.5, mgp = c(3, 0.5, 0))
-  rect(
-    par("usr")[1],
-    par("usr")[3],
-    t,
-    par("usr")[4],
-    col = "black",
-    border = NA
-  ) # left = black
-  rect(
-    t,
-    par("usr")[3],
-    par("usr")[2],
-    par("usr")[4],
-    col = "white",
-    border = NA
-  ) # left = black
+最適な閾値は、クラス間分散が最大になる点で選択されます。
 
-  # class 1
-  for (j in 1:(t + 1)) {
-    rect(
-      h$mids[j] - 0.5,
-      par("usr")[3],
-      h$mids[j] + 0.5,
-      h$counts[j],
-      col = "white",
-      border = NA
-    )
-  }
-  # class 2
-  for (k in (t + 2):length(df_otsu$t)) {
-    rect(
-      h$mids[k] - 0.5,
-      par("usr")[3],
-      h$mids[k] + 0.5,
-      h$counts[k],
-      col = "black",
-      border = NA
-    )
-  }
-  abline(v = t, col = adjustcolor(7, alpha.f = 0.7), lwd = 3)
-  abline(v = df_otsu$mu_0[i], col = adjustcolor(6, alpha.f = 0.7), lwd = 3)
-  abline(v = df_otsu$mu_1[i], col = adjustcolor(4, alpha.f = 0.7), lwd = 3)
-  abline(v = df_otsu$mu_t[i], col = adjustcolor(8, alpha.f = 0.7), lwd = 3)
-  dev.off()
-})
+```{r}
+t_opt <- df_otsu$t[which.max(df_otsu$var_b)]
+t_opt
 ```
+
+今回の画像に対して、最適な閾値は `{r} t_opt` となります。
+
+視覚的に確認するために、クラス内分散とクラス間分散のグラフを描いてみます。
+
+```{r}
+plot(
+  df_otsu$t,
+  df_otsu$var_w,
+  ylim = c(0, max(df_otsu$var_w, df_otsu$var_b) * 1.1),
+  type = "l",
+  xlab = "Threshold",
+  ylab = "Within-class variance",
+  col = 2,
+  lwd = 3
+)
+lines(
+  df_otsu$t,
+  df_otsu$var_b,
+  type = "l",
+  xlab = "Threshold",
+  ylab = "Between-class variance",
+  col = 4,
+  lwd = 3
+)
+
+abline(v = t_opt, col = adjustcolor(7, alpha.f = 0.7), lwd = 3)
+
+legend(
+  "topleft",
+  legend = c(
+    "Within-class variance",
+    "Between-class variance",
+    "Optimal threshold"
+  ),
+  col = c(2, 4, 7),
+  lwd = 3,
+  bg = adjustcolor("white", alpha.f = 0.7)
+)
+```
+
+クラス内分散が最小で、クラス間分散が最大になる点が、最適な閾値であることがわかります。
+
+また、この時の画像を二値化してみます。
+
+```{r}
+img_width <- dim(dat)[2]
+img_height <- dim(dat)[3]
+img_otsu <- image_read(as.raster(matrix(
+  as.integer(vals > t_opt),
+  nrow = img_height,
+  ncol = img_width
+)))
+
+par(mar = c(0, 0, 0, 0))
+par(mfrow = c(1, 2))
+plot(img)
+plot(img_otsu)
+```
+
+なかなかきれいに二値化できているのがわかります。
