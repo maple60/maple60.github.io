@@ -1,11 +1,10 @@
 ---
 title: "Rで大津の二値化を行う方法"
 description: "Rで大津の二値化を実装"
-date: "2026-03-03"
-date-modified: "2026-03-03"
+date: "2026-03-11"
+date-modified: "2026-03-11"
 draft: false
 categories: [r]
-eval: false
 ---
 
 ## 大津の二値化とは
@@ -82,7 +81,7 @@ $$
 ```{r}
 #renv::install("magick") もしインストールされていなかったら
 library(magick)
-img <- image_read("posts/2026-03-03-r-otsu-thresholding/bird.jpg")
+img <- image_read("bird.jpg")
 ```
 
 ## グレースケール画像への変換
@@ -207,14 +206,15 @@ lines(
 abline(v = t_opt, col = adjustcolor(7, alpha.f = 0.7), lwd = 3)
 
 legend(
-  "topright",
+  "topleft",
   legend = c(
     "Within-class variance",
     "Between-class variance",
     "Optimal threshold"
   ),
   col = c(2, 4, 7),
-  lwd = 3
+  lwd = 3,
+  bg = adjustcolor("white", alpha.f = 0.7)
 )
 ```
 
