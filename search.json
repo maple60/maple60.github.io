@@ -394,23 +394,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Maple60’s Website",
+    "title": "Maple’s Website",
     "section": "",
-    "text": "This website is a personal blog where I will write about various programming topics that I have learned. Please note that the content may include misinformation as I am not an expert."
+    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
   },
   {
     "objectID": "index.html#about",
     "href": "index.html#about",
-    "title": "Maple60’s Website",
+    "title": "Maple’s Website",
     "section": "",
-    "text": "This website is a personal blog where I will write about various programming topics that I have learned. Please note that the content may include misinformation as I am not an expert."
+    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
   },
   {
     "objectID": "index.html#my-interests",
     "href": "index.html#my-interests",
-    "title": "Maple60’s Website",
+    "title": "Maple’s Website",
     "section": "My interests",
-    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto.\n\n\nこのページについて\n\n\n主にプログラミングについて学んだことについて、いろいろなことをメモを書いていきます。\n\n\n内容については、誤りも含む可能性もございますのでご了承ください。\n\n\n筆者は以下のプログラミング言語を主に使用します。\n\n\n\nR\n\n\nPython\n\n\nJavaScript"
+    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto."
+  },
+  {
+    "objectID": "index.html#このページについて",
+    "href": "index.html#このページについて",
+    "title": "Maple’s Website",
+    "section": "このページについて",
+    "text": "このページについて\nこのウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。 本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。 本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。 また、本ブログの内容は筆者個人の見解です。\nすべての投稿は、Postsページにリストされています。\n筆者は以下のプログラミング言語を主に使用します。\n\nR\nPython\nJavaScript\n\nこのブログは、Quartoを使用して作成されています。"
   },
   {
     "objectID": "posts/2024-03-04-color-circle/index.html",
