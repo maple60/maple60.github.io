@@ -1,0 +1,31 @@
+---
+title: "おすすめツール"
+toc: true
+---
+
+ここでは、私が普段使っているツールなどをまとめます。
+随時更新していく予定です。
+
+- [Obsidian](https://obsidian.md/): ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。
+- [Zotero](https://www.zotero.org/): 参考文献管理。
+- [GitHub](https://github.com/): ソースコード管理。
+- [Quarto](https://quarto.org/): ドキュメント作成ツール。R Markdownの後継。
+- [Positron](https://positron.posit.co/): データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。
+- [eagle](https://en.eagle.cool/): 画像管理ツール。画像をタグで管理できる。
+- [VisiOS](https://beta-japan.com/): ブックマークやタブの管理ツール
+- [Raindrop.io](https://raindrop.io/): ブックマーク管理ツール
+- [Kdenlive](https://kdenlive.org/): 動画編集ソフト
+- [Affinity](https://www.affinity.studio/): 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。
+- [OBS Studio](https://obsproject.com/): 画面録画ソフト
+- [Todoist](https://todoist.com/): タスク管理ツール
+- [Inoreader](https://www.inoreader.com/): RSSリーダー
+- [Bitwarden](https://bitwarden.com/): パスワード管理ツール
+- [Tailscale](https://tailscale.com/): VPNサービス
+- [Proton Mail](https://proton.me/mail): セキュアなメールサービス
+- [Keyvis](https://keyviz.org/): オープンソースのキーボードビジュアライザー
+- [Proton Authenticator](https://proton.me/authenticator): 2段階認証アプリ
+- [Rustdesk](https://rustdesk.com/): リモートデスクトップソフト。Anydeskの代替。
+- [Brave](https://brave.com/): プライバシー重視のウェブブラウザ
+- [Element](https://element.io/): オープンソースのチャットアプリ。Matrixプロトコルを使用。
+- [Karakeep](https://karakeep.app/): ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない
+- [NordVPN](https://nordvpn.com/): VPNサービス。[Proton VPN](https://proton.me/vpn)に乗り換えを検討中。
