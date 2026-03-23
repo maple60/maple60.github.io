@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-10">
-<meta name="description" content="Zoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。">
 
-<title>ZoteroでRSSフィードを作成する方法 – Maple60’s website</title>
+<title>おすすめツール – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ddfaa25eb44e5cfacf2aadcd89aa90a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ddfaa25eb44e5cfacf2aadcd89aa90a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -94,11 +92,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
@@ -117,57 +115,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#zoteroとは" id="toc-zoteroとは" class="nav-link active" data-scroll-target="#zoteroとは">Zoteroとは</a></li>
-  <li><a href="#rssフィードとは" id="toc-rssフィードとは" class="nav-link" data-scroll-target="#rssフィードとは">RSSフィードとは</a></li>
-  <li><a href="#方法" id="toc-方法" class="nav-link" data-scroll-target="#方法">方法</a>
-  <ul class="collapse">
-  <li><a href="#ジャーナルのrssフィードを見つける" id="toc-ジャーナルのrssフィードを見つける" class="nav-link" data-scroll-target="#ジャーナルのrssフィードを見つける">ジャーナルのRSSフィードを見つける</a></li>
-  </ul></li>
-  <li><a href="#zoteroでrssフィードを購読する" id="toc-zoteroでrssフィードを購読する" class="nav-link" data-scroll-target="#zoteroでrssフィードを購読する">ZoteroでRSSフィードを購読する</a></li>
-  <li><a href="#フィードアイテムを確認する" id="toc-フィードアイテムを確認する" class="nav-link" data-scroll-target="#フィードアイテムを確認する">フィードアイテムを確認する</a></li>
-  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ZoteroでRSSフィードを作成する方法</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">zotero</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Zoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。
-  </div>
+<h1 class="title">おすすめツール</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2026-03-10</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-03-10</p>
-    </div>
-  </div>
     
   </div>
   
@@ -176,98 +140,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="zoteroとは" class="level2">
-<h2 class="anchored" data-anchor-id="zoteroとは">Zoteroとは</h2>
-<p>Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。</p>
-</section>
-<section id="rssフィードとは" class="level2">
-<h2 class="anchored" data-anchor-id="rssフィードとは">RSSフィードとは</h2>
-<p>RSSフィードは、ウェブサイトの更新情報を配信するためのフォーマットで、ユーザーが特定のウェブサイトの更新情報を受け取ることができます。 今回の場合は、論文雑誌のRSSフィードを作成することで、新しい論文が公開されたときに通知を受け取ることができます。</p>
-</section>
-<section id="方法" class="level2">
-<h2 class="anchored" data-anchor-id="方法">方法</h2>
-<section id="ジャーナルのrssフィードを見つける" class="level3">
-<h3 class="anchored" data-anchor-id="ジャーナルのrssフィードを見つける">ジャーナルのRSSフィードを見つける</h3>
-<p>多くのジャーナルは、ウェブサイト上でRSSフィードを提供しています。 例えば、<a href="https://nph.onlinelibrary.wiley.com/journal/14698137">New Phytologist</a>のHPに行ってみます。</p>
-<p>右側に、RSSフィードのアイコンがあるので、これを右クリックします。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rss_icon.png" class="img-fluid figure-img"></p>
-<figcaption>RSSフィードのアイコン</figcaption>
-</figure>
-</div>
-<p>右クリックメニュー(コンテキストメニュー)が表示されるため、「リンクのアドレスをコピー (Copy link address)」を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="context_menu.png" class="img-fluid figure-img"></p>
-<figcaption>右クリックメニュー</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="zoteroでrssフィードを購読する" class="level2">
-<h2 class="anchored" data-anchor-id="zoteroでrssフィードを購読する">ZoteroでRSSフィードを購読する</h2>
-<p>Zoteroを開き、[File] &gt; [New Feed] &gt; [From URL…]を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_new_feed.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroで新しいフィードを作成</figcaption>
-</figure>
-</div>
-<p>現れたダイアログのURLの欄に、先ほどコピーしたRSSフィードのURLを貼り付けます。 もしRSSフィードのURLが正しい場合は、Titleの欄にジャーナルの名前が自動的に入力されます。</p>
-<p>Advanced Optionsの欄は、以下のようになっています。</p>
+<p>ここでは、私が普段使っているツールなどをまとめます。 随時更新していく予定です。</p>
 <ul>
-<li>フィードの更新頻度 (デフォルトは168時間、つまり1週間)</li>
-<li>既読のフィードのアイテムを削除する間隔 (デフォルトでは3日)</li>
-<li>未読のフィードのアイテムを削除する間隔 (デフォルトでは30日)</li>
+<li><a href="https://obsidian.md/">Obsidian</a>: ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。</li>
+<li><a href="https://www.zotero.org/">Zotero</a>: 参考文献管理。</li>
+<li><a href="https://github.com/">GitHub</a>: ソースコード管理。</li>
+<li><a href="https://quarto.org/">Quarto</a>: ドキュメント作成ツール。R Markdownの後継。</li>
+<li><a href="https://positron.posit.co/">Positron</a>: データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。</li>
+<li><a href="https://en.eagle.cool/">eagle</a>: 画像管理ツール。画像をタグで管理できる。</li>
+<li><a href="https://beta-japan.com/">VisiOS</a>: ブックマークやタブの管理ツール</li>
+<li><a href="https://raindrop.io/">Raindrop.io</a>: ブックマーク管理ツール</li>
+<li><a href="https://kdenlive.org/">Kdenlive</a>: 動画編集ソフト</li>
+<li><a href="https://www.affinity.studio/">Affinity</a>: 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。</li>
+<li><a href="https://obsproject.com/">OBS Studio</a>: 画面録画ソフト</li>
+<li><a href="https://todoist.com/">Todoist</a>: タスク管理ツール</li>
+<li><a href="https://www.inoreader.com/">Inoreader</a>: RSSリーダー</li>
+<li><a href="https://bitwarden.com/">Bitwarden</a>: パスワード管理ツール</li>
+<li><a href="https://tailscale.com/">Tailscale</a>: VPNサービス</li>
+<li><a href="https://proton.me/mail">Proton Mail</a>: セキュアなメールサービス</li>
+<li><a href="https://keyviz.org/">Keyvis</a>: オープンソースのキーボードビジュアライザー</li>
+<li><a href="https://proton.me/authenticator">Proton Authenticator</a>: 2段階認証アプリ</li>
+<li><a href="https://rustdesk.com/">Rustdesk</a>: リモートデスクトップソフト。Anydeskの代替。</li>
+<li><a href="https://brave.com/">Brave</a>: プライバシー重視のウェブブラウザ</li>
+<li><a href="https://element.io/">Element</a>: オープンソースのチャットアプリ。Matrixプロトコルを使用。</li>
+<li><a href="https://karakeep.app/">Karakeep</a>: ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない</li>
+<li><a href="https://nordvpn.com/">NordVPN</a>: VPNサービス。<a href="https://proton.me/vpn">Proton VPN</a>に乗り換えを検討中。</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_feed_settings.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィード設定</figcaption>
-</figure>
-</div>
-<p>私は以下のように設定を変更しました。</p>
-<ul>
-<li>Title: New Phytologist (ジャーナル名のみ)</li>
-<li>フィードの更新頻度: 24時間 (毎日更新を確認するように設定)</li>
-</ul>
-<p>そのほかはデフォルトのままです。</p>
-<p>設定が完了したら、[OK]をクリックします。</p>
-<p>左側のサイドバーにFeedsという項目ができ、その中にNew Phytologistというフィードが追加されていれば成功です。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_sidebar_feeds.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのサイドバー</figcaption>
-</figure>
-</div>
-</section>
-<section id="フィードアイテムを確認する" class="level2">
-<h2 class="anchored" data-anchor-id="フィードアイテムを確認する">フィードアイテムを確認する</h2>
-<p>Feedsの欄からフィードアイテムを確認したいジャーナルを選択します。 中央のペインにフィードアイテムのリストが表示されます。</p>
-<p>カーソルを合わせるとRead(既読)になり、行のフォントが太字から通常のものに変わります。 アイテムをダブルクリックすると、ジャーナルのウェブサイトにアクセスできます。</p>
-<p>右側のペインでは、書誌情報が確認できるほか、[Mark As Unread]や[Mark As Read]をクリックして、アイテムの既読/未読を切り替えることができます。 [Add to “My Library…”]をクリックすると、任意のライブラリにアイテムを追加することができます。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_feed_item.webp" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィードアイテム</figcaption>
-</figure>
-</div>
-<p>一気にジャーナルごとに既読にしたい場合は、Feedsの欄のジャーナル名を右クリックして、<strong>[Mark Feed as Read]</strong>を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_mark_read_as_feed.webp" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィードを一括既読にする</figcaption>
-</figure>
-</div>
-</section>
-<section id="まとめ" class="level2">
-<h2 class="anchored" data-anchor-id="まとめ">まとめ</h2>
-<p>Zoteroを使って、ジャーナルのRSSフィードを購読する方法についてまとめました。 私はこれまで、RSSリーダーを使ってジャーナルの更新情報を確認していましたが、Zoteroを使うことで、フィードアイテムを簡単にライブラリに追加したり、書誌情報を管理したりすることができるようになりました。</p>
-<p>漏れている機能などありましたら、追記したいと思います。</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
