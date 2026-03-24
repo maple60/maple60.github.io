@@ -919,8 +919,22 @@
   {
     "objectID": "recommendations.html",
     "href": "recommendations.html",
-    "title": "おすすめツール",
+    "title": "おすすめ",
     "section": "",
-    "text": "ここでは、私が普段使っているツールなどをまとめます。 随時更新していく予定です。\n\nObsidian: ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。\nZotero: 参考文献管理。\nGitHub: ソースコード管理。\nQuarto: ドキュメント作成ツール。R Markdownの後継。\nPositron: データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。\neagle: 画像管理ツール。画像をタグで管理できる。\nVisiOS: ブックマークやタブの管理ツール\nRaindrop.io: ブックマーク管理ツール\nKdenlive: 動画編集ソフト\nAffinity: 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。\nOBS Studio: 画面録画ソフト\nTodoist: タスク管理ツール\nInoreader: RSSリーダー\nBitwarden: パスワード管理ツール\nTailscale: VPNサービス\nProton Mail: セキュアなメールサービス\nKeyvis: オープンソースのキーボードビジュアライザー\nProton Authenticator: 2段階認証アプリ\nRustdesk: リモートデスクトップソフト。Anydeskの代替。\nBrave: プライバシー重視のウェブブラウザ\nElement: オープンソースのチャットアプリ。Matrixプロトコルを使用。\nKarakeep: ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない\nNordVPN: VPNサービス。Proton VPNに乗り換えを検討中。"
+    "text": "ここでは、私のおすすめをまとめます。 主にオンライン上で利用できるものが中心です。\n随時更新していく予定です。"
+  },
+  {
+    "objectID": "recommendations.html#ツール",
+    "href": "recommendations.html#ツール",
+    "title": "おすすめ",
+    "section": "ツール",
+    "text": "ツール\n\nObsidian: ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。\nZotero: 参考文献管理。\nGitHub: ソースコード管理。\nQuarto: ドキュメント作成ツール。R Markdownの後継。\nPositron: データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。\neagle: 画像管理ツール。画像をタグで管理できる。\nVisiOS: ブックマークやタブの管理ツール\nRaindrop.io: ブックマーク管理ツール\nKdenlive: 動画編集ソフト\nAffinity: 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。\nOBS Studio: 画面録画ソフト\nTodoist: タスク管理ツール\nInoreader: RSSリーダー\nBitwarden: パスワード管理ツール\nTailscale: VPNサービス\nProton Mail: セキュアなメールサービス\nKeyvis: オープンソースのキーボードビジュアライザー\nProton Authenticator: 2段階認証アプリ\nRustdesk: リモートデスクトップソフト。Anydeskの代替。\nBrave: プライバシー重視のウェブブラウザ\nElement: オープンソースのチャットアプリ。Matrixプロトコルを使用。\nKarakeep: ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない\nNordVPN: VPNサービス。Proton VPNに乗り換えを検討中。\nLM Studio: ローカルで動作するAIチャットツール。ChatGPTの代替。\n\n\n文献関係\n\nElicit: AIを活用したリサーチツール。文献検索や要約などが可能。\nGoogle Scholar | Labs\nUndermind\nResearchRabbit: 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。"
+  },
+  {
+    "objectID": "recommendations.html#本",
+    "href": "recommendations.html#本",
+    "title": "おすすめ",
+    "section": "本",
+    "text": "本\n\n植物\n\nManual of Leaf Architecture: 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識が詰まっている。Smithsonian Libraries and Archivesで無料で閲覧できる。ライセンスはCC BY-NC 4.0。\n\n\n\nR\nオンライン上で読める良質なRの本がいくつかあるので紹介します。\n\nR for Data Science (2e): Rを使ったデータサイエンスの入門書。データの取り扱いや可視化、モデリングなどが網羅されている。オンラインで無料で閲覧できる。ライセンスはCC BY-NC-ND 3.0。\nR Graphics Cookbook, 2nd edition: Rのグラフィックスに関するレシピ集。ggplot2を使ったグラフの作成方法が豊富に紹介されている。オンラインで無料で閲覧できる。\nCookbook for R: Rの様々なタスクに関するレシピ集。ライセンスはCC0。\nTidy Modeling with R\nEfficient R programming\nBig Book of R\nMastering Shiny: Hadley Wickham氏によるShinyの入門書。\nDeep Learning with R\nblogdown: Creating Websites with R Markdown\nMastering Spark with R\nR Packages (2e): Rのパッケージ開発の入門書。\nggplot2: Elegant Graphics for Data Analysis (3e): ggplot2の入門書。\n\n\n\nPython\n\nThink Python\nThink Python, 2nd edition\nCracking Codes with Python - Invent with Python\nBeyond the Basic Stuff with Python - Invent with Python\nThe Big Book of Small Python Projects - Invent with Python\nPython for Data Analysis, 3E\nデータ分析のための統計学入門\nIPython Cookbook, Second Edition (2018)\nAutomate the Boring Stuff with Python\n\n\n\nその他\n\n\nAn Introduction to Statistical Learning\n\nFundamentals of Data Visualization: データ可視化の基本原則を解説した本。データを効果的に伝えるための方法が紹介されている。オンラインで無料で閲覧できる。ライセンスはCC BY-NC-ND 4.0。\nThink Bayes 2\nThink Stats, 3rd edition\nFoundations of Computer Vision: コンピュータビジョンの基礎を解説した本。\nOpen Data Structures\nContributions to morphometrics - Biodiversity Heritage Library"
   }
 ]
