@@ -8,6 +8,7 @@ project:
 
 website:
   title: "Maple60’s website"
+  llms-txt: true
   navbar:
     search: true
     left:
