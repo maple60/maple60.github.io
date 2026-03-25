@@ -1,0 +1,47 @@
+# Rでベクトルの重複を取り除く方法
+
+r
+
+[`make.unique()`](https://rdrr.io/r/base/make.unique.html)関数を使ってベクトルの重複を取り除く方法についてのメモです
+
+Published
+
+2026-01-27
+
+Modified
+
+2026-01-27
+
+## `make.unique()`関数の使用法
+
+Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 [`make.unique()`](https://rdrr.io/r/base/make.unique.html) 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。
+
+``` downlit
+make.unique(names, sep = ".")
+```
+
+- `names`: ユニークにしたい文字ベクトル
+- `sep`: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット `.`）
+
+## 使用例
+
+例えば、以下のようなベクトルがあるとします。
+
+``` downlit
+x <- c("apple", "banana", "apple", "orange", "banana")
+```
+
+このベクトルに対して[`make.unique()`](https://rdrr.io/r/base/make.unique.html)を適用すると、以下のようになります。
+
+``` downlit
+unique_x <- make.unique(x)
+print(unique_x)
+```
+
+    [1] "apple"    "banana"   "apple.1"  "orange"   "banana.1"
+
+`apple`と`banana`が重複しているため、単語の後ろに`.1`が追加されています。
+
+## 最後に
+
+どこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。 活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。

@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Pythonで最低限のuvによる環境管理\n\n\n\npython\n\nuv\n\n\n\nPythonの環境管理ツールであるuvを使用して、最低限の環境管理方法をまとめます\n\n\n\n\n\n2026-03-20\n\n\n\n\n\n\n\n\n\n\n\n\nRで大津の二値化を行う方法\n\n\n\nr\n\n\n\nRで大津の二値化を実装\n\n\n\n\n\n2026-03-11\n\n\n\n\n\n\n\n\n\n\n\n\nZoteroでRSSフィードを作成する方法\n\n\n\nzotero\n\n\n\nZoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。\n\n\n\n\n\n2026-03-10\n\n\n\n\n\n\n\n\n\n\n\n\nRで色覚異常のシミュレーションを行う方法\n\n\n\nr\n\n\n\nRでcolorspaceパッケージを使って色覚異常のシミュレーションをする方法をまとめます\n\n\n\n\n\n2026-03-04\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットで色に透明度を指定する方法\n\n\n\nr\n\n\n\nadjustcolor()やrgb()を使い、Rのプロットで色に透明度を指定する方法についてまとめます。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法\n\n\n\nquarto\n\ngithub\n\n\n\nQuartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点\n\n\n\ngithub\n\nr\n\n\n\nGitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-24\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoを用いた解析プロジェクト管理について\n\n\n\nquarto\n\n\n\nQuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。\n\n\n\n\n\n2026-02-11\n\n\n\n\n\n\n\n\n\n\n\n\nRでファイル名を抽出する方法\n\n\n\nr\n\n\n\nbasename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。\n\n\n\n\n\n2026-02-06\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットのアスペクト比を設定する方法\n\n\n\nr\n\n\n\naspパラメータを使ってRのプロットのアスペクト比を調整する方法についてです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
+    "text": "Quarto 1.9がリリースされました\n\n\n\nr\n\nquarto\n\n\n\nQuarto 1.9がリリースされました。気になる機能をまとめます。\n\n\n\n\n\n2026-03-25\n\n\n\n\n\n\n\n\n\n\n\n\nPythonで最低限のuvによる環境管理\n\n\n\npython\n\nuv\n\n\n\nPythonの環境管理ツールであるuvを使用して、最低限の環境管理方法をまとめます\n\n\n\n\n\n2026-03-20\n\n\n\n\n\n\n\n\n\n\n\n\nRで大津の二値化を行う方法\n\n\n\nr\n\n\n\nRで大津の二値化を実装\n\n\n\n\n\n2026-03-11\n\n\n\n\n\n\n\n\n\n\n\n\nZoteroでRSSフィードを作成する方法\n\n\n\nzotero\n\n\n\nZoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。\n\n\n\n\n\n2026-03-10\n\n\n\n\n\n\n\n\n\n\n\n\nRで色覚異常のシミュレーションを行う方法\n\n\n\nr\n\n\n\nRでcolorspaceパッケージを使って色覚異常のシミュレーションをする方法をまとめます\n\n\n\n\n\n2026-03-04\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットで色に透明度を指定する方法\n\n\n\nr\n\n\n\nadjustcolor()やrgb()を使い、Rのプロットで色に透明度を指定する方法についてまとめます。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法\n\n\n\nquarto\n\ngithub\n\n\n\nQuartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-25\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点\n\n\n\ngithub\n\nr\n\n\n\nGitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。\n\n\n\n\n\n2026-02-24\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoを用いた解析プロジェクト管理について\n\n\n\nquarto\n\n\n\nQuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。\n\n\n\n\n\n2026-02-11\n\n\n\n\n\n\n\n\n\n\n\n\nRでファイル名を抽出する方法\n\n\n\nr\n\n\n\nbasename(), file.path_sans_ext()を使ってRでファイル名を抽出する方法についてまとめます。\n\n\n\n\n\n2026-02-06\n\n\n\n\n\n\n\n\n\n\n\n\nRのプロットのアスペクト比を設定する方法\n\n\n\nr\n\n\n\naspパラメータを使ってRのプロットのアスペクト比を調整する方法についてです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでPDF出力時にインラインコードブロックに背景色を付ける方法\n\n\n\nquatro\n\nlatex\n\n\n\nLaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。\n\n\n\n\n\n2026-02-04\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのPDF出力で日本語を使う\n\n\n\nquarto\n\n\n\nCJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。\n\n\n\n\n\n2026-02-03\n\n\n\n\n\n\n\n\n\n\n\n\nRでLorenz attractorを描く\n\n\n\nr\n\n\n\ndeSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します\n\n\n\n\n\n2026-02-02\n\n\n\n\n\n\n\n\n\n\n\n\nChain codeについて\n\n\n\nr\n\n\n\nChain codeについてのメモです\n\n\n\n\n\n2026-02-01\n\n\n\n\n\n\n\n\n\n\n\n\nRで日本地図を描く\n\n\n\nr\n\n\n\nrnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。\n\n\n\n\n\n2026-01-31\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoで表示される日付型を変更する\n\n\n\nr\n\nquarto\n\n\n\ndate-formatオプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nRでディレクトリを作成する方法\n\n\n\nr\n\n\n\ndir.create()関数を使用してRでディレクトリを作成する方法についてのメモです\n\n\n\n\n\n2026-01-30\n\n\n\n\n\n\n\n\n\n\n\n\nGithub ActionsでQuartoのコードリンク機能を有効にする方法\n\n\n\nr\n\nquarto\n\n\n\nGithub ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです\n\n\n\n\n\n2026-01-29\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoのコードブロック内の関数にドキュメントリンクをつける方法\n\n\n\nr\n\n\n\ncode-linkオプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです\n\n\n\n\n\n2026-01-28\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルの重複を取り除く方法\n\n\n\nr\n\n\n\nmake.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです\n\n\n\n\n\n2026-01-27\n\n\n\n\n\n\n\n\n\n\n\n\n導入しているZoteroプラグインのまとめ\n\n\n\nzotero\n\n\n\n文献管理ソフトZoteroで導入しているプラグインのまとめです\n\n\n\n\n\n2026-01-25\n\n\n\n\n\n\n\n\n\n\n\n\nQuartoでコードブロックのファイル名を表示する\n\n\n\nquarto\n\n\n\nQuartoでコードブロックのファイル名を表示する方法についてのメモです\n\n\n\n\n\n2026-01-24\n\n\n\n\n\n\n\n\n\n\n\n\n画像処理のためのRパッケージimagerの使い方\n\n\n\nr\n\n\n\nimagerパッケージについての基本的な使い方の紹介です\n\n\n\n\n\n2026-01-01\n\n\n\n\n\n\n\n\n\n\n\n\nBookdownで404エラーが出たときの原因の一つはURLエンコード\n\n\n\nr\n\n\n\nBookdownで日本語を使うときはURLエンコードに注意です\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nBASIIC認証でつまったこと\n\n\n\nmisc\n\n\n\nBASIIC認証を使用したときの注意点についてのメモ\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRでベクトルを作成する\n\n\n\nr\n\n\n\nRでベクトルを作成するいろいろな方法をまとめます\n\n\n\n\n\n2024-06-18\n\n\n\n\n\n\n\n\n\n\n\n\nRで累積和を求める\n\n\n\nr\n\n\n\ncumsum関数で累積和を求めます\n\n\n\n\n\n2024-03-14\n\n\n\n\n\n\n\n\n\n\n\n\nRで色相環を作成する\n\n\n\nr\n\n\n\nRで色相環を作成するコードの紹介\n\n\n\n\n\n2024-03-04\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2024-03-14-cumsum/index.html",
@@ -308,53 +308,270 @@
     "text": "感謝\nこれらのプラグインを開発・提供してくださっている方々に深く感謝いたします。 Zotero自体もオープンソースで提供されており、非常に便利な文献管理ツールです。 Zoteroコミュニティの皆様にも感謝申し上げます。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html",
-    "href": "posts/2026-03-10-zotero-rss/index.html",
-    "title": "ZoteroでRSSフィードを作成する方法",
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html",
+    "href": "posts/2026-03-25-quarto-1.9/index.html",
+    "title": "Quarto 1.9がリリースされました",
     "section": "",
-    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
+    "text": "2026年3月24日にQuarto 1.9がリリースされました (公式ブログはこちら)。 Posit Connect Cloudへのpublish機能の追加や、Typstへの対応など、気になる機能がいくつか追加されました。\n個人的に気になったポイントをまとめます。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
-    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
-    "title": "ZoteroでRSSフィードを作成する方法",
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#quartoのアップデート方法",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#quartoのアップデート方法",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "Quartoのアップデート方法",
+    "text": "Quartoのアップデート方法\nポイントをまとめる前に、Quartoのアップデート方法を書いておきます。 Quartoのアップデートはコマンドではなく、インストーラーをダウンロードして実行する必要があります。 公式サイトのダウンロードページから、最新バージョンのインストーラーをダウンロードして実行してください。\nインストーラーを実行すると、簡単にQuartoを最新バージョンにアップデートできます。 アップデート後は、コマンドラインでquarto --versionを実行して、正しくアップデートされたことを確認してください。\nquarto --version\n# 1.9.36"
+  },
+  {
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#llms.txtファイルの追加",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#llms.txtファイルの追加",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "\nllms.txtファイルの追加",
+    "text": "llms.txtファイルの追加\n設定ファイルである_quarto.ymlにllms-txt: trueと記述することで、Quartoはプロジェクトのルートディレクトリにllms.txtというファイルを生成します。\nllms.txtファイルは、大規模言語モデル(large language model, LLM)やAIツールがプロジェクトの構造を理解するためのガイドラインを提供するためのものです。 詳しくは、こちらの公式ドキュメントを参照してください。\n早速、この機能を有効にしてみました。 書く場所はwebsite内に書くそうです。titleの下に書いてみました。\n\n\n\n_quarto.yml\n\nwebsite:\n  title: \"Maple60’s website\"\n  llms-txt: true\n\n\nこれでquarto renderを実行します。 _site/llms.txtファイルが生成されました。 一部抜粋すると、以下のようになっています。\n\n\n\n_site/llms.txt\n\n# Maple60’s website\n\n## Pages\n\n- [おすすめ](recommendations.llms.md)\n- [Quarto 1.9がリリースされました](posts/2026-03-25-quarto-1.9/index.llms.md)\n- [Rで大津の二値化を行う方法](posts/2026-03-11-r-otsu-thresholding/index.llms.md)\n- [Rで色覚異常のシミュレーションを行う方法](posts/2026-03-04-r-color-blind/index.llms.md)\n- [GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点](posts/2026-02-24-github-actions-r-universe/index.llms.md)\n- [Quartoを用いた解析プロジェクト管理について](posts/2026-02-11-quarto-project-management/index.llms.md)\n\n\nLLMやAIツールは、このllms.txtファイルを参照することで、プロジェクトの構造を理解し、適切な回答を生成することができます。\nllms.txtについての詳細は、こちらの公式ドキュメントを参照してください。"
+  },
+  {
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#list-tables",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#list-tables",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "List Tables",
+    "text": "List Tables\nとても使いやすそうな機能が追加されました。 これまでも簡単にMarkdown記法やコードから表を作ることはできていましたが、list tablesを使うことでテーブルのセルの中に改行や様々なコンテンツを入れることができるようになりました。\n\n::: {.list-table}\n\n- - 列A\n  - 列B\n  - 列C\n  - 列D\n\n- - テキスト\n  - `inline code`\n  - コードセルも入れられます。\n\n    ```{r}\n    summary(cars)\n    ```\n  - 箇条書きも入れられます。\n\n    - 箇条書き1\n    - 箇条書き2\n    - 箇条書き3\n:::\n\n出力は以下のようになります。\n\n\n列A\n列B\n列C\n列D\n\n\nテキスト\ninline code\n\nコードセルも入れられます。\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\n\n\n箇条書きも入れられます。\n\n箇条書き1\n箇条書き2\n箇条書き3\n\n\n\n\n書き方を覚えるのは少し大変ですが、慣れればとても便利な機能だと思います。\n詳しい使い方については、公式ドキュメントを参照してください。"
+  },
+  {
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#その他",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#その他",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "その他",
+    "text": "その他\nそのほかの機能については筆者はすぐには使わないかもしれませんが、簡単にまとめます。\nPosit Connect Cloudへのpublish機能の追加\nコマンド一つで、QuartoプロジェクトをPosit Connect Cloudに公開できるようになりました。\nTypstへの対応\nQuartoは、Typstという新しいドキュメント作成ツールへの対応を追加しました。 Typstは、LaTexのような高品質のドキュメントをWordやGoogle Docsのような使いやすさで作成できるツールです。 筆者も気になっていて、使ってみたいと思っていました。\nPDFのアクセシビリティの向上\n実験的な機能とのことですが、LaTexやTypestによりPDFを出力する際に、PDF/Aという長期保存に適したフォーマットや、PDF/UAという構造化がされスクリーンリーダーで読み上げやすいアクセスビリティの高いフォーマットで出力できるようになりました。\n詳細については、こちらの公式ブログを参照してください。\nbrand機能がコマンドラインからも利用可能に\nquarto use brandコマンドを使うことで、brand機能がコマンドラインからも利用できるようになりました。 brand機能は、プロジェクト全体で色やスタイルなどのテーマを統一するための機能です。 詳しい使い方については、公式ドキュメントを参照してください。"
+  },
+  {
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#おわりに",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#おわりに",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "おわりに",
+    "text": "おわりに\nどんどん進化するQuartoですが、今回のアップデートもとても魅力的な機能が追加されました。 contributerの方々には深く感謝します。\n私もいつか、Quartoにcontributeできるようになりたいと思いました。"
+  },
+  {
+    "objectID": "posts/2026-03-25-quarto-1.9/index.html#参考",
+    "href": "posts/2026-03-25-quarto-1.9/index.html#参考",
+    "title": "Quarto 1.9がリリースされました",
+    "section": "参考",
+    "text": "参考\n\nWickham, C. (2026, March 24). Quarto 1.9. Quarto Blog. https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/\nPosit Connect Cloud\nTypst\nDownload Quarto – Quarto\nThe /llms.txt file – llms-txt\nOutput for LLMs – Quarto\nTables – Quarto\nPDF/A - Wikipedia\nPDF/UA - Wikipedia\nMultiformat branding with _brand.yml – Quarto\n\n（すべて2026年3月25日閲覧）"
+  },
+  {
+    "objectID": "posts/2024-06-19-bookdown-url/index.html",
+    "href": "posts/2024-06-19-bookdown-url/index.html",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
     "section": "",
-    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
+    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
-    "href": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
-    "title": "ZoteroでRSSフィードを作成する方法",
-    "section": "RSSフィードとは",
-    "text": "RSSフィードとは\nRSSフィードは、ウェブサイトの更新情報を配信するためのフォーマットで、ユーザーが特定のウェブサイトの更新情報を受け取ることができます。 今回の場合は、論文雑誌のRSSフィードを作成することで、新しい論文が公開されたときに通知を受け取ることができます。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "状況",
+    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#方法",
-    "href": "posts/2026-03-10-zotero-rss/index.html#方法",
-    "title": "ZoteroでRSSフィードを作成する方法",
-    "section": "方法",
-    "text": "方法\n\nジャーナルのRSSフィードを見つける\n多くのジャーナルは、ウェブサイト上でRSSフィードを提供しています。 例えば、New PhytologistのHPに行ってみます。\n右側に、RSSフィードのアイコンがあるので、これを右クリックします。\n\n\n\nRSSフィードのアイコン\n\n\n右クリックメニュー(コンテキストメニュー)が表示されるため、「リンクのアドレスをコピー (Copy link address)」を選択します。\n\n\n\n右クリックメニュー"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "原因とその背景",
+    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
-    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
-    "title": "ZoteroでRSSフィードを作成する方法",
-    "section": "ZoteroでRSSフィードを購読する",
-    "text": "ZoteroでRSSフィードを購読する\nZoteroを開き、[File] &gt; [New Feed] &gt; [From URL…]を選択します。\n\n\n\nZoteroで新しいフィードを作成\n\n\n現れたダイアログのURLの欄に、先ほどコピーしたRSSフィードのURLを貼り付けます。 もしRSSフィードのURLが正しい場合は、Titleの欄にジャーナルの名前が自動的に入力されます。\nAdvanced Optionsの欄は、以下のようになっています。\n\nフィードの更新頻度 (デフォルトは168時間、つまり1週間)\n既読のフィードのアイテムを削除する間隔 (デフォルトでは3日)\n未読のフィードのアイテムを削除する間隔 (デフォルトでは30日)\n\n\n\n\nZoteroのフィード設定\n\n\n私は以下のように設定を変更しました。\n\nTitle: New Phytologist (ジャーナル名のみ)\nフィードの更新頻度: 24時間 (毎日更新を確認するように設定)\n\nそのほかはデフォルトのままです。\n設定が完了したら、[OK]をクリックします。\n左側のサイドバーにFeedsという項目ができ、その中にNew Phytologistというフィードが追加されていれば成功です。\n\n\n\nZoteroのサイドバー"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "対策",
+    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
-    "href": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
-    "title": "ZoteroでRSSフィードを作成する方法",
-    "section": "フィードアイテムを確認する",
-    "text": "フィードアイテムを確認する\nFeedsの欄からフィードアイテムを確認したいジャーナルを選択します。 中央のペインにフィードアイテムのリストが表示されます。\nカーソルを合わせるとRead(既読)になり、行のフォントが太字から通常のものに変わります。 アイテムをダブルクリックすると、ジャーナルのウェブサイトにアクセスできます。\n右側のペインでは、書誌情報が確認できるほか、[Mark As Unread]や[Mark As Read]をクリックして、アイテムの既読/未読を切り替えることができます。 [Add to “My Library…”]をクリックすると、任意のライブラリにアイテムを追加することができます。\n\n\n\nZoteroのフィードアイテム\n\n\n一気にジャーナルごとに既読にしたい場合は、Feedsの欄のジャーナル名を右クリックして、[Mark Feed as Read]を選択します。\n\n\n\nZoteroのフィードを一括既読にする"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "最後に",
+    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
   },
   {
-    "objectID": "posts/2026-03-10-zotero-rss/index.html#まとめ",
-    "href": "posts/2026-03-10-zotero-rss/index.html#まとめ",
-    "title": "ZoteroでRSSフィードを作成する方法",
-    "section": "まとめ",
-    "text": "まとめ\nZoteroを使って、ジャーナルのRSSフィードを購読する方法についてまとめました。 私はこれまで、RSSリーダーを使ってジャーナルの更新情報を確認していましたが、Zoteroを使うことで、フィードアイテムを簡単にライブラリに追加したり、書誌情報を管理したりすることができるようになりました。\n漏れている機能などありましたら、追記したいと思います。"
+    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
+    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
+    "section": "参考",
+    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html",
+    "href": "posts/2026-01-30-quarto-data-format/index.html",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "",
+    "text": "Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、Jan 30, 2026のような形式です。 しかし、ISO 8601形式の2026-01-30のような形式で表示したい場合があります。"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "data-formatオプション",
+    "text": "data-formatオプション\nQuartoで日付の表示形式を変更するには、date-formatオプションを設定します。 YAMLヘッダーや_quarto.ymlファイルでこのオプションを指定することで、日付の表示形式を変更できます。 一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。\nブログ記事のように複数の記事を一覧表示する場合、posts.qmdファイルのYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts.qmd\n\n---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  date-format: iso\n---\n\nもし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts/2026-01-30-quarto-data-format.qmd\n\n---\ntitle: \"Quartoで表示される日付型を変更する\"\ndate: \"2026-01-30\"\ndate-modified: \"2026-01-30\"\ndate-format: iso\n---\n\nまた、_quarto.ymlファイルにグローバル設定として追加することも可能です。\n\n\n_quarto.yml\n\ndate-format: iso"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "日付フォーマットの種類",
+    "text": "日付フォーマットの種類\n表示形式の変更には、以下の2つの方法があります。 1. 日付スタイルを指定する 2. カスタムフォーマットを指定する方法があります。\n\n日付スタイルの指定\nQuartoでは、以下のような日付スタイルを指定できます。\n\nshort: 短い形式 (例: 1/30/26)\nmedium: 中程度の形式 (例: Jan 30, 2026)\nlong: 長い形式 (例: January 30, 2026)\nfull: 完全な形式 (例: Friday, January 30, 2026)\niso: ISO 8601形式 (例: 2026-01-30)\n\n\n\nカスタムフォーマットの指定\n自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。 カスタムフォーマットを指定する場合、以下のようにdate-formatオプションにフォーマット文字列を設定します。 例えば、2026/01/30のように表示したい場合は、以下のように指定します。\ndate-format: \"yyyy/MM/dd\"\n\n\n\n\n\n\nNote\n\n\n\nカスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。\n\nQuarto Dates and Date Formatting\n\n\n\n\n\n言語による表示形式の違い\nQuartoでは、表示される日付の形式は言語設定によっても影響を受けます。 例えば、日本語設定の場合、mediumスタイルは2026年1月30日のように表示されます。 言語設定を変更するには、YAMLヘッダーや_quarto.ymlファイルでlangオプションを設定します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    lang: ja\n\nもしかしたらトップレベルにおいても良いかもしれません。\n\n\n\n\n\n\nNote\n\n\n\nlangオプションについては、詳しくは以下の公式ドキュメントを参照してください\n\nDocument Language - Quarto"
+  },
+  {
+    "objectID": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "href": "posts/2026-01-30-quarto-data-format/index.html#参考",
+    "title": "Quartoで表示される日付型を変更する",
+    "section": "参考",
+    "text": "参考\n\nDocument Listings- Quarto\nQuarto Dates and Date Formatting\nDocument Language - Quarto\nHTML Options - Quarto"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html",
+    "href": "posts/2026-02-11-quarto-project-management/index.html",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "",
+    "text": "Warning\n\n\n\nこの記事は書きかけの状態で公開しています。時間があるときに更新します。\nQuartoは、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。 これを使って、解析に順番のあるプロジェクトを管理できるのではないかと思いついたので、メモとして残します。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "解析における課題",
+    "text": "解析における課題\n多くの解析プロジェクトでは、複数のステップが順番に実行されます。 例えば、データの前処理、解析、可視化、レポート作成などです。\nこの時、処理ごとにスクリプトを分けて管理することが一般的です。 しかし、スクリプトが増えると、どの順番で実行すればよいのか分かりづらくなります。\nこれまで、私は00_data_preprocessing.R、01_analysis.R、02_visualization.Rのように、ファイル名に番号を振って順番を管理してきました。 しかし、ファイルが増えると番号の管理が煩雑になり、ミスが起こりやすくなります。 例えば、新しい解析を追加したとき、順番が変わった場合、ファイル名の番号をすべて変更する必要があります。\nまた、一つのqmdファイル内でも、コードセルごとに実行ができるため、いざ上から順番に実行したときに、変数が存在しないなどのエラーが発生することもあります。 例えば、前処理のコードセルを実行せずに解析のコードセルを実行すると、必要なデータが存在しないためエラーになります。\nこれらの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理する方法を考えました。 まだ試している段階ですが、以下にその方法をまとめておきます。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "QuartoのBook形式とは",
+    "text": "QuartoのBook形式とは\nQuartoのBook形式は、複数のqmdファイルをまとめて一つのドキュメントとして出力できる機能です。 例えば、Rの入門書として有名なR for Data Science (2e)はQuartoのBook形式で作成されています。\nそのほかにも最近は多くのR関連の書籍がQuartoのBook形式で作成されています。 実際にR for Data Science (2e)などを見ていただくと、実際の本のように、順番だってページが並び、途中途中にセクションがあることがわかります。\n順番に実行する必要のある解析コードについても、同じようにBook形式で管理できるのではないかと考えました。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "既存の解析プロジェクトの構成例",
+    "text": "既存の解析プロジェクトの構成例\n今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。\nnotebooks/\n├── 01_data_preprocessing_AA.qmd\n├── 02_data_preprocessing_BB.qmd\n├── 03_analysis_CC.qmd\n├── 04_analysis_DD.qmd\n├── 05_visualization_EE.qmd\n└── 06_visualization_FF.qmd\nこのように、各ステップごとにqmdファイルを分けて管理しています。 しかし、ある時、02_data_preprocessing_BBの前に新しい前処理ステップを追加したいとします。 この場合、ファイル名の番号をすべて変更する必要があり、非常に面倒です。"
+  },
+  {
+    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
+    "href": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
+    "title": "Quartoを用いた解析プロジェクト管理について",
+    "section": "Quarto Bookの作成",
+    "text": "Quarto Bookの作成\nこの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理します。\nCtrl+Shift+Pでコマンドパレットを開き、“Quarto: Create New Book Project”を選択します。 プロジェクト名を入力し、保存先フォルダを指定します。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "",
+    "text": "Quartoでウェブサイトを作成する際に、code-linkオプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "code-linkオプションとは",
+    "text": "code-linkオプションとは\ncode-linkオプションは、Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加するためのオプションです。 このオプションを有効にすると、コードブロック内の関数名がリンク付きで表示され、対応するドキュメントページに移動できるようになります。\n例えば、plot()と書くと、関数にマウスを合わせた際にリンクが表示され、クリックするとRの公式ドキュメントのplot()関数のページに移動します。 うまくリンクが追加されているでしょうか。\n\n\n\n\n\n\nNote\n\n\n\ncode-linkオプションについては以下の公式ドキュメントを参照してください。\n\nHTML Code Blocks - Quarto\nHTML Options - Quarto"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "現在の状況",
+    "text": "現在の状況\n現在、Github ActionsでQuartoのwebsiteをビルドしています。\n\n\n\n\n\n\nNote\n\n\n\nGitHub ActionsでQuartoのwebsiteをビルドする方法については、以下の公式ドキュメントを参照してください。\n\nGitHub Pages - Quarto\n\n\n\n_quarto.ymlファイルを一部抜粋します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    code-link: true\n    code-line-numbers: false \n    code-annotations: false\n\nこれでcode-linkは有効化されるはずです。 実際に、ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。\nしかし、Github Actionsでビルドした際には、コードリンクが追加されていませんでした。 実際にソースコードを確認したところ、関数へのリンクが生成されていませんでした。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "考えられる原因と解決策",
+    "text": "考えられる原因と解決策\nGitHub Actionsのビルドでは、code linkingに必要なdownlitパッケージがうまく動作していないのではないかと考えました。\nそこで、以下のように.github/workflows/publish.ymlファイルを修正しました。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこれは、QuartoドキュメントのExample: Knitr with renvを参考にしつつ、生じたエラーをもとに調整したものです。\nr-version: \"4.5.2\"とInstall system dependenciesの部分が具体的な変更点です。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "具体的な解決までの流れ",
+    "text": "具体的な解決までの流れ\n以下に具体的な流れを示します。\n\n1. freezeの確認\n_quarto.yml内でfreeze: autoが設定されていることを確認します。\n\n\n_quarto.yml\n\nexecute:\n  freeze: auto\n\n\n\n\n\n\n\nNote\n\n\n\nfreezeオプションについては以下の公式ドキュメントを参照してください。\n\nManaging Execution - Quarto\n\n\n\nその後、一度ローカル環境でサイトをレンダリングします。\n\n\nTerminal\n\nquarto render\n\nレンダリング後、_freezeフォルダが生成されていることを確認します。\n\n\n2. renvのセットアップ\nまだrenvを使用していない場合、プロジェクトにrenvをセットアップします。 もし、renvパッケージがインストールされていない場合、以下のコマンドでインストールします。\ninstall.packages(\"renv\")\n\n\n\n\n\n\nNote\n\n\n\nrenvパッケージについては以下の公式ドキュメントを参照してください。\n\nIntroduction to renv - renv\n\n\n\nインストールが完了したら、以下のコマンドでrenvを初期化します。\nrenv::init()\nrenvが初期化されると、プロジェクトにrenv.lockファイルなどの関連ファイルやフォルダが生成されます。 これらのファイルはGitHubリポジトリにコミットします。\n\n\n\n\n\n\nNote\n\n\n\nrenv/libraryなどはrenv/.gitignoreに含まれているため、コミットされません。デフォルトのままコミットして構いません。\n\n\n\n\n3. 公開用サイトの初期化とブランチの作成\n以下のコマンドを実行します。\n\n\nTerminal\n\nquarto publish gh-pages\n\n\n\n4. Github Actionsワークフローファイルの作成\n.github/workflows/publish.ymlファイルを作成し、以下のように設定します。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこのファイルで行っていることを簡単に列挙すると以下の通りです。\n\nリポジトリのチェックアウト\nQuartoのセットアップ\nRのインストール\n必要なシステム依存関係のインストール\nrenvを使用してRパッケージのインストール\nQuartoドキュメントのレンダリングと公開\n\nまた、以下の部分のRのバージョンについては、renvで使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。\n\n\n.github/workflows/publish.yml\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\nまた、Install system dependenciesの部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n\n\n5. Githubリポジトリへのコミットとプッシュ\nここまでの変更をGithubリポジトリにコミットし、プッシュします。\n\n\nTerminal\n\ngit add .\ngit commit -m \"Set up GitHub Actions for Quarto with code-linking\"\ngit push origin main\n\n私は最近はGitHub Desktopを使用しているため、GUIでコミットとプッシュを行いました。\nこれで、GitHub Actionsがトリガーされ、Quartoのwebsiteがビルドされます。 GitHub上でActionsタブを確認します。\n公式ドキュメントの例では、Install system dependenciesの部分は入っていません。\nしかし、私の環境ではこの部分を追加しないとInstall R Dependenciesの部分でエラーが生じ、ビルドが失敗しました。\n具体的には、Error: Error: Error installing package 'tiff':のようなエラーが発生しました。\nこのようなエラーが生じたら、Install system dependenciesの部分を追加してみてください。\n例えば、Error: Error: Error installing package 'tiff':のエラーが生じたときには、libtiff-devを追加することで解決しました。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libtiff-dev \\\n\nこのような試行錯誤を何度か繰り返し、最終的な.github/workflows/publish.ymlファイルが先述のように完成しました。\n\n\n\n\n\n\nNote\n\n\n\nこれらのビルドのためのActionでは一回で約8分くらいかかりました。 粘り強い試行錯誤が必要になるかもしれません。 私の書いた.github/workflows/publish.ymlファイルがそのまま使えるかはわかりませんが、参考にしてみてください。\n\n\n\n\n6. downlitとxml2パッケージのrenvへの追加\nここまでの手順で、Github ActionsでQuartoのwebsiteをビルドした際に、エラーは生じず、コードリンクが正しく機能すると考えていましたが、これでもうまくいきませんでした。\nRender and Publishのステップで以下のような警告が出ていました。\nWarning message:\nThe downlit and xml2 packages are required for code linking \nどうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。\nそこで、レンダリングする.qmdファイルの先頭に以下のように追記しました。\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nこの状態でいったんローカルでビルドし、renv.lockファイルが更新されたことを確認します。 その後、renv.lockファイルをGitHubリポジトリにコミットし、プッシュします。 このとき、GitHub Actionsのログを確認すると、先ほどの警告は生じないことがわかりました。 また、実際にGithub上でビルドされたwebsiteを確認すると、コードリンクが正しく機能していることがわかりました。\nその後、先ほど挿入した\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nを消去しても問題なくコードリンクが機能していました。\n\n\n\n\n\n\nNote\n\n\n\nこのやり方が最適なのかはわかりませんが、私の場合はこれでうまくいきました。 もっと良い方法があるのかもしれません。"
+  },
+  {
+    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
+    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
+    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
+    "section": "最後に",
+    "text": "最後に\nとりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。 この記事が同じ問題に直面している方の参考になれば幸いです。"
+  },
+  {
+    "objectID": "posts/2024-03-04-color-circle/index.html",
+    "href": "posts/2024-03-04-color-circle/index.html",
+    "title": "Rで色相環を作成する",
+    "section": "",
+    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Maple’s Website",
+    "section": "",
+    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
+  },
+  {
+    "objectID": "index.html#about",
+    "href": "index.html#about",
+    "title": "Maple’s Website",
+    "section": "",
+    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
+  },
+  {
+    "objectID": "index.html#my-interests",
+    "href": "index.html#my-interests",
+    "title": "Maple’s Website",
+    "section": "My interests",
+    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto."
+  },
+  {
+    "objectID": "index.html#このページについて",
+    "href": "index.html#このページについて",
+    "title": "Maple’s Website",
+    "section": "このページについて",
+    "text": "このページについて\nこのウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。 本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。 本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。 また、本ブログの内容は筆者個人の見解です。\nすべての投稿は、Postsページにリストされています。\n筆者は以下のプログラミング言語を主に使用します。\n\nR\nPython\nJavaScript\n\nこのブログは、Quartoを使用して作成されています。"
+  },
+  {
+    "objectID": "posts/2026-03-20-uv-python/index.html",
+    "href": "posts/2026-03-20-uv-python/index.html",
+    "title": "Pythonで最低限のuvによる環境管理",
+    "section": "",
+    "text": "uvとは、Pythonの環境管理ツールです。 他の環境管理ツールには、venvやvirtualenvなどがあります。\nuvは他の環境管理と比べても新し目で、速度や安定性、使いやすさなどが特徴です。 筆者もこれまではvenvを使用していましたが、uvに乗り換えてからは速度や安定性の向上を感じています。\nまた、OpenAIも2026年3月19日にuvの開発会社であるAstralを買収したこともあり、今後さらにuvの開発が加速することが期待されます。\nこれまで乱立していたPythonの環境管理ツールも、uvに統一されていく可能性が高いと考えられます。\n大規模なプロジェクトでももちろん使用する恩恵が大きいですが、筆者のような小規模な個人開発でも、環境管理の手間が減るため、非常におすすめです。 今回は、筆者のよく使う、小規模な個人開発向けの最低限で汎用性のあるuvによる環境管理方法をまとめます。"
+  },
+  {
+    "objectID": "posts/2026-03-20-uv-python/index.html#uvとは",
+    "href": "posts/2026-03-20-uv-python/index.html#uvとは",
+    "title": "Pythonで最低限のuvによる環境管理",
+    "section": "",
+    "text": "uvとは、Pythonの環境管理ツールです。 他の環境管理ツールには、venvやvirtualenvなどがあります。\nuvは他の環境管理と比べても新し目で、速度や安定性、使いやすさなどが特徴です。 筆者もこれまではvenvを使用していましたが、uvに乗り換えてからは速度や安定性の向上を感じています。\nまた、OpenAIも2026年3月19日にuvの開発会社であるAstralを買収したこともあり、今後さらにuvの開発が加速することが期待されます。\nこれまで乱立していたPythonの環境管理ツールも、uvに統一されていく可能性が高いと考えられます。\n大規模なプロジェクトでももちろん使用する恩恵が大きいですが、筆者のような小規模な個人開発でも、環境管理の手間が減るため、非常におすすめです。 今回は、筆者のよく使う、小規模な個人開発向けの最低限で汎用性のあるuvによる環境管理方法をまとめます。"
+  },
+  {
+    "objectID": "posts/2026-03-20-uv-python/index.html#uvのインストール",
+    "href": "posts/2026-03-20-uv-python/index.html#uvのインストール",
+    "title": "Pythonで最低限のuvによる環境管理",
+    "section": "uvのインストール",
+    "text": "uvのインストール\nuvのインストールの方法は何通りかあります。\nMacやLinuxの場合は、以下のコマンドでインストールできます。\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nWindowsの場合は、以下のコマンドでインストールできます。\npowershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\nまた、Pythonのパッケージマネージャであるpipを使用してインストールすることもできます。\npip install uv\nその他にもいくつかの方法が公式サイトで紹介されているため、自分にあった方法でインストールしてください。\n\nInstalling uv - Astral\n\n私は確か通常のコマンドラインでインストールしたと思います。"
+  },
+  {
+    "objectID": "posts/2026-03-20-uv-python/index.html#uvの使用方法",
+    "href": "posts/2026-03-20-uv-python/index.html#uvの使用方法",
+    "title": "Pythonで最低限のuvによる環境管理",
+    "section": "uvの使用方法",
+    "text": "uvの使用方法\n\nプロジェクトの初期化\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、uvのプロジェクトを初期化します。\nuv init\nこのコマンドで、プロジェクトのルートディレクトリに、以下のファイルが作成されます。\n├── .gitignore\n├── .python-version\n├── README.md\n├── main.py\n└── pyproject.toml\n\n.gitignore: Gitで管理しないファイルやディレクトリを指定するためのファイルです。\n.python-version: uvが管理するPythonのバージョンを指定するためのファイルです。\nREADME.md: プロジェクトの説明や使い方などを記載するためのファイルです。\nmain.py: プロジェクトのメインのPythonファイルです。\npyproject.toml: uvが管理するPythonのパッケージや依存関係を指定するためのファイルです。\n\n\n\n仮想環境を作成する\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、仮想環境を作成します。\nuv venv\nこのコマンドで、プロジェクトのルートディレクトリに、.venvという名前の仮想環境が作成されます。\n\n\nパッケージを追加する\nuv addコマンドを使用して、プロジェクトに必要なパッケージを追加します。\nuv add numpy\nこのコマンドで、numpyというパッケージがプロジェクトに追加されます。 追加されたパッケージは、pyproject.tomlファイルに記載されます。\n\n\n仮想環境をアクティベートする\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、仮想環境をアクティベートします。\nなお、アクティベートコマンドは、仮想環境作成時にターミナルに表示されるため、そのまま実行すれば問題ありません。\n\nLinux/MacWindows\n\n\nsource .venv/bin/activate\n\n\n.venv\\Scripts\\activate"
+  },
+  {
+    "objectID": "posts/2026-03-20-uv-python/index.html#仮想環境内でコードを実行する",
+    "href": "posts/2026-03-20-uv-python/index.html#仮想環境内でコードを実行する",
+    "title": "Pythonで最低限のuvによる環境管理",
+    "section": "仮想環境内でコードを実行する",
+    "text": "仮想環境内でコードを実行する\n.pyファイルであれば、uv runコマンドを使用して、仮想環境内でコードを実行することができます。\nuv run main.py\nもしPositronなどで.qmdファイルを仮想環境内で簡単に実行したい場合は、以下のようにします。\n\nPositoronの右上にある、“Select Interpreter Session”をクリックします。\n“New Interpreter Session…”をクリックします。\n作成した仮想環境が表示されるので、選択します。\n通常通り、.qmdファイルを実行します。\n\nこれで簡単に仮想環境内でコードを実行することができます。"
   },
   {
     "objectID": "posts/2026-03-11-r-otsu-thresholding/index.html",
@@ -420,221 +637,53 @@
     "text": "最適な閾値の選択\n最適な閾値は、クラス間分散が最大になる点で選択されます。\n\nt_opt &lt;- df_otsu$t[which.max(df_otsu$var_b)]\nt_opt\n\n[1] 164\n\n\n今回の画像に対して、最適な閾値は 164 となります。\n視覚的に確認するために、クラス内分散とクラス間分散のグラフを描いてみます。\n\nplot(\n  df_otsu$t,\n  df_otsu$var_w,\n  ylim = c(0, max(df_otsu$var_w, df_otsu$var_b) * 1.1),\n  type = \"l\",\n  xlab = \"Threshold\",\n  ylab = \"Within-class variance\",\n  col = 2,\n  lwd = 3\n)\nlines(\n  df_otsu$t,\n  df_otsu$var_b,\n  type = \"l\",\n  xlab = \"Threshold\",\n  ylab = \"Between-class variance\",\n  col = 4,\n  lwd = 3\n)\n\nabline(v = t_opt, col = adjustcolor(7, alpha.f = 0.7), lwd = 3)\n\nlegend(\n  \"topleft\",\n  legend = c(\n    \"Within-class variance\",\n    \"Between-class variance\",\n    \"Optimal threshold\"\n  ),\n  col = c(2, 4, 7),\n  lwd = 3,\n  bg = adjustcolor(\"white\", alpha.f = 0.7)\n)\n\n\n\n\n\n\n\nクラス内分散が最小で、クラス間分散が最大になる点が、最適な閾値であることがわかります。\nまた、この時の画像を二値化してみます。\n\nimg_width &lt;- dim(dat)[2]\nimg_height &lt;- dim(dat)[3]\nimg_otsu &lt;- image_read(as.raster(matrix(\n  as.integer(vals &gt; t_opt),\n  nrow = img_height,\n  ncol = img_width\n)))\n\npar(mar = c(0, 0, 0, 0))\npar(mfrow = c(1, 2))\nplot(img)\nplot(img_otsu)\n\n\n\n\n\n\n\nなかなかきれいに二値化できているのがわかります。"
   },
   {
-    "objectID": "posts/2026-03-20-uv-python/index.html",
-    "href": "posts/2026-03-20-uv-python/index.html",
-    "title": "Pythonで最低限のuvによる環境管理",
+    "objectID": "posts/2026-03-10-zotero-rss/index.html",
+    "href": "posts/2026-03-10-zotero-rss/index.html",
+    "title": "ZoteroでRSSフィードを作成する方法",
     "section": "",
-    "text": "uvとは、Pythonの環境管理ツールです。 他の環境管理ツールには、venvやvirtualenvなどがあります。\nuvは他の環境管理と比べても新し目で、速度や安定性、使いやすさなどが特徴です。 筆者もこれまではvenvを使用していましたが、uvに乗り換えてからは速度や安定性の向上を感じています。\nまた、OpenAIも2026年3月19日にuvの開発会社であるAstralを買収したこともあり、今後さらにuvの開発が加速することが期待されます。\nこれまで乱立していたPythonの環境管理ツールも、uvに統一されていく可能性が高いと考えられます。\n大規模なプロジェクトでももちろん使用する恩恵が大きいですが、筆者のような小規模な個人開発でも、環境管理の手間が減るため、非常におすすめです。 今回は、筆者のよく使う、小規模な個人開発向けの最低限で汎用性のあるuvによる環境管理方法をまとめます。"
+    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
   },
   {
-    "objectID": "posts/2026-03-20-uv-python/index.html#uvとは",
-    "href": "posts/2026-03-20-uv-python/index.html#uvとは",
-    "title": "Pythonで最低限のuvによる環境管理",
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
+    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroとは",
+    "title": "ZoteroでRSSフィードを作成する方法",
     "section": "",
-    "text": "uvとは、Pythonの環境管理ツールです。 他の環境管理ツールには、venvやvirtualenvなどがあります。\nuvは他の環境管理と比べても新し目で、速度や安定性、使いやすさなどが特徴です。 筆者もこれまではvenvを使用していましたが、uvに乗り換えてからは速度や安定性の向上を感じています。\nまた、OpenAIも2026年3月19日にuvの開発会社であるAstralを買収したこともあり、今後さらにuvの開発が加速することが期待されます。\nこれまで乱立していたPythonの環境管理ツールも、uvに統一されていく可能性が高いと考えられます。\n大規模なプロジェクトでももちろん使用する恩恵が大きいですが、筆者のような小規模な個人開発でも、環境管理の手間が減るため、非常におすすめです。 今回は、筆者のよく使う、小規模な個人開発向けの最低限で汎用性のあるuvによる環境管理方法をまとめます。"
+    "text": "Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。"
   },
   {
-    "objectID": "posts/2026-03-20-uv-python/index.html#uvのインストール",
-    "href": "posts/2026-03-20-uv-python/index.html#uvのインストール",
-    "title": "Pythonで最低限のuvによる環境管理",
-    "section": "uvのインストール",
-    "text": "uvのインストール\nuvのインストールの方法は何通りかあります。\nMacやLinuxの場合は、以下のコマンドでインストールできます。\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nWindowsの場合は、以下のコマンドでインストールできます。\npowershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\nまた、Pythonのパッケージマネージャであるpipを使用してインストールすることもできます。\npip install uv\nその他にもいくつかの方法が公式サイトで紹介されているため、自分にあった方法でインストールしてください。\n\nInstalling uv - Astral\n\n私は確か通常のコマンドラインでインストールしたと思います。"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
+    "href": "posts/2026-03-10-zotero-rss/index.html#rssフィードとは",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "RSSフィードとは",
+    "text": "RSSフィードとは\nRSSフィードは、ウェブサイトの更新情報を配信するためのフォーマットで、ユーザーが特定のウェブサイトの更新情報を受け取ることができます。 今回の場合は、論文雑誌のRSSフィードを作成することで、新しい論文が公開されたときに通知を受け取ることができます。"
   },
   {
-    "objectID": "posts/2026-03-20-uv-python/index.html#uvの使用方法",
-    "href": "posts/2026-03-20-uv-python/index.html#uvの使用方法",
-    "title": "Pythonで最低限のuvによる環境管理",
-    "section": "uvの使用方法",
-    "text": "uvの使用方法\n\nプロジェクトの初期化\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、uvのプロジェクトを初期化します。\nuv init\nこのコマンドで、プロジェクトのルートディレクトリに、以下のファイルが作成されます。\n├── .gitignore\n├── .python-version\n├── README.md\n├── main.py\n└── pyproject.toml\n\n.gitignore: Gitで管理しないファイルやディレクトリを指定するためのファイルです。\n.python-version: uvが管理するPythonのバージョンを指定するためのファイルです。\nREADME.md: プロジェクトの説明や使い方などを記載するためのファイルです。\nmain.py: プロジェクトのメインのPythonファイルです。\npyproject.toml: uvが管理するPythonのパッケージや依存関係を指定するためのファイルです。\n\n\n\n仮想環境を作成する\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、仮想環境を作成します。\nuv venv\nこのコマンドで、プロジェクトのルートディレクトリに、.venvという名前の仮想環境が作成されます。\n\n\nパッケージを追加する\nuv addコマンドを使用して、プロジェクトに必要なパッケージを追加します。\nuv add numpy\nこのコマンドで、numpyというパッケージがプロジェクトに追加されます。 追加されたパッケージは、pyproject.tomlファイルに記載されます。\n\n\n仮想環境をアクティベートする\nプロジェクトのルートディレクトリで、以下のコマンドを実行して、仮想環境をアクティベートします。\nなお、アクティベートコマンドは、仮想環境作成時にターミナルに表示されるため、そのまま実行すれば問題ありません。\n\nLinux/MacWindows\n\n\nsource .venv/bin/activate\n\n\n.venv\\Scripts\\activate"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#方法",
+    "href": "posts/2026-03-10-zotero-rss/index.html#方法",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "方法",
+    "text": "方法\n\nジャーナルのRSSフィードを見つける\n多くのジャーナルは、ウェブサイト上でRSSフィードを提供しています。 例えば、New PhytologistのHPに行ってみます。\n右側に、RSSフィードのアイコンがあるので、これを右クリックします。\n\n\n\nRSSフィードのアイコン\n\n\n右クリックメニュー(コンテキストメニュー)が表示されるため、「リンクのアドレスをコピー (Copy link address)」を選択します。\n\n\n\n右クリックメニュー"
   },
   {
-    "objectID": "posts/2026-03-20-uv-python/index.html#仮想環境内でコードを実行する",
-    "href": "posts/2026-03-20-uv-python/index.html#仮想環境内でコードを実行する",
-    "title": "Pythonで最低限のuvによる環境管理",
-    "section": "仮想環境内でコードを実行する",
-    "text": "仮想環境内でコードを実行する\n.pyファイルであれば、uv runコマンドを使用して、仮想環境内でコードを実行することができます。\nuv run main.py\nもしPositronなどで.qmdファイルを仮想環境内で簡単に実行したい場合は、以下のようにします。\n\nPositoronの右上にある、“Select Interpreter Session”をクリックします。\n“New Interpreter Session…”をクリックします。\n作成した仮想環境が表示されるので、選択します。\n通常通り、.qmdファイルを実行します。\n\nこれで簡単に仮想環境内でコードを実行することができます。"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
+    "href": "posts/2026-03-10-zotero-rss/index.html#zoteroでrssフィードを購読する",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "ZoteroでRSSフィードを購読する",
+    "text": "ZoteroでRSSフィードを購読する\nZoteroを開き、[File] &gt; [New Feed] &gt; [From URL…]を選択します。\n\n\n\nZoteroで新しいフィードを作成\n\n\n現れたダイアログのURLの欄に、先ほどコピーしたRSSフィードのURLを貼り付けます。 もしRSSフィードのURLが正しい場合は、Titleの欄にジャーナルの名前が自動的に入力されます。\nAdvanced Optionsの欄は、以下のようになっています。\n\nフィードの更新頻度 (デフォルトは168時間、つまり1週間)\n既読のフィードのアイテムを削除する間隔 (デフォルトでは3日)\n未読のフィードのアイテムを削除する間隔 (デフォルトでは30日)\n\n\n\n\nZoteroのフィード設定\n\n\n私は以下のように設定を変更しました。\n\nTitle: New Phytologist (ジャーナル名のみ)\nフィードの更新頻度: 24時間 (毎日更新を確認するように設定)\n\nそのほかはデフォルトのままです。\n設定が完了したら、[OK]をクリックします。\n左側のサイドバーにFeedsという項目ができ、その中にNew Phytologistというフィードが追加されていれば成功です。\n\n\n\nZoteroのサイドバー"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Maple’s Website",
-    "section": "",
-    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
+    "href": "posts/2026-03-10-zotero-rss/index.html#フィードアイテムを確認する",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "フィードアイテムを確認する",
+    "text": "フィードアイテムを確認する\nFeedsの欄からフィードアイテムを確認したいジャーナルを選択します。 中央のペインにフィードアイテムのリストが表示されます。\nカーソルを合わせるとRead(既読)になり、行のフォントが太字から通常のものに変わります。 アイテムをダブルクリックすると、ジャーナルのウェブサイトにアクセスできます。\n右側のペインでは、書誌情報が確認できるほか、[Mark As Unread]や[Mark As Read]をクリックして、アイテムの既読/未読を切り替えることができます。 [Add to “My Library…”]をクリックすると、任意のライブラリにアイテムを追加することができます。\n\n\n\nZoteroのフィードアイテム\n\n\n一気にジャーナルごとに既読にしたい場合は、Feedsの欄のジャーナル名を右クリックして、[Mark Feed as Read]を選択します。\n\n\n\nZoteroのフィードを一括既読にする"
   },
   {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Maple’s Website",
-    "section": "",
-    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
-  },
-  {
-    "objectID": "index.html#my-interests",
-    "href": "index.html#my-interests",
-    "title": "Maple’s Website",
-    "section": "My interests",
-    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto."
-  },
-  {
-    "objectID": "index.html#このページについて",
-    "href": "index.html#このページについて",
-    "title": "Maple’s Website",
-    "section": "このページについて",
-    "text": "このページについて\nこのウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。 本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。 本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。 また、本ブログの内容は筆者個人の見解です。\nすべての投稿は、Postsページにリストされています。\n筆者は以下のプログラミング言語を主に使用します。\n\nR\nPython\nJavaScript\n\nこのブログは、Quartoを使用して作成されています。"
-  },
-  {
-    "objectID": "posts/2024-03-04-color-circle/index.html",
-    "href": "posts/2024-03-04-color-circle/index.html",
-    "title": "Rで色相環を作成する",
-    "section": "",
-    "text": "もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。\nlen &lt;- 1000\nr &lt;- seq(from = 0, to = 1, length.out = len)\ntheta &lt;- seq(from = 0, to = 2 * pi, length.out = len)\n\nplot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = \"\", ylab = \"\", type = \"n\")\nfor (i in 1:len) {\n  ri &lt;- r[i]\n  for (j in 1:len) {\n    if (j == 1) {\n      thetai0 &lt;- 0\n    } else {\n      thetai0 &lt;- theta[j - 1]\n    }\n    thetai1 &lt;- theta[j]\n    segments(\n      ri * cos(thetai0),\n      ri * sin(thetai0),\n      ri * cos(thetai1),\n      ri * sin(thetai1),\n      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)\n    )\n  }\n}"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "",
-    "text": "Quartoでウェブサイトを作成する際に、code-linkオプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#code-linkオプションとは",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "code-linkオプションとは",
-    "text": "code-linkオプションとは\ncode-linkオプションは、Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加するためのオプションです。 このオプションを有効にすると、コードブロック内の関数名がリンク付きで表示され、対応するドキュメントページに移動できるようになります。\n例えば、plot()と書くと、関数にマウスを合わせた際にリンクが表示され、クリックするとRの公式ドキュメントのplot()関数のページに移動します。 うまくリンクが追加されているでしょうか。\n\n\n\n\n\n\nNote\n\n\n\ncode-linkオプションについては以下の公式ドキュメントを参照してください。\n\nHTML Code Blocks - Quarto\nHTML Options - Quarto"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#現在の状況",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "現在の状況",
-    "text": "現在の状況\n現在、Github ActionsでQuartoのwebsiteをビルドしています。\n\n\n\n\n\n\nNote\n\n\n\nGitHub ActionsでQuartoのwebsiteをビルドする方法については、以下の公式ドキュメントを参照してください。\n\nGitHub Pages - Quarto\n\n\n\n_quarto.ymlファイルを一部抜粋します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    code-link: true\n    code-line-numbers: false \n    code-annotations: false\n\nこれでcode-linkは有効化されるはずです。 実際に、ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。\nしかし、Github Actionsでビルドした際には、コードリンクが追加されていませんでした。 実際にソースコードを確認したところ、関数へのリンクが生成されていませんでした。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#考えられる原因と解決策",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "考えられる原因と解決策",
-    "text": "考えられる原因と解決策\nGitHub Actionsのビルドでは、code linkingに必要なdownlitパッケージがうまく動作していないのではないかと考えました。\nそこで、以下のように.github/workflows/publish.ymlファイルを修正しました。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこれは、QuartoドキュメントのExample: Knitr with renvを参考にしつつ、生じたエラーをもとに調整したものです。\nr-version: \"4.5.2\"とInstall system dependenciesの部分が具体的な変更点です。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#具体的な解決までの流れ",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "具体的な解決までの流れ",
-    "text": "具体的な解決までの流れ\n以下に具体的な流れを示します。\n\n1. freezeの確認\n_quarto.yml内でfreeze: autoが設定されていることを確認します。\n\n\n_quarto.yml\n\nexecute:\n  freeze: auto\n\n\n\n\n\n\n\nNote\n\n\n\nfreezeオプションについては以下の公式ドキュメントを参照してください。\n\nManaging Execution - Quarto\n\n\n\nその後、一度ローカル環境でサイトをレンダリングします。\n\n\nTerminal\n\nquarto render\n\nレンダリング後、_freezeフォルダが生成されていることを確認します。\n\n\n2. renvのセットアップ\nまだrenvを使用していない場合、プロジェクトにrenvをセットアップします。 もし、renvパッケージがインストールされていない場合、以下のコマンドでインストールします。\ninstall.packages(\"renv\")\n\n\n\n\n\n\nNote\n\n\n\nrenvパッケージについては以下の公式ドキュメントを参照してください。\n\nIntroduction to renv - renv\n\n\n\nインストールが完了したら、以下のコマンドでrenvを初期化します。\nrenv::init()\nrenvが初期化されると、プロジェクトにrenv.lockファイルなどの関連ファイルやフォルダが生成されます。 これらのファイルはGitHubリポジトリにコミットします。\n\n\n\n\n\n\nNote\n\n\n\nrenv/libraryなどはrenv/.gitignoreに含まれているため、コミットされません。デフォルトのままコミットして構いません。\n\n\n\n\n3. 公開用サイトの初期化とブランチの作成\n以下のコマンドを実行します。\n\n\nTerminal\n\nquarto publish gh-pages\n\n\n\n4. Github Actionsワークフローファイルの作成\n.github/workflows/publish.ymlファイルを作成し、以下のように設定します。\n\n\n.github/workflows/publish.yml\n\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n      - name: Install R Dependencies\n        uses: r-lib/actions/setup-renv@v2\n        with:\n          cache-version: 1\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\nこのファイルで行っていることを簡単に列挙すると以下の通りです。\n\nリポジトリのチェックアウト\nQuartoのセットアップ\nRのインストール\n必要なシステム依存関係のインストール\nrenvを使用してRパッケージのインストール\nQuartoドキュメントのレンダリングと公開\n\nまた、以下の部分のRのバージョンについては、renvで使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。\n\n\n.github/workflows/publish.yml\n\n      - name: Install R\n        uses: r-lib/actions/setup-r@v2\n        with:\n          r-version: \"4.5.2\"\n\nまた、Install system dependenciesの部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libpng-dev \\\n            libjpeg-dev \\\n            libtiff-dev \\\n            libfftw3-dev \\\n            libglpk-dev \\\n            libx11-dev \\\n            libxt-dev \\\n            pandoc\n\n\n\n5. Githubリポジトリへのコミットとプッシュ\nここまでの変更をGithubリポジトリにコミットし、プッシュします。\n\n\nTerminal\n\ngit add .\ngit commit -m \"Set up GitHub Actions for Quarto with code-linking\"\ngit push origin main\n\n私は最近はGitHub Desktopを使用しているため、GUIでコミットとプッシュを行いました。\nこれで、GitHub Actionsがトリガーされ、Quartoのwebsiteがビルドされます。 GitHub上でActionsタブを確認します。\n公式ドキュメントの例では、Install system dependenciesの部分は入っていません。\nしかし、私の環境ではこの部分を追加しないとInstall R Dependenciesの部分でエラーが生じ、ビルドが失敗しました。\n具体的には、Error: Error: Error installing package 'tiff':のようなエラーが発生しました。\nこのようなエラーが生じたら、Install system dependenciesの部分を追加してみてください。\n例えば、Error: Error: Error installing package 'tiff':のエラーが生じたときには、libtiff-devを追加することで解決しました。\n\n\n.github/workflows/publish.yml\n\n      - name: Install system dependencies\n        run: |\n          sudo apt-get update\n          sudo apt-get install -y \\\n            libtiff-dev \\\n\nこのような試行錯誤を何度か繰り返し、最終的な.github/workflows/publish.ymlファイルが先述のように完成しました。\n\n\n\n\n\n\nNote\n\n\n\nこれらのビルドのためのActionでは一回で約8分くらいかかりました。 粘り強い試行錯誤が必要になるかもしれません。 私の書いた.github/workflows/publish.ymlファイルがそのまま使えるかはわかりませんが、参考にしてみてください。\n\n\n\n\n6. downlitとxml2パッケージのrenvへの追加\nここまでの手順で、Github ActionsでQuartoのwebsiteをビルドした際に、エラーは生じず、コードリンクが正しく機能すると考えていましたが、これでもうまくいきませんでした。\nRender and Publishのステップで以下のような警告が出ていました。\nWarning message:\nThe downlit and xml2 packages are required for code linking \nどうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。\nそこで、レンダリングする.qmdファイルの先頭に以下のように追記しました。\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nこの状態でいったんローカルでビルドし、renv.lockファイルが更新されたことを確認します。 その後、renv.lockファイルをGitHubリポジトリにコミットし、プッシュします。 このとき、GitHub Actionsのログを確認すると、先ほどの警告は生じないことがわかりました。 また、実際にGithub上でビルドされたwebsiteを確認すると、コードリンクが正しく機能していることがわかりました。\nその後、先ほど挿入した\nrenv::install(c(\"downlit\", \"xml2\"))\nlibrary(downlit)\nlibrary(xml2)\nrenv::snapshot()\nを消去しても問題なくコードリンクが機能していました。\n\n\n\n\n\n\nNote\n\n\n\nこのやり方が最適なのかはわかりませんが、私の場合はこれでうまくいきました。 もっと良い方法があるのかもしれません。"
-  },
-  {
-    "objectID": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
-    "href": "posts/2026-01-29-quarto-code-linking-github-action/index.html#最後に",
-    "title": "Github ActionsでQuartoのコードリンク機能を有効にする方法",
-    "section": "最後に",
-    "text": "最後に\nとりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。 この記事が同じ問題に直面している方の参考になれば幸いです。"
-  },
-  {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html",
-    "href": "posts/2026-02-11-quarto-project-management/index.html",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "",
-    "text": "Warning\n\n\n\nこの記事は書きかけの状態で公開しています。時間があるときに更新します。\nQuartoは、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。 Qurtoでは、ブラウザ上で読むことのできる、HTML形式のドキュメントを簡単に作成できます。 これを使って、解析に順番のあるプロジェクトを管理できるのではないかと思いついたので、メモとして残します。"
-  },
-  {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#解析における課題",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "解析における課題",
-    "text": "解析における課題\n多くの解析プロジェクトでは、複数のステップが順番に実行されます。 例えば、データの前処理、解析、可視化、レポート作成などです。\nこの時、処理ごとにスクリプトを分けて管理することが一般的です。 しかし、スクリプトが増えると、どの順番で実行すればよいのか分かりづらくなります。\nこれまで、私は00_data_preprocessing.R、01_analysis.R、02_visualization.Rのように、ファイル名に番号を振って順番を管理してきました。 しかし、ファイルが増えると番号の管理が煩雑になり、ミスが起こりやすくなります。 例えば、新しい解析を追加したとき、順番が変わった場合、ファイル名の番号をすべて変更する必要があります。\nまた、一つのqmdファイル内でも、コードセルごとに実行ができるため、いざ上から順番に実行したときに、変数が存在しないなどのエラーが発生することもあります。 例えば、前処理のコードセルを実行せずに解析のコードセルを実行すると、必要なデータが存在しないためエラーになります。\nこれらの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理する方法を考えました。 まだ試している段階ですが、以下にその方法をまとめておきます。"
-  },
-  {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#quartoのbook形式とは",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "QuartoのBook形式とは",
-    "text": "QuartoのBook形式とは\nQuartoのBook形式は、複数のqmdファイルをまとめて一つのドキュメントとして出力できる機能です。 例えば、Rの入門書として有名なR for Data Science (2e)はQuartoのBook形式で作成されています。\nそのほかにも最近は多くのR関連の書籍がQuartoのBook形式で作成されています。 実際にR for Data Science (2e)などを見ていただくと、実際の本のように、順番だってページが並び、途中途中にセクションがあることがわかります。\n順番に実行する必要のある解析コードについても、同じようにBook形式で管理できるのではないかと考えました。"
-  },
-  {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#既存の解析プロジェクトの構成例",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "既存の解析プロジェクトの構成例",
-    "text": "既存の解析プロジェクトの構成例\n今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。\nnotebooks/\n├── 01_data_preprocessing_AA.qmd\n├── 02_data_preprocessing_BB.qmd\n├── 03_analysis_CC.qmd\n├── 04_analysis_DD.qmd\n├── 05_visualization_EE.qmd\n└── 06_visualization_FF.qmd\nこのように、各ステップごとにqmdファイルを分けて管理しています。 しかし、ある時、02_data_preprocessing_BBの前に新しい前処理ステップを追加したいとします。 この場合、ファイル名の番号をすべて変更する必要があり、非常に面倒です。"
-  },
-  {
-    "objectID": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
-    "href": "posts/2026-02-11-quarto-project-management/index.html#quarto-bookの作成",
-    "title": "Quartoを用いた解析プロジェクト管理について",
-    "section": "Quarto Bookの作成",
-    "text": "Quarto Bookの作成\nこの課題を解決するために、QuartoのBook形式を用いて解析プロジェクトを管理します。\nCtrl+Shift+Pでコマンドパレットを開き、“Quarto: Create New Book Project”を選択します。 プロジェクト名を入力し、保存先フォルダを指定します。"
-  },
-  {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html",
-    "href": "posts/2026-01-30-quarto-data-format/index.html",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "",
-    "text": "Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、Jan 30, 2026のような形式です。 しかし、ISO 8601形式の2026-01-30のような形式で表示したい場合があります。"
-  },
-  {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#data-formatオプション",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "data-formatオプション",
-    "text": "data-formatオプション\nQuartoで日付の表示形式を変更するには、date-formatオプションを設定します。 YAMLヘッダーや_quarto.ymlファイルでこのオプションを指定することで、日付の表示形式を変更できます。 一番使用することが多いのは、ブログ記事の一覧表示部分(listing page)かと思います。\nブログ記事のように複数の記事を一覧表示する場合、posts.qmdファイルのYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts.qmd\n\n---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  date-format: iso\n---\n\nもし個別の記事ページで日付の表示形式を変更したい場合は、各記事のYAMLヘッダーにdate-formatオプションを追加します。\n\n\nposts/2026-01-30-quarto-data-format.qmd\n\n---\ntitle: \"Quartoで表示される日付型を変更する\"\ndate: \"2026-01-30\"\ndate-modified: \"2026-01-30\"\ndate-format: iso\n---\n\nまた、_quarto.ymlファイルにグローバル設定として追加することも可能です。\n\n\n_quarto.yml\n\ndate-format: iso"
-  },
-  {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#日付フォーマットの種類",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "日付フォーマットの種類",
-    "text": "日付フォーマットの種類\n表示形式の変更には、以下の2つの方法があります。 1. 日付スタイルを指定する 2. カスタムフォーマットを指定する方法があります。\n\n日付スタイルの指定\nQuartoでは、以下のような日付スタイルを指定できます。\n\nshort: 短い形式 (例: 1/30/26)\nmedium: 中程度の形式 (例: Jan 30, 2026)\nlong: 長い形式 (例: January 30, 2026)\nfull: 完全な形式 (例: Friday, January 30, 2026)\niso: ISO 8601形式 (例: 2026-01-30)\n\n\n\nカスタムフォーマットの指定\n自分でもっと細かくスタイルを指定したい場合は、カスタムフォーマットを使用します。 カスタムフォーマットを指定する場合、以下のようにdate-formatオプションにフォーマット文字列を設定します。 例えば、2026/01/30のように表示したい場合は、以下のように指定します。\ndate-format: \"yyyy/MM/dd\"\n\n\n\n\n\n\nNote\n\n\n\nカスタムフォーマットの詳細については、以下の公式ドキュメントを参照してください。\n\nQuarto Dates and Date Formatting\n\n\n\n\n\n言語による表示形式の違い\nQuartoでは、表示される日付の形式は言語設定によっても影響を受けます。 例えば、日本語設定の場合、mediumスタイルは2026年1月30日のように表示されます。 言語設定を変更するには、YAMLヘッダーや_quarto.ymlファイルでlangオプションを設定します。\n\n\n_quarto.yml\n\nformat:\n  html:\n    lang: ja\n\nもしかしたらトップレベルにおいても良いかもしれません。\n\n\n\n\n\n\nNote\n\n\n\nlangオプションについては、詳しくは以下の公式ドキュメントを参照してください\n\nDocument Language - Quarto"
-  },
-  {
-    "objectID": "posts/2026-01-30-quarto-data-format/index.html#参考",
-    "href": "posts/2026-01-30-quarto-data-format/index.html#参考",
-    "title": "Quartoで表示される日付型を変更する",
-    "section": "参考",
-    "text": "参考\n\nDocument Listings- Quarto\nQuarto Dates and Date Formatting\nDocument Language - Quarto\nHTML Options - Quarto"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html",
-    "href": "posts/2024-06-19-bookdown-url/index.html",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "",
-    "text": "Rの{bookdown}パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "href": "posts/2024-06-19-bookdown-url/index.html#状況",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "状況",
-    "text": "状況\nSynology NASで立ち上げたWebサーバー内にディレクトリを作成し、そこにbookdownのhtml outputのフォルダ(デフォルト名で_book)の中身をすべてコピーして外部からアクセスをできるようにしていました。\n普通に閲覧ができていたのですが、あるページだけなぜか404エラーが出るので困っていました。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "href": "posts/2024-06-19-bookdown-url/index.html#原因とその背景",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "原因とその背景",
-    "text": "原因とその背景\n結論としては、URLエンコードの問題でした。 そのファイルは〇〇マップ.htmlという名前のファイルで、日本語が入っていました。\nASCIIコードではない日本語は、URLに含めることができないので、ページ名が日本語の場合は、URLエンコードという処理で、URL内に表現できる形に置き換えられます。\n例えば、日本語の「あ」であれば「%E3%81%82」に置き換えられます。 %と文字コードの組み合わせで変換をしているため、これをパーセントエンコーディングと呼ぶらしいです。\n「マップ」という文字列は、通常「%E3%83%9E%E3%83%83%E3%83%97」という文字列で変換されます。 それぞれの対応としては、\n\nマ: %E3%83%9E\nッ: %E3%83%83\nプ: %E3%83%97\n\nという感じです。\nですが、bookdownでビルドされたファイルのリンクでは「%E3%83%9E%E3%83%83%E3%83%95%E3%82%9A」と変換されていました。 違いとしては、「プ」が「フ」と「ﾟ」(半濁点)が分けてエンコードされているところです。\nつまり、本来は通常の「マップ」の方にリンクをしているはずが、リンクが半濁点のわけられた「マップ」にリンクしてしまっているために404エラー、つまり存在しないページに飛んでしまっていたということでした。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "href": "posts/2024-06-19-bookdown-url/index.html#対策",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "対策",
-    "text": "対策\nとりあえず、レンダリング前のRmdファイルの見出しを「map」という感じで英語にしてこのエラーを回避しました。\nbookdownははUTF-8でコーディングしているので、日本語や漢字も普通に利用できますが、URLにするとたまによろしくないことが起こってしまうようですね。\nRmdファイルのheader1(#)をそのままレンダリングしたhtmlファイルのファイル名にする仕様になっているので、今回のエラーを避けるとしたら、英語を使うのが無難かもしれません。\n濁点と半濁点だけなのか、他の非ASCII文字でも起こるのかは未検証です。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "href": "posts/2024-06-19-bookdown-url/index.html#最後に",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "最後に",
-    "text": "最後に\n見た目はどちらも「マップ」で同じため、今回のエラーは原因がわかるまでかなり時間がかかりました。\n気づいた経緯は、アドレスバーにURLを手打ちしたらアクセスできたことからでした。 そこからアクセスできるときとできないときで、それぞれURLをエディタにコピペしたときにエンコーディングが異なっていることで解決できました。\n日本人の方向けの書類は日本語で作成するのが良いですが、日本語は何かとエラーの原因ですね。 ドキュメントは基本的に英語で作成して、補足的に日本語を入れたほうが良いのかもと思った今回の件でした。"
-  },
-  {
-    "objectID": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "href": "posts/2024-06-19-bookdown-url/index.html#参考",
-    "title": "Bookdownで404エラーが出たときの原因の一つはURLエンコード",
-    "section": "参考",
-    "text": "参考\nURLエンコードについては、以下のサイト様を利用させていただきました。\nURLエンコード・デコード\nありがとうございました。"
+    "objectID": "posts/2026-03-10-zotero-rss/index.html#まとめ",
+    "href": "posts/2026-03-10-zotero-rss/index.html#まとめ",
+    "title": "ZoteroでRSSフィードを作成する方法",
+    "section": "まとめ",
+    "text": "まとめ\nZoteroを使って、ジャーナルのRSSフィードを購読する方法についてまとめました。 私はこれまで、RSSリーダーを使ってジャーナルの更新情報を確認していましたが、Zoteroを使うことで、フィードアイテムを簡単にライブラリに追加したり、書誌情報を管理したりすることができるようになりました。\n漏れている機能などありましたら、追記したいと思います。"
   },
   {
     "objectID": "posts/2026-02-01-chain-code/index.html",

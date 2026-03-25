@@ -1,0 +1,84 @@
+# おすすめ
+
+ここでは、私のおすすめをまとめます。 主にオンライン上で利用できるものが中心です。
+
+随時更新していく予定です。
+
+## ツール
+
+- [Obsidian](https://obsidian.md/): ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。
+- [Zotero](https://www.zotero.org/): 参考文献管理。
+- [GitHub](https://github.com/): ソースコード管理。
+- [Quarto](https://quarto.org/): ドキュメント作成ツール。R Markdownの後継。
+- [Positron](https://positron.posit.co/): データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。
+- [eagle](https://en.eagle.cool/): 画像管理ツール。画像をタグで管理できる。
+- [VisiOS](https://beta-japan.com/): ブックマークやタブの管理ツール
+- [Raindrop.io](https://raindrop.io/): ブックマーク管理ツール
+- [Kdenlive](https://kdenlive.org/): 動画編集ソフト
+- [Affinity](https://www.affinity.studio/): 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。
+- [OBS Studio](https://obsproject.com/): 画面録画ソフト
+- [Todoist](https://todoist.com/): タスク管理ツール
+- [Inoreader](https://www.inoreader.com/): RSSリーダー
+- [Bitwarden](https://bitwarden.com/): パスワード管理ツール
+- [Tailscale](https://tailscale.com/): VPNサービス
+- [Proton Mail](https://proton.me/mail): セキュアなメールサービス
+- [Keyvis](https://keyviz.org/): オープンソースのキーボードビジュアライザー
+- [Proton Authenticator](https://proton.me/authenticator): 2段階認証アプリ
+- [Rustdesk](https://rustdesk.com/): リモートデスクトップソフト。Anydeskの代替。
+- [Brave](https://brave.com/): プライバシー重視のウェブブラウザ
+- [Element](https://element.io/): オープンソースのチャットアプリ。Matrixプロトコルを使用。
+- [Karakeep](https://karakeep.app/): ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない
+- [NordVPN](https://nordvpn.com/): VPNサービス。[Proton VPN](https://proton.me/vpn)に乗り換えを検討中。
+- [LM Studio](https://lmstudio.ai/): ローカルで動作するAIチャットツール。ChatGPTの代替。
+
+### 文献関係
+
+- [Elicit](https://elicit.com/): AIを活用したリサーチツール。文献検索や要約などが可能。
+- [Google Scholar \| Labs](https://scholar.google.com/scholar_labs/search)
+- [Undermind](https://www.undermind.ai/)
+- [ResearchRabbit](https://www.researchrabbit.ai/): 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。
+
+## 本
+
+### 植物
+
+- [Manual of Leaf Architecture](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000): 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識が詰まっている。[Smithsonian Libraries and Archives](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000)で無料で閲覧できる。ライセンスは[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)。
+
+### R
+
+オンライン上で読める良質なRの本がいくつかあるので紹介します。
+
+- [R for Data Science (2e)](https://r4ds.hadley.nz/): Rを使ったデータサイエンスの入門書。データの取り扱いや可視化、モデリングなどが網羅されている。オンラインで無料で閲覧できる。ライセンスは[CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/)。
+- [R Graphics Cookbook, 2nd edition](https://r-graphics.org/): Rのグラフィックスに関するレシピ集。ggplot2を使ったグラフの作成方法が豊富に紹介されている。オンラインで無料で閲覧できる。
+- [Cookbook for R](http://www.cookbook-r.com/): Rの様々なタスクに関するレシピ集。ライセンスは[CC0](https://creativecommons.org/publicdomain/zero/1.0/)。
+- [Tidy Modeling with R](https://www.tmwr.org/)
+- [Efficient R programming](https://csgillespie.github.io/efficientR/)
+- [Big Book of R](https://www.bigbookofr.com/)
+- [Mastering Shiny](https://mastering-shiny.org/): Hadley Wickham氏によるShinyの入門書。
+- [Deep Learning with R](https://livebook.manning.com/book/deep-learning-with-r/about-this-book)
+- [blogdown: Creating Websites with R Markdown](https://yihui.org/blogdown/)
+- [Mastering Spark with R](https://therinspark.com/)
+- [R Packages (2e)](https://r-pkgs.org/): Rのパッケージ開発の入門書。
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/): ggplot2の入門書。
+
+### Python
+
+- [Think Python](https://allendowney.github.io/ThinkPython/)
+- [Think Python, 2nd edition](https://greenteapress.com/wp/think-python-2e/)
+- [Cracking Codes with Python - Invent with Python](https://inventwithpython.com/cracking/)
+- [Beyond the Basic Stuff with Python - Invent with Python](https://inventwithpython.com/beyond/)
+- [The Big Book of Small Python Projects - Invent with Python](https://inventwithpython.com/bigbookpython/)
+- [Python for Data Analysis, 3E](https://wesmckinney.com/book/)
+- [データ分析のための統計学入門](http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf)
+- [IPython Cookbook, Second Edition (2018)](https://ipython-books.github.io/)
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+
+### その他
+
+- - [An Introduction to Statistical Learning](https://www.statlearning.com/)
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/): データ可視化の基本原則を解説した本。データを効果的に伝えるための方法が紹介されている。オンラインで無料で閲覧できる。ライセンスは[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)。
+- [Think Bayes 2](https://allendowney.github.io/ThinkBayes2/)
+- [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/)
+- [Foundations of Computer Vision](https://visionbook.mit.edu/): コンピュータビジョンの基礎を解説した本。
+- [Open Data Structures](https://opendatastructures.org/)
+- [Contributions to morphometrics - Biodiversity Heritage Library](https://www.biodiversitylibrary.org/bibliography/15368)

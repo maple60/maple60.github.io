@@ -1,0 +1,36 @@
+# Quartoでコードブロックのファイル名を表示する
+
+quarto
+
+Quartoでコードブロックのファイル名を表示する方法についてのメモです
+
+Published
+
+2026-01-24
+
+Modified
+
+2026-01-24
+
+コードブロックにファイル名を表示する方法についてのメモです。 コードブロックに`filename`属性を追加することで、ファイル名を表示できます。
+
+```` markdown
+```{.python filename="example.py"}
+print("Hello, World!")
+```
+````
+
+のように記述します。
+
+以下のように表示されます。
+
+``` python
+print("Hello, World!")
+```
+
+ちなみに```` ```{.python} ````の部分は、シンタックスハイライトはするが、実行はしないという意味です。 ```` ```python ````と同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。
+
+## 参考
+
+- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html#code-filename)
+- [Markdown Basics - Quarto](https://quarto.org/docs/authoring/markdown-basics.html#source-code)

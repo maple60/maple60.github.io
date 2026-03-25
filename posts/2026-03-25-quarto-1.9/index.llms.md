@@ -1,0 +1,141 @@
+# Quarto 1.9がリリースされました
+
+r
+
+quarto
+
+Quarto 1.9がリリースされました。気になる機能をまとめます。
+
+Published
+
+2026-03-25
+
+Modified
+
+2026-03-25
+
+2026年3月24日にQuarto 1.9がリリースされました ([公式ブログはこちら](https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/))。 [Posit Connect Cloud](https://connect.posit.cloud/)へのpublish機能の追加や、[Typst](https://typst.app/)への対応など、気になる機能がいくつか追加されました。
+
+個人的に気になったポイントをまとめます。
+
+## Quartoのアップデート方法
+
+ポイントをまとめる前に、Quartoのアップデート方法を書いておきます。 Quartoのアップデートはコマンドではなく、インストーラーをダウンロードして実行する必要があります。 [公式サイトのダウンロードページ](https://quarto.org/docs/download/)から、最新バージョンのインストーラーをダウンロードして実行してください。
+
+インストーラーを実行すると、簡単にQuartoを最新バージョンにアップデートできます。 アップデート後は、コマンドラインで`quarto --version`を実行して、正しくアップデートされたことを確認してください。
+
+``` powershell
+quarto --version
+# 1.9.36
+```
+
+## `llms.txt`ファイルの追加
+
+設定ファイルである`_quarto.yml`に`llms-txt: true`と記述することで、Quartoはプロジェクトのルートディレクトリに`llms.txt`というファイルを生成します。
+
+`llms.txt`ファイルは、大規模言語モデル(large language model, LLM)やAIツールがプロジェクトの構造を理解するためのガイドラインを提供するためのものです。 詳しくは、[こちらの公式ドキュメント](https://llmstxt.org/)を参照してください。
+
+早速、この機能を有効にしてみました。 書く場所は`website`内に書くそうです。`title`の下に書いてみました。
+
+``` yaml
+website:
+  title: "Maple60’s website"
+  llms-txt: true
+```
+
+これで`quarto render`を実行します。 `_site/llms.txt`ファイルが生成されました。 一部抜粋すると、以下のようになっています。
+
+``` txt
+# Maple60’s website
+
+## Pages
+
+- [おすすめ](recommendations.llms.md)
+- [Quarto 1.9がリリースされました](posts/2026-03-25-quarto-1.9/index.llms.md)
+- [Rで大津の二値化を行う方法](posts/2026-03-11-r-otsu-thresholding/index.llms.md)
+- [Rで色覚異常のシミュレーションを行う方法](posts/2026-03-04-r-color-blind/index.llms.md)
+- [GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点](posts/2026-02-24-github-actions-r-universe/index.llms.md)
+- [Quartoを用いた解析プロジェクト管理について](posts/2026-02-11-quarto-project-management/index.llms.md)
+```
+
+LLMやAIツールは、この`llms.txt`ファイルを参照することで、プロジェクトの構造を理解し、適切な回答を生成することができます。
+
+`llms.txt`についての詳細は、[こちらの公式ドキュメント](https://quarto.org/docs/websites/website-llms.html)を参照してください。
+
+## List Tables
+
+とても使いやすそうな機能が追加されました。 これまでも簡単にMarkdown記法やコードから表を作ることはできていましたが、list tablesを使うことでテーブルのセルの中に改行や様々なコンテンツを入れることができるようになりました。
+
+```` markdown
+::: {.list-table}
+
+- - 列A
+  - 列B
+  - 列C
+  - 列D
+
+- - テキスト
+  - `inline code`
+  - コードセルも入れられます。
+
+    ```{r}
+    summary(cars)
+    ```
+  - 箇条書きも入れられます。
+
+    - 箇条書き1
+    - 箇条書き2
+    - 箇条書き3
+:::
+````
+
+出力は以下のようになります。
+
+[TABLE]
+
+書き方を覚えるのは少し大変ですが、慣れればとても便利な機能だと思います。
+
+詳しい使い方については、[公式ドキュメント](https://quarto.org/docs/authoring/tables.html#list-tables)を参照してください。
+
+## その他
+
+そのほかの機能については筆者はすぐには使わないかもしれませんが、簡単にまとめます。
+
+### Posit Connect Cloudへのpublish機能の追加
+
+コマンド一つで、Quartoプロジェクトを[Posit Connect Cloud](https://connect.posit.cloud/)に公開できるようになりました。
+
+### Typstへの対応
+
+Quartoは、[Typst](https://typst.app/)という新しいドキュメント作成ツールへの対応を追加しました。 [Typst](https://typst.app/)は、LaTexのような高品質のドキュメントをWordやGoogle Docsのような使いやすさで作成できるツールです。 筆者も気になっていて、使ってみたいと思っていました。
+
+### PDFのアクセシビリティの向上
+
+実験的な機能とのことですが、LaTexやTypestによりPDFを出力する際に、[PDF/A](https://en.wikipedia.org/wiki/PDF/A)という長期保存に適したフォーマットや、[PDF/UA](https://en.wikipedia.org/wiki/PDF/UA)という構造化がされスクリーンリーダーで読み上げやすいアクセスビリティの高いフォーマットで出力できるようになりました。
+
+詳細については、[こちらの公式ブログ](https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/)を参照してください。
+
+### brand機能がコマンドラインからも利用可能に
+
+`quarto use brand`コマンドを使うことで、brand機能がコマンドラインからも利用できるようになりました。 brand機能は、プロジェクト全体で色やスタイルなどのテーマを統一するための機能です。 詳しい使い方については、[公式ドキュメント](https://quarto.org/docs/authoring/brand.html#quarto-use-brand)を参照してください。
+
+## おわりに
+
+どんどん進化するQuartoですが、今回のアップデートもとても魅力的な機能が追加されました。 contributerの方々には深く感謝します。
+
+私もいつか、Quartoにcontributeできるようになりたいと思いました。
+
+## 参考
+
+- Wickham, C. (2026, March 24). Quarto 1.9. Quarto Blog. https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/
+- [Posit Connect Cloud](https://connect.posit.cloud/)
+- [Typst](https://typst.app/)
+- [Download Quarto – Quarto](https://quarto.org/docs/download/)
+- [The /llms.txt file – llms-txt](https://llmstxt.org/)
+- [Output for LLMs – Quarto](https://quarto.org/docs/websites/website-llms.html)
+- [Tables – Quarto](https://quarto.org/docs/authoring/tables.html#list-tables)
+- [PDF/A - Wikipedia](https://en.wikipedia.org/wiki/PDF/A)
+- [PDF/UA - Wikipedia](https://en.wikipedia.org/wiki/PDF/UA)
+- [Multiformat branding with \_brand.yml – Quarto](https://quarto.org/docs/authoring/brand.html#quarto-use-brand)
+
+（すべて2026年3月25日閲覧）

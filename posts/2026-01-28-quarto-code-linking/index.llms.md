@@ -1,0 +1,61 @@
+# Quartoのコードブロック内の関数にドキュメントリンクをつける方法
+
+r
+
+`code-link`オプションでQuartoのコードブロック内の関数にドキュメントリンクをつける方法についてのメモです
+
+Published
+
+2026-01-28
+
+Modified
+
+2026-01-28
+
+Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 `code-link`オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。
+
+`_quarto.yml`ファイルに以下のように設定を追加します。
+
+``` yaml
+format:
+  html:
+    code-link: true
+```
+
+これにより、HTML出力時にコードブロック内の関数名がリンク付きで表示されるようになります。
+
+## 使用例
+
+インラインコードやコードブロック内で関数を使用すると、リンクが自動的に追加されます。例えば、以下のようにRコードブロックを記述します。
+
+- 例文： このように[`unique()`](https://rdrr.io/r/base/unique.html)関数を使用すると、ベクトルの重複を取り除くことができます。
+
+また、コードブロック内でも同様にリンクが追加されます。
+
+``` downlit
+x <- c("apple", "banana", "apple", "orange", "banana")
+unique_x <- unique(x)
+print(unique_x)
+```
+
+    [1] "apple"  "banana" "orange"
+
+それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、[`c()`](https://rdrr.io/r/base/c.html)、[`unique()`](https://rdrr.io/r/base/unique.html)、[`print()`](https://rdrr.io/r/base/print.html)関数にリンクが追加されているのではないでしょうか。
+
+## 注意点
+
+- `code-link`オプションは[knitr](https://yihui.org/knitr/)エンジンでのみサポートされています。他のエンジンを使用している場合は、リンクが生成されないようです (内部で[downlit](https://downlit.r-lib.org/)パッケージを使用しているため)。簡単に言うと、Rコードブロックでのみ機能します。
+- `code-line-numbers`オプションや`code-annotations`オプションとは併用ができないようです。これらのオプションを有効にしている場合、`code-link`オプションは無視されます。
+
+> **TIP:**
+>
+> `code-line-numbers`オプションは、コードブロックに行番号を追加するためのオプションです。
+>
+> `code-annotations`オプションは、コードブロックに注釈を追加するためのオプションです。
+
+## 参考
+
+- [knitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie \| 谢益辉](https://yihui.org/knitr/)
+- [CRAN: Package knitr](https://cran.r-project.org/web/packages/knitr/index.html)
+- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html)
+- [Code Annotation - Quarto](https://quarto.org/docs/authoring/code-annotation.html)
