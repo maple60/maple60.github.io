@@ -46,7 +46,7 @@ Modified
 
 以下のコードをローカル環境で実行して、`renv.lock` ファイルの “Repositories” の部分に、r-universeのURLを追加することで、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できるようになりました。
 
-``` downlit
+``` r
 options(
   repos = c(
     CRAN = "https://cran.rstudio.com",
@@ -56,32 +56,12 @@ options(
 renv::snapshot(force = TRUE)
 ```
 
-    The following package(s) will be updated in the lockfile:
-
-    # CRAN -----------------------------------------------------------------------
-    - boot          [1.3-32 -> *]
-    - brio          [1.1.5 -> *]
-    - cluster       [2.1.8.1 -> *]
-    - codetools     [0.2-20 -> *]
-    - desc          [1.4.3 -> *]
-    - downlit       [0.4.5 -> *]
-    - fansi         [1.0.7 -> *]
-    - foreign       [0.8-90 -> *]
-    - ggrepel       [0.9.7 -> *]
-    - mgcv          [1.9-3 -> *]
-    - necountries   [0.1-1 -> *]
-    - nlme          [3.1-168 -> *]
-    - nnet          [7.3-20 -> *]
-    - rbibutils     [2.4.1 -> *]
-    - Rdpack        [2.6.6 -> *]
-    - rpart         [4.1.24 -> *]
-    - spatial       [7.3-18 -> *]
-    - survival      [3.8-3 -> *]
-    - xml2          [1.5.2 -> *]
+    The version of R recorded in the lockfile will be updated:
+    - R   [4.5.3 -> 4.5.2]
 
     - Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".
 
-このコードでは、[`options()`](https://rdrr.io/r/base/options.html)関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
+このコードでは、`options()`関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
 
 このコードを実行すると、`renv.lock` ファイルの “Repositories” の部分に、r-universeのURLが追加されます。
 

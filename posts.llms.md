@@ -1,5 +1,11 @@
 # Blog
 
+### [Rで解析データをクラウドストレージから読み込む](posts/2026-04-13-r-data-from-cloud-storage/index.llms.md)
+
+解析の生データをクラウドストレージから読み込む方法を紹介します
+
+2026-04-13
+
 ### [Quarto 1.9がリリースされました](posts/2026-03-25-quarto-1.9/index.llms.md)
 
 Quarto 1.9がリリースされました。気になる機能をまとめます。
@@ -60,15 +66,15 @@ basename(), `file.path_sans_ext()`を使ってRでファイル名を抽出する
 
 2026-02-06
 
-### [Rのプロットのアスペクト比を設定する方法](posts/2026-02-05-r-aspect-ratio/index.llms.md)
-
-`asp`パラメータを使ってRのプロットのアスペクト比を調整する方法についてです。
-
-2026-02-04
-
 ### [QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法](posts/2026-02-04-quarto-pdf-inlinecode-bg/index.llms.md)
 
 LaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。
+
+2026-02-04
+
+### [Rのプロットのアスペクト比を設定する方法](posts/2026-02-05-r-aspect-ratio/index.llms.md)
+
+`asp`パラメータを使ってRのプロットのアスペクト比を調整する方法についてです。
 
 2026-02-04
 
@@ -96,15 +102,15 @@ rnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで
 
 2026-01-31
 
-### [Quartoで表示される日付型を変更する](posts/2026-01-30-quarto-data-format/index.llms.md)
-
-`date-format`オプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです
-
-2026-01-30
-
 ### [Rでディレクトリを作成する方法](posts/2026-01-30-r-make-directory/index.llms.md)
 
 `dir.create()`関数を使用してRでディレクトリを作成する方法についてのメモです
+
+2026-01-30
+
+### [Quartoで表示される日付型を変更する](posts/2026-01-30-quarto-data-format/index.llms.md)
+
+`date-format`オプションでQuartoで表示される日付のフォーマットを変更する方法についてのメモです
 
 2026-01-30
 
@@ -144,12 +150,6 @@ imagerパッケージについての基本的な使い方の紹介です
 
 2026-01-01
 
-### [Bookdownで404エラーが出たときの原因の一つはURLエンコード](posts/2024-06-19-bookdown-url/index.llms.md)
-
-Bookdownで日本語を使うときはURLエンコードに注意です
-
-2024-06-18
-
 ### [BASIIC認証でつまったこと](posts/2024-06-18-basic_authentification/index.llms.md)
 
 BASIIC認証を使用したときの注意点についてのメモ
@@ -159,6 +159,12 @@ BASIIC認証を使用したときの注意点についてのメモ
 ### [Rでベクトルを作成する](posts/2024-06-18-r-vector/index.llms.md)
 
 Rでベクトルを作成するいろいろな方法をまとめます
+
+2024-06-18
+
+### [Bookdownで404エラーが出たときの原因の一つはURLエンコード](posts/2024-06-19-bookdown-url/index.llms.md)
+
+Bookdownで日本語を使うときはURLエンコードに注意です
 
 2024-06-18
 

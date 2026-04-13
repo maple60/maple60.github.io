@@ -28,11 +28,11 @@ format:
 
 インラインコードやコードブロック内で関数を使用すると、リンクが自動的に追加されます。例えば、以下のようにRコードブロックを記述します。
 
-- 例文： このように[`unique()`](https://rdrr.io/r/base/unique.html)関数を使用すると、ベクトルの重複を取り除くことができます。
+- 例文： このように`unique()`関数を使用すると、ベクトルの重複を取り除くことができます。
 
 また、コードブロック内でも同様にリンクが追加されます。
 
-``` downlit
+``` r
 x <- c("apple", "banana", "apple", "orange", "banana")
 unique_x <- unique(x)
 print(unique_x)
@@ -40,7 +40,7 @@ print(unique_x)
 
     [1] "apple"  "banana" "orange"
 
-それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、[`c()`](https://rdrr.io/r/base/c.html)、[`unique()`](https://rdrr.io/r/base/unique.html)、[`print()`](https://rdrr.io/r/base/print.html)関数にリンクが追加されているのではないでしょうか。
+それぞれの関数にマウスを合わせると、リンクがついていることを示す下線が表示され、クリックすると対応するドキュメントページに移動します。 今回の例だと、`c()`、`unique()`、`print()`関数にリンクが追加されているのではないでしょうか。
 
 ## 注意点
 

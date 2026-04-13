@@ -22,7 +22,7 @@ Chain code（チェインコード）は、2次元画像中の輪郭上の画素
 
 Code
 
-``` downlit
+``` r
 plot(
   0,
   0,
@@ -83,7 +83,7 @@ text(1, -1, "7", cex = cex_text, pos = 4)
 
 例えば、以下のような輪郭形状があるとします。 猫の顔のイメージです。
 
-``` downlit
+``` r
 df_contour <- data.frame(
   x = c(0, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 2, 1, 0, 0),
   y = c(0, -1, -2, -2, -2, -2, -1, 0, 1, 2, 1, 1, 2, 1, 0)
@@ -125,7 +125,7 @@ points(df_contour$x, df_contour$y, pch = 19, cex = 1.5)
 
 先ほどの図にベクトルを重ねてみます。
 
-``` downlit
+``` r
 plot(
   df_contour$x,
   df_contour$y,
@@ -201,7 +201,7 @@ text(
 
 Rで座標データをchain codeに変換してみます。
 
-``` downlit
+``` r
 # x, yの差分を計算
 dx <- df_contour$x[2:length(df_contour$x)] -
   df_contour$x[1:(length(df_contour$x) - 1)]
@@ -235,7 +235,7 @@ print(chain_code)
 
 このコードを関数化すると以下のようになります。
 
-``` downlit
+``` r
 coords_to_chain_code <- function(x, y) {
   dx <- x[2:length(x)] - x[1:(length(x) - 1)]
   dy <- y[2:length(y)] - y[1:(length(y) - 1)]
@@ -269,7 +269,7 @@ coords_to_chain_code <- function(x, y) {
 
 先ほどの座標データに対して関数を適用してみます。
 
-``` downlit
+``` r
 result_chain_code <- coords_to_chain_code(
   df_contour$x,
   df_contour$y
@@ -285,7 +285,7 @@ print(result_chain_code)
 
 今度は、chain codeから座標に変換する方法を示します。 まずは、普通に書いてみます。
 
-``` downlit
+``` r
 chain_code <- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)
 # 開始点の座標
 start_x <- 0
@@ -345,7 +345,7 @@ print(df_from_chain)
 
 プロットしてみます。
 
-``` downlit
+``` r
 plot(
   df_from_chain$x,
   df_from_chain$y,
@@ -363,7 +363,7 @@ plot(
 
 関数化します。
 
-``` downlit
+``` r
 chain_code_to_coords <- function(chain_code, start_x = 0, start_y = 0) {
   x_coords <- c(start_x)
   y_coords <- c(start_y)
@@ -402,7 +402,7 @@ chain_code_to_coords <- function(chain_code, start_x = 0, start_y = 0) {
 
 先ほどのchain codeを使って関数を適用してみます。
 
-``` downlit
+``` r
 result_coords <- chain_code_to_coords(
   chain_code,
   start_x = 0,
@@ -428,7 +428,7 @@ print(result_coords)
     14 0  1
     15 0  0
 
-``` downlit
+``` r
 plot(
   result_coords$x,
   result_coords$y,

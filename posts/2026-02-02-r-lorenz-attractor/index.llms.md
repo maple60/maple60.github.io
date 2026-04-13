@@ -38,18 +38,18 @@ Lorenz方程式は以下の3つの常微分方程式から構成されます。
 
 まず、[deSolve](https://cran.r-project.org/web/packages/deSolve/index.html)パッケージをインストールし、読み込みます。
 
-``` downlit
+``` r
 install.packages("deSolve")  # まだインストールしていない場合
 library(deSolve)
 ```
 
 [renv](https://rstudio.github.io/renv/articles/renv.html)パッケージを使用している場合は、以下のようにします。
 
-``` downlit
+``` r
 renv::install("deSolve") # まだインストールしていない場合
 ```
 
-``` downlit
+``` r
 library(deSolve)
 ```
 
@@ -57,7 +57,7 @@ library(deSolve)
 
 まずは、Lorenz方程式をRの関数として実装します。
 
-``` downlit
+``` r
 lorenz <- function(t, state, parameters) {
   with(as.list(c(state, parameters)), {
     dx <- sigma * (y - x)
@@ -70,15 +70,15 @@ lorenz <- function(t, state, parameters) {
 
 次に、初期状態、パラメータ、時間の範囲を設定します。
 
-``` downlit
+``` r
 state <- c(x = -10, y = -10, z = 30)
 parameters <- c(sigma = 10, rho = 28, beta = 8 / 3)
 times <- seq(0, 100, by = 0.01)
 ```
 
-[`ode()`](https://rdrr.io/pkg/deSolve/man/ode.html)関数を使用してLorenz方程式を解きます。
+`ode()`関数を使用してLorenz方程式を解きます。
 
-``` downlit
+``` r
 out <- ode(y = state, times = times, func = lorenz, parms = parameters)
 out <- as.data.frame(out)
 ```
@@ -87,19 +87,19 @@ out <- as.data.frame(out)
 
 まずは二次元のプロットを作成します。 x-y平面、x-z平面、y-z平面の3つのプロットを描きます。
 
-``` downlit
+``` r
 plot(out$x, out$z, type = "l", xlab = "x", ylab = "z")
 ```
 
 ![](index_files/figure-html/unnamed-chunk-5-1.png)
 
-``` downlit
+``` r
 plot(out$x, out$y, type = "l", xlab = "x", ylab = "y")
 ```
 
 ![](index_files/figure-html/unnamed-chunk-5-2.png)
 
-``` downlit
+``` r
 plot(out$y, out$z, type = "l", xlab = "y", ylab = "z")
 ```
 
@@ -111,12 +111,12 @@ Rの[scatterplot3d](https://cran.r-project.org/web/packages/scatterplot3d/index.
 
 まだインストールしていない場合は、以下のコマンドでインストールしてください。
 
-``` downlit
+``` r
 install.packages("scatterplot3d")  # まだインストールしていない場合
 renv::install("scatterplot3d") # renvを使用している場合
 ```
 
-``` downlit
+``` r
 library(scatterplot3d)
 scatterplot3d(
   out$x,
@@ -134,7 +134,7 @@ scatterplot3d(
 
 また、それぞれの面に投影した2Dプロットも描いてみます。
 
-``` downlit
+``` r
 s3d <- scatterplot3d(
   out$x,
   out$y,
@@ -177,12 +177,12 @@ Rの[plotly](https://cran.r-project.org/web/packages/plotly/index.html)パッケ
 
 まだインストールしていない場合は、以下のコマンドでインストールしてください。
 
-``` downlit
+``` r
 install.packages("plotly")  # まだインストールしていない場合
 renv::install("plotly") # renvを使用している場合
 ```
 
-``` downlit
+``` r
 library(plotly)
 ```
 
@@ -203,7 +203,7 @@ library(plotly)
 
         layout
 
-``` downlit
+``` r
 fig <- plot_ly(
   x = out$x,
   y = out$y,
@@ -225,7 +225,7 @@ fig
 
 時間まで含めた色変化も可能です。
 
-``` downlit
+``` r
 fig <- plot_ly(
   data = out,
   x = ~x,
@@ -241,7 +241,7 @@ fig
 
 また、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。
 
-``` downlit
+``` r
 idx <- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き
 out2 <- out[idx, ]
 

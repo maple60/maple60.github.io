@@ -38,6 +38,22 @@
 - [Undermind](https://www.undermind.ai/)
 - [ResearchRabbit](https://www.researchrabbit.ai/): 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。
 
+## Rパッケージ
+
+- [tmap](https://r-tmap.github.io/tmap/index.html): 地図の作成に特化したRパッケージ。地理空間データの可視化に便利。
+- [rnaturalearth](https://ropensci.github.io/rnaturalearth/index.html): 自然地理データを提供するRパッケージ。世界の国境や地形などのデータを簡単に取得できる。
+
+## Zoteroプラグイン
+
+- [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/): 外部ソフトウェア([Obsidian](https://obsidian.md/)など)との連携に
+- [Ethernal Style](https://github.com/MuiseDestiny/zotero-style): UI(見た目)の強化
+- [ZotCard](https://github.com/018/zotcard): カード形式のメモ、メモテンプレート作成
+- [Zotero Reading List](https://github.com/Dominic-DallOsto/zotero-reading-list): 閲覧状況の管理(未読・既読・途中など)
+- [ZotSeek](https://github.com/introfini/ZotSeek): 類似文献の検索
+- [Zotero Better Notes](https://github.com/windingwind/zotero-better-notes): メモ機能強化
+- [Zotodo](https://github.com/wbthomason/zotodo): Todo管理アプリ[Todoist](https://www.todoist.com/)との連携
+- [Zotero Reference](https://github.com/MuiseDestiny/zotero-reference): 引用文献への簡単アクセス、文献リスト作成
+
 ## 本
 
 ### 植物

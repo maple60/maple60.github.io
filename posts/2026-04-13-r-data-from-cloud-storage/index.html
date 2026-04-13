@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-10">
-<meta name="description" content="Zoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。">
+<meta name="dcterms.date" content="2026-04-13">
+<meta name="description" content="解析の生データをクラウドストレージから読み込む方法を紹介します">
 
-<title>ZoteroでRSSフィードを作成する方法 – Maple60’s website</title>
+<title>Rで解析データをクラウドストレージから読み込む – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -126,15 +161,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#zoteroとは" id="toc-zoteroとは" class="nav-link active" data-scroll-target="#zoteroとは">Zoteroとは</a></li>
-  <li><a href="#rssフィードとは" id="toc-rssフィードとは" class="nav-link" data-scroll-target="#rssフィードとは">RSSフィードとは</a></li>
-  <li><a href="#方法" id="toc-方法" class="nav-link" data-scroll-target="#方法">方法</a>
+  <li><a href="#renvironファイルの作成" id="toc-renvironファイルの作成" class="nav-link active" data-scroll-target="#renvironファイルの作成"><code>.Renviron</code>ファイルの作成</a></li>
+  <li><a href="#データの読み込み" id="toc-データの読み込み" class="nav-link" data-scroll-target="#データの読み込み">データの読み込み</a></li>
+  <li><a href="#renvironファイル使う際の注意点" id="toc-renvironファイル使う際の注意点" class="nav-link" data-scroll-target="#renvironファイル使う際の注意点"><code>.Renviron</code>ファイル使う際の注意点</a>
   <ul class="collapse">
-  <li><a href="#ジャーナルのrssフィードを見つける" id="toc-ジャーナルのrssフィードを見つける" class="nav-link" data-scroll-target="#ジャーナルのrssフィードを見つける">ジャーナルのRSSフィードを見つける</a></li>
+  <li><a href="#保存場所" id="toc-保存場所" class="nav-link" data-scroll-target="#保存場所">保存場所</a></li>
+  <li><a href="#パスの書き方" id="toc-パスの書き方" class="nav-link" data-scroll-target="#パスの書き方">パスの書き方</a></li>
+  <li><a href="#gitで管理しない" id="toc-gitで管理しない" class="nav-link" data-scroll-target="#gitで管理しない">Gitで管理しない</a></li>
+  <li><a href="#共有方法" id="toc-共有方法" class="nav-link" data-scroll-target="#共有方法">共有方法</a></li>
   </ul></li>
-  <li><a href="#zoteroでrssフィードを購読する" id="toc-zoteroでrssフィードを購読する" class="nav-link" data-scroll-target="#zoteroでrssフィードを購読する">ZoteroでRSSフィードを購読する</a></li>
-  <li><a href="#フィードアイテムを確認する" id="toc-フィードアイテムを確認する" class="nav-link" data-scroll-target="#フィードアイテムを確認する">フィードアイテムを確認する</a></li>
   <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
+  <li><a href="#なぜこの方法をまとめたか" id="toc-なぜこの方法をまとめたか" class="nav-link" data-scroll-target="#なぜこの方法をまとめたか">なぜこの方法をまとめたか</a></li>
   </ul>
 </nav>
     </div>
@@ -143,15 +180,15 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ZoteroでRSSフィードを作成する方法</h1>
+<h1 class="title">Rで解析データをクラウドストレージから読み込む</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">zotero</div>
+    <div class="quarto-category">r</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Zoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。
+    解析の生データをクラウドストレージから読み込む方法を紹介します
   </div>
 </div>
 
@@ -162,14 +199,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-03-10</p>
+      <p class="date">2026-04-13</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-03-10</p>
+      <p class="date-modified">2026-04-13</p>
     </div>
   </div>
     
@@ -180,95 +217,98 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="zoteroとは" class="level2">
-<h2 class="anchored" data-anchor-id="zoteroとは">Zoteroとは</h2>
-<p>Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。</p>
-</section>
-<section id="rssフィードとは" class="level2">
-<h2 class="anchored" data-anchor-id="rssフィードとは">RSSフィードとは</h2>
-<p>RSSフィードは、ウェブサイトの更新情報を配信するためのフォーマットで、ユーザーが特定のウェブサイトの更新情報を受け取ることができます。 今回の場合は、論文雑誌のRSSフィードを作成することで、新しい論文が公開されたときに通知を受け取ることができます。</p>
-</section>
-<section id="方法" class="level2">
-<h2 class="anchored" data-anchor-id="方法">方法</h2>
-<section id="ジャーナルのrssフィードを見つける" class="level3">
-<h3 class="anchored" data-anchor-id="ジャーナルのrssフィードを見つける">ジャーナルのRSSフィードを見つける</h3>
-<p>多くのジャーナルは、ウェブサイト上でRSSフィードを提供しています。 例えば、<a href="https://nph.onlinelibrary.wiley.com/journal/14698137">New Phytologist</a>のHPに行ってみます。</p>
-<p>右側に、RSSフィードのアイコンがあるので、これを右クリックします。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rss_icon.png" class="img-fluid figure-img"></p>
-<figcaption>RSSフィードのアイコン</figcaption>
-</figure>
-</div>
-<p>右クリックメニュー(コンテキストメニュー)が表示されるため、「リンクのアドレスをコピー (Copy link address)」を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="context_menu.png" class="img-fluid figure-img"></p>
-<figcaption>右クリックメニュー</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="zoteroでrssフィードを購読する" class="level2">
-<h2 class="anchored" data-anchor-id="zoteroでrssフィードを購読する">ZoteroでRSSフィードを購読する</h2>
-<p>Zoteroを開き、[File] &gt; [New Feed] &gt; [From URL…]を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_new_feed.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroで新しいフィードを作成</figcaption>
-</figure>
-</div>
-<p>現れたダイアログのURLの欄に、先ほどコピーしたRSSフィードのURLを貼り付けます。 もしRSSフィードのURLが正しい場合は、Titleの欄にジャーナルの名前が自動的に入力されます。</p>
-<p>Advanced Optionsの欄は、以下のようになっています。</p>
+<p>解析の生データをクラウドストレージから読み込む方法を紹介します。</p>
+<p>この記事では、以下のような管理方法を前提とします。</p>
 <ul>
-<li>フィードの更新頻度 (デフォルトは168時間、つまり1週間)</li>
-<li>既読のフィードのアイテムを削除する間隔 (デフォルトでは3日)</li>
-<li>未読のフィードのアイテムを削除する間隔 (デフォルトでは30日)</li>
+<li>解析の生データ: クラウドストレージ（<a href="https://workspace.google.com/products/drive/">Google Drive</a>、[OneDrive(https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage)]、<a href="https://www.dropbox.com/">Dropbox</a>など）に保存<br>
+</li>
+<li>解析コード: <a href="https://github.com/">GitHub</a>などのソースコード管理サービスに保存</li>
 </ul>
+<p>このように分けることで、データとコードを分離して管理できます。 また、生データを Git管理下に置かなくても、クラウドストレージを使ってバックアップや共有をしやすくなります。</p>
+<p>ただし、この方法はクラウドストレージそのものに依存するのではなく、<strong>R から通常のファイルパスとして参照できる場所にデータがあること</strong>を前提としています。 たとえば Google Drive for desktop や OneDrive、Dropbox などを使えば、クラウド上のデータをローカルのファイルと同じように扱うことができます。</p>
+<p>概念図を示すと、以下のようになります。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="zotero_feed_settings.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィード設定</figcaption>
+<p><img src="schematic_diagram.svg" class="img-fluid figure-img"></p>
+<figcaption>概念図</figcaption>
 </figure>
 </div>
-<p>私は以下のように設定を変更しました。</p>
-<ul>
-<li>Title: New Phytologist (ジャーナル名のみ)</li>
-<li>フィードの更新頻度: 24時間 (毎日更新を確認するように設定)</li>
-</ul>
-<p>そのほかはデフォルトのままです。</p>
-<p>設定が完了したら、[OK]をクリックします。</p>
-<p>左側のサイドバーにFeedsという項目ができ、その中にNew Phytologistというフィードが追加されていれば成功です。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_sidebar_feeds.png" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのサイドバー</figcaption>
-</figure>
+<section id="renvironファイルの作成" class="level2">
+<h2 class="anchored" data-anchor-id="renvironファイルの作成"><code>.Renviron</code>ファイルの作成</h2>
+<p>解析コードをGit管理しつつ、データの保存場所をローカル環境ごとに切り替えたい場合は、<code>.Renviron</code>ファイルに環境変数として保存先を定義しておくと便利です。</p>
+<p>たとえば、以下のように設定します。</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.Renviron</strong></pre>
+</div>
+<pre class="text" data-filename=".Renviron"><code>PROJECT_DATA_DIR=C:/Users/Username/Dropbox/GitHub/repository-name</code></pre>
 </div>
 </section>
-<section id="フィードアイテムを確認する" class="level2">
-<h2 class="anchored" data-anchor-id="フィードアイテムを確認する">フィードアイテムを確認する</h2>
-<p>Feedsの欄からフィードアイテムを確認したいジャーナルを選択します。 中央のペインにフィードアイテムのリストが表示されます。</p>
-<p>カーソルを合わせるとRead(既読)になり、行のフォントが太字から通常のものに変わります。 アイテムをダブルクリックすると、ジャーナルのウェブサイトにアクセスできます。</p>
-<p>右側のペインでは、書誌情報が確認できるほか、[Mark As Unread]や[Mark As Read]をクリックして、アイテムの既読/未読を切り替えることができます。 [Add to “My Library…”]をクリックすると、任意のライブラリにアイテムを追加することができます。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_feed_item.webp" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィードアイテム</figcaption>
-</figure>
+<section id="データの読み込み" class="level2">
+<h2 class="anchored" data-anchor-id="データの読み込み">データの読み込み</h2>
+<p><code>.Renviron</code>に環境変数を設定しておけば、Rでは<code>Sys.getenv()</code>を使ってその値を取得できます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"PROJECT_DATA_DIR"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>このようにして取得したパスを使えば、クラウドストレージ上にあるデータを、ディレクトリ構造を保ったまま読み込めます。</p>
+<p>必要に応じて、設定が存在するか確認しておくと安全です。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"PROJECT_DATA_DIR"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">identical</span>(data_dir, <span class="st">""</span>)) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"PROJECT_DATA_DIR is not set."</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>一気にジャーナルごとに既読にしたい場合は、Feedsの欄のジャーナル名を右クリックして、<strong>[Mark Feed as Read]</strong>を選択します。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="zotero_mark_read_as_feed.webp" class="img-fluid figure-img"></p>
-<figcaption>Zoteroのフィードを一括既読にする</figcaption>
-</figure>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>.Renviron</code> ファイルを新しく作成・編集した場合は、<strong>Rセッションを再起動して反映</strong>させてください。</p>
+</div>
+</div>
+</section>
+<section id="renvironファイル使う際の注意点" class="level2">
+<h2 class="anchored" data-anchor-id="renvironファイル使う際の注意点"><code>.Renviron</code>ファイル使う際の注意点</h2>
+<section id="保存場所" class="level3">
+<h3 class="anchored" data-anchor-id="保存場所">保存場所</h3>
+<p><code>.Renviron</code> は、<strong>このプロジェクト専用の設定として使うなら、プロジェクトのルートディレクトリに置く</strong>とわかりやすいです。<br>
+一方で、複数のプロジェクトで共通して使いたい設定は、ユーザー単位の <code>.Renviron</code> に書く方法もあります。</p>
+</section>
+<section id="パスの書き方" class="level3">
+<h3 class="anchored" data-anchor-id="パスの書き方">パスの書き方</h3>
+<p><code>.Renviron</code> には、<strong>絶対パス</strong>を書いておくのが安全です。</p>
+</section>
+<section id="gitで管理しない" class="level3">
+<h3 class="anchored" data-anchor-id="gitで管理しない">Gitで管理しない</h3>
+<p><code>.Renviron</code> は、通常は <strong>Git 管理下に置かない</strong>方がよいです。<br>
+そのため、<code>.gitignore</code> に <code>.Renviron</code> を追加して、誤ってコミットしないようにしておきます。</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.gitignore</strong></pre>
+</div>
+<pre class="text" data-filename=".gitignore"><code>.Renviron</code></pre>
+</div>
+<p>ただし、<code>.gitignore</code> は未追跡ファイルを無視するための設定です。<br>
+すでに Git にコミット済みの <code>.Renviron</code> には、そのままでは効果がありません。<br>
+誤って追跡してしまった場合は、別途 Git 側で追跡対象から外す必要があります。</p>
+</section>
+<section id="共有方法" class="level3">
+<h3 class="anchored" data-anchor-id="共有方法">共有方法</h3>
+<p><code>.Renviron</code> は各自のローカル環境で作成することになるため、リポジトリには含めません。<br>
+その代わり、<code>README.md</code> などに <code>.Renviron</code> の作成方法を記載しておくと、共同研究者や将来の自分が環境を再構築しやすくなります。</p>
+</section>
 </section>
 <section id="まとめ" class="level2">
 <h2 class="anchored" data-anchor-id="まとめ">まとめ</h2>
-<p>Zoteroを使って、ジャーナルのRSSフィードを購読する方法についてまとめました。 私はこれまで、RSSリーダーを使ってジャーナルの更新情報を確認していましたが、Zoteroを使うことで、フィードアイテムを簡単にライブラリに追加したり、書誌情報を管理したりすることができるようになりました。</p>
-<p>漏れている機能などありましたら、追記したいと思います。</p>
+<p>生データをクラウドストレージに置き、解析コードをGitHubで管理し、両者を<code>.Renviron</code>の環境変数でつなぐことで、データとコードを分離しつつ、再現性のある解析環境を作ることができます。</p>
+<p>クラウドストレージ上のデータをRから通常のファイルパスとして参照できる環境であれば、この方法は比較的簡単に導入できます。</p>
+</section>
+<section id="なぜこの方法をまとめたか" class="level2">
+<h2 class="anchored" data-anchor-id="なぜこの方法をまとめたか">なぜこの方法をまとめたか</h2>
+<p>余談ですが、この方法は、私が最近のプロジェクトで実際に採用している管理方法です。 経緯としては、Cドライブ直下にGitHubフォルダを作り、そこにデータをすべて入れていたのですが、ある日そのPCが起動しなくなってしまい、データを失いかけました。</p>
+<p>そこで、データはクラウドストレージに置いておき、コードはGitHubで管理する方法に切り替えました。 バックアップの重要性を痛感した経験から、データとコードの管理方法を見直すことにしました。</p>
 
 
 </section>
