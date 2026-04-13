@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="dcterms.date" content="2026-01-27">
-<meta name="description" content="make.unique()関数を使ってベクトルの重複を取り除く方法についてのメモです">
-<title>Rでベクトルの重複を取り除く方法 – Maple60’s website</title>
+<meta name="dcterms.date" content="2026-04-14">
+<meta name="description" content="tmap 4.3からtm_textで文字の縁取りなどの装飾が実装されました">
+<title>Rのtmapパッケージで地図の上に縁取り文字を表示する方法 – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -147,14 +147,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#make.unique%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%BF%E7%94%A8%E6%B3%95" id="toc-make.unique関数の使用法" class="nav-link active" data-scroll-target="#make.unique%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%BF%E7%94%A8%E6%B3%95"><code>make.unique()</code>関数の使用法</a></li>
-  <li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B" id="toc-使用例" class="nav-link" data-scroll-target="#%E4%BD%BF%E7%94%A8%E4%BE%8B">使用例</a></li>
-  <li><a href="#%E6%9C%80%E5%BE%8C%E3%81%AB" id="toc-最後に" class="nav-link" data-scroll-target="#%E6%9C%80%E5%BE%8C%E3%81%AB">最後に</a></li>
+<li><a href="#%E9%96%8B%E7%99%BA%E7%89%88%E3%81%AEtmap%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" id="toc-開発版のtmapのインストール" class="nav-link active" data-scroll-target="#%E9%96%8B%E7%99%BA%E7%89%88%E3%81%AEtmap%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">開発版の<code>tmap</code>のインストール</a></li>
+  <li><a href="#%E7%B8%81%E5%8F%96%E3%82%8A%E6%96%87%E5%AD%97%E3%81%AE%E8%A1%A8%E7%A4%BA" id="toc-縁取り文字の表示" class="nav-link" data-scroll-target="#%E7%B8%81%E5%8F%96%E3%82%8A%E6%96%87%E5%AD%97%E3%81%AE%E8%A1%A8%E7%A4%BA">縁取り文字の表示</a></li>
+  <li><a href="#%E6%96%87%E5%AD%97%E3%81%AB%E5%BD%B1%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B" id="toc-文字に影をつける" class="nav-link" data-scroll-target="#%E6%96%87%E5%AD%97%E3%81%AB%E5%BD%B1%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B">文字に影をつける</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83" id="toc-参考" class="nav-link" data-scroll-target="#%E5%8F%82%E8%80%83">参考</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Rでベクトルの重複を取り除く方法</h1>
+<h1 class="title">Rの<code>tmap</code>パッケージで地図の上に縁取り文字を表示する方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
   </div>
@@ -162,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    <code><a href="https://rdrr.io/r/base/make.unique.html">make.unique()</a></code>関数を使ってベクトルの重複を取り除く方法についてのメモです
+    <code>tmap</code> 4.3から<code>tm_text</code>で文字の縁取りなどの装飾が実装されました
   </div>
 </div>
 
@@ -173,14 +174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-27</p>
+      <p class="date">2026-04-14</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-01-27</p>
+      <p class="date-modified">2026-04-14</p>
     </div>
   </div>
     
@@ -188,31 +189,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="make.unique関数の使用法" class="level2"><h2 class="anchored" data-anchor-id="make.unique関数の使用法">
-<code>make.unique()</code>関数の使用法</h2>
-<p>Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 <code><a href="https://rdrr.io/r/base/make.unique.html">make.unique()</a></code> 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/make.unique.html">make.unique</a></span><span class="op">(</span><span class="va">names</span>, sep <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</header><p>Rの<a href="https://r-tmap.github.io/tmap/index.html"><code>tmap</code>パッケージ</a>で地図の上に縁取り文字を表示する方法を紹介します。 <code>tmap</code>パッケージの<a href="https://r-tmap.github.io/tmap/news/index.html">Changelog</a>によると、バージョン4.3から<code>tm_text</code>関数で文字の縁取りなどの装飾が実装されたようです。</p>
+<p>早速試してみました。</p>
+<section id="開発版のtmapのインストール" class="level2"><h2 class="anchored" data-anchor-id="開発版のtmapのインストール">開発版の<code>tmap</code>のインストール</h2>
+<p>2026年4月14日時点では、まだ<code>tmap</code>のCRAN版は4.3ではないため、開発版をインストールする必要があります。 renvを使っている場合は、以下のようにしてインストールできます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">renv</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/renv/reference/install.html">install</a></span><span class="op">(</span><span class="st">"r-tmap/tmap"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>その後、<code><a href="https://rdrr.io/r/base/library.html">library()</a></code>で読み込み、バージョンを確認します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"tmap"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '4.3'</code></pre>
+</div>
+</div>
+</section><section id="縁取り文字の表示" class="level2"><h2 class="anchored" data-anchor-id="縁取り文字の表示">縁取り文字の表示</h2>
+<p>アジアの国名を表示してみます。 まずは、縁取りなしの場合です。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Asia</span> <span class="op">&lt;-</span> <span class="va">World</span><span class="op">[</span><span class="va">World</span><span class="op">$</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Africa"</span>, <span class="op">]</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>少し重なりが多いため、<code>remove_overlap = TRUE</code>を指定して、重なりをなくします。 表示されなくなってしまった国には申し訳ないですが、見やすくなります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span>, options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span>remove_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>これに、文字の縁取りをつけてみます。 <code>opt_tm_text</code>の引数で、<code>halo = TRUE</code>を指定します。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span>, options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span>halo <span class="op">=</span> <span class="cn">TRUE</span>, remove_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>白い縁取りがついて、塗りつぶしのある地図の上でも見やすくなりました。 オプションとしては、以下のようなものがあります。</p>
 <ul>
 <li>
-<code>names</code>: ユニークにしたい文字ベクトル</li>
+<code>halo</code>: 縁取りを有効にするかどうかを指定します。デフォルトは<code>FALSE</code>です。</li>
 <li>
-<code>sep</code>: 重複する要素に追加する接尾辞の区切り文字（デフォルトはドット <code>.</code>）</li>
-</ul></section><section id="使用例" class="level2"><h2 class="anchored" data-anchor-id="使用例">使用例</h2>
-<p>例えば、以下のようなベクトルがあるとします。</p>
+<code>halo.col</code>: 縁取りの色を指定します。デフォルトは<code>NA</code>です。</li>
+<li>
+<code>halo.width</code>: 縁取りの幅を指定します。デフォルトは<code>0.05</code>です。</li>
+<li>
+<code>halo.blur</code>: 縁取りのぼかし量を指定します。デフォルトは<code>0</code>です。</li>
+<li>
+<code>halo.alpha</code>: 縁取りの透明度を指定します。デフォルトは<code>0.8</code>です。</li>
+</ul>
+<p>たとえば、赤い縁取りをつけてみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"banana"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span></span>
+<span>    <span class="st">"name"</span>,</span>
+<span>    options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span></span>
+<span>      halo <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>      halo.col <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>      halo.width <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>      halo.blur <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>      halo.alpha <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>      remove_overlap <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>このベクトルに対して<code><a href="https://rdrr.io/r/base/make.unique.html">make.unique()</a></code>を適用すると、以下のようになります。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>haloとは
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>haloは、文字の周りに線をつけることで、文字を地図の上で見やすくするためのオプションです。 ArcGISではそのまま「halo」と呼ばれていますが(<a href="https://www.esri.com/about/newsroom/arcuser/polishing-your-halo">参考</a>)、QGISでは「buffer」と呼ばれています(<a href="https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html">参考</a>)。</p>
+<p>日本語だとなじみのない単語かもしれません。 日本語に訳すと「後光」や「光輪」といった意味になり、漢字では<strong>暈</strong>と書くようです(<a href="https://ja.wikipedia.org/wiki/%E6%9A%88">参考</a>)。 文字の周りに光が差しているようなイメージですね。</p>
+</div>
+</div>
+</section><section id="文字に影をつける" class="level2"><h2 class="anchored" data-anchor-id="文字に影をつける">文字に影をつける</h2>
+<p><code>halo</code>では縁取りが付きましたが、<code>shadow</code>オプションを使うと、文字に影をつけることもできます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unique_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/make.unique.html">make.unique</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">unique_x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "apple"    "banana"   "apple.1"  "orange"   "banana.1"</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span>, options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span>shadow <span class="op">=</span> <span class="cn">TRUE</span>, remove_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p><code>apple</code>と<code>banana</code>が重複しているため、単語の後ろに<code>.1</code>が追加されています。</p>
-</section><section id="最後に" class="level2"><h2 class="anchored" data-anchor-id="最後に">最後に</h2>
-<p>どこで活用したかは思い出せませんが、かつてこの関数を使用したことがあり、思い出したためメモとして残しました。 活用の機会は限定的かもしれませんが、知っておくと便利な時があるかもしれません。</p>
+</div>
+<p>少し違いが分かりにくいですが、文字の下に影がついて、地図の上でも見やすくなります。 <code>shadow</code>オプションの引数は以下の通りです。</p>
+<ul>
+<li>
+<code>shadow</code>: 影を有効にするかどうかを指定します。デフォルトは<code>FALSE</code>です。</li>
+<li>
+<code>shadow.col</code>: 影の色を指定します。デフォルトは<code>NA</code>です。</li>
+<li>
+<code>shadow.offset.x</code>: 影の水平方向のオフセットを指定します。デフォルトは<code>0.05</code>です。</li>
+<li>
+<code>shadow.offset.y</code>: 影の垂直方向のオフセットを指定します。デフォルトは<code>0.05</code>です。</li>
+</ul>
+<p>影の効果をわかりやすくするために、少し大げさに影をつけてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span></span>
+<span>    <span class="st">"name"</span>,</span>
+<span>    options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span></span>
+<span>      shadow <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>      shadow.col <span class="op">=</span> <span class="st">"orange"</span>,</span>
+<span>      shadow.offset.x <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>      shadow.offset.y <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>      remove_overlap <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>縁取りは文字の周りに線がつくのに対して、影は文字の下に別の文字が表示されるイメージです。 どちらも地図の上で文字を見やすくするためのオプションですが、好みや地図のデザインによって使い分けると良さそうです。</p>
+</section><section id="参考" class="level2"><h2 class="anchored" data-anchor-id="参考">参考</h2>
+<ul>
+<li><a href="https://r-tmap.github.io/tmap/news/index.html">Changelog • tmap</a></li>
+<li><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">Map layer: text — tm_text • tmap</a></li>
+<li><a href="https://www.esri.com/about/newsroom/arcuser/polishing-your-halo">Use halos to make maps more readable</a></li>
+<li><a href="https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html">6.8. Labelling Features — QGIS in Mineral Exploration 1.1 documentation</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E6%9A%88">暈 - Wikipedia</a></li>
+</ul>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

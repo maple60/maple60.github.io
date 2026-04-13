@@ -46,6 +46,7 @@ toc: true
 
 - [tmap](https://r-tmap.github.io/tmap/index.html): 地図の作成に特化したRパッケージ。地理空間データの可視化に便利。
 - [rnaturalearth](https://ropensci.github.io/rnaturalearth/index.html): 自然地理データを提供するRパッケージ。世界の国境や地形などのデータを簡単に取得できる。
+- [cols4all](https://cols4all.github.io/cols4all-R/): カラーパレットを提供するRパッケージ。色覚多様性に配慮したカラーパレットも利用できる。
 
 ## Zoteroプラグイン
 

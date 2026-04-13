@@ -46,7 +46,7 @@ Modified
 
 以下のコードをローカル環境で実行して、`renv.lock` ファイルの “Repositories” の部分に、r-universeのURLを追加することで、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できるようになりました。
 
-``` r
+``` downlit
 options(
   repos = c(
     CRAN = "https://cran.rstudio.com",
@@ -61,7 +61,7 @@ renv::snapshot(force = TRUE)
 
     - Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".
 
-このコードでは、`options()`関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
+このコードでは、[`options()`](https://rdrr.io/r/base/options.html)関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
 
 このコードを実行すると、`renv.lock` ファイルの “Repositories” の部分に、r-universeのURLが追加されます。
 

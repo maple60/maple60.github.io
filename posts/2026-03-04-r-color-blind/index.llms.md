@@ -40,17 +40,17 @@ Modified
 
 ## Rで色覚異常のシミュレーションを行う方法
 
-Rの`colorspace`パッケージを使うと、色覚異常のシミュレーションを簡単に行うことができます。 インストールされていなかったら、以下のコードを実行してインストールしてください。 その後、`library(colorspace)`でパッケージを読み込みます。
+Rの`colorspace`パッケージを使うと、色覚異常のシミュレーションを簡単に行うことができます。 インストールされていなかったら、以下のコードを実行してインストールしてください。 その後、[`library(colorspace)`](https://colorspace.R-Forge.R-project.org/)でパッケージを読み込みます。
 
-``` r
+``` downlit
 # install.packages("colorspace") もしインストールされていなかったら
 # renv::install("colorspace") renvを使っている場合
 library(colorspace)
 ```
 
-色のベクトルを用意し、`deutan()` (2型色覚), `protan()` (1型色覚), `tritan()` (3型色覚)を使って、色覚異常のシミュレーションを行います。
+色のベクトルを用意し、[`deutan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (2型色覚), [`protan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (1型色覚), [`tritan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (3型色覚)を使って、色覚異常のシミュレーションを行います。
 
-``` r
+``` downlit
 colors <- c("red", "green", "blue", "yellow") # 赤、緑、青、黄の色ベクトル
 colors_protan <- protan(colors) # 1型色覚のシミュレーション
 colors_deutan <- deutan(colors) # 2型色覚のシミュレーション
@@ -63,7 +63,7 @@ colors_tritan <- tritan(colors) # 3型色覚のシミュレーション
 
 プロットしてみます。
 
-``` r
+``` downlit
 par(mfrow = c(1, 4))
 barplot(rep(1, length(colors)), col = colors, main = "Original")
 barplot(rep(1, length(colors_protan)), col = colors_protan, main = "Protanopia")
@@ -87,7 +87,7 @@ Tritanopiaは、青と黄色の区別が難しくなるといわれますが、S
 
 棒グラフだとまだわかりにくいかもしれませんが、プロットの点が多い場合などは致命的な問題になることもあります。
 
-``` r
+``` downlit
 set.seed(1)
 x <- rnorm(100)
 y <- rnorm(100)
@@ -102,7 +102,7 @@ plot(x, y, col = colors_tritan, pch = 16, cex = 2, main = "Tritanopia")
 
 Rのバージョン4以降のデフォルトカラーパレットでも検証してみます。
 
-``` r
+``` downlit
 colors_default <- palette() # Rのデフォルトカラーパレット
 colors_default_protan <- protan(colors_default)
 colors_default_deutan <- deutan(colors_default)
@@ -129,7 +129,7 @@ barplot(
 
 ![](index_files/figure-html/unnamed-chunk-5-1.png)
 
-``` r
+``` downlit
 par(mfrow = c(2, 2))
 plot(x, y, col = colors_default, pch = 16, cex = 2, main = "Original")
 plot(x, y, col = colors_default_protan, pch = 16, cex = 2, main = "Protanopia")
@@ -159,7 +159,7 @@ plot(
 
 色覚異常の人にとって、特定の色の組み合わせは区別が難しいことがあります。 このような問題を避けるためには、色覚異常の人にも区別しやすいカラーパレットを選ぶことが重要です。 一番簡単な方法は、`palette("Okabe-Ito")`のような、色覚異常の人にも区別しやすいカラーパレットを使用することです。 このカラーパレットは、色覚異常の人にも区別しやすい色の組み合わせが選ばれています。
 
-``` r
+``` downlit
 colors_okabe_ito <- palette("Okabe-Ito")
 colors_okabe_ito_protan <- protan(colors_okabe_ito)
 colors_okabe_ito_deutan <- deutan(colors_okabe_ito)
@@ -191,7 +191,7 @@ barplot(
 
 散布図は以下のようになります。
 
-``` r
+``` downlit
 par(mfrow = c(2, 2))
 plot(x, y, col = colors_okabe_ito, pch = 16, cex = 2, main = "Original")
 plot(
@@ -228,7 +228,7 @@ plot(
 
 例えば、グラフの点の形を変える、線の種類を変える、テキストで説明するなどの方法があります。 個人的には、`pch`引数を使って点の形を変える方法が簡単で効果的だと思い、よく利用しています。
 
-``` r
+``` downlit
 set.seed(1)
 x_circle <- rnorm(100)
 y_circle <- rnorm(100)
@@ -257,7 +257,7 @@ points(
 
 赤と緑の区別が難しい場合でも、明度差があれば区別しやすくなります。 例えば、以下のような赤と緑の組み合わせは、明度差が小さいため、protanopiaやdeuteranopiaの人にとって区別が難しいです。
 
-``` r
+``` downlit
 colors <- c("#932922", "#526907")
 colors_protan <- protan(colors)
 colors_deutan <- deutan(colors)
@@ -266,13 +266,13 @@ barplot(rep(1, length(colors)), col = colors, main = "Original")
 
 ![](index_files/figure-html/unnamed-chunk-9-1.png)
 
-``` r
+``` downlit
 barplot(rep(1, length(colors_protan)), col = colors_protan, main = "Protanopia")
 ```
 
 ![](index_files/figure-html/unnamed-chunk-9-2.png)
 
-``` r
+``` downlit
 barplot(
   rep(1, length(colors_deutan)),
   col = colors_deutan,
@@ -284,7 +284,7 @@ barplot(
 
 一方、以下のような赤と緑の組み合わせは、明度差が大きいため、protanopiaやdeuteranopiaの人にとって区別しやすいです。
 
-``` r
+``` downlit
 colors <- c("#FF4B00", "#03AF7A")
 colors_protan <- protan(colors)
 colors_deutan <- deutan(colors)
@@ -293,13 +293,13 @@ barplot(rep(1, length(colors)), col = colors, main = "Original")
 
 ![](index_files/figure-html/unnamed-chunk-10-1.png)
 
-``` r
+``` downlit
 barplot(rep(1, length(colors_protan)), col = colors_protan, main = "Protanopia")
 ```
 
 ![](index_files/figure-html/unnamed-chunk-10-2.png)
 
-``` r
+``` downlit
 barplot(
   rep(1, length(colors_deutan)),
   col = colors_deutan,

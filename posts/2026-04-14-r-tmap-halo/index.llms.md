@@ -1,0 +1,149 @@
+# Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法
+
+r
+
+`tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました
+
+Published
+
+2026-04-14
+
+Modified
+
+2026-04-14
+
+Rの[`tmap`パッケージ](https://r-tmap.github.io/tmap/index.html)で地図の上に縁取り文字を表示する方法を紹介します。 `tmap`パッケージの[Changelog](https://r-tmap.github.io/tmap/news/index.html)によると、バージョン4.3から`tm_text`関数で文字の縁取りなどの装飾が実装されたようです。
+
+早速試してみました。
+
+## 開発版の`tmap`のインストール
+
+2026年4月14日時点では、まだ`tmap`のCRAN版は4.3ではないため、開発版をインストールする必要があります。 renvを使っている場合は、以下のようにしてインストールできます。
+
+``` downlit
+renv::install("r-tmap/tmap")
+```
+
+その後、[`library()`](https://rdrr.io/r/base/library.html)で読み込み、バージョンを確認します。
+
+``` downlit
+library(tmap)
+packageVersion("tmap")
+```
+
+    [1] '4.3'
+
+## 縁取り文字の表示
+
+アジアの国名を表示してみます。 まずは、縁取りなしの場合です。
+
+``` downlit
+Asia <- World[World$continent == "Africa", ]
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text("name")
+```
+
+![](index_files/figure-html/unnamed-chunk-2-1.png)
+
+少し重なりが多いため、`remove_overlap = TRUE`を指定して、重なりをなくします。 表示されなくなってしまった国には申し訳ないですが、見やすくなります。
+
+``` downlit
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text("name", options = opt_tm_text(remove_overlap = TRUE))
+```
+
+![](index_files/figure-html/unnamed-chunk-3-1.png)
+
+これに、文字の縁取りをつけてみます。 `opt_tm_text`の引数で、`halo = TRUE`を指定します。
+
+``` downlit
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text("name", options = opt_tm_text(halo = TRUE, remove_overlap = TRUE))
+```
+
+![](index_files/figure-html/unnamed-chunk-4-1.png)
+
+白い縁取りがついて、塗りつぶしのある地図の上でも見やすくなりました。 オプションとしては、以下のようなものがあります。
+
+- `halo`: 縁取りを有効にするかどうかを指定します。デフォルトは`FALSE`です。
+- `halo.col`: 縁取りの色を指定します。デフォルトは`NA`です。
+- `halo.width`: 縁取りの幅を指定します。デフォルトは`0.05`です。
+- `halo.blur`: 縁取りのぼかし量を指定します。デフォルトは`0`です。
+- `halo.alpha`: 縁取りの透明度を指定します。デフォルトは`0.8`です。
+
+たとえば、赤い縁取りをつけてみます。
+
+``` downlit
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text(
+    "name",
+    options = opt_tm_text(
+      halo = TRUE,
+      halo.col = "red",
+      halo.width = 0.1,
+      halo.blur = 0.05,
+      halo.alpha = 0.9,
+      remove_overlap = TRUE
+    )
+  )
+```
+
+![](index_files/figure-html/unnamed-chunk-5-1.png)
+
+> **NOTE:**
+>
+> haloは、文字の周りに線をつけることで、文字を地図の上で見やすくするためのオプションです。 ArcGISではそのまま「halo」と呼ばれていますが([参考](https://www.esri.com/about/newsroom/arcuser/polishing-your-halo))、QGISでは「buffer」と呼ばれています([参考](https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html))。
+>
+> 日本語だとなじみのない単語かもしれません。 日本語に訳すと「後光」や「光輪」といった意味になり、漢字では**暈**と書くようです([参考](https://ja.wikipedia.org/wiki/%E6%9A%88))。 文字の周りに光が差しているようなイメージですね。
+
+## 文字に影をつける
+
+`halo`では縁取りが付きましたが、`shadow`オプションを使うと、文字に影をつけることもできます。
+
+``` downlit
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text("name", options = opt_tm_text(shadow = TRUE, remove_overlap = TRUE))
+```
+
+![](index_files/figure-html/unnamed-chunk-6-1.png)
+
+少し違いが分かりにくいですが、文字の下に影がついて、地図の上でも見やすくなります。 `shadow`オプションの引数は以下の通りです。
+
+- `shadow`: 影を有効にするかどうかを指定します。デフォルトは`FALSE`です。
+- `shadow.col`: 影の色を指定します。デフォルトは`NA`です。
+- `shadow.offset.x`: 影の水平方向のオフセットを指定します。デフォルトは`0.05`です。
+- `shadow.offset.y`: 影の垂直方向のオフセットを指定します。デフォルトは`0.05`です。
+
+影の効果をわかりやすくするために、少し大げさに影をつけてみます。
+
+``` downlit
+tm_shape(Asia) +
+  tm_polygons() +
+  tm_text(
+    "name",
+    options = opt_tm_text(
+      shadow = TRUE,
+      shadow.col = "orange",
+      shadow.offset.x = 0.1,
+      shadow.offset.y = 0.1,
+      remove_overlap = TRUE
+    )
+  )
+```
+
+![](index_files/figure-html/unnamed-chunk-7-1.png)
+
+縁取りは文字の周りに線がつくのに対して、影は文字の下に別の文字が表示されるイメージです。 どちらも地図の上で文字を見やすくするためのオプションですが、好みや地図のデザインによって使い分けると良さそうです。
+
+## 参考
+
+- [Changelog • tmap](https://r-tmap.github.io/tmap/news/index.html)
+- [Map layer: text — tm_text • tmap](https://r-tmap.github.io/tmap/reference/tm_text.html)
+- [Use halos to make maps more readable](https://www.esri.com/about/newsroom/arcuser/polishing-your-halo)
+- [6.8. Labelling Features — QGIS in Mineral Exploration 1.1 documentation](https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html)
+- [暈 - Wikipedia](https://ja.wikipedia.org/wiki/%E6%9A%88)

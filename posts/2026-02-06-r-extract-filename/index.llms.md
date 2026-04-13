@@ -12,13 +12,13 @@ Modified
 
 2026-02-06
 
-Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、`basename()`や`tools::file_path_sans_ext()`を使って、Rでファイル名を抽出する方法についてまとめます。
+Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、[`basename()`](https://rdrr.io/r/base/basename.html)や[`tools::file_path_sans_ext()`](https://rdrr.io/r/tools/fileutils.html)を使って、Rでファイル名を抽出する方法についてまとめます。
 
 ## ファイル名の抽出
 
-ファイルパスからファイル名を抽出するには、`basename()`関数を使用します。
+ファイルパスからファイル名を抽出するには、[`basename()`](https://rdrr.io/r/base/basename.html)関数を使用します。
 
-``` r
+``` downlit
 file_path <- "/path/to/your/file/data.csv"
 file_name <- basename(file_path)
 print(file_name)
@@ -30,9 +30,9 @@ print(file_name)
 
 ## 拡張子を除いたファイル名の抽出
 
-拡張子を除いたファイル名を取得するには、`tools`パッケージの`file_path_sans_ext()`関数を使用します。
+拡張子を除いたファイル名を取得するには、`tools`パッケージの[`file_path_sans_ext()`](https://rdrr.io/r/tools/fileutils.html)関数を使用します。
 
-``` r
+``` downlit
 library(tools)
 file_path <- "/path/to/your/file/data.csv"
 file_name_no_ext <- file_path_sans_ext(basename(file_path))
@@ -45,13 +45,13 @@ print(file_name_no_ext)
 
 > **NOTE:**
 >
-> 少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 `sans`はフランス語で「〜なし」を意味します。 英語の`without`に相当します。 また、`ext`は「拡張子(extension)」の略です。 したがって、`file_path_sans_ext()`は「拡張子なしのファイルパス」を意味しています。
+> 少し長い関数名で覚えづらいですが、意味から覚えると忘れにくいと思います。 `sans`はフランス語で「〜なし」を意味します。 英語の`without`に相当します。 また、`ext`は「拡張子(extension)」の略です。 したがって、[`file_path_sans_ext()`](https://rdrr.io/r/tools/fileutils.html)は「拡張子なしのファイルパス」を意味しています。
 
 ## 使用例
 
 データと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。
 
-``` r
+``` downlit
 file_paths <- c(
   "/path/to/your/file/data1.csv",
   "/path/to/your/file/data2.csv",

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.37">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="dcterms.date" content="2026-03-11">
 <meta name="description" content="Rで大津の二値化を実装">
-
 <title>Rで大津の二値化を行う方法 – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
@@ -62,7 +59,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -79,8 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c11934e7ac5741e8098cff11fc150995.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-c11934e7ac5741e8098cff11fc150995.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -106,12 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -137,15 +127,11 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
@@ -157,7 +143,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -170,7 +156,7 @@ window.Quarto = {
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -179,36 +165,30 @@ window.Quarto = {
 </a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#大津の二値化とは" id="toc-大津の二値化とは" class="nav-link active" data-scroll-target="#大津の二値化とは">大津の二値化とは</a></li>
-  <li><a href="#大津の二値化の考え方" id="toc-大津の二値化の考え方" class="nav-link" data-scroll-target="#大津の二値化の考え方">大津の二値化の考え方</a></li>
-  <li><a href="#rで大津の二値化を実装する方法" id="toc-rで大津の二値化を実装する方法" class="nav-link" data-scroll-target="#rで大津の二値化を実装する方法">Rで大津の二値化を実装する方法</a>
+<li><a href="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%A8%E3%81%AF" id="toc-大津の二値化とは" class="nav-link active" data-scroll-target="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%A8%E3%81%AF">大津の二値化とは</a></li>
+  <li><a href="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9" id="toc-大津の二値化の考え方" class="nav-link" data-scroll-target="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9">大津の二値化の考え方</a></li>
+  <li>
+<a href="#r%E3%81%A7%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95" id="toc-rで大津の二値化を実装する方法" class="nav-link" data-scroll-target="#r%E3%81%A7%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">Rで大津の二値化を実装する方法</a>
   <ul class="collapse">
-  <li><a href="#画像の読み込み" id="toc-画像の読み込み" class="nav-link" data-scroll-target="#画像の読み込み">画像の読み込み</a></li>
-  </ul></li>
-  <li><a href="#グレースケール画像への変換" id="toc-グレースケール画像への変換" class="nav-link" data-scroll-target="#グレースケール画像への変換">グレースケール画像への変換</a></li>
-  <li><a href="#ピクセル値の取得" id="toc-ピクセル値の取得" class="nav-link" data-scroll-target="#ピクセル値の取得">ピクセル値の取得</a></li>
-  <li><a href="#ヒストグラムの作成" id="toc-ヒストグラムの作成" class="nav-link" data-scroll-target="#ヒストグラムの作成">ヒストグラムの作成</a></li>
-  <li><a href="#大津の二値化の実装" id="toc-大津の二値化の実装" class="nav-link" data-scroll-target="#大津の二値化の実装">大津の二値化の実装</a></li>
-  <li><a href="#最適な閾値の選択" id="toc-最適な閾値の選択" class="nav-link" data-scroll-target="#最適な閾値の選択">最適な閾値の選択</a></li>
+<li><a href="#%E7%94%BB%E5%83%8F%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF" id="toc-画像の読み込み" class="nav-link" data-scroll-target="#%E7%94%BB%E5%83%8F%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">画像の読み込み</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B" id="toc-グレースケール画像への変換" class="nav-link" data-scroll-target="#%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E5%A4%89%E6%8F%9B">グレースケール画像への変換</a></li>
+  <li><a href="#%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E5%80%A4%E3%81%AE%E5%8F%96%E5%BE%97" id="toc-ピクセル値の取得" class="nav-link" data-scroll-target="#%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E5%80%A4%E3%81%AE%E5%8F%96%E5%BE%97">ピクセル値の取得</a></li>
+  <li><a href="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E4%BD%9C%E6%88%90" id="toc-ヒストグラムの作成" class="nav-link" data-scroll-target="#%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E4%BD%9C%E6%88%90">ヒストグラムの作成</a></li>
+  <li><a href="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%AE%E5%AE%9F%E8%A3%85" id="toc-大津の二値化の実装" class="nav-link" data-scroll-target="#%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%AE%E5%AE%9F%E8%A3%85">大津の二値化の実装</a></li>
+  <li><a href="#%E6%9C%80%E9%81%A9%E3%81%AA%E9%96%BE%E5%80%A4%E3%81%AE%E9%81%B8%E6%8A%9E" id="toc-最適な閾値の選択" class="nav-link" data-scroll-target="#%E6%9C%80%E9%81%A9%E3%81%AA%E9%96%BE%E5%80%A4%E3%81%AE%E9%81%B8%E6%8A%9E">最適な閾値の選択</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Rで大津の二値化を行う方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
@@ -243,11 +223,7 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<section id="大津の二値化とは" class="level2">
-<h2 class="anchored" data-anchor-id="大津の二値化とは">大津の二値化とは</h2>
+</header><section id="大津の二値化とは" class="level2"><h2 class="anchored" data-anchor-id="大津の二値化とは">大津の二値化とは</h2>
 <p>大津の二値化は、画像処理において、グレースケール画像を二値化するための方法の一つです。 この方法は、画像のヒストグラムを分析して、最適な閾値を自動的に決定することで、画像を二値化します。 大津の二値化は、画像のコントラストが高い場合に特に効果的であり、背景と前景を明確に分けることができます。</p>
 <p>大津の二値化はシンプルでありながら、効果的な方法であるため、画像処理の分野で広く使用されています。</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -263,9 +239,7 @@ Note
 <p>筆者が初めて大津の二値化について学んだとき、感動したことを覚えています。 シンプルでありながら、効果的な方法で、美しいなと思いました。 今もよく使う方法の一つです。</p>
 </div>
 </div>
-</section>
-<section id="大津の二値化の考え方" class="level2">
-<h2 class="anchored" data-anchor-id="大津の二値化の考え方">大津の二値化の考え方</h2>
+</section><section id="大津の二値化の考え方" class="level2"><h2 class="anchored" data-anchor-id="大津の二値化の考え方">大津の二値化の考え方</h2>
 <p>基本的な考え方は、すべての可能な閾値について、クラス内分散とクラス間分散を計算し、<strong>クラス間分散が最大になる閾値</strong>を選択することです。 クラスというのは、二値化された画像において、白と黒の2つのクラスを指します。 クラス間分散が最大になる閾値は、画像のヒストグラムを最も効果的に分割する点であり、背景と前景を最も明確に分けることができるという考えです。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -304,20 +278,15 @@ Note
 <p>つまり、クラス間分散が最大ということは、クラス内分散が最小であることを意味し、クラス内できれいに固まっているとも言えます。</p>
 </div>
 </div>
-</section>
-<section id="rで大津の二値化を実装する方法" class="level2">
-<h2 class="anchored" data-anchor-id="rで大津の二値化を実装する方法">Rで大津の二値化を実装する方法</h2>
+</section><section id="rで大津の二値化を実装する方法" class="level2"><h2 class="anchored" data-anchor-id="rで大津の二値化を実装する方法">Rで大津の二値化を実装する方法</h2>
 <p>今回二値化する画像は、以下のようなものを用意しました。</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="bird.jpg" class="img-fluid figure-img"></p>
-<figcaption>二値化する画像</figcaption>
-</figure>
+<figure class="figure"><p><img src="bird.jpg" class="img-fluid figure-img"></p>
+<figcaption>二値化する画像</figcaption></figure>
 </div>
 <p>この画像は、私の家でかつて飼っていたセキセイインコの写真です。 名前は愛子ちゃん(あいちゃん)です。 とてもかわいいですね。</p>
 <p><a href="https://dahtah.github.io/imager/"><code>imager</code></a>のような画像処理のパッケージを使うと、Rで大津の二値化を簡単に実装できます。 しかし、今回は大津の二値化のアルゴリズムを理解するために、手動で実装してみたいと思います。</p>
-<section id="画像の読み込み" class="level3">
-<h3 class="anchored" data-anchor-id="画像の読み込み">画像の読み込み</h3>
+<section id="画像の読み込み" class="level3"><h3 class="anchored" data-anchor-id="画像の読み込み">画像の読み込み</h3>
 <p>まずは画像を読み込みます。 画像の読み込みを手動で実装するのは大変なので、二値化以外の部分には、<a href="https://docs.ropensci.org/magick/"><code>magick</code></a>パッケージを使います。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -333,8 +302,8 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#renv::install("magick") もしインストールされていなかったら</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#renv::install("magick") もしインストールされていなかったら</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/magick/">magick</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to ImageMagick 6.9.12.98
 Enabled features: fontconfig, freetype, fftw, heic, lcms, pango, raw, webp, x11
@@ -343,99 +312,88 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>Using 4 threads</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="st">"bird.jpg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_read</a></span><span class="op">(</span><span class="st">"bird.jpg"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-</section>
-<section id="グレースケール画像への変換" class="level2">
-<h2 class="anchored" data-anchor-id="グレースケール画像への変換">グレースケール画像への変換</h2>
-<p><code>image_convert()</code>関数を使って、画像をグレースケールに変換します。</p>
+</section></section><section id="グレースケール画像への変換" class="level2"><h2 class="anchored" data-anchor-id="グレースケール画像への変換">グレースケール画像への変換</h2>
+<p><code><a href="https://docs.ropensci.org/magick/reference/editing.html">image_convert()</a></code>関数を使って、画像をグレースケールに変換します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>img_gray <span class="ot">&lt;-</span> <span class="fu">image_convert</span>(img, <span class="at">colorspace =</span> <span class="st">"gray"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(img_gray)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">img_gray</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_convert</a></span><span class="op">(</span><span class="va">img</span>, colorspace <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">img_gray</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="ピクセル値の取得" class="level2">
-<h2 class="anchored" data-anchor-id="ピクセル値の取得">ピクセル値の取得</h2>
+</section><section id="ピクセル値の取得" class="level2"><h2 class="anchored" data-anchor-id="ピクセル値の取得">ピクセル値の取得</h2>
 <p>次に、グレースケール画像のピクセル値を取得します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">image_data</span>(img_gray, <span class="at">channels =</span> <span class="st">"gray"</span>) <span class="co"># ピクセル値を取得</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>vals <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(dat) <span class="co"># ピクセル値を整数に変換</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_data</a></span><span class="op">(</span><span class="va">img_gray</span>, channels <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span> <span class="co"># ピクセル値を取得</span></span>
+<span><span class="va">vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span> <span class="co"># ピクセル値を整数に変換</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="ヒストグラムの作成" class="level2">
-<h2 class="anchored" data-anchor-id="ヒストグラムの作成">ヒストグラムの作成</h2>
+</section><section id="ヒストグラムの作成" class="level2"><h2 class="anchored" data-anchor-id="ヒストグラムの作成">ヒストグラムの作成</h2>
 <p>ピクセル値の頻度をヒストグラムにまとめます。 ピクセル値は0から255の範囲にあるため、256個のビンを用意します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(vals, <span class="at">breaks =</span> (<span class="sc">-</span><span class="fl">0.5</span>)<span class="sc">:</span>(<span class="fl">255.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">vals</span>, breaks <span class="op">=</span> <span class="op">(</span><span class="op">-</span><span class="fl">0.5</span><span class="op">)</span><span class="op">:</span><span class="op">(</span><span class="fl">255.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="大津の二値化の実装" class="level2">
-<h2 class="anchored" data-anchor-id="大津の二値化の実装">大津の二値化の実装</h2>
+</section><section id="大津の二値化の実装" class="level2"><h2 class="anchored" data-anchor-id="大津の二値化の実装">大津の二値化の実装</h2>
 <p>大津の二値化のアルゴリズムを実装します。 大津の二値化では、すべての可能な閾値について、クラス内分散とクラス間分散を計算し、クラス間分散が最大になる閾値を選択します。</p>
 <p>以下のコードは、閾値を0から255まで変化させながら、クラス内分散とクラス間分散を計算する例です。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>list_otsu <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_along</span>(h<span class="sc">$</span>counts), <span class="cf">function</span>(i) {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  t <span class="ot">&lt;-</span> i <span class="sc">-</span> <span class="dv">1</span> <span class="co"># 0..L-1</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> h<span class="sc">$</span>counts <span class="sc">/</span> <span class="fu">sum</span>(h<span class="sc">$</span>counts) <span class="co"># ヒストグラムを確率分布に変換</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  L <span class="ot">&lt;-</span> <span class="fu">length</span>(p)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  idx0 <span class="ot">&lt;-</span> <span class="cf">if</span> (t <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="dv">0</span><span class="sc">:</span>t <span class="cf">else</span> <span class="fu">integer</span>(<span class="dv">0</span>) <span class="co"># 画素値の添字（0基準）</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  idx1 <span class="ot">&lt;-</span> <span class="cf">if</span> (t <span class="sc">+</span> <span class="dv">1</span> <span class="sc">&lt;=</span> L <span class="sc">-</span> <span class="dv">1</span>) (t <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span>(L <span class="sc">-</span> <span class="dv">1</span>) <span class="cf">else</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># p は1基準なので +1 して参照</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  omega_0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(p[idx0 <span class="sc">+</span> <span class="dv">1</span>])</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  omega_1 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> omega_0</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 総平均</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  mu_t <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">0</span><span class="sc">:</span>(L <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> p)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># クラス平均（空クラスなら計算しない）</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  mu_0 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_0 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sum</span>(idx0 <span class="sc">*</span> p[idx0 <span class="sc">+</span> <span class="dv">1</span>]) <span class="sc">/</span> omega_0 <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  mu_1 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sum</span>(idx1 <span class="sc">*</span> p[idx1 <span class="sc">+</span> <span class="dv">1</span>]) <span class="sc">/</span> omega_1 <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># クラス内分散（空クラスは寄与0にする）</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  var_0 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_0 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sum</span>((idx0 <span class="sc">-</span> mu_0)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> p[idx0 <span class="sc">+</span> <span class="dv">1</span>]) <span class="sc">/</span> omega_0 <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  var_1 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">sum</span>((idx1 <span class="sc">-</span> mu_1)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> p[idx1 <span class="sc">+</span> <span class="dv">1</span>]) <span class="sc">/</span> omega_1 <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  var_w <span class="ot">&lt;-</span> omega_0 <span class="sc">*</span> var_0 <span class="sc">+</span> omega_1 <span class="sc">*</span> var_1</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># クラス間分散（空クラスの項は0）</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  term0 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_0 <span class="sc">&gt;</span> <span class="dv">0</span>) omega_0 <span class="sc">*</span> (mu_0 <span class="sc">-</span> mu_t)<span class="sc">^</span><span class="dv">2</span> <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  term1 <span class="ot">&lt;-</span> <span class="cf">if</span> (omega_1 <span class="sc">&gt;</span> <span class="dv">0</span>) omega_1 <span class="sc">*</span> (mu_1 <span class="sc">-</span> mu_t)<span class="sc">^</span><span class="dv">2</span> <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  var_b <span class="ot">&lt;-</span> term0 <span class="sc">+</span> term1</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 全体分散</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  var_T <span class="ot">&lt;-</span> <span class="fu">sum</span>(p <span class="sc">*</span> ((<span class="dv">0</span><span class="sc">:</span>(L <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">-</span> mu_t)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> t,</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">omega_0 =</span> omega_0, <span class="co"># クラス0の確率</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">omega_1 =</span> omega_1, <span class="co"># クラス1の確率</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu_0 =</span> mu_0, <span class="co"># クラス0の平均</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu_1 =</span> mu_1, <span class="co"># クラス1の平均</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu_t =</span> mu_t, <span class="co"># 総平均</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_0 =</span> var_0, <span class="co"># クラス0の分散</span></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_1 =</span> var_1, <span class="co"># クラス1の分散</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_w =</span> var_w, <span class="co"># クラス内分散</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_b =</span> var_b, <span class="co"># クラス間分散</span></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_T =</span> var_T <span class="co"># 全体分散</span></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>df_otsu <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind, list_otsu))</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_otsu)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_otsu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">counts</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">t</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="op">-</span> <span class="fl">1</span> <span class="co"># 0..L-1</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="va">h</span><span class="op">$</span><span class="va">counts</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">counts</span><span class="op">)</span> <span class="co"># ヒストグラムを確率分布に変換</span></span>
+<span>  <span class="va">L</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span>  <span class="va">idx0</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">t</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="fl">0</span><span class="op">:</span><span class="va">t</span> <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> <span class="co"># 画素値の添字（0基準）</span></span>
+<span>  <span class="va">idx1</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">t</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">&lt;=</span> <span class="va">L</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">(</span><span class="va">t</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="op">(</span><span class="va">L</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="kw">else</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># p は1基準なので +1 して参照</span></span>
+<span>  <span class="va">omega_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">p</span><span class="op">[</span><span class="va">idx0</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">omega_1</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">omega_0</span></span>
+<span></span>
+<span>  <span class="co"># 総平均</span></span>
+<span>  <span class="va">mu_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="va">L</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="va">p</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># クラス平均（空クラスなら計算しない）</span></span>
+<span>  <span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_0</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">idx0</span> <span class="op">*</span> <span class="va">p</span><span class="op">[</span><span class="va">idx0</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="va">omega_0</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span>  <span class="va">mu_1</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">idx1</span> <span class="op">*</span> <span class="va">p</span><span class="op">[</span><span class="va">idx1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="va">omega_1</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span></span>
+<span>  <span class="co"># クラス内分散（空クラスは寄与0にする）</span></span>
+<span>  <span class="va">var_0</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_0</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">idx0</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">p</span><span class="op">[</span><span class="va">idx0</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="va">omega_0</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span>  <span class="va">var_1</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">idx1</span> <span class="op">-</span> <span class="va">mu_1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">p</span><span class="op">[</span><span class="va">idx1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="va">omega_1</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span>  <span class="va">var_w</span> <span class="op">&lt;-</span> <span class="va">omega_0</span> <span class="op">*</span> <span class="va">var_0</span> <span class="op">+</span> <span class="va">omega_1</span> <span class="op">*</span> <span class="va">var_1</span></span>
+<span></span>
+<span>  <span class="co"># クラス間分散（空クラスの項は0）</span></span>
+<span>  <span class="va">term0</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_0</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="va">omega_0</span> <span class="op">*</span> <span class="op">(</span><span class="va">mu_0</span> <span class="op">-</span> <span class="va">mu_t</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span>  <span class="va">term1</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">omega_1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="va">omega_1</span> <span class="op">*</span> <span class="op">(</span><span class="va">mu_1</span> <span class="op">-</span> <span class="va">mu_t</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="kw">else</span> <span class="fl">0</span></span>
+<span>  <span class="va">var_b</span> <span class="op">&lt;-</span> <span class="va">term0</span> <span class="op">+</span> <span class="va">term1</span></span>
+<span></span>
+<span>  <span class="co"># 全体分散</span></span>
+<span>  <span class="va">var_T</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="va">L</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="va">mu_t</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    t <span class="op">=</span> <span class="va">t</span>,</span>
+<span>    omega_0 <span class="op">=</span> <span class="va">omega_0</span>, <span class="co"># クラス0の確率</span></span>
+<span>    omega_1 <span class="op">=</span> <span class="va">omega_1</span>, <span class="co"># クラス1の確率</span></span>
+<span>    mu_0 <span class="op">=</span> <span class="va">mu_0</span>, <span class="co"># クラス0の平均</span></span>
+<span>    mu_1 <span class="op">=</span> <span class="va">mu_1</span>, <span class="co"># クラス1の平均</span></span>
+<span>    mu_t <span class="op">=</span> <span class="va">mu_t</span>, <span class="co"># 総平均</span></span>
+<span>    var_0 <span class="op">=</span> <span class="va">var_0</span>, <span class="co"># クラス0の分散</span></span>
+<span>    var_1 <span class="op">=</span> <span class="va">var_1</span>, <span class="co"># クラス1の分散</span></span>
+<span>    var_w <span class="op">=</span> <span class="va">var_w</span>, <span class="co"># クラス内分散</span></span>
+<span>    var_b <span class="op">=</span> <span class="va">var_b</span>, <span class="co"># クラス間分散</span></span>
+<span>    var_T <span class="op">=</span> <span class="va">var_T</span> <span class="co"># 全体分散</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="va">df_otsu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">list_otsu</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_otsu</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  t omega_0 omega_1 mu_0     mu_1     mu_t var_0    var_1    var_w var_b
 1 0       0       1    0 191.9755 191.9755     0 4692.817 4692.817     0
@@ -453,13 +411,11 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 6 4692.817</code></pre>
 </div>
 </div>
-</section>
-<section id="最適な閾値の選択" class="level2">
-<h2 class="anchored" data-anchor-id="最適な閾値の選択">最適な閾値の選択</h2>
+</section><section id="最適な閾値の選択" class="level2"><h2 class="anchored" data-anchor-id="最適な閾値の選択">最適な閾値の選択</h2>
 <p>最適な閾値は、クラス間分散が最大になる点で選択されます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>t_opt <span class="ot">&lt;-</span> df_otsu<span class="sc">$</span>t[<span class="fu">which.max</span>(df_otsu<span class="sc">$</span>var_b)]</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>t_opt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t_opt</span> <span class="op">&lt;-</span> <span class="va">df_otsu</span><span class="op">$</span><span class="va">t</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">df_otsu</span><span class="op">$</span><span class="va">var_b</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">t_opt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 164</code></pre>
 </div>
@@ -467,43 +423,42 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 <p>今回の画像に対して、最適な閾値は 164 となります。</p>
 <p>視覚的に確認するために、クラス内分散とクラス間分散のグラフを描いてみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  df_otsu<span class="sc">$</span>t,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  df_otsu<span class="sc">$</span>var_w,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(df_otsu<span class="sc">$</span>var_w, df_otsu<span class="sc">$</span>var_b) <span class="sc">*</span> <span class="fl">1.1</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Threshold"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Within-class variance"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="dv">2</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">3</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  df_otsu<span class="sc">$</span>t,</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  df_otsu<span class="sc">$</span>var_b,</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Threshold"</span>,</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Between-class variance"</span>,</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="dv">4</span>,</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">3</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> t_opt, <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="dv">7</span>, <span class="at">alpha.f =</span> <span class="fl">0.7</span>), <span class="at">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topleft"</span>,</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">c</span>(</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Within-class variance"</span>,</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Between-class variance"</span>,</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Optimal threshold"</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>),</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">3</span>,</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="fu">adjustcolor</span>(<span class="st">"white"</span>, <span class="at">alpha.f =</span> <span class="fl">0.7</span>)</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">df_otsu</span><span class="op">$</span><span class="va">t</span>,</span>
+<span>  <span class="va">df_otsu</span><span class="op">$</span><span class="va">var_w</span>,</span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">df_otsu</span><span class="op">$</span><span class="va">var_w</span>, <span class="va">df_otsu</span><span class="op">$</span><span class="va">var_b</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.1</span><span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Threshold"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Within-class variance"</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span></span>
+<span>  <span class="va">df_otsu</span><span class="op">$</span><span class="va">t</span>,</span>
+<span>  <span class="va">df_otsu</span><span class="op">$</span><span class="va">var_b</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="st">"Threshold"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Between-class variance"</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">t_opt</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="fl">7</span>, alpha.f <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span></span>
+<span>  <span class="st">"topleft"</span>,</span>
+<span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Within-class variance"</span>,</span>
+<span>    <span class="st">"Between-class variance"</span>,</span>
+<span>    <span class="st">"Optimal threshold"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  bg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"white"</span>, alpha.f <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -511,22 +466,21 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 <p>クラス内分散が最小で、クラス間分散が最大になる点が、最適な閾値であることがわかります。</p>
 <p>また、この時の画像を二値化してみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>img_width <span class="ot">&lt;-</span> <span class="fu">dim</span>(dat)[<span class="dv">2</span>]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>img_height <span class="ot">&lt;-</span> <span class="fu">dim</span>(dat)[<span class="dv">3</span>]</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>img_otsu <span class="ot">&lt;-</span> <span class="fu">image_read</span>(<span class="fu">as.raster</span>(<span class="fu">matrix</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.integer</span>(vals <span class="sc">&gt;</span> t_opt),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> img_height,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> img_width</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)))</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(img)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(img_otsu)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">img_width</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span><span class="va">img_height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">img_otsu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/as.raster.html">as.raster</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">vals</span> <span class="op">&gt;</span> <span class="va">t_opt</span><span class="op">)</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="va">img_height</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="va">img_width</span></span>
+<span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">img_otsu</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -534,10 +488,7 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 <p>なかなかきれいに二値化できているのがわかります。</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -938,8 +889,7 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><a href="https://maple60.github.io">Maple60’s Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
 </div>   
@@ -948,18 +898,16 @@ Disabled features: cairo, ghostscript, rsvg</code></pre>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/maple60">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
-
 
 
 </body></html>

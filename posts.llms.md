@@ -1,5 +1,11 @@
 # Blog
 
+### [Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法](posts/2026-04-14-r-tmap-halo/index.llms.md)
+
+`tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました
+
+2026-04-14
+
 ### [Rで解析データをクラウドストレージから読み込む](posts/2026-04-13-r-data-from-cloud-storage/index.llms.md)
 
 解析の生データをクラウドストレージから読み込む方法を紹介します

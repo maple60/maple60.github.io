@@ -66,7 +66,7 @@ Modified
 >
 > `magick`は、Rで画像処理を行うためのパッケージです。 画像の読み込み、変換、編集など、様々な機能を提供しています。 `magick`自体はもともとRの画像処理ライブラリではなく、CやC++で書かれたImageMagickという画像処理ライブラリのRバインディングです。
 
-``` r
+``` downlit
 #renv::install("magick") もしインストールされていなかったら
 library(magick)
 ```
@@ -77,15 +77,15 @@ library(magick)
 
     Using 4 threads
 
-``` r
+``` downlit
 img <- image_read("bird.jpg")
 ```
 
 ## グレースケール画像への変換
 
-`image_convert()`関数を使って、画像をグレースケールに変換します。
+[`image_convert()`](https://docs.ropensci.org/magick/reference/editing.html)関数を使って、画像をグレースケールに変換します。
 
-``` r
+``` downlit
 img_gray <- image_convert(img, colorspace = "gray")
 plot(img_gray)
 ```
@@ -96,7 +96,7 @@ plot(img_gray)
 
 次に、グレースケール画像のピクセル値を取得します。
 
-``` r
+``` downlit
 dat <- image_data(img_gray, channels = "gray") # ピクセル値を取得
 vals <- as.integer(dat) # ピクセル値を整数に変換
 ```
@@ -105,7 +105,7 @@ vals <- as.integer(dat) # ピクセル値を整数に変換
 
 ピクセル値の頻度をヒストグラムにまとめます。 ピクセル値は0から255の範囲にあるため、256個のビンを用意します。
 
-``` r
+``` downlit
 h <- hist(vals, breaks = (-0.5):(255.5))
 ```
 
@@ -117,7 +117,7 @@ h <- hist(vals, breaks = (-0.5):(255.5))
 
 以下のコードは、閾値を0から255まで変化させながら、クラス内分散とクラス間分散を計算する例です。
 
-``` r
+``` downlit
 list_otsu <- lapply(seq_along(h$counts), function(i) {
   t <- i - 1 # 0..L-1
   p <- h$counts / sum(h$counts) # ヒストグラムを確率分布に変換
@@ -186,7 +186,7 @@ head(df_otsu)
 
 最適な閾値は、クラス間分散が最大になる点で選択されます。
 
-``` r
+``` downlit
 t_opt <- df_otsu$t[which.max(df_otsu$var_b)]
 t_opt
 ```
@@ -197,7 +197,7 @@ t_opt
 
 視覚的に確認するために、クラス内分散とクラス間分散のグラフを描いてみます。
 
-``` r
+``` downlit
 plot(
   df_otsu$t,
   df_otsu$var_w,
@@ -239,7 +239,7 @@ legend(
 
 また、この時の画像を二値化してみます。
 
-``` r
+``` downlit
 img_width <- dim(dat)[2]
 img_height <- dim(dat)[3]
 img_otsu <- image_read(as.raster(matrix(
