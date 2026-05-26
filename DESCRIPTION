@@ -3,5 +3,5 @@ Type: Project
 Title: My Quarto Site
 Version: 0.0.1
 Imports:
-    downlit
+    downlit,
     xml2
