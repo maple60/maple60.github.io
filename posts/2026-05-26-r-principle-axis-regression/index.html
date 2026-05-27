@@ -478,15 +478,58 @@ s_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 \]</span></p>
 <p>つまり、共分散行列は、任意の方向 <span class="math inline">\(\mathbf{u}\)</span> に対して、<strong>その方向のばらつきがどれくらいかを計算するための情報を持っている</strong>と考えることができます。</p>
 <p>では、どの方向 <span class="math inline">\(\mathbf{u}\)</span> を選べば、ばらつきが最大になるのでしょうか。</p>
-<p>この問題を数学的に解くと、答えは共分散行列の<strong>固有ベクトル</strong>になります。 特に、最も大きい固有値に対応する<strong>固有ベクトル</strong>が、第1主軸の方向です。</p>
+<p>ある方向を表す単位ベクトルを</p>
+<p><span class="math display">\[
+\mathbf{u} =
+\begin{bmatrix}
+u_x \\
+u_y
+\end{bmatrix}
+\]</span></p>
+<p>とします。</p>
+<p>この方向に沿ったデータのばらつきは、共分散行列 <span class="math inline">\(\Sigma\)</span> を使って</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
+\]</span></p>
+<p>と表すことができます。</p>
+<p>ここで、<span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> は1つの値になります。 この値が大きいほど、データは方向 <span class="math inline">\(\mathbf{u}\)</span> に沿って大きくばらついていることを意味します。</p>
+<p>したがって、主軸を求めることは、</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
+\]</span></p>
+<p>が最も大きくなる方向 <span class="math inline">\(\mathbf{u}\)</span> を探すことに対応します。 ただし、方向だけを考えるため、<span class="math inline">\(\mathbf{u}\)</span> の長さは1に固定します。</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}}\mathbf{u} = 1
+\]</span></p>
+<p>この条件のもとで <span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> を最大にする問題を解くと、</p>
+<p><span class="math display">\[
+\Sigma \mathbf{u} = \lambda \mathbf{u}
+\]</span></p>
+<p>という形の式が得られます。</p>
+<p>これは、共分散行列 <span class="math inline">\(\Sigma\)</span> の<strong>固有値・固有ベクトル</strong>の式です。 ここで、<span class="math inline">\(\mathbf{u}\)</span> が固有ベクトル、<span class="math inline">\(\lambda\)</span> が固有値です。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>この式は、線形代数の分野で「固有値問題」と呼ばれるものです。 この関係を導くには、制約付き最大化問題としてラグランジュの未定乗数法を使うのが一般的です。 ただし、実際の計算はRの <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> が行ってくれるため、ここでは詳しい導出は省略します。</p>
+</div>
+</div>
+<p>つまり、共分散行列の固有ベクトルは「ばらつきが大きくなる方向」を表し、固有値は「その方向にどれだけばらついているか」を表します。</p>
+<p>特に、最も大きい固有値に対応する固有ベクトルが、第1主軸の方向になります。</p>
 <p>簡単にまとめると、以下のようになります。</p>
 <ul>
 <li>
 <strong>共分散行列</strong>：データのばらつき方をまとめたもの</li>
 <li>
-<strong>固有ベクトル</strong>：ばらつきが大きい方向</li>
+<strong>固有ベクトル</strong>：ばらつきが大きくなる方向</li>
 <li>
-<strong>固有値</strong>：その方向にどれだけばらついているか</li>
+<strong>固有値</strong>：その方向に沿ったばらつきの大きさ</li>
 </ul>
 <p>2変量データの場合、共分散行列の固有ベクトルは2つ得られます。</p>
 <ul>
@@ -495,7 +538,7 @@ s_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <li>
 <strong>第2固有ベクトル</strong>：第1固有ベクトルに直交する方向</li>
 </ul>
-<p>このうち、第1固有ベクトルの方向を直線として描いたものが、今回のprincipal axis regression における主軸です。</p>
+<p>このうち、第1固有ベクトルの方向を直線として描いたものが、今回のprincipal axis regressionにおける主軸です。</p>
 </section><section id="rによる視覚的な理解" class="level2"><h2 class="anchored" data-anchor-id="rによる視覚的な理解">Rによる視覚的な理解</h2>
 <p>今回の仮想データを利用して、視覚的に理解を深めてみます。 まずは、冒頭の散布図を再度表示します。</p>
 <div class="cell">
