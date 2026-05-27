@@ -1,40 +1,57 @@
 ---
-title: "Maple's Website"
+title: "Maple60's Website"
+description: "R, Python, Quarto, and research workflow notes"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: table
+  max-items: 6
+  date-format: iso
+  fields: [date, title, description]
+  field-links: [title]
+  table-striped: true
+  table-hover: true
+  sort-ui: false
+  filter-ui: false
 ---
 
-## About
+## English
 
-This website is a personal blog where I write mainly about various programming topics I have learned.
+### About
 
-The information on this blog is provided for general informational purposes only. 
-While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.
+This is a personal blog and notebook about programming, data analysis, reproducible documents, and research tooling. 
+I mainly write notes about R, Python, Quarto, visualization, website publishing, literature management, and research workflows.
 
-All posts are listed on the [Posts page](posts.qmd).
+### Topics
 
-## My interests
+- **R and data analysis**: Visualization, maps, image processing, statistics, and reproducible analysis workflows.
+- **Quarto and GitHub Pages**: Website publishing, rendering settings, code links, GitHub Actions, and Japanese text support.
+- **Python and tooling**: Environment management with `uv` and small automation notes.
+- **Research workflow**: Zotero, literature notes, citation management, and data organization.
 
-I mainly use the following programming languages:  
-- R
-- Python
-- JavaScript
+### Navigation
 
-This blog is made with [Quarto](https://quarto.org/).
+All posts are listed on [Posts](posts.qmd). Notes about tools and references are collected on [Recommendations](recommendations.qmd).
 
-<hr>
+The articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions.
 
-## このページについて
+## 日本語
 
-このウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。
-本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。
-本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。
-また、本ブログの内容は筆者個人の見解です。
+### このサイトについて
 
-すべての投稿は、[Postsページ](posts.qmd)にリストされています。
+R、Python、Quarto を中心に、データ解析、可視化、ウェブサイト作成、文献管理、研究まわりの作業メモを残しています。
 
-筆者は以下のプログラミング言語を主に使用します。
+### トピック
 
-- R
-- Python
-- JavaScript
+- **R とデータ解析**: 可視化、地図、画像処理、統計解析、再現可能な解析ワークフロー。
+- **Quarto と GitHub Pages**: ウェブサイト作成、レンダリング設定、コードリンク、GitHub Actions、日本語表示。
+- **Python とツール**: `uv` を使った環境管理や、小さな自動化のメモ。
+- **研究ワークフロー**: Zotero、文献メモ、引用管理、データの読み込みや整理。
 
-このブログは、[Quarto](https://quarto.org/)を使用して作成されています。
+### ナビゲーション
+
+すべての記事は [Posts](posts.qmd) にあります。ツールや参考資料のメモは [Recommendations](recommendations.qmd) にまとめています。
+
+記事の内容は、公開時点または更新時点で自分が確認した範囲のメモです。重要な判断に使う場合は、公式ドキュメントや原典も確認してください。
+
+## Recent Posts

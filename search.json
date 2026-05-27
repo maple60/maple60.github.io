@@ -1129,29 +1129,29 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Maple’s Website",
+    "title": "Maple60’s Website",
     "section": "",
-    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
+    "text": "This is a personal blog and notebook about programming, data analysis, reproducible documents, and research tooling. I mainly write notes about R, Python, Quarto, visualization, website publishing, literature management, and research workflows.\n\n\n\n\nR and data analysis: Visualization, maps, image processing, statistics, and reproducible analysis workflows.\nQuarto and GitHub Pages: Website publishing, rendering settings, code links, GitHub Actions, and Japanese text support.\nPython and tooling: Environment management with uv and small automation notes.\nResearch workflow: Zotero, literature notes, citation management, and data organization.\n\n\n\n\nAll posts are listed on Posts. Notes about tools and references are collected on Recommendations.\nThe articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions."
   },
   {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Maple’s Website",
+    "objectID": "index.html#english",
+    "href": "index.html#english",
+    "title": "Maple60’s Website",
     "section": "",
-    "text": "This website is a personal blog where I write mainly about various programming topics I have learned.\nThe information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.\nAll posts are listed on the Posts page."
+    "text": "This is a personal blog and notebook about programming, data analysis, reproducible documents, and research tooling. I mainly write notes about R, Python, Quarto, visualization, website publishing, literature management, and research workflows.\n\n\n\n\nR and data analysis: Visualization, maps, image processing, statistics, and reproducible analysis workflows.\nQuarto and GitHub Pages: Website publishing, rendering settings, code links, GitHub Actions, and Japanese text support.\nPython and tooling: Environment management with uv and small automation notes.\nResearch workflow: Zotero, literature notes, citation management, and data organization.\n\n\n\n\nAll posts are listed on Posts. Notes about tools and references are collected on Recommendations.\nThe articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions."
   },
   {
-    "objectID": "index.html#my-interests",
-    "href": "index.html#my-interests",
-    "title": "Maple’s Website",
-    "section": "My interests",
-    "text": "My interests\nI mainly use the following programming languages:\n- R - Python - JavaScript\nThis blog is made with Quarto."
+    "objectID": "index.html#日本語",
+    "href": "index.html#日本語",
+    "title": "Maple60’s Website",
+    "section": "日本語",
+    "text": "日本語\n\nこのサイトについて\nR、Python、Quarto を中心に、データ解析、可視化、ウェブサイト作成、文献管理、研究まわりの作業メモを残しています。\n\n\nトピック\n\nR とデータ解析: 可視化、地図、画像処理、統計解析、再現可能な解析ワークフロー。\nQuarto と GitHub Pages: ウェブサイト作成、レンダリング設定、コードリンク、GitHub Actions、日本語表示。\nPython とツール: uv を使った環境管理や、小さな自動化のメモ。\n研究ワークフロー: Zotero、文献メモ、引用管理、データの読み込みや整理。\n\n\n\nナビゲーション\nすべての記事は Posts にあります。ツールや参考資料のメモは Recommendations にまとめています。\n記事の内容は、公開時点または更新時点で自分が確認した範囲のメモです。重要な判断に使う場合は、公式ドキュメントや原典も確認してください。"
   },
   {
-    "objectID": "index.html#このページについて",
-    "href": "index.html#このページについて",
-    "title": "Maple’s Website",
-    "section": "このページについて",
-    "text": "このページについて\nこのウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。 本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。 本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。 また、本ブログの内容は筆者個人の見解です。\nすべての投稿は、Postsページにリストされています。\n筆者は以下のプログラミング言語を主に使用します。\n\nR\nPython\nJavaScript\n\nこのブログは、Quartoを使用して作成されています。"
+    "objectID": "index.html#recent-posts",
+    "href": "index.html#recent-posts",
+    "title": "Maple60’s Website",
+    "section": "Recent Posts",
+    "text": "Recent Posts"
   }
 ]

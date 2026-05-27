@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="R, Python, Quarto, and research workflow notes">
 
-<title>Maple’s Website – Maple60’s website</title>
+<title>Maple60’s Website – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,6 +34,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,7 +73,66 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -124,9 +186,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
-  <li><a href="#my-interests" id="toc-my-interests" class="nav-link" data-scroll-target="#my-interests">My interests</a></li>
-  <li><a href="#このページについて" id="toc-このページについて" class="nav-link" data-scroll-target="#このページについて">このページについて</a></li>
+  <li><a href="#english" id="toc-english" class="nav-link active" data-scroll-target="#english">English</a>
+  <ul class="collapse">
+  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#navigation" id="toc-navigation" class="nav-link" data-scroll-target="#navigation">Navigation</a></li>
+  </ul></li>
+  <li><a href="#日本語" id="toc-日本語" class="nav-link" data-scroll-target="#日本語">日本語</a>
+  <ul class="collapse">
+  <li><a href="#このサイトについて" id="toc-このサイトについて" class="nav-link" data-scroll-target="#このサイトについて">このサイトについて</a></li>
+  <li><a href="#トピック" id="toc-トピック" class="nav-link" data-scroll-target="#トピック">トピック</a></li>
+  <li><a href="#ナビゲーション" id="toc-ナビゲーション" class="nav-link" data-scroll-target="#ナビゲーション">ナビゲーション</a></li>
+  </ul></li>
+  <li><a href="#recent-posts" id="toc-recent-posts" class="nav-link" data-scroll-target="#recent-posts">Recent Posts</a></li>
   </ul>
 </nav>
     </div>
@@ -135,9 +207,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maple’s Website</h1>
+<h1 class="title">Maple60’s Website</h1>
 </div>
 
+<div>
+  <div class="description">
+    R, Python, Quarto, and research workflow notes
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -152,35 +229,164 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
-<p>This website is a personal blog where I write mainly about various programming topics I have learned.</p>
-<p>The information on this blog is provided for general informational purposes only. While I strive to keep the information accurate and up to date, I make no guarantees about the completeness, reliability, or accuracy of the information.</p>
-<p>All posts are listed on the <a href="./posts.html">Posts page</a>.</p>
+<section id="english" class="level2">
+<h2 class="anchored" data-anchor-id="english">English</h2>
+<section id="about" class="level3">
+<h3 class="anchored" data-anchor-id="about">About</h3>
+<p>This is a personal blog and notebook about programming, data analysis, reproducible documents, and research tooling. I mainly write notes about R, Python, Quarto, visualization, website publishing, literature management, and research workflows.</p>
 </section>
-<section id="my-interests" class="level2">
-<h2 class="anchored" data-anchor-id="my-interests">My interests</h2>
-<p>I mainly use the following programming languages:<br>
-- R - Python - JavaScript</p>
-<p>This blog is made with <a href="https://quarto.org/">Quarto</a>.</p>
-<hr>
-</section>
-<section id="このページについて" class="level2">
-<h2 class="anchored" data-anchor-id="このページについて">このページについて</h2>
-<p>このウェブサイトは、私が学んだプログラミングなどに関する様々なトピックについて書いていく個人ブログです。 本ブログに掲載している情報は、可能な限り正確なものとなるよう努めていますが、その正確性・完全性・最新性について保証するものではありません。 本ブログの情報によって生じた損害等について、当サイトは一切の責任を負いかねます。 また、本ブログの内容は筆者個人の見解です。</p>
-<p>すべての投稿は、<a href="./posts.html">Postsページ</a>にリストされています。</p>
-<p>筆者は以下のプログラミング言語を主に使用します。</p>
+<section id="topics" class="level3">
+<h3 class="anchored" data-anchor-id="topics">Topics</h3>
 <ul>
-<li>R</li>
-<li>Python</li>
-<li>JavaScript</li>
+<li><strong>R and data analysis</strong>: Visualization, maps, image processing, statistics, and reproducible analysis workflows.</li>
+<li><strong>Quarto and GitHub Pages</strong>: Website publishing, rendering settings, code links, GitHub Actions, and Japanese text support.</li>
+<li><strong>Python and tooling</strong>: Environment management with <code>uv</code> and small automation notes.</li>
+<li><strong>Research workflow</strong>: Zotero, literature notes, citation management, and data organization.</li>
 </ul>
-<p>このブログは、<a href="https://quarto.org/">Quarto</a>を使用して作成されています。</p>
+</section>
+<section id="navigation" class="level3">
+<h3 class="anchored" data-anchor-id="navigation">Navigation</h3>
+<p>All posts are listed on <a href="./posts.html">Posts</a>. Notes about tools and references are collected on <a href="./recommendations.html">Recommendations</a>.</p>
+<p>The articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions.</p>
+</section>
+</section>
+<section id="日本語" class="level2">
+<h2 class="anchored" data-anchor-id="日本語">日本語</h2>
+<section id="このサイトについて" class="level3">
+<h3 class="anchored" data-anchor-id="このサイトについて">このサイトについて</h3>
+<p>R、Python、Quarto を中心に、データ解析、可視化、ウェブサイト作成、文献管理、研究まわりの作業メモを残しています。</p>
+</section>
+<section id="トピック" class="level3">
+<h3 class="anchored" data-anchor-id="トピック">トピック</h3>
+<ul>
+<li><strong>R とデータ解析</strong>: 可視化、地図、画像処理、統計解析、再現可能な解析ワークフロー。</li>
+<li><strong>Quarto と GitHub Pages</strong>: ウェブサイト作成、レンダリング設定、コードリンク、GitHub Actions、日本語表示。</li>
+<li><strong>Python とツール</strong>: <code>uv</code> を使った環境管理や、小さな自動化のメモ。</li>
+<li><strong>研究ワークフロー</strong>: Zotero、文献メモ、引用管理、データの読み込みや整理。</li>
+</ul>
+</section>
+<section id="ナビゲーション" class="level3">
+<h3 class="anchored" data-anchor-id="ナビゲーション">ナビゲーション</h3>
+<p>すべての記事は <a href="./posts.html">Posts</a> にあります。ツールや参考資料のメモは <a href="./recommendations.html">Recommendations</a> にまとめています。</p>
+<p>記事の内容は、公開時点または更新時点で自分が確認した範囲のメモです。重要な判断に使う場合は、公式ドキュメントや原典も確認してください。</p>
+</section>
+</section>
+<section id="recent-posts" class="level2">
+<h2 class="anchored" data-anchor-id="recent-posts">Recent Posts</h2>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<table class="quarto-listing-table table table-striped table-hover">
+<thead>
+<tr>
+
+<th>
+Date
+</th>
+
+<th>
+Title
+</th>
+
+<th>
+Description
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-categories="cg==" data-listing-date-sort="1779840000000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1779840000000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2364" data-listing-title-sort="RでPrincipal axis regressionをtrait spaceの回転に応用する" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-05-27</span>
+</td>
+<td>
+<a href="./posts/2026-05-27-r-principle-axis-regression_example/index.html" class="title listing-title">RでPrincipal axis regressionをtrait spaceの回転に応用する</a>
+</td>
+<td>
+<span class="listing-description">共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="cg==" data-listing-date-sort="1779753600000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1779840000000" data-listing-reading-time-sort="4" data-listing-word-count-sort="715" data-listing-title-sort="Rで2変量PCAとPrincipal axis regressionの基礎を理解する" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-05-26</span>
+</td>
+<td>
+<a href="./posts/2026-05-26-r-principle-axis-regression/index.html" class="title listing-title">Rで2変量PCAとPrincipal axis regressionの基礎を理解する</a>
+</td>
+<td>
+<span class="listing-description">共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="cg==" data-listing-date-sort="1776124800000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1776124800000" data-listing-reading-time-sort="2" data-listing-word-count-sort="240" data-listing-title-sort="Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-04-14</span>
+</td>
+<td>
+<a href="./posts/2026-04-14-r-tmap-halo/index.html" class="title listing-title">Rの<code>tmap</code>パッケージで地図の上に縁取り文字を表示する方法</a>
+</td>
+<td>
+<span class="listing-description"><code>tmap</code> 4.3から<code>tm_text</code>で文字の縁取りなどの装飾が実装されました</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="cg==" data-listing-date-sort="1776038400000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1776038400000" data-listing-reading-time-sort="1" data-listing-word-count-sort="72" data-listing-title-sort="Rで解析データをクラウドストレージから読み込む" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-04-13</span>
+</td>
+<td>
+<a href="./posts/2026-04-13-r-data-from-cloud-storage/index.html" class="title listing-title">Rで解析データをクラウドストレージから読み込む</a>
+</td>
+<td>
+<span class="listing-description">解析の生データをクラウドストレージから読み込む方法を紹介します</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="ciUyQ3F1YXJ0bw==" data-listing-date-sort="1774396800000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1774396800000" data-listing-reading-time-sort="2" data-listing-word-count-sort="201" data-listing-title-sort="Quarto 1.9がリリースされました" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-03-25</span>
+</td>
+<td>
+<a href="./posts/2026-03-25-quarto-1.9/index.html" class="title listing-title">Quarto 1.9がリリースされました</a>
+</td>
+<td>
+<span class="listing-description">Quarto 1.9がリリースされました。気になる機能をまとめます。</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="cHl0aG9uJTJDdXY=" data-listing-date-sort="1773964800000" data-listing-file-modified-sort="1779860538557" data-listing-date-modified-sort="1773964800000" data-listing-reading-time-sort="1" data-listing-word-count-sort="60" data-listing-title-sort="Pythonで最低限のuvによる環境管理" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-03-20</span>
+</td>
+<td>
+<a href="./posts/2026-03-20-uv-python/index.html" class="title listing-title">Pythonで最低限のuvによる環境管理</a>
+</td>
+<td>
+<span class="listing-description">Pythonの環境管理ツールであるuvを使用して、最低限の環境管理方法をまとめます</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

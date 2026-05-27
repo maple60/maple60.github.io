@@ -37,4 +37,4 @@
 - [QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法](https://maple60.github.io/posts/2026-02-04-quarto-pdf-inlinecode-bg/index.llms.md)
 - [Quartoでコードブロックのファイル名を表示する](https://maple60.github.io/posts/2026-01-24-code-filename/index.llms.md)
 - [Quartoで表示される日付型を変更する](https://maple60.github.io/posts/2026-01-30-quarto-data-format/index.llms.md)
-- [Maple's Website](https://maple60.github.io/index.llms.md)
+- [Maple60's Website](https://maple60.github.io/index.llms.md)
