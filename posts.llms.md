@@ -1,14 +1,14 @@
 # Blog
 
+### [RでPrincipal axis regressionをtrait spaceの回転に応用する](posts/2026-05-27-r-principle-axis-regression_example/index.llms.md)
+
+共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます
+
+2026-05-27
+
 ### [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](posts/2026-05-26-r-principle-axis-regression/index.llms.md)
 
 共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます
-
-2026-05-26
-
-### [RでPrincipal axis regressionを実装してみる](posts/2026-05-27-r-principle-axis-regression_example/index.llms.md)
-
-Principal axis regressionの実装方法について説明します
 
 2026-05-26
 

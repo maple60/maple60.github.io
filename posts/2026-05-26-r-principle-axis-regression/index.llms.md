@@ -10,7 +10,7 @@ Published
 
 Modified
 
-2026-05-26
+2026-05-27
 
 **Principal axis regression** (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます ([Warton et al. 2006](#ref-warton2006))。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。
 
@@ -428,6 +428,10 @@ abline(
 - Rでは、[`cov()`](https://rdrr.io/r/stats/cor.html)関数で共分散行列を計算し、[`eigen()`](https://rdrr.io/r/base/eigen.html)関数で固有値と固有ベクトルを求めることができます。
 - 主軸をデータとともにプロットすることで、データのばらつきの方向を視覚的に理解することができます
 - PCAとPrincipal axis regressionは、共分散行列の固有値・固有ベクトルを用いてデータの主要な変動方向を特定する点で共通しています。
+
+この記事では、2変量データから主軸を1本求める基本的な考え方を確認しました。 次の記事では、この第1固有ベクトルを使って、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸のずれを調べます。
+
+- [RでPrincipal axis regressionをtrait spaceの回転に応用する](../2026-05-27-r-principle-axis-regression_example/)
 
 ## 参考文献
 

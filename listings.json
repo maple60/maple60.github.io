@@ -2,8 +2,8 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2026-05-26-r-principle-axis-regression/index.html",
       "/posts/2026-05-27-r-principle-axis-regression_example/index.html",
+      "/posts/2026-05-26-r-principle-axis-regression/index.html",
       "/posts/2026-04-14-r-tmap-halo/index.html",
       "/posts/2026-04-13-r-data-from-cloud-storage/index.html",
       "/posts/2026-03-25-quarto-1.9/index.html",

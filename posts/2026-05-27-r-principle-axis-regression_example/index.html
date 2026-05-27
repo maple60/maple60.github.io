@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="dcterms.date" content="2026-05-26">
-<meta name="description" content="Principal axis regressionの実装方法について説明します">
-<title>RでPrincipal axis regressionを実装してみる – Maple60’s website</title>
+<meta name="dcterms.date" content="2026-05-27">
+<meta name="description" content="共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます">
+<title>RでPrincipal axis regressionをtrait spaceの回転に応用する – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -178,14 +178,14 @@ div.csl-indent {
   <li><a href="#%E5%90%84%E7%A8%AE%E3%81%8B%E3%82%891%E5%80%8B%E4%BD%93%E3%81%9A%E3%81%A4%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AB%E9%81%B8%E3%81%B6" id="toc-各種から1個体ずつランダムに選ぶ" class="nav-link" data-scroll-target="#%E5%90%84%E7%A8%AE%E3%81%8B%E3%82%891%E5%80%8B%E4%BD%93%E3%81%9A%E3%81%A4%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%81%AB%E9%81%B8%E3%81%B6">各種から1個体ずつランダムに選ぶ</a></li>
   <li><a href="#%E5%9B%9E%E3%83%AA%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%97%E3%81%A6-rotation-angle-%E3%82%92%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B" id="toc-回リサンプリングして-rotation-angle-を計算する" class="nav-link" data-scroll-target="#%E5%9B%9E%E3%83%AA%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%97%E3%81%A6-rotation-angle-%E3%82%92%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B">50回リサンプリングして rotation angle を計算する</a></li>
   <li><a href="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D" id="toc-結果の確認" class="nav-link" data-scroll-target="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D">結果の確認</a></li>
-  <li><a href="#fig.-4-%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E6%8F%8F%E3%81%8F" id="toc-fig.-4-のようにまとめて描く" class="nav-link" data-scroll-target="#fig.-4-%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E6%8F%8F%E3%81%8F">Fig. 4 のようにまとめて描く</a></li>
+  <li><a href="#%E8%87%AA%E4%BD%9C%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%B5%90%E6%9E%9C%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E6%8F%8F%E3%81%8F" id="toc-自作データの結果をまとめて描く" class="nav-link" data-scroll-target="#%E8%87%AA%E4%BD%9C%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%B5%90%E6%9E%9C%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%81%A6%E6%8F%8F%E3%81%8F">自作データの結果をまとめて描く</a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">RでPrincipal axis regressionを実装してみる</h1>
+<h1 class="title">RでPrincipal axis regressionをtrait spaceの回転に応用する</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
   </div>
@@ -193,7 +193,7 @@ div.csl-indent {
 
 <div>
   <div class="description">
-    Principal axis regressionの実装方法について説明します
+    共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます
   </div>
 </div>
 
@@ -204,14 +204,14 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-05-26</p>
+      <p class="date">2026-05-27</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-05-26</p>
+      <p class="date-modified">2026-05-27</p>
     </div>
   </div>
     
@@ -219,10 +219,18 @@ div.csl-indent {
   
 
 
-</header><p>本記事は、Zhou et al. <span class="citation" data-cites="zhou2025">(<a href="#ref-zhou2025" role="doc-biblioref">2025</a>)</span> の Fig. 4 で用いられている考え方に着想を得て、principal axis regression による trait space の主軸推定と回転角の計算を学ぶためのチュートリアルです。ここで使用するデータはすべて教育目的で作成した架空データであり、Zhou et al.&nbsp;(2025) の元データ、図から読み取った値、または論文の結果を再現するためのデータではありません。解析手順や生態学的解釈の詳細については、原著論文を参照してください。</p>
-<p>Principal axis regression (PAR)は、主成分分析と似たような手法であり、データの主要な変動方向を捉えるために使用されます <span class="citation" data-cites="bueno2023">(<a href="#ref-bueno2023" role="doc-biblioref">Bueno et al. 2023</a>)</span>。</p>
+</header><p>前回の記事 <a href="../2026-05-26-r-principle-axis-regression/">Rで2変量PCAとPrincipal axis regressionの基礎を理解する</a> では、2変量データの共分散行列を固有値分解し、第1固有ベクトルを主軸として描くところまでを確認しました。 本記事では、その考え方を少し進めて、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸がどれくらいずれるかを調べます。</p>
+<p>ここでいう principal axis regression (PAR) は、前回と同じく、共分散行列の第1固有ベクトルを2変量データの主軸として使う方法です。 文献上は、major axis (MA) や standardised major axis (SMA) などの2変量 line-fitting 方法として整理されることが多く、本記事の実装はこのうち共分散行列ベースのMAに近い考え方です <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>。</p>
+<p>応用例の発想は、Zhou et al. <span class="citation" data-cites="zhou2025">(<a href="#ref-zhou2025" role="doc-biblioref">2025</a>)</span> が扱っている「種間レベルの trait space と、種内変異を含めた trait space の向きの違い」という問いにあります。 ただし、本記事は原著論文の図・文章・データを再現するものではありません。 本文中のデータはすべて教育目的で作成した架空データであり、原著論文の数値、図から読み取った座標、解析結果は使用していません。 原著論文の具体的な解析手順や生態学的解釈については、必ず原著論文を参照してください。</p>
 <section id="principal-axis-regressionの概要" class="level2"><h2 class="anchored" data-anchor-id="principal-axis-regressionの概要">Principal axis regressionの概要</h2>
-<p>Principal axis regressionは、データの共分散行列を計算し、その固有値と固有ベクトルを求めることで、データの主要な変動方向を特定します。これにより、次元削減や特徴抽出が可能になります。</p>
+<p>Principal axis regressionは、データの共分散行列を計算し、その固有値と固有ベクトルを求めることで、データの主要な変動方向を特定します。 第1固有ベクトルは、データのばらつきが最も大きい方向を表します。 この方向を直線として描くと、点群の流れを要約する主軸として解釈できます。</p>
+<p>ここでは、2つの軸を比較します。</p>
+<ul>
+<li>種ごとの代表値から求める <code>interspecific axis</code>
+</li>
+<li>各種から1個体ずつ選んだデータから求める、種内変異を含んだ軸</li>
+</ul>
+<p>固有ベクトルの符号は任意なので、軸どうしの角度を計算するときは、反対向きの同じ軸を同じものとして扱います。 また、前回と同じく、<code>x</code> と <code>y</code> は同じスケールの説明用変数として扱います。 実データで単位やスケールが大きく異なる場合は、log変換、標準化、または相関行列を使うかを別途検討する必要があります。</p>
 </section><section id="rでの実装" class="level2"><h2 class="anchored" data-anchor-id="rでの実装">Rでの実装</h2>
 <p>今回の実装では、次の順番で処理します。</p>
 <ol type="1">
@@ -230,11 +238,11 @@ div.csl-indent {
 <li>種ごとの代表値を使って、種間レベルの主軸を求める</li>
 <li>各種から1個体ずつ取り出して、種内変異を含む主軸を繰り返し推定する</li>
 <li>種間レベルの主軸と、種内変異を含む主軸の角度差を計算する</li>
-<li>固有値の比を使って、種内変異がtrait spaceの各方向にどれくらい効いているかを可視化する</li>
+<li>種間軸に沿った分散比を使って、種内変異を含めたときのばらつきの増え方を可視化する</li>
 </ol>
-<p>ここで使う <code>x</code> と <code>y</code> は、実データのtrait名ではなく、説明用の2次元traitです。 <code>x</code> を防御形質、<code>y</code> を栄養獲得形質のようなものとして読み替えると、Fig. 4の構造が理解しやすくなります。</p>
+<p>ここで使う <code>x</code> と <code>y</code> は、実データのtrait名ではなく、説明用の2次元traitです。 <code>x</code> を防御形質、<code>y</code> を栄養獲得形質のようなものとして読み替えると、種間差と種内差が異なる向きを持つ状況を考えやすくなります。</p>
 <section id="データを作る" class="level3"><h3 class="anchored" data-anchor-id="データを作る">データを作る</h3>
-<p><code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>関数を使用して種ごとの中心位置を作り、そのまわりに種内変異を持つ2次元のデータセットを作成します。 種内変異は、種ごとの中央値が中心位置に戻るように、対称なスコアとして作ります。 このデータセットは、2つのグループ（落葉樹っぽいグループと常緑樹っぽいグループ）を含み、各グループ内で種ごとに個体値がばらつくように設計されています。 ここでは、種平均のばらつきと、同じ種の中での個体差を別々の標準偏差で指定できるようにしています。 さらに、種平均が並ぶ方向と種内変異が伸びる方向を別々に指定します。 このようにすると、Fig. 4cのように「種間軸は斜めだが、種内変異を含む軸は別方向に固まる」データを作れます。</p>
+<p><code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>関数を使用して種ごとの中心位置を作り、そのまわりに種内変異を持つ2次元のデータセットを作成します。 種内変異は、種ごとの中央値が中心位置に戻るように、対称なスコアとして作ります。 このデータセットは、2つのグループ（落葉樹っぽいグループと常緑樹っぽいグループ）を含み、各グループ内で種ごとに個体値がばらつくように設計されています。 ここでは、種平均のばらつきと、同じ種の中での個体差を別々の標準偏差で指定できるようにしています。 さらに、種平均が並ぶ方向と種内変異が伸びる方向を別々に指定します。 このようにすると、「種間軸はある方向に伸びるが、種内変異を含めると主軸が別方向に回転する」という状況を、自作データで確認できます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 乱数を使うため、毎回同じ結果になるようにseedを固定します。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -340,7 +348,7 @@ div.csl-indent {
 <span></span>
 <span><span class="co"># 常緑樹っぽいグループです。</span></span>
 <span><span class="co"># 種平均は斜め方向に並べ、個体差はx方向に強く出るようにしています。</span></span>
-<span><span class="co"># これにより、灰色の種間軸は青い種内軸からおよそ45度ずれます。</span></span>
+<span><span class="co"># これにより、種間軸と種内変異を含む軸が意図的にずれます。</span></span>
 <span><span class="va">dat_E</span> <span class="op">&lt;-</span> <span class="fu">sim_group</span><span class="op">(</span></span>
 <span>  group <span class="op">=</span> <span class="st">"E"</span>,</span>
 <span>  n_species <span class="op">=</span> <span class="fl">40</span>,</span>
@@ -383,7 +391,7 @@ div.csl-indent {
 <span></span>
 <span>  <span class="co"># 固有値分解を行います。</span></span>
 <span>  <span class="co"># eigen()は、分散が大きい順に固有値と固有ベクトルを返します。</span></span>
-<span>  <span class="va">eg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
+<span>  <span class="va">eg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">S</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">vectors</span> <span class="op">&lt;-</span> <span class="va">eg</span><span class="op">$</span><span class="va">vectors</span></span>
 <span></span>
@@ -416,13 +424,21 @@ div.csl-indent {
 <span>  <span class="co"># 2つのベクトルのなす角を内積から計算します。</span></span>
 <span>  <span class="co"># abs()を使うことで、向きが反対の同じ軸を0度として扱います。</span></span>
 <span>  <span class="va">cos_angle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">v1</span> <span class="op">*</span> <span class="va">v2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">v1</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">v2</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">cos_angle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">cos_angle</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">acos</a></span><span class="op">(</span><span class="va">cos_angle</span><span class="op">)</span> <span class="op">*</span> <span class="fl">180</span> <span class="op">/</span> <span class="va">pi</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">variance_along_axis</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">axis</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># 指定した軸方向にデータを射影し、その方向の分散を計算します。</span></span>
+<span>  <span class="co"># var()は平均からのずれを使うため、ここでは明示的な中心化は不要です。</span></span>
+<span>  <span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">axis</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">scores</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>principal_axis() は、要するに以下の処理を行っています。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section><section id="種平均の-trait-space-を作る" class="level3"><h3 class="anchored" data-anchor-id="種平均の-trait-space-を作る">種平均の trait space を作る</h3>
-<p>論文では、mean–variance effect を避けるために log変換後の中央値を使っているようですが、今回は単純に中央値をとってみます。 ここで作る <code>species_med</code> は、種ごとに1点だけを持つデータです。 したがって、このデータから求める主軸は、種間差を反映した <code>interspecific axis</code> とみなせます。</p>
+<p>実データでは、形質の分布やスケールに応じて、log変換や代表値の選び方を慎重に決める必要があります。 今回は説明用の架空データなので、単純に種ごとの中央値をとってみます。 ここで作る <code>species_med</code> は、種ごとに1点だけを持つデータです。 したがって、このデータから求める主軸は、種間差を反映した <code>interspecific axis</code> とみなせます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">species_med</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span></span>
 <span>  <span class="co"># xとyを同時に集計します。</span></span>
@@ -470,7 +486,7 @@ div.csl-indent {
 </div>
 <p>これが、論文でいう interspecific eigenvector に相当します。</p>
 </section><section id="各種から1個体ずつランダムに選ぶ" class="level3"><h3 class="anchored" data-anchor-id="各種から1個体ずつランダムに選ぶ">各種から1個体ずつランダムに選ぶ</h3>
-<p>論文では、種ごとのサンプル数の不均衡を避けるため、各反復で「各種から1個体」を選び、これを50回繰り返しています。 この処理により、種数はそのままにしつつ、種内変異を反映した個体レベルのtrait spaceを繰り返し作れます。</p>
+<p>ここでは、種ごとのサンプル数の影響をそろえるため、各反復で「各種から1個体」を選びます。 この処理により、種数はそのままにしつつ、種内変異を反映した個体レベルのtrait spaceを繰り返し作れます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_one_per_species</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># speciesごとにdata.frameを分割します。</span></span>
@@ -486,7 +502,7 @@ div.csl-indent {
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="回リサンプリングして-rotation-angle-を計算する" class="level3"><h3 class="anchored" data-anchor-id="回リサンプリングして-rotation-angle-を計算する">50回リサンプリングして rotation angle を計算する</h3>
-<p><code>run_resampling()</code> は、Fig. 4の上段と下段に使う値をまとめて計算する関数です。 入力は、個体レベルのデータ <code>dat_group</code> と、種代表値のデータ <code>species_med_group</code> です。 出力には、種間軸、リサンプリングごとの種内軸、軸の角度差、固有値比が入ります。</p>
+<p><code>run_resampling()</code> は、作図に使う値をまとめて計算する関数です。 入力は、個体レベルのデータ <code>dat_group</code> と、種代表値のデータ <code>species_med_group</code> です。 出力には、種間軸、リサンプリングごとの種内軸、軸の角度差、種間軸方向の分散比が入ります。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">run_resampling</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dat_group</span>, <span class="va">species_med_group</span>, <span class="va">n_iter</span> <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># 種代表値から求める主軸です。</span></span>
@@ -516,20 +532,27 @@ div.csl-indent {
 <span>    <span class="op">)</span></span>
 <span></span>
 <span>    <span class="co"># 種間軸と、種内変異を含む軸の角度差です。</span></span>
-<span>    <span class="co"># Fig. 4上段の角度に対応する量です。</span></span>
+<span>    <span class="co"># 種間軸からどれくらい回転したかを表す量です。</span></span>
 <span>    <span class="va">angles</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">angle_between_axes</span><span class="op">(</span></span>
 <span>      <span class="va">pa_inter</span><span class="op">$</span><span class="va">first_vector</span>,</span>
 <span>      <span class="va">pa_intra</span><span class="op">$</span><span class="va">first_vector</span></span>
 <span>    <span class="op">)</span></span>
 <span></span>
-<span>    <span class="co"># 第1軸方向の分散が、種間レベルに対してどれくらい大きいかを見ます。</span></span>
-<span>    <span class="co"># 1より大きければ、種内変異を含めたときにその方向の分散が増えています。</span></span>
-<span>    <span class="va">eig_ratio_dim1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">pa_intra</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">/</span></span>
-<span>      <span class="va">pa_inter</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="co"># 種間軸の第1軸方向に射影した分散が、</span></span>
+<span>    <span class="co"># 種代表値だけの場合に比べてどれくらい大きいかを見ます。</span></span>
+<span>    <span class="co"># 1より大きければ、その種間軸方向でばらつきが増えています。</span></span>
+<span>    <span class="va">eig_ratio_dim1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">variance_along_axis</span><span class="op">(</span></span>
+<span>      <span class="va">sampled</span><span class="op">$</span><span class="va">x</span>,</span>
+<span>      <span class="va">sampled</span><span class="op">$</span><span class="va">y</span>,</span>
+<span>      <span class="va">pa_inter</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="op">)</span> <span class="op">/</span> <span class="va">pa_inter</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
-<span>    <span class="co"># 第2軸方向についても同じ比を計算します。</span></span>
-<span>    <span class="va">eig_ratio_dim2</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">pa_intra</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span></span>
-<span>      <span class="va">pa_inter</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>    <span class="co"># 種間軸の第2軸方向についても同じ比を計算します。</span></span>
+<span>    <span class="va">eig_ratio_dim2</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">variance_along_axis</span><span class="op">(</span></span>
+<span>      <span class="va">sampled</span><span class="op">$</span><span class="va">x</span>,</span>
+<span>      <span class="va">sampled</span><span class="op">$</span><span class="va">y</span>,</span>
+<span>      <span class="va">pa_inter</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
+<span>    <span class="op">)</span> <span class="op">/</span> <span class="va">pa_inter</span><span class="op">$</span><span class="va">eigenvalues</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span></span>
 <span>    <span class="co"># 後で作図できるように、軸そのものとサンプルも保存します。</span></span>
 <span>    <span class="va">axes</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">pa_intra</span></span>
@@ -569,7 +592,7 @@ div.csl-indent {
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="結果の確認" class="level3"><h3 class="anchored" data-anchor-id="結果の確認">結果の確認</h3>
-<p>まず、角度差と固有値比の分布を数値で確認します。 <code>angles</code> は種間軸からどれくらい回転したかを表し、<code>eig_ratio_dim1</code> と <code>eig_ratio_dim2</code> は第1軸・第2軸それぞれの分散の増え方を表します。</p>
+<p>まず、角度差と分散比の分布を数値で確認します。 <code>angles</code> は種間軸からどれくらい回転したかを表します。 <code>eig_ratio_dim1</code> と <code>eig_ratio_dim2</code> は、種間軸の第1軸・第2軸それぞれに沿った分散が、種内変異を含めたサンプリングでどれくらい増えたかを表します。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 主軸の回転角です。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_all</span><span class="op">$</span><span class="va">angles</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -587,41 +610,41 @@ div.csl-indent {
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   37.12   42.14   43.19   43.40   44.84   50.02 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第1軸方向の固有値比です。</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 種間第1軸方向の分散比です。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_all</span><span class="op">$</span><span class="va">eig_ratio_dim1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  3.004   3.585   3.886   3.929   4.267   4.756 </code></pre>
+  2.780   3.322   3.663   3.677   4.014   4.550 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_D</span><span class="op">$</span><span class="va">eig_ratio_dim1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  1.087   1.465   1.669   1.659   1.792   2.217 </code></pre>
+  1.087   1.465   1.668   1.659   1.792   2.217 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_E</span><span class="op">$</span><span class="va">eig_ratio_dim1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  3.157   4.630   5.193   5.183   5.775   6.892 </code></pre>
+  1.672   2.685   3.024   3.034   3.397   4.235 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第2軸方向の固有値比です。</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 種間第2軸方向の分散比です。</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_all</span><span class="op">$</span><span class="va">eig_ratio_dim2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  1.043   1.173   1.217   1.217   1.276   1.339 </code></pre>
+  1.522   1.915   2.143   2.127   2.359   2.964 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_D</span><span class="op">$</span><span class="va">eig_ratio_dim2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  1.107   1.366   1.597   1.589   1.771   2.097 </code></pre>
+  1.139   1.446   1.644   1.627   1.796   2.106 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res_E</span><span class="op">$</span><span class="va">eig_ratio_dim2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  2.245   2.807   2.867   2.840   2.952   3.083 </code></pre>
+  9.193  11.629  12.901  12.860  14.168  17.720 </code></pre>
 </div>
 </div>
-</section><section id="fig.-4-のようにまとめて描く" class="level3"><h3 class="anchored" data-anchor-id="fig.-4-のようにまとめて描く">Fig. 4 のようにまとめて描く</h3>
-<p>Zhou et al. <span class="citation" data-cites="zhou2025">(<a href="#ref-zhou2025" role="doc-biblioref">2025</a>)</span> のFig. 4では、上段でtrait spaceの回転、下段でinterspecificな固有値に対するintraspecificな固有値の比を示しています。 ここでも同じ構成で、全データ、落葉樹っぽいグループ、常緑樹っぽいグループを並べてみます。</p>
+</section><section id="自作データの結果をまとめて描く" class="level3"><h3 class="anchored" data-anchor-id="自作データの結果をまとめて描く">自作データの結果をまとめて描く</h3>
+<p>最後に、種間軸と種内変異を含む軸のずれ、そして種間軸方向の分散比を1枚にまとめます。 この図は、Zhou et al. <span class="citation" data-cites="zhou2025">(<a href="#ref-zhou2025" role="doc-biblioref">2025</a>)</span> の論点を理解するための自作図であり、原著論文の図を複製したものではありません。 全データ、落葉樹っぽいグループ、常緑樹っぽいグループを並べてみます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 図全体で使う色です。</span></span>
 <span><span class="co"># all, D, Eは点と輪郭の色、intraとinterは主軸の色です。</span></span>
@@ -668,7 +691,7 @@ div.csl-indent {
 <span>  <span class="va">z</span> <span class="op">&lt;-</span> <span class="va">z</span><span class="op">[</span><span class="va">z</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">]</span></span>
 <span></span>
 <span>  <span class="co"># 密度の高い部分だけを輪郭線として描きます。</span></span>
-<span>  <span class="co"># Fig. 4の分布のかたまりを示す線に近い役割です。</span></span>
+<span>  <span class="co"># 点の分布のかたまりを示すための補助線です。</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/contour.html">contour</a></span><span class="op">(</span></span>
 <span>    <span class="va">dens</span>,</span>
 <span>    add <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -694,19 +717,14 @@ div.csl-indent {
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="va">x0</span> <span class="op">+</span> <span class="fl">0.06</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">xlim</span><span class="op">)</span>, <span class="va">y1</span>, <span class="st">"Dim.2"</span>, cex <span class="op">=</span> <span class="fl">0.85</span>, srt <span class="op">=</span> <span class="fl">90</span>, adj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># リサンプリングで得た角度分布を、Fig. 4風のラベルに整形します。</span></span>
-<span><span class="co"># ここでは簡易的に、2.5%点と97.5%点を信頼区間のように表示しています。</span></span>
+<span><span class="co"># リサンプリングで得た角度分布を、図中ラベルに整形します。</span></span>
+<span><span class="co"># ここでは簡易的に、2.5%点と97.5%点を範囲として表示しています。</span></span>
 <span><span class="va">angle_label</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">angles</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ci</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">angles</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span>, names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># 下限が0より大きければ、0度からずれているとみなしてP &lt; 0.05と表示します。</span></span>
-<span>  <span class="co"># 厳密な検定ではなく、このシミュレーション図用の簡易表示です。</span></span>
-<span>  <span class="va">p_text</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">ci</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="st">"P &lt; 0.05"</span> <span class="kw">else</span> <span class="st">"n.s."</span></span>
-<span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span></span>
-<span>    <span class="st">"%.2f°  %s\n(%.2f - %.2f)"</span>,</span>
+<span>    <span class="st">"%.2f°\n(%.2f - %.2f)"</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">angles</span><span class="op">)</span>,</span>
-<span>    <span class="va">p_text</span>,</span>
 <span>    <span class="va">ci</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>    <span class="va">ci</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>  <span class="op">)</span></span>
@@ -800,7 +818,7 @@ div.csl-indent {
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 下段の固有値比のboxplotを描く関数です。</span></span>
+<span><span class="co"># 下段の分散比のboxplotを描く関数です。</span></span>
 <span><span class="co"># valuesは、All data, Deciduous, Evergreenの3つの数値ベクトルを入れたlistです。</span></span>
 <span><span class="va">plot_ratio_panel</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">values</span>, <span class="va">panel</span>, <span class="va">main</span>, <span class="va">colors</span>, <span class="va">ylim</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># y軸範囲が指定されていない場合は、データと基準線1が入る範囲を自動で決めます。</span></span>
@@ -809,7 +827,7 @@ div.csl-indent {
 <span>    <span class="va">ylim</span> <span class="op">&lt;-</span> <span class="va">ylim</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.12</span>, <span class="fl">0.12</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">ylim</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="co"># 箱ひげ図で、固有値比の分布をグループ間で比較します。</span></span>
+<span>  <span class="co"># 箱ひげ図で、分散比の分布をグループ間で比較します。</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span></span>
 <span>    <span class="va">values</span>,</span>
 <span>    names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All data"</span>, <span class="st">"Deciduous"</span>, <span class="st">"Evergreen"</span><span class="op">)</span>,</span>
@@ -817,7 +835,7 @@ div.csl-indent {
 <span>    border <span class="op">=</span> <span class="va">colors</span>,</span>
 <span>    outline <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>    ylim <span class="op">=</span> <span class="va">ylim</span>,</span>
-<span>    ylab <span class="op">=</span> <span class="st">"Eigenvalue intraspecies / interspecies"</span>,</span>
+<span>    ylab <span class="op">=</span> <span class="st">"Projected variance ratio"</span>,</span>
 <span>    main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"("</span>, <span class="va">panel</span>, <span class="st">")  "</span>, <span class="va">main</span><span class="op">)</span>,</span>
 <span>    las <span class="op">=</span> <span class="fl">1</span></span>
 <span>  <span class="op">)</span></span>
@@ -838,12 +856,9 @@ div.csl-indent {
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span></span>
-<span>  <span class="co"># ratio = 1は、種内変異を入れても分散が増えていない基準線です。</span></span>
-<span>  <span class="co"># 1より上に分布すれば、その軸方向で種内変異の寄与が大きいと読めます。</span></span>
+<span>  <span class="co"># ratio = 1は、種代表値だけの場合と同じ分散であることを表す基準線です。</span></span>
+<span>  <span class="co"># 1より上に分布すれば、その種間軸方向でばらつきが増えていると読めます。</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">1.4</span><span class="op">)</span></span>
-<span></span>
-<span>  <span class="co"># Fig. 4の見た目に合わせて、基準線の近くにアスタリスクを置いています。</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">values</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">values</span><span class="op">)</span><span class="op">)</span>, <span class="st">"*"</span>, pos <span class="op">=</span> <span class="fl">3</span>, cex <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># 下段の3グループに対応する色です。</span></span>
@@ -901,7 +916,7 @@ div.csl-indent {
 <span>  <span class="va">lim</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 下段左: 第1軸方向の固有値比です。</span></span>
+<span><span class="co"># 下段左: 種間第1軸方向の分散比です。</span></span>
 <span><span class="fu">plot_ratio_panel</span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">res_all</span><span class="op">$</span><span class="va">eig_ratio_dim1</span>, <span class="va">res_D</span><span class="op">$</span><span class="va">eig_ratio_dim1</span>, <span class="va">res_E</span><span class="op">$</span><span class="va">eig_ratio_dim1</span><span class="op">)</span>,</span>
 <span>  <span class="st">"d"</span>,</span>
@@ -909,7 +924,7 @@ div.csl-indent {
 <span>  <span class="va">plot_cols</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 下段右: 第2軸方向の固有値比です。</span></span>
+<span><span class="co"># 下段右: 種間第2軸方向の分散比です。</span></span>
 <span><span class="fu">plot_ratio_panel</span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">res_all</span><span class="op">$</span><span class="va">eig_ratio_dim2</span>, <span class="va">res_D</span><span class="op">$</span><span class="va">eig_ratio_dim2</span>, <span class="va">res_E</span><span class="op">$</span><span class="va">eig_ratio_dim2</span><span class="op">)</span>,</span>
 <span>  <span class="st">"e"</span>,</span>
@@ -929,8 +944,8 @@ div.csl-indent {
 
 
 </section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-bueno2023" class="csl-entry" role="listitem">
-Bueno, C. Guillermo, Aurele Toussaint, Sabrina Träger, et al. 2023. <span>“Reply to: The Importance of Trait Selection in Ecology.”</span> <em>Nature</em> 618 (7967): E31–34. <a href="https://doi.org/10.1038/s41586-023-06149-7">https://doi.org/10.1038/s41586-023-06149-7</a>.
+<div id="ref-warton2006" class="csl-entry" role="listitem">
+Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. <span>“Bivariate Line-Fitting Methods for Allometry.”</span> <em>Biological Reviews</em> 81 (2): 259–91. <a href="https://doi.org/10.1017/S1464793106007007">https://doi.org/10.1017/S1464793106007007</a>.
 </div>
 <div id="ref-zhou2025" class="csl-entry" role="listitem">
 Zhou, Guangkai, Daniel F. Petticord, Xingchang Wang, et al. 2025. <span>“Intraspecific Variation in the Growth–Defense Trade-Off Among Deciduous and Evergreen Broadleaf Woody Plants.”</span> <em>New Phytologist</em>, ahead of print, November 23. <a href="https://doi.org/10.1111/nph.70781">https://doi.org/10.1111/nph.70781</a>.

@@ -2,7 +2,7 @@
 title: "Rで2変量PCAとPrincipal axis regressionの基礎を理解する"
 description: "共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます"
 date: "2026-05-26"
-date-modified: "2026-05-26"
+date-modified: "2026-05-27"
 draft: false
 categories: [r]
 bibliography: references.bib
@@ -439,6 +439,11 @@ abline(
 - Rでは、`cov()`関数で共分散行列を計算し、`eigen()`関数で固有値と固有ベクトルを求めることができます。
 - 主軸をデータとともにプロットすることで、データのばらつきの方向を視覚的に理解することができます
 - PCAとPrincipal axis regressionは、共分散行列の固有値・固有ベクトルを用いてデータの主要な変動方向を特定する点で共通しています。
+
+この記事では、2変量データから主軸を1本求める基本的な考え方を確認しました。
+次の記事では、この第1固有ベクトルを使って、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸のずれを調べます。
+
+- [RでPrincipal axis regressionをtrait spaceの回転に応用する](../2026-05-27-r-principle-axis-regression_example/)
 
 ## 参考文献
 
