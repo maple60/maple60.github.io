@@ -6,6 +6,12 @@ Principal axis regressionの実装方法について説明します
 
 2026-05-26
 
+### [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](posts/2026-05-26-r-principle-axis-regression/index.llms.md)
+
+共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます
+
+2026-05-26
+
 ### [Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法](posts/2026-04-14-r-tmap-halo/index.llms.md)
 
 `tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました
