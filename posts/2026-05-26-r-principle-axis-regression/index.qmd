@@ -224,24 +224,165 @@ $$
 x_i - \bar{x}, \quad y_i - \bar{y}
 $$
 
-とします。
-ここで、ある方向を表すベクトルを$\mathbf{u}$を以下のように定義します。
+とします(平均中心窩)。
+このとき、平均中心化した座標ベクトルとみて、$\mathbf{z}_i$を以下のように定義します。
+
+$$
+\mathbf{z}_i = \begin{bmatrix} x_i - \bar{x} \\ y_i - \bar{y} \end{bmatrix}
+$$
+
+$\mathbf{z}_i$を視覚的に表すと、以下のようになります。
+
+```{r}
+# 平均中心化した座標
+z <- scale(cbind(x, y), center = TRUE, scale = FALSE)
+plot(x, y, asp = 1, pch = 16)
+abline(h = mean(y), v = mean(x), col = "#D55E00", lwd = 2, lty = 2)
+#各点から平均へのベクトルを描画
+for (i in 1:n) {
+  segments(mean(x), mean(y), x[i], y[i], col = "gray70")
+}
+```
+
+灰色の線は、各点から平均へのベクトルを表しています。
+これが$\mathbf{z}_i$です。
+
+ここで、ある方向を表すベクトル$\mathbf{u}$を以下のように定義します。
 
 $$
 \mathbf{u} = \begin{bmatrix} u_x \\ u_y \end{bmatrix}
 $$
 
 このベクトルは、直線の向きを表します。
+ベクトルの大きさは、方向を表すために1に正規化されているとします (単位ベクトル)。
+つまり、$\|\mathbf{u}\| = 1$ となります。
+式にすると、以下のようになります。
+
+$$
+\mathbf{u}^T\mathbf{u} = u_x^2 + u_y^2 = 1
+$$
 
 各点がこの方向にどれくらい進んでいるかは、次のように計算できます。
 
 $$
-s_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
+s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 $$
 
-ここで、$s_i$は点$i$が方向$\mathbf{u}$に沿ってどれだけ進んでいるかを表すスカラー値です。
-つまり、それぞれの点の「直線方向の位置」のようなものです。
+ここで、$s_i$は点$i$が方向$\mathbf{u}$に沿ってどれだけ進んでいるかを表す値です。
 この $s_i$ のばらつきが大きいほど、その直線方向にデータが大きく広がっていることになります。
+
+イメージとしては、各点からを$\mathbf{u}$の方向に引いた直線に対して垂直な線を引きます。
+その交点が、点から$\mathbf{u}$の方向に沿った位置になります。
+$s_i$は、データ全体の平均点から$\mathbf{u}$の方向に沿った位置(距離)を表す値です。
+
+視覚的に表すと、以下のようになります。
+
+```{r}
+# 平均中心化した座標
+z <- scale(cbind(x, y), center = TRUE, scale = FALSE)
+
+# 平均点
+mx <- mean(x)
+my <- mean(y)
+
+u <- c(0.8, 0.6) # 方向ベクトル u
+u <- u / sqrt(sum(u^2)) # 念のため単位ベクトルに正規化
+
+# 各点の u 方向への射影スカラー s_i
+s <- as.vector(z %*% u)
+# 射影点：平均点 + s_i u
+proj_x <- mx + s * u[1]
+proj_y <- my + s * u[2]
+
+# 描画
+plot(x, y, asp = 1, pch = 16, type = "n")
+usr <- par("usr") # 描画範囲
+
+# 1刻みのグリッド
+abline(
+  v = seq(floor(usr[1]), ceiling(usr[2]), by = 1),
+  col = "gray70",
+  lty = "dotted"
+)
+abline(
+  h = seq(floor(usr[3]), ceiling(usr[4]), by = 1),
+  col = "gray70",
+  lty = "dotted"
+)
+
+# 平均を通る縦横線
+abline(h = my, v = mx, col = "#D55E00", lwd = 2, lty = 2)
+
+# 方向 u を表す直線
+if (abs(u[1]) < .Machine$double.eps) {
+  abline(
+    v = mx,
+    col = adjustcolor("#0072B2", alpha.f = 0.5),
+    lwd = 3,
+    lty = "dashed"
+  )
+} else {
+  abline(
+    a = my - (u[2] / u[1]) * mx,
+    b = u[2] / u[1],
+    col = adjustcolor("#0072B2", alpha.f = 0.5),
+    lwd = 3,
+    lty = "dashed"
+  )
+}
+
+# 各点の平均中心化ベクトル z_i
+for (i in seq_along(x)) {
+  segments(mx, my, x[i], y[i], col = "gray90")
+}
+
+# 各点から射影点への垂線：u 方向では説明できない残差
+for (i in seq_along(x)) {
+  segments(
+    x[i],
+    y[i],
+    proj_x[i],
+    proj_y[i],
+    col = adjustcolor("#009E73", alpha.f = 0.5),
+    lwd = 2
+  )
+}
+
+# 平均点から射影点まで：s_i u
+for (i in seq_along(x)) {
+  segments(
+    mx,
+    my,
+    proj_x[i],
+    proj_y[i],
+    col = adjustcolor("#CC79A7", alpha.f = 0.1),
+    lwd = 4
+  )
+}
+
+# 元の点
+points(x, y, pch = 16, col = adjustcolor("black", alpha.f = 0.5))
+
+# 方向ベクトル u の矢印
+arrows(
+  mx,
+  my,
+  mx + u[1],
+  my + u[2],
+  col = "#0072B2",
+  lwd = 4,
+  length = 0.2
+)
+```
+
+青い矢印が方向$\mathbf{u}$を表しています。
+緑の線は、各点から$\mathbf{u}$の方向に引いた直線に対して垂直な線を表しています。
+わかりにくいですが、ピンクの線は、平均点から$\mathbf{u}$の方向に沿った位置を表しています。
+この距離が$\mathbf{s}_i$です。
+$s_i$が大きいほど、点は$\mathbf{u}$の方向に沿って大きくばらついていることになります。
+この**ばらつきが大きいほど、$\mathbf{u}$の方向はデータの主要な変動方向に近い**と考えることができます。
+
+### ばらつきを計算するための共分散行列
 
 このばらつきを計算するために、共分散行列を使います。
 共分散行列$\Sigma$は、データのばらつきと変動の方向を表す行列です。
@@ -274,6 +415,9 @@ $$
 $$
 
 つまり、共分散行列は、任意の方向 $\mathbf{u}$ に対して、**その方向のばらつきがどれくらいかを計算するための情報を持っている**と考えることができます。
+
+
+### ばらつきを最大にする方向を求める
 
 では、どの方向 $\mathbf{u}$ を選べば、ばらつきが最大になるのでしょうか。
 
