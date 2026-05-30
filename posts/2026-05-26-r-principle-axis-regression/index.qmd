@@ -419,6 +419,80 @@ $$
 
 つまり、共分散行列は、任意の方向 $\mathbf{u}$ に対して、**その方向に射影したときのばらつきがどれくらいかを計算するための情報を持っている**と考えることができます。
 
+::: {.callout-note title="なぜ$\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}$になるのか" collapse="true"}
+
+平均中心化した点を
+
+$$
+\mathbf{z}_i =
+\begin{bmatrix}
+x_i-\bar{x} \\
+y_i-\bar{y}
+\end{bmatrix}
+$$
+
+とし、方向$\mathbf{u}$への射影スコアを
+
+$$
+s_i = \mathbf{u}^{\mathrm{T}}\mathbf{z}_i
+$$
+
+とします。
+平均中心化しているので、$\bar{s}=0$です。
+したがって、射影スコアの分散は
+
+$$
+\mathrm{Var}(s)
+=
+\frac{1}{n-1}\sum_{i=1}^{n}s_i^2
+$$
+
+と書けます。ここに $s_i=\mathbf{u}^{\mathrm{T}}\mathbf{z}_i$ を代入すると、
+
+$$
+\mathrm{Var}(s)
+=
+\frac{1}{n-1}
+\sum_{i=1}^{n}
+(\mathbf{u}^{\mathrm{T}}\mathbf{z}_i)^2
+$$
+
+となります。内積の二乗は
+
+$$
+(\mathbf{u}^{\mathrm{T}}\mathbf{z}_i)^2
+=
+\mathbf{u}^{\mathrm{T}}
+\mathbf{z}_i
+\mathbf{z}_i^{\mathrm{T}}
+\mathbf{u}
+$$
+
+と書けるので、
+
+$$
+\mathrm{Var}(s)
+=
+\mathbf{u}^{\mathrm{T}}
+\left(
+\frac{1}{n-1}
+\sum_{i=1}^{n}
+\mathbf{z}_i\mathbf{z}_i^{\mathrm{T}}
+\right)
+\mathbf{u}
+$$
+
+となります。括弧の中は共分散行列$\Sigma$なので、
+
+$$
+\mathrm{Var}(s)
+=
+\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}
+$$
+
+です。
+:::
+
 
 ### ばらつきを最大にする方向を求める
 
