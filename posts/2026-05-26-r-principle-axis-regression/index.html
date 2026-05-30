@@ -94,7 +94,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c76623683e410cb175cf40c325d638a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-a170cf21a91f252bdb60defb6841b97f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -202,7 +202,13 @@ window.Quarto = {
   </ul>
 </li>
   <li><a href="#pca%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82" id="toc-pcaとの関係" class="nav-link" data-scroll-target="#pca%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82">PCAとの関係</a></li>
-  <li><a href="#%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97%E5%9B%BA%E6%9C%89%E5%80%A4%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%8C%E8%A1%A8%E3%81%99%E6%84%8F%E5%91%B3" id="toc-共分散行列固有値固有ベクトルが表す意味" class="nav-link" data-scroll-target="#%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97%E5%9B%BA%E6%9C%89%E5%80%A4%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%8C%E8%A1%A8%E3%81%99%E6%84%8F%E5%91%B3">共分散行列、固有値、固有ベクトルが表す意味</a></li>
+  <li>
+<a href="#%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97%E5%9B%BA%E6%9C%89%E5%80%A4%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%8C%E8%A1%A8%E3%81%99%E6%84%8F%E5%91%B3" id="toc-共分散行列固有値固有ベクトルが表す意味" class="nav-link" data-scroll-target="#%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97%E5%9B%BA%E6%9C%89%E5%80%A4%E5%9B%BA%E6%9C%89%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%8C%E8%A1%A8%E3%81%99%E6%84%8F%E5%91%B3">共分散行列、固有値、固有ベクトルが表す意味</a>
+  <ul class="collapse">
+<li><a href="#%E3%81%B0%E3%82%89%E3%81%A4%E3%81%8D%E3%82%92%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97" id="toc-ばらつきを計算するための共分散行列" class="nav-link" data-scroll-target="#%E3%81%B0%E3%82%89%E3%81%A4%E3%81%8D%E3%82%92%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E5%85%B1%E5%88%86%E6%95%A3%E8%A1%8C%E5%88%97">ばらつきを計算するための共分散行列</a></li>
+  <li><a href="#%E3%81%B0%E3%82%89%E3%81%A4%E3%81%8D%E3%82%92%E6%9C%80%E5%A4%A7%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E5%90%91%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B" id="toc-ばらつきを最大にする方向を求める" class="nav-link" data-scroll-target="#%E3%81%B0%E3%82%89%E3%81%A4%E3%81%8D%E3%82%92%E6%9C%80%E5%A4%A7%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E5%90%91%E3%82%92%E6%B1%82%E3%82%81%E3%82%8B">ばらつきを最大にする方向を求める</a></li>
+  </ul>
+</li>
   <li><a href="#r%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%96%E8%A6%9A%E7%9A%84%E3%81%AA%E7%90%86%E8%A7%A3" id="toc-rによる視覚的な理解" class="nav-link" data-scroll-target="#r%E3%81%AB%E3%82%88%E3%82%8B%E8%A6%96%E8%A6%9A%E7%9A%84%E3%81%AA%E7%90%86%E8%A7%A3">Rによる視覚的な理解</a></li>
   <li><a href="#%E3%81%BE%E3%81%A8%E3%82%81" id="toc-まとめ" class="nav-link" data-scroll-target="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a></li>
   <li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" id="toc-参考文献" class="nav-link" data-scroll-target="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
@@ -236,7 +242,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-05-27</p>
+      <p class="date-modified">2026-05-30</p>
     </div>
   </div>
     
@@ -437,37 +443,168 @@ a = \bar{y} - b \bar{x}
 </ul>
 <p>したがって、principal axis regression や major axis regression は、2変量PCAで得られる第1主軸を、2変量データを要約する直線として解釈したものと考えることができます。</p>
 </section><section id="共分散行列固有値固有ベクトルが表す意味" class="level2"><h2 class="anchored" data-anchor-id="共分散行列固有値固有ベクトルが表す意味">共分散行列、固有値、固有ベクトルが表す意味</h2>
-<p>今回は、共分散行列の固有値と固有ベクトルを用いて、データの主要な変動方向を特定しました。 このメカニズムについて、本文では詳しく説明していませんでした。 どうして共分散行列や固有ベクトルを使うと、主軸が求められるのでしょうか。</p>
-<p>直感的には、主軸とは<strong>散布図の点群の真ん中を通り、データのばらつきを最もよく表す直線</strong>です。</p>
-<p>たとえば、散布図に適当な直線を1本引いたとします。 このとき、それぞれの点から直線に向かって垂線を下ろすと、点がその直線からどれだけ離れているかを測ることができます。</p>
-<p>主軸としてよい直線とは、各点から直線までの距離が全体として小さくなるような直線です。 つまり、点群の流れに沿っている直線ほど、主軸としてよい直線だと考えられます。</p>
-<p>一方で、これは別の見方もできます。 点群にうまく沿った直線では、各点はその直線方向に大きくばらついています。 逆に、点群に合っていない直線では、直線方向のばらつきは小さく、直線から外れた方向のずれが大きくなります。</p>
-<p>したがって、主軸は<strong>データをその方向に見たとき、ばらつきが最も大きくなる方向</strong>と考えることができます。</p>
-<p>この「ある方向に見たときのばらつき」を計算するために使うのが、<strong>共分散行列</strong>です。</p>
+<p>ここまで、共分散行列の固有値と固有ベクトルを使って、データの主要な変動方向を求めてきました。 ここでは、なぜこの手順で主軸が得られるのかを、もう少し丁寧に確認します。</p>
+<p>直感的には、主軸とは<strong>散布図の点群の中心を通り、点群が伸びている方向を表す直線</strong>です。</p>
+<p>この直線は、2つの見方で理解できます。 1つ目は、点から直線までの垂直距離に注目する見方です。 散布図にある直線を1本引き、各点からその直線へ垂線を下ろすと、点が直線からどれだけ外れているかを測ることができます。 点群の流れに沿った直線ほど、このずれは全体として小さくなります。</p>
+<p>2つ目は、直線方向のばらつきに注目する見方です。 点群に沿った直線を選ぶと、点はその直線方向に大きく広がります。 逆に、点群に合っていない方向を選ぶと、直線方向の広がりは小さくなり、直線から外れた方向のずれが大きくなります。</p>
+<p>したがって、主軸は<strong>データをその方向に射影したとき、ばらつきが最も大きくなる方向</strong>と考えることができます。</p>
+<p>この「ある方向に射影したときのばらつき」を計算するために使うのが、<strong>共分散行列</strong>です。</p>
 <p>2変量データの各点を、平均を中心にした形で</p>
 <p><span class="math display">\[
 x_i - \bar{x}, \quad y_i - \bar{y}
 \]</span></p>
-<p>とします。 ここで、ある方向を表すベクトルを<span class="math inline">\(\mathbf{u}\)</span>を以下のように定義します。</p>
+<p>と置きます。 これは、各点をデータの平均から見た座標に直す操作で、平均中心化と呼ばれます。 このとき、平均中心化した座標ベクトルを <span class="math inline">\(\mathbf{z}_i\)</span> として以下のように定義します。</p>
+<p><span class="math display">\[
+\mathbf{z}_i = \begin{bmatrix} x_i - \bar{x} \\ y_i - \bar{y} \end{bmatrix}
+\]</span></p>
+<p><span class="math inline">\(\mathbf{z}_i\)</span>を視覚的に表すと、以下のようになります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 平均中心化した座標</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># 平均点から各点へのベクトルを描画</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>灰色の線は、平均点から各点へ伸びるベクトルを表しています。 これが<span class="math inline">\(\mathbf{z}_i\)</span>です。</p>
+<p>ここで、ある方向を表すベクトル<span class="math inline">\(\mathbf{u}\)</span>を以下のように定義します。</p>
 <p><span class="math display">\[
 \mathbf{u} = \begin{bmatrix} u_x \\ u_y \end{bmatrix}
 \]</span></p>
-<p>このベクトルは、直線の向きを表します。</p>
-<p>各点がこの方向にどれくらい進んでいるかは、次のように計算できます。</p>
+<p>このベクトルは、直線の向きを表します。 ここでは方向だけを扱いたいので、ベクトルの長さは1に正規化しておきます。 このようなベクトルを単位ベクトルと呼びます。 つまり、<span class="math inline">\(\|\mathbf{u}\| = 1\)</span> となります。 式にすると、以下のようになります。</p>
 <p><span class="math display">\[
-s_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
+\mathbf{u}^T\mathbf{u} = u_x^2 + u_y^2 = 1
 \]</span></p>
-<p>ここで、<span class="math inline">\(s_i\)</span>は点<span class="math inline">\(i\)</span>が方向<span class="math inline">\(\mathbf{u}\)</span>に沿ってどれだけ進んでいるかを表すスカラー値です。 つまり、それぞれの点の「直線方向の位置」のようなものです。 この <span class="math inline">\(s_i\)</span> のばらつきが大きいほど、その直線方向にデータが大きく広がっていることになります。</p>
-<p>このばらつきを計算するために、共分散行列を使います。 共分散行列<span class="math inline">\(\Sigma\)</span>は、データのばらつきと変動の方向を表す行列です。 ある方向<span class="math inline">\(\mathbf{u}\)</span>に沿ったばらつきは、次のように計算されます。</p>
+<p>各点がこの方向にどれくらい離れているかは、内積を使って次のように計算できます。</p>
+<p><span class="math display">\[
+s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
+\]</span></p>
+<p>ここで、<span class="math inline">\(s_i\)</span> は、点 <span class="math inline">\(i\)</span> を方向 <span class="math inline">\(\mathbf{u}\)</span> に射影したときの座標です。 平均点を原点として見たとき、点 <span class="math inline">\(i\)</span> が <span class="math inline">\(\mathbf{u}\)</span> の方向にどれだけ進んでいるかを表す符号付きの値と考えられます。 この <span class="math inline">\(s_i\)</span> のばらつきが大きいほど、データはその直線方向に大きく広がっていることになります。</p>
+<p>図で考えると、各点から <span class="math inline">\(\mathbf{u}\)</span> の方向に引いた直線へ垂線を下ろします。 その交点が、点を <span class="math inline">\(\mathbf{u}\)</span> 方向の直線上に射影した位置です。 <span class="math inline">\(s_i\)</span> は、データ全体の平均点からその射影点までの、<span class="math inline">\(\mathbf{u}\)</span> 方向に沿った距離を表します。</p>
+<p>視覚的に表すと、以下のようになります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 平均中心化した座標</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 平均点</span></span>
+<span><span class="va">mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">my</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.6</span><span class="op">)</span> <span class="co"># 方向ベクトル u</span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="va">u</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># 念のため単位ベクトルに正規化</span></span>
+<span></span>
+<span><span class="co"># 各点の u 方向への射影スカラー s_i</span></span>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">z</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span></span>
+<span><span class="co"># 射影点：平均点 + s_i u</span></span>
+<span><span class="va">proj_x</span> <span class="op">&lt;-</span> <span class="va">mx</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">proj_y</span> <span class="op">&lt;-</span> <span class="va">my</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># 描画</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="va">usr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span> <span class="co"># 描画範囲</span></span>
+<span></span>
+<span><span class="co"># 1刻みのグリッド</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray70"</span>,</span>
+<span>  lty <span class="op">=</span> <span class="st">"dotted"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray70"</span>,</span>
+<span>  lty <span class="op">=</span> <span class="st">"dotted"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 平均を通る縦横線</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">my</span>, v <span class="op">=</span> <span class="va">mx</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 方向 u を表す直線</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>    v <span class="op">=</span> <span class="va">mx</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#0072B2"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    lty <span class="op">=</span> <span class="st">"dashed"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>    a <span class="op">=</span> <span class="va">my</span> <span class="op">-</span> <span class="op">(</span><span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">mx</span>,</span>
+<span>    b <span class="op">=</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#0072B2"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    lty <span class="op">=</span> <span class="st">"dashed"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 各点の平均中心化ベクトル z_i</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">mx</span>, <span class="va">my</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray90"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 各点から射影点への垂線：u 方向では説明できない残差</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#009E73"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 平均点から射影点まで：s_i u</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
+<span>    <span class="va">mx</span>,</span>
+<span>    <span class="va">my</span>,</span>
+<span>    <span class="va">proj_x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#CC79A7"</span>, alpha.f <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">4</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 元の点</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"black"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 方向ベクトル u の矢印</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span></span>
+<span>  <span class="va">mx</span>,</span>
+<span>  <span class="va">my</span>,</span>
+<span>  <span class="va">mx</span> <span class="op">+</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  <span class="va">my</span> <span class="op">+</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"#0072B2"</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  length <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>青い矢印が方向 <span class="math inline">\(\mathbf{u}\)</span> を表しています。 青い破線は、その方向に平均点を通る直線です。 緑の線は、各点からこの直線へ下ろした垂線で、<span class="math inline">\(\mathbf{u}\)</span> 方向だけでは説明できないずれを表します。 ピンクの線は、平均点から射影点までの位置を表しています。 この位置を符号付きの値として表したものが <span class="math inline">\(s_i\)</span> です。 <span class="math inline">\(s_i\)</span> のばらつきが大きいほど、点は <span class="math inline">\(\mathbf{u}\)</span> の方向に沿って大きく広がっていることになります。 この<strong>ばらつきが大きいほど、<span class="math inline">\(\mathbf{u}\)</span> の方向はデータの主要な変動方向に近い</strong>と考えることができます。</p>
+<section id="ばらつきを計算するための共分散行列" class="level3"><h3 class="anchored" data-anchor-id="ばらつきを計算するための共分散行列">ばらつきを計算するための共分散行列</h3>
+<p>方向 <span class="math inline">\(\mathbf{u}\)</span> に沿ったばらつきを計算するために、共分散行列を使います。 共分散行列 <span class="math inline">\(\Sigma\)</span> は、各変数のばらつきと、変数どうしが一緒に変動する程度をまとめた行列です。 平均中心化したデータを方向 <span class="math inline">\(\mathbf{u}\)</span> に射影したスコアを <span class="math inline">\(s_i\)</span> とすると、その分散は次のように計算できます。</p>
 <p><span class="math display">\[
 \text{Var}(s) = \mathbf{u}^T \Sigma \mathbf{u}
 \]</span></p>
-<p>また、共分散行列<span class="math inline">\(\Sigma\)</span>は次のように表されます。</p>
+<p>2変量データの共分散行列 <span class="math inline">\(\Sigma\)</span> は、次のように表されます。</p>
 <p><span class="math display">\[
 \Sigma = \begin{bmatrix}\sigma_{xx} &amp; \sigma_{xy} \\
 \sigma_{yx} &amp; \sigma_{yy}\end{bmatrix}
 \]</span></p>
-<p>ここで、<span class="math inline">\(\sigma_{xx}\)</span>は<span class="math inline">\(x\)</span>の分散、<span class="math inline">\(\sigma_{yy}\)</span>は<span class="math inline">\(y\)</span>の分散、<span class="math inline">\(\sigma_{xy}\)</span>は<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>の共分散を表します。 分散は、データが平均からどれだけ広がっているかを表す指標であり、共分散は2つの変数がどの程度一緒に変動するかを示す指標です。</p>
+<p>ここで、<span class="math inline">\(\sigma_{xx}\)</span> は <span class="math inline">\(x\)</span> の分散、<span class="math inline">\(\sigma_{yy}\)</span> は <span class="math inline">\(y\)</span> の分散、<span class="math inline">\(\sigma_{xy}\)</span> は <span class="math inline">\(x\)</span> と <span class="math inline">\(y\)</span> の共分散を表します。 分散は、データが平均からどれだけ広がっているかを表す指標です。 共分散は、2つの変数がどの程度一緒に増減するかを表す指標です。</p>
 <p>分散は以下のように計算されます。</p>
 <p><span class="math display">\[
 \sigma_s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (s_i - \bar{s})^2
@@ -476,8 +613,9 @@ s_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <p><span class="math display">\[
 \sigma_{xy} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
 \]</span></p>
-<p>つまり、共分散行列は、任意の方向 <span class="math inline">\(\mathbf{u}\)</span> に対して、<strong>その方向のばらつきがどれくらいかを計算するための情報を持っている</strong>と考えることができます。</p>
-<p>では、どの方向 <span class="math inline">\(\mathbf{u}\)</span> を選べば、ばらつきが最大になるのでしょうか。</p>
+<p>つまり、共分散行列は、任意の方向 <span class="math inline">\(\mathbf{u}\)</span> に対して、<strong>その方向に射影したときのばらつきがどれくらいかを計算するための情報を持っている</strong>と考えることができます。</p>
+</section><section id="ばらつきを最大にする方向を求める" class="level3"><h3 class="anchored" data-anchor-id="ばらつきを最大にする方向を求める">ばらつきを最大にする方向を求める</h3>
+<p>では、どの方向 <span class="math inline">\(\mathbf{u}\)</span> を選べば、射影したスコアのばらつきが最大になるのでしょうか。</p>
 <p>ある方向を表す単位ベクトルを</p>
 <p><span class="math display">\[
 \mathbf{u} =
@@ -492,12 +630,12 @@ u_y
 \mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
 \]</span></p>
 <p>と表すことができます。</p>
-<p>ここで、<span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> は1つの値になります。 この値が大きいほど、データは方向 <span class="math inline">\(\mathbf{u}\)</span> に沿って大きくばらついていることを意味します。</p>
+<p>ここで、<span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> は1つの値になります。 この値が大きいほど、データは方向 <span class="math inline">\(\mathbf{u}\)</span> に射影したときに大きくばらついていることを意味します。</p>
 <p>したがって、主軸を求めることは、</p>
 <p><span class="math display">\[
 \mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
 \]</span></p>
-<p>が最も大きくなる方向 <span class="math inline">\(\mathbf{u}\)</span> を探すことに対応します。 ただし、方向だけを考えるため、<span class="math inline">\(\mathbf{u}\)</span> の長さは1に固定します。</p>
+<p>が最も大きくなる方向 <span class="math inline">\(\mathbf{u}\)</span> を探すことに対応します。 ただし、方向だけを考えるため、<span class="math inline">\(\mathbf{u}\)</span> の長さは1に固定します。 長さを自由にしてしまうと、同じ方向でもベクトルを長くするだけで値を大きくできてしまうからです。</p>
 <p><span class="math display">\[
 \mathbf{u}^{\mathrm{T}}\mathbf{u} = 1
 \]</span></p>
@@ -506,7 +644,7 @@ u_y
 \Sigma \mathbf{u} = \lambda \mathbf{u}
 \]</span></p>
 <p>という形の式が得られます。</p>
-<p>これは、共分散行列 <span class="math inline">\(\Sigma\)</span> の<strong>固有値・固有ベクトル</strong>の式です。 ここで、<span class="math inline">\(\mathbf{u}\)</span> が固有ベクトル、<span class="math inline">\(\lambda\)</span> が固有値です。</p>
+<p>これは、共分散行列 <span class="math inline">\(\Sigma\)</span> の<strong>固有値・固有ベクトル</strong>の式です。 ここで、<span class="math inline">\(\mathbf{u}\)</span> が固有ベクトル、<span class="math inline">\(\lambda\)</span> が固有値です。 固有ベクトルは、共分散行列をかけても向きが変わらない特別な方向です。 固有値は、その方向のばらつきの大きさに対応します。</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -520,14 +658,14 @@ Note
 <p>この式は、線形代数の分野で「固有値問題」と呼ばれるものです。 この関係を導くには、制約付き最大化問題としてラグランジュの未定乗数法を使うのが一般的です。 ただし、実際の計算はRの <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> が行ってくれるため、ここでは詳しい導出は省略します。</p>
 </div>
 </div>
-<p>つまり、共分散行列の固有ベクトルは「ばらつきが大きくなる方向」を表し、固有値は「その方向にどれだけばらついているか」を表します。</p>
-<p>特に、最も大きい固有値に対応する固有ベクトルが、第1主軸の方向になります。</p>
+<p>つまり、共分散行列の固有ベクトルは「ばらつきが評価される軸の方向」を表し、固有値は「その方向にどれだけばらついているか」を表します。</p>
+<p>特に、最も大きい固有値に対応する固有ベクトルが、データのばらつきが最大になる方向です。 これが第1主軸になります。</p>
 <p>簡単にまとめると、以下のようになります。</p>
 <ul>
 <li>
 <strong>共分散行列</strong>：データのばらつき方をまとめたもの</li>
 <li>
-<strong>固有ベクトル</strong>：ばらつきが大きくなる方向</li>
+<strong>固有ベクトル</strong>：ばらつきを評価する軸の方向</li>
 <li>
 <strong>固有値</strong>：その方向に沿ったばらつきの大きさ</li>
 </ul>
@@ -538,11 +676,11 @@ Note
 <li>
 <strong>第2固有ベクトル</strong>：第1固有ベクトルに直交する方向</li>
 </ul>
-<p>このうち、第1固有ベクトルの方向を直線として描いたものが、今回のprincipal axis regressionにおける主軸です。</p>
-</section><section id="rによる視覚的な理解" class="level2"><h2 class="anchored" data-anchor-id="rによる視覚的な理解">Rによる視覚的な理解</h2>
-<p>今回の仮想データを利用して、視覚的に理解を深めてみます。 まずは、冒頭の散布図を再度表示します。</p>
+<p>このうち、第1固有ベクトルの方向を、データの中心を通る直線として描いたものが、今回のprincipal axis regressionにおける主軸です。</p>
+</section></section><section id="rによる視覚的な理解" class="level2"><h2 class="anchored" data-anchor-id="rによる視覚的な理解">Rによる視覚的な理解</h2>
+<p>今回の仮想データを使って、上の説明を図で確認します。 まずは、冒頭の散布図を再度表示します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1.5</span></span>
 <span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
@@ -555,14 +693,14 @@ Note
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>次に、共分散行列を計算し、固有値と固有ベクトルを求めます。 固有ベクトルの符号は任意であるため、固有ベクトルの符号を統一するために、例えば第1主軸の<span class="math inline">\(x\)</span>成分が正になるように調整します。</p>
+<p>次に、共分散行列を計算し、固有値と固有ベクトルを求めます。 固有ベクトルの符号は任意なので、ここでは第1主軸の <span class="math inline">\(x\)</span> 成分が正になるようにそろえておきます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 共分散行列と固有ベクトル</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 共分散行列と固有ベクトル</span></span>
 <span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">eg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">S</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -585,30 +723,30 @@ Note
 <p>固有値や固有ベクトルは英語ではeigenvalueやeigenvectorと呼ばれます。 このため、Rの関数も<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>という名前になっています。</p>
 </div>
 </div>
-<p>次に、比較用の適当な方向を用意し、それぞれの方向に対して、各点から直線への足を計算する関数を定義します。 ベクトルは、方向を表すために正規化して単位ベクトルにしておきます。</p>
+<p>次に、比較用の方向を1つ用意し、それぞれの方向について、各点を直線上へ射影した点を計算します。 方向ベクトルは、向きだけを表すように単位ベクトルへ正規化しておきます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># データの中心</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># データの中心</span></span>
 <span><span class="va">center</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># 適当な方向のベクトル</span></span>
+<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># 比較用の方向ベクトル</span></span>
 <span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="va">u0</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u0</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># 正規化して単位ベクトルにする</span></span>
 <span></span>
-<span><span class="co"># 直線からの距離を計算する関数</span></span>
+<span><span class="co"># 直線上の射影点を計算する関数</span></span>
 <span><span class="va">get_foot_points</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u</span>, <span class="va">center</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">y</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="va">score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span> <span class="co"># 各点のスコアを計算</span></span>
-<span>  <span class="va">foot_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">score</span>, <span class="va">u</span><span class="op">)</span> <span class="co"># スコアに基づいて足の位置を計算</span></span>
+<span>  <span class="va">score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span> <span class="co"># 各点の射影スコアを計算</span></span>
+<span>  <span class="va">foot_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">score</span>, <span class="va">u</span><span class="op">)</span> <span class="co"># スコアに基づいて射影点を計算</span></span>
 <span>  <span class="va">foot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">foot_centered</span>, <span class="fl">2</span>, <span class="va">center</span>, <span class="st">"+"</span><span class="op">)</span> <span class="co"># 中心を足す</span></span>
 <span>  <span class="va">foot</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 各点から直線への距離を計算</span></span>
+<span><span class="co"># 各点の射影点を計算</span></span>
 <span><span class="va">foot0</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u0</span>, <span class="va">center</span><span class="op">)</span></span>
 <span><span class="va">foot1</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u1</span>, <span class="va">center</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>データの上に、適当に引いた直線と各点からその直線への足をプロットしてみます。</p>
+<p>データの上に、比較用の直線と各点からその直線への射影点をプロットしてみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
@@ -618,15 +756,15 @@ Note
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>次に、ここに第1主軸の線と、各点から第1主軸への足を追加してみます。</p>
+<p>次に、ここに第1主軸の線と、各点から第1主軸への射影点を追加してみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
-<span><span class="co"># 適当な方向の線と距離</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="co"># 比較用の方向の線と距離</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
@@ -645,28 +783,28 @@ Note
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>この時の各点から直線までの距離の二乗和を計算して比較します。</p>
+<p>このときの各点から直線までの距離の二乗和を計算して比較します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 適当な方向に対する、直線からの距離の二乗和</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 比較用の方向に対する、直線からの距離の二乗和</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 85.83191</code></pre>
+<pre><code>[1] 117.576</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第1主軸の方向に対する、直線からの距離の二乗和</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第1主軸の方向に対する、直線からの距離の二乗和</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 37.87125</code></pre>
+<pre><code>[1] 23.08176</code></pre>
 </div>
 </div>
-<p>第1主軸の方が、適当な方向よりも点から直線への距離の二乗和が小さくなっていることがわかります。 つまり、データのばらつきにうまく沿った直線を選ぶと、点から直線への距離が全体として小さくなることがわかります。 第1主軸は、この距離の合計が最小になるような方向を表していることがわかります。</p>
+<p>第1主軸のほうが、比較用の方向よりも点から直線への距離の二乗和が小さくなっていることがわかります。 つまり、データのばらつきに沿った直線を選ぶと、直線から外れた方向のずれは全体として小さくなります。 第1主軸は、直線方向のばらつきを最大にし、それと直交する方向へのずれを小さくする方向です。</p>
 <p>第2主軸も同様にプロットしてみます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u2</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u2</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">u2</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="va">u2</span></span>
 <span><span class="op">}</span></span>
@@ -688,19 +826,19 @@ Note
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>第1主軸はデータのばらつきに沿った方向を表し、第2主軸は第1主軸に直交する方向を表していることがわかります。</p>
+<p>第1主軸はデータのばらつきが最も大きい方向を表し、第2主軸はそれに直交する方向を表します。</p>
 </section><section id="まとめ" class="level2"><h2 class="anchored" data-anchor-id="まとめ">まとめ</h2>
 <ul>
-<li>Principal axis regressionは、共分散行列の固有値と固有ベクトルを用いて、2変量データの主要な変動方向を直線として捉える方法です。</li>
-<li>共分散行列の第1固有ベクトルは、データのばらつきが最も大きい方向を表し、これが主軸になります。</li>
-<li>Rでは、<code><a href="https://rdrr.io/r/stats/cor.html">cov()</a></code>関数で共分散行列を計算し、<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>関数で固有値と固有ベクトルを求めることができます。</li>
-<li>主軸をデータとともにプロットすることで、データのばらつきの方向を視覚的に理解することができます</li>
-<li>PCAとPrincipal axis regressionは、共分散行列の固有値・固有ベクトルを用いてデータの主要な変動方向を特定する点で共通しています。</li>
+<li>Principal axis regressionは、2変量データの主要な変動方向を直線として捉える方法です。</li>
+<li>共分散行列の第1固有ベクトルは、データを射影したときのばらつきが最も大きい方向を表し、これが主軸になります。</li>
+<li>Rでは、<code><a href="https://rdrr.io/r/stats/cor.html">cov()</a></code> で共分散行列を計算し、<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> で固有値と固有ベクトルを求めることができます。</li>
+<li>主軸を散布図に重ねると、点群がどの方向に伸びているかを視覚的に確認できます。</li>
+<li>PCAとPrincipal axis regressionは、共分散行列の固有値・固有ベクトルから主要な変動方向を求める点で共通しています。</li>
 </ul>
 <p>この記事では、2変量データから主軸を1本求める基本的な考え方を確認しました。 次の記事では、この第1固有ベクトルを使って、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸のずれを調べます。</p>
 <ul>
