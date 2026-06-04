@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="おすすめのツール、サービス、R パッケージ、Zotero プラグイン、本の一覧。">
 
 <title>おすすめ – Maple60’s website</title>
 <style>
@@ -57,17 +58,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
   }
 }</script>
 
@@ -85,8 +86,8 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="サーチ"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -106,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -121,21 +122,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#ツール" id="toc-ツール" class="nav-link active" data-scroll-target="#ツール">ツール</a>
+  <li><a href="#ツールサービス" id="toc-ツールサービス" class="nav-link active" data-scroll-target="#ツールサービス">ツール・サービス</a>
   <ul class="collapse">
-  <li><a href="#文献関係" id="toc-文献関係" class="nav-link" data-scroll-target="#文献関係">文献関係</a></li>
+  <li><a href="#ノート文献管理" id="toc-ノート文献管理" class="nav-link" data-scroll-target="#ノート文献管理">ノート・文献管理</a></li>
+  <li><a href="#開発ドキュメント作成" id="toc-開発ドキュメント作成" class="nav-link" data-scroll-target="#開発ドキュメント作成">開発・ドキュメント作成</a></li>
+  <li><a href="#情報収集タスク管理" id="toc-情報収集タスク管理" class="nav-link" data-scroll-target="#情報収集タスク管理">情報収集・タスク管理</a></li>
+  <li><a href="#画像動画配信" id="toc-画像動画配信" class="nav-link" data-scroll-target="#画像動画配信">画像・動画・配信</a></li>
+  <li><a href="#セキュリティネットワーク" id="toc-セキュリティネットワーク" class="nav-link" data-scroll-target="#セキュリティネットワーク">セキュリティ・ネットワーク</a></li>
+  <li><a href="#ai" id="toc-ai" class="nav-link" data-scroll-target="#ai">AI</a></li>
   </ul></li>
-  <li><a href="#rパッケージ" id="toc-rパッケージ" class="nav-link" data-scroll-target="#rパッケージ">Rパッケージ</a></li>
-  <li><a href="#zoteroプラグイン" id="toc-zoteroプラグイン" class="nav-link" data-scroll-target="#zoteroプラグイン">Zoteroプラグイン</a></li>
-  <li><a href="#本" id="toc-本" class="nav-link" data-scroll-target="#本">本</a>
+  <li><a href="#r-パッケージ" id="toc-r-パッケージ" class="nav-link" data-scroll-target="#r-パッケージ">R パッケージ</a></li>
+  <li><a href="#zotero-プラグイン" id="toc-zotero-プラグイン" class="nav-link" data-scroll-target="#zotero-プラグイン">Zotero プラグイン</a></li>
+  <li><a href="#本オンライン教材" id="toc-本オンライン教材" class="nav-link" data-scroll-target="#本オンライン教材">本・オンライン教材</a>
   <ul class="collapse">
-  <li><a href="#植物" id="toc-植物" class="nav-link" data-scroll-target="#植物">植物</a></li>
+  <li><a href="#植物形態" id="toc-植物形態" class="nav-link" data-scroll-target="#植物形態">植物・形態</a></li>
   <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
-  <li><a href="#その他" id="toc-その他" class="nav-link" data-scroll-target="#その他">その他</a></li>
+  <li><a href="#統計可視化コンピュータサイエンス" id="toc-統計可視化コンピュータサイエンス" class="nav-link" data-scroll-target="#統計可視化コンピュータサイエンス">統計・可視化・コンピュータサイエンス</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -148,6 +154,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">おすすめ</h1>
 </div>
 
+<div>
+  <div class="description">
+    おすすめのツール、サービス、R パッケージ、Zotero プラグイン、本の一覧。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -162,119 +173,139 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>ここでは、私のおすすめをまとめます。 主にオンライン上で利用できるものが中心です。</p>
-<p>随時更新していく予定です。</p>
-<section id="ツール" class="level2">
-<h2 class="anchored" data-anchor-id="ツール">ツール</h2>
+<p>個人で使っている、または後で参照したいツール・サービス・本を用途別にまとめています。 オンラインで利用できるものを中心に、随時更新します。</p>
+<section id="ツールサービス" class="level2">
+<h2 class="anchored" data-anchor-id="ツールサービス">ツール・サービス</h2>
+<section id="ノート文献管理" class="level3">
+<h3 class="anchored" data-anchor-id="ノート文献管理">ノート・文献管理</h3>
 <ul>
-<li><a href="https://obsidian.md/">Obsidian</a>: ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。</li>
-<li><a href="https://www.zotero.org/">Zotero</a>: 参考文献管理。</li>
-<li><a href="https://github.com/">GitHub</a>: ソースコード管理。</li>
-<li><a href="https://quarto.org/">Quarto</a>: ドキュメント作成ツール。R Markdownの後継。</li>
-<li><a href="https://positron.posit.co/">Positron</a>: データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。</li>
-<li><a href="https://en.eagle.cool/">eagle</a>: 画像管理ツール。画像をタグで管理できる。</li>
-<li><a href="https://beta-japan.com/">VisiOS</a>: ブックマークやタブの管理ツール</li>
-<li><a href="https://raindrop.io/">Raindrop.io</a>: ブックマーク管理ツール</li>
-<li><a href="https://kdenlive.org/">Kdenlive</a>: 動画編集ソフト</li>
-<li><a href="https://www.affinity.studio/">Affinity</a>: 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。</li>
-<li><a href="https://obsproject.com/">OBS Studio</a>: 画面録画ソフト</li>
-<li><a href="https://todoist.com/">Todoist</a>: タスク管理ツール</li>
-<li><a href="https://www.inoreader.com/">Inoreader</a>: RSSリーダー</li>
-<li><a href="https://bitwarden.com/">Bitwarden</a>: パスワード管理ツール</li>
-<li><a href="https://tailscale.com/">Tailscale</a>: VPNサービス</li>
-<li><a href="https://proton.me/mail">Proton Mail</a>: セキュアなメールサービス</li>
-<li><a href="https://keyviz.org/">Keyvis</a>: オープンソースのキーボードビジュアライザー</li>
-<li><a href="https://proton.me/authenticator">Proton Authenticator</a>: 2段階認証アプリ</li>
-<li><a href="https://rustdesk.com/">Rustdesk</a>: リモートデスクトップソフト。Anydeskの代替。</li>
-<li><a href="https://brave.com/">Brave</a>: プライバシー重視のウェブブラウザ</li>
-<li><a href="https://element.io/">Element</a>: オープンソースのチャットアプリ。Matrixプロトコルを使用。</li>
-<li><a href="https://karakeep.app/">Karakeep</a>: ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない</li>
-<li><a href="https://nordvpn.com/">NordVPN</a>: VPNサービス。<a href="https://proton.me/vpn">Proton VPN</a>に乗り換えを検討中。</li>
-<li><a href="https://lmstudio.ai/">LM Studio</a>: ローカルで動作するAIチャットツール。ChatGPTの代替。</li>
+<li><a href="https://obsidian.md/">Obsidian</a>: Markdown 形式でノートを取れるノートアプリ。リンク機能やタグ機能が充実している。</li>
+<li><a href="https://www.zotero.org/">Zotero</a>: 参考文献管理ツール。</li>
+<li><a href="https://elicit.com/">Elicit</a>: AI を活用したリサーチツール。文献検索や要約などに利用できる。</li>
+<li><a href="https://scholar.google.com/scholar_labs/search">Google Scholar | Labs</a>: Google Scholar の実験的な検索機能。</li>
+<li><a href="https://www.undermind.ai/">Undermind</a>: 研究文献を探索するための AI 検索ツール。</li>
+<li><a href="https://www.researchrabbit.ai/">ResearchRabbit</a>: 文献同士の関係をグラフで可視化し、関連文献を探しやすくするツール。</li>
 </ul>
-<section id="文献関係" class="level3">
-<h3 class="anchored" data-anchor-id="文献関係">文献関係</h3>
+</section>
+<section id="開発ドキュメント作成" class="level3">
+<h3 class="anchored" data-anchor-id="開発ドキュメント作成">開発・ドキュメント作成</h3>
 <ul>
-<li><a href="https://elicit.com/">Elicit</a>: AIを活用したリサーチツール。文献検索や要約などが可能。</li>
-<li><a href="https://scholar.google.com/scholar_labs/search">Google Scholar | Labs</a></li>
-<li><a href="https://www.undermind.ai/">Undermind</a></li>
-<li><a href="https://www.researchrabbit.ai/">ResearchRabbit</a>: 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。</li>
+<li><a href="https://github.com/">GitHub</a>: ソースコード管理とプロジェクト公開のためのサービス。</li>
+<li><a href="https://quarto.org/">Quarto</a>: ドキュメント作成ツール。R Markdown の後継として利用している。</li>
+<li><a href="https://positron.posit.co/">Positron</a>: データサイエンス向け IDE。最近は RStudio よりもこちらを使うことが多い。</li>
+</ul>
+</section>
+<section id="情報収集タスク管理" class="level3">
+<h3 class="anchored" data-anchor-id="情報収集タスク管理">情報収集・タスク管理</h3>
+<ul>
+<li><a href="https://raindrop.io/">Raindrop.io</a>: ブックマーク管理ツール。</li>
+<li><a href="https://karakeep.app/">Karakeep</a>: セルフホストできるブックマーク管理ツール。Raindrop.io の代替候補として導入したが、まだ十分には活用できていない。</li>
+<li><a href="https://beta-japan.com/">VisiOS</a>: ブックマークやタブの管理ツール。</li>
+<li><a href="https://www.inoreader.com/">Inoreader</a>: RSS リーダー。</li>
+<li><a href="https://todoist.com/">Todoist</a>: タスク管理ツール。</li>
+</ul>
+</section>
+<section id="画像動画配信" class="level3">
+<h3 class="anchored" data-anchor-id="画像動画配信">画像・動画・配信</h3>
+<ul>
+<li><a href="https://en.eagle.cool/">Eagle</a>: 画像管理ツール。画像をタグで管理できる。</li>
+<li><a href="https://www.affinity.studio/">Affinity</a>: 画像や写真の編集ソフト。Adobe Photoshop や Illustrator の代替として利用できる。</li>
+<li><a href="https://kdenlive.org/">Kdenlive</a>: 動画編集ソフト。</li>
+<li><a href="https://obsproject.com/">OBS Studio</a>: 画面録画・配信用ソフト。</li>
+<li><a href="https://keyviz.org/">Keyviz</a>: オープンソースのキーボードビジュアライザー。</li>
+</ul>
+</section>
+<section id="セキュリティネットワーク" class="level3">
+<h3 class="anchored" data-anchor-id="セキュリティネットワーク">セキュリティ・ネットワーク</h3>
+<ul>
+<li><a href="https://bitwarden.com/">Bitwarden</a>: パスワード管理ツール。</li>
+<li><a href="https://proton.me/mail">Proton Mail</a>: セキュアなメールサービス。</li>
+<li><a href="https://proton.me/authenticator">Proton Authenticator</a>: 2 段階認証アプリ。</li>
+<li><a href="https://tailscale.com/">Tailscale</a>: VPN サービス。</li>
+<li><a href="https://nordvpn.com/">NordVPN</a>: VPN サービス。<a href="https://proton.me/vpn">Proton VPN</a> への乗り換えを検討中。</li>
+<li><a href="https://rustdesk.com/">RustDesk</a>: リモートデスクトップソフト。AnyDesk の代替。</li>
+<li><a href="https://brave.com/">Brave</a>: プライバシー重視のウェブブラウザ。</li>
+<li><a href="https://element.io/">Element</a>: オープンソースのチャットアプリ。Matrix プロトコルを使用。</li>
+</ul>
+</section>
+<section id="ai" class="level3">
+<h3 class="anchored" data-anchor-id="ai">AI</h3>
+<ul>
+<li><a href="https://lmstudio.ai/">LM Studio</a>: ローカルで動作する AI チャットツール。ローカル LLM を試すときに便利。</li>
 </ul>
 </section>
 </section>
-<section id="rパッケージ" class="level2">
-<h2 class="anchored" data-anchor-id="rパッケージ">Rパッケージ</h2>
+<section id="r-パッケージ" class="level2">
+<h2 class="anchored" data-anchor-id="r-パッケージ">R パッケージ</h2>
 <ul>
-<li><a href="https://r-tmap.github.io/tmap/index.html">tmap</a>: 地図の作成に特化したRパッケージ。地理空間データの可視化に便利。</li>
-<li><a href="https://ropensci.github.io/rnaturalearth/index.html">rnaturalearth</a>: 自然地理データを提供するRパッケージ。世界の国境や地形などのデータを簡単に取得できる。</li>
-<li><a href="https://cols4all.github.io/cols4all-R/">cols4all</a>: カラーパレットを提供するRパッケージ。色覚多様性に配慮したカラーパレットも利用できる。</li>
+<li><a href="https://r-tmap.github.io/tmap/index.html">tmap</a>: 地図の作成に特化した R パッケージ。地理空間データの可視化に便利。</li>
+<li><a href="https://ropensci.github.io/rnaturalearth/index.html">rnaturalearth</a>: 自然地理データを提供する R パッケージ。世界の国境や地形などを簡単に取得できる。</li>
+<li><a href="https://cols4all.github.io/cols4all-R/">cols4all</a>: カラーパレットを提供する R パッケージ。色覚多様性に配慮したカラーパレットも利用できる。</li>
 </ul>
 </section>
-<section id="zoteroプラグイン" class="level2">
-<h2 class="anchored" data-anchor-id="zoteroプラグイン">Zoteroプラグイン</h2>
+<section id="zotero-プラグイン" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-プラグイン">Zotero プラグイン</h2>
 <ul>
-<li><a href="https://retorque.re/zotero-better-bibtex/">Better BibTeX for Zotero</a>: 外部ソフトウェア(<a href="https://obsidian.md/">Obsidian</a>など)との連携に</li>
-<li><a href="https://github.com/MuiseDestiny/zotero-style">Ethernal Style</a>: UI(見た目)の強化</li>
-<li><a href="https://github.com/018/zotcard">ZotCard</a>: カード形式のメモ、メモテンプレート作成</li>
-<li><a href="https://github.com/Dominic-DallOsto/zotero-reading-list">Zotero Reading List</a>: 閲覧状況の管理(未読・既読・途中など)</li>
-<li><a href="https://github.com/introfini/ZotSeek">ZotSeek</a>: 類似文献の検索</li>
-<li><a href="https://github.com/windingwind/zotero-better-notes">Zotero Better Notes</a>: メモ機能強化</li>
-<li><a href="https://github.com/wbthomason/zotodo">Zotodo</a>: Todo管理アプリ<a href="https://www.todoist.com/">Todoist</a>との連携</li>
-<li><a href="https://github.com/MuiseDestiny/zotero-reference">Zotero Reference</a>: 引用文献への簡単アクセス、文献リスト作成</li>
+<li><a href="https://retorque.re/zotero-better-bibtex/">Better BibTeX for Zotero</a>: Obsidian など外部ソフトウェアとの連携に便利。</li>
+<li><a href="https://github.com/MuiseDestiny/zotero-style">Ethereal Style</a>: Zotero の UI を拡張するプラグイン。</li>
+<li><a href="https://github.com/018/zotcard">ZotCard</a>: カード形式のメモやメモテンプレートを作成できるプラグイン。</li>
+<li><a href="https://github.com/Dominic-DallOsto/zotero-reading-list">Zotero Reading List</a>: 未読・既読・途中など、文献の閲覧状況を管理するプラグイン。</li>
+<li><a href="https://github.com/introfini/ZotSeek">ZotSeek</a>: 類似文献の検索を補助するプラグイン。</li>
+<li><a href="https://github.com/windingwind/zotero-better-notes">Zotero Better Notes</a>: Zotero のメモ機能を強化するプラグイン。</li>
+<li><a href="https://github.com/wbthomason/zotodo">Zotodo</a>: Todoist などのタスク管理アプリと Zotero を連携するプラグイン。</li>
+<li><a href="https://github.com/MuiseDestiny/zotero-reference">Zotero Reference</a>: 引用文献へのアクセスや文献リスト作成を補助するプラグイン。</li>
 </ul>
 </section>
-<section id="本" class="level2">
-<h2 class="anchored" data-anchor-id="本">本</h2>
-<section id="植物" class="level3">
-<h3 class="anchored" data-anchor-id="植物">植物</h3>
+<section id="本オンライン教材" class="level2">
+<h2 class="anchored" data-anchor-id="本オンライン教材">本・オンライン教材</h2>
+<section id="植物形態" class="level3">
+<h3 class="anchored" data-anchor-id="植物形態">植物・形態</h3>
 <ul>
-<li><a href="https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000">Manual of Leaf Architecture</a>: 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識が詰まっている。<a href="https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000">Smithsonian Libraries and Archives</a>で無料で閲覧できる。ライセンスは<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>。</li>
+<li><a href="https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000">Manual of Leaf Architecture</a>: 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識がまとまっている。ライセンスは <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>。</li>
+<li><a href="https://www.biodiversitylibrary.org/bibliography/15368">Contributions to Morphometrics</a>: 形態測定学に関する古典的な資料。</li>
 </ul>
 </section>
 <section id="r" class="level3">
 <h3 class="anchored" data-anchor-id="r">R</h3>
-<p>オンライン上で読める良質なRの本がいくつかあるので紹介します。</p>
+<p>オンラインで読める R 関連の良質な本です。</p>
 <ul>
-<li><a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a>: Rを使ったデータサイエンスの入門書。データの取り扱いや可視化、モデリングなどが網羅されている。オンラインで無料で閲覧できる。ライセンスは<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY-NC-ND 3.0</a>。</li>
-<li><a href="https://r-graphics.org/">R Graphics Cookbook, 2nd edition</a>: Rのグラフィックスに関するレシピ集。ggplot2を使ったグラフの作成方法が豊富に紹介されている。オンラインで無料で閲覧できる。</li>
-<li><a href="http://www.cookbook-r.com/">Cookbook for R</a>: Rの様々なタスクに関するレシピ集。ライセンスは<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>。</li>
-<li><a href="https://www.tmwr.org/">Tidy Modeling with R</a></li>
-<li><a href="https://csgillespie.github.io/efficientR/">Efficient R programming</a></li>
-<li><a href="https://www.bigbookofr.com/">Big Book of R</a></li>
-<li><a href="https://mastering-shiny.org/">Mastering Shiny</a>: Hadley Wickham氏によるShinyの入門書。</li>
-<li><a href="https://livebook.manning.com/book/deep-learning-with-r/about-this-book">Deep Learning with R</a></li>
-<li><a href="https://yihui.org/blogdown/">blogdown: Creating Websites with R Markdown</a></li>
-<li><a href="https://therinspark.com/">Mastering Spark with R</a></li>
-<li><a href="https://r-pkgs.org/">R Packages (2e)</a>: Rのパッケージ開発の入門書。</li>
-<li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (3e)</a>: ggplot2の入門書。</li>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a>: R を使ったデータサイエンスの入門書。データの取り扱い、可視化、モデリングなどが網羅されている。ライセンスは <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY-NC-ND 3.0</a>。</li>
+<li><a href="https://r-graphics.org/">R Graphics Cookbook, 2nd edition</a>: R のグラフィックスに関するレシピ集。ggplot2 を使ったグラフの作成方法が豊富に紹介されている。</li>
+<li><a href="http://www.cookbook-r.com/">Cookbook for R</a>: R の様々なタスクに関するレシピ集。ライセンスは <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>。</li>
+<li><a href="https://www.tmwr.org/">Tidy Modeling with R</a>: tidymodels を使ったモデリングの入門書。</li>
+<li><a href="https://csgillespie.github.io/efficientR/">Efficient R programming</a>: R を効率よく書くための実践的な本。</li>
+<li><a href="https://www.bigbookofr.com/">Big Book of R</a>: R 関連のオンライン教材を集めたリンク集。</li>
+<li><a href="https://mastering-shiny.org/">Mastering Shiny</a>: Hadley Wickham 氏による Shiny の入門書。</li>
+<li><a href="https://livebook.manning.com/book/deep-learning-with-r/about-this-book">Deep Learning with R</a>: R で深層学習を扱うための本。</li>
+<li><a href="https://yihui.org/blogdown/">blogdown: Creating Websites with R Markdown</a>: blogdown を使ったウェブサイト作成の本。</li>
+<li><a href="https://therinspark.com/">Mastering Spark with R</a>: R から Spark を扱うための本。</li>
+<li><a href="https://r-pkgs.org/">R Packages (2e)</a>: R パッケージ開発の入門書。</li>
+<li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (3e)</a>: ggplot2 の入門書。</li>
 </ul>
 </section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
 <ul>
-<li><a href="https://allendowney.github.io/ThinkPython/">Think Python</a></li>
-<li><a href="https://greenteapress.com/wp/think-python-2e/">Think Python, 2nd edition</a></li>
-<li><a href="https://inventwithpython.com/cracking/">Cracking Codes with Python - Invent with Python</a></li>
-<li><a href="https://inventwithpython.com/beyond/">Beyond the Basic Stuff with Python - Invent with Python</a></li>
-<li><a href="https://inventwithpython.com/bigbookpython/">The Big Book of Small Python Projects - Invent with Python</a></li>
-<li><a href="https://wesmckinney.com/book/">Python for Data Analysis, 3E</a></li>
-<li><a href="http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf">データ分析のための統計学入門</a></li>
-<li><a href="https://ipython-books.github.io/">IPython Cookbook, Second Edition (2018)</a></li>
-<li><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python</a></li>
+<li><a href="https://allendowney.github.io/ThinkPython/">Think Python</a>: Python の入門書。</li>
+<li><a href="https://greenteapress.com/wp/think-python-2e/">Think Python, 2nd edition</a>: Think Python の第 2 版。</li>
+<li><a href="https://inventwithpython.com/cracking/">Cracking Codes with Python</a>: 暗号を題材に Python を学ぶ本。</li>
+<li><a href="https://inventwithpython.com/beyond/">Beyond the Basic Stuff with Python</a>: Python の基礎の次に読む本。</li>
+<li><a href="https://inventwithpython.com/bigbookpython/">The Big Book of Small Python Projects</a>: 小さな Python プロジェクトを通して学ぶ本。</li>
+<li><a href="https://wesmckinney.com/book/">Python for Data Analysis, 3E</a>: pandas を中心としたデータ分析の定番書。</li>
+<li><a href="http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf">データ分析のための統計学入門</a>: データ分析に必要な統計学の入門資料。</li>
+<li><a href="https://ipython-books.github.io/">IPython Cookbook, Second Edition</a>: IPython と Python の実践的なレシピ集。</li>
+<li><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python</a>: Python による自動化の入門書。</li>
 </ul>
 </section>
-<section id="その他" class="level3">
-<h3 class="anchored" data-anchor-id="その他">その他</h3>
+<section id="統計可視化コンピュータサイエンス" class="level3">
+<h3 class="anchored" data-anchor-id="統計可視化コンピュータサイエンス">統計・可視化・コンピュータサイエンス</h3>
 <ul>
-<li><ul>
-<li><a href="https://www.statlearning.com/">An Introduction to Statistical Learning</a></li>
-</ul></li>
-<li><a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a>: データ可視化の基本原則を解説した本。データを効果的に伝えるための方法が紹介されている。オンラインで無料で閲覧できる。ライセンスは<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">CC BY-NC-ND 4.0</a>。</li>
-<li><a href="https://allendowney.github.io/ThinkBayes2/">Think Bayes 2</a></li>
-<li><a href="https://allendowney.github.io/ThinkStats/">Think Stats, 3rd edition</a></li>
+<li><a href="https://www.statlearning.com/">An Introduction to Statistical Learning</a>: 統計学習の入門書。</li>
+<li><a href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a>: データ可視化の基本原則を解説した本。ライセンスは <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">CC BY-NC-ND 4.0</a>。</li>
+<li><a href="https://allendowney.github.io/ThinkBayes2/">Think Bayes 2</a>: ベイズ統計の入門書。</li>
+<li><a href="https://allendowney.github.io/ThinkStats/">Think Stats, 3rd edition</a>: 統計の基礎を Python で学ぶ本。</li>
 <li><a href="https://visionbook.mit.edu/">Foundations of Computer Vision</a>: コンピュータビジョンの基礎を解説した本。</li>
-<li><a href="https://opendatastructures.org/">Open Data Structures</a></li>
-<li><a href="https://www.biodiversitylibrary.org/bibliography/15368">Contributions to morphometrics - Biodiversity Heritage Library</a></li>
+<li><a href="https://opendatastructures.org/">Open Data Structures</a>: データ構造の入門書。</li>
 </ul>
 
 
@@ -307,12 +338,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "コピーしました");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "コピーしました");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

@@ -4,35 +4,35 @@
     "href": "recommendations.html",
     "title": "おすすめ",
     "section": "",
-    "text": "ここでは、私のおすすめをまとめます。 主にオンライン上で利用できるものが中心です。\n随時更新していく予定です。"
+    "text": "個人で使っている、または後で参照したいツール・サービス・本を用途別にまとめています。 オンラインで利用できるものを中心に、随時更新します。"
   },
   {
-    "objectID": "recommendations.html#ツール",
-    "href": "recommendations.html#ツール",
+    "objectID": "recommendations.html#ツールサービス",
+    "href": "recommendations.html#ツールサービス",
     "title": "おすすめ",
-    "section": "ツール",
-    "text": "ツール\n\nObsidian: ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。\nZotero: 参考文献管理。\nGitHub: ソースコード管理。\nQuarto: ドキュメント作成ツール。R Markdownの後継。\nPositron: データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。\neagle: 画像管理ツール。画像をタグで管理できる。\nVisiOS: ブックマークやタブの管理ツール\nRaindrop.io: ブックマーク管理ツール\nKdenlive: 動画編集ソフト\nAffinity: 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。\nOBS Studio: 画面録画ソフト\nTodoist: タスク管理ツール\nInoreader: RSSリーダー\nBitwarden: パスワード管理ツール\nTailscale: VPNサービス\nProton Mail: セキュアなメールサービス\nKeyvis: オープンソースのキーボードビジュアライザー\nProton Authenticator: 2段階認証アプリ\nRustdesk: リモートデスクトップソフト。Anydeskの代替。\nBrave: プライバシー重視のウェブブラウザ\nElement: オープンソースのチャットアプリ。Matrixプロトコルを使用。\nKarakeep: ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない\nNordVPN: VPNサービス。Proton VPNに乗り換えを検討中。\nLM Studio: ローカルで動作するAIチャットツール。ChatGPTの代替。\n\n\n文献関係\n\nElicit: AIを活用したリサーチツール。文献検索や要約などが可能。\nGoogle Scholar | Labs\nUndermind\nResearchRabbit: 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。"
+    "section": "ツール・サービス",
+    "text": "ツール・サービス\n\nノート・文献管理\n\nObsidian: Markdown 形式でノートを取れるノートアプリ。リンク機能やタグ機能が充実している。\nZotero: 参考文献管理ツール。\nElicit: AI を活用したリサーチツール。文献検索や要約などに利用できる。\nGoogle Scholar | Labs: Google Scholar の実験的な検索機能。\nUndermind: 研究文献を探索するための AI 検索ツール。\nResearchRabbit: 文献同士の関係をグラフで可視化し、関連文献を探しやすくするツール。\n\n\n\n開発・ドキュメント作成\n\nGitHub: ソースコード管理とプロジェクト公開のためのサービス。\nQuarto: ドキュメント作成ツール。R Markdown の後継として利用している。\nPositron: データサイエンス向け IDE。最近は RStudio よりもこちらを使うことが多い。\n\n\n\n情報収集・タスク管理\n\nRaindrop.io: ブックマーク管理ツール。\nKarakeep: セルフホストできるブックマーク管理ツール。Raindrop.io の代替候補として導入したが、まだ十分には活用できていない。\nVisiOS: ブックマークやタブの管理ツール。\nInoreader: RSS リーダー。\nTodoist: タスク管理ツール。\n\n\n\n画像・動画・配信\n\nEagle: 画像管理ツール。画像をタグで管理できる。\nAffinity: 画像や写真の編集ソフト。Adobe Photoshop や Illustrator の代替として利用できる。\nKdenlive: 動画編集ソフト。\nOBS Studio: 画面録画・配信用ソフト。\nKeyviz: オープンソースのキーボードビジュアライザー。\n\n\n\nセキュリティ・ネットワーク\n\nBitwarden: パスワード管理ツール。\nProton Mail: セキュアなメールサービス。\nProton Authenticator: 2 段階認証アプリ。\nTailscale: VPN サービス。\nNordVPN: VPN サービス。Proton VPN への乗り換えを検討中。\nRustDesk: リモートデスクトップソフト。AnyDesk の代替。\nBrave: プライバシー重視のウェブブラウザ。\nElement: オープンソースのチャットアプリ。Matrix プロトコルを使用。\n\n\n\nAI\n\nLM Studio: ローカルで動作する AI チャットツール。ローカル LLM を試すときに便利。"
   },
   {
-    "objectID": "recommendations.html#rパッケージ",
-    "href": "recommendations.html#rパッケージ",
+    "objectID": "recommendations.html#r-パッケージ",
+    "href": "recommendations.html#r-パッケージ",
     "title": "おすすめ",
-    "section": "Rパッケージ",
-    "text": "Rパッケージ\n\ntmap: 地図の作成に特化したRパッケージ。地理空間データの可視化に便利。\nrnaturalearth: 自然地理データを提供するRパッケージ。世界の国境や地形などのデータを簡単に取得できる。\ncols4all: カラーパレットを提供するRパッケージ。色覚多様性に配慮したカラーパレットも利用できる。"
+    "section": "R パッケージ",
+    "text": "R パッケージ\n\ntmap: 地図の作成に特化した R パッケージ。地理空間データの可視化に便利。\nrnaturalearth: 自然地理データを提供する R パッケージ。世界の国境や地形などを簡単に取得できる。\ncols4all: カラーパレットを提供する R パッケージ。色覚多様性に配慮したカラーパレットも利用できる。"
   },
   {
-    "objectID": "recommendations.html#zoteroプラグイン",
-    "href": "recommendations.html#zoteroプラグイン",
+    "objectID": "recommendations.html#zotero-プラグイン",
+    "href": "recommendations.html#zotero-プラグイン",
     "title": "おすすめ",
-    "section": "Zoteroプラグイン",
-    "text": "Zoteroプラグイン\n\nBetter BibTeX for Zotero: 外部ソフトウェア(Obsidianなど)との連携に\nEthernal Style: UI(見た目)の強化\nZotCard: カード形式のメモ、メモテンプレート作成\nZotero Reading List: 閲覧状況の管理(未読・既読・途中など)\nZotSeek: 類似文献の検索\nZotero Better Notes: メモ機能強化\nZotodo: Todo管理アプリTodoistとの連携\nZotero Reference: 引用文献への簡単アクセス、文献リスト作成"
+    "section": "Zotero プラグイン",
+    "text": "Zotero プラグイン\n\nBetter BibTeX for Zotero: Obsidian など外部ソフトウェアとの連携に便利。\nEthereal Style: Zotero の UI を拡張するプラグイン。\nZotCard: カード形式のメモやメモテンプレートを作成できるプラグイン。\nZotero Reading List: 未読・既読・途中など、文献の閲覧状況を管理するプラグイン。\nZotSeek: 類似文献の検索を補助するプラグイン。\nZotero Better Notes: Zotero のメモ機能を強化するプラグイン。\nZotodo: Todoist などのタスク管理アプリと Zotero を連携するプラグイン。\nZotero Reference: 引用文献へのアクセスや文献リスト作成を補助するプラグイン。"
   },
   {
-    "objectID": "recommendations.html#本",
-    "href": "recommendations.html#本",
+    "objectID": "recommendations.html#本オンライン教材",
+    "href": "recommendations.html#本オンライン教材",
     "title": "おすすめ",
-    "section": "本",
-    "text": "本\n\n植物\n\nManual of Leaf Architecture: 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識が詰まっている。Smithsonian Libraries and Archivesで無料で閲覧できる。ライセンスはCC BY-NC 4.0。\n\n\n\nR\nオンライン上で読める良質なRの本がいくつかあるので紹介します。\n\nR for Data Science (2e): Rを使ったデータサイエンスの入門書。データの取り扱いや可視化、モデリングなどが網羅されている。オンラインで無料で閲覧できる。ライセンスはCC BY-NC-ND 3.0。\nR Graphics Cookbook, 2nd edition: Rのグラフィックスに関するレシピ集。ggplot2を使ったグラフの作成方法が豊富に紹介されている。オンラインで無料で閲覧できる。\nCookbook for R: Rの様々なタスクに関するレシピ集。ライセンスはCC0。\nTidy Modeling with R\nEfficient R programming\nBig Book of R\nMastering Shiny: Hadley Wickham氏によるShinyの入門書。\nDeep Learning with R\nblogdown: Creating Websites with R Markdown\nMastering Spark with R\nR Packages (2e): Rのパッケージ開発の入門書。\nggplot2: Elegant Graphics for Data Analysis (3e): ggplot2の入門書。\n\n\n\nPython\n\nThink Python\nThink Python, 2nd edition\nCracking Codes with Python - Invent with Python\nBeyond the Basic Stuff with Python - Invent with Python\nThe Big Book of Small Python Projects - Invent with Python\nPython for Data Analysis, 3E\nデータ分析のための統計学入門\nIPython Cookbook, Second Edition (2018)\nAutomate the Boring Stuff with Python\n\n\n\nその他\n\n\nAn Introduction to Statistical Learning\n\nFundamentals of Data Visualization: データ可視化の基本原則を解説した本。データを効果的に伝えるための方法が紹介されている。オンラインで無料で閲覧できる。ライセンスはCC BY-NC-ND 4.0。\nThink Bayes 2\nThink Stats, 3rd edition\nFoundations of Computer Vision: コンピュータビジョンの基礎を解説した本。\nOpen Data Structures\nContributions to morphometrics - Biodiversity Heritage Library"
+    "section": "本・オンライン教材",
+    "text": "本・オンライン教材\n\n植物・形態\n\nManual of Leaf Architecture: 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識がまとまっている。ライセンスは CC BY-NC 4.0。\nContributions to Morphometrics: 形態測定学に関する古典的な資料。\n\n\n\nR\nオンラインで読める R 関連の良質な本です。\n\nR for Data Science (2e): R を使ったデータサイエンスの入門書。データの取り扱い、可視化、モデリングなどが網羅されている。ライセンスは CC BY-NC-ND 3.0。\nR Graphics Cookbook, 2nd edition: R のグラフィックスに関するレシピ集。ggplot2 を使ったグラフの作成方法が豊富に紹介されている。\nCookbook for R: R の様々なタスクに関するレシピ集。ライセンスは CC0。\nTidy Modeling with R: tidymodels を使ったモデリングの入門書。\nEfficient R programming: R を効率よく書くための実践的な本。\nBig Book of R: R 関連のオンライン教材を集めたリンク集。\nMastering Shiny: Hadley Wickham 氏による Shiny の入門書。\nDeep Learning with R: R で深層学習を扱うための本。\nblogdown: Creating Websites with R Markdown: blogdown を使ったウェブサイト作成の本。\nMastering Spark with R: R から Spark を扱うための本。\nR Packages (2e): R パッケージ開発の入門書。\nggplot2: Elegant Graphics for Data Analysis (3e): ggplot2 の入門書。\n\n\n\nPython\n\nThink Python: Python の入門書。\nThink Python, 2nd edition: Think Python の第 2 版。\nCracking Codes with Python: 暗号を題材に Python を学ぶ本。\nBeyond the Basic Stuff with Python: Python の基礎の次に読む本。\nThe Big Book of Small Python Projects: 小さな Python プロジェクトを通して学ぶ本。\nPython for Data Analysis, 3E: pandas を中心としたデータ分析の定番書。\nデータ分析のための統計学入門: データ分析に必要な統計学の入門資料。\nIPython Cookbook, Second Edition: IPython と Python の実践的なレシピ集。\nAutomate the Boring Stuff with Python: Python による自動化の入門書。\n\n\n\n統計・可視化・コンピュータサイエンス\n\nAn Introduction to Statistical Learning: 統計学習の入門書。\nFundamentals of Data Visualization: データ可視化の基本原則を解説した本。ライセンスは CC BY-NC-ND 4.0。\nThink Bayes 2: ベイズ統計の入門書。\nThink Stats, 3rd edition: 統計の基礎を Python で学ぶ本。\nFoundations of Computer Vision: コンピュータビジョンの基礎を解説した本。\nOpen Data Structures: データ構造の入門書。"
   },
   {
     "objectID": "posts/2026-01-25-zotero-plugins/index.html",

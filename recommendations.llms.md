@@ -1,101 +1,115 @@
 # おすすめ
 
-ここでは、私のおすすめをまとめます。 主にオンライン上で利用できるものが中心です。
+おすすめのツール、サービス、R パッケージ、Zotero プラグイン、本の一覧。
 
-随時更新していく予定です。
+個人で使っている、または後で参照したいツール・サービス・本を用途別にまとめています。 オンラインで利用できるものを中心に、随時更新します。
 
-## ツール
+## ツール・サービス
 
-- [Obsidian](https://obsidian.md/): ノートアプリ。Markdown形式でノートを取ることができ、リンク機能やタグ機能などが充実している。
-- [Zotero](https://www.zotero.org/): 参考文献管理。
-- [GitHub](https://github.com/): ソースコード管理。
-- [Quarto](https://quarto.org/): ドキュメント作成ツール。R Markdownの後継。
-- [Positron](https://positron.posit.co/): データサイエンスのためのIDE。RStudioよりも最近はこちらを使うことが多い。
-- [eagle](https://en.eagle.cool/): 画像管理ツール。画像をタグで管理できる。
-- [VisiOS](https://beta-japan.com/): ブックマークやタブの管理ツール
-- [Raindrop.io](https://raindrop.io/): ブックマーク管理ツール
-- [Kdenlive](https://kdenlive.org/): 動画編集ソフト
-- [Affinity](https://www.affinity.studio/): 画像や写真の編集ソフト。Adobe PhotoshopやIllustratorの代替。
-- [OBS Studio](https://obsproject.com/): 画面録画ソフト
-- [Todoist](https://todoist.com/): タスク管理ツール
-- [Inoreader](https://www.inoreader.com/): RSSリーダー
-- [Bitwarden](https://bitwarden.com/): パスワード管理ツール
-- [Tailscale](https://tailscale.com/): VPNサービス
-- [Proton Mail](https://proton.me/mail): セキュアなメールサービス
-- [Keyvis](https://keyviz.org/): オープンソースのキーボードビジュアライザー
-- [Proton Authenticator](https://proton.me/authenticator): 2段階認証アプリ
-- [Rustdesk](https://rustdesk.com/): リモートデスクトップソフト。Anydeskの代替。
-- [Brave](https://brave.com/): プライバシー重視のウェブブラウザ
-- [Element](https://element.io/): オープンソースのチャットアプリ。Matrixプロトコルを使用。
-- [Karakeep](https://karakeep.app/): ブックマーク管理ツール。セルフホストでRaindrop.ioの代替として導入したが、あまり活用できていない
-- [NordVPN](https://nordvpn.com/): VPNサービス。[Proton VPN](https://proton.me/vpn)に乗り換えを検討中。
-- [LM Studio](https://lmstudio.ai/): ローカルで動作するAIチャットツール。ChatGPTの代替。
+### ノート・文献管理
 
-### 文献関係
+- [Obsidian](https://obsidian.md/): Markdown 形式でノートを取れるノートアプリ。リンク機能やタグ機能が充実している。
+- [Zotero](https://www.zotero.org/): 参考文献管理ツール。
+- [Elicit](https://elicit.com/): AI を活用したリサーチツール。文献検索や要約などに利用できる。
+- [Google Scholar \| Labs](https://scholar.google.com/scholar_labs/search): Google Scholar の実験的な検索機能。
+- [Undermind](https://www.undermind.ai/): 研究文献を探索するための AI 検索ツール。
+- [ResearchRabbit](https://www.researchrabbit.ai/): 文献同士の関係をグラフで可視化し、関連文献を探しやすくするツール。
 
-- [Elicit](https://elicit.com/): AIを活用したリサーチツール。文献検索や要約などが可能。
-- [Google Scholar \| Labs](https://scholar.google.com/scholar_labs/search)
-- [Undermind](https://www.undermind.ai/)
-- [ResearchRabbit](https://www.researchrabbit.ai/): 文献間の関係を可視化するツール。文献の関連性をグラフで表示し、関連する文献を見つけやすくする。
+### 開発・ドキュメント作成
 
-## Rパッケージ
+- [GitHub](https://github.com/): ソースコード管理とプロジェクト公開のためのサービス。
+- [Quarto](https://quarto.org/): ドキュメント作成ツール。R Markdown の後継として利用している。
+- [Positron](https://positron.posit.co/): データサイエンス向け IDE。最近は RStudio よりもこちらを使うことが多い。
 
-- [tmap](https://r-tmap.github.io/tmap/index.html): 地図の作成に特化したRパッケージ。地理空間データの可視化に便利。
-- [rnaturalearth](https://ropensci.github.io/rnaturalearth/index.html): 自然地理データを提供するRパッケージ。世界の国境や地形などのデータを簡単に取得できる。
-- [cols4all](https://cols4all.github.io/cols4all-R/): カラーパレットを提供するRパッケージ。色覚多様性に配慮したカラーパレットも利用できる。
+### 情報収集・タスク管理
 
-## Zoteroプラグイン
+- [Raindrop.io](https://raindrop.io/): ブックマーク管理ツール。
+- [Karakeep](https://karakeep.app/): セルフホストできるブックマーク管理ツール。Raindrop.io の代替候補として導入したが、まだ十分には活用できていない。
+- [VisiOS](https://beta-japan.com/): ブックマークやタブの管理ツール。
+- [Inoreader](https://www.inoreader.com/): RSS リーダー。
+- [Todoist](https://todoist.com/): タスク管理ツール。
 
-- [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/): 外部ソフトウェア([Obsidian](https://obsidian.md/)など)との連携に
-- [Ethernal Style](https://github.com/MuiseDestiny/zotero-style): UI(見た目)の強化
-- [ZotCard](https://github.com/018/zotcard): カード形式のメモ、メモテンプレート作成
-- [Zotero Reading List](https://github.com/Dominic-DallOsto/zotero-reading-list): 閲覧状況の管理(未読・既読・途中など)
-- [ZotSeek](https://github.com/introfini/ZotSeek): 類似文献の検索
-- [Zotero Better Notes](https://github.com/windingwind/zotero-better-notes): メモ機能強化
-- [Zotodo](https://github.com/wbthomason/zotodo): Todo管理アプリ[Todoist](https://www.todoist.com/)との連携
-- [Zotero Reference](https://github.com/MuiseDestiny/zotero-reference): 引用文献への簡単アクセス、文献リスト作成
+### 画像・動画・配信
 
-## 本
+- [Eagle](https://en.eagle.cool/): 画像管理ツール。画像をタグで管理できる。
+- [Affinity](https://www.affinity.studio/): 画像や写真の編集ソフト。Adobe Photoshop や Illustrator の代替として利用できる。
+- [Kdenlive](https://kdenlive.org/): 動画編集ソフト。
+- [OBS Studio](https://obsproject.com/): 画面録画・配信用ソフト。
+- [Keyviz](https://keyviz.org/): オープンソースのキーボードビジュアライザー。
 
-### 植物
+### セキュリティ・ネットワーク
 
-- [Manual of Leaf Architecture](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000): 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識が詰まっている。[Smithsonian Libraries and Archives](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000)で無料で閲覧できる。ライセンスは[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)。
+- [Bitwarden](https://bitwarden.com/): パスワード管理ツール。
+- [Proton Mail](https://proton.me/mail): セキュアなメールサービス。
+- [Proton Authenticator](https://proton.me/authenticator): 2 段階認証アプリ。
+- [Tailscale](https://tailscale.com/): VPN サービス。
+- [NordVPN](https://nordvpn.com/): VPN サービス。[Proton VPN](https://proton.me/vpn) への乗り換えを検討中。
+- [RustDesk](https://rustdesk.com/): リモートデスクトップソフト。AnyDesk の代替。
+- [Brave](https://brave.com/): プライバシー重視のウェブブラウザ。
+- [Element](https://element.io/): オープンソースのチャットアプリ。Matrix プロトコルを使用。
+
+### AI
+
+- [LM Studio](https://lmstudio.ai/): ローカルで動作する AI チャットツール。ローカル LLM を試すときに便利。
+
+## R パッケージ
+
+- [tmap](https://r-tmap.github.io/tmap/index.html): 地図の作成に特化した R パッケージ。地理空間データの可視化に便利。
+- [rnaturalearth](https://ropensci.github.io/rnaturalearth/index.html): 自然地理データを提供する R パッケージ。世界の国境や地形などを簡単に取得できる。
+- [cols4all](https://cols4all.github.io/cols4all-R/): カラーパレットを提供する R パッケージ。色覚多様性に配慮したカラーパレットも利用できる。
+
+## Zotero プラグイン
+
+- [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/): Obsidian など外部ソフトウェアとの連携に便利。
+- [Ethereal Style](https://github.com/MuiseDestiny/zotero-style): Zotero の UI を拡張するプラグイン。
+- [ZotCard](https://github.com/018/zotcard): カード形式のメモやメモテンプレートを作成できるプラグイン。
+- [Zotero Reading List](https://github.com/Dominic-DallOsto/zotero-reading-list): 未読・既読・途中など、文献の閲覧状況を管理するプラグイン。
+- [ZotSeek](https://github.com/introfini/ZotSeek): 類似文献の検索を補助するプラグイン。
+- [Zotero Better Notes](https://github.com/windingwind/zotero-better-notes): Zotero のメモ機能を強化するプラグイン。
+- [Zotodo](https://github.com/wbthomason/zotodo): Todoist などのタスク管理アプリと Zotero を連携するプラグイン。
+- [Zotero Reference](https://github.com/MuiseDestiny/zotero-reference): 引用文献へのアクセスや文献リスト作成を補助するプラグイン。
+
+## 本・オンライン教材
+
+### 植物・形態
+
+- [Manual of Leaf Architecture](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000): 葉の形態に関するマニュアル。葉の形態を理解するための基本的な知識がまとまっている。ライセンスは [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)。
+- [Contributions to Morphometrics](https://www.biodiversitylibrary.org/bibliography/15368): 形態測定学に関する古典的な資料。
 
 ### R
 
-オンライン上で読める良質なRの本がいくつかあるので紹介します。
+オンラインで読める R 関連の良質な本です。
 
-- [R for Data Science (2e)](https://r4ds.hadley.nz/): Rを使ったデータサイエンスの入門書。データの取り扱いや可視化、モデリングなどが網羅されている。オンラインで無料で閲覧できる。ライセンスは[CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/)。
-- [R Graphics Cookbook, 2nd edition](https://r-graphics.org/): Rのグラフィックスに関するレシピ集。ggplot2を使ったグラフの作成方法が豊富に紹介されている。オンラインで無料で閲覧できる。
-- [Cookbook for R](http://www.cookbook-r.com/): Rの様々なタスクに関するレシピ集。ライセンスは[CC0](https://creativecommons.org/publicdomain/zero/1.0/)。
-- [Tidy Modeling with R](https://www.tmwr.org/)
-- [Efficient R programming](https://csgillespie.github.io/efficientR/)
-- [Big Book of R](https://www.bigbookofr.com/)
-- [Mastering Shiny](https://mastering-shiny.org/): Hadley Wickham氏によるShinyの入門書。
-- [Deep Learning with R](https://livebook.manning.com/book/deep-learning-with-r/about-this-book)
-- [blogdown: Creating Websites with R Markdown](https://yihui.org/blogdown/)
-- [Mastering Spark with R](https://therinspark.com/)
-- [R Packages (2e)](https://r-pkgs.org/): Rのパッケージ開発の入門書。
-- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/): ggplot2の入門書。
+- [R for Data Science (2e)](https://r4ds.hadley.nz/): R を使ったデータサイエンスの入門書。データの取り扱い、可視化、モデリングなどが網羅されている。ライセンスは [CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/)。
+- [R Graphics Cookbook, 2nd edition](https://r-graphics.org/): R のグラフィックスに関するレシピ集。ggplot2 を使ったグラフの作成方法が豊富に紹介されている。
+- [Cookbook for R](http://www.cookbook-r.com/): R の様々なタスクに関するレシピ集。ライセンスは [CC0](https://creativecommons.org/publicdomain/zero/1.0/)。
+- [Tidy Modeling with R](https://www.tmwr.org/): tidymodels を使ったモデリングの入門書。
+- [Efficient R programming](https://csgillespie.github.io/efficientR/): R を効率よく書くための実践的な本。
+- [Big Book of R](https://www.bigbookofr.com/): R 関連のオンライン教材を集めたリンク集。
+- [Mastering Shiny](https://mastering-shiny.org/): Hadley Wickham 氏による Shiny の入門書。
+- [Deep Learning with R](https://livebook.manning.com/book/deep-learning-with-r/about-this-book): R で深層学習を扱うための本。
+- [blogdown: Creating Websites with R Markdown](https://yihui.org/blogdown/): blogdown を使ったウェブサイト作成の本。
+- [Mastering Spark with R](https://therinspark.com/): R から Spark を扱うための本。
+- [R Packages (2e)](https://r-pkgs.org/): R パッケージ開発の入門書。
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/): ggplot2 の入門書。
 
 ### Python
 
-- [Think Python](https://allendowney.github.io/ThinkPython/)
-- [Think Python, 2nd edition](https://greenteapress.com/wp/think-python-2e/)
-- [Cracking Codes with Python - Invent with Python](https://inventwithpython.com/cracking/)
-- [Beyond the Basic Stuff with Python - Invent with Python](https://inventwithpython.com/beyond/)
-- [The Big Book of Small Python Projects - Invent with Python](https://inventwithpython.com/bigbookpython/)
-- [Python for Data Analysis, 3E](https://wesmckinney.com/book/)
-- [データ分析のための統計学入門](http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf)
-- [IPython Cookbook, Second Edition (2018)](https://ipython-books.github.io/)
-- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+- [Think Python](https://allendowney.github.io/ThinkPython/): Python の入門書。
+- [Think Python, 2nd edition](https://greenteapress.com/wp/think-python-2e/): Think Python の第 2 版。
+- [Cracking Codes with Python](https://inventwithpython.com/cracking/): 暗号を題材に Python を学ぶ本。
+- [Beyond the Basic Stuff with Python](https://inventwithpython.com/beyond/): Python の基礎の次に読む本。
+- [The Big Book of Small Python Projects](https://inventwithpython.com/bigbookpython/): 小さな Python プロジェクトを通して学ぶ本。
+- [Python for Data Analysis, 3E](https://wesmckinney.com/book/): pandas を中心としたデータ分析の定番書。
+- [データ分析のための統計学入門](http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf): データ分析に必要な統計学の入門資料。
+- [IPython Cookbook, Second Edition](https://ipython-books.github.io/): IPython と Python の実践的なレシピ集。
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/): Python による自動化の入門書。
 
-### その他
+### 統計・可視化・コンピュータサイエンス
 
-- - [An Introduction to Statistical Learning](https://www.statlearning.com/)
-- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/): データ可視化の基本原則を解説した本。データを効果的に伝えるための方法が紹介されている。オンラインで無料で閲覧できる。ライセンスは[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)。
-- [Think Bayes 2](https://allendowney.github.io/ThinkBayes2/)
-- [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/)
+- [An Introduction to Statistical Learning](https://www.statlearning.com/): 統計学習の入門書。
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/): データ可視化の基本原則を解説した本。ライセンスは [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode)。
+- [Think Bayes 2](https://allendowney.github.io/ThinkBayes2/): ベイズ統計の入門書。
+- [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/): 統計の基礎を Python で学ぶ本。
 - [Foundations of Computer Vision](https://visionbook.mit.edu/): コンピュータビジョンの基礎を解説した本。
-- [Open Data Structures](https://opendatastructures.org/)
-- [Contributions to morphometrics - Biodiversity Heritage Library](https://www.biodiversitylibrary.org/bibliography/15368)
+- [Open Data Structures](https://opendatastructures.org/): データ構造の入門書。
