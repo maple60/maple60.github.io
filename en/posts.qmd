@@ -3,7 +3,7 @@ title: "English Posts"
 description: "English translations and English-first articles."
 lang: en
 listing:
-  contents: "en/posts/**/*.qmd"
+  contents: "posts/**/*.qmd"
   sort: "date desc"
   type: default
   categories: true

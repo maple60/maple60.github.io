@@ -3,7 +3,7 @@ title: "Maple60's Website"
 description: "English pages for Maple60's notes on R, Python, Quarto, and research workflows."
 lang: en
 listing:
-  contents: "en/posts/**/*.qmd"
+  contents: "posts/**/*.qmd"
   sort: "date desc"
   type: table
   max-items: 6
