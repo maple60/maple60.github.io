@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - assets/
+
+website:
+  title: "My Website"
+  site-url: "https://USERNAME.github.io/REPOSITORY_NAME/"
+  description: "Notes, articles, and project updates"
+  navbar:
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: posts.qmd
+        text: Posts
+      - href: about.qmd
+        text: About
+  draft-mode: gone
+  reader-mode: true
+  bread-crumbs: true
+  page-footer:
+    left: |
+      © 2026 Your Name. Content license: CC BY 4.0 unless otherwise noted.
+    center: "Built with [Quarto](https://quarto.org/)"
+    right:
+      - icon: github
+        href: https://github.com/USERNAME/REPOSITORY_NAME
+
+date-format: iso
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    toc: true
+    code-copy: true
+    code-link: true
+    code-line-numbers: false
+
+execute:
+  freeze: auto

@@ -1,0 +1,12 @@
+---
+title: "My Post"
+description: "Post description"
+date: "2026-01-01"
+date-modified: "2026-01-01"
+draft: true
+categories: []
+---
+
+Write your post here.
+
+Use `draft: true` while editing. Change it to `draft: false` when you are ready to publish.

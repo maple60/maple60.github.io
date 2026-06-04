@@ -1,0 +1,19 @@
+/*-- scss:defaults --*/
+/* See: https://quarto.org/docs/output-formats/html-themes.html */
+
+$body-bg: #fdfdfb;
+$body-color: #1f2933;
+$link-color: #0f766e;
+$navbar-bg: #1f2933;
+$navbar-fg: #ffffff;
+$footer-bg: #f2f4f7;
+
+/*-- scss:rules --*/
+
+.quarto-title-meta {
+  color: #52616b;
+}
+
+pre {
+  border-radius: 6px;
+}

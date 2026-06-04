@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+    - "en/**/*.qmd"
   resources: 
     - posts/
     - "*.qmd"
@@ -16,6 +20,12 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
+      - text: English
+        menu:
+          - href: en/index.qmd
+            text: English Home
+          - href: en/posts.qmd
+            text: English Posts
       - href: recommendations.qmd
         text: Recommendations
   draft-mode: gone # https://quarto.org/docs/websites/website-drafts.html
