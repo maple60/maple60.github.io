@@ -1,0 +1,145 @@
+# Quarto 1.9 Has Been Released
+
+r
+
+quarto
+
+Quarto 1.9 has been released. This article summarizes the features that caught my attention.
+
+Published
+
+2026-03-25
+
+Modified
+
+2026-03-25
+
+> **NOTE:**
+>
+> Original Japanese version: [Quarto 1.9がリリースされました](../../../posts/2026-03-25-quarto-1.9/index.llms.md)
+
+Quarto 1.9 was released on March 24, 2026. See the [official blog post](https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/). Several interesting features were added, such as publishing to [Posit Connect Cloud](https://connect.posit.cloud/) and support for [Typst](https://typst.app/).
+
+This article summarizes the points that caught my attention.
+
+## How to Update Quarto
+
+Before summarizing the features, here is how to update Quarto. Quarto is not updated with a command; you need to download and run the installer. Download the latest installer from the [official download page](https://quarto.org/docs/download/) and run it.
+
+Running the installer updates Quarto to the latest version easily. After updating, run `quarto --version` on the command line to confirm that it was updated correctly.
+
+``` powershell
+quarto --version
+# 1.9.36
+```
+
+## Adding the `llms.txt` File
+
+By writing `llms-txt: true` in `_quarto.yml`, the configuration file, Quarto generates a file named `llms.txt` in the project root directory.
+
+The `llms.txt` file provides guidelines for large language models, or LLMs, and AI tools to understand the project structure. For details, see the [official documentation](https://llmstxt.org/).
+
+I enabled this feature right away. It seems that the setting should be written inside `website`. I placed it under `title`.
+
+``` yaml
+website:
+  title: "Maple60's website"
+  llms-txt: true
+```
+
+Then run `quarto render`. The `_site/llms.txt` file was generated. An excerpt looks like this.
+
+``` txt
+# Maple60's website
+
+## Pages
+
+- [Recommendations](recommendations.llms.md)
+- [Quarto 1.9 Has Been Released](posts/2026-03-25-quarto-1.9/index.llms.md)
+- [Implementing Otsu's Thresholding in R](posts/2026-03-11-r-otsu-thresholding/index.llms.md)
+- [Simulating Color Vision Deficiency in R](posts/2026-03-04-r-color-blind/index.llms.md)
+- [Notes on Using r-universe Packages with GitHub Actions and renv](posts/2026-02-24-github-actions-r-universe/index.llms.md)
+- [Managing Analysis Projects with Quarto](posts/2026-02-11-quarto-project-management/index.llms.md)
+```
+
+LLMs and AI tools can refer to this `llms.txt` file to understand the project structure and generate appropriate responses.
+
+For details on `llms.txt`, see the [Quarto official documentation](https://quarto.org/docs/websites/website-llms.html).
+
+## List Tables
+
+A feature that looks very useful was added. It was already easy to create tables from Markdown syntax or code, but list tables make it possible to include line breaks and various kinds of content inside table cells.
+
+```` markdown
+::: {.list-table}
+
+- - Column A
+  - Column B
+  - Column C
+  - Column D
+
+- - Text
+  - `inline code`
+  - Code cells can also be included.
+
+    ```{r}
+    summary(cars)
+    ```
+  - Bullet lists can also be included.
+
+    - Item 1
+    - Item 2
+    - Item 3
+:::
+````
+
+The output is as follows.
+
+[TABLE]
+
+The syntax takes a little effort to learn, but once you get used to it, it seems very convenient.
+
+For detailed usage, see the [official documentation](https://quarto.org/docs/authoring/tables.html#list-tables).
+
+## Other Features
+
+I may not use the other features immediately, but I summarize them briefly.
+
+### Publishing to Posit Connect Cloud
+
+Quarto projects can now be published to [Posit Connect Cloud](https://connect.posit.cloud/) with a single command.
+
+### Support for Typst
+
+Quarto added support for [Typst](https://typst.app/), a new document creation tool. [Typst](https://typst.app/) is a tool for creating high-quality documents like LaTeX, with usability closer to Word or Google Docs. I have also been interested in it and wanted to try it.
+
+### Improved PDF Accessibility
+
+This is described as an experimental feature, but when outputting PDF with LaTeX or Typst, Quarto can now output formats such as [PDF/A](https://en.wikipedia.org/wiki/PDF/A), which is suitable for long-term preservation, and [PDF/UA](https://en.wikipedia.org/wiki/PDF/UA), a structured and accessible format that is easier for screen readers to read.
+
+For details, see the [official blog post](https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/).
+
+### Brand Feature Available from the Command Line
+
+With the `quarto use brand` command, the brand feature can now be used from the command line. The brand feature is used to unify colors, styles, and other themes across a project. For detailed usage, see the [official documentation](https://quarto.org/docs/authoring/brand.html#quarto-use-brand).
+
+## Closing Note
+
+Quarto keeps evolving, and this update added very attractive features. I am deeply grateful to the contributors.
+
+I also hope to contribute to Quarto someday.
+
+## References
+
+- Wickham, C. (2026, March 24). Quarto 1.9. Quarto Blog. https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/
+- [Posit Connect Cloud](https://connect.posit.cloud/)
+- [Typst](https://typst.app/)
+- [Download Quarto - Quarto](https://quarto.org/docs/download/)
+- [The /llms.txt file - llms-txt](https://llmstxt.org/)
+- [Output for LLMs - Quarto](https://quarto.org/docs/websites/website-llms.html)
+- [Tables - Quarto](https://quarto.org/docs/authoring/tables.html#list-tables)
+- [PDF/A - Wikipedia](https://en.wikipedia.org/wiki/PDF/A)
+- [PDF/UA - Wikipedia](https://en.wikipedia.org/wiki/PDF/UA)
+- [Multiformat branding with \_brand.yml - Quarto](https://quarto.org/docs/authoring/brand.html#quarto-use-brand)
+
+All references were accessed on March 25, 2026.

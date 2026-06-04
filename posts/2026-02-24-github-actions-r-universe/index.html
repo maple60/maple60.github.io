@@ -203,7 +203,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="症状" class="level2"><h2 class="anchored" data-anchor-id="症状">症状</h2>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="../../en/posts/2026-02-24-github-actions-r-universe/index.html">Notes on Using r-universe Packages with GitHub Actions and renv</a></p>
+</div>
+</div>
+<section id="症状" class="level2"><h2 class="anchored" data-anchor-id="症状">症状</h2>
 <p>このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、<a href="https://r-universe.dev/search">r-universe</a>のパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。</p>
 <p>具体的には、<code>rnaturalearthhires</code>というパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。</p>
 <pre><code># Downloading packages -------------------------------------------------------
@@ -238,17 +251,7 @@ Error: code 22]</code></pre>
 <span><span class="op">)</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/renv/reference/snapshot.html">snapshot</a></span><span class="op">(</span>force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The following package(s) will be updated in the lockfile:
-
-# https://packagemanager.posit.co/cran/__linux__/noble/latest ----------------
-- Rcpp      [repo: CRAN -&gt; https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 1.1.1 -&gt; 1.1.1-1]
-- S7        [repo: CRAN -&gt; https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 0.2.1 -&gt; 0.2.1-1]
-- yyjsonr   [* -&gt; 0.1.22]
-
-The version of R recorded in the lockfile will be updated:
-- R         [4.5.3 -&gt; 4.5.2]
-
-- Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".</code></pre>
+<pre><code>- Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".</code></pre>
 </div>
 </div>
 <p>このコードでは、<code><a href="https://rdrr.io/r/base/options.html">options()</a></code>関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、<code>renv::snapshot(force = TRUE)</code>を実行して、<code>renv.lock</code> ファイルを更新しています。</p>

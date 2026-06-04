@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="dcterms.date" content="2026-05-26">
+<meta name="description" content="Finding the principal axis of bivariate data from the covariance matrix, eigenvalues, and eigenvectors.">
+<title>Understanding the Basics of Bivariate PCA and Principal Axis Regression in R – Maple60’s website</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-a170cf21a91f252bdb60defb6841b97f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Maple60’s website</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-english" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">English</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
+<li>
+    <a class="dropdown-item" href="../../../en/index.html">
+ <span class="dropdown-text">English Home</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../en/posts.html">
+ <span class="dropdown-text">English Posts</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../recommendations.html"> 
+<span class="menu-text">Recommendations</span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#overview-of-principal-axis-regression" id="toc-overview-of-principal-axis-regression" class="nav-link active" data-scroll-target="#overview-of-principal-axis-regression">Overview of Principal Axis Regression</a></li>
+  <li>
+<a href="#implementation-in-r" id="toc-implementation-in-r" class="nav-link" data-scroll-target="#implementation-in-r">Implementation in R</a>
+  <ul class="collapse">
+<li><a href="#preparing-data" id="toc-preparing-data" class="nav-link" data-scroll-target="#preparing-data">Preparing Data</a></li>
+  <li><a href="#calculating-the-covariance-matrix" id="toc-calculating-the-covariance-matrix" class="nav-link" data-scroll-target="#calculating-the-covariance-matrix">Calculating the Covariance Matrix</a></li>
+  <li><a href="#calculating-eigenvalues-and-eigenvectors" id="toc-calculating-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#calculating-eigenvalues-and-eigenvectors">Calculating Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  </ul>
+</li>
+  <li><a href="#relationship-with-pca" id="toc-relationship-with-pca" class="nav-link" data-scroll-target="#relationship-with-pca">Relationship with PCA</a></li>
+  <li>
+<a href="#what-the-covariance-matrix-eigenvalues-and-eigenvectors-mean" id="toc-what-the-covariance-matrix-eigenvalues-and-eigenvectors-mean" class="nav-link" data-scroll-target="#what-the-covariance-matrix-eigenvalues-and-eigenvectors-mean">What the Covariance Matrix, Eigenvalues, and Eigenvectors Mean</a>
+  <ul class="collapse">
+<li><a href="#covariance-matrix-for-calculating-variation" id="toc-covariance-matrix-for-calculating-variation" class="nav-link" data-scroll-target="#covariance-matrix-for-calculating-variation">Covariance Matrix for Calculating Variation</a></li>
+  <li><a href="#finding-the-direction-that-maximizes-variation" id="toc-finding-the-direction-that-maximizes-variation" class="nav-link" data-scroll-target="#finding-the-direction-that-maximizes-variation">Finding the Direction That Maximizes Variation</a></li>
+  </ul>
+</li>
+  <li><a href="#visual-understanding-with-r" id="toc-visual-understanding-with-r" class="nav-link" data-scroll-target="#visual-understanding-with-r">Visual Understanding with R</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Understanding the Basics of Bivariate PCA and Principal Axis Regression in R</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">r</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Finding the principal axis of bivariate data from the covariance matrix, eigenvalues, and eigenvectors.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-05-26</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-05-30</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Original Japanese version: <a href="../../../posts/2026-05-26-r-principle-axis-regression/index.html">Rで2変量PCAとPrincipal axis regressionの基礎を理解する</a></p>
+</div>
+</div>
+<p><strong>Principal axis regression</strong> (PAR) is used to describe the main direction of variation in bivariate data as a line, using an idea similar to principal component analysis (PCA). In the literature, related bivariate line-fitting methods are often discussed as major axis (MA) or standardised major axis (SMA) methods <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>. This article focuses on an MA-like approach that uses the first eigenvector of the covariance matrix as the principal axis.</p>
+<p>This article implements a method close to major axis regression, using the first eigenvector of the covariance matrix as the principal axis. Below, I implement principal axis regression in R.</p>
+<section id="overview-of-principal-axis-regression" class="level2"><h2 class="anchored" data-anchor-id="overview-of-principal-axis-regression">Overview of Principal Axis Regression</h2>
+<p>Principal axis regression identifies the main direction of variation in data by calculating the <strong>covariance matrix</strong> and then obtaining its <strong>eigenvalues</strong> and <strong>eigenvectors</strong>. The <strong>first eigenvector represents the direction with the largest variance</strong>, while the <strong>second eigenvector represents the direction orthogonal to it</strong>.</p>
+<p>In ordinary least squares regression (OLS), the response variable and explanatory variable are separated, and a line is fitted so that errors in the response-variable direction become small. In contrast, PAR does not fix one variable as the response. Instead, it finds a line representing the overall direction of variation in the bivariate point cloud.</p>
+</section><section id="implementation-in-r" class="level2"><h2 class="anchored" data-anchor-id="implementation-in-r">Implementation in R</h2>
+<p>To implement principal axis regression in R, the following steps are needed.</p>
+<ol type="1">
+<li>Prepare data</li>
+<li>Calculate the covariance matrix</li>
+<li>Calculate eigenvalues and eigenvectors</li>
+<li>Calculate the slope and intercept of the principal axis</li>
+<li>Visualize the result</li>
+</ol>
+<p>Here, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are treated as simulated data on the same scale. For real data where the two variables have very different units or scales, consider applying log transformation or standardization, or using a correlation matrix instead of a covariance matrix. The estimated axis direction can differ between covariance-matrix and correlation-matrix approaches.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the R implementation section, detailed mathematical explanation is omitted and the focus is on code. The mechanism using equations is explained in the next section.</p>
+</div>
+</div>
+<section id="preparing-data" class="level3"><h3 class="anchored" data-anchor-id="preparing-data">Preparing Data</h3>
+<p>First, prepare an appropriate dataset. Here, random data are generated with the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function. The data are generated by defining the principal axis as <span class="math inline">\(y = \alpha + \beta x\)</span> and adding noise.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1.5</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="co"># Scores along the principal-axis direction</span></span>
+<span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Noise orthogonal to the principal axis</span></span>
+<span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Direction vector for the principal axis and the orthogonal direction</span></span>
+<span><span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">beta</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">beta</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">+</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="calculating-the-covariance-matrix" class="level3"><h3 class="anchored" data-anchor-id="calculating-the-covariance-matrix">Calculating the Covariance Matrix</h3>
+<p>The covariance matrix is written as follows.</p>
+<p><span class="math display">\[
+\Sigma = \begin{bmatrix}\sigma_{xx} &amp; \sigma_{xy} \\
+\sigma_{yx} &amp; \sigma_{yy}\end{bmatrix}
+\]</span></p>
+<p>Here, <span class="math inline">\(\sigma_{xx}\)</span> is the variance of <span class="math inline">\(x\)</span>, <span class="math inline">\(\sigma_{yy}\)</span> is the variance of <span class="math inline">\(y\)</span>, and <span class="math inline">\(\sigma_{xy}\)</span> is the covariance between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Covariance is an index of how strongly two variables vary together. It is calculated as follows.</p>
+<p><span class="math display">\[
+\sigma_{xy} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+<p>In R, the covariance matrix can be calculated easily with the <code><a href="https://rdrr.io/r/stats/cor.html">cov()</a></code> function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cov_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">cov_matrix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         x        y
+x 1.227713 1.447200
+y 1.447200 2.338984</code></pre>
+</div>
+</div>
+</section><section id="calculating-eigenvalues-and-eigenvectors" class="level3"><h3 class="anchored" data-anchor-id="calculating-eigenvalues-and-eigenvectors">Calculating Eigenvalues and Eigenvectors</h3>
+<p>Use the <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> function to calculate the eigenvalues and eigenvectors of the covariance matrix. Eigenvalues represent the magnitude of data variation, and eigenvectors represent the directions of that variation. R’s <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> returns eigenvalues in descending order, so the first column of <code>vectors</code> corresponds to the first principal axis, and the second column corresponds to the second principal axis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eigen_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">cov_matrix</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">eigen_result</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>eigen() decomposition
+$values
+[1] 3.3335480 0.2331491
+
+$vectors
+          [,1]       [,2]
+[1,] 0.5663796 -0.8241445
+[2,] 0.8241445  0.5663796</code></pre>
+</div>
+</div>
+<p>The <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code> function returns eigenvalues and eigenvectors as a list. Eigenvalues are stored in <code>values</code>, and eigenvectors are stored in <code>vectors</code>. For two-dimensional data with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, two eigenvalues and their corresponding eigenvectors are obtained.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eigen_values</span> <span class="op">&lt;-</span> <span class="va">eigen_result</span><span class="op">$</span><span class="va">values</span></span>
+<span><span class="va">eigen_vectors</span> <span class="op">&lt;-</span> <span class="va">eigen_result</span><span class="op">$</span><span class="va">vectors</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Eigenvalue of the first principal axis:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Eigenvalue of the first principal axis: 3.33354798737934"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Eigenvalue of the second principal axis:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Eigenvalue of the second principal axis: 0.233149107828597"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Eigenvector of the first principal axis: ("</span>,</span>
+<span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span>,</span>
+<span>  <span class="st">", "</span>,</span>
+<span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span>,</span>
+<span>  <span class="st">")"</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Eigenvector of the first principal axis: (0.566379566968877, 0.824144517739545)"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Eigenvector of the second principal axis: ("</span>,</span>
+<span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span>,</span>
+<span>  <span class="st">", "</span>,</span>
+<span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">]</span>,</span>
+<span>  <span class="st">")"</span>,</span>
+<span>  sep <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Eigenvector of the second principal axis: (-0.824144517739545, 0.566379566968877)"</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Sign of Eigenvectors
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The sign of an eigenvector is arbitrary. For example, <span class="math inline">\((u_x, u_y)\)</span> and <span class="math inline">\((-u_x, -u_y)\)</span> represent the same axis direction. Therefore, the line slope <span class="math inline">\(u_y/u_x\)</span> does not change, but this sign arbitrariness matters when calculating the angle between axes, which is covered in the next article.</p>
+</div>
+</div>
+</section><section id="visualization" class="level3"><h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
+<p>Plot the eigenvectors, or the main directions of variation, together with the data points. The vectors should pass through the center of the data. That is, when the line is <span class="math inline">\(y = a + bx\)</span>, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are calculated as follows.</p>
+<p><span class="math display">\[
+a = \bar{y} - b \bar{x}
+\]</span></p>
+<p>Here, <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{y}\)</span> are the means of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The slope <span class="math inline">\(b\)</span> is calculated from the ratio of the eigenvector components. Draw the first principal axis in red and the second principal axis in blue.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Slopes of the first and second principal axes</span></span>
+<span><span class="va">major_axis_slope</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">minor_axis_slope</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Calculate intercepts so that the lines pass through the data center</span></span>
+<span><span class="va">major_axis_intercept</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">major_axis_slope</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">minor_axis_intercept</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">minor_axis_slope</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot data points and the main directions of variation</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, main <span class="op">=</span> <span class="st">"Principal Axis Regression"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the first principal axis</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">major_axis_intercept</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">major_axis_slope</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add the second principal axis</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">minor_axis_intercept</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">minor_axis_slope</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="relationship-with-pca" class="level2"><h2 class="anchored" data-anchor-id="relationship-with-pca">Relationship with PCA</h2>
+<p>The calculation performed here is the same as PCA for bivariate data. In PCA, eigenvalues and eigenvectors of the covariance matrix are obtained, and new axes are defined in order from the direction with the largest data variation.</p>
+<p>In this example, the original axes are <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, while the axes newly obtained by eigendecomposition are the first and second principal axes.</p>
+<ul>
+<li>First principal axis: the direction where the data vary most</li>
+<li>Second principal axis: the direction orthogonal to the first principal axis</li>
+<li>First eigenvalue: variance along the first principal-axis direction</li>
+<li>Second eigenvalue: variance along the second principal-axis direction</li>
+</ul>
+<p>Therefore, principal axis regression or major axis regression can be understood as interpreting the first principal axis from bivariate PCA as a line summarizing bivariate data.</p>
+</section><section id="what-the-covariance-matrix-eigenvalues-and-eigenvectors-mean" class="level2"><h2 class="anchored" data-anchor-id="what-the-covariance-matrix-eigenvalues-and-eigenvectors-mean">What the Covariance Matrix, Eigenvalues, and Eigenvectors Mean</h2>
+<p>So far, the main direction of variation in the data has been obtained using eigenvalues and eigenvectors of the covariance matrix. Here, I examine more carefully why this procedure gives the principal axis.</p>
+<p>Intuitively, the principal axis is <strong>a line passing through the center of the scatter plot and representing the direction in which the point cloud is elongated</strong>.</p>
+<p>This line can be understood in two ways. The first view focuses on the perpendicular distance from each point to the line. If a line is drawn through the scatter plot and perpendiculars are dropped from each point to that line, the distance from each point to the line can be measured. The more a line follows the flow of the point cloud, the smaller these deviations become overall.</p>
+<p>The second view focuses on variation along the direction of the line. If a line is chosen along the point cloud, the points spread widely along that line. Conversely, if a direction that does not match the point cloud is chosen, the spread along the line is small and deviations away from the line become large.</p>
+<p>Therefore, the principal axis can be understood as <strong>the direction in which the data have the largest variation after projection</strong>.</p>
+<p>The <strong>covariance matrix</strong> is used to calculate this variation after projection onto a given direction.</p>
+<p>For each point in bivariate data, write the mean-centered coordinates as</p>
+<p><span class="math display">\[
+x_i - \bar{x}, \quad y_i - \bar{y}
+\]</span></p>
+<p>This operation rewrites each point as coordinates relative to the data mean and is called mean centering. Define the mean-centered coordinate vector <span class="math inline">\(\mathbf{z}_i\)</span> as follows.</p>
+<p><span class="math display">\[
+\mathbf{z}_i = \begin{bmatrix} x_i - \bar{x} \\ y_i - \bar{y} \end{bmatrix}
+\]</span></p>
+<p>Visually, <span class="math inline">\(\mathbf{z}_i\)</span> can be represented as follows.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mean-centered coordinates</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># Draw vectors from the mean point to each point</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The gray lines represent vectors from the mean point to each point. These are <span class="math inline">\(\mathbf{z}_i\)</span>.</p>
+<p>Now define a vector <span class="math inline">\(\mathbf{u}\)</span> representing a direction as follows.</p>
+<p><span class="math display">\[
+\mathbf{u} = \begin{bmatrix} u_x \\ u_y \end{bmatrix}
+\]</span></p>
+<p>This vector represents the direction of a line. Because only direction is considered here, the vector length is normalized to 1. Such a vector is called a unit vector. That is, <span class="math inline">\(\|\mathbf{u}\| = 1\)</span>. In equation form:</p>
+<p><span class="math display">\[
+\mathbf{u}^T\mathbf{u} = u_x^2 + u_y^2 = 1
+\]</span></p>
+<p>How far each point lies along this direction can be calculated using the inner product.</p>
+<p><span class="math display">\[
+s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
+\]</span></p>
+<p>Here, <span class="math inline">\(s_i\)</span> is the coordinate obtained by projecting point <span class="math inline">\(i\)</span> onto direction <span class="math inline">\(\mathbf{u}\)</span>. If the mean point is treated as the origin, <span class="math inline">\(s_i\)</span> can be viewed as a signed value indicating how far point <span class="math inline">\(i\)</span> has moved in the direction of <span class="math inline">\(\mathbf{u}\)</span>. The larger the variation in <span class="math inline">\(s_i\)</span>, the more widely the data spread along that line direction.</p>
+<p>In a figure, draw a line in direction <span class="math inline">\(\mathbf{u}\)</span> and drop perpendiculars from each point to that line. The intersections are the projected positions of the points on the line in direction <span class="math inline">\(\mathbf{u}\)</span>. <span class="math inline">\(s_i\)</span> represents the distance from the data mean to each projected point along direction <span class="math inline">\(\mathbf{u}\)</span>.</p>
+<p>Visually, this is as follows.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mean-centered coordinates</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mean point</span></span>
+<span><span class="va">mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">my</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.6</span><span class="op">)</span> <span class="co"># direction vector u</span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="va">u</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># normalize to a unit vector just in case</span></span>
+<span></span>
+<span><span class="co"># Projection scalar s_i for each point in direction u</span></span>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">z</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span></span>
+<span><span class="co"># Projected point: mean point + s_i u</span></span>
+<span><span class="va">proj_x</span> <span class="op">&lt;-</span> <span class="va">mx</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">proj_y</span> <span class="op">&lt;-</span> <span class="va">my</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Draw</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
+<span><span class="va">usr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span> <span class="co"># plotting range</span></span>
+<span></span>
+<span><span class="co"># Grid with spacing of 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray70"</span>,</span>
+<span>  lty <span class="op">=</span> <span class="st">"dotted"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray70"</span>,</span>
+<span>  lty <span class="op">=</span> <span class="st">"dotted"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Vertical and horizontal lines through the mean</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">my</span>, v <span class="op">=</span> <span class="va">mx</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Line representing direction u</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>    v <span class="op">=</span> <span class="va">mx</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#0072B2"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    lty <span class="op">=</span> <span class="st">"dashed"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>    a <span class="op">=</span> <span class="va">my</span> <span class="op">-</span> <span class="op">(</span><span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">mx</span>,</span>
+<span>    b <span class="op">=</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#0072B2"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>    lty <span class="op">=</span> <span class="st">"dashed"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Mean-centered vector z_i for each point</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">mx</span>, <span class="va">my</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray90"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Perpendicular from each point to the projection point:</span></span>
+<span><span class="co"># residual not explained by direction u</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
+<span>    <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#009E73"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># From mean point to projected point: s_i u</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
+<span>    <span class="va">mx</span>,</span>
+<span>    <span class="va">my</span>,</span>
+<span>    <span class="va">proj_x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    <span class="va">proj_y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>    col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"#CC79A7"</span>, alpha.f <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>    lwd <span class="op">=</span> <span class="fl">4</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Original points</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"black"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Arrow for direction vector u</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span></span>
+<span>  <span class="va">mx</span>,</span>
+<span>  <span class="va">my</span>,</span>
+<span>  <span class="va">mx</span> <span class="op">+</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  <span class="va">my</span> <span class="op">+</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"#0072B2"</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  length <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The blue arrow represents direction <span class="math inline">\(\mathbf{u}\)</span>. The blue dashed line is the line passing through the mean point in that direction. The green lines are perpendiculars from each point to this line, representing deviations that cannot be explained by direction <span class="math inline">\(\mathbf{u}\)</span> alone. The pink lines represent positions from the mean point to the projected points. The signed value representing each of these positions is <span class="math inline">\(s_i\)</span>. The larger the variation in <span class="math inline">\(s_i\)</span>, the more widely the points spread along direction <span class="math inline">\(\mathbf{u}\)</span>. Therefore, <strong>the larger this variation is, the closer direction <span class="math inline">\(\mathbf{u}\)</span> is to the main direction of variation in the data</strong>.</p>
+<section id="covariance-matrix-for-calculating-variation" class="level3"><h3 class="anchored" data-anchor-id="covariance-matrix-for-calculating-variation">Covariance Matrix for Calculating Variation</h3>
+<p>To calculate variation along direction <span class="math inline">\(\mathbf{u}\)</span>, use the covariance matrix. The covariance matrix <span class="math inline">\(\Sigma\)</span> summarizes the variation of each variable and the extent to which variables vary together. If <span class="math inline">\(s_i\)</span> is the score obtained by projecting mean-centered data onto direction <span class="math inline">\(\mathbf{u}\)</span>, its variance is calculated as follows.</p>
+<p><span class="math display">\[
+\text{Var}(s) = \mathbf{u}^T \Sigma \mathbf{u}
+\]</span></p>
+<p>The covariance matrix <span class="math inline">\(\Sigma\)</span> for bivariate data is written as follows.</p>
+<p><span class="math display">\[
+\Sigma = \begin{bmatrix}\sigma_{xx} &amp; \sigma_{xy} \\
+\sigma_{yx} &amp; \sigma_{yy}\end{bmatrix}
+\]</span></p>
+<p>Here, <span class="math inline">\(\sigma_{xx}\)</span> is the variance of <span class="math inline">\(x\)</span>, <span class="math inline">\(\sigma_{yy}\)</span> is the variance of <span class="math inline">\(y\)</span>, and <span class="math inline">\(\sigma_{xy}\)</span> is the covariance between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Variance measures how widely data spread from the mean. Covariance measures the extent to which two variables increase or decrease together.</p>
+<p>Variance is calculated as follows.</p>
+<p><span class="math display">\[
+\sigma_x^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]</span></p>
+<p>Covariance is calculated as follows.</p>
+<p><span class="math display">\[
+\sigma_{xy} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})
+\]</span></p>
+<p>In other words, the covariance matrix can be understood as containing the information needed to calculate <strong>how much variation there is when data are projected onto any direction <span class="math inline">\(\mathbf{u}\)</span></strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Why does $\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}$ hold?">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why does <span class="math inline">\(\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}\)</span> hold?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let the mean-centered point be</p>
+<p><span class="math display">\[
+\mathbf{z}_i =
+\begin{bmatrix}
+x_i-\bar{x} \\
+y_i-\bar{y}
+\end{bmatrix}
+\]</span></p>
+<p>and define the projection score onto direction <span class="math inline">\(\mathbf{u}\)</span> as</p>
+<p><span class="math display">\[
+s_i = \mathbf{u}^{\mathrm{T}}\mathbf{z}_i
+\]</span></p>
+<p>Because the data are mean-centered, <span class="math inline">\(\bar{s}=0\)</span>. Therefore, the variance of the projection scores can be written as</p>
+<p><span class="math display">\[
+\mathrm{Var}(s)
+=
+\frac{1}{n-1}\sum_{i=1}^{n}s_i^2
+\]</span></p>
+<p>Substituting <span class="math inline">\(s_i=\mathbf{u}^{\mathrm{T}}\mathbf{z}_i\)</span> gives</p>
+<p><span class="math display">\[
+\mathrm{Var}(s)
+=
+\frac{1}{n-1}
+\sum_{i=1}^{n}
+(\mathbf{u}^{\mathrm{T}}\mathbf{z}_i)^2
+\]</span></p>
+<p>The square of the inner product can be written as</p>
+<p><span class="math display">\[
+(\mathbf{u}^{\mathrm{T}}\mathbf{z}_i)^2
+=
+\mathbf{u}^{\mathrm{T}}
+\mathbf{z}_i
+\mathbf{z}_i^{\mathrm{T}}
+\mathbf{u}
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+\mathrm{Var}(s)
+=
+\mathbf{u}^{\mathrm{T}}
+\left(
+\frac{1}{n-1}
+\sum_{i=1}^{n}
+\mathbf{z}_i\mathbf{z}_i^{\mathrm{T}}
+\right)
+\mathbf{u}
+\]</span></p>
+<p>The term in parentheses is the covariance matrix <span class="math inline">\(\Sigma\)</span>, so</p>
+<p><span class="math display">\[
+\mathrm{Var}(s)
+=
+\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}
+\]</span></p>
+<p>holds.</p>
+</div>
+</div>
+</div>
+</section><section id="finding-the-direction-that-maximizes-variation" class="level3"><h3 class="anchored" data-anchor-id="finding-the-direction-that-maximizes-variation">Finding the Direction That Maximizes Variation</h3>
+<p>Which direction <span class="math inline">\(\mathbf{u}\)</span> should be chosen to maximize the variation of the projected scores?</p>
+<p>Let the unit vector representing a direction be</p>
+<p><span class="math display">\[
+\mathbf{u} =
+\begin{bmatrix}
+u_x \\
+u_y
+\end{bmatrix}
+\]</span></p>
+<p>The variation of the data along this direction can be written using the covariance matrix <span class="math inline">\(\Sigma\)</span> as</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
+\]</span></p>
+<p>Here, <span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> is a single value. The larger this value is, the more widely the data vary when projected onto direction <span class="math inline">\(\mathbf{u}\)</span>.</p>
+<p>Therefore, finding the principal axis corresponds to finding the direction <span class="math inline">\(\mathbf{u}\)</span> that maximizes</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}
+\]</span></p>
+<p>However, because only direction is considered, the length of <span class="math inline">\(\mathbf{u}\)</span> is fixed to 1. If the length were free, the value could be made larger simply by lengthening the vector, even in the same direction.</p>
+<p><span class="math display">\[
+\mathbf{u}^{\mathrm{T}}\mathbf{u} = 1
+\]</span></p>
+<p>Solving the problem of maximizing <span class="math inline">\(\mathbf{u}^{\mathrm{T}} \Sigma \mathbf{u}\)</span> under this constraint gives an equation of the following form.</p>
+<p><span class="math display">\[
+\Sigma \mathbf{u} = \lambda \mathbf{u}
+\]</span></p>
+<p>This is the equation for eigenvalues and eigenvectors of the covariance matrix <span class="math inline">\(\Sigma\)</span>. Here, <span class="math inline">\(\mathbf{u}\)</span> is an eigenvector and <span class="math inline">\(\lambda\)</span> is an eigenvalue. An eigenvector is a special direction whose orientation does not change when the covariance matrix is applied. The eigenvalue corresponds to the magnitude of variation in that direction.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This equation is called an eigenvalue problem in linear algebra. This relationship is commonly derived by solving a constrained maximization problem with the method of Lagrange multipliers. However, the actual calculation is performed by R’s <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>, so the detailed derivation is omitted here.</p>
+</div>
+</div>
+<p>Thus, eigenvectors of the covariance matrix represent the directions of axes along which variation is evaluated, while eigenvalues represent how much variation there is along those directions.</p>
+<p>In particular, the eigenvector corresponding to the largest eigenvalue is the direction in which data variation is maximized. This is the first principal axis.</p>
+<p>In short:</p>
+<ul>
+<li>
+<strong>Covariance matrix</strong>: summarizes how the data vary</li>
+<li>
+<strong>Eigenvectors</strong>: directions of axes along which variation is evaluated</li>
+<li>
+<strong>Eigenvalues</strong>: magnitude of variation along those directions</li>
+</ul>
+<p>For bivariate data, two eigenvectors are obtained from the covariance matrix.</p>
+<ul>
+<li>
+<strong>First eigenvector</strong>: direction with the largest variation</li>
+<li>
+<strong>Second eigenvector</strong>: direction orthogonal to the first eigenvector</li>
+</ul>
+<p>In principal axis regression, the line passing through the data center in the direction of the first eigenvector is the principal axis.</p>
+</section></section><section id="visual-understanding-with-r" class="level2"><h2 class="anchored" data-anchor-id="visual-understanding-with-r">Visual Understanding with R</h2>
+<p>Use the simulated data from this article to check the explanation above visually. First, display the initial scatter plot again.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1.5</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">beta</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">beta</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">+</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, calculate the covariance matrix and obtain eigenvalues and eigenvectors. Because the sign of an eigenvector is arbitrary, align the first principal axis so that its <span class="math inline">\(x\)</span> component is positive.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Covariance matrix and eigenvectors</span></span>
+<span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">eg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">S</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Direction of the first principal axis</span></span>
+<span><span class="va">u1</span> <span class="op">&lt;-</span> <span class="va">eg</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">u1</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="va">u1</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>固有値や固有ベクトルは英語ではeigenvalueやeigenvectorと呼ばれます。 このため、Rの関数も<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>という名前になっています。</p>
+</div>
+</div>
+<p>Next, prepare one comparison direction and calculate the projected points on the line for each direction. The direction vector is normalized to a unit vector so that it represents direction only.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Data center</span></span>
+<span><span class="va">center</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># comparison direction vector</span></span>
+<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="va">u0</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u0</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># normalize to a unit vector</span></span>
+<span></span>
+<span><span class="co"># Function to calculate projected points on the line</span></span>
+<span><span class="va">get_foot_points</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u</span>, <span class="va">center</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">y</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span> <span class="co"># calculate projection scores for each point</span></span>
+<span>  <span class="va">foot_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">score</span>, <span class="va">u</span><span class="op">)</span> <span class="co"># calculate projected points from the scores</span></span>
+<span>  <span class="va">foot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">foot_centered</span>, <span class="fl">2</span>, <span class="va">center</span>, <span class="st">"+"</span><span class="op">)</span> <span class="co"># add the center</span></span>
+<span>  <span class="va">foot</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Calculate projected points for each point</span></span>
+<span><span class="va">foot0</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u0</span>, <span class="va">center</span><span class="op">)</span></span>
+<span><span class="va">foot1</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u1</span>, <span class="va">center</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Plot the comparison line and the projected points from each point onto that line.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray30"</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">2</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, add the first principal axis line and the projected points from each point to the first principal axis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="co"># Line and distances for the comparison direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="st">"gray30"</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">2</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Line and distances for the first principal-axis direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Calculate and compare the sum of squared distances from each point to each line.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Sum of squared distances from the line for the comparison direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 117.576</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Sum of squared distances from the line for the first principal-axis direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.08176</code></pre>
+</div>
+</div>
+<p>The sum of squared distances from points to the line is smaller for the first principal axis than for the comparison direction. In other words, when a line along the direction of data variation is chosen, deviations away from the line become smaller overall. The first principal axis is the direction that maximizes variation along the line and reduces deviations in the orthogonal direction.</p>
+<p>Plot the second principal axis in the same way.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">u2</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">u2</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="va">u2</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
+<span><span class="co"># First principal-axis line</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># Second principal-axis line</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
+<span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  b <span class="op">=</span> <span class="va">u2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  col <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The first principal axis represents the direction with the largest data variation, and the second principal axis represents the direction orthogonal to it.</p>
+</section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li>Principal axis regression is a method for describing the main direction of variation in bivariate data as a line.</li>
+<li>The first eigenvector of the covariance matrix represents the direction with the largest variation after projecting the data, and this becomes the principal axis.</li>
+<li>In R, the covariance matrix can be calculated with <code><a href="https://rdrr.io/r/stats/cor.html">cov()</a></code>, and eigenvalues and eigenvectors can be obtained with <code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>.</li>
+<li>Overlaying the principal axis on a scatter plot makes it possible to visually check the direction in which the point cloud is elongated.</li>
+<li>PCA and principal axis regression share the idea of obtaining the main direction of variation from eigenvalues and eigenvectors of the covariance matrix.</li>
+</ul>
+<p>This article reviewed the basic idea of finding one principal axis from bivariate data. In the next article, this first eigenvector is used to examine the difference between the principal axis obtained from representative values for each species and the principal axis obtained when intraspecific variation is included.</p>
+<ul>
+<li><a href="../2026-05-27-r-principle-axis-regression_example/">Applying Principal Axis Regression to Trait-Space Rotation in R</a></li>
+</ul></section><section id="references" class="level2"><h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-warton2006" class="csl-entry" role="listitem">
+Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. <span>“Bivariate Line-Fitting Methods for Allometry.”</span> <em>Biological Reviews</em> 81 (2): 259–91. <a href="https://doi.org/10.1017/S1464793106007007">https://doi.org/10.1017/S1464793106007007</a>.
+</div>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://maple60.github.io">Maple60’s Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+</div>   
+    <div class="nav-footer-center">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/maple60">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

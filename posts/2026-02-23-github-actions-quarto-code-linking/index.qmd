@@ -7,6 +7,10 @@ draft: false
 categories: [quarto, github]
 ---
 
+::: {.callout-note}
+English version: [Fixing Code Linking Problems When Building a Quarto Site with GitHub Actions](../../en/posts/2026-02-23-github-actions-quarto-code-linking/index.qmd)
+:::
+
 ## 症状
 
 本サイトでは、Quartoを使ってサイトを構築しています。

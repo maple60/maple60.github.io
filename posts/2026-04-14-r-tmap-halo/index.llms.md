@@ -12,6 +12,10 @@ Modified
 
 2026-04-14
 
+> **NOTE:**
+>
+> English version: [Displaying Haloed Text on Maps with the R Package tmap](../../en/posts/2026-04-14-r-tmap-halo/index.llms.md)
+
 Rの[`tmap`パッケージ](https://r-tmap.github.io/tmap/index.html)で地図の上に縁取り文字を表示する方法を紹介します。 `tmap`パッケージの[Changelog](https://r-tmap.github.io/tmap/news/index.html)によると、バージョン4.3から`tm_text`関数で文字の縁取りなどの装飾が実装されたようです。
 
 早速試してみました。

@@ -12,6 +12,10 @@ Modified
 
 2026-01-28
 
+> **NOTE:**
+>
+> English version: [Adding Documentation Links to Functions in Quarto Code Blocks](../../en/posts/2026-01-28-quarto-code-linking/index.llms.md)
+
 Quartoのコードブロック内で使用されている関数にドキュメントリンクを自動的に追加する方法についてのメモです。 `code-link`オプションを使用すると、コードブロック内の関数に対応するドキュメントへのリンクを追加できます。
 
 `_quarto.yml`ファイルに以下のように設定を追加します。

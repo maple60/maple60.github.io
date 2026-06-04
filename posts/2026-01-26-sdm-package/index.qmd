@@ -7,6 +7,10 @@ draft: true
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Notes on the R Package sdm](../../en/posts/2026-01-26-sdm-package/index.qmd)
+:::
+
 ## インストール
 
 ```{.r}

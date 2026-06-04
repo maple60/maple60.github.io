@@ -1,0 +1,47 @@
+# Creating a Color Wheel in R
+
+r
+
+Code for drawing a color wheel in R.
+
+Published
+
+2024-03-04
+
+Modified
+
+2024-03-04
+
+> **NOTE:**
+>
+> Original Japanese version: [Rで色相環を作成する](../../../posts/2024-03-04-color-circle/index.llms.md)
+
+I originally wrote this code while trying several things with an algorithm called DeepFlow and looking for a figure to insert into the output. The implementation uses R.
+
+When this kind of figure is drawn as a vector graphic such as PDF or SVG, the file becomes extremely heavy. It is better to draw it as a raster image such as PNG or JPEG. PNG is often a good choice because transparency is frequently useful.
+
+``` r
+len <- 1000
+r <- seq(from = 0, to = 1, length.out = len)
+theta <- seq(from = 0, to = 2 * pi, length.out = len)
+
+plot(-1:1, -1:1, asp = 1, axes = FALSE, xlab = "", ylab = "", type = "n")
+for (i in 1:len) {
+  ri <- r[i]
+  for (j in 1:len) {
+    if (j == 1) {
+      thetai0 <- 0
+    } else {
+      thetai0 <- theta[j - 1]
+    }
+    thetai1 <- theta[j]
+    segments(
+      ri * cos(thetai0),
+      ri * sin(thetai0),
+      ri * cos(thetai1),
+      ri * sin(thetai1),
+      col = hsv(h = thetai1 / (2 * pi), s = ri, v = 1)
+    )
+  }
+}
+```

@@ -12,6 +12,10 @@ Modified
 
 2026-04-13
 
+> **NOTE:**
+>
+> English version: [Reading Analysis Data from Cloud Storage in R](../../en/posts/2026-04-13-r-data-from-cloud-storage/index.llms.md)
+
 解析の生データをクラウドストレージから読み込む方法を紹介します。
 
 この記事では、以下のような管理方法を前提とします。

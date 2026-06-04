@@ -1,0 +1,69 @@
+---
+title: "Extracting File Names in R"
+description: "How to extract file names in R with `basename()` and `file.path_sans_ext()`."
+date: "2026-02-06"
+date-modified: "2026-02-06"
+draft: false
+lang: en
+categories: [r]
+---
+
+::: {.callout-note}
+Original Japanese version: [Rでファイル名を抽出する方法](../../../posts/2026-02-06-r-extract-filename/index.qmd)
+:::
+
+When handling file paths in R, you may want to extract only the file name or obtain the file name without its extension.
+This article summarizes how to extract file names in R using `basename()` and `tools::file_path_sans_ext()`.
+
+## Extracting the File Name
+
+Use the `basename()` function to extract a file name from a file path.
+
+```{r}
+file_path <- "/path/to/your/file/data.csv"
+file_name <- basename(file_path)
+print(file_name)
+```
+
+The file name alone is extracted from the file path that includes the directory path.
+
+## Extracting the File Name Without the Extension
+
+Use the `file_path_sans_ext()` function from the `tools` package to obtain a file name without its extension.
+
+```{r}
+library(tools)
+file_path <- "/path/to/your/file/data.csv"
+file_name_no_ext <- file_path_sans_ext(basename(file_path))
+print(file_name_no_ext)
+```
+
+This obtains the file name without the extension.
+
+::: {.callout-note}
+## About the Name `file_path_sans_ext()`
+
+The function name is a little long and hard to remember, but it becomes easier if you remember its meaning.
+`sans` is French for "without."
+It corresponds to the English word `without`.
+Also, `ext` is short for "extension."
+Therefore, `file_path_sans_ext()` means "file path without extension."
+:::
+
+## Example
+
+This is useful when combining data with corresponding image file names and storing them in a data frame.
+
+```{r}
+file_paths <- c(
+  "/path/to/your/file/data1.csv",
+  "/path/to/your/file/data2.csv",
+  "/path/to/your/file/data3.csv"
+)
+file_names <- basename(file_paths)
+file_names_no_ext <- file_path_sans_ext(file_names)
+df <- data.frame(value = c(10, 20, 30), file_name = file_names_no_ext)
+print(df)
+```
+
+In this way, file names can be included in a data frame.

@@ -6,6 +6,10 @@ draft: true
 categories: [r,quarto,github]
 ---
 
+::: {.callout-note}
+English version: [Notes on Publishing a Quarto Blog with GitHub Pages](../../en/posts/2026-01-23-quarto-github-pages/index.qmd)
+:::
+
 Quartoでブログを作成して、GitHub Pagesで公開しようとしたときの注意点についてのメモです。
 
 ## レンダリング先を`docs/`にする

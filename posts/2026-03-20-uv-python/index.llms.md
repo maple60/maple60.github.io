@@ -14,6 +14,10 @@ Modified
 
 2026-03-20
 
+> **NOTE:**
+>
+> English version: [Minimal Python Environment Management with uv](../../en/posts/2026-03-20-uv-python/index.llms.md)
+
 ## uvとは
 
 [uv](https://docs.astral.sh/uv/)とは、Pythonの環境管理ツールです。 他の環境管理ツールには、[venv](https://docs.python.org/3/library/venv.html)や[virtualenv](https://virtualenv.pypa.io/en/latest/)などがあります。

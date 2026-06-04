@@ -12,6 +12,10 @@ Modified
 
 2026-02-03
 
+> **NOTE:**
+>
+> English version: [Using Japanese in Quarto PDF Output](../../en/posts/2026-02-03-quarto-japanese/index.llms.md)
+
 [Quarto](https://quarto.org/)でPDFを出力する際、デフォルトの設定では日本語が正しく表示されないことがあります。 これは、LaTeXの設定が日本語に対応していないためです。 この記事では、Quartoで日本語を使うための設定方法を紹介します。
 
 ## PDF出力をするための準備

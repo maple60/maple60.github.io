@@ -12,6 +12,10 @@ Modified
 
 2024-06-18
 
+> **NOTE:**
+>
+> English version: [One Cause of 404 Errors in Bookdown: URL Encoding](../../en/posts/2024-06-19-bookdown-url/index.llms.md)
+
 Rの[{bookdown}](https://bookdown.org)パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。
 
 ## 状況

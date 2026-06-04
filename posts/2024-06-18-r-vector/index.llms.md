@@ -12,6 +12,10 @@ Modified
 
 2024-06-18
 
+> **NOTE:**
+>
+> English version: [Creating Vectors in R](../../en/posts/2024-06-18-r-vector/index.llms.md)
+
 Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。
 
 - [`c()`](https://rdrr.io/r/base/c.html)

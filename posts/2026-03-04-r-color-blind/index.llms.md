@@ -12,6 +12,10 @@ Modified
 
 2026-03-04
 
+> **NOTE:**
+>
+> English version: [Simulating Color Vision Deficiency in R](../../en/posts/2026-03-04-r-color-blind/index.llms.md)
+
 ## 色覚多様性
 
 色の見え方には個人差があります。 特に、多くの人と大きく異なる見え方をする場合を「**色覚異常**」と呼びます。

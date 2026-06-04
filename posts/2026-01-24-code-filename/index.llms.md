@@ -12,6 +12,10 @@ Modified
 
 2026-01-24
 
+> **NOTE:**
+>
+> English version: [Showing File Names on Code Blocks in Quarto](../../en/posts/2026-01-24-code-filename/index.llms.md)
+
 コードブロックにファイル名を表示する方法についてのメモです。 コードブロックに`filename`属性を追加することで、ファイル名を表示できます。
 
 ```` markdown

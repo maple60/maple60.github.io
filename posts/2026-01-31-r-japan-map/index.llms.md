@@ -12,6 +12,10 @@ Modified
 
 2026-01-31
 
+> **NOTE:**
+>
+> English version: [Drawing a Map of Japan in R](../../en/posts/2026-01-31-r-japan-map/index.llms.md)
+
 ## パッケージのインストールと読み込み
 
 ``` downlit

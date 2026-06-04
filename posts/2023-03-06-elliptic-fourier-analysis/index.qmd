@@ -7,6 +7,10 @@ draft: true
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Elliptic Fourier Analysis](../../en/posts/2023-03-06-elliptic-fourier-analysis/index.qmd)
+:::
+
 輪郭形状の解析のための楕円フーリエ解析について、理論から実装までのメモです。
 
 ## 楕円フーリエ解析とは

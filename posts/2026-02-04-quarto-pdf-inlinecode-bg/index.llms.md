@@ -14,6 +14,10 @@ Modified
 
 2026-02-04
 
+> **NOTE:**
+>
+> English version: [Adding Background Color to Inline Code Blocks in Quarto PDF Output](../../en/posts/2026-02-04-quarto-pdf-inlinecode-bg/index.llms.md)
+
 QuartoでPDFを出力する際はHTML出力と異なり、インラインコードブロックに背景色を付ける設定がデフォルトでは用意されていません。
 
 そこで、LaTeXの[xcolor](https://ctan.org/pkg/xcolor)パッケージを利用して、インラインコードブロックに背景色を付けたので、その方法をまとめます。

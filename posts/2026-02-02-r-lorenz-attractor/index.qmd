@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Drawing the Lorenz Attractor in R](../../en/posts/2026-02-02-r-lorenz-attractor/index.qmd)
+:::
+
 Lorenz attractorは、[Edward Lorenz](https://www.lorenz.mit.edu/edward-n-lorenz)氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。
 
 以下に、Rの[deSolve](https://cran.r-project.org/web/packages/deSolve/index.html)パッケージを使用してLorenz attractorを描く方法を示します。

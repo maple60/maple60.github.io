@@ -12,6 +12,10 @@ Modified
 
 2024-06-18
 
+> **NOTE:**
+>
+> English version: [Things I Got Stuck on with BASIC Authentication](../../en/posts/2024-06-18-basic_authentification/index.llms.md)
+
 BASIC認証を使用したときのメモです。
 
 適切な`.htacess`と`.htpasswd`を作成したつもりが、500エラー(Internal Server Error)になってしまいました。

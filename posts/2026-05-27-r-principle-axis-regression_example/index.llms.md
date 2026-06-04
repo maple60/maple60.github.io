@@ -12,6 +12,10 @@ Modified
 
 2026-05-27
 
+> **NOTE:**
+>
+> English version: [Applying Principal Axis Regression to Trait-Space Rotation in R](../../en/posts/2026-05-27-r-principle-axis-regression_example/index.llms.md)
+
 前回の記事 [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](../2026-05-26-r-principle-axis-regression/) では、2変量データの共分散行列を固有値分解し、第1固有ベクトルを主軸として描くところまでを確認しました。 本記事では、その考え方を少し進めて、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸がどれくらいずれるかを調べます。
 
 ここでいう principal axis regression (PAR) は、前回と同じく、共分散行列の第1固有ベクトルを2変量データの主軸として使う方法です。 文献上は、major axis (MA) や standardised major axis (SMA) などの2変量 line-fitting 方法として整理されることが多く、本記事の実装はこのうち共分散行列ベースのMAに近い考え方です ([Warton et al. 2006](#ref-warton2006))。

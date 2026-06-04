@@ -7,6 +7,10 @@ draft: true
 categories: [quarto]
 ---
 
+::: {.callout-note}
+English version: [Creating a Website with Quarto](../../en/posts/2026-02-07-quarto-website/index.qmd)
+:::
+
 [Quarto](https://quarto.org/)は、RやPythonなどの言語を使ってドキュメントやウェブサイトを作成できるオープンソースのツールです。
 ここでは、QuartoのインストールからGitHub Pagesでの公開まで、Quartoでウェブサイトを作成する方法についてまとめます。
 

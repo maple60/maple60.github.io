@@ -12,6 +12,10 @@ Modified
 
 2026-01-25
 
+> **NOTE:**
+>
+> English version: [A Summary of Zotero Plugins I Use](../../en/posts/2026-01-25-zotero-plugins/index.llms.md)
+
 文献管理ソフトZoteroで使用しているプラグインのまとめです。 いろいろ試しましたが、以下のプラグインが便利だと感じています。 (アルファベット順)
 
 > **NOTE:**

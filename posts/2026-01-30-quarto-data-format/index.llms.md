@@ -14,6 +14,10 @@ Modified
 
 2026-01-30
 
+> **NOTE:**
+>
+> English version: [Changing the Date Format Displayed by Quarto](../../en/posts/2026-01-30-quarto-data-format/index.llms.md)
+
 Quartoでブログ記事の日付を表示する際に、デフォルトではmedium dateという形式で表示されます。 これは、**Jan 30, 2026**のような形式です。 しかし、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)形式の**2026-01-30**のような形式で表示したい場合があります。
 
 ## `data-format`オプション

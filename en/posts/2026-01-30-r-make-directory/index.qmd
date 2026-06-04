@@ -1,0 +1,52 @@
+---
+title: "Creating Directories in R"
+description: "A note on creating directories in R with the `dir.create()` function."
+date: "2026-01-30"
+date-modified: "2026-01-30"
+draft: false
+lang: en
+categories: [r]
+---
+
+::: {.callout-note}
+Original Japanese version: [Rでディレクトリを作成する方法](../../../posts/2026-01-30-r-make-directory/index.qmd)
+:::
+
+In R, you can create directories with the `dir.create()` function.
+
+## The `dir.create()` Function
+
+The syntax is as follows.
+
+```{.r}
+dir.create(path, showWarnings = TRUE, recursive = FALSE, mode = "0777")
+```
+
+- `path`: specifies the path of the directory to create. `~` represents the home directory.
+- `showWarnings`: if set to `TRUE`, a warning is shown when the directory already exists. The default is `TRUE`.
+- `recursive`: if set to `TRUE`, parent directories are also created as needed. The default is `FALSE`.
+- `mode`: specifies the access permissions for the directory to create. The default is `"0777"`.
+
+::: {.callout-note}
+The `mode` argument is meaningful only on Unix-like systems.
+It is ignored on Windows.
+In most cases, the default is fine.
+This post does not explain it in detail.
+
+If you want to know more, see the help page with `?dir.create`, or consult the following documentation.
+
+- [files2: Manipulaton of Directories and File Permissions](https://www.rdocumentation.org/packages/base/versions/3.1.0/topics/files2)
+:::
+
+## Example
+
+For example, the following code creates a directory named `save/path/to/directory`.
+Even if the parent directories do not exist, specifying `recursive = TRUE` creates the required parent directories as well.
+Also, `showWarnings = FALSE` suppresses warnings if the directory already exists.
+
+```{.r}
+save_dir <- "save/path/to/directory"
+dir.create(save_dir, showWarnings = FALSE, recursive = TRUE)
+```
+
+When this code is executed, `save/path/to/directory` is created even if the `save` directory does not yet exist.

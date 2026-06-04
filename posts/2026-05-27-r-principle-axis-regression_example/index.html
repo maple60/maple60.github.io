@@ -234,7 +234,20 @@ div.csl-indent {
   
 
 
-</header><p>前回の記事 <a href="../2026-05-26-r-principle-axis-regression/">Rで2変量PCAとPrincipal axis regressionの基礎を理解する</a> では、2変量データの共分散行列を固有値分解し、第1固有ベクトルを主軸として描くところまでを確認しました。 本記事では、その考え方を少し進めて、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸がどれくらいずれるかを調べます。</p>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="../../en/posts/2026-05-27-r-principle-axis-regression_example/index.html">Applying Principal Axis Regression to Trait-Space Rotation in R</a></p>
+</div>
+</div>
+<p>前回の記事 <a href="../2026-05-26-r-principle-axis-regression/">Rで2変量PCAとPrincipal axis regressionの基礎を理解する</a> では、2変量データの共分散行列を固有値分解し、第1固有ベクトルを主軸として描くところまでを確認しました。 本記事では、その考え方を少し進めて、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸がどれくらいずれるかを調べます。</p>
 <p>ここでいう principal axis regression (PAR) は、前回と同じく、共分散行列の第1固有ベクトルを2変量データの主軸として使う方法です。 文献上は、major axis (MA) や standardised major axis (SMA) などの2変量 line-fitting 方法として整理されることが多く、本記事の実装はこのうち共分散行列ベースのMAに近い考え方です <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>。</p>
 <p>応用例の発想は、Zhou et al. <span class="citation" data-cites="zhou2025">(<a href="#ref-zhou2025" role="doc-biblioref">2025</a>)</span> が扱っている「種間レベルの trait space と、種内変異を含めた trait space の向きの違い」という問いにあります。 ただし、本記事は原著論文の図・文章・データを再現するものではありません。 本文中のデータはすべて教育目的で作成した架空データであり、原著論文の数値、図から読み取った座標、解析結果は使用していません。 原著論文の具体的な解析手順や生態学的解釈については、必ず原著論文を参照してください。</p>
 <section id="principal-axis-regressionの概要" class="level2"><h2 class="anchored" data-anchor-id="principal-axis-regressionの概要">Principal axis regressionの概要</h2>

@@ -12,6 +12,10 @@ Modified
 
 2026-02-06
 
+> **NOTE:**
+>
+> English version: [Extracting File Names in R](../../en/posts/2026-02-06-r-extract-filename/index.llms.md)
+
 Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、[`basename()`](https://rdrr.io/r/base/basename.html)や[`tools::file_path_sans_ext()`](https://rdrr.io/r/tools/fileutils.html)を使って、Rでファイル名を抽出する方法についてまとめます。
 
 ## ファイル名の抽出

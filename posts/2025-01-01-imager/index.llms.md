@@ -12,6 +12,10 @@ Modified
 
 2026-01-01
 
+> **NOTE:**
+>
+> English version: [Using the R Package imager for Image Processing](../../en/posts/2025-01-01-imager/index.llms.md)
+
 # 概要
 
 Rで画像解析をしたいとなったときに、[imager](https://asgr.github.io/imager/)というパッケージがあることを知った。 いろいろと試した結果を記す。

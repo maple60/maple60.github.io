@@ -203,7 +203,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code>や<code><a href="https://rdrr.io/r/tools/fileutils.html">tools::file_path_sans_ext()</a></code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="../../en/posts/2026-02-06-r-extract-filename/index.html">Extracting File Names in R</a></p>
+</div>
+</div>
+<p>Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。 ここでは、<code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code>や<code><a href="https://rdrr.io/r/tools/fileutils.html">tools::file_path_sans_ext()</a></code>を使って、Rでファイル名を抽出する方法についてまとめます。</p>
 <section id="ファイル名の抽出" class="level2"><h2 class="anchored" data-anchor-id="ファイル名の抽出">ファイル名の抽出</h2>
 <p>ファイルパスからファイル名を抽出するには、<code><a href="https://rdrr.io/r/base/basename.html">basename()</a></code>関数を使用します。</p>
 <div class="cell">

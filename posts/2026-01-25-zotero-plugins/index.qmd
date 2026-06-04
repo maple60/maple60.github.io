@@ -7,6 +7,10 @@ draft: false
 categories: [zotero]
 ---
 
+::: {.callout-note}
+English version: [A Summary of Zotero Plugins I Use](../../en/posts/2026-01-25-zotero-plugins/index.qmd)
+:::
+
 文献管理ソフトZoteroで使用しているプラグインのまとめです。
 いろいろ試しましたが、以下のプラグインが便利だと感じています。
 (アルファベット順)

@@ -12,6 +12,10 @@ Modified
 
 2026-01-27
 
+> **NOTE:**
+>
+> English version: [Removing Duplicate Vector Elements in R](../../en/posts/2026-01-27-make-unique/index.llms.md)
+
 ## `make.unique()`関数の使用法
 
 Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。 [`make.unique()`](https://rdrr.io/r/base/make.unique.html) 関数を使用すると、重複する要素に自動的に接尾辞を追加してユニークな要素に変換できます。 使用法は以下のようになります。

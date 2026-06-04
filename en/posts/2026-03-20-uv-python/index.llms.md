@@ -1,0 +1,138 @@
+# Minimal Python Environment Management with uv
+
+python
+
+uv
+
+A minimal approach to environment management with uv, a Python environment management tool.
+
+Published
+
+2026-03-20
+
+Modified
+
+2026-03-20
+
+> **NOTE:**
+>
+> Original Japanese version: [Pythonで最低限のuvによる環境管理](../../../posts/2026-03-20-uv-python/index.llms.md)
+
+## What Is uv?
+
+[uv](https://docs.astral.sh/uv/) is a Python environment management tool. Other environment management tools include [venv](https://docs.python.org/3/library/venv.html) and [virtualenv](https://virtualenv.pypa.io/en/latest/).
+
+uv is relatively new compared with other environment management tools, and it is known for speed, stability, and ease of use. I used to use venv, but after switching to uv, I have felt improvements in speed and stability.
+
+OpenAI also acquired [Astral](https://astral.sh/), the company developing uv, on March 19, 2026, so further acceleration of uv development is expected.
+
+Python environment management tools, which have been fragmented until now, may increasingly converge on uv.
+
+uv is of course highly beneficial for large projects, but even for small personal development like mine, it reduces the burden of environment management, so I recommend it. This article summarizes the minimal and generally useful uv environment management workflow that I often use for small personal projects.
+
+## Installing uv
+
+There are several ways to install uv.
+
+On Mac or Linux, install it with the following command.
+
+``` bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+On Windows, install it with the following command.
+
+``` powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+It can also be installed with pip, Python’s package manager.
+
+``` bash
+pip install uv
+```
+
+The official site describes several other methods, so choose the method that fits your environment.
+
+- [Installing uv - Astral](https://docs.astral.sh/uv/getting-started/installation/)
+
+I think I installed it with the normal command-line method.
+
+## Using uv
+
+### Initializing a Project
+
+Run the following command in the project root directory to initialize a uv project.
+
+``` bash
+uv init
+```
+
+This command creates the following files in the project root directory.
+
+``` bash
+├── .gitignore
+├── .python-version
+├── README.md
+├── main.py
+└── pyproject.toml
+```
+
+- `.gitignore`: specifies files and directories not managed by Git.
+- `.python-version`: specifies the Python version managed by uv.
+- `README.md`: describes the project and how to use it.
+- `main.py`: the main Python file for the project.
+- `pyproject.toml`: specifies Python packages and dependencies managed by uv.
+
+### Creating a Virtual Environment
+
+Run the following command in the project root directory to create a virtual environment.
+
+``` bash
+uv venv
+```
+
+This command creates a virtual environment named `.venv` in the project root directory.
+
+### Adding Packages
+
+Use the `uv add` command to add packages needed for the project.
+
+    uv add numpy
+
+This command adds the `numpy` package to the project. The added package is recorded in the `pyproject.toml` file.
+
+### Activating the Virtual Environment
+
+Run the following command in the project root directory to activate the virtual environment.
+
+The activation command is displayed in the terminal when the virtual environment is created, so you can usually run it as shown there.
+
+## Linux/Mac
+
+``` bash
+source .venv/bin/activate
+```
+
+## Windows
+
+``` powershell
+.venv\Scripts\activate
+```
+
+## Running Code Inside the Virtual Environment
+
+For `.py` files, use the `uv run` command to run code inside the virtual environment.
+
+``` bash
+uv run main.py
+```
+
+If you want to easily run `.qmd` files inside the virtual environment with [Positron](https://positron.posit.co/) or similar tools, do the following.
+
+1.  Click “Select Interpreter Session” in the upper right of Positron.
+2.  Click “New Interpreter Session…”.
+3.  Select the virtual environment you created.
+4.  Run the `.qmd` file as usual.
+
+This makes it easy to run code inside the virtual environment.

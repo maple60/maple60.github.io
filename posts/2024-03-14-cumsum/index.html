@@ -222,7 +222,20 @@ window.Quarto = {
   
 
 
-</header><p>Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は<span class="math inline">\(1+2=3\)</span>、3つ目は<span class="math inline">\(3+3=6\)</span>になるので、結果は1,3,6ということになります。 Rでは<code>cumsum</code>関数を用いて以下のように簡単に計算ができます。</p>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="../../en/posts/2024-03-14-cumsum/index.html">Calculating Cumulative Sums in R</a></p>
+</div>
+</div>
+<p>Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は<span class="math inline">\(1+2=3\)</span>、3つ目は<span class="math inline">\(3+3=6\)</span>になるので、結果は1,3,6ということになります。 Rでは<code>cumsum</code>関数を用いて以下のように簡単に計算ができます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

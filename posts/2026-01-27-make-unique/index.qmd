@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Removing Duplicate Vector Elements in R](../../en/posts/2026-01-27-make-unique/index.qmd)
+:::
+
 ## `make.unique()`関数の使用法
 
 Rでベクトルの要素が重複している場合に、重複を取り除いてユニークな要素にする方法についてのメモです。

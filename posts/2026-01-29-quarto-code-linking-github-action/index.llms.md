@@ -14,6 +14,10 @@ Modified
 
 2026-01-29
 
+> **NOTE:**
+>
+> English version: [Enabling Quarto Code Linking in GitHub Actions](../../en/posts/2026-01-29-quarto-code-linking-github-action/index.llms.md)
+
 Quartoでウェブサイトを作成する際に、`code-link`オプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。
 
 > **CAUTION:**

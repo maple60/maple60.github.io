@@ -12,6 +12,10 @@ Modified
 
 2026-05-30
 
+> **NOTE:**
+>
+> English version: [Understanding the Basics of Bivariate PCA and Principal Axis Regression in R](../../en/posts/2026-05-26-r-principle-axis-regression/index.llms.md)
+
 **Principal axis regression** (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます ([Warton et al. 2006](#ref-warton2006))。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。
 
 本記事では、共分散行列の第1固有ベクトルを主軸として使う、major axis regressionに近い実装を扱います。 以下では、RでPrincipal axis regressionを実装してみます。

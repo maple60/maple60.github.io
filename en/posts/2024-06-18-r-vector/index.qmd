@@ -1,0 +1,166 @@
+---
+title: "Creating Vectors in R"
+description: "A summary of several ways to create vectors in R."
+date: "2024-06-18"
+date-modified: "2024-06-18"
+draft: false
+lang: en
+categories: [r]
+---
+
+::: {.callout-note}
+Original Japanese version: [Rでベクトルを作成する](../../../posts/2024-06-18-r-vector/index.qmd)
+:::
+
+This post summarizes several ways to create vectors in R.
+The functions introduced here are:
+
+- `c()`
+- `:`
+- `seq()`
+- `seq_len()`
+- `seq_along()`
+- `rep()`
+
+## `c()` and `:`
+
+The simplest ways to create vectors in R are `c()` and `:`.
+
+If you list values separated by commas inside `c()`, the result is a vector.
+The name `c` comes from "combine."
+
+```{r}
+c(1, 2, 3)
+```
+
+You can also create a vector by specifying a start and end point in the form `[start]:[end]`.
+
+```{r}
+1:3
+```
+
+These are used very frequently, so they are worth remembering.
+
+## `seq()`
+
+The `seq()` function comes from "sequence." As the name suggests, it arranges values according to the arguments supplied inside `()`.
+
+The most basic use is to create a vector by specifying the first and last values.
+
+```{r}
+seq(1, 3) # seq(start, end)
+```
+
+```{r}
+seq(from = 1, to = 3) # explicit form
+```
+
+If you specify only one value, `seq()` creates a vector that increases by 1 from 1 to that value.
+
+```{r}
+seq(3)
+```
+
+When the sequence starts from 1, `seq_len()` is faster.
+
+```{r}
+seq_len(5) # vector from 1 to 5
+```
+
+### Creating a Vector with a Specified Step Size
+
+By default, the value increases by 1, but you can change the step size with the `by` argument.
+
+```{r}
+seq(from = 1, to = 3, by = 0.5) # increase by 0.5
+```
+
+### Creating a Vector with a Specified Length
+
+If you specify the `length.out` argument, you can create a vector with a specified length.
+R divides the range between the first and last values into equal intervals.
+
+```{r}
+seq(from = 1, to = 3, length.out = 6) # vector of length 6
+```
+
+Use `seq_along()` to create a vector with the same length as another vector.
+
+```{r}
+x <- seq_along(c("A", "B", "C", "D", "E"))
+seq_along(x)
+```
+
+This is useful when writing `for` loops.
+It is common to write a `for` loop like this:
+
+```{r}
+x <- c("A", "B", "C", "D", "E")
+for (i in 1:length(x)) {
+  print(x[i])
+}
+```
+
+Using `seq_along()`, it can be rewritten as follows.
+
+```{r}
+x <- c("A", "B", "C", "D", "E")
+for (i in seq_along(x)) {
+  print(x[i])
+}
+```
+
+There is not much visible difference, but the behavior changes when the vector used in the loop has length 0, that is, when it is an empty vector.
+
+## `rep()`
+
+Use the `rep()` function to create a vector by repeating the same value.
+The name comes from "repeat."
+
+```{r}
+rep(3, 5) # repeat 3 five times
+```
+
+You can also repeat a vector.
+
+```{r}
+rep(1:3, 3) # repeat 1 to 3 three times
+rep(1:3, times = 3) # same as above
+```
+
+Each value can also be repeated as a block.
+
+```{r}
+rep(1:3, each = 3) # repeat each value three times
+```
+
+You can specify the number of repeats for each value.
+
+```{r}
+rep(1:3, c(1, 2, 1)) # 1 once, 2 twice, 3 once
+```
+
+You can also specify the length.
+Because the length takes priority, the repetition is truncated if needed.
+
+```{r}
+rep(1:3, length.out = 5) # repeat up to length 5
+```
+
+## Examples
+
+These vector creation methods are useful when creating IDs or groups in data frames, or when interpolating points for plots.
+For example, if you want to assign groups A to C to rows in a data sheet, `rep(c("A", "B", "C"), each = 5)` makes that easy.
+
+If you want to draw a function such as a sine curve, you can do it simply as follows.
+
+```{r}
+x <- seq(from = 0, to = pi, length.out = 100)
+plot(x, sin(x))
+```
+
+## Summary
+
+Personally, I use `c()` and `:` almost every day, while I use the `seq()` family and `rep()` only occasionally.
+Because of that, when I suddenly need a long vector, I sometimes cannot produce it immediately.
+It is easy to look up, but it is useful to be able to create the needed vector quickly.

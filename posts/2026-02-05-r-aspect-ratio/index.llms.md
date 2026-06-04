@@ -12,6 +12,10 @@ Modified
 
 2026-02-04
 
+> **NOTE:**
+>
+> English version: [Setting the Aspect Ratio of R Plots](../../en/posts/2026-02-05-r-aspect-ratio/index.llms.md)
+
 Rのプロット関数(例えば[`plot()`](https://rdrr.io/r/graphics/plot.default.html))では、`asp`パラメータを使用してアスペクト比を設定できます。 アスペクト比は、y軸の単位長さがx軸の単位長さの何倍であるかを指定します。
 
 ## `asp`パラメータの使用例

@@ -12,6 +12,10 @@ Modified
 
 2026-03-10
 
+> **NOTE:**
+>
+> English version: [Creating RSS Feeds in Zotero](../../en/posts/2026-03-10-zotero-rss/index.llms.md)
+
 ## Zoteroとは
 
 Zoteroは、文献管理ツールの一つで、論文や書籍などの情報を整理するために広く使用されています。

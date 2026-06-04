@@ -12,6 +12,10 @@ Modified
 
 2026-02-25
 
+> **NOTE:**
+>
+> English version: [Specifying Transparency for Colors in R Plots](../../en/posts/2026-02-25-r-plot-transparent/index.llms.md)
+
 Rのプロットで、色に透明度を指定する方法についてまとめます。 例えば、散布図を描くときに、点が重なっている部分がわかりづらいことがあります。 例えば、以下のような散布図を描いたとします。
 
 ``` downlit

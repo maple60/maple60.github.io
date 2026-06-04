@@ -265,7 +265,20 @@ window.Quarto = {
   
 
 
-</header><p><strong>Principal axis regression</strong> (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。</p>
+</header><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="../../en/posts/2026-05-26-r-principle-axis-regression/index.html">Understanding the Basics of Bivariate PCA and Principal Axis Regression in R</a></p>
+</div>
+</div>
+<p><strong>Principal axis regression</strong> (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。</p>
 <p>本記事では、共分散行列の第1固有ベクトルを主軸として使う、major axis regressionに近い実装を扱います。 以下では、RでPrincipal axis regressionを実装してみます。</p>
 <section id="principal-axis-regressionの概要" class="level2"><h2 class="anchored" data-anchor-id="principal-axis-regressionの概要">Principal axis regressionの概要</h2>
 <p>Principal axis regressionは、データの<strong>共分散行列</strong>を計算し、その<strong>固有値</strong>と<strong>固有ベクトル</strong>を求めることで、データの主要な変動方向を特定します。 <strong>第1固有ベクトルはもっとも分散が大きい方向</strong>、<strong>第2固有ベクトルはそれに直交する方向</strong>を表します。</p>
@@ -630,7 +643,7 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 \]</span></p>
 <p>つまり、共分散行列は、任意の方向 <span class="math inline">\(\mathbf{u}\)</span> に対して、<strong>その方向に射影したときのばらつきがどれくらいかを計算するための情報を持っている</strong>と考えることができます。</p>
 <div class="callout callout-style-default callout-note callout-titled" title="なぜ$\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}$になるのか">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -639,7 +652,7 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>平均中心化した点を</p>
 <p><span class="math display">\[

@@ -12,6 +12,10 @@ Modified
 
 2026-02-25
 
+> **NOTE:**
+>
+> English version: [Managing Analysis Projects with Quarto](../../en/posts/2026-02-11-quarto-project-management/index.llms.md)
+
 > **WARNING:**
 >
 > この記事は書きかけの状態で公開しています。時間があるときに更新します。

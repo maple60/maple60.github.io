@@ -1,0 +1,172 @@
+---
+title: "Elliptic Fourier Analysis"
+description: "Theory of elliptic Fourier analysis and implementation in R."
+date: "2023-03-06"
+date-modified: "2023-03-06"
+draft: true
+lang: en
+categories: [r]
+---
+
+::: {.callout-note}
+Original Japanese version: [楕円フーリエ解析](../../../posts/2023-03-06-elliptic-fourier-analysis/index.qmd)
+:::
+
+This is a note from theory to implementation for elliptic Fourier analysis, a method for analyzing contour shapes.
+
+## What Is Elliptic Fourier Analysis?
+
+Elliptic Fourier analysis is a method used to analyze contours.
+It is used in morphometrics.
+
+It can quantify and visualize questions such as:
+
+- how similar contours are among samples
+- what kinds of differences exist among sample contour shapes
+
+Examples of studies using this method include the following.
+This page attempts to explain the flow from theory to R implementation and analysis as simply as possible.
+
+## Chain Code
+
+The direction and starting point differ slightly across references, but a direction associated with a number is called a chain, and a vector formed by arranging those numbers is called a chain code.
+
+$$
+V = a_1 a_2 a_3 \cdots a_K
+$$
+
+Here, $$V$$ is the chain code, and $$ a_1 a_2 a_3 \cdots a_K $$ are the individual chains.
+It seems that Freeman (1974) was probably the first to propose this.
+Arrows are extended counterclockwise every 45 degrees from 0 degrees to 360 degrees.
+Because there are eight arrows, numbers from 0 to 7 are assigned to them.
+It looks like this.
+
+<div id="chaincode" style="width:600px;height:600px;"></div>
+<script src="{{ site.baseurl }}/assets/js/chaincode.js"></script>
+
+Using a simple example, represent a contour shape with chain code.
+
+Here, consider a simple octagon that includes all directions.
+
+The chain code is represented as follows.
+
+$$
+V = 07654321
+$$
+
+The figure is as follows.
+The starting point is basically the upper left.
+
+<div id="chaincode_ex" style="width:600px;height:600px;"></div>
+<script src="{{ site.baseurl }}/assets/js/chaincode_ex.js"></script>
+
+Note that this octagon is not a regular octagon.
+
+That is, not all sides have the same length.
+
+When moving vertically or horizontally, the length is $$1$$, but when moving diagonally, the length is $$\sqrt{2}$$.
+
+The correspondence between each chain, the displacement in the $$x$$ and $$y$$ coordinates, and the length is shown in the table below.
+
+<style>
+table {
+ border-collapse: collapse; /* show adjacent borders as one */
+ border-spacing: 0; /* remove spacing between borders */
+ text-align: center;
+}
+table th {
+ background: #e3f6f5;
+ border: solid 1px #666666;
+ padding: 10px;
+}
+table td {
+ border: solid 1px #666666;
+ padding: 10px;
+}
+</style>
+| Chain | $$x$$ displacement | $$y$$ displacement | Length         |
+| ---- | --------- | --------- | ------------ |
+| 0    | 1         | 0         | 1            |
+| 1    | 1         | 1         | $$\sqrt{2}$$ |
+| 2    | 0         | 1         | 1            |
+| 3    | -1        | 1         | $$\sqrt{2}$$ |
+| 4    | -1        | 0         | 1            |
+| 5    | -1        | -1        | $$\sqrt{2}$$ |
+| 6    | 0         | -1        | 1            |
+| 7    | 1         | -1        | $$\sqrt{2}$$ |
+
+Think of the length, or magnitude, of a single arrow as corresponding to the time needed to trace the contour.
+For example, arrows 0, 2, 4, and 6 take time 1, while arrows 1, 3, 5, and 7 take time $$\sqrt{2}$$.
+Therefore, the time $$t_p$$ required to trace up to the $$p$$th chain is expressed as follows.
+
+$$
+t_p = \sum^p_{i=1} \Delta t_i
+$$
+
+Here, $$\Delta t_i$$ is the time required to trace one arrow.
+The displacements in the $$x$$ and $$y$$ coordinates up to the $$p$$th chain are expressed as follows.
+
+$$
+x_p = \sum^p_{i=1} \Delta x_i
+$$
+
+$$
+y_p = \sum^p_{i=1} \Delta y_i
+$$
+
+## Fourier Series Expansion of a Contour
+
+From here, the discussion turns to Fourier series expansion and related topics.
+This page omits the basic theory of Fourier series expansion and Fourier transforms.
+The final goal of this page is contour analysis, so if this section is difficult, it is fine to skip ahead.
+
+The Fourier series expansion for the $$x$$ coordinate is expressed as follows.
+
+$$
+x(t) = A_0 + \sum^\infty_{n=1} a_n \cos \frac{2n \pi t}{T} + b_n \sin \frac{2n \pi t}{T}
+$$
+
+Here, $$T$$ is the period, which can be interpreted as the tracing time for a contour shape.
+$$A_0, a_n, b_n$$ are expressed as follows.
+
+$$
+A_0 =
+$$
+
+## Calculating Elliptic Fourier Coefficients
+
+## Explanatory Power
+
+## Standardization
+
+$$
+\left[
+\begin{array}{rr}
+a_n^{**} & b_n^{**} \\
+c_n^{**} & d_n^{**} \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{rr}
+\cos \psi & \sin \psi \\
+-\sin \psi & \cos \psi \\
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+a_n & b_n \\
+c_n & d_n \\
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+\cos \frac{2 \pi n t}{T} &  -\sin \frac{2 \pi n t}{T} \\
+\sin \frac{2 \pi n t}{T} &\cos \frac{2 \pi n t}{T} \\
+\end{array}
+\right]
+$$
+
+## Principal Component Analysis
+
+## Inverse Fourier Transform

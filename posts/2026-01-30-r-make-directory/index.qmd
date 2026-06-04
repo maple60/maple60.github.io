@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Creating Directories in R](../../en/posts/2026-01-30-r-make-directory/index.qmd)
+:::
+
 Rでは、`dir.create()`関数を使用してディレクトリを作成することができます。
 
 ## `dir.create()`関数

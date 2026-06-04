@@ -14,6 +14,10 @@ Modified
 
 2026-02-25
 
+> **NOTE:**
+>
+> English version: [Fixing Code Linking Problems When Building a Quarto Site with GitHub Actions](../../en/posts/2026-02-23-github-actions-quarto-code-linking/index.llms.md)
+
 ## 症状
 
 本サイトでは、Quartoを使ってサイトを構築しています。 Quartoでは、code linkingという機能を使って、関数にドキュメントへのリンクを自動的に追加することができます。 例えば、`plot()`関数をコードブロック内で使用すると、`plot()`関数のドキュメントへのリンクが自動的に追加されます。

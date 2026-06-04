@@ -14,6 +14,10 @@ Modified
 
 2026-02-24
 
+> **NOTE:**
+>
+> English version: [Notes on Using r-universe Packages with GitHub Actions and renv](../../en/posts/2026-02-24-github-actions-r-universe/index.llms.md)
+
 ## 症状
 
 このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。 このとき、Rパッケージはrenvを利用して管理しています。 このとき、[r-universe](https://r-universe.dev/search)のパッケージを利用していると、GitHub Actionsの環境でrenvが正しく動作しないことがありました。
@@ -55,16 +59,6 @@ options(
 )
 renv::snapshot(force = TRUE)
 ```
-
-    The following package(s) will be updated in the lockfile:
-
-    # https://packagemanager.posit.co/cran/__linux__/noble/latest ----------------
-    - Rcpp      [repo: CRAN -> https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 1.1.1 -> 1.1.1-1]
-    - S7        [repo: CRAN -> https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 0.2.1 -> 0.2.1-1]
-    - yyjsonr   [* -> 0.1.22]
-
-    The version of R recorded in the lockfile will be updated:
-    - R         [4.5.3 -> 4.5.2]
 
     - Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".
 
