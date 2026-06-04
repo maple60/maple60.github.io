@@ -1,0 +1,98 @@
+---
+title: "A Summary of Zotero Plugins I Use"
+description: "A summary of plugins I use with the reference manager Zotero."
+date: "2026-01-25"
+date-modified: "2026-01-25"
+draft: false
+lang: en
+categories: [zotero]
+---
+
+::: {.callout-note}
+Original Japanese version: [導入しているZoteroプラグインのまとめ](../../../posts/2026-01-25-zotero-plugins/index.qmd)
+:::
+
+This is a summary of the plugins I use with the reference manager Zotero.
+I have tried several plugins, and I find the following useful.
+They are listed in alphabetical order.
+
+::: {.callout-note}
+I plan to write separate articles about individual plugins little by little.
+:::
+
+## Better BibTeX for Zotero
+
+- [Website](https://retorque.re/zotero-better-bibtex/)
+
+This plugin is useful when exporting reference information from Zotero in BibTeX format.
+In particular, it can customize citation keys and automatically update BibTeX files.
+Rather than using it by itself, I often use it together with other software and tools.
+
+## Ethereal Style
+
+- [GitHub repository](https://github.com/MuiseDestiny/zotero-style)
+
+This plugin customizes Zotero's appearance and improves its interface.
+It has many features, such as adding custom columns to the item list, displaying related papers as a network graph, and changing PDF styles.
+
+Personally, I find the reading progress display useful because it lets me see at a glance how much of each paper I have read.
+
+::: {.callout-note}
+I think it used to be called Zotero Style.
+:::
+
+## Translate for Zotero
+
+- [GitHub repository](https://github.com/windingwind/zotero-pdf-translate)
+
+This plugin translates PDFs, EPUB files, and other documents.
+By selecting the part you want to translate, it displays translation results using Google Translate or DeepL.
+The translation results can be saved as notes or annotations.
+
+## ZotCard
+
+- [GitHub repository](https://github.com/018/zotcard)
+
+This plugin lets you organize notes in a card-like format.
+It has a template feature, which I use often.
+
+## Zotero Attanger
+
+- [GitHub repository](https://github.com/MuiseDestiny/zotero-attanger)
+
+This plugin manages attachment files for references.
+It can move attachment files to specified folders and rename files.
+It is useful when used together with cloud storage such as Dropbox or Google Drive.
+
+::: {.callout-note}
+Until Zotero 6, ZotFile was a well-known plugin for this purpose.
+It is not compatible with Zotero 7, so I now use this plugin.
+:::
+
+## Zotero Reading List
+
+- [GitHub repository](https://github.com/Dominic-DallOsto/zotero-reading-list)
+
+This plugin manages the reading status of references.
+It assigns statuses such as New, To Read, In Progress, Read, and Not Reading.
+You can also add custom statuses yourself.
+
+## ZotSeek
+
+- [GitHub repository](https://github.com/introfini/ZotSeek)
+
+This is a plugin for searching papers that are semantically close to a specific phrase or paper, using local AI semantic search.
+Because it uses local AI, no internet connection is required, and information is not sent outside the computer.
+
+The feature for finding similar papers is especially useful.
+Using one paper as a reference point, it can find papers with similar content from within the Zotero library.
+
+I was worried about speed because it uses local AI, but in practice it is very fast and comfortable to use.
+It is said to respond in less than 100 milliseconds.
+It currently runs on the CPU, and GPU-based operation is planned for the future.
+
+## Thanks
+
+I am deeply grateful to the people who develop and provide these plugins.
+Zotero itself is also open source and is a very useful reference management tool.
+I also appreciate the Zotero community.

@@ -7,6 +7,10 @@ draft: false
 categories: [github, r]
 ---
 
+::: {.callout-note}
+English version: [Notes on Using r-universe Packages with GitHub Actions and renv](../../en/posts/2026-02-24-github-actions-r-universe/index.qmd)
+:::
+
 ## 症状
 
 このウェブページでは、GitHub Actionsを利用して、GitHub Pagesを作成しています。

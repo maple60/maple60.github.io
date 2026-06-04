@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Simulating Color Vision Deficiency in R](../../en/posts/2026-03-04-r-color-blind/index.qmd)
+:::
+
 ## 色覚多様性
 
 色の見え方には個人差があります。

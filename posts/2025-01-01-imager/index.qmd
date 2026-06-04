@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Using the R Package imager for Image Processing](../../en/posts/2025-01-01-imager/index.qmd)
+:::
+
 # 概要
 
 Rで画像解析をしたいとなったときに、`{imager}`というパッケージがあることを知った。

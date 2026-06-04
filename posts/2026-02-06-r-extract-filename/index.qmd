@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Extracting File Names in R](../../en/posts/2026-02-06-r-extract-filename/index.qmd)
+:::
+
 Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。
 ここでは、`basename()`や`tools::file_path_sans_ext()`を使って、Rでファイル名を抽出する方法についてまとめます。
 

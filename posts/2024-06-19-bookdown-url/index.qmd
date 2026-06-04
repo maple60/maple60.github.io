@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [One Cause of 404 Errors in Bookdown: URL Encoding](../../en/posts/2024-06-19-bookdown-url/index.qmd)
+:::
+
 Rの[{bookdown}](https://bookdown.org)パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。
 
 ## 状況

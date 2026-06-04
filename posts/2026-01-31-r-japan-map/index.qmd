@@ -7,6 +7,10 @@ draft: false
 categories: [r]
 ---
 
+::: {.callout-note}
+English version: [Drawing a Map of Japan in R](../../en/posts/2026-01-31-r-japan-map/index.qmd)
+:::
+
 ## パッケージのインストールと読み込み
 
 ```{.r}

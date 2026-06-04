@@ -1,0 +1,114 @@
+---
+title: "Changing the Date Format Displayed by Quarto"
+description: "A note on changing the displayed date format in Quarto with the `date-format` option."
+date: "2026-01-30"
+date-modified: "2026-01-30"
+draft: false
+lang: en
+categories: [r, quarto]
+---
+
+::: {.callout-note}
+Original Japanese version: [Quartoで表示される日付型を変更する](../../../posts/2026-01-30-quarto-data-format/index.qmd)
+:::
+
+When Quarto displays dates for blog posts, the default format is the medium date style.
+This looks like **Jan 30, 2026**.
+However, there are times when you may want to display dates in an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) style such as **2026-01-30**.
+
+## The `date-format` Option
+
+To change how Quarto displays dates, set the `date-format` option.
+You can change the displayed date format by specifying this option in a YAML header or in `_quarto.yml`.
+The place where this is most commonly used is probably the listing page for blog posts.
+
+When listing multiple articles, such as blog posts, add the `date-format` option to the YAML header of `posts.qmd`.
+
+```{.yaml filename="posts.qmd"}
+---
+title: "Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  date-format: iso
+---
+```
+
+If you want to change the date format on individual article pages, add the `date-format` option to each article's YAML header.
+
+```{.yaml filename="posts/2026-01-30-quarto-data-format.qmd"}
+---
+title: "Changing the Date Format Displayed by Quarto"
+date: "2026-01-30"
+date-modified: "2026-01-30"
+date-format: iso
+---
+```
+
+You can also add it as a global setting in `_quarto.yml`.
+
+```{.yaml filename="_quarto.yml"}
+date-format: iso
+```
+
+## Types of Date Formats
+
+There are two ways to change the display format.
+
+1. Specify a date style.
+2. Specify a custom format.
+
+### Specifying a Date Style
+
+Quarto supports date styles such as the following.
+
+- `short`: short format, for example `1/30/26`
+- `medium`: medium format, for example `Jan 30, 2026`
+- `long`: long format, for example `January 30, 2026`
+- `full`: full format, for example `Friday, January 30, 2026`
+- `iso`: ISO 8601 format, for example `2026-01-30`
+
+### Specifying a Custom Format
+
+If you want finer control over the style, use a custom format.
+To specify a custom format, set a format string in the `date-format` option.
+For example, to display dates as `2026/01/30`, specify the following.
+
+```{.yaml}
+date-format: "yyyy/MM/dd"
+```
+
+::: {.callout-note}
+For details on custom formats, see the following official documentation.
+
+- [Quarto Dates and Date Formatting](https://quarto.org/docs/reference/dates.html)
+:::
+
+### Differences by Language Setting
+
+In Quarto, the displayed date format is also affected by the language setting.
+For example, with a Japanese setting, the `medium` style is displayed like **2026年1月30日**.
+To change the language setting, set the `lang` option in a YAML header or in `_quarto.yml`.
+
+```{.yaml filename="_quarto.yml"}
+format:
+  html:
+    lang: ja
+```
+
+It may also be fine to set it at the top level.
+
+::: {.callout-note}
+For details on the `lang` option, see the following official documentation.
+
+- [Document Language - Quarto](https://quarto.org/docs/authoring/language.html)
+:::
+
+## References
+
+- [Document Listings - Quarto](https://quarto.org/docs/websites/website-listings.html#listing-options)
+- [Quarto Dates and Date Formatting](https://quarto.org/docs/reference/dates.html)
+- [Document Language - Quarto](https://quarto.org/docs/authoring/language.html)
+- [HTML Options - Quarto](https://quarto.org/docs/reference/formats/html.html#language)

@@ -1,0 +1,17 @@
+---
+title: "Using Web APIs from R"
+description: "Notes on how to use Web APIs from R."
+date: "2024-03-05"
+date-modified: "2024-03-05"
+draft: true
+lang: en
+categories: [r]
+---
+
+::: {.callout-note}
+Original Japanese version: [RでWebAPIを利用する](../../../posts/2024-03-05-r-api/index.qmd)
+:::
+
+This is a note on how to use Web APIs from R.
+
+This time, the goal is to use a Web API to obtain sunrise and sunset times for an arbitrary date.

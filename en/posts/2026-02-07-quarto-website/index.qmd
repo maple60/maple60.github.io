@@ -1,0 +1,180 @@
+---
+title: "Creating a Website with Quarto"
+description: "A summary of how to create a website with Quarto, from installing Quarto to publishing with GitHub Pages."
+date: "2026-02-07"
+date-modified: "2026-02-07"
+draft: true
+lang: en
+categories: [quarto]
+---
+
+::: {.callout-note}
+Original Japanese version: [Quartoでウェブサイトを作成する方法](../../../posts/2026-02-07-quarto-website/index.qmd)
+:::
+
+[Quarto](https://quarto.org/) is an open-source tool for creating documents and websites using languages such as R and Python.
+This article summarizes how to create a website with Quarto, from installing Quarto to publishing with GitHub Pages.
+
+It mostly follows the [official documentation](https://quarto.org/), with some added notes and cautions.
+
+## About Quarto
+
+### Overview
+
+In short, Quarto is a tool that can output documents containing code written in R or Python to formats such as HTML, PDF, and Word.
+It is positioned especially as a successor to [R Markdown](https://rmarkdown.rstudio.com/), so it is familiar to R users.
+Quarto also integrates with integrated development environments, or IDEs, such as RStudio and VS Code, making it easy to use.
+
+### Differences from R Markdown
+
+R Markdown and Quarto are similar, but Quarto provides more flexible and powerful features.
+
+Based on [FAQ for R Markdown Users - Quarto](https://quarto.org/docs/faq/rmarkdown.html), I summarize the differences in my own way.
+
+#### A Unified Document Creation System
+
+Originally, there was R Markdown, which could handle Markdown files containing R code.
+There were also packages such as [`blogdown`](https://pkgs.rstudio.com/blogdown/) for creating websites, [`distill`](https://rstudio.github.io/distill/figures.html), and [`bookdown`](https://pkgs.rstudio.com/bookdown/) for creating books.
+One purpose of Quarto is to unify this situation, where systems for creating various documents with R Markdown were scattered across packages.
+
+#### Support for Programming Languages Other Than R
+
+Support for languages other than R is another major feature.
+As its name suggests, R Markdown was specialized for the R language, but Quarto supports other languages such as Python and Julia.
+This allows users of different languages to use Quarto, and it also lets people who work with multiple languages create documents involving those languages with a single tool.
+
+::: {.callout-note}
+Because I use both R and Python, this feature of Quarto was very attractive.
+It was one of the main reasons I decided to move to Quarto.
+:::
+
+#### The Future of R Markdown
+
+Quarto integrates many R Markdown features, but R Markdown itself is not being discontinued.
+R Markdown is already used by many users, and existing documents will not disappear, nor will it become impossible to create new ones.
+
+However, it seems that the expansion of new features will focus on Quarto.
+For these points, see Yihui Xie's article, [With Quarto Coming, is R Markdown Going Away? No.](https://yihui.org/en/2022/04/quarto-r-markdown/).
+
+::: {.callout-note}
+Yihui Xie worked at RStudio/Posit until 2023 and is one of the main developers of R Markdown.
+:::
+
+#### Learning Cost of Quarto
+
+Quarto syntax is very similar to R Markdown, and in most cases R Markdown knowledge can be used directly.
+There are Quarto-specific features, but the basic usage is the same as R Markdown.
+For that reason, the learning cost is low for people who are already familiar with R Markdown.
+
+Also, people currently using R Markdown do not need to force themselves to migrate to Quarto.
+This is also emphasized in the official documentation.
+However, when starting a new project, Quarto is worth considering.
+
+::: {.callout-note}
+When Quarto first appeared, I was also using R Markdown.
+For a while, I kept using R Markdown while gradually trying Quarto.
+Recently, I use Quarto for new projects.
+:::
+
+### Summary of Quarto
+
+- Successor to R Markdown
+- Unifies document creation systems that were scattered across R Markdown-related packages
+- Supports multiple programming languages such as R and Python
+- No need to force a migration from R Markdown, but the learning cost is not very high
+
+## Installing Quarto
+
+Install it by following [Get Started - Quarto](https://quarto.org/docs/get-started/).
+
+Quarto is provided as a standalone application and is independent of R and Python.
+Download and install the Quarto CLI for your operating system from the link above.
+
+::: {.callout-note}
+## What Is a CLI?
+
+CLI stands for Command Line Interface.
+In simple terms, it is a way of typing and running commands in a black screen such as a terminal or command prompt.
+
+The opposite term is GUI, or Graphical User Interface, which is a way of operating visually with a mouse and keyboard.
+Quarto is provided as a CLI, but you do not need to memorize complicated commands, and most operations can also be done through a GUI.
+:::
+
+## Using Quarto in an Editor
+
+Quarto can be used together with integrated development environments such as RStudio and VS Code.
+The official documentation provides instructions for the following tools.
+
+- Positron
+- Visual Studio Code (VS Code)
+- Jupyter
+- RStudio
+- Neovim
+- Text Editor
+
+I mainly use Positron.
+Here, I summarize Positron and RStudio.
+
+### Using Quarto in Positron
+
+#### What Is Positron?
+
+Positron is a free IDE provided by Posit, with enhanced integration with Quarto.
+It is based on [Code - OSS](https://github.com/microsoft/vscode), the open-source version of [Visual Studio Code](https://code.visualstudio.com/), with added features specialized for R and Python.
+
+It is positioned somewhat like a successor to RStudio, but it does not completely replace it.
+
+For details such as differences from RStudio, see the official documentation below.
+
+- [Frequently Asked Questions - Positron](https://positron.posit.co/faqs.html#how-is-positron-different-from-rstudio-vs-code-or-jupyter-notebooks)
+
+#### Creating a qmd File
+
+Create a new file and save it with an appropriate name.
+At this time, use the `.qmd` extension.
+For example, `test.qmd`.
+
+#### Creating a Quarto Document
+
+Open the created qmd file and write the following.
+
+````{.r filename="test.qmd"}
+---
+title: "My First Quarto Document"
+format: html
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+This is my first Quarto document.
+Japanese can also be written here.
+
+## Code
+
+Write a code block as follows.
+
+```{r}
+#| label: example
+plot(iris[, 1:2], col = iris$Species)
+```
+
+## Bullet List
+
+- Item 1
+- Item 2
+- Item 3
+````
+
+After writing some content, click the Preview button in the upper left.
+
+::: {.callout-note}
+The shortcut for Preview is `Ctrl+Shift+K` on Windows/Linux or `Cmd+Shift+K` on Mac.
+:::
+
+## Reference
+
+- [Quarto](https://quarto.org/)

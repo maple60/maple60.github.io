@@ -7,6 +7,10 @@ draft: false
 categories: [python, uv]
 ---
 
+::: {.callout-note}
+English version: [Minimal Python Environment Management with uv](../../en/posts/2026-03-20-uv-python/index.qmd)
+:::
+
 ## uvとは
 
 [uv](https://docs.astral.sh/uv/)とは、Pythonの環境管理ツールです。

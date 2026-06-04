@@ -8,6 +8,10 @@ categories: [r]
 bibliography: references.bib
 ---
 
+::: {.callout-note}
+English version: [Applying Principal Axis Regression to Trait-Space Rotation in R](../../en/posts/2026-05-27-r-principle-axis-regression_example/index.qmd)
+:::
+
 前回の記事 [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](../2026-05-26-r-principle-axis-regression/) では、2変量データの共分散行列を固有値分解し、第1固有ベクトルを主軸として描くところまでを確認しました。
 本記事では、その考え方を少し進めて、種ごとの代表値から求めた主軸と、種内変異を含めたときの主軸がどれくらいずれるかを調べます。
 

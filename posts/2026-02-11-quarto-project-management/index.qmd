@@ -7,6 +7,10 @@ draft: false
 categories: [quarto]
 ---
 
+::: {.callout-note}
+English version: [Managing Analysis Projects with Quarto](../../en/posts/2026-02-11-quarto-project-management/index.qmd)
+:::
+
 ::: {.callout-warning}
 この記事は書きかけの状態で公開しています。時間があるときに更新します。
 :::
