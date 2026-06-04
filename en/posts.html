@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -197,7 +197,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXBp">api <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b3BlbmFsZXg=">openalex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -232,7 +232,37 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="cHl0aG9uJTJDb3BlbmFsZXglMkNhcGk=" data-listing-date-sort="1780272000000" data-listing-file-modified-sort="1780611285145" data-listing-date-modified-sort="1780531200000" data-listing-reading-time-sort="4" data-listing-word-count-sort="619">
+<div class="thumbnail"><a href="../en/posts/2026-06-01-openalex-python/index.html" class="no-external">
 
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../en/posts/2026-06-01-openalex-python/index.html" class="no-external">Using OpenAlex from Python</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b3BlbmFsZXg='); return false;">openalex</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXBp'); return false;">api</div>
+
+</div>
+<div class="delink listing-description"><a href="../en/posts/2026-06-01-openalex-python/index.html" class="no-external">
+<p>A draft note on calling the OpenAlex API from Python and retrieving paper metadata.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../en/posts/2026-06-01-openalex-python/index.html" class="no-external">
+<div class="listing-date">
+2026-06-01
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->

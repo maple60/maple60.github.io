@@ -46,11 +46,15 @@
   },
   {
     "listing": "/en/index.html",
-    "items": []
+    "items": [
+      "/en/posts/2026-06-01-openalex-python/index.html"
+    ]
   },
   {
     "listing": "/en/posts.html",
-    "items": []
+    "items": [
+      "/en/posts/2026-06-01-openalex-python/index.html"
+    ]
   },
   {
     "listing": "/index.html",

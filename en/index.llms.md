@@ -26,4 +26,5 @@ English translations are added incrementally. If a post is not listed here yet, 
 ## Recent English Posts
 
 | Date | Title | Description |
-|------|-------|-------------|
+|----|----|----|
+| 2026-06-01 | [Using OpenAlex from Python](../en/posts/2026-06-01-openalex-python/index.llms.md) | A draft note on calling the OpenAlex API from Python and retrieving paper metadata. |

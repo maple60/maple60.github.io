@@ -83,9 +83,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -273,15 +273,40 @@ Note
 </section>
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<table class="quarto-listing-table table table-striped table-hover caption-top">
+<table class="quarto-listing-table table table-striped table-hover">
 <thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Description</th>
+<tr>
+
+<th>
+Date
+</th>
+
+<th>
+Title
+</th>
+
+<th>
+Description
+</th>
+
 </tr>
 </thead>
 <tbody class="list">
+
+<tr data-index="0" data-categories="cHl0aG9uJTJDb3BlbmFsZXglMkNhcGk=" data-listing-date-sort="1780272000000" data-listing-file-modified-sort="1780611285145" data-listing-date-modified-sort="1780531200000" data-listing-reading-time-sort="4" data-listing-word-count-sort="619" data-listing-title-sort="Using OpenAlex from Python" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">2026-06-01</span>
+</td>
+<td>
+<a href="../en/posts/2026-06-01-openalex-python/index.html" class="title listing-title">Using OpenAlex from Python</a>
+</td>
+<td>
+<span class="listing-description">A draft note on calling the OpenAlex API from Python and retrieving paper metadata.</span>
+</td>
+
+</tr>
+
 </tbody>
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
