@@ -1,0 +1,13 @@
+---
+title: "English Posts"
+description: "English translations and English-first articles."
+lang: en
+listing:
+  contents: "en/posts/**/*.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  date-format: iso
+---
+
+English translations are added incrementally. The original Japanese archive is available on [Posts](../posts.qmd).

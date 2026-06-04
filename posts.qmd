@@ -1,9 +1,15 @@
 ---
 title: "Blog"
+description: "Japanese posts and translated English articles."
 listing:
-  contents: posts
+  contents:
+    - "posts/**/*.qmd"
+    - "!en/posts/**/*.qmd"
+    - "!starter-template/posts/**/*.qmd"
   sort: "date desc"
   type: default
   categories: true
   date-format: iso
 ---
+
+Most posts are written in Japanese. Translated English versions are listed separately on [English Posts](en/posts.qmd).
