@@ -1,0 +1,119 @@
+# Recommendations
+
+Recommended tools, services, R packages, Zotero plugins, books, and online learning resources.
+
+> **NOTE:**
+>
+> Original Japanese version: [おすすめ](../recommendations.llms.md)
+
+This page collects tools, services, books, and online resources that I use personally or want to keep as references. The list focuses on resources that are available online and useful for research, writing, programming, data analysis, and everyday knowledge work. I update it as my workflow changes.
+
+## Tools and Services
+
+### Notes and Literature Management
+
+- [Obsidian](https://obsidian.md/): A Markdown-based note-taking app with strong linking and tagging features.
+- [Zotero](https://www.zotero.org/): A reference manager for collecting, organizing, citing, and annotating research literature.
+- [Elicit](https://elicit.com/): An AI-assisted research tool for literature search, summaries, and evidence discovery.
+- [Google Scholar \| Labs](https://scholar.google.com/scholar_labs/search): Experimental search features from Google Scholar.
+- [Undermind](https://www.undermind.ai/): An AI search tool for exploring research literature.
+- [ResearchRabbit](https://www.researchrabbit.ai/): A literature discovery tool that visualizes relationships among papers and helps find related work.
+
+### Development and Documentation
+
+- [GitHub](https://github.com/): A service for source-code management, collaboration, and publishing projects.
+- [Quarto](https://quarto.org/): A technical publishing system. I use it as a successor to R Markdown for documents, websites, and reproducible notes.
+- [Positron](https://positron.posit.co/): A data-science IDE. Recently, I have been using it more often than RStudio.
+
+### Information Collection and Task Management
+
+- [Raindrop.io](https://raindrop.io/): A bookmark manager.
+- [Karakeep](https://karakeep.app/): A self-hostable bookmark manager. I installed it as a possible alternative to Raindrop.io, although I have not fully integrated it into my workflow yet.
+- [VisiOS](https://beta-japan.com/): A tool for managing bookmarks and browser tabs.
+- [Inoreader](https://www.inoreader.com/): An RSS reader.
+- [Todoist](https://todoist.com/): A task-management app.
+
+### Images, Video, and Streaming
+
+- [Eagle](https://en.eagle.cool/): An image-management tool with tagging and collection features.
+- [Affinity](https://www.affinity.studio/): Image and photo editing software that can serve as an alternative to Adobe Photoshop and Illustrator.
+- [Kdenlive](https://kdenlive.org/): Video-editing software.
+- [OBS Studio](https://obsproject.com/): Software for screen recording and live streaming.
+- [Keyviz](https://keyviz.org/): An open-source keyboard visualizer.
+
+### Security and Networking
+
+- [Bitwarden](https://bitwarden.com/): A password manager.
+- [Proton Mail](https://proton.me/mail): A secure email service.
+- [Proton Authenticator](https://proton.me/authenticator): A two-factor authentication app.
+- [Tailscale](https://tailscale.com/): A VPN service based on WireGuard.
+- [NordVPN](https://nordvpn.com/): A VPN service. I am considering switching to [Proton VPN](https://proton.me/vpn).
+- [RustDesk](https://rustdesk.com/): Remote desktop software and an alternative to AnyDesk.
+- [Brave](https://brave.com/): A privacy-focused web browser.
+- [Element](https://element.io/): An open-source chat app based on the Matrix protocol.
+
+### AI
+
+- [LM Studio](https://lmstudio.ai/): A local AI chat tool that is useful for trying local LLMs.
+
+## R Packages
+
+- [tmap](https://r-tmap.github.io/tmap/index.html): An R package specialized for creating maps and visualizing geospatial data.
+- [rnaturalearth](https://ropensci.github.io/rnaturalearth/index.html): An R package that provides natural-earth data such as country borders and physical geography.
+- [cols4all](https://cols4all.github.io/cols4all-R/): An R package for color palettes, including palettes designed with color-vision diversity in mind.
+
+## Zotero Plugins
+
+- [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/): Useful for connecting Zotero with external tools such as Obsidian.
+- [Ethereal Style](https://github.com/MuiseDestiny/zotero-style): A plugin that extends the Zotero user interface.
+- [ZotCard](https://github.com/018/zotcard): A plugin for card-style notes and note templates.
+- [Zotero Reading List](https://github.com/Dominic-DallOsto/zotero-reading-list): A plugin for managing literature reading status, such as unread, reading, and finished.
+- [ZotSeek](https://github.com/introfini/ZotSeek): A plugin that helps search for similar literature.
+- [Zotero Better Notes](https://github.com/windingwind/zotero-better-notes): A plugin that enhances Zotero’s note-taking features.
+- [Zotodo](https://github.com/wbthomason/zotodo): A plugin that connects Zotero with task-management apps such as Todoist.
+- [Zotero Reference](https://github.com/MuiseDestiny/zotero-reference): A plugin that helps with cited-reference access and reference-list workflows.
+
+## Books and Online Resources
+
+### Plants and Morphology
+
+- [Manual of Leaf Architecture](https://www.cabidigitallibrary.org/doi/book/10.1079/9781845935849.0000): A manual on leaf morphology. It provides foundational knowledge for understanding leaf architecture. License: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+- [Contributions to Morphometrics](https://www.biodiversitylibrary.org/bibliography/15368): A classic resource on morphometrics.
+
+### R
+
+These are high-quality R books and resources that can be read online.
+
+- [R for Data Science (2e)](https://r4ds.hadley.nz/): An introductory book on data science with R, covering data handling, visualization, modeling, and more. License: [CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/us/).
+- [R Graphics Cookbook, 2nd edition](https://r-graphics.org/): A recipe-style book on R graphics, with many examples using ggplot2.
+- [Cookbook for R](http://www.cookbook-r.com/): A recipe collection for a wide range of R tasks. License: [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- [Tidy Modeling with R](https://www.tmwr.org/): An introductory book on modeling with tidymodels.
+- [Efficient R programming](https://csgillespie.github.io/efficientR/): A practical book on writing efficient R code.
+- [Big Book of R](https://www.bigbookofr.com/): A curated collection of online R learning resources.
+- [Mastering Shiny](https://mastering-shiny.org/): An introductory book on Shiny by Hadley Wickham.
+- [Deep Learning with R](https://livebook.manning.com/book/deep-learning-with-r/about-this-book): A book on deep learning with R.
+- [blogdown: Creating Websites with R Markdown](https://yihui.org/blogdown/): A book on building websites with blogdown.
+- [Mastering Spark with R](https://therinspark.com/): A book on using Spark from R.
+- [R Packages (2e)](https://r-pkgs.org/): An introductory book on R package development.
+- [ggplot2: Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/): An introductory book on ggplot2.
+
+### Python
+
+- [Think Python](https://allendowney.github.io/ThinkPython/): An introductory book on Python.
+- [Think Python, 2nd edition](https://greenteapress.com/wp/think-python-2e/): The second edition of Think Python.
+- [Cracking Codes with Python](https://inventwithpython.com/cracking/): A book for learning Python through cryptography examples.
+- [Beyond the Basic Stuff with Python](https://inventwithpython.com/beyond/): A book to read after learning Python basics.
+- [The Big Book of Small Python Projects](https://inventwithpython.com/bigbookpython/): A book for learning through small Python projects.
+- [Python for Data Analysis, 3E](https://wesmckinney.com/book/): A standard book on data analysis with Python, especially pandas.
+- [Introduction to Statistics for Data Analysis](http://www.kunitomo-lab.sakura.ne.jp/2021-3-3Open(S).pdf): Introductory material on statistics for data analysis.
+- [IPython Cookbook, Second Edition](https://ipython-books.github.io/): A practical recipe book for IPython and Python.
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/): An introductory book on automation with Python.
+
+### Statistics, Visualization, and Computer Science
+
+- [An Introduction to Statistical Learning](https://www.statlearning.com/): An introductory book on statistical learning.
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/): A book explaining core principles of data visualization. License: [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode).
+- [Think Bayes 2](https://allendowney.github.io/ThinkBayes2/): An introductory book on Bayesian statistics.
+- [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/): A book for learning statistics with Python.
+- [Foundations of Computer Vision](https://visionbook.mit.edu/): A book on the foundations of computer vision.
+- [Open Data Structures](https://opendatastructures.org/): An introductory book on data structures.

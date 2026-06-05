@@ -19,7 +19,7 @@ This section collects English pages for a personal blog and notebook about progr
 
 ## Navigation
 
-Translated posts are listed on [English Posts](../en/posts.llms.md). The original Japanese post list is available on [Posts](../posts.llms.md).
+Translated posts are listed on [English Posts](../en/posts.llms.md), and the English recommendations page is available at [Recommendations](../en/recommendations.llms.md). The original Japanese post list is available on [Posts](../posts.llms.md).
 
 English translations are added incrementally. If a post is not listed here yet, please see the Japanese archive.
 

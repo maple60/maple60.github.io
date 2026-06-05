@@ -2,6 +2,10 @@
 
 おすすめのツール、サービス、R パッケージ、Zotero プラグイン、本の一覧。
 
+> **NOTE:**
+>
+> English version: [Recommendations](en/recommendations.llms.md)
+
 個人で使っている、または後で参照したいツール・サービス・本を用途別にまとめています。 オンラインで利用できるものを中心に、随時更新します。
 
 ## ツール・サービス

@@ -139,6 +139,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../../en/recommendations.html">
+ <span class="dropdown-text">English Recommendations</span></a>
+  </li>  
     </ul>
 </li>
   <li class="nav-item">
@@ -272,12 +276,12 @@ Note
 <span><span class="co"># renv::install("colorspace") when using renv</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/">colorspace</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Prepare a vector of colors, then use <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan()</a></code> for deuteranopia, <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan()</a></code> for protanopia, and <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan()</a></code> for tritanopia to simulate color vision deficiency.</p>
+<p>Prepare a vector of colors, then use <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan()</a></code> for deuteranopia, <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan()</a></code> for protanopia, and <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan()</a></code> for tritanopia to simulate color vision deficiency.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span><span class="op">)</span> <span class="co"># color vector: red, green, blue, yellow</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
-<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
+<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -336,9 +340,9 @@ Note
 <p>Now test the default color palette from R version 4 and later.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_default</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># R's default color palette</span></span>
-<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_default</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
@@ -394,9 +398,9 @@ Note
 <p>For people with color vision deficiency, certain color combinations can be difficult to distinguish. To avoid this problem, it is important to choose color palettes that are easy to distinguish even for people with color vision deficiency. The easiest method is to use a palette such as <code>palette("Okabe-Ito")</code>, which is designed to be distinguishable for people with color vision deficiency. This palette uses color combinations that are easy to distinguish.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_okabe_ito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -473,14 +477,14 @@ Note
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_circle</span>,</span>
 <span>  <span class="va">y_circle</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">16</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_square</span>,</span>
 <span>  <span class="va">y_square</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -495,8 +499,8 @@ Note
 <p>Even when red and green are difficult to distinguish, sufficient brightness contrast can make them easier to tell apart. For example, the following red and green combination has little brightness contrast, so it is difficult for people with protanopia or deuteranopia to distinguish.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#932922"</span>, <span class="st">"#526907"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -526,8 +530,8 @@ Note
 <p>On the other hand, the following red and green combination has a large brightness difference, making it easier for people with protanopia or deuteranopia to distinguish.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF4B00"</span>, <span class="st">"#03AF7A"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>

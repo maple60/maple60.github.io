@@ -45,7 +45,7 @@
     ]
   },
   {
-    "listing": "/en/index.html",
+    "listing": "/en/posts.html",
     "items": [
       "/en/posts/2026-06-01-openalex-python/index.html",
       "/en/posts/2026-05-27-r-principle-axis-regression_example/index.html",
@@ -84,7 +84,7 @@
     ]
   },
   {
-    "listing": "/en/posts.html",
+    "listing": "/en/index.html",
     "items": [
       "/en/posts/2026-06-01-openalex-python/index.html",
       "/en/posts/2026-05-27-r-principle-axis-regression_example/index.html",
