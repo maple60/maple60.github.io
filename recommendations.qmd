@@ -5,6 +5,10 @@ lang: ja
 toc: true
 ---
 
+::: {.callout-note}
+English version: [Recommendations](en/recommendations.qmd)
+:::
+
 個人で使っている、または後で参照したいツール・サービス・本を用途別にまとめています。
 オンラインで利用できるものを中心に、随時更新します。
 

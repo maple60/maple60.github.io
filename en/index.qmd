@@ -33,7 +33,8 @@ This section collects English pages for a personal blog and notebook about progr
 
 ## Navigation
 
-Translated posts are listed on [English Posts](posts.qmd). The original Japanese post list is available on [Posts](../posts.qmd).
+Translated posts are listed on [English Posts](posts.qmd), and the English recommendations page is available at [Recommendations](recommendations.qmd).
+The original Japanese post list is available on [Posts](../posts.qmd).
 
 English translations are added incrementally. If a post is not listed here yet, please see the Japanese archive.
 

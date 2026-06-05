@@ -26,6 +26,8 @@ website:
             text: English Home
           - href: en/posts.qmd
             text: English Posts
+          - href: en/recommendations.qmd
+            text: English Recommendations
       - href: recommendations.qmd
         text: Recommendations
   draft-mode: gone # https://quarto.org/docs/websites/website-drafts.html
