@@ -20,12 +20,16 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
+      - href: works.qmd
+        text: Works
       - text: English
         menu:
           - href: en/index.qmd
             text: English Home
           - href: en/posts.qmd
             text: English Posts
+          - href: en/works.qmd
+            text: English Works
           - href: en/recommendations.qmd
             text: English Recommendations
       - href: recommendations.qmd
