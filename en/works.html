@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Public GitHub projects, tools, and repository-based outputs.">
 
-<title>Posts – Maple60’s website</title>
+<title>Works – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +34,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,65 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -207,16 +148,29 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2l0aHViLXBhZ2Vz">github-pages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#featured-works" id="toc-featured-works" class="nav-link active" data-scroll-target="#featured-works">Featured Works</a></li>
+  <li><a href="#templates-and-research-tools" id="toc-templates-and-research-tools" class="nav-link" data-scroll-target="#templates-and-research-tools">Templates and Research Tools</a></li>
+  <li><a href="#site-experiments-and-references" id="toc-site-experiments-and-references" class="nav-link" data-scroll-target="#site-experiments-and-references">Site, Experiments, and References</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Posts</h1>
+<h1 class="title">Works</h1>
 </div>
 
+<div>
+  <div class="description">
+    Public GitHub projects, tools, and repository-based outputs.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -231,44 +185,212 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cXVhcnRvJTJDZ2l0aHViLXBhZ2Vz" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1781217980713" data-listing-date-modified-sort="1767225600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<div class="thumbnail"><a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">Welcome</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2l0aHViLXBhZ2Vz'); return false;">github-pages</div>
-
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="delink listing-description"><a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-<p>A sample first post for this Quarto site</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-<div class="listing-date">
-2026-01-01
-</div>
-</a>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Original Japanese version: <a href="../works.html">Works</a></p>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+<p>This page lists public repositories that are useful as project outputs, tools, templates, or reproducible research examples. Repository names, summaries, project pages, primary languages, and update dates are based on public GitHub metadata. The list was checked on 2026-06-12.</p>
+<section id="featured-works" class="level2">
+<h2 class="anchored" data-anchor-id="featured-works">Featured Works</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Work</th>
+<th>Summary</th>
+<th>Language</th>
+<th>Links</th>
+<th>Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>leaf-contour-efd</td>
+<td>A napari-based GUI application for reproducible leaf shape analysis, including contour extraction, orientation, binarization, and oriented true EFD normalization.</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/leaf-contour-efd">Repository</a> / <a href="https://maple60.github.io/leaf-contour-efd/">Docs</a></td>
+<td>2026-06-09</td>
+</tr>
+<tr class="even">
+<td>ylistjp</td>
+<td>Unofficial R helpers for YList Japanese plant names.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/ylistjp">Repository</a> / <a href="https://maple60.github.io/ylistjp/">Docs</a></td>
+<td>2026-06-11</td>
+</tr>
+<tr class="odd">
+<td>garmin-gpsmap-csv-geojson-r-plotly</td>
+<td>Static GitHub Pages campus tree map from Google Sheets CSV and GeoJSON.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/garmin-gpsmap-csv-geojson-r-plotly">Repository</a> / <a href="https://maple60.github.io/garmin-gpsmap-csv-geojson-r-plotly/">Site</a></td>
+<td>2026-06-11</td>
+</tr>
+<tr class="even">
+<td>japanese-climate-calculation</td>
+<td>A reproducible R + Quarto project for processing climate mesh data in Japan and deriving indicators such as potential evapotranspiration and aridity index.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/japanese-climate-calculation">Repository</a> / <a href="https://maple60.github.io/japanese-climate-calculation/">Site</a></td>
+<td>2026-05-22</td>
+</tr>
+<tr class="odd">
+<td>sam-particle-counter</td>
+<td>Desktop application for counting particles from image data using SAM2-assisted segmentation and napari-based visualization.</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/sam-particle-counter">Repository</a> / <a href="https://maple60.github.io/sam-particle-counter/">Docs</a></td>
+<td>2026-04-27</td>
+</tr>
+<tr class="even">
+<td>efar</td>
+<td>An R package for elliptic Fourier analysis.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/efar">Repository</a></td>
+<td>2026-04-08</td>
+</tr>
+<tr class="odd">
+<td>leaf-contour-efd-analysis</td>
+<td>Public analysis pages for leaf contour and elliptic Fourier analysis workflows used with leaf-contour-efd.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/leaf-contour-efd-analysis">Repository</a> / <a href="https://maple60.github.io/leaf-contour-efd-analysis/">Site</a></td>
+<td>2026-04-10</td>
+</tr>
+<tr class="even">
+<td>canopy-openness-analysis</td>
+<td>A public workflow for canopy openness analysis.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/canopy-openness-analysis">Repository</a> / <a href="https://maple60.github.io/canopy-openness-analysis/">Site</a></td>
+<td>2026-04-05</td>
+</tr>
+<tr class="odd">
+<td>understory-cover-analysis</td>
+<td>A public workflow for understory cover analysis.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/understory-cover-analysis">Repository</a> / <a href="https://maple60.github.io/understory-cover-analysis/">Site</a></td>
+<td>2026-04-06</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="templates-and-research-tools" class="level2">
+<h2 class="anchored" data-anchor-id="templates-and-research-tools">Templates and Research Tools</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Repository</th>
+<th>Summary</th>
+<th>Language</th>
+<th>Links</th>
+<th>Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>quarto-github-pages-starter</td>
+<td>A starter template for Quarto blogs and GitHub Pages.</td>
+<td>SCSS</td>
+<td><a href="https://github.com/maple60/quarto-github-pages-starter">Repository</a></td>
+<td>2026-06-03</td>
+</tr>
+<tr class="even">
+<td>zotero-tag-unifier</td>
+<td>A Python helper for organizing Zotero tags.</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/zotero-tag-unifier">Repository</a></td>
+<td>2026-05-31</td>
+</tr>
+<tr class="odd">
+<td>zotero-python-connected-papers-research-rabbit</td>
+<td>Notes and experiments around a Zotero, Python, Connected Papers, and ResearchRabbit research workflow.</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/zotero-python-connected-papers-research-rabbit">Repository</a></td>
+<td>2026-06-01</td>
+</tr>
+<tr class="even">
+<td>positron-r-python-boilerplate</td>
+<td>Template repository for R and Python projects using Positron IDE.</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/positron-r-python-boilerplate">Repository</a></td>
+<td>2025-09-18</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="site-experiments-and-references" class="level2">
+<h2 class="anchored" data-anchor-id="site-experiments-and-references">Site, Experiments, and References</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Repository</th>
+<th>Summary</th>
+<th>Language</th>
+<th>Links</th>
+<th>Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>maple60.github.io</td>
+<td>Source repository for this website.</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/maple60.github.io">Repository</a> / <a href="https://maple60.github.io/">Site</a></td>
+<td>2026-06-05</td>
+</tr>
+<tr class="even">
+<td>napari-examples</td>
+<td>Small napari examples and notebooks.</td>
+<td>Jupyter Notebook</td>
+<td><a href="https://github.com/maple60/napari-examples">Repository</a></td>
+<td>2026-04-21</td>
+</tr>
+<tr class="odd">
+<td>quarto-typst-test</td>
+<td>Experiments with Quarto and Typst.</td>
+<td>TeX</td>
+<td><a href="https://github.com/maple60/quarto-typst-test">Repository</a></td>
+<td>2026-04-02</td>
+</tr>
+<tr class="even">
+<td>maple60</td>
+<td>GitHub profile repository.</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/maple60">Repository</a></td>
+<td>2026-04-05</td>
+</tr>
+<tr class="odd">
+<td>skills-github-pages</td>
+<td>Public repository for GitHub Pages learning and experimentation.</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/skills-github-pages">Repository</a></td>
+<td>2025-04-10</td>
+</tr>
+<tr class="even">
+<td>procrustes_leaf_shape</td>
+<td>Forked repository related to Procrustes leaf-shape analysis.</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/procrustes_leaf_shape">Repository</a></td>
+<td>2026-06-01</td>
+</tr>
+<tr class="odd">
+<td>biomod2</td>
+<td>Forked repository for the BIOMOD2 species distribution modeling platform.</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/biomod2">Repository</a></td>
+<td>2025-06-12</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -17,7 +17,7 @@ This is a personal blog and notebook about programming, data analysis, reproduci
 
 ### Navigation
 
-All posts are listed on [Posts](posts.llms.md). English-only pages are available from [English Home](en/index.llms.md), and translated articles are collected on [English Posts](en/posts.llms.md). Notes about tools and references are collected on [Recommendations](recommendations.llms.md).
+All posts are listed on [Posts](posts.llms.md). Public projects and repository-based outputs are listed on [Works](works.llms.md). English-only pages are available from [English Home](en/index.llms.md), and translated articles are collected on [English Posts](en/posts.llms.md). Notes about tools and references are collected on [Recommendations](recommendations.llms.md).
 
 The articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions.
 
@@ -36,7 +36,7 @@ R、Python、Quarto を中心に、データ解析、可視化、ウェブサイ
 
 ### ナビゲーション
 
-すべての記事は [Posts](posts.llms.md) にあります。英語版のトップページは [English Home](en/index.llms.md)、英語化済みの記事一覧は [English Posts](en/posts.llms.md) にあります。ツールや参考資料のメモは [Recommendations](recommendations.llms.md) にまとめています。
+すべての記事は [Posts](posts.llms.md) にあります。公開リポジトリと成果物は [Works](works.llms.md) にまとめています。英語版のトップページは [English Home](en/index.llms.md)、英語化済みの記事一覧は [English Posts](en/posts.llms.md) にあります。ツールや参考資料のメモは [Recommendations](recommendations.llms.md) にまとめています。
 
 記事の内容は、公開時点または更新時点で自分が確認した範囲のメモです。重要な判断に使う場合は、公式ドキュメントや原典も確認してください。
 

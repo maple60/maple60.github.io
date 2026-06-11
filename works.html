@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="GitHub で公開している成果物とリポジトリの一覧。">
 
-<title>Posts – Maple60’s website</title>
+<title>Works – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,25 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,78 +58,20 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -141,26 +82,26 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="サーチ"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts.html"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../works.html"> 
+    <a class="nav-link active" href="./works.html" aria-current="page"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -169,31 +110,31 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">    
         <li>
-    <a class="dropdown-item" href="../en/index.html">
+    <a class="dropdown-item" href="./en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/posts.html">
+    <a class="dropdown-item" href="./en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/works.html">
+    <a class="dropdown-item" href="./en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/recommendations.html">
+    <a class="dropdown-item" href="./en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../recommendations.html"> 
+    <a class="nav-link" href="./recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -207,16 +148,29 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2l0aHViLXBhZ2Vz">github-pages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#主な成果物" id="toc-主な成果物" class="nav-link active" data-scroll-target="#主な成果物">主な成果物</a></li>
+  <li><a href="#テンプレート研究支援ツール" id="toc-テンプレート研究支援ツール" class="nav-link" data-scroll-target="#テンプレート研究支援ツール">テンプレート・研究支援ツール</a></li>
+  <li><a href="#サイト実験参考リポジトリ" id="toc-サイト実験参考リポジトリ" class="nav-link" data-scroll-target="#サイト実験参考リポジトリ">サイト・実験・参考リポジトリ</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Posts</h1>
+<h1 class="title">Works</h1>
 </div>
 
+<div>
+  <div class="description">
+    GitHub で公開している成果物とリポジトリの一覧。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -231,44 +185,212 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cXVhcnRvJTJDZ2l0aHViLXBhZ2Vz" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1781217980713" data-listing-date-modified-sort="1767225600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="45">
-<div class="thumbnail"><a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">Welcome</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2l0aHViLXBhZ2Vz'); return false;">github-pages</div>
-
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="delink listing-description"><a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-<p>A sample first post for this Quarto site</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../starter-template/posts/2026-01-01-welcome/index.html" class="no-external">
-<div class="listing-date">
-2026-01-01
-</div>
-</a>
+<div class="callout-title-container flex-fill">
+ノート
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>English version: <a href="./en/works.html">Works</a></p>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+<p>GitHub で公開しているリポジトリをもとに、成果物として参照しやすいものをまとめています。 リポジトリ名、説明、公開ページ、主要言語、更新日は GitHub の公開情報をもとに整理しました。 このページのリストは 2026-06-12 時点の確認結果です。</p>
+<section id="主な成果物" class="level2">
+<h2 class="anchored" data-anchor-id="主な成果物">主な成果物</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>成果物</th>
+<th>内容</th>
+<th>言語</th>
+<th>リンク</th>
+<th>更新日</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>leaf-contour-efd</td>
+<td>napari を使った葉形解析 GUI。輪郭抽出、向き合わせ、二値化、true EFD 正規化を含む再現可能なワークフロー。</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/leaf-contour-efd">Repository</a> / <a href="https://maple60.github.io/leaf-contour-efd/">Docs</a></td>
+<td>2026-06-09</td>
+</tr>
+<tr class="even">
+<td>ylistjp</td>
+<td>YList の日本産植物名を R から扱うための非公式ヘルパー。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/ylistjp">Repository</a> / <a href="https://maple60.github.io/ylistjp/">Docs</a></td>
+<td>2026-06-11</td>
+</tr>
+<tr class="odd">
+<td>garmin-gpsmap-csv-geojson-r-plotly</td>
+<td>Google Sheets の CSV と GeoJSON から、GitHub Pages 上で静的なキャンパス樹木マップを公開するプロジェクト。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/garmin-gpsmap-csv-geojson-r-plotly">Repository</a> / <a href="https://maple60.github.io/garmin-gpsmap-csv-geojson-r-plotly/">Site</a></td>
+<td>2026-06-11</td>
+</tr>
+<tr class="even">
+<td>japanese-climate-calculation</td>
+<td>日本の気候メッシュデータを処理し、可能蒸発散量や乾燥指数などを再現可能に計算する R + Quarto プロジェクト。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/japanese-climate-calculation">Repository</a> / <a href="https://maple60.github.io/japanese-climate-calculation/">Site</a></td>
+<td>2026-05-22</td>
+</tr>
+<tr class="odd">
+<td>sam-particle-counter</td>
+<td>SAM2 によるセグメンテーション支援と napari 可視化を使った、画像中の粒子カウント用デスクトップアプリ。</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/sam-particle-counter">Repository</a> / <a href="https://maple60.github.io/sam-particle-counter/">Docs</a></td>
+<td>2026-04-27</td>
+</tr>
+<tr class="even">
+<td>efar</td>
+<td>楕円フーリエ解析のための R パッケージ。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/efar">Repository</a></td>
+<td>2026-04-08</td>
+</tr>
+<tr class="odd">
+<td>leaf-contour-efd-analysis</td>
+<td>leaf-contour-efd と組み合わせて使う葉輪郭・楕円フーリエ解析の公開解析ページ。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/leaf-contour-efd-analysis">Repository</a> / <a href="https://maple60.github.io/leaf-contour-efd-analysis/">Site</a></td>
+<td>2026-04-10</td>
+</tr>
+<tr class="even">
+<td>canopy-openness-analysis</td>
+<td>林冠開空度の解析ワークフロー。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/canopy-openness-analysis">Repository</a> / <a href="https://maple60.github.io/canopy-openness-analysis/">Site</a></td>
+<td>2026-04-05</td>
+</tr>
+<tr class="odd">
+<td>understory-cover-analysis</td>
+<td>下層植生被度の解析ワークフロー。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/understory-cover-analysis">Repository</a> / <a href="https://maple60.github.io/understory-cover-analysis/">Site</a></td>
+<td>2026-04-06</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="テンプレート研究支援ツール" class="level2">
+<h2 class="anchored" data-anchor-id="テンプレート研究支援ツール">テンプレート・研究支援ツール</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>リポジトリ</th>
+<th>内容</th>
+<th>言語</th>
+<th>リンク</th>
+<th>更新日</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>quarto-github-pages-starter</td>
+<td>Quarto ブログと GitHub Pages 用のスターターテンプレート。</td>
+<td>SCSS</td>
+<td><a href="https://github.com/maple60/quarto-github-pages-starter">Repository</a></td>
+<td>2026-06-03</td>
+</tr>
+<tr class="even">
+<td>zotero-tag-unifier</td>
+<td>Zotero のタグ整理を補助する Python ツール。</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/zotero-tag-unifier">Repository</a></td>
+<td>2026-05-31</td>
+</tr>
+<tr class="odd">
+<td>zotero-python-connected-papers-research-rabbit</td>
+<td>Zotero、Python、Connected Papers、ResearchRabbit まわりの研究ワークフロー検討用リポジトリ。</td>
+<td>Python</td>
+<td><a href="https://github.com/maple60/zotero-python-connected-papers-research-rabbit">Repository</a></td>
+<td>2026-06-01</td>
+</tr>
+<tr class="even">
+<td>positron-r-python-boilerplate</td>
+<td>Positron IDE で R と Python を使うプロジェクトのテンプレート。</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/positron-r-python-boilerplate">Repository</a></td>
+<td>2025-09-18</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="サイト実験参考リポジトリ" class="level2">
+<h2 class="anchored" data-anchor-id="サイト実験参考リポジトリ">サイト・実験・参考リポジトリ</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>リポジトリ</th>
+<th>内容</th>
+<th>言語</th>
+<th>リンク</th>
+<th>更新日</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>maple60.github.io</td>
+<td>このウェブサイトのソース。</td>
+<td>R</td>
+<td><a href="https://github.com/maple60/maple60.github.io">Repository</a> / <a href="https://maple60.github.io/">Site</a></td>
+<td>2026-06-05</td>
+</tr>
+<tr class="even">
+<td>napari-examples</td>
+<td>napari 関連の小さな例やノート。</td>
+<td>Jupyter Notebook</td>
+<td><a href="https://github.com/maple60/napari-examples">Repository</a></td>
+<td>2026-04-21</td>
+</tr>
+<tr class="odd">
+<td>quarto-typst-test</td>
+<td>Quarto と Typst の実験用リポジトリ。</td>
+<td>TeX</td>
+<td><a href="https://github.com/maple60/quarto-typst-test">Repository</a></td>
+<td>2026-04-02</td>
+</tr>
+<tr class="even">
+<td>maple60</td>
+<td>GitHub プロフィール用リポジトリ。</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/maple60">Repository</a></td>
+<td>2026-04-05</td>
+</tr>
+<tr class="odd">
+<td>skills-github-pages</td>
+<td>GitHub Pages 学習用の公開リポジトリ。</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/skills-github-pages">Repository</a></td>
+<td>2025-04-10</td>
+</tr>
+<tr class="even">
+<td>procrustes_leaf_shape</td>
+<td>Procrustes 葉形解析に関するフォークリポジトリ。</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/procrustes_leaf_shape">Repository</a></td>
+<td>2026-06-01</td>
+</tr>
+<tr class="odd">
+<td>biomod2</td>
+<td>種分布モデル用プラットフォーム BIOMOD2 のフォークリポジトリ。</td>
+<td>-</td>
+<td><a href="https://github.com/maple60/biomod2">Repository</a></td>
+<td>2025-06-12</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -294,12 +416,12 @@ window.Quarto = {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "コピーしました");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "コピーしました");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",

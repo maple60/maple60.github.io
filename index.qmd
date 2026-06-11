@@ -34,7 +34,7 @@ I mainly write notes about R, Python, Quarto, visualization, website publishing,
 
 ### Navigation
 
-All posts are listed on [Posts](posts.qmd). English-only pages are available from [English Home](en/index.qmd), and translated articles are collected on [English Posts](en/posts.qmd). Notes about tools and references are collected on [Recommendations](recommendations.qmd).
+All posts are listed on [Posts](posts.qmd). Public projects and repository-based outputs are listed on [Works](works.qmd). English-only pages are available from [English Home](en/index.qmd), and translated articles are collected on [English Posts](en/posts.qmd). Notes about tools and references are collected on [Recommendations](recommendations.qmd).
 
 The articles reflect what I checked at the time of publication or update. Please also consult official documentation and original sources when using the information for important decisions.
 
@@ -53,7 +53,7 @@ R、Python、Quarto を中心に、データ解析、可視化、ウェブサイ
 
 ### ナビゲーション
 
-すべての記事は [Posts](posts.qmd) にあります。英語版のトップページは [English Home](en/index.qmd)、英語化済みの記事一覧は [English Posts](en/posts.qmd) にあります。ツールや参考資料のメモは [Recommendations](recommendations.qmd) にまとめています。
+すべての記事は [Posts](posts.qmd) にあります。公開リポジトリと成果物は [Works](works.qmd) にまとめています。英語版のトップページは [English Home](en/index.qmd)、英語化済みの記事一覧は [English Posts](en/posts.qmd) にあります。ツールや参考資料のメモは [Recommendations](recommendations.qmd) にまとめています。
 
 記事の内容は、公開時点または更新時点で自分が確認した範囲のメモです。重要な判断に使う場合は、公式ドキュメントや原典も確認してください。
 
