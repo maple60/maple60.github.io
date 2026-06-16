@@ -1,0 +1,508 @@
+---
+title: "WFO Plant List APIをRから利用する方法"
+description: "The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。"
+date: "2026-06-16"
+date-modified: "2026-06-16"
+draft: false
+categories: [r]
+execute:
+  eval: false
+---
+
+[The World Flora Online](https://www.worldfloraonline.org/)という、世界中の植物のデータベースがあります。
+[WFO Plant List API](https://list.worldfloraonline.org/)という形でAPIも提供されているので、Rからアクセスし、学名からaccepted nameを取得する方法を紹介してみます。
+
+## パッケージのインストール
+
+APIを利用しやすくするために、`httr2`パッケージをインストールします。
+また、APIからのレスポンスはJSON形式なので、`jsonlite`パッケージもインストールします。
+
+インストール後、`library()`関数を使ってパッケージを読み込みます。
+
+```{r}
+# install.packages(c("httr2", "jsonlite"))
+# renv::install(c("httr2", "jsonlite")) # renvを使用している場合はこちら
+library(httr2)
+library(jsonlite)
+```
+
+## エンドポイントの指定
+
+APIのエンドポイントは、以下のURLになります。
+
+```{r}
+endpoint <- "https://list.worldfloraonline.org/gql.php"
+```
+
+## 学名から検索するクエリの作成
+
+どのように検索するかを、GraphQLのクエリとして記述します。
+ここでは、"Quercus serrata"(和名はコナラ)という学名を検索するクエリを作成します。
+
+```{r}
+query <- '
+query {
+  taxonNameSuggestion(
+    termsString: "Quercus serrata"
+    limit: 10
+  ) {
+    id
+    fullNameStringHtml
+    currentPreferredUsage {
+      hasName {
+        id
+        fullNameStringHtml
+      }
+    }
+  }
+}
+'
+```
+
+このクエリの意味は、以下のようになります。
+
+- `taxonNameSuggestion`というフィールドを呼び出す
+- `termsString`引数に検索したい学名を指定する
+- `limit`引数に検索結果の最大数を指定する
+- クエリの結果として、`id`、`fullNameStringHtml`、および`currentPreferredUsage`フィールドを取得する
+
+`fullNameStringHtml`は検索した名前の学名をHTML形式で表現したものです。
+`currentPreferredUsage`はその名前が現在どの分類群として扱われているかを示します。
+`currentPreferredUsage`の中の`hasName`フィールドには、現在の分類群の学名が含まれています。
+つまり、Accepted Nameがある場合は、`currentPreferredUsage`の中の`hasName`フィールドにその学名が表示されます。
+
+## リクエストを作成してAPIに送信する
+
+`httr2::request()`関数を使って、APIに送るリクエストの土台を作ります。
+
+```{r}
+req <- request(endpoint)
+```
+
+GraphQLの`query`をJSONとして入れる。
+
+```{r}
+req <- req_body_json(
+  req,
+  list(query = query),
+  auto_unbox = TRUE
+)
+```
+
+実際にWFOへ送信します。
+
+```{r}
+resp <- req_perform(req)
+```
+
+返ってきたJSONをRの`list`に変換します。
+これで、APIからのレスポンスをRで扱えるようになります。
+
+```{r}
+x <- resp_body_json(resp, simplifyVector = FALSE)
+```
+
+
+::: {.callout}
+## パイプ演算子を使う場合
+
+baseRなどのパイプ演算子`|>` (native pipe operator)を使うと、コードがより読みやすくなります。
+
+```{r}
+resp <- request(endpoint) |>
+  req_body_json(
+    list(query = query),
+    auto_unbox = TRUE
+  ) |>
+  req_perform()
+```
+
+このパイプ演算子はR4.1.0から導入されたもので、左側のオブジェクトを右側の関数の最初の引数として渡すことができます。
+もともとは、`httr2`パッケージの作者であるHadley Wickham氏が提唱した`%>%` (magrittr pipe operator)が広く使われていましたが、Rのネイティブなパイプ演算子が導入されたことで、今後は`|>`を使うことが推奨されるようになっています。
+
+パイプ演算子については、以下のドキュメントが参考になります。
+
+- [Differences between the base R and magrittr pipes](https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)
+:::
+
+## 結果の確認
+
+`x`オブジェクトには、APIからのレスポンスがRのリスト形式で格納されています。
+
+```{r}
+print(x)
+```
+
+::: {.callout collapse="true"}
+
+## 実行結果の抜粋
+
+```{.r}
+$data
+$data$taxonNameSuggestion
+$data$taxonNameSuggestion[[1]]
+$data$taxonNameSuggestion[[1]]$id
+[1] "wfo-0000293164"
+
+$data$taxonNameSuggestion[[1]]$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
+[1] "wfo-0000293164"
+
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+
+
+
+$data$taxonNameSuggestion[[2]]
+$data$taxonNameSuggestion[[2]]$id
+[1] "wfo-0000293165"
+...
+```
+:::
+
+候補が10件返ってきました。
+これは、クエリで`limit: 10`と指定したためです。
+一つ目を見てみます。
+
+```{r}
+x$data$taxonNameSuggestion[[1]]
+```
+
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+$id
+[1] "wfo-0000293164"
+
+$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+$currentPreferredUsage
+$currentPreferredUsage$hasName
+$currentPreferredUsage$hasName$id
+[1] "wfo-0000293164"
+
+$currentPreferredUsage$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+```
+
+:::
+
+`id`, `fullNameStringHtml`, `currentPreferredUsage`の3つのフィールドが返ってきました。
+
+ここで注目するのは、`currentPreferredUsage`の中の`hasName`フィールドです。
+このフィールドには、現在の分類群の学名が含まれています。
+
+```{r}
+x$data$taxonNameSuggestion[[1]]$currentPreferredUsage
+```
+
+::: {.callout}
+
+## 実行結果
+
+```{.r}
+$hasName
+$hasName$id
+[1] "wfo-0000293164"
+
+$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+```
+
+:::
+
+この例では、`currentPreferredUsage`の中の`hasName`フィールドに、"*Quercus serrata* Murray"という学名が表示されています。
+
+```{r}
+x$data$taxonNameSuggestion[[1]]$id
+x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
+```
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+[1] "wfo-0000293164"
+[1] "wfo-0000293164"
+```
+
+:::
+
+`x$data$taxonNameSuggestion[[1]]$id`と`x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id`を比較すると、両者は一致しています。
+
+このことから、検索した学名"Quercus serrata"は、現在の分類群としても"Quercus serrata"であることがわかります。
+
+このようにすることで、検索した学名からaccepted nameを取得することができます。
+
+## Accepted nameを取得する関数の作成
+
+実務的には、処理を関数化しておくと便利です。
+
+今回の一連の処理を関数化したうえで、学名からaccepted nameを取得する関数を作成してみます。
+まずは、学名から候補を取得する関数`get_wfo_suggestions()`を作成します。
+
+この関数では、先ほどのクエリに加え、`fullNameStringNoAuthorsPlain`、`authorsString`、`rank`などのフィールドも取得するようにしています。
+特に、`rank`は、検索した名前がどのランクの分類群であるかを示すために重要です。
+例えば、`species`(種)か、`subspecies`(亜種)か、`variety`(変種)かなどのランクを知ることができます。
+
+Accepted nameを取得するときは、検索した名前と同じランクのaccepted nameを探すことが多いので、ランクの情報も取得するようにしています。
+
+```{r}
+get_wfo_suggestions <- function(
+  name,
+  limit = 10,
+  endpoint = "https://list.worldfloraonline.org/gql.php"
+) {
+  query <- '
+  query NameSearch($terms: String!, $limit: Int) {
+    taxonNameSuggestion(
+      termsString: $terms
+      limit: $limit
+    ) {
+      id
+      fullNameStringPlain
+      fullNameStringNoAuthorsPlain
+      authorsString
+      rank
+      currentPreferredUsage {
+        hasName {
+          id
+          fullNameStringPlain
+          fullNameStringNoAuthorsPlain
+          authorsString
+          rank
+        }
+      }
+    }
+  }
+  '
+
+  req <- request(endpoint)
+
+  req <- req_body_json(
+    req,
+    list(
+      query = query,
+      variables = list(
+        terms = name,
+        limit = limit
+      )
+    ),
+    auto_unbox = TRUE
+  )
+
+  resp <- req_perform(req)
+  x <- resp_body_json(resp, simplifyVector = FALSE)
+
+  res <- x$data$taxonNameSuggestion
+
+  if (is.null(res) || length(res) == 0) {
+    return(data.frame())
+  }
+
+  get_value <- function(z, field) {
+    if (is.null(z[[field]])) {
+      NA_character_
+    } else {
+      z[[field]]
+    }
+  }
+
+  get_accepted <- function(z, field) {
+    if (is.null(z$currentPreferredUsage)) {
+      NA_character_
+    } else if (is.null(z$currentPreferredUsage$hasName[[field]])) {
+      NA_character_
+    } else {
+      z$currentPreferredUsage$hasName[[field]]
+    }
+  }
+
+  out <- data.frame(
+    input = name,
+    id = sapply(res, get_value, field = "id"),
+    name = sapply(res, get_value, field = "fullNameStringPlain"),
+    name_no_author = sapply(
+      res,
+      get_value,
+      field = "fullNameStringNoAuthorsPlain"
+    ),
+    authors = sapply(res, get_value, field = "authorsString"),
+    rank = sapply(res, get_value, field = "rank"),
+    accepted_id = sapply(res, get_accepted, field = "id"),
+    accepted_name = sapply(res, get_accepted, field = "fullNameStringPlain"),
+    accepted_name_no_author = sapply(
+      res,
+      get_accepted,
+      field = "fullNameStringNoAuthorsPlain"
+    ),
+    accepted_authors = sapply(res, get_accepted, field = "authorsString"),
+    accepted_rank = sapply(res, get_accepted, field = "rank"),
+    stringsAsFactors = FALSE
+  )
+
+  out$is_accepted <- !is.na(out$accepted_id) & out$id == out$accepted_id
+
+  out
+}
+```
+
+つぎに、学名からaccepted nameを取得する関数`get_accepted_name()`を作成します。
+
+```{r}
+get_accepted_name <- function(name, rank = "species") {
+  tab <- get_wfo_suggestions(name)
+
+  if (nrow(tab) == 0) {
+    return(NA)
+  }
+
+  hit <- tab[
+    tab$rank == rank &
+      tab$name_no_author == name,
+  ]
+
+  if (nrow(hit) == 0) {
+    return(NA)
+  }
+
+  hit[1, ]
+}
+```
+
+`get_accepted_name()`関数は、学名とランクを引数に取り、`get_wfo_suggestions()`関数を呼び出して候補を取得します。
+
+```{r}
+result <- get_wfo_suggestions("Quercus serrata")
+print(result)
+```
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+             input             id
+1  Quercus serrata wfo-0000293164
+2  Quercus serrata wfo-0000293165
+3  Quercus serrata wfo-0001062616
+4  Quercus serrata wfo-0000293167
+5  Quercus serrata wfo-0000293168
+6  Quercus serrata wfo-0000293169
+7  Quercus serrata wfo-0000809955
+8  Quercus serrata wfo-0000804579
+9  Quercus serrata wfo-0000804580
+10 Quercus serrata wfo-1200020125
+                                                      name
+1                                   Quercus serrata Murray
+2                                    Quercus serrata Roxb.
+3                                   Quercus serrata Thunb.
+4                     Quercus serrata var. attenuata Blume
+5        Quercus serrata var. brevipetiolata (A.DC.) Nakai
+6                     Quercus serrata var. chinensis Wenz.
+7              Quercus serrata f. concolor (Sugim.) H.Ohba
+8                     Quercus serrata var. concolor Sugim.
+9  Quercus serrata var. donarium (Nakai) Kitam. & T.Horik.
+10                   Quercus serrata var. longicarpa Uyeki
+                        name_no_author                   authors    rank
+1                      Quercus serrata                    Murray species
+2                      Quercus serrata                     Roxb. species
+3                      Quercus serrata                    Thunb. species
+4       Quercus serrata var. attenuata                     Blume variety
+5  Quercus serrata var. brevipetiolata             (A.DC.) Nakai variety
+6       Quercus serrata var. chinensis                     Wenz. variety
+7          Quercus serrata f. concolor           (Sugim.) H.Ohba    form
+8        Quercus serrata var. concolor                    Sugim. variety
+9        Quercus serrata var. donarium (Nakai) Kitam. & T.Horik. variety
+10     Quercus serrata var. longicarpa                     Uyeki variety
+      accepted_id                              accepted_name
+1  wfo-0000293164                     Quercus serrata Murray
+2  wfo-0000814085 Castanopsis indica (Roxb. ex Lindl.) A.DC.
+3            <NA>                                       <NA>
+4  wfo-0000289386                Quercus acutissima Carruth.
+5  wfo-0000807317            Quercus serrata subsp. serrata 
+6  wfo-0000293817                   Quercus variabilis Blume
+7  wfo-0000293164                     Quercus serrata Murray
+8  wfo-0000293164                     Quercus serrata Murray
+9  wfo-0000807317            Quercus serrata subsp. serrata 
+10           <NA>                                       <NA>
+          accepted_name_no_author        accepted_authors accepted_rank
+1                 Quercus serrata                  Murray       species
+2              Castanopsis indica (Roxb. ex Lindl.) A.DC.       species
+3                            <NA>                    <NA>          <NA>
+4              Quercus acutissima                Carruth.       species
+5  Quercus serrata subsp. serrata                    <NA>    subspecies
+6              Quercus variabilis                   Blume       species
+7                 Quercus serrata                  Murray       species
+8                 Quercus serrata                  Murray       species
+9  Quercus serrata subsp. serrata                    <NA>    subspecies
+10                           <NA>                    <NA>          <NA>
+   is_accepted
+1         TRUE
+2        FALSE
+3        FALSE
+4        FALSE
+5        FALSE
+6        FALSE
+7        FALSE
+8        FALSE
+9        FALSE
+10       FALSE
+```
+
+:::
+
+`get_accepted_name()`関数を使って、学名からaccepted nameが含まれる行を取得します。
+
+```{r}
+accepted_name <- get_accepted_name("Quercus serrata")
+print(accepted_name)
+```
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+            input             id                   name  name_no_author
+1 Quercus serrata wfo-0000293164 Quercus serrata Murray Quercus serrata
+  authors    rank    accepted_id          accepted_name
+1  Murray species wfo-0000293164 Quercus serrata Murray
+  accepted_name_no_author accepted_authors accepted_rank is_accepted
+1         Quercus serrata           Murray       species        TRUE
+```
+
+:::
+
+## API利用時の注意
+
+WFO Plant List APIは公開APIとして利用できますが、短時間に大量のリクエストを送ると**サーバーに負担をかける可能性**があります。学習用・確認用として少数の名前を検索する場合は問題ありませんが、多数の学名を一括処理する場合には、以下の点に注意します。
+
+* 同じ名前を何度も問い合わせないように、結果を保存・キャッシュする。
+* ループ処理では必要に応じて `Sys.sleep()` を入れ、連続アクセスを避ける。
+* 大量データの処理では、APIを使って全データを取得しようとせず、公開されているダウンロードデータやローカル環境での利用を検討する。
+* APIから返された候補はそのまま採用せず、`rank`、WFO ID、`currentPreferredUsage`、accepted name を確認する。
+* `taxonNameSuggestion()` は候補検索用なので、厳密な一括照合では候補の確認ルールを明示する。
+
+例えば、ループ処理をする場合は、以下のように `Sys.sleep()` を入れて、連続アクセスを避けることができます。
+
+```{r}
+for (nm in names) {
+  result <- get_accepted_name(nm)
+  Sys.sleep(0.5) # サーバー負荷を下げるため少し待つ
+}
+```
+
+また、WFO Plant Listでは、APIと同じデータをZenodoからダウンロードでき、DOI付きで引用可能です。そのため、多数の名前を処理する研究用途や、再現性を重視する解析では、APIだけに依存するのではなく、使用したWFO Plant Listのリリース版を明記し、Zenodo上のデータを利用・引用することも検討します。
+
+Zenodo Link: <a href="https://doi.org/10.5281/zenodo.18007552"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18007552.svg" alt="DOI"></a>

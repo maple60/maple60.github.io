@@ -4,6 +4,12 @@ Japanese posts and translated English articles.
 
 Most posts are written in Japanese. Translated English versions are listed separately on [English Posts](en/posts.llms.md).
 
+### [WFO Plant List APIをRから利用する方法](posts/2026-06-16-wfo-r/index.llms.md)
+
+The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。
+
+2026-06-16
+
 ### [OpenAlexをPythonから使ってみる](posts/2026-06-01-openalex-python/index.llms.md)
 
 OpenAlex APIをPythonから呼び出し、論文メタデータを取得するための下書きです。
