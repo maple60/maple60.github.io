@@ -5,6 +5,8 @@ date: "2026-06-16"
 date-modified: "2026-06-16"
 draft: false
 categories: [r]
+execute:
+  eval: false
 ---
 
 [The World Flora Online](https://www.worldfloraonline.org/)という、世界中の植物のデータベースがあります。
@@ -131,6 +133,38 @@ resp <- request(endpoint) |>
 print(x)
 ```
 
+::: {.callout collapse="true"}
+
+## 実行結果の抜粋
+
+```{.r}
+$data
+$data$taxonNameSuggestion
+$data$taxonNameSuggestion[[1]]
+$data$taxonNameSuggestion[[1]]$id
+[1] "wfo-0000293164"
+
+$data$taxonNameSuggestion[[1]]$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
+[1] "wfo-0000293164"
+
+$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+
+
+
+$data$taxonNameSuggestion[[2]]
+$data$taxonNameSuggestion[[2]]$id
+[1] "wfo-0000293165"
+...
+```
+:::
+
 候補が10件返ってきました。
 これは、クエリで`limit: 10`と指定したためです。
 一つ目を見てみます。
@@ -138,6 +172,29 @@ print(x)
 ```{r}
 x$data$taxonNameSuggestion[[1]]
 ```
+
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+$id
+[1] "wfo-0000293164"
+
+$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+
+$currentPreferredUsage
+$currentPreferredUsage$hasName
+$currentPreferredUsage$hasName$id
+[1] "wfo-0000293164"
+
+$currentPreferredUsage$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+```
+
+:::
 
 `id`, `fullNameStringHtml`, `currentPreferredUsage`の3つのフィールドが返ってきました。
 
@@ -148,12 +205,38 @@ x$data$taxonNameSuggestion[[1]]
 x$data$taxonNameSuggestion[[1]]$currentPreferredUsage
 ```
 
+::: {.callout}
+
+## 実行結果
+
+```{.r}
+$hasName
+$hasName$id
+[1] "wfo-0000293164"
+
+$hasName$fullNameStringHtml
+[1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
+```
+
+:::
+
 この例では、`currentPreferredUsage`の中の`hasName`フィールドに、"*Quercus serrata* Murray"という学名が表示されています。
 
 ```{r}
 x$data$taxonNameSuggestion[[1]]$id
 x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
 ```
+
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+[1] "wfo-0000293164"
+[1] "wfo-0000293164"
+```
+
+:::
 
 `x$data$taxonNameSuggestion[[1]]$id`と`x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id`を比較すると、両者は一致しています。
 
@@ -304,6 +387,81 @@ result <- get_wfo_suggestions("Quercus serrata")
 print(result)
 ```
 
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+             input             id
+1  Quercus serrata wfo-0000293164
+2  Quercus serrata wfo-0000293165
+3  Quercus serrata wfo-0001062616
+4  Quercus serrata wfo-0000293167
+5  Quercus serrata wfo-0000293168
+6  Quercus serrata wfo-0000293169
+7  Quercus serrata wfo-0000809955
+8  Quercus serrata wfo-0000804579
+9  Quercus serrata wfo-0000804580
+10 Quercus serrata wfo-1200020125
+                                                      name
+1                                   Quercus serrata Murray
+2                                    Quercus serrata Roxb.
+3                                   Quercus serrata Thunb.
+4                     Quercus serrata var. attenuata Blume
+5        Quercus serrata var. brevipetiolata (A.DC.) Nakai
+6                     Quercus serrata var. chinensis Wenz.
+7              Quercus serrata f. concolor (Sugim.) H.Ohba
+8                     Quercus serrata var. concolor Sugim.
+9  Quercus serrata var. donarium (Nakai) Kitam. & T.Horik.
+10                   Quercus serrata var. longicarpa Uyeki
+                        name_no_author                   authors    rank
+1                      Quercus serrata                    Murray species
+2                      Quercus serrata                     Roxb. species
+3                      Quercus serrata                    Thunb. species
+4       Quercus serrata var. attenuata                     Blume variety
+5  Quercus serrata var. brevipetiolata             (A.DC.) Nakai variety
+6       Quercus serrata var. chinensis                     Wenz. variety
+7          Quercus serrata f. concolor           (Sugim.) H.Ohba    form
+8        Quercus serrata var. concolor                    Sugim. variety
+9        Quercus serrata var. donarium (Nakai) Kitam. & T.Horik. variety
+10     Quercus serrata var. longicarpa                     Uyeki variety
+      accepted_id                              accepted_name
+1  wfo-0000293164                     Quercus serrata Murray
+2  wfo-0000814085 Castanopsis indica (Roxb. ex Lindl.) A.DC.
+3            <NA>                                       <NA>
+4  wfo-0000289386                Quercus acutissima Carruth.
+5  wfo-0000807317            Quercus serrata subsp. serrata 
+6  wfo-0000293817                   Quercus variabilis Blume
+7  wfo-0000293164                     Quercus serrata Murray
+8  wfo-0000293164                     Quercus serrata Murray
+9  wfo-0000807317            Quercus serrata subsp. serrata 
+10           <NA>                                       <NA>
+          accepted_name_no_author        accepted_authors accepted_rank
+1                 Quercus serrata                  Murray       species
+2              Castanopsis indica (Roxb. ex Lindl.) A.DC.       species
+3                            <NA>                    <NA>          <NA>
+4              Quercus acutissima                Carruth.       species
+5  Quercus serrata subsp. serrata                    <NA>    subspecies
+6              Quercus variabilis                   Blume       species
+7                 Quercus serrata                  Murray       species
+8                 Quercus serrata                  Murray       species
+9  Quercus serrata subsp. serrata                    <NA>    subspecies
+10                           <NA>                    <NA>          <NA>
+   is_accepted
+1         TRUE
+2        FALSE
+3        FALSE
+4        FALSE
+5        FALSE
+6        FALSE
+7        FALSE
+8        FALSE
+9        FALSE
+10       FALSE
+```
+
+:::
+
 `get_accepted_name()`関数を使って、学名からaccepted nameが含まれる行を取得します。
 
 ```{r}
@@ -311,7 +469,20 @@ accepted_name <- get_accepted_name("Quercus serrata")
 print(accepted_name)
 ```
 
-## API利用時の注意
+::: {.callout collapse="true"}
+
+## 実行結果
+
+```{.r}
+            input             id                   name  name_no_author
+1 Quercus serrata wfo-0000293164 Quercus serrata Murray Quercus serrata
+  authors    rank    accepted_id          accepted_name
+1  Murray species wfo-0000293164 Quercus serrata Murray
+  accepted_name_no_author accepted_authors accepted_rank is_accepted
+1         Quercus serrata           Murray       species        TRUE
+```
+
+:::
 
 ## API利用時の注意
 
