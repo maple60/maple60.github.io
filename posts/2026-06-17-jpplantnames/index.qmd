@@ -1,0 +1,149 @@
+---
+title: "My Post"
+description: "Post description"
+date: "2026-01-01"
+date-modified: "2026-01-01"
+draft: true
+categories: []
+---
+
+最近作成した、`jpplantnames`というRパッケージについて簡単にまとめます。
+ドキュメントは、以下をご覧ください。
+
+- [jpplantnames • jpplantnames](https://maple60.github.io/jpplantnames/)
+
+## インストールとライブラリの読み込み
+
+いつも通りパッケージをインストールします。
+現在はGitHubにしか公開していませんので、`pak`や`remotes`, `renv`などを使ってインストールしてください。
+
+```{r}
+#| eval: false
+pak::pak("maple60/jpplantnames")
+remotes::install_github("maple60/jpplantnames")
+# renv::install("maple60/jpplantnames") # renvを使用している場合
+```
+
+インストールが完了したら、`library()`で読み込みます。
+
+```{r}
+library(jpplantnames)
+```
+
+## 和名から学名を取得する
+
+`scientific_name()`関数で和名から学名を取得できます。
+初回の実行はデータのダウンロードが行われるため、少し時間がかかります。
+この時、インターネットに接続されている必要があることに注意します。
+二回目以降は、キャッシュが使用されるため、すぐに結果が返ってきます。
+
+```{r}
+scientific_name("コナラ")
+```
+
+命名者の情報が欲しい場合は、`with_author = TRUE`を指定します。
+
+```{r}
+scientific_name("コナラ", with_author = TRUE)
+```
+
+複数の和名から一気に学名を知りたい場合は、ベクトルにして渡すこともできます。
+
+```{r}
+scientific_name(c("コナラ", "アカマツ", "イチョウ"))
+```
+
+## 学名から和名を取得する
+
+学名から和名を取得したい場合は、`japanese_name_search()`関数を使用します。
+
+```{r}
+japanese_name_search("Quercus serrata", field = "scientific")
+```
+
+この検索の場合、`"Quercus serrata"`を学名に含むすべてのデータが返されます。
+特定の学名に完全一致する和名を知りたい場合は、`exact = TRUE`を指定します。
+
+```{r}
+japanese_name_search("Quercus serrata", field = "scientific", exact = TRUE)
+```
+
+これでも複数のデータが返される場合があります。
+これは、同じコナラに対して、複数の和名・別名行が登録されているからです。
+
+## あいまいな和名を検索する
+
+野帳を電子化したときに、和名などに誤字が生じる場合があります。
+例えば、「コナラ」を「コラナ」と誤って入力してしまうことがあるかもしれません。
+このような場合、`japanese_name_suggest()`関数を使用して、あいまいな和名から、正しい和名を検索することができます。
+
+```{r}
+japanese_name_suggest("コラナ")
+```
+
+ほかには、「タラヨウ」を「タロヨウ」などと誤って入力してしまうこともあるかもしれません。
+
+```{r}
+japanese_name_suggest("タロヨウ")
+```
+
+このあいまい検索では、入力された和名とチェックリスト中の和名を比較し、候補ごとの文字列距離を計算します。現在の実装では、`stringdist` パッケージが利用可能な場合、`stringdist::stringdist()` 関数を `method = "osa"` で使用しています。`osa` は Optimal String Alignment distance、すなわち制限付き Damerau–Levenshtein 距離であり、文字の挿入・削除・置換に加えて、隣接する文字の入れ替えも考慮します。そのため、単純な入力ミスや文字順の入れ替わりを含む和名に対して、近い候補を提示できます。
+
+## GBIFの学名と照合する
+
+`gbif_match()`関数を使用して、[GBIF](https://www.gbif.org/) (Global Biodiversity Information Facility)の学名と照合することができます。
+
+```{r}
+gbif_match("Quercus serrata")
+```
+
+## WFOの学名と照合する
+
+別のデータベースである[WFO](https://wfoplantlist.org/) (World Flora Online)の学名と照合することもできます。
+
+```{r}
+wfo_accepted_name("Quercus serrata")
+```
+
+部分一致として検索したい場合は、`wfo_suggest()`関数を使用します。
+
+```{r}
+wfo_suggest("Quercus serrata")
+```
+
+## 和名から種の情報を取得する
+
+和名から関連する種の情報を取得することもできます。
+`japanese_name_info()`関数を使用します。
+基本的には変数に入れておくと便利です。
+`print()`で表示すると、簡易表示ができます。
+
+```{r}
+jp_info <- japanese_name_info("コナラ")
+print(jp_info)
+```
+
+これは **和名「コナラ」について、チェックリスト上では `Quercus serrata Murray` にマッチした、候補行は9件あった、という簡易レポート**です。
+
+変数はリスト形式になっているため、詳しい情報を見たいときは、`$`でアクセスできます。
+`$summary`で、簡易レポートをデータフレーム形式で展開します。
+
+```{r}
+jp_info$summary
+```
+
+`$japanese_name`で、和名の情報をデータフレーム形式で展開できます。
+
+```{r}
+jp_info$japanese_name
+```
+
+GBIFやWFOのデータと照合したい場合は、`wfo = TRUE`や`gbif = TRUE`を指定します。
+
+```{r}
+jp_info <- japanese_name_info("コナラ", wfo = TRUE, gbif = TRUE)
+jp_info$wfo
+jp_info$gbif
+```
+
+つまり、`japanese_name_info`はこれまでの関数を束ねたものというイメージです。
