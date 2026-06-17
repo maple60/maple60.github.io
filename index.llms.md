@@ -44,9 +44,9 @@ R、Python、Quarto を中心に、データ解析、可視化、ウェブサイ
 
 | Date | Title | Description |
 |----|----|----|
+| 2026-06-17 | [jpplantnames Rパッケージについて](posts/2026-06-17-jpplantnames/index.llms.md) | jpplantnames Rパッケージについて簡単にまとめます。 |
 | 2026-06-16 | [WFO Plant List APIをRから利用する方法](posts/2026-06-16-wfo-r/index.llms.md) | The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。 |
 | 2026-06-01 | [OpenAlexをPythonから使ってみる](posts/2026-06-01-openalex-python/index.llms.md) | OpenAlex APIをPythonから呼び出し、論文メタデータを取得するための下書きです。 |
 | 2026-05-27 | [RでPrincipal axis regressionをtrait spaceの回転に応用する](posts/2026-05-27-r-principle-axis-regression_example/index.llms.md) | 共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます |
 | 2026-05-26 | [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](posts/2026-05-26-r-principle-axis-regression/index.llms.md) | 共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます |
 | 2026-04-14 | [Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法](posts/2026-04-14-r-tmap-halo/index.llms.md) | `tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました |
-| 2026-04-13 | [Rで解析データをクラウドストレージから読み込む](posts/2026-04-13-r-data-from-cloud-storage/index.llms.md) | 解析の生データをクラウドストレージから読み込む方法を紹介します |
