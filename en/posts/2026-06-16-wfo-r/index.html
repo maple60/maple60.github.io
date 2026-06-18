@@ -5,8 +5,8 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-06-16">
-<meta name="description" content="The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。">
-<title>WFO Plant List APIをRから利用する方法 – Maple60’s website</title>
+<meta name="description" content="Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names.">
+<title>Using the WFO Plant List API from R – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -59,23 +59,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -119,15 +119,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
+    <a class="nav-link" href="../../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../works.html"> 
+    <a class="nav-link" href="../../../works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -136,25 +136,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
 <li>
-    <a class="dropdown-item" href="../../en/index.html">
+    <a class="dropdown-item" href="../../../en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/posts.html">
+    <a class="dropdown-item" href="../../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/works.html">
+    <a class="dropdown-item" href="../../../en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/recommendations.html">
+    <a class="dropdown-item" href="../../../en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../recommendations.html"> 
+    <a class="nav-link" href="../../../recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -174,26 +174,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" id="toc-パッケージのインストール" class="nav-link active" data-scroll-target="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">パッケージのインストール</a></li>
-  <li><a href="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A" id="toc-エンドポイントの指定" class="nav-link" data-scroll-target="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A">エンドポイントの指定</a></li>
-  <li><a href="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90" id="toc-学名から検索するクエリの作成" class="nav-link" data-scroll-target="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90">学名から検索するクエリの作成</a></li>
-  <li><a href="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6api%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" id="toc-リクエストを作成してapiに送信する" class="nav-link" data-scroll-target="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6api%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B">リクエストを作成してAPIに送信する</a></li>
-  <li><a href="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D" id="toc-結果の確認" class="nav-link" data-scroll-target="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D">結果の確認</a></li>
-  <li><a href="#accepted-name%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90" id="toc-accepted-nameを取得する関数の作成" class="nav-link" data-scroll-target="#accepted-name%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90">Accepted nameを取得する関数の作成</a></li>
-  <li><a href="#api%E5%88%A9%E7%94%A8%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F" id="toc-api利用時の注意" class="nav-link" data-scroll-target="#api%E5%88%A9%E7%94%A8%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F">API利用時の注意</a></li>
+<li><a href="#installing-packages" id="toc-installing-packages" class="nav-link active" data-scroll-target="#installing-packages">Installing Packages</a></li>
+  <li><a href="#specifying-the-endpoint" id="toc-specifying-the-endpoint" class="nav-link" data-scroll-target="#specifying-the-endpoint">Specifying the Endpoint</a></li>
+  <li><a href="#creating-a-query-to-search-by-scientific-name" id="toc-creating-a-query-to-search-by-scientific-name" class="nav-link" data-scroll-target="#creating-a-query-to-search-by-scientific-name">Creating a Query to Search by Scientific Name</a></li>
+  <li><a href="#creating-and-sending-the-request" id="toc-creating-and-sending-the-request" class="nav-link" data-scroll-target="#creating-and-sending-the-request">Creating and Sending the Request</a></li>
+  <li><a href="#checking-the-result" id="toc-checking-the-result" class="nav-link" data-scroll-target="#checking-the-result">Checking the Result</a></li>
+  <li><a href="#creating-a-function-to-retrieve-accepted-names" id="toc-creating-a-function-to-retrieve-accepted-names" class="nav-link" data-scroll-target="#creating-a-function-to-retrieve-accepted-names">Creating a Function to Retrieve Accepted Names</a></li>
+  <li><a href="#notes-on-using-the-api" id="toc-notes-on-using-the-api" class="nav-link" data-scroll-target="#notes-on-using-the-api">Notes on Using the API</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">WFO Plant List APIをRから利用する方法</h1>
+<h1 class="title">Using the WFO Plant List API from R</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
+    <div class="quarto-category">api</div>
+    <div class="quarto-category">taxonomy</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。
+    Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names.
   </div>
 </div>
 
@@ -229,26 +231,26 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>English version: <a href="../../en/posts/2026-06-16-wfo-r/index.html">Using the WFO Plant List API from R</a></p>
+<p>Original Japanese version: <a href="../../../posts/2026-06-16-wfo-r/index.html">WFO Plant List APIをRから利用する方法</a></p>
 </div>
 </div>
-<p><a href="https://www.worldfloraonline.org/">The World Flora Online</a>という、世界中の植物のデータベースがあります。 <a href="https://list.worldfloraonline.org/">WFO Plant List API</a>という形でAPIも提供されているので、Rからアクセスし、学名からaccepted nameを取得する方法を紹介してみます。</p>
-<section id="パッケージのインストール" class="level2"><h2 class="anchored" data-anchor-id="パッケージのインストール">パッケージのインストール</h2>
-<p>APIを利用しやすくするために、<code>httr2</code>パッケージをインストールします。 また、APIからのレスポンスはJSON形式なので、<code>jsonlite</code>パッケージもインストールします。</p>
-<p>インストール後、<code><a href="https://rdrr.io/r/base/library.html">library()</a></code>関数を使ってパッケージを読み込みます。</p>
+<p><a href="https://www.worldfloraonline.org/">The World Flora Online</a> is a global database of plant information. It also provides an API as the <a href="https://list.worldfloraonline.org/">WFO Plant List API</a>, so this article shows how to access it from R and retrieve accepted names from scientific names.</p>
+<section id="installing-packages" class="level2"><h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
+<p>Install the <code>httr2</code> package to make API requests easier. Because API responses are returned as JSON, also install the <code>jsonlite</code> package.</p>
+<p>After installation, load the packages with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages(c("httr2", "jsonlite"))</span></span>
 <span><span class="co"># renv::install(c("httr2", "jsonlite")) # renvを使用している場合はこちら</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr2.r-lib.org">httr2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="エンドポイントの指定" class="level2"><h2 class="anchored" data-anchor-id="エンドポイントの指定">エンドポイントの指定</h2>
-<p>APIのエンドポイントは、以下のURLになります。</p>
+</section><section id="specifying-the-endpoint" class="level2"><h2 class="anchored" data-anchor-id="specifying-the-endpoint">Specifying the Endpoint</h2>
+<p>The API endpoint is the following URL.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">endpoint</span> <span class="op">&lt;-</span> <span class="st">"https://list.worldfloraonline.org/gql.php"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="学名から検索するクエリの作成" class="level2"><h2 class="anchored" data-anchor-id="学名から検索するクエリの作成">学名から検索するクエリの作成</h2>
-<p>どのように検索するかを、GraphQLのクエリとして記述します。 ここでは、“Quercus serrata”(和名はコナラ)という学名を検索するクエリを作成します。</p>
+</section><section id="creating-a-query-to-search-by-scientific-name" class="level2"><h2 class="anchored" data-anchor-id="creating-a-query-to-search-by-scientific-name">Creating a Query to Search by Scientific Name</h2>
+<p>The search is written as a GraphQL query. Here, I create a query that searches for the scientific name <code>"Quercus serrata"</code> (called Konara in Japanese).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">'</span></span>
 <span><span class="st">query {</span></span>
@@ -268,23 +270,20 @@ Note
 <span><span class="st">}</span></span>
 <span><span class="st">'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>このクエリの意味は、以下のようになります。</p>
+<p>This query does the following.</p>
 <ul>
-<li>
-<code>taxonNameSuggestion</code>というフィールドを呼び出す</li>
-<li>
-<code>termsString</code>引数に検索したい学名を指定する</li>
-<li>
-<code>limit</code>引数に検索結果の最大数を指定する</li>
-<li>クエリの結果として、<code>id</code>、<code>fullNameStringHtml</code>、および<code>currentPreferredUsage</code>フィールドを取得する</li>
+<li>Calls the <code>taxonNameSuggestion</code> field</li>
+<li>Sets the scientific name to search for in the <code>termsString</code> argument</li>
+<li>Sets the maximum number of search results in the <code>limit</code> argument</li>
+<li>Retrieves <code>id</code>, <code>fullNameStringHtml</code>, and <code>currentPreferredUsage</code> fields as the query result</li>
 </ul>
-<p><code>fullNameStringHtml</code>は検索した名前の学名をHTML形式で表現したものです。 <code>currentPreferredUsage</code>はその名前が現在どの分類群として扱われているかを示します。 <code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドには、現在の分類群の学名が含まれています。 つまり、Accepted Nameがある場合は、<code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドにその学名が表示されます。</p>
-</section><section id="リクエストを作成してapiに送信する" class="level2"><h2 class="anchored" data-anchor-id="リクエストを作成してapiに送信する">リクエストを作成してAPIに送信する</h2>
-<p><code><a href="https://httr2.r-lib.org/reference/request.html">httr2::request()</a></code>関数を使って、APIに送るリクエストの土台を作ります。</p>
+<p><code>fullNameStringHtml</code> is the searched scientific name expressed in HTML format. <code>currentPreferredUsage</code> shows which taxon the name is currently treated as. The <code>hasName</code> field inside <code>currentPreferredUsage</code> contains the scientific name of the current taxon. In other words, when an accepted name exists, that name appears in the <code>hasName</code> field inside <code>currentPreferredUsage</code>.</p>
+</section><section id="creating-and-sending-the-request" class="level2"><h2 class="anchored" data-anchor-id="creating-and-sending-the-request">Creating and Sending the Request</h2>
+<p>Use <code><a href="https://httr2.r-lib.org/reference/request.html">httr2::request()</a></code> to create the base request for the API.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">endpoint</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>GraphQLの<code>query</code>をJSONとして入れる。</p>
+<p>Add the GraphQL <code>query</code> as JSON.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/req_body.html">req_body_json</a></span><span class="op">(</span></span>
 <span>  <span class="va">req</span>,</span>
@@ -292,11 +291,11 @@ Note
 <span>  auto_unbox <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>実際にWFOへ送信します。</p>
+<p>Then send it to WFO.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>返ってきたJSONをRの<code>list</code>に変換します。 これで、APIからのレスポンスをRで扱えるようになります。</p>
+<p>Convert the returned JSON into an R <code>list</code>. This makes the API response usable from R.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="va">resp</span>, simplifyVector <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -306,11 +305,11 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>パイプ演算子を使う場合
+<span class="screen-reader-only">None</span>Using the Pipe Operator
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>baseRなどのパイプ演算子<code>|&gt;</code> (native pipe operator)を使うと、コードがより読みやすくなります。</p>
+<p>The native pipe operator <code>|&gt;</code> in base R can make the code easier to read.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">endpoint</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_body.html">req_body_json</a></span><span class="op">(</span></span>
@@ -319,15 +318,15 @@ Note
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>このパイプ演算子はR4.1.0から導入されたもので、左側のオブジェクトを右側の関数の最初の引数として渡すことができます。 もともとは、<code>httr2</code>パッケージの作者であるHadley Wickham氏が提唱した<code>%&gt;%</code> (magrittr pipe operator)が広く使われていましたが、Rのネイティブなパイプ演算子が導入されたことで、今後は<code>|&gt;</code>を使うことが推奨されるようになっています。</p>
-<p>パイプ演算子については、以下のドキュメントが参考になります。</p>
+<p>This pipe operator was introduced in R 4.1.0. It passes the object on the left as the first argument of the function on the right. The <code>%&gt;%</code> magrittr pipe operator, originally advocated by Hadley Wickham, was widely used before this, but with the introduction of R’s native pipe operator, using <code>|&gt;</code> is now often recommended.</p>
+<p>The following documentation is useful for understanding the pipe operator.</p>
 <ul>
 <li><a href="https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">Differences between the base R and magrittr pipes</a></li>
 </ul>
 </div>
 </div>
-</section><section id="結果の確認" class="level2"><h2 class="anchored" data-anchor-id="結果の確認">結果の確認</h2>
-<p><code>x</code>オブジェクトには、APIからのレスポンスがRのリスト形式で格納されています。</p>
+</section><section id="checking-the-result" class="level2"><h2 class="anchored" data-anchor-id="checking-the-result">Checking the Result</h2>
+<p>The <code>x</code> object stores the API response as an R list.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -337,7 +336,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果の抜粋
+<span class="screen-reader-only">None</span>Output Excerpt
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -370,7 +369,7 @@ Note
 </div>
 </div>
 </div>
-<p>候補が10件返ってきました。 これは、クエリで<code>limit: 10</code>と指定したためです。 一つ目を見てみます。</p>
+<p>Ten candidates were returned because the query specified <code>limit: 10</code>. Let’s inspect the first result.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -380,7 +379,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
+<span class="screen-reader-only">None</span>Output
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -402,8 +401,8 @@ Note
 </div>
 </div>
 </div>
-<p><code>id</code>, <code>fullNameStringHtml</code>, <code>currentPreferredUsage</code>の3つのフィールドが返ってきました。</p>
-<p>ここで注目するのは、<code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドです。 このフィールドには、現在の分類群の学名が含まれています。</p>
+<p>The three fields <code>id</code>, <code>fullNameStringHtml</code>, and <code>currentPreferredUsage</code> were returned.</p>
+<p>The field to focus on is <code>hasName</code> inside <code>currentPreferredUsage</code>. This field contains the scientific name of the current taxon.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -413,7 +412,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
+<span class="screen-reader-only">None</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -425,7 +424,7 @@ Note
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p>この例では、<code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドに、“<em>Quercus serrata</em> Murray”という学名が表示されています。</p>
+<p>In this example, the <code>hasName</code> field inside <code>currentPreferredUsage</code> displays the scientific name “<em>Quercus serrata</em> Murray”.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span>
 <span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span><span class="op">$</span><span class="va">hasName</span><span class="op">$</span><span class="va">id</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -436,7 +435,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
+<span class="screen-reader-only">None</span>Output
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -447,14 +446,14 @@ Note
 </div>
 </div>
 </div>
-<p><code>x$data$taxonNameSuggestion[[1]]$id</code>と<code>x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id</code>を比較すると、両者は一致しています。</p>
-<p>このことから、検索した学名”Quercus serrata”は、現在の分類群としても”Quercus serrata”であることがわかります。</p>
-<p>このようにすることで、検索した学名からaccepted nameを取得することができます。</p>
-</section><section id="accepted-nameを取得する関数の作成" class="level2"><h2 class="anchored" data-anchor-id="accepted-nameを取得する関数の作成">Accepted nameを取得する関数の作成</h2>
-<p>実務的には、処理を関数化しておくと便利です。</p>
-<p>今回の一連の処理を関数化したうえで、学名からaccepted nameを取得する関数を作成してみます。 まずは、学名から候補を取得する関数<code>get_wfo_suggestions()</code>を作成します。</p>
-<p>この関数では、先ほどのクエリに加え、<code>fullNameStringNoAuthorsPlain</code>、<code>authorsString</code>、<code>rank</code>などのフィールドも取得するようにしています。 特に、<code>rank</code>は、検索した名前がどのランクの分類群であるかを示すために重要です。 例えば、<code>species</code>(種)か、<code>subspecies</code>(亜種)か、<code>variety</code>(変種)かなどのランクを知ることができます。</p>
-<p>Accepted nameを取得するときは、検索した名前と同じランクのaccepted nameを探すことが多いので、ランクの情報も取得するようにしています。</p>
+<p>Comparing <code>x$data$taxonNameSuggestion[[1]]$id</code> with <code>x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id</code>, the two values are identical.</p>
+<p>This shows that the searched scientific name <code>"Quercus serrata"</code> is currently treated as <code>"Quercus serrata"</code>.</p>
+<p>In this way, you can retrieve an accepted name from a searched scientific name.</p>
+</section><section id="creating-a-function-to-retrieve-accepted-names" class="level2"><h2 class="anchored" data-anchor-id="creating-a-function-to-retrieve-accepted-names">Creating a Function to Retrieve Accepted Names</h2>
+<p>In practical work, it is useful to wrap the process in functions.</p>
+<p>Here, I turn the steps above into functions and create a function that retrieves the accepted name from a scientific name. First, create <code>get_wfo_suggestions()</code>, which retrieves candidates from a scientific name.</p>
+<p>In addition to the query above, this function also retrieves fields such as <code>fullNameStringNoAuthorsPlain</code>, <code>authorsString</code>, and <code>rank</code>. The <code>rank</code> field is especially important because it shows the taxonomic rank of the searched name. For example, it lets you distinguish whether the name is at the rank of <code>species</code>, <code>subspecies</code>, <code>variety</code>, and so on.</p>
+<p>When retrieving an accepted name, it is often useful to look for an accepted name at the same rank as the searched name, so this function also retrieves rank information.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_wfo_suggestions</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
 <span>  <span class="va">name</span>,</span>
@@ -554,7 +553,7 @@ Note
 <span>  <span class="va">out</span></span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>つぎに、学名からaccepted nameを取得する関数<code>get_accepted_name()</code>を作成します。</p>
+<p>Next, create <code>get_accepted_name()</code>, a function that retrieves the accepted name from a scientific name.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_accepted_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">rank</span> <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu">get_wfo_suggestions</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span>
@@ -575,7 +574,7 @@ Note
 <span>  <span class="va">hit</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>get_accepted_name()</code>関数は、学名とランクを引数に取り、<code>get_wfo_suggestions()</code>関数を呼び出して候補を取得します。</p>
+<p>The <code>get_accepted_name()</code> function takes a scientific name and rank, then calls <code>get_wfo_suggestions()</code> to retrieve candidates.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">get_wfo_suggestions</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -586,7 +585,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
+<span class="screen-reader-only">None</span>Output
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -630,11 +629,11 @@ Note
 <span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  wfo<span class="dv">-0000814085</span> Castanopsis <span class="fu">indica</span> (Roxb. ex Lindl.) A.DC.</span>
 <span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                                       <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
 <span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  wfo<span class="dv">-0000289386</span>                Quercus acutissima Carruth.</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata </span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata</span>
 <span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  wfo<span class="dv">-0000293817</span>                   Quercus variabilis Blume</span>
 <span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  wfo<span class="dv">-0000293164</span>                     Quercus serrata Murray</span>
 <span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  wfo<span class="dv">-0000293164</span>                     Quercus serrata Murray</span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata </span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata</span>
 <span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>           <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                                       <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
 <span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>          accepted_name_no_author        accepted_authors accepted_rank</span>
 <span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>                 Quercus serrata                  Murray       species</span>
@@ -661,7 +660,7 @@ Note
 </div>
 </div>
 </div>
-<p><code>get_accepted_name()</code>関数を使って、学名からaccepted nameが含まれる行を取得します。</p>
+<p>Use <code>get_accepted_name()</code> to retrieve the row that contains the accepted name for a scientific name.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">accepted_name</span> <span class="op">&lt;-</span> <span class="fu">get_accepted_name</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">accepted_name</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -672,7 +671,7 @@ Note
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
+<span class="screen-reader-only">None</span>Output
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -687,24 +686,23 @@ Note
 </div>
 </div>
 </div>
-</section><section id="api利用時の注意" class="level2"><h2 class="anchored" data-anchor-id="api利用時の注意">API利用時の注意</h2>
-<p>WFO Plant List APIは公開APIとして利用できますが、短時間に大量のリクエストを送ると<strong>サーバーに負担をかける可能性</strong>があります。学習用・確認用として少数の名前を検索する場合は問題ありませんが、多数の学名を一括処理する場合には、以下の点に注意します。</p>
+</section><section id="notes-on-using-the-api" class="level2"><h2 class="anchored" data-anchor-id="notes-on-using-the-api">Notes on Using the API</h2>
+<p>The WFO Plant List API is publicly available, but sending a large number of requests in a short time may <strong>place load on the server</strong>. Searching a small number of names for learning or checking is fine, but when processing many scientific names at once, keep the following points in mind.</p>
 <ul>
-<li>同じ名前を何度も問い合わせないように、結果を保存・キャッシュする。</li>
-<li>ループ処理では必要に応じて <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> を入れ、連続アクセスを避ける。</li>
-<li>大量データの処理では、APIを使って全データを取得しようとせず、公開されているダウンロードデータやローカル環境での利用を検討する。</li>
-<li>APIから返された候補はそのまま採用せず、<code>rank</code>、WFO ID、<code>currentPreferredUsage</code>、accepted name を確認する。</li>
-<li>
-<code>taxonNameSuggestion()</code> は候補検索用なので、厳密な一括照合では候補の確認ルールを明示する。</li>
+<li>Save or cache results so that the same name is not queried repeatedly.</li>
+<li>Add <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> in loops when needed to avoid continuous access.</li>
+<li>For large datasets, consider using the published download data or a local workflow instead of trying to retrieve all data through the API.</li>
+<li>Do not accept candidates returned by the API without review; check <code>rank</code>, WFO ID, <code>currentPreferredUsage</code>, and accepted name.</li>
+<li>Because <code>taxonNameSuggestion()</code> is for candidate search, make the candidate-review rules explicit when doing strict bulk matching.</li>
 </ul>
-<p>例えば、ループ処理をする場合は、以下のように <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> を入れて、連続アクセスを避けることができます。</p>
+<p>For example, when running a loop, you can add <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> as follows to avoid continuous access.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">nm</span> <span class="kw">in</span> <span class="va">names</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">get_accepted_name</span><span class="op">(</span><span class="va">nm</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># サーバー負荷を下げるため少し待つ</span></span>
 <span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>また、WFO Plant Listでは、APIと同じデータをZenodoからダウンロードでき、DOI付きで引用可能です。そのため、多数の名前を処理する研究用途や、再現性を重視する解析では、APIだけに依存するのではなく、使用したWFO Plant Listのリリース版を明記し、Zenodo上のデータを利用・引用することも検討します。</p>
+<p>The WFO Plant List also provides the same data as the API through Zenodo, with a DOI that can be cited. For research use cases that process many names or require reproducibility, consider not relying only on the API. Instead, specify the WFO Plant List release used and use or cite the data available on Zenodo.</p>
 <p>Zenodo Link: <a href="https://doi.org/10.5281/zenodo.18007552"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18007552.svg" alt="DOI"></a></p>
 
 

@@ -1,8 +1,12 @@
-# jpplantnames Rパッケージについて
+# A Quick Introduction to the jpplantnames R Package
 
 r
 
-jpplantnames Rパッケージについて簡単にまとめます。
+package
+
+taxonomy
+
+A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches.
 
 Published
 
@@ -14,15 +18,15 @@ Modified
 
 > **NOTE:**
 >
-> English version: [A Quick Introduction to the jpplantnames R Package](../../en/posts/2026-06-17-jpplantnames/index.llms.md)
+> Original Japanese version: [jpplantnames Rパッケージについて](../../../posts/2026-06-17-jpplantnames/index.llms.md)
 
-最近作成した、`jpplantnames`というRパッケージについて簡単にまとめます。 ドキュメントは、以下をご覧ください。
+This is a short overview of the `jpplantnames` R package, which I recently created. See the documentation below.
 
 - [jpplantnames • jpplantnames](https://maple60.github.io/jpplantnames/)
 
-## インストールとライブラリの読み込み
+## Installation and Loading the Library
 
-いつも通りパッケージをインストールします。 現在はGitHubにしか公開していませんので、`pak`や`remotes`, `renv`などを使ってインストールしてください。
+Install the package as usual. At the moment, it is available only on GitHub, so install it with `pak`, `remotes`, `renv`, or a similar tool.
 
 ``` downlit
 pak::pak("maple60/jpplantnames")
@@ -30,15 +34,15 @@ remotes::install_github("maple60/jpplantnames")
 # renv::install("maple60/jpplantnames") # renvを使用している場合
 ```
 
-インストールが完了したら、[`library()`](https://rdrr.io/r/base/library.html)で読み込みます。
+After installation, load it with [`library()`](https://rdrr.io/r/base/library.html).
 
 ``` downlit
 library(jpplantnames)
 ```
 
-## 和名から学名を取得する
+## Getting a Scientific Name from a Japanese Name
 
-[`scientific_name()`](https://maple60.github.io/jpplantnames/reference/scientific_name.html)関数で和名から学名を取得できます。 初回の実行はデータのダウンロードが行われるため、少し時間がかかります。 この時、インターネットに接続されている必要があることに注意します。 二回目以降は、キャッシュが使用されるため、すぐに結果が返ってきます。
+You can get a scientific name from a Japanese plant name with [`scientific_name()`](https://maple60.github.io/jpplantnames/reference/scientific_name.html). The first run takes a little time because the data are downloaded. An internet connection is required at that point. From the second run onward, cached data are used, so the result is returned quickly.
 
 ``` downlit
 scientific_name("コナラ")
@@ -50,7 +54,7 @@ scientific_name("コナラ")
 > [1] "Quercus serrata"
 > ```
 
-命名者の情報が欲しい場合は、`with_author = TRUE`を指定します。
+If you also want author information, set `with_author = TRUE`.
 
 ``` downlit
 scientific_name("コナラ", with_author = TRUE)
@@ -62,7 +66,7 @@ scientific_name("コナラ", with_author = TRUE)
 > [1] "Quercus serrata Murray"
 > ```
 
-複数の和名から一気に学名を知りたい場合は、ベクトルにして渡すこともできます。
+You can also pass a vector when you want to retrieve scientific names for multiple Japanese names at once.
 
 ``` downlit
 scientific_name(c("コナラ", "アカマツ", "イチョウ"))
@@ -74,9 +78,9 @@ scientific_name(c("コナラ", "アカマツ", "イチョウ"))
 > [1] "Quercus serrata"  "Pinus densiflora" "Ginkgo biloba"
 > ```
 
-## 学名から和名を取得する
+## Getting a Japanese Name from a Scientific Name
 
-学名から和名を取得したい場合は、[`japanese_name_search()`](https://maple60.github.io/jpplantnames/reference/japanese_name_search.html)関数を使用します。
+Use [`japanese_name_search()`](https://maple60.github.io/jpplantnames/reference/japanese_name_search.html) when you want to retrieve Japanese names from a scientific name.
 
 ``` downlit
 japanese_name_search("Quercus serrata", field = "scientific")
@@ -96,7 +100,7 @@ japanese_name_search("Quercus serrata", field = "scientific")
 > 31           マルバコナラ           ビワバコナラ Quercus serrata var. pseudovariabilis     YL
 > ```
 
-この検索の場合、`"Quercus serrata"`を学名に含むすべてのデータが返されます。 特定の学名に完全一致する和名を知りたい場合は、`exact = TRUE`を指定します。
+In this search, all records whose scientific name contains `"Quercus serrata"` are returned. If you want Japanese names that exactly match a specific scientific name, set `exact = TRUE`.
 
 ``` downlit
 japanese_name_search("Quercus serrata", field = "scientific", exact = TRUE)
@@ -115,11 +119,11 @@ japanese_name_search("Quercus serrata", field = "scientific", exact = TRUE)
 > 7 コナラ         ハハソ Quercus serrata     YL
 > ```
 
-これでも複数のデータが返される場合があります。 これは、同じコナラに対して、複数の和名・別名行が登録されているからです。
+Even with exact matching, multiple records may be returned. This happens because multiple Japanese names and aliases may be registered for the same species, such as Konara.
 
-## あいまいな和名を検索する
+## Searching for Ambiguous Japanese Names
 
-野帳を電子化したときに、和名などに誤字が生じる場合があります。 例えば、「コナラ」を「コラナ」と誤って入力してしまうことがあるかもしれません。 このような場合、[`japanese_name_suggest()`](https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html)関数を使用して、あいまいな和名から、正しい和名を検索することができます。
+When field notes are digitized, typos may appear in Japanese plant names. For example, `"コナラ"` might accidentally be entered as `"コラナ"`. In such cases, you can use [`japanese_name_suggest()`](https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html) to search for likely correct Japanese names from an ambiguous input.
 
 ``` downlit
 japanese_name_suggest("コラナ")
@@ -137,7 +141,7 @@ japanese_name_suggest("コラナ")
 > 6  コラナ        ガラナ        1 0.3333333      fuzzy ガラナ         ガラナ  Paullinia cupana     WF
 > ```
 
-ほかには、「タラヨウ」を「タロヨウ」などと誤って入力してしまうこともあるかもしれません。
+Another possible typo is entering `"タロヨウ"` instead of `"タラヨウ"`.
 
 ``` downlit
 japanese_name_suggest("タロヨウ")
@@ -154,11 +158,11 @@ japanese_name_suggest("タロヨウ")
 > 5  タロヨウ    キタゴヨウ        2  0.40      fuzzy キタゴヨウ キタゴヨウ    Pinus parviflora var. pentaphylla     WF
 > ```
 
-このあいまい検索では、入力された和名とチェックリスト中の和名を比較し、候補ごとの文字列距離を計算します。現在の実装では、`stringdist` パッケージが利用可能な場合、[`stringdist::stringdist()`](https://rdrr.io/pkg/stringdist/man/stringdist.html) 関数を `method = "osa"` で使用しています。`osa` は Optimal String Alignment distance、すなわち制限付き Damerau–Levenshtein 距離であり、文字の挿入・削除・置換に加えて、隣接する文字の入れ替えも考慮します。そのため、単純な入力ミスや文字順の入れ替わりを含む和名に対して、近い候補を提示できます。
+This fuzzy search compares the entered Japanese name with Japanese names in the checklist and calculates a string distance for each candidate. In the current implementation, when the `stringdist` package is available, it uses [`stringdist::stringdist()`](https://rdrr.io/pkg/stringdist/man/stringdist.html) with `method = "osa"`. `osa` means Optimal String Alignment distance, or restricted Damerau-Levenshtein distance, which considers adjacent character transpositions in addition to insertions, deletions, and substitutions. This makes it possible to suggest close candidates for Japanese names that include simple typos or swapped character order.
 
-## GBIFの学名と照合する
+## Matching Scientific Names Against GBIF
 
-[`gbif_match()`](https://maple60.github.io/jpplantnames/reference/gbif_match.html)関数を使用して、[GBIF](https://www.gbif.org/) (Global Biodiversity Information Facility)の学名と照合することができます。
+You can match scientific names against [GBIF](https://www.gbif.org/) (Global Biodiversity Information Facility) with [`gbif_match()`](https://maple60.github.io/jpplantnames/reference/gbif_match.html).
 
 ``` downlit
 gbif_match("Quercus serrata")
@@ -173,9 +177,9 @@ gbif_match("Quercus serrata")
 > 1     EXACT Plantae Fagaceae Quercus Quercus serrata
 > ```
 
-## WFOの学名と照合する
+## Matching Scientific Names Against WFO
 
-別のデータベースである[WFO](https://wfoplantlist.org/) (World Flora Online)の学名と照合することもできます。
+You can also match scientific names against another database, [WFO](https://wfoplantlist.org/) (World Flora Online).
 
 ``` downlit
 wfo_accepted_name("Quercus serrata")
@@ -192,7 +196,7 @@ wfo_accepted_name("Quercus serrata")
 > 1      accepted        TRUE           10    ambiguous   TRUE
 > ```
 
-部分一致として検索したい場合は、[`wfo_suggest()`](https://maple60.github.io/jpplantnames/reference/wfo_suggest.html)関数を使用します。
+Use [`wfo_suggest()`](https://maple60.github.io/jpplantnames/reference/wfo_suggest.html) when you want to search by partial match.
 
 ``` downlit
 wfo_suggest("Quercus serrata")
@@ -210,9 +214,9 @@ wfo_suggest("Quercus serrata")
 > ...
 > ```
 
-## 和名から種の情報を取得する
+## Getting Species Information from a Japanese Name
 
-和名から関連する種の情報を取得することもできます。 [`japanese_name_info()`](https://maple60.github.io/jpplantnames/reference/japanese_name_info.html)関数を使用します。 基本的には変数に入れておくと便利です。 [`print()`](https://rdrr.io/r/base/print.html)で表示すると、簡易表示ができます。
+You can also retrieve species-related information from a Japanese name. Use [`japanese_name_info()`](https://maple60.github.io/jpplantnames/reference/japanese_name_info.html) for this. It is usually convenient to store the result in a variable. Printing the object gives a short summary.
 
 ``` downlit
 jp_info <- japanese_name_info("コナラ")
@@ -232,9 +236,9 @@ print(jp_info)
 > Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.
 > ```
 
-これは **和名「コナラ」について、チェックリスト上では `Quercus serrata Murray` にマッチした、候補行は9件あった、という簡易レポート**です。
+This is a **short report saying that the Japanese name `"コナラ"` matched `Quercus serrata Murray` in the checklist and had 9 candidate rows**.
 
-変数はリスト形式になっているため、詳しい情報を見たいときは、`$`でアクセスできます。 `$summary`で、簡易レポートをデータフレーム形式で展開します。
+The object is a list, so you can access detailed information with `$`. Use `$summary` to expand the short report as a data frame.
 
 ``` downlit
 jp_info$summary
@@ -247,7 +251,7 @@ jp_info$summary
 > 1 コナラ    TRUE        コナラ Quercus serrata      Quercus serrata Murray                          9      matched
 > ```
 
-`$japanese_name`で、和名の情報をデータフレーム形式で展開できます。
+Use `$japanese_name` to expand the Japanese-name information as a data frame.
 
 ``` downlit
 jp_info$japanese_name
@@ -268,7 +272,7 @@ jp_info$japanese_name
 > 9 コナラ コナラ        FALSE コナラ         ハハソ                             Quercus serrata     YL
 > ```
 
-GBIFやWFOのデータと照合したい場合は、`wfo = TRUE`や`gbif = TRUE`を指定します。
+If you want to compare the result with GBIF or WFO data, set `wfo = TRUE` or `gbif = TRUE`.
 
 ``` downlit
 jp_info <- japanese_name_info("コナラ", wfo = TRUE, gbif = TRUE)
@@ -292,4 +296,4 @@ jp_info$gbif
 > 1     EXACT Plantae Fagaceae Quercus Quercus serrata
 > ```
 
-つまり、`japanese_name_info`はこれまでの関数を束ねたものというイメージです。
+In short, `japanese_name_info` is a helper that brings together the functions introduced above.

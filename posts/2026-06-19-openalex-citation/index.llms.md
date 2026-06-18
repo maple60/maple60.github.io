@@ -12,6 +12,10 @@ Modified
 
 2026-06-19
 
+> **NOTE:**
+>
+> English version: [Retrieving Paper References with the OpenAlex API from Python](../../en/posts/2026-06-19-openalex-citation/index.llms.md)
+
 ## APIキーの準備 (初めて利用する場合)
 
 OpenAlex APIを利用するには、APIキーが必要です。 APIキーは、OpenAlexのアカウントを作成してから、設定画面で取得できます。 以下のリンクからサインアップして、APIキーを入手してください。

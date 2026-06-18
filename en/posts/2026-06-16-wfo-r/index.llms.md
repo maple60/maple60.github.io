@@ -1,8 +1,12 @@
-# WFO Plant List APIをRから利用する方法
+# Using the WFO Plant List API from R
 
 r
 
-The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。
+api
+
+taxonomy
+
+Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names.
 
 Published
 
@@ -14,15 +18,15 @@ Modified
 
 > **NOTE:**
 >
-> English version: [Using the WFO Plant List API from R](../../en/posts/2026-06-16-wfo-r/index.llms.md)
+> Original Japanese version: [WFO Plant List APIをRから利用する方法](../../../posts/2026-06-16-wfo-r/index.llms.md)
 
-[The World Flora Online](https://www.worldfloraonline.org/)という、世界中の植物のデータベースがあります。 [WFO Plant List API](https://list.worldfloraonline.org/)という形でAPIも提供されているので、Rからアクセスし、学名からaccepted nameを取得する方法を紹介してみます。
+[The World Flora Online](https://www.worldfloraonline.org/) is a global database of plant information. It also provides an API as the [WFO Plant List API](https://list.worldfloraonline.org/), so this article shows how to access it from R and retrieve accepted names from scientific names.
 
-## パッケージのインストール
+## Installing Packages
 
-APIを利用しやすくするために、`httr2`パッケージをインストールします。 また、APIからのレスポンスはJSON形式なので、`jsonlite`パッケージもインストールします。
+Install the `httr2` package to make API requests easier. Because API responses are returned as JSON, also install the `jsonlite` package.
 
-インストール後、[`library()`](https://rdrr.io/r/base/library.html)関数を使ってパッケージを読み込みます。
+After installation, load the packages with [`library()`](https://rdrr.io/r/base/library.html).
 
 ``` downlit
 # install.packages(c("httr2", "jsonlite"))
@@ -31,17 +35,17 @@ library(httr2)
 library(jsonlite)
 ```
 
-## エンドポイントの指定
+## Specifying the Endpoint
 
-APIのエンドポイントは、以下のURLになります。
+The API endpoint is the following URL.
 
 ``` downlit
 endpoint <- "https://list.worldfloraonline.org/gql.php"
 ```
 
-## 学名から検索するクエリの作成
+## Creating a Query to Search by Scientific Name
 
-どのように検索するかを、GraphQLのクエリとして記述します。 ここでは、“Quercus serrata”(和名はコナラ)という学名を検索するクエリを作成します。
+The search is written as a GraphQL query. Here, I create a query that searches for the scientific name `"Quercus serrata"` (called Konara in Japanese).
 
 ``` downlit
 query <- '
@@ -63,24 +67,24 @@ query {
 '
 ```
 
-このクエリの意味は、以下のようになります。
+This query does the following.
 
-- `taxonNameSuggestion`というフィールドを呼び出す
-- `termsString`引数に検索したい学名を指定する
-- `limit`引数に検索結果の最大数を指定する
-- クエリの結果として、`id`、`fullNameStringHtml`、および`currentPreferredUsage`フィールドを取得する
+- Calls the `taxonNameSuggestion` field
+- Sets the scientific name to search for in the `termsString` argument
+- Sets the maximum number of search results in the `limit` argument
+- Retrieves `id`, `fullNameStringHtml`, and `currentPreferredUsage` fields as the query result
 
-`fullNameStringHtml`は検索した名前の学名をHTML形式で表現したものです。 `currentPreferredUsage`はその名前が現在どの分類群として扱われているかを示します。 `currentPreferredUsage`の中の`hasName`フィールドには、現在の分類群の学名が含まれています。 つまり、Accepted Nameがある場合は、`currentPreferredUsage`の中の`hasName`フィールドにその学名が表示されます。
+`fullNameStringHtml` is the searched scientific name expressed in HTML format. `currentPreferredUsage` shows which taxon the name is currently treated as. The `hasName` field inside `currentPreferredUsage` contains the scientific name of the current taxon. In other words, when an accepted name exists, that name appears in the `hasName` field inside `currentPreferredUsage`.
 
-## リクエストを作成してAPIに送信する
+## Creating and Sending the Request
 
-[`httr2::request()`](https://httr2.r-lib.org/reference/request.html)関数を使って、APIに送るリクエストの土台を作ります。
+Use [`httr2::request()`](https://httr2.r-lib.org/reference/request.html) to create the base request for the API.
 
 ``` downlit
 req <- request(endpoint)
 ```
 
-GraphQLの`query`をJSONとして入れる。
+Add the GraphQL `query` as JSON.
 
 ``` downlit
 req <- req_body_json(
@@ -90,13 +94,13 @@ req <- req_body_json(
 )
 ```
 
-実際にWFOへ送信します。
+Then send it to WFO.
 
 ``` downlit
 resp <- req_perform(req)
 ```
 
-返ってきたJSONをRの`list`に変換します。 これで、APIからのレスポンスをRで扱えるようになります。
+Convert the returned JSON into an R `list`. This makes the API response usable from R.
 
 ``` downlit
 x <- resp_body_json(resp, simplifyVector = FALSE)
@@ -104,7 +108,7 @@ x <- resp_body_json(resp, simplifyVector = FALSE)
 
 > **NOTE:**
 >
-> baseRなどのパイプ演算子`|>` (native pipe operator)を使うと、コードがより読みやすくなります。
+> The native pipe operator `|>` in base R can make the code easier to read.
 >
 > ``` downlit
 > resp <- request(endpoint) |>
@@ -115,15 +119,15 @@ x <- resp_body_json(resp, simplifyVector = FALSE)
 >   req_perform()
 > ```
 >
-> このパイプ演算子はR4.1.0から導入されたもので、左側のオブジェクトを右側の関数の最初の引数として渡すことができます。 もともとは、`httr2`パッケージの作者であるHadley Wickham氏が提唱した`%>%` (magrittr pipe operator)が広く使われていましたが、Rのネイティブなパイプ演算子が導入されたことで、今後は`|>`を使うことが推奨されるようになっています。
+> This pipe operator was introduced in R 4.1.0. It passes the object on the left as the first argument of the function on the right. The `%>%` magrittr pipe operator, originally advocated by Hadley Wickham, was widely used before this, but with the introduction of R’s native pipe operator, using `|>` is now often recommended.
 >
-> パイプ演算子については、以下のドキュメントが参考になります。
+> The following documentation is useful for understanding the pipe operator.
 >
 > - [Differences between the base R and magrittr pipes](https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)
 
-## 結果の確認
+## Checking the Result
 
-`x`オブジェクトには、APIからのレスポンスがRのリスト形式で格納されています。
+The `x` object stores the API response as an R list.
 
 ``` downlit
 print(x)
@@ -158,7 +162,7 @@ print(x)
 > ...
 > ```
 
-候補が10件返ってきました。 これは、クエリで`limit: 10`と指定したためです。 一つ目を見てみます。
+Ten candidates were returned because the query specified `limit: 10`. Let’s inspect the first result.
 
 ``` downlit
 x$data$taxonNameSuggestion[[1]]
@@ -182,9 +186,9 @@ x$data$taxonNameSuggestion[[1]]
 > [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
 > ```
 
-`id`, `fullNameStringHtml`, `currentPreferredUsage`の3つのフィールドが返ってきました。
+The three fields `id`, `fullNameStringHtml`, and `currentPreferredUsage` were returned.
 
-ここで注目するのは、`currentPreferredUsage`の中の`hasName`フィールドです。 このフィールドには、現在の分類群の学名が含まれています。
+The field to focus on is `hasName` inside `currentPreferredUsage`. This field contains the scientific name of the current taxon.
 
 ``` downlit
 x$data$taxonNameSuggestion[[1]]$currentPreferredUsage
@@ -201,7 +205,7 @@ x$data$taxonNameSuggestion[[1]]$currentPreferredUsage
 > [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
 > ```
 
-この例では、`currentPreferredUsage`の中の`hasName`フィールドに、“*Quercus serrata* Murray”という学名が表示されています。
+In this example, the `hasName` field inside `currentPreferredUsage` displays the scientific name “*Quercus serrata* Murray”.
 
 ``` downlit
 x$data$taxonNameSuggestion[[1]]$id
@@ -215,21 +219,21 @@ x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
 > [1] "wfo-0000293164"
 > ```
 
-`x$data$taxonNameSuggestion[[1]]$id`と`x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id`を比較すると、両者は一致しています。
+Comparing `x$data$taxonNameSuggestion[[1]]$id` with `x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id`, the two values are identical.
 
-このことから、検索した学名”Quercus serrata”は、現在の分類群としても”Quercus serrata”であることがわかります。
+This shows that the searched scientific name `"Quercus serrata"` is currently treated as `"Quercus serrata"`.
 
-このようにすることで、検索した学名からaccepted nameを取得することができます。
+In this way, you can retrieve an accepted name from a searched scientific name.
 
-## Accepted nameを取得する関数の作成
+## Creating a Function to Retrieve Accepted Names
 
-実務的には、処理を関数化しておくと便利です。
+In practical work, it is useful to wrap the process in functions.
 
-今回の一連の処理を関数化したうえで、学名からaccepted nameを取得する関数を作成してみます。 まずは、学名から候補を取得する関数`get_wfo_suggestions()`を作成します。
+Here, I turn the steps above into functions and create a function that retrieves the accepted name from a scientific name. First, create `get_wfo_suggestions()`, which retrieves candidates from a scientific name.
 
-この関数では、先ほどのクエリに加え、`fullNameStringNoAuthorsPlain`、`authorsString`、`rank`などのフィールドも取得するようにしています。 特に、`rank`は、検索した名前がどのランクの分類群であるかを示すために重要です。 例えば、`species`(種)か、`subspecies`(亜種)か、`variety`(変種)かなどのランクを知ることができます。
+In addition to the query above, this function also retrieves fields such as `fullNameStringNoAuthorsPlain`, `authorsString`, and `rank`. The `rank` field is especially important because it shows the taxonomic rank of the searched name. For example, it lets you distinguish whether the name is at the rank of `species`, `subspecies`, `variety`, and so on.
 
-Accepted nameを取得するときは、検索した名前と同じランクのaccepted nameを探すことが多いので、ランクの情報も取得するようにしています。
+When retrieving an accepted name, it is often useful to look for an accepted name at the same rank as the searched name, so this function also retrieves rank information.
 
 ``` downlit
 get_wfo_suggestions <- function(
@@ -331,7 +335,7 @@ get_wfo_suggestions <- function(
 }
 ```
 
-つぎに、学名からaccepted nameを取得する関数`get_accepted_name()`を作成します。
+Next, create `get_accepted_name()`, a function that retrieves the accepted name from a scientific name.
 
 ``` downlit
 get_accepted_name <- function(name, rank = "species") {
@@ -354,7 +358,7 @@ get_accepted_name <- function(name, rank = "species") {
 }
 ```
 
-`get_accepted_name()`関数は、学名とランクを引数に取り、`get_wfo_suggestions()`関数を呼び出して候補を取得します。
+The `get_accepted_name()` function takes a scientific name and rank, then calls `get_wfo_suggestions()` to retrieve candidates.
 
 ``` downlit
 result <- get_wfo_suggestions("Quercus serrata")
@@ -402,11 +406,11 @@ print(result)
 > 2  wfo-0000814085 Castanopsis indica (Roxb. ex Lindl.) A.DC.
 > 3            <NA>                                       <NA>
 > 4  wfo-0000289386                Quercus acutissima Carruth.
-> 5  wfo-0000807317            Quercus serrata subsp. serrata 
+> 5  wfo-0000807317            Quercus serrata subsp. serrata
 > 6  wfo-0000293817                   Quercus variabilis Blume
 > 7  wfo-0000293164                     Quercus serrata Murray
 > 8  wfo-0000293164                     Quercus serrata Murray
-> 9  wfo-0000807317            Quercus serrata subsp. serrata 
+> 9  wfo-0000807317            Quercus serrata subsp. serrata
 > 10           <NA>                                       <NA>
 >           accepted_name_no_author        accepted_authors accepted_rank
 > 1                 Quercus serrata                  Murray       species
@@ -432,7 +436,7 @@ print(result)
 > 10       FALSE
 > ```
 
-`get_accepted_name()`関数を使って、学名からaccepted nameが含まれる行を取得します。
+Use `get_accepted_name()` to retrieve the row that contains the accepted name for a scientific name.
 
 ``` downlit
 accepted_name <- get_accepted_name("Quercus serrata")
@@ -450,17 +454,17 @@ print(accepted_name)
 > 1         Quercus serrata           Murray       species        TRUE
 > ```
 
-## API利用時の注意
+## Notes on Using the API
 
-WFO Plant List APIは公開APIとして利用できますが、短時間に大量のリクエストを送ると**サーバーに負担をかける可能性**があります。学習用・確認用として少数の名前を検索する場合は問題ありませんが、多数の学名を一括処理する場合には、以下の点に注意します。
+The WFO Plant List API is publicly available, but sending a large number of requests in a short time may **place load on the server**. Searching a small number of names for learning or checking is fine, but when processing many scientific names at once, keep the following points in mind.
 
-- 同じ名前を何度も問い合わせないように、結果を保存・キャッシュする。
-- ループ処理では必要に応じて [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) を入れ、連続アクセスを避ける。
-- 大量データの処理では、APIを使って全データを取得しようとせず、公開されているダウンロードデータやローカル環境での利用を検討する。
-- APIから返された候補はそのまま採用せず、`rank`、WFO ID、`currentPreferredUsage`、accepted name を確認する。
-- `taxonNameSuggestion()` は候補検索用なので、厳密な一括照合では候補の確認ルールを明示する。
+- Save or cache results so that the same name is not queried repeatedly.
+- Add [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) in loops when needed to avoid continuous access.
+- For large datasets, consider using the published download data or a local workflow instead of trying to retrieve all data through the API.
+- Do not accept candidates returned by the API without review; check `rank`, WFO ID, `currentPreferredUsage`, and accepted name.
+- Because `taxonNameSuggestion()` is for candidate search, make the candidate-review rules explicit when doing strict bulk matching.
 
-例えば、ループ処理をする場合は、以下のように [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) を入れて、連続アクセスを避けることができます。
+For example, when running a loop, you can add [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) as follows to avoid continuous access.
 
 ``` downlit
 for (nm in names) {
@@ -469,6 +473,6 @@ for (nm in names) {
 }
 ```
 
-また、WFO Plant Listでは、APIと同じデータをZenodoからダウンロードでき、DOI付きで引用可能です。そのため、多数の名前を処理する研究用途や、再現性を重視する解析では、APIだけに依存するのではなく、使用したWFO Plant Listのリリース版を明記し、Zenodo上のデータを利用・引用することも検討します。
+The WFO Plant List also provides the same data as the API through Zenodo, with a DOI that can be cited. For research use cases that process many names or require reproducibility, consider not relying only on the API. Instead, specify the WFO Plant List release used and use or cite the data available on Zenodo.
 
 Zenodo Link: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18007552.svg)](https://doi.org/10.5281/zenodo.18007552)

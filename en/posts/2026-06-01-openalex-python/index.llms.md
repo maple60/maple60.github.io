@@ -6,7 +6,7 @@ openalex
 
 api
 
-A draft note on calling the OpenAlex API from Python and retrieving paper metadata.
+A note on calling the OpenAlex API from Python to retrieve paper metadata.
 
 Published
 
@@ -14,7 +14,7 @@ Published
 
 Modified
 
-2026-06-04
+2026-06-18
 
 > **NOTE:**
 >
@@ -22,89 +22,108 @@ Modified
 
 ## Introduction
 
-This article organizes the basic steps for using [OpenAlex](https://openalex.org/) from Python to retrieve academic metadata such as papers and authors.
+This article organizes the steps for using [OpenAlex](https://openalex.org/) from Python to retrieve scholarly metadata such as papers and authors.
 
-OpenAlex is a database of scholarly information covering papers, authors, journals, institutions, topics, and related entities. The base URL for the API is `https://api.openalex.org`, and endpoints such as `/works`, `/authors`, `/sources`, and `/institutions` are available.
+OpenAlex is a scholarly information database covering papers, authors, journals, institutions, topics, and related entities. The base URL for the API is `https://api.openalex.org`, and endpoints such as `/works`, `/authors`, `/sources`, and `/institutions` are available.
 
-This article starts with the `/works` endpoint and covers keyword search, filtering, and converting the results into a table.
-
-## Runtime Environment
-
-First, check that Python can run inside this `.qmd` file. This chunk does not access the API. It only confirms that Python, `requests`, and `pandas`, which are needed when rendering the article, are available.
-
-``` python
-import platform
-
-import pandas as pd
-import requests
-
-pd.DataFrame(
-    {
-        "component": ["python", "requests", "pandas"],
-        "version": [
-            platform.python_version(),
-            requests.__version__,
-            pd.__version__,
-        ],
-    }
-)
-```
-
-|     | component | version |
-|-----|-----------|---------|
-| 0   | python    | 3.12.13 |
-| 1   | requests  | 2.34.2  |
-| 2   | pandas    | 3.0.3   |
+This article first uses the `/works` endpoint and shows how to search for papers by keyword and related conditions.
 
 ## Preparing an API Key
 
-When using the OpenAlex API, it is useful to store the API key as an environment variable so that the key does not have to be written in the article body or code.
+An API key is required to use the OpenAlex API. Create an OpenAlex account, then obtain an API key from the settings page. Use the following link to sign up and get an API key.
 
-> **NOTE:**
->
-> The OpenAlex API Reference describes passing `api_key` as a query parameter. When running the site through GitHub Actions, register `OPENALEX_API_KEY` as a repository secret and pass it as an environment variable in the workflow.
+- [Sign up for OpenAlex \| OpenAlex](https://openalex.org/signup?redirect=/settings/api-key)
 
-``` bash
-export OPENALEX_API_KEY="your-api-key"
+## Searching for Papers
+
+From here, I explain step by step how to call the OpenAlex API from Python and search for papers.
+
+### Importing Libraries and Setting the API Key
+
+This example uses Python’s standard `os` library and the external libraries `requests` and `pandas`. It assumes that the API key has been set in the environment variable `OPENALEX_API_KEY`, and retrieves it through `os.environ`. Before running the code, set `OPENALEX_API_KEY=your_api_key_here` in a `.env` file or a similar local setup in the working directory. The `.env` file is a text file placed at the project root to define environment variables, including the API key. When using GitHub Actions, the basic approach is not to use `.env`; instead, register `OPENALEX_API_KEY` as a repository secret and pass it from the workflow.
+
+``` default
+OPENALEX_API_KEY=your_api_key_here
 ```
-
-In Windows PowerShell, set it as follows.
-
-``` powershell
-$env:OPENALEX_API_KEY = "your-api-key"
-```
-
-## Searching for Papers with the Works API
-
-The next code block is an example of sending a keyword search to the `/works` endpoint. Because it requires an API key, the draft keeps this chunk at `eval: false`. When running it as part of the article, set the API key first and then change the chunk to `eval: true`.
 
 ``` python
 import os
-
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 api_key = os.environ["OPENALEX_API_KEY"]
+```
 
+> **IMPORTANT:**
+>
+> Because `.env` files contain sensitive information such as API keys, make sure to add them to `.gitignore` and **do not commit them to the Git repository**.
+
+> **NOTE:**
+>
+> - `os` library: [os — Miscellaneous operating system interfaces — Python 3.14.6 documentation](https://docs.python.org/3/library/os.html)
+> - `requests` library: [Requests: HTTP for Humans™ — Requests 2.34.2 documentation](https://docs.python-requests.org/en/latest/)
+> - `pandas` library: [pandas documentation — pandas 3.0.3 documentation](https://pandas.pydata.org/docs/)
+> - About `.env` files: [python-dotenv · PyPI](https://pypi.org/project/python-dotenv/)
+
+### Specifying the Endpoint and Query Parameters
+
+To search for papers, send a GET request to the `/works` endpoint. For other endpoints, see the OpenAlex API documentation below.
+
+- [API Overview - OpenAlex Developers](https://developers.openalex.org/api-reference/introduction)
+
+Set the query parameters you need by referring to the “List Works” section of the API documentation. Here, I use the following parameters. - `api_key`: API key - `search`: keyword search query - `filter`: filtering conditions, such as publication year and document type - `per_page`: number of results per page - `select`: fields to retrieve
+
+See the links below for the list of available parameters.
+
+- [List keywords - OpenAlex Developers](https://developers.openalex.org/api-reference/keywords/list-keywords)
+- [List works - OpenAlex Developers](https://developers.openalex.org/api-reference/works/list-works)
+
+This example uses the following search conditions.
+
+- Keyword: “leaf economics spectrum”
+- Publication year: 2024
+- Document type: article
+- Open access: true
+
+``` python
+endpoint = "https://api.openalex.org/works"
+# パラメータの設定
 params = {
     "api_key": api_key,
-    "search": "species distribution model",
+    "search": "leaf economics spectrum",
     "filter": "publication_year:2024,type:article,open_access.is_oa:true",
-    "sort": "cited_by_count:desc",
     "per_page": 5,
     "select": "id,display_name,publication_year,cited_by_count,doi",
 }
+```
 
+### Creating and Sending the HTTP Request
+
+Use `requests.get()` to send a GET request to the endpoint. After sending the request, call `response.raise_for_status()` so that an exception is raised if an HTTP error occurs.
+
+``` python
+# HTTPリクエストの作成と送信
+# リクエストの送信
 response = requests.get(
-    "https://api.openalex.org/works",
+    endpoint,
     params=params,
     timeout=30,
 )
-response.raise_for_status()
+response.raise_for_status()  # 失敗した場合は例外を発生させる
+```
 
+### Checking the Result and Converting It to a Table
+
+Retrieve JSON data from the response and extract the list of papers stored in the `results` field. Then use a list comprehension to extract the fields you need and convert them into a `pandas.DataFrame` for display as a table.
+
+``` python
 works = response.json()["results"]
+# meta = response.json()["meta"]  # メタデータも必要に応じて取得可能
 
-pd.DataFrame(
+df = pd.DataFrame(
     [
         {
             "title": work["display_name"],
@@ -116,29 +135,25 @@ pd.DataFrame(
         for work in works
     ]
 )
+
+print(df.to_string())
 ```
 
-## How to Review Retrieved Results
+``` text
+                                               title  year  citations                                      doi                 openalex_id
+0  Life at the conservative end of the leaf econo...  2024          8     https://doi.org/10.1111/nph.20015  https://openalex.org/W4401340000
+1  Extremely thin but very robust: Surprising cry...  2024          3  https://doi.org/10.1016/j.pld.2024.04.009  https://openalex.org/W4395672665
+2  Plant economics spectrum governs leaf nitrogen...  2024         11  https://doi.org/10.1186/s12870-024-05484-9  https://openalex.org/W4401486401
+3  Contrasting coordination of non‐structural car...  2024         45     https://doi.org/10.1111/nph.19678  https://openalex.org/W4392883019
+4  Global patterns of plant functional traits and...  2024         52  https://doi.org/10.1038/s42003-024-06777-3  https://openalex.org/W4402513235
+```
 
-The retrieved results are easier to turn into an article when you check them from the following perspectives.
+By default, results are sorted by relevance, so papers that are more relevant to the keyword are displayed first. If you want to sort by citation count, add a query parameter such as `sort=cited_by_count:desc` to specify the sort order.
 
-- `display_name`: Use it as the paper title.
-- `publication_year`: Use it for filtering or aggregating by year.
-- `cited_by_count`: Sort by citation count to find frequently cited papers.
-- `doi`: Use it to link to the original paper when a DOI is available.
-- `id`: Use it as a persistent identifier on OpenAlex.
+## Summary
 
-## What to Try Next
+This article introduced how to call the OpenAlex API from Python and retrieve paper metadata. It covered preparing an API key, setting the endpoint and query parameters, sending the HTTP request, processing the response, and converting the result into a table. You can apply the same approach to retrieve information about authors, journals, institutions, and other entities.
 
-This first draft only covers the Works API. When expanding the article, the following additions would fit naturally.
+I think it is a very useful API.
 
-- Filter by a specific author ID or institution ID.
-- Use `group_by` to summarize publication years or open access status.
-- Retrieve OpenAlex records from DOIs.
-- Save the retrieved literature list as a CSV file.
-
-## References
-
-- [OpenAlex API Overview](https://developers.openalex.org/api-reference/introduction)
-- [OpenAlex Works API](https://developers.openalex.org/api-reference/works/list-works)
-- [Using Python - Quarto](https://quarto.org/docs/computations/python.html)
+- Official documentation: [Overview - OpenAlex Developers](https://developers.openalex.org/)

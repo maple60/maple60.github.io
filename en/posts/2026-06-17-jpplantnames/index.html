@@ -5,8 +5,8 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-06-17">
-<meta name="description" content="jpplantnames Rパッケージについて簡単にまとめます。">
-<title>jpplantnames Rパッケージについて – Maple60’s website</title>
+<meta name="description" content="A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches.">
+<title>A Quick Introduction to the jpplantnames R Package – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -59,23 +59,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -119,15 +119,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
+    <a class="nav-link" href="../../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../works.html"> 
+    <a class="nav-link" href="../../../works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -136,25 +136,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
 <li>
-    <a class="dropdown-item" href="../../en/index.html">
+    <a class="dropdown-item" href="../../../en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/posts.html">
+    <a class="dropdown-item" href="../../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/works.html">
+    <a class="dropdown-item" href="../../../en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../en/recommendations.html">
+    <a class="dropdown-item" href="../../../en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../recommendations.html"> 
+    <a class="nav-link" href="../../../recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -174,26 +174,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF" id="toc-インストールとライブラリの読み込み" class="nav-link active" data-scroll-target="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">インストールとライブラリの読み込み</a></li>
-  <li><a href="#%E5%92%8C%E5%90%8D%E3%81%8B%E3%82%89%E5%AD%A6%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B" id="toc-和名から学名を取得する" class="nav-link" data-scroll-target="#%E5%92%8C%E5%90%8D%E3%81%8B%E3%82%89%E5%AD%A6%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">和名から学名を取得する</a></li>
-  <li><a href="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E5%92%8C%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B" id="toc-学名から和名を取得する" class="nav-link" data-scroll-target="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E5%92%8C%E5%90%8D%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">学名から和名を取得する</a></li>
-  <li><a href="#%E3%81%82%E3%81%84%E3%81%BE%E3%81%84%E3%81%AA%E5%92%8C%E5%90%8D%E3%82%92%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B" id="toc-あいまいな和名を検索する" class="nav-link" data-scroll-target="#%E3%81%82%E3%81%84%E3%81%BE%E3%81%84%E3%81%AA%E5%92%8C%E5%90%8D%E3%82%92%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B">あいまいな和名を検索する</a></li>
-  <li><a href="#gbif%E3%81%AE%E5%AD%A6%E5%90%8D%E3%81%A8%E7%85%A7%E5%90%88%E3%81%99%E3%82%8B" id="toc-gbifの学名と照合する" class="nav-link" data-scroll-target="#gbif%E3%81%AE%E5%AD%A6%E5%90%8D%E3%81%A8%E7%85%A7%E5%90%88%E3%81%99%E3%82%8B">GBIFの学名と照合する</a></li>
-  <li><a href="#wfo%E3%81%AE%E5%AD%A6%E5%90%8D%E3%81%A8%E7%85%A7%E5%90%88%E3%81%99%E3%82%8B" id="toc-wfoの学名と照合する" class="nav-link" data-scroll-target="#wfo%E3%81%AE%E5%AD%A6%E5%90%8D%E3%81%A8%E7%85%A7%E5%90%88%E3%81%99%E3%82%8B">WFOの学名と照合する</a></li>
-  <li><a href="#%E5%92%8C%E5%90%8D%E3%81%8B%E3%82%89%E7%A8%AE%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B" id="toc-和名から種の情報を取得する" class="nav-link" data-scroll-target="#%E5%92%8C%E5%90%8D%E3%81%8B%E3%82%89%E7%A8%AE%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B">和名から種の情報を取得する</a></li>
+<li><a href="#installation-and-loading-the-library" id="toc-installation-and-loading-the-library" class="nav-link active" data-scroll-target="#installation-and-loading-the-library">Installation and Loading the Library</a></li>
+  <li><a href="#getting-a-scientific-name-from-a-japanese-name" id="toc-getting-a-scientific-name-from-a-japanese-name" class="nav-link" data-scroll-target="#getting-a-scientific-name-from-a-japanese-name">Getting a Scientific Name from a Japanese Name</a></li>
+  <li><a href="#getting-a-japanese-name-from-a-scientific-name" id="toc-getting-a-japanese-name-from-a-scientific-name" class="nav-link" data-scroll-target="#getting-a-japanese-name-from-a-scientific-name">Getting a Japanese Name from a Scientific Name</a></li>
+  <li><a href="#searching-for-ambiguous-japanese-names" id="toc-searching-for-ambiguous-japanese-names" class="nav-link" data-scroll-target="#searching-for-ambiguous-japanese-names">Searching for Ambiguous Japanese Names</a></li>
+  <li><a href="#matching-scientific-names-against-gbif" id="toc-matching-scientific-names-against-gbif" class="nav-link" data-scroll-target="#matching-scientific-names-against-gbif">Matching Scientific Names Against GBIF</a></li>
+  <li><a href="#matching-scientific-names-against-wfo" id="toc-matching-scientific-names-against-wfo" class="nav-link" data-scroll-target="#matching-scientific-names-against-wfo">Matching Scientific Names Against WFO</a></li>
+  <li><a href="#getting-species-information-from-a-japanese-name" id="toc-getting-species-information-from-a-japanese-name" class="nav-link" data-scroll-target="#getting-species-information-from-a-japanese-name">Getting Species Information from a Japanese Name</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">jpplantnames Rパッケージについて</h1>
+<h1 class="title">A Quick Introduction to the jpplantnames R Package</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
+    <div class="quarto-category">package</div>
+    <div class="quarto-category">taxonomy</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    jpplantnames Rパッケージについて簡単にまとめます。
+    A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches.
   </div>
 </div>
 
@@ -229,88 +231,88 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>English version: <a href="../../en/posts/2026-06-17-jpplantnames/index.html">A Quick Introduction to the jpplantnames R Package</a></p>
+<p>Original Japanese version: <a href="../../../posts/2026-06-17-jpplantnames/index.html">jpplantnames Rパッケージについて</a></p>
 </div>
 </div>
-<p>最近作成した、<code>jpplantnames</code>というRパッケージについて簡単にまとめます。 ドキュメントは、以下をご覧ください。</p>
+<p>This is a short overview of the <code>jpplantnames</code> R package, which I recently created. See the documentation below.</p>
 <ul>
 <li><a href="https://maple60.github.io/jpplantnames/">jpplantnames • jpplantnames</a></li>
 </ul>
-<section id="インストールとライブラリの読み込み" class="level2"><h2 class="anchored" data-anchor-id="インストールとライブラリの読み込み">インストールとライブラリの読み込み</h2>
-<p>いつも通りパッケージをインストールします。 現在はGitHubにしか公開していませんので、<code>pak</code>や<code>remotes</code>, <code>renv</code>などを使ってインストールしてください。</p>
+<section id="installation-and-loading-the-library" class="level2"><h2 class="anchored" data-anchor-id="installation-and-loading-the-library">Installation and Loading the Library</h2>
+<p>Install the package as usual. At the moment, it is available only on GitHub, so install it with <code>pak</code>, <code>remotes</code>, <code>renv</code>, or a similar tool.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu">pak</span><span class="op">(</span><span class="st">"maple60/jpplantnames"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"maple60/jpplantnames"</span><span class="op">)</span></span>
 <span><span class="co"># renv::install("maple60/jpplantnames") # renvを使用している場合</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>インストールが完了したら、<code><a href="https://rdrr.io/r/base/library.html">library()</a></code>で読み込みます。</p>
+<p>After installation, load it with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maple60/jpplantnames">jpplantnames</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="和名から学名を取得する" class="level2"><h2 class="anchored" data-anchor-id="和名から学名を取得する">和名から学名を取得する</h2>
-<p><code><a href="https://maple60.github.io/jpplantnames/reference/scientific_name.html">scientific_name()</a></code>関数で和名から学名を取得できます。 初回の実行はデータのダウンロードが行われるため、少し時間がかかります。 この時、インターネットに接続されている必要があることに注意します。 二回目以降は、キャッシュが使用されるため、すぐに結果が返ってきます。</p>
+</section><section id="getting-a-scientific-name-from-a-japanese-name" class="level2"><h2 class="anchored" data-anchor-id="getting-a-scientific-name-from-a-japanese-name">Getting a Scientific Name from a Japanese Name</h2>
+<p>You can get a scientific name from a Japanese plant name with <code><a href="https://maple60.github.io/jpplantnames/reference/scientific_name.html">scientific_name()</a></code>. The first run takes a little time because the data are downloaded. An internet connection is required at that point. From the second run onward, cached data are used, so the result is returned quickly.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/scientific_name.html">scientific_name</a></span><span class="op">(</span><span class="st">"コナラ"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <pre class="text"><code>[1] "Quercus serrata"</code></pre>
 </div>
 </div>
-<p>命名者の情報が欲しい場合は、<code>with_author = TRUE</code>を指定します。</p>
+<p>If you also want author information, set <code>with_author = TRUE</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/scientific_name.html">scientific_name</a></span><span class="op">(</span><span class="st">"コナラ"</span>, with_author <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <pre class="text"><code>[1] "Quercus serrata Murray"</code></pre>
 </div>
 </div>
-<p>複数の和名から一気に学名を知りたい場合は、ベクトルにして渡すこともできます。</p>
+<p>You can also pass a vector when you want to retrieve scientific names for multiple Japanese names at once.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/scientific_name.html">scientific_name</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"コナラ"</span>, <span class="st">"アカマツ"</span>, <span class="st">"イチョウ"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <pre class="text"><code>[1] "Quercus serrata"  "Pinus densiflora" "Ginkgo biloba"</code></pre>
 </div>
 </div>
-</section><section id="学名から和名を取得する" class="level2"><h2 class="anchored" data-anchor-id="学名から和名を取得する">学名から和名を取得する</h2>
-<p>学名から和名を取得したい場合は、<code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_search.html">japanese_name_search()</a></code>関数を使用します。</p>
+</section><section id="getting-a-japanese-name-from-a-scientific-name" class="level2"><h2 class="anchored" data-anchor-id="getting-a-japanese-name-from-a-scientific-name">Getting a Japanese Name from a Scientific Name</h2>
+<p>Use <code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_search.html">japanese_name_search()</a></code> when you want to retrieve Japanese names from a scientific name.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_search.html">japanese_name_search</a></span><span class="op">(</span><span class="st">"Quercus serrata"</span>, field <span class="op">=</span> <span class="st">"scientific"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -325,17 +327,17 @@ Note
 31           マルバコナラ           ビワバコナラ Quercus serrata var. pseudovariabilis     YL</code></pre>
 </div>
 </div>
-<p>この検索の場合、<code>"Quercus serrata"</code>を学名に含むすべてのデータが返されます。 特定の学名に完全一致する和名を知りたい場合は、<code>exact = TRUE</code>を指定します。</p>
+<p>In this search, all records whose scientific name contains <code>"Quercus serrata"</code> are returned. If you want Japanese names that exactly match a specific scientific name, set <code>exact = TRUE</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_search.html">japanese_name_search</a></span><span class="op">(</span><span class="st">"Quercus serrata"</span>, field <span class="op">=</span> <span class="st">"scientific"</span>, exact <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -349,19 +351,19 @@ Note
 7 コナラ         ハハソ Quercus serrata     YL</code></pre>
 </div>
 </div>
-<p>これでも複数のデータが返される場合があります。 これは、同じコナラに対して、複数の和名・別名行が登録されているからです。</p>
-</section><section id="あいまいな和名を検索する" class="level2"><h2 class="anchored" data-anchor-id="あいまいな和名を検索する">あいまいな和名を検索する</h2>
-<p>野帳を電子化したときに、和名などに誤字が生じる場合があります。 例えば、「コナラ」を「コラナ」と誤って入力してしまうことがあるかもしれません。 このような場合、<code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html">japanese_name_suggest()</a></code>関数を使用して、あいまいな和名から、正しい和名を検索することができます。</p>
+<p>Even with exact matching, multiple records may be returned. This happens because multiple Japanese names and aliases may be registered for the same species, such as Konara.</p>
+</section><section id="searching-for-ambiguous-japanese-names" class="level2"><h2 class="anchored" data-anchor-id="searching-for-ambiguous-japanese-names">Searching for Ambiguous Japanese Names</h2>
+<p>When field notes are digitized, typos may appear in Japanese plant names. For example, <code>"コナラ"</code> might accidentally be entered as <code>"コラナ"</code>. In such cases, you can use <code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html">japanese_name_suggest()</a></code> to search for likely correct Japanese names from an ambiguous input.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html">japanese_name_suggest</a></span><span class="op">(</span><span class="st">"コラナ"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -374,17 +376,17 @@ Note
 6  コラナ        ガラナ        1 0.3333333      fuzzy ガラナ         ガラナ  Paullinia cupana     WF</code></pre>
 </div>
 </div>
-<p>ほかには、「タラヨウ」を「タロヨウ」などと誤って入力してしまうこともあるかもしれません。</p>
+<p>Another possible typo is entering <code>"タロヨウ"</code> instead of <code>"タラヨウ"</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html">japanese_name_suggest</a></span><span class="op">(</span><span class="st">"タロヨウ"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -396,19 +398,19 @@ Note
 5  タロヨウ    キタゴヨウ        2  0.40      fuzzy キタゴヨウ キタゴヨウ    Pinus parviflora var. pentaphylla     WF</code></pre>
 </div>
 </div>
-<p>このあいまい検索では、入力された和名とチェックリスト中の和名を比較し、候補ごとの文字列距離を計算します。現在の実装では、<code>stringdist</code> パッケージが利用可能な場合、<code><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist::stringdist()</a></code> 関数を <code>method = "osa"</code> で使用しています。<code>osa</code> は Optimal String Alignment distance、すなわち制限付き Damerau–Levenshtein 距離であり、文字の挿入・削除・置換に加えて、隣接する文字の入れ替えも考慮します。そのため、単純な入力ミスや文字順の入れ替わりを含む和名に対して、近い候補を提示できます。</p>
-</section><section id="gbifの学名と照合する" class="level2"><h2 class="anchored" data-anchor-id="gbifの学名と照合する">GBIFの学名と照合する</h2>
-<p><code><a href="https://maple60.github.io/jpplantnames/reference/gbif_match.html">gbif_match()</a></code>関数を使用して、<a href="https://www.gbif.org/">GBIF</a> (Global Biodiversity Information Facility)の学名と照合することができます。</p>
+<p>This fuzzy search compares the entered Japanese name with Japanese names in the checklist and calculates a string distance for each candidate. In the current implementation, when the <code>stringdist</code> package is available, it uses <code><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist::stringdist()</a></code> with <code>method = "osa"</code>. <code>osa</code> means Optimal String Alignment distance, or restricted Damerau-Levenshtein distance, which considers adjacent character transpositions in addition to insertions, deletions, and substitutions. This makes it possible to suggest close candidates for Japanese names that include simple typos or swapped character order.</p>
+</section><section id="matching-scientific-names-against-gbif" class="level2"><h2 class="anchored" data-anchor-id="matching-scientific-names-against-gbif">Matching Scientific Names Against GBIF</h2>
+<p>You can match scientific names against <a href="https://www.gbif.org/">GBIF</a> (Global Biodiversity Information Facility) with <code><a href="https://maple60.github.io/jpplantnames/reference/gbif_match.html">gbif_match()</a></code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/gbif_match.html">gbif_match</a></span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -418,18 +420,18 @@ Note
 1     EXACT Plantae Fagaceae Quercus Quercus serrata</code></pre>
 </div>
 </div>
-</section><section id="wfoの学名と照合する" class="level2"><h2 class="anchored" data-anchor-id="wfoの学名と照合する">WFOの学名と照合する</h2>
-<p>別のデータベースである<a href="https://wfoplantlist.org/">WFO</a> (World Flora Online)の学名と照合することもできます。</p>
+</section><section id="matching-scientific-names-against-wfo" class="level2"><h2 class="anchored" data-anchor-id="matching-scientific-names-against-wfo">Matching Scientific Names Against WFO</h2>
+<p>You can also match scientific names against another database, <a href="https://wfoplantlist.org/">WFO</a> (World Flora Online).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/wfo_accepted_name.html">wfo_accepted_name</a></span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -441,17 +443,17 @@ Note
 1      accepted        TRUE           10    ambiguous   TRUE</code></pre>
 </div>
 </div>
-<p>部分一致として検索したい場合は、<code><a href="https://maple60.github.io/jpplantnames/reference/wfo_suggest.html">wfo_suggest()</a></code>関数を使用します。</p>
+<p>Use <code><a href="https://maple60.github.io/jpplantnames/reference/wfo_suggest.html">wfo_suggest()</a></code> when you want to search by partial match.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/wfo_suggest.html">wfo_suggest</a></span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -464,19 +466,19 @@ Note
 ...</code></pre>
 </div>
 </div>
-</section><section id="和名から種の情報を取得する" class="level2"><h2 class="anchored" data-anchor-id="和名から種の情報を取得する">和名から種の情報を取得する</h2>
-<p>和名から関連する種の情報を取得することもできます。 <code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_info.html">japanese_name_info()</a></code>関数を使用します。 基本的には変数に入れておくと便利です。 <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>で表示すると、簡易表示ができます。</p>
+</section><section id="getting-species-information-from-a-japanese-name" class="level2"><h2 class="anchored" data-anchor-id="getting-species-information-from-a-japanese-name">Getting Species Information from a Japanese Name</h2>
+<p>You can also retrieve species-related information from a Japanese name. Use <code><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_info.html">japanese_name_info()</a></code> for this. It is usually convenient to store the result in a variable. Printing the object gives a short summary.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jp_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_info.html">japanese_name_info</a></span><span class="op">(</span><span class="st">"コナラ"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">jp_info</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -490,18 +492,18 @@ Japanese-name checklist:
 Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.</code></pre>
 </div>
 </div>
-<p>これは <strong>和名「コナラ」について、チェックリスト上では <code>Quercus serrata Murray</code> にマッチした、候補行は9件あった、という簡易レポート</strong>です。</p>
-<p>変数はリスト形式になっているため、詳しい情報を見たいときは、<code>$</code>でアクセスできます。 <code>$summary</code>で、簡易レポートをデータフレーム形式で展開します。</p>
+<p>This is a <strong>short report saying that the Japanese name <code>"コナラ"</code> matched <code>Quercus serrata Murray</code> in the checklist and had 9 candidate rows</strong>.</p>
+<p>The object is a list, so you can access detailed information with <code>$</code>. Use <code>$summary</code> to expand the short report as a data frame.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jp_info</span><span class="op">$</span><span class="va">summary</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -509,17 +511,17 @@ Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.</code></pre>
 1 コナラ    TRUE        コナラ Quercus serrata      Quercus serrata Murray                          9      matched</code></pre>
 </div>
 </div>
-<p><code>$japanese_name</code>で、和名の情報をデータフレーム形式で展開できます。</p>
+<p>Use <code>$japanese_name</code> to expand the Japanese-name information as a data frame.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jp_info</span><span class="op">$</span><span class="va">japanese_name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果（抜粋）">
+<div class="callout callout-style-default callout-note callout-titled" title="Output excerpt">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果（抜粋）
+<span class="screen-reader-only">Note</span>Output excerpt
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -535,19 +537,19 @@ Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.</code></pre>
 9 コナラ コナラ        FALSE コナラ         ハハソ                             Quercus serrata     YL</code></pre>
 </div>
 </div>
-<p>GBIFやWFOのデータと照合したい場合は、<code>wfo = TRUE</code>や<code>gbif = TRUE</code>を指定します。</p>
+<p>If you want to compare the result with GBIF or WFO data, set <code>wfo = TRUE</code> or <code>gbif = TRUE</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jp_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://maple60.github.io/jpplantnames/reference/japanese_name_info.html">japanese_name_info</a></span><span class="op">(</span><span class="st">"コナラ"</span>, wfo <span class="op">=</span> <span class="cn">TRUE</span>, gbif <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">jp_info</span><span class="op">$</span><span class="va">wfo</span></span>
 <span><span class="va">jp_info</span><span class="op">$</span><span class="va">gbif</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="実行結果">
+<div class="callout callout-style-default callout-note callout-titled" title="Output">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>実行結果
+<span class="screen-reader-only">Note</span>Output
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -564,7 +566,7 @@ Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.</code></pre>
 1     EXACT Plantae Fagaceae Quercus Quercus serrata</code></pre>
 </div>
 </div>
-<p>つまり、<code>japanese_name_info</code>はこれまでの関数を束ねたものというイメージです。</p>
+<p>In short, <code>japanese_name_info</code> is a helper that brings together the functions introduced above.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

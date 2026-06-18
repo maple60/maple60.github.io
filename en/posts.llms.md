@@ -4,9 +4,27 @@ English translations and English-first articles.
 
 English translations are added incrementally. The original Japanese archive is available on [Posts](../posts.llms.md).
 
+### [Retrieving Paper References with the OpenAlex API from Python](../en/posts/2026-06-19-openalex-citation/index.llms.md)
+
+Use the OpenAlex API from Python to retrieve the references cited by a paper.
+
+2026-06-19
+
+### [A Quick Introduction to the jpplantnames R Package](../en/posts/2026-06-17-jpplantnames/index.llms.md)
+
+A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches.
+
+2026-06-17
+
+### [Using the WFO Plant List API from R](../en/posts/2026-06-16-wfo-r/index.llms.md)
+
+Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names.
+
+2026-06-16
+
 ### [Using OpenAlex from Python](../en/posts/2026-06-01-openalex-python/index.llms.md)
 
-A draft note on calling the OpenAlex API from Python and retrieving paper metadata.
+A note on calling the OpenAlex API from Python to retrieve paper metadata.
 
 2026-06-01
 

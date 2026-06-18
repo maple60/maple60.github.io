@@ -1,40 +1,40 @@
----
-title: "OpenAlex APIをPythonから呼び出して論文の引用文献を取得する"
-description: "OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。"
-date: "2026-06-19"
-date-modified: "2026-06-19"
-draft: false
-categories: [python]
-execute:
-    eval: false
----
+# Retrieving Paper References with the OpenAlex API from Python
 
-::: {.callout-note}
-English version: [Retrieving Paper References with the OpenAlex API from Python](../../en/posts/2026-06-19-openalex-citation/index.qmd)
-:::
+python
 
-## APIキーの準備 (初めて利用する場合)
+openalex
 
-OpenAlex APIを利用するには、APIキーが必要です。
-APIキーは、OpenAlexのアカウントを作成してから、設定画面で取得できます。
-以下のリンクからサインアップして、APIキーを入手してください。
+api
 
-- [Sign up for OpenAlex | OpenAlex](https://openalex.org/signup?redirect=/settings/api-key)
+Use the OpenAlex API from Python to retrieve the references cited by a paper.
 
-## ライブラリのインポートとAPIキーの設定
+Published
 
+2026-06-19
 
-今回は、Pythonの標準ライブラリである `os` と、外部ライブラリの `requests` と `pandas` を使います。
-APIキーは、環境変数 `OPENALEX_API_KEY` に設定されていると仮定して、`os.environ` から取得します。
-事前に作業ディレクトリの `.env` ファイルなどで `OPENALEX_API_KEY=your_api_key_here` と設定しておきます。
-`.env`ファイルは、プロジェクト直下に作成し、APIキーを含む環境変数を定義するためのテキストファイルです。
-なお、GitHub Actionsを使う場合は、`.env`は使わず、Repository secrets にOPENALEX_API_KEYを登録して、workflowで渡すのが基本です。
+Modified
 
-```{.default filename=".env"}
+2026-06-19
+
+> **NOTE:**
+>
+> Original Japanese version: [OpenAlex APIをPythonから呼び出して論文の引用文献を取得する](../../../posts/2026-06-19-openalex-citation/index.llms.md)
+
+## Preparing an API Key (First-Time Setup)
+
+An API key is required to use the OpenAlex API. Create an OpenAlex account, then obtain an API key from the settings page. Use the following link to sign up and get an API key.
+
+- [Sign up for OpenAlex \| OpenAlex](https://openalex.org/signup?redirect=/settings/api-key)
+
+## Importing Libraries and Setting the API Key
+
+This example uses Python’s standard `os` library and the external libraries `requests` and `pandas`. It assumes that the API key has been set in the environment variable `OPENALEX_API_KEY`, and retrieves it through `os.environ`. Before running the code, set `OPENALEX_API_KEY=your_api_key_here` in a `.env` file or a similar local setup in the working directory. The `.env` file is a text file placed at the project root to define environment variables, including the API key. When using GitHub Actions, the basic approach is not to use `.env`; instead, register `OPENALEX_API_KEY` as a repository secret and pass it from the workflow.
+
+``` default
 OPENALEX_API_KEY=your_api_key_here
 ```
 
-```{python}
+``` python
 import os
 import pandas as pd
 import requests
@@ -45,17 +45,17 @@ load_dotenv()
 api_key = os.environ["OPENALEX_API_KEY"]
 ```
 
-## DOIを指定して論文の引用文献を取得する
+## Retrieving a Paper’s References by DOI
 
-今回は、以下の論文を例にして、DOIを指定して論文の引用文献を取得する方法を説明します。
+In this example, I use the following paper and show how to retrieve its references by DOI.
 
 > Yan, Pu, Nianpeng He, Kailiang Yu, Lawren Sack, Lin Jiang, and Marcos Fernández-Martínez. “Plant Elemental Diversity Increases Ecosystem Productivity and Temporal Stability.” Ecological Monographs 96, no. 1 (2026): e70061. https://doi.org/10.1002/ecm.70061.
 
-DOIを指定して論文のメタデータを取得するには、以下のように `/works/doi:{doi}` エンドポイントを呼び出します。
+To retrieve metadata for a paper by DOI, call the `/works/doi:{doi}` endpoint as follows.
 
-その後、リクエストを作成し、`requests.get()` を使ってAPIを呼び出します。
+Then create the request and call the API with `requests.get()`.
 
-```{python}
+``` python
 doi = "10.1002/ecm.70061"
 url = f"https://api.openalex.org/works/doi:{doi}"
 params = {
@@ -72,39 +72,38 @@ response = requests.get(
 response.raise_for_status() # 失敗した場合は例外を発生させる
 ```
 
-結果はJSON形式で返されるため、`response.json()` を使ってPythonの辞書型に変換します。
-レスポンスの中には、論文のタイトルや出版年、引用文献のIDなどが含まれています。
+The result is returned in JSON format, so convert it to a Python dictionary with `response.json()`. The response includes the paper title, publication year, and IDs of cited references.
 
-```{python}
+``` python
 work = response.json()
 print(work["display_name"])  # 論文のタイトルを表示
 print(len(work["referenced_works"]))  # 引用文献の数を表示
 ```
 
-```{.text filename="出力結果"}
+``` text
 Plant elemental diversity increases ecosystem productivity and temporal stability
 74
 ```
 
-`referenced_works`フィールドには、引用文献のIDがリスト形式で格納されています。
+The `referenced_works` field stores the cited reference IDs as a list.
 
-```{python}
+``` python
 print(work["referenced_works"][:5])  # 最初の5件を表示
 ```
 
-```{.python filename="出力結果"}
+``` python
 ['https://openalex.org/W1584343945', 'https://openalex.org/W1594032928', 'https://openalex.org/W1885882554', 'https://openalex.org/W1965202842', 'https://openalex.org/W2020948897']
 ```
 
-このIDを使って、引用文献のメタデータを取得することができます。
+You can use these IDs to retrieve metadata for the cited references.
 
-## 引用文献のIDを使って、引用文献のメタデータを取得する
+## Retrieving Reference Metadata from Reference IDs
 
-入手した引用文献のIDを使って、引用文献のタイトル、出版年、被引用数、DOIなどのメタデータを取得するには、以下のようにクエリパラメータを設定して、`/works` エンドポイントを呼び出します。
+To retrieve metadata such as titles, publication years, citation counts, and DOIs for the obtained reference IDs, set query parameters as follows and call the `/works` endpoint.
 
-これにより、複数の引用文献の情報を一度に取得することができます。
+This lets you retrieve information for multiple references at once.
 
-```{python}
+``` python
 ref_ids = work["referenced_works"]
 
 params = {
@@ -139,7 +138,7 @@ df_refs = pd.DataFrame(
 print(df_refs.to_string())
 ```
 
-```{.text filename="出力結果の抜粋"}
+``` text
 title  year  citations                                                    doi                       openalex_id
 0                                                                                                                                           Multimodel Inference  2004      11568               https://doi.org/10.1177/0049124104268644  https://openalex.org/W2158196600
 1                                                                                              A Caution Regarding Rules of Thumb for Variance Inflation Factors  2007      10409              https://doi.org/10.1007/s11135-006-9018-6  https://openalex.org/W2140964565
@@ -153,4 +152,4 @@ title  year  citations                                                    doi   
 73                                                                           Optimal set of leaf and aboveground tree elements for predicting forest functioning  2025          1                https://doi.org/10.5194/bg-22-2115-2025  https://openalex.org/W4409963066
 ```
 
-このように、引用文献のIDを使って、引用文献のタイトル、出版年、被引用数、DOIなどのメタデータを取得することができます。
+In this way, you can use the cited reference IDs to retrieve metadata such as reference titles, publication years, citation counts, and DOIs.
