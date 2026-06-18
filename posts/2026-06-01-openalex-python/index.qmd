@@ -1,14 +1,12 @@
 ---
 title: "OpenAlexをPythonから使ってみる"
-description: "OpenAlex APIをPythonから呼び出し、論文メタデータを取得するための下書きです。"
+description: "OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。"
 date: "2026-06-01"
-date-modified: "2026-06-01"
+date-modified: "2026-06-18"
 draft: false
-categories: [python, openalex, api]
+categories: [python]
 execute:
-  echo: true
-  warning: false
-  message: false
+    eval: false
 ---
 
 ::: {.callout-note}
@@ -22,86 +20,122 @@ English version: [Using OpenAlex from Python](../../en/posts/2026-06-01-openalex
 OpenAlexは、論文、著者、ジャーナル、機関、トピックなどを扱う学術情報のデータベースです。
 APIのベースURLは `https://api.openalex.org` で、`/works`、`/authors`、`/sources`、`/institutions` などのエンドポイントが用意されています。
 
-この記事では、まず `/works` エンドポイントを使い、キーワード検索、条件による絞り込み、結果の表形式への変換までを扱います。
-
-## 実行環境
-
-まず、この `.qmd` ファイル内でPythonが実行できるかを確認します。
-ここではAPIにはアクセスせず、レンダリング時に必要なPython、`requests`、`pandas` が使えることだけを確認します。
-
-```{python}
-#| label: py-smoke-test
-import platform
-
-import pandas as pd
-import requests
-
-pd.DataFrame(
-    {
-        "component": ["python", "requests", "pandas"],
-        "version": [
-            platform.python_version(),
-            requests.__version__,
-            pd.__version__,
-        ],
-    }
-)
-```
+この記事では、まず `/works` エンドポイントを使い、キーワードなどを使って論文を検索する方法をまとめます。
 
 ## APIキーの準備
 
-OpenAlex APIを使うときは、APIキーを環境変数として保存しておくと、記事本文やコードにキーを書かずにすみます。
+OpenAlex APIを利用するには、APIキーが必要です。
+APIキーは、OpenAlexのアカウントを作成してから、設定画面で取得できます。
+以下のリンクからサインアップして、APIキーを入手してください。
 
-::: {.callout-note}
-OpenAlexのAPI Referenceでは、`api_key` をクエリパラメータとして渡す形式が案内されています。
-GitHub Actionsで実行する場合は、`OPENALEX_API_KEY` をRepository secretとして登録し、workflow側で環境変数として渡します。
-:::
+- [Sign up for OpenAlex | OpenAlex](https://openalex.org/signup?redirect=/settings/api-key)
 
-```{.bash filename="Terminal"}
-export OPENALEX_API_KEY="your-api-key"
+## 論文を検索する
+
+ここから段階的に、Pythonを使ってOpenAlex APIを呼び出し、論文を検索する方法を説明します。
+
+### ライブラリのインポートとAPIキーの設定
+
+今回は、Pythonの標準ライブラリである `os` と、外部ライブラリの `requests` と `pandas` を使います。
+APIキーは、環境変数 `OPENALEX_API_KEY` に設定されていると仮定して、`os.environ` から取得します。
+事前に作業ディレクトリの `.env` ファイルなどで `OPENALEX_API_KEY=your_api_key_here` と設定しておきます。
+`.env`ファイルは、プロジェクト直下に作成し、APIキーを含む環境変数を定義するためのテキストファイルです。
+なお、GitHub Actionsを使う場合は、`.env`は使わず、Repository secrets にOPENALEX_API_KEYを登録して、workflowで渡すのが基本です。
+
+```{.default filename=".env"}
+OPENALEX_API_KEY=your_api_key_here
 ```
-
-Windows PowerShellでは次のように設定します。
-
-```{.powershell filename="PowerShell"}
-$env:OPENALEX_API_KEY = "your-api-key"
-```
-
-## Works APIで論文を検索する
-
-次のコードは、`/works` エンドポイントに対してキーワード検索を行う例です。
-APIキーが必要なので、下書き段階では `eval: false` にしています。
-実際に記事として実行する場合は、APIキーを設定したうえで `eval: true` に変更します。
 
 ```{python}
-#| label: openalex-search-example
-#| eval: false
 import os
-
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 api_key = os.environ["OPENALEX_API_KEY"]
+```
 
+::: {.callout-important}
+
+`.env`ファイルを作成する際は、APIキーなどの機密情報が含まれるため、`.gitignore`に追加して**Gitリポジトリにコミットされないように注意**してください。
+:::
+
+::: {.callout-note}
+## 参考リンク
+
+- `os`ライブラリ：[os — Miscellaneous operating system interfaces — Python 3.14.6 documentation](https://docs.python.org/3/library/os.html)
+- `requests`ライブラリ：[Requests: HTTP for Humans™ — Requests 2.34.2 documentation](https://docs.python-requests.org/en/latest/)
+- `pandas`ライブラリ：[pandas documentation — pandas 3.0.3 documentation](https://pandas.pydata.org/docs/)
+- `.env`ファイルについて：[python-dotenv · PyPI](https://pypi.org/project/python-dotenv/)
+:::
+
+### エンドポイントの指定、クエリパラメータの設定
+
+論文を検索するには、`/works`エンドポイントに対してGETリクエストを送ります。
+ほかのエンドポイントは、以下のOpenAlex APIのドキュメントを参照してください。
+
+- [API Overview - OpenAlex Developers](https://developers.openalex.org/api-reference/introduction)
+
+クエリパラメータは、APIドキュメントの「List Works」セクションを参考にして、必要なものを設定します。
+ここでは、次のようなパラメータを設定しています。
+- `api_key`: APIキーを指定
+- `search`: キーワード検索のクエリ
+- `filter`: 絞り込み条件（例: 出版年、文献タイプ
+- `per_page`: 1ページあたりの結果数
+- `select`: 取得するフィールドの指定
+
+パラメータの一覧については、以下のリンクを参照してください。
+
+- [List keywords - OpenAlex Developers](https://developers.openalex.org/api-reference/keywords/list-keywords)
+- [List works - OpenAlex Developers](https://developers.openalex.org/api-reference/works/list-works)
+
+今回の検索は、以下のような条件で行います。
+
+- キーワード: "leaf economics spectrum"
+- 出版年: 2024年
+- 文献タイプ: article (論文)
+- オープンアクセス: true
+
+```{python}
+endpoint = "https://api.openalex.org/works"
+# パラメータの設定
 params = {
     "api_key": api_key,
-    "search": "species distribution model",
+    "search": "leaf economics spectrum",
     "filter": "publication_year:2024,type:article,open_access.is_oa:true",
-    "sort": "cited_by_count:desc",
     "per_page": 5,
     "select": "id,display_name,publication_year,cited_by_count,doi",
 }
+```
 
+### HTTPリクエストの作成・送信
+
+`requests.get()` を使って、エンドポイントに対してGETリクエストを送ります。
+リクエストの送信後、`response.raise_for_status()` を呼び出して、HTTPエラーが発生した場合に例外を発生させるようにします。
+
+```{python}
+# HTTPリクエストの作成と送信
+# リクエストの送信
 response = requests.get(
-    "https://api.openalex.org/works",
+    endpoint,
     params=params,
     timeout=30,
 )
-response.raise_for_status()
+response.raise_for_status()  # 失敗した場合は例外を発生させる
+```
 
+### 結果の確認と表形式への変換
+
+レスポンスからJSONデータを取得し、`results` フィールドに含まれる論文のリストを取り出します。
+その後、リスト内包表記を使って、必要なフィールドを抽出し、`pandas.DataFrame` に変換して表形式で表示します。
+
+```{python}
 works = response.json()["results"]
+# meta = response.json()["meta"]  # メタデータも必要に応じて取得可能
 
-pd.DataFrame(
+df = pd.DataFrame(
     [
         {
             "title": work["display_name"],
@@ -113,30 +147,28 @@ pd.DataFrame(
         for work in works
     ]
 )
+
+print(df.to_string())
 ```
 
-## 取得結果を見るときの観点
+```{.text filename="出力結果"}
+                                               title  year  citations                                      doi                 openalex_id
+0  Life at the conservative end of the leaf econo...  2024          8     https://doi.org/10.1111/nph.20015  https://openalex.org/W4401340000
+1  Extremely thin but very robust: Surprising cry...  2024          3  https://doi.org/10.1016/j.pld.2024.04.009  https://openalex.org/W4395672665
+2  Plant economics spectrum governs leaf nitrogen...  2024         11  https://doi.org/10.1186/s12870-024-05484-9  https://openalex.org/W4401486401
+3  Contrasting coordination of non‐structural car...  2024         45     https://doi.org/10.1111/nph.19678  https://openalex.org/W4392883019
+4  Global patterns of plant functional traits and...  2024         52  https://doi.org/10.1038/s42003-024-06777-3  https://openalex.org/W4402513235
+```
 
-取得した結果は、次のような観点で確認すると記事としてまとめやすくなります。
+デフォルトでは、関連順（relevance）でソートされているため、キーワードとの関連性が高い順に結果が表示されます。
+もし、被引用数の多い順に並べ替えたい場合は、クエリパラメータに `sort=cited_by_count:desc`を追加するなどして、並べ替えの順番を指定することもできます。
 
-- `display_name`: 論文タイトルとして表示する
-- `publication_year`: 年ごとの絞り込みや集計に使う
-- `cited_by_count`: 被引用数で並べ替えると、よく引用されている文献を見つけやすい
-- `doi`: DOIがある場合は元論文へのリンクに使える
-- `id`: OpenAlex上の永続的な識別子として使える
+## まとめ
 
-## 次に試すこと
+この記事では、OpenAlex APIをPythonから呼び出して、論文のメタデータを取得する方法を紹介しました。
+APIキーの準備、エンドポイントとクエリパラメータの設定、HTTPリクエストの送信、レスポンスの処理と表形式への変換の手順を説明しました。
+この方法を応用すれば、著者やジャーナル、機関などの情報も同様に取得することができます。
 
-この記事では、最初のひな形としてWorks APIだけを扱いました。
-本文を書き進めるときは、次のどれかを加えると内容を広げやすいです。
+とても便利なAPIだと思います。
 
-- 特定の著者IDや機関IDで絞り込む
-- `group_by` を使って出版年やオープンアクセス状況を集計する
-- DOIからOpenAlexのレコードを引く
-- 取得した文献リストをCSVとして保存する
-
-## 参考
-
-- [OpenAlex API Overview](https://developers.openalex.org/api-reference/introduction)
-- [OpenAlex Works API](https://developers.openalex.org/api-reference/works/list-works)
-- [Using Python - Quarto](https://quarto.org/docs/computations/python.html)
+- 公式ドキュメント：[Overview - OpenAlex Developers](https://developers.openalex.org/)

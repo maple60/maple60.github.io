@@ -4,6 +4,12 @@ Japanese posts and translated English articles.
 
 Most posts are written in Japanese. Translated English versions are listed separately on [English Posts](en/posts.llms.md).
 
+### [OpenAlex APIをPythonから呼び出して論文の引用文献を取得する](posts/2026-06-19-openalex-citation/index.llms.md)
+
+OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。
+
+2026-06-19
+
 ### [jpplantnames Rパッケージについて](posts/2026-06-17-jpplantnames/index.llms.md)
 
 jpplantnames Rパッケージについて簡単にまとめます。
@@ -18,7 +24,7 @@ The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted 
 
 ### [OpenAlexをPythonから使ってみる](posts/2026-06-01-openalex-python/index.llms.md)
 
-OpenAlex APIをPythonから呼び出し、論文メタデータを取得するための下書きです。
+OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。
 
 2026-06-01
 

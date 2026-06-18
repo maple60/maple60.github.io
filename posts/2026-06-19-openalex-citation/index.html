@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-06-01">
-<meta name="description" content="OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。">
+<meta name="dcterms.date" content="2026-06-19">
+<meta name="description" content="OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。">
 
-<title>OpenAlexをPythonから使ってみる – Maple60’s website</title>
+<title>OpenAlex APIをPythonから呼び出して論文の引用文献を取得する – Maple60’s website</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -188,16 +188,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#はじめに" id="toc-はじめに" class="nav-link active" data-scroll-target="#はじめに">はじめに</a></li>
-  <li><a href="#apiキーの準備" id="toc-apiキーの準備" class="nav-link" data-scroll-target="#apiキーの準備">APIキーの準備</a></li>
-  <li><a href="#論文を検索する" id="toc-論文を検索する" class="nav-link" data-scroll-target="#論文を検索する">論文を検索する</a>
-  <ul class="collapse">
+  <li><a href="#apiキーの準備-初めて利用する場合" id="toc-apiキーの準備-初めて利用する場合" class="nav-link active" data-scroll-target="#apiキーの準備-初めて利用する場合">APIキーの準備 (初めて利用する場合)</a></li>
   <li><a href="#ライブラリのインポートとapiキーの設定" id="toc-ライブラリのインポートとapiキーの設定" class="nav-link" data-scroll-target="#ライブラリのインポートとapiキーの設定">ライブラリのインポートとAPIキーの設定</a></li>
-  <li><a href="#エンドポイントの指定クエリパラメータの設定" id="toc-エンドポイントの指定クエリパラメータの設定" class="nav-link" data-scroll-target="#エンドポイントの指定クエリパラメータの設定">エンドポイントの指定、クエリパラメータの設定</a></li>
-  <li><a href="#httpリクエストの作成送信" id="toc-httpリクエストの作成送信" class="nav-link" data-scroll-target="#httpリクエストの作成送信">HTTPリクエストの作成・送信</a></li>
-  <li><a href="#結果の確認と表形式への変換" id="toc-結果の確認と表形式への変換" class="nav-link" data-scroll-target="#結果の確認と表形式への変換">結果の確認と表形式への変換</a></li>
-  </ul></li>
-  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
+  <li><a href="#doiを指定して論文の引用文献を取得する" id="toc-doiを指定して論文の引用文献を取得する" class="nav-link" data-scroll-target="#doiを指定して論文の引用文献を取得する">DOIを指定して論文の引用文献を取得する</a></li>
+  <li><a href="#引用文献のidを使って引用文献のメタデータを取得する" id="toc-引用文献のidを使って引用文献のメタデータを取得する" class="nav-link" data-scroll-target="#引用文献のidを使って引用文献のメタデータを取得する">引用文献のIDを使って、引用文献のメタデータを取得する</a></li>
   </ul>
 </nav>
     </div>
@@ -206,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">OpenAlexをPythonから使ってみる</h1>
+<h1 class="title">OpenAlex APIをPythonから呼び出して論文の引用文献を取得する</h1>
   <div class="quarto-categories">
     <div class="quarto-category">python</div>
   </div>
@@ -214,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。
+    OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。
   </div>
 </div>
 
@@ -225,14 +219,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-06-01</p>
+      <p class="date">2026-06-19</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-06-18</p>
+      <p class="date-modified">2026-06-19</p>
     </div>
   </div>
     
@@ -243,37 +237,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>English version: <a href="../../en/posts/2026-06-01-openalex-python/index.html">Using OpenAlex from Python</a></p>
-</div>
-</div>
-<section id="はじめに" class="level2">
-<h2 class="anchored" data-anchor-id="はじめに">はじめに</h2>
-<p>この記事では、<a href="https://openalex.org/">OpenAlex</a>をPythonから使い、論文や著者などの学術メタデータを取得する手順を整理します。</p>
-<p>OpenAlexは、論文、著者、ジャーナル、機関、トピックなどを扱う学術情報のデータベースです。 APIのベースURLは <code>https://api.openalex.org</code> で、<code>/works</code>、<code>/authors</code>、<code>/sources</code>、<code>/institutions</code> などのエンドポイントが用意されています。</p>
-<p>この記事では、まず <code>/works</code> エンドポイントを使い、キーワードなどを使って論文を検索する方法をまとめます。</p>
-</section>
-<section id="apiキーの準備" class="level2">
-<h2 class="anchored" data-anchor-id="apiキーの準備">APIキーの準備</h2>
+<section id="apiキーの準備-初めて利用する場合" class="level2">
+<h2 class="anchored" data-anchor-id="apiキーの準備-初めて利用する場合">APIキーの準備 (初めて利用する場合)</h2>
 <p>OpenAlex APIを利用するには、APIキーが必要です。 APIキーは、OpenAlexのアカウントを作成してから、設定画面で取得できます。 以下のリンクからサインアップして、APIキーを入手してください。</p>
 <ul>
 <li><a href="https://openalex.org/signup?redirect=/settings/api-key">Sign up for OpenAlex | OpenAlex</a></li>
 </ul>
 </section>
-<section id="論文を検索する" class="level2">
-<h2 class="anchored" data-anchor-id="論文を検索する">論文を検索する</h2>
-<p>ここから段階的に、Pythonを使ってOpenAlex APIを呼び出し、論文を検索する方法を説明します。</p>
-<section id="ライブラリのインポートとapiキーの設定" class="level3">
-<h3 class="anchored" data-anchor-id="ライブラリのインポートとapiキーの設定">ライブラリのインポートとAPIキーの設定</h3>
+<section id="ライブラリのインポートとapiキーの設定" class="level2">
+<h2 class="anchored" data-anchor-id="ライブラリのインポートとapiキーの設定">ライブラリのインポートとAPIキーの設定</h2>
 <p>今回は、Pythonの標準ライブラリである <code>os</code> と、外部ライブラリの <code>requests</code> と <code>pandas</code> を使います。 APIキーは、環境変数 <code>OPENALEX_API_KEY</code> に設定されていると仮定して、<code>os.environ</code> から取得します。 事前に作業ディレクトリの <code>.env</code> ファイルなどで <code>OPENALEX_API_KEY=your_api_key_here</code> と設定しておきます。 <code>.env</code>ファイルは、プロジェクト直下に作成し、APIキーを含む環境変数を定義するためのテキストファイルです。 なお、GitHub Actionsを使う場合は、<code>.env</code>は使わず、Repository secrets にOPENALEX_API_KEYを登録して、workflowで渡すのが基本です。</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -281,7 +253,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".env"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>OPENALEX_API_KEY=your_api_key_here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="730d75ef" class="cell" data-execution_count="1">
+<div id="5b310478" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -291,126 +263,111 @@ Note
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> os.environ[<span class="st">"OPENALEX_API_KEY"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>.env</code>ファイルを作成する際は、APIキーなどの機密情報が含まれるため、<code>.gitignore</code>に追加して<strong>Gitリポジトリにコミットされないように注意</strong>してください。</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>参考リンク
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><code>os</code>ライブラリ：<a href="https://docs.python.org/3/library/os.html">os — Miscellaneous operating system interfaces — Python 3.14.6 documentation</a></li>
-<li><code>requests</code>ライブラリ：<a href="https://docs.python-requests.org/en/latest/">Requests: HTTP for Humans™ — Requests 2.34.2 documentation</a></li>
-<li><code>pandas</code>ライブラリ：<a href="https://pandas.pydata.org/docs/">pandas documentation — pandas 3.0.3 documentation</a></li>
-<li><code>.env</code>ファイルについて：<a href="https://pypi.org/project/python-dotenv/">python-dotenv · PyPI</a></li>
-</ul>
-</div>
-</div>
 </section>
-<section id="エンドポイントの指定クエリパラメータの設定" class="level3">
-<h3 class="anchored" data-anchor-id="エンドポイントの指定クエリパラメータの設定">エンドポイントの指定、クエリパラメータの設定</h3>
-<p>論文を検索するには、<code>/works</code>エンドポイントに対してGETリクエストを送ります。 ほかのエンドポイントは、以下のOpenAlex APIのドキュメントを参照してください。</p>
-<ul>
-<li><a href="https://developers.openalex.org/api-reference/introduction">API Overview - OpenAlex Developers</a></li>
-</ul>
-<p>クエリパラメータは、APIドキュメントの「List Works」セクションを参考にして、必要なものを設定します。 ここでは、次のようなパラメータを設定しています。 - <code>api_key</code>: APIキーを指定 - <code>search</code>: キーワード検索のクエリ - <code>filter</code>: 絞り込み条件（例: 出版年、文献タイプ - <code>per_page</code>: 1ページあたりの結果数 - <code>select</code>: 取得するフィールドの指定</p>
-<p>パラメータの一覧については、以下のリンクを参照してください。</p>
-<ul>
-<li><a href="https://developers.openalex.org/api-reference/keywords/list-keywords">List keywords - OpenAlex Developers</a></li>
-<li><a href="https://developers.openalex.org/api-reference/works/list-works">List works - OpenAlex Developers</a></li>
-</ul>
-<p>今回の検索は、以下のような条件で行います。</p>
-<ul>
-<li>キーワード: “leaf economics spectrum”</li>
-<li>出版年: 2024年</li>
-<li>文献タイプ: article (論文)</li>
-<li>オープンアクセス: true</li>
-</ul>
-<div id="833a2149" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="op">=</span> <span class="st">"https://api.openalex.org/works"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># パラメータの設定</span></span>
+<section id="doiを指定して論文の引用文献を取得する" class="level2">
+<h2 class="anchored" data-anchor-id="doiを指定して論文の引用文献を取得する">DOIを指定して論文の引用文献を取得する</h2>
+<p>今回は、以下の論文を例にして、DOIを指定して論文の引用文献を取得する方法を説明します。</p>
+<blockquote class="blockquote">
+<p>Yan, Pu, Nianpeng He, Kailiang Yu, Lawren Sack, Lin Jiang, and Marcos Fernández-Martínez. “Plant Elemental Diversity Increases Ecosystem Productivity and Temporal Stability.” Ecological Monographs 96, no. 1 (2026): e70061. https://doi.org/10.1002/ecm.70061.</p>
+</blockquote>
+<p>DOIを指定して論文のメタデータを取得するには、以下のように <code>/works/doi:{doi}</code> エンドポイントを呼び出します。</p>
+<p>その後、リクエストを作成し、<code>requests.get()</code> を使ってAPIを呼び出します。</p>
+<div id="57a13d06" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>doi <span class="op">=</span> <span class="st">"10.1002/ecm.70061"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://api.openalex.org/works/doi:</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"api_key"</span>: api_key,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"search"</span>: <span class="st">"leaf economics spectrum"</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filter"</span>: <span class="st">"publication_year:2024,type:article,open_access.is_oa:true"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"per_page"</span>: <span class="dv">5</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"select"</span>: <span class="st">"id,display_name,publication_year,cited_by_count,doi"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"select"</span>: <span class="st">"id,doi,display_name,publication_year,referenced_works"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># DOIから対象論文を取得</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    url,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>params,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    timeout<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>response.raise_for_status() <span class="co"># 失敗した場合は例外を発生させる</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="httpリクエストの作成送信" class="level3">
-<h3 class="anchored" data-anchor-id="httpリクエストの作成送信">HTTPリクエストの作成・送信</h3>
-<p><code>requests.get()</code> を使って、エンドポイントに対してGETリクエストを送ります。 リクエストの送信後、<code>response.raise_for_status()</code> を呼び出して、HTTPエラーが発生した場合に例外を発生させるようにします。</p>
-<div id="08a72ed2" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HTTPリクエストの作成と送信</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># リクエストの送信</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    endpoint,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>params,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    timeout<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()  <span class="co"># 失敗した場合は例外を発生させる</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="結果の確認と表形式への変換" class="level3">
-<h3 class="anchored" data-anchor-id="結果の確認と表形式への変換">結果の確認と表形式への変換</h3>
-<p>レスポンスからJSONデータを取得し、<code>results</code> フィールドに含まれる論文のリストを取り出します。 その後、リスト内包表記を使って、必要なフィールドを抽出し、<code>pandas.DataFrame</code> に変換して表形式で表示します。</p>
-<div id="9e68cfd0" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>works <span class="op">=</span> response.json()[<span class="st">"results"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># meta = response.json()["meta"]  # メタデータも必要に応じて取得可能</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        {</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title"</span>: work[<span class="st">"display_name"</span>],</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"year"</span>: work[<span class="st">"publication_year"</span>],</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"citations"</span>: work[<span class="st">"cited_by_count"</span>],</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"doi"</span>: work.get(<span class="st">"doi"</span>),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"openalex_id"</span>: work[<span class="st">"id"</span>],</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> work <span class="kw">in</span> works</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>結果はJSON形式で返されるため、<code>response.json()</code> を使ってPythonの辞書型に変換します。 レスポンスの中には、論文のタイトルや出版年、引用文献のIDなどが含まれています。</p>
+<div id="839b282d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>work <span class="op">=</span> response.json()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(work[<span class="st">"display_name"</span>])  <span class="co"># 論文のタイトルを表示</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(work[<span class="st">"referenced_works"</span>]))  <span class="co"># 引用文献の数を表示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>出力結果</strong></pre>
 </div>
-<pre class="text" data-filename="出力結果"><code>                                               title  year  citations                                      doi                 openalex_id
-0  Life at the conservative end of the leaf econo...  2024          8     https://doi.org/10.1111/nph.20015  https://openalex.org/W4401340000
-1  Extremely thin but very robust: Surprising cry...  2024          3  https://doi.org/10.1016/j.pld.2024.04.009  https://openalex.org/W4395672665
-2  Plant economics spectrum governs leaf nitrogen...  2024         11  https://doi.org/10.1186/s12870-024-05484-9  https://openalex.org/W4401486401
-3  Contrasting coordination of non‐structural car...  2024         45     https://doi.org/10.1111/nph.19678  https://openalex.org/W4392883019
-4  Global patterns of plant functional traits and...  2024         52  https://doi.org/10.1038/s42003-024-06777-3  https://openalex.org/W4402513235</code></pre>
+<pre class="text" data-filename="出力結果"><code>Plant elemental diversity increases ecosystem productivity and temporal stability
+74</code></pre>
 </div>
-<p>デフォルトでは、関連順（relevance）でソートされているため、キーワードとの関連性が高い順に結果が表示されます。 もし、被引用数の多い順に並べ替えたい場合は、クエリパラメータに <code>sort=cited_by_count:desc</code>を追加するなどして、並べ替えの順番を指定することもできます。</p>
+<p><code>referenced_works</code>フィールドには、引用文献のIDがリスト形式で格納されています。</p>
+<div id="2032c183" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(work[<span class="st">"referenced_works"</span>][:<span class="dv">5</span>])  <span class="co"># 最初の5件を表示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>出力結果</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="出力結果"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'https://openalex.org/W1584343945'</span>, <span class="st">'https://openalex.org/W1594032928'</span>, <span class="st">'https://openalex.org/W1885882554'</span>, <span class="st">'https://openalex.org/W1965202842'</span>, <span class="st">'https://openalex.org/W2020948897'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>このIDを使って、引用文献のメタデータを取得することができます。</p>
 </section>
-</section>
-<section id="まとめ" class="level2">
-<h2 class="anchored" data-anchor-id="まとめ">まとめ</h2>
-<p>この記事では、OpenAlex APIをPythonから呼び出して、論文のメタデータを取得する方法を紹介しました。 APIキーの準備、エンドポイントとクエリパラメータの設定、HTTPリクエストの送信、レスポンスの処理と表形式への変換の手順を説明しました。 この方法を応用すれば、著者やジャーナル、機関などの情報も同様に取得することができます。</p>
-<p>とても便利なAPIだと思います。</p>
-<ul>
-<li>公式ドキュメント：<a href="https://developers.openalex.org/">Overview - OpenAlex Developers</a></li>
-</ul>
+<section id="引用文献のidを使って引用文献のメタデータを取得する" class="level2">
+<h2 class="anchored" data-anchor-id="引用文献のidを使って引用文献のメタデータを取得する">引用文献のIDを使って、引用文献のメタデータを取得する</h2>
+<p>入手した引用文献のIDを使って、引用文献のタイトル、出版年、被引用数、DOIなどのメタデータを取得するには、以下のようにクエリパラメータを設定して、<code>/works</code> エンドポイントを呼び出します。</p>
+<p>これにより、複数の引用文献の情報を一度に取得することができます。</p>
+<div id="ab60e77f" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ref_ids <span class="op">=</span> work[<span class="st">"referenced_works"</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"api_key"</span>: api_key,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"filter"</span>: <span class="st">"openalex:"</span> <span class="op">+</span> <span class="st">"|"</span>.join(ref_ids),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"per_page"</span>: <span class="dv">100</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"select"</span>: <span class="st">"id,display_name,publication_year,cited_by_count,doi"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://api.openalex.org/works"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>params,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    timeout<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>response.raise_for_status()</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>refs <span class="op">=</span> response.json()[<span class="st">"results"</span>]</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>df_refs <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"title"</span>: ref.get(<span class="st">"display_name"</span>),</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>            <span class="st">"year"</span>: ref.get(<span class="st">"publication_year"</span>),</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">"citations"</span>: ref.get(<span class="st">"cited_by_count"</span>),</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"doi"</span>: ref.get(<span class="st">"doi"</span>),</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"openalex_id"</span>: ref.get(<span class="st">"id"</span>),</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> ref <span class="kw">in</span> refs</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_refs.to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>出力結果の抜粋</strong></pre>
+</div>
+<pre class="text" data-filename="出力結果の抜粋"><code>title  year  citations                                                    doi                       openalex_id
+0                                                                                                                                           Multimodel Inference  2004      11568               https://doi.org/10.1177/0049124104268644  https://openalex.org/W2158196600
+1                                                                                              A Caution Regarding Rules of Thumb for Variance Inflation Factors  2007      10409              https://doi.org/10.1007/s11135-006-9018-6  https://openalex.org/W2140964565
+2                                                                                                                          Soil Sampling and Methods of Analysis  2007       6452                  https://doi.org/10.1201/9781420005271  https://openalex.org/W2478908224
+3                                                                         performance: An R Package for Assessment, Comparison and Testing of Statistical Models  2021       5235                    https://doi.org/10.21105/joss.03139  https://openalex.org/W3153999239
+
+(途中省略)
+
+71                                                                     The scaling of elemental stoichiometry and growth rate over the course of bamboo ontogeny  2023         17                      https://doi.org/10.1111/nph.19408  https://openalex.org/W4388921950
+72                        Plant Elemental Homeostasis Enhances Species Performance and Community Functioning in Wetlands: Looking Beyond Nitrogen and Phosphorus  2025          4                      https://doi.org/10.1111/ele.70152  https://openalex.org/W4412488598
+73                                                                           Optimal set of leaf and aboveground tree elements for predicting forest functioning  2025          1                https://doi.org/10.5194/bg-22-2115-2025  https://openalex.org/W4409963066</code></pre>
+</div>
+<p>このように、引用文献のIDを使って、引用文献のタイトル、出版年、被引用数、DOIなどのメタデータを取得することができます。</p>
 
 
 </section>
