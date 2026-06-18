@@ -1,10 +1,10 @@
 ---
 title: "OpenAlexをPythonから使ってみる"
-description: "OpenAlex APIをPythonから呼び出し、論文メタデータを取得するための下書きです。"
+description: "OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。"
 date: "2026-06-01"
-date-modified: "2026-06-01"
+date-modified: "2026-06-18"
 draft: false
-categories: [python, openalex, api]
+categories: [python]
 execute:
   echo: true
   warning: false
@@ -50,39 +50,51 @@ pd.DataFrame(
 
 ## APIキーの準備
 
-OpenAlex APIを使うときは、APIキーを環境変数として保存しておくと、記事本文やコードにキーを書かずにすみます。
 
-::: {.callout-note}
-OpenAlexのAPI Referenceでは、`api_key` をクエリパラメータとして渡す形式が案内されています。
-GitHub Actionsで実行する場合は、`OPENALEX_API_KEY` をRepository secretとして登録し、workflow側で環境変数として渡します。
-:::
 
-```{.bash filename="Terminal"}
-export OPENALEX_API_KEY="your-api-key"
-```
+## 論文を検索する
 
-Windows PowerShellでは次のように設定します。
+### ライブラリのインポートとAPIキーの設定
 
-```{.powershell filename="PowerShell"}
-$env:OPENALEX_API_KEY = "your-api-key"
-```
-
-## Works APIで論文を検索する
-
-次のコードは、`/works` エンドポイントに対してキーワード検索を行う例です。
-APIキーが必要なので、下書き段階では `eval: false` にしています。
-実際に記事として実行する場合は、APIキーを設定したうえで `eval: true` に変更します。
+今回は、Pythonの標準ライブラリである `os` と、外部ライブラリの `requests` と `pandas` を使います。
+APIキーは、環境変数 `OPENALEX_API_KEY` に設定されていると仮定して、`os.environ` から取得します。
+事前に作業ディレクトリの `.env` ファイルなどで `OPENALEX_API_KEY=your_api_key_here` と設定しておきます。
 
 ```{python}
-#| label: openalex-search-example
-#| eval: false
 import os
-
 import pandas as pd
 import requests
+from dotenv import load_dotenv
 
 api_key = os.environ["OPENALEX_API_KEY"]
+```
 
+::: {.callout-note}
+## 参考リンク
+
+- `os`ライブラリ：[os — Miscellaneous operating system interfaces — Python 3.14.6 documentation](https://docs.python.org/3/library/os.html)
+- `requests`ライブラリ：[Requests: HTTP for Humans™ — Requests 2.34.2 documentation](https://docs.python-requests.org/en/latest/)
+- `pandas`ライブラリ：[pandas documentation — pandas 3.0.3 documentation](https://pandas.pydata.org/docs/)
+- `.env`ファイルについて：[python-dotenv · PyPI](https://pypi.org/project/python-dotenv/)
+:::
+
+### エンドポイントの指定、クエリパラメータの設定、HTTPリクエストの作成
+
+論文を検索するには、`/works`エンドポイントに対してGETリクエストを送ります。
+ほかのエンドポイントは、以下のOpenAlex APIのドキュメントを参照してください。
+
+- [API Overview - OpenAlex Developers](https://developers.openalex.org/api-reference/introduction)
+
+クエリパラメータは、APIドキュメントの「List Works」セクションを参考にして、必要なものを設定します。
+ここでは、次のようなパラメータを設定しています。
+- `api_key`: APIキーを指定
+- `search`: キーワード検索のクエリ
+- `filter`: 絞り込み条件（例: 出版年、文献タイプ
+- `sort`: 並べ替えの基準
+- `per_page`: 1ページあたりの結果数
+- `select`: 取得するフィールドの指定
+
+```{python}
 params = {
     "api_key": api_key,
     "search": "species distribution model",
