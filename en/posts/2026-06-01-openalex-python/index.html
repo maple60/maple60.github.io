@@ -283,7 +283,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".env"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>OPENALEX_API_KEY=your_api_key_here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="dc7ea3fb" class="cell" data-execution_count="1">
+<div id="fd0d26b6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -344,7 +344,7 @@ Important
 <li>Document type: article</li>
 <li>Open access: true</li>
 </ul>
-<div id="b6062505" class="cell" data-execution_count="2">
+<div id="7eeb533d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>endpoint <span class="op">=</span> <span class="st">"https://api.openalex.org/works"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># パラメータの設定</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
@@ -359,7 +359,7 @@ Important
 <section id="creating-and-sending-the-http-request" class="level3">
 <h3 class="anchored" data-anchor-id="creating-and-sending-the-http-request">Creating and Sending the HTTP Request</h3>
 <p>Use <code>requests.get()</code> to send a GET request to the endpoint. After sending the request, call <code>response.raise_for_status()</code> so that an exception is raised if an HTTP error occurs.</p>
-<div id="a529e0b9" class="cell" data-execution_count="3">
+<div id="c0ad8819" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HTTPリクエストの作成と送信</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># リクエストの送信</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(</span>
@@ -373,7 +373,7 @@ Important
 <section id="checking-the-result-and-converting-it-to-a-table" class="level3">
 <h3 class="anchored" data-anchor-id="checking-the-result-and-converting-it-to-a-table">Checking the Result and Converting It to a Table</h3>
 <p>Retrieve JSON data from the response and extract the list of papers stored in the <code>results</code> field. Then use a list comprehension to extract the fields you need and convert them into a <code>pandas.DataFrame</code> for display as a table.</p>
-<div id="bdbab8dd" class="cell" data-execution_count="4">
+<div id="16bdb3ce" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>works <span class="op">=</span> response.json()[<span class="st">"results"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># meta = response.json()["meta"]  # メタデータも必要に応じて取得可能</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>

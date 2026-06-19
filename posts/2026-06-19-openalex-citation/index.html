@@ -266,7 +266,7 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename=".env"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>OPENALEX_API_KEY=your_api_key_here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="a43c4163" class="cell" data-execution_count="1">
+<div id="a5a42a39" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -285,7 +285,7 @@ Note
 </blockquote>
 <p>DOIを指定して論文のメタデータを取得するには、以下のように <code>/works/doi:{doi}</code> エンドポイントを呼び出します。</p>
 <p>その後、リクエストを作成し、<code>requests.get()</code> を使ってAPIを呼び出します。</p>
-<div id="728137b3" class="cell" data-execution_count="2">
+<div id="72017cfd" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>doi <span class="op">=</span> <span class="st">"10.1002/ecm.70061"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="ss">f"https://api.openalex.org/works/doi:</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
@@ -302,7 +302,7 @@ Note
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>response.raise_for_status() <span class="co"># 失敗した場合は例外を発生させる</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>結果はJSON形式で返されるため、<code>response.json()</code> を使ってPythonの辞書型に変換します。 レスポンスの中には、論文のタイトルや出版年、引用文献のIDなどが含まれています。</p>
-<div id="7cf43249" class="cell" data-execution_count="3">
+<div id="e37f1a90" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>work <span class="op">=</span> response.json()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(work[<span class="st">"display_name"</span>])  <span class="co"># 論文のタイトルを表示</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(work[<span class="st">"referenced_works"</span>]))  <span class="co"># 引用文献の数を表示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -315,7 +315,7 @@ Note
 74</code></pre>
 </div>
 <p><code>referenced_works</code>フィールドには、引用文献のIDがリスト形式で格納されています。</p>
-<div id="58c37daf" class="cell" data-execution_count="4">
+<div id="49162fc7" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(work[<span class="st">"referenced_works"</span>][:<span class="dv">5</span>])  <span class="co"># 最初の5件を表示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
@@ -330,7 +330,7 @@ Note
 <h2 class="anchored" data-anchor-id="引用文献のidを使って引用文献のメタデータを取得する">引用文献のIDを使って、引用文献のメタデータを取得する</h2>
 <p>入手した引用文献のIDを使って、引用文献のタイトル、出版年、被引用数、DOIなどのメタデータを取得するには、以下のようにクエリパラメータを設定して、<code>/works</code> エンドポイントを呼び出します。</p>
 <p>これにより、複数の引用文献の情報を一度に取得することができます。</p>
-<div id="c8e3a474" class="cell" data-execution_count="5">
+<div id="58c861b1" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ref_ids <span class="op">=</span> work[<span class="st">"referenced_works"</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
