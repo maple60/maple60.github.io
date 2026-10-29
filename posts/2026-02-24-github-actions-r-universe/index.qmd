@@ -1,15 +1,17 @@
 ---
 title: "GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点"
+title-en: "Notes on Using r-universe Packages with GitHub Actions and renv"
 description: "GitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。"
+description-en: "When using GitHub Pages with GitHub Actions, renv, and r-universe packages, renv may not work correctly in the GitHub Actions environment. This article explains the cause and solution."
 date: "2026-02-24"
 date-modified: "2026-02-24"
 draft: false
 categories: [github, r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Notes on Using r-universe Packages with GitHub Actions and renv](../../en/posts/2026-02-24-github-actions-r-universe/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 ## 症状
 
@@ -19,11 +21,27 @@ English version: [Notes on Using r-universe Packages with GitHub Actions and ren
 
 具体的には、`rnaturalearthhires`というパッケージを使用した記事を書いた後に、ビルドしたら、以下のようなエラーが発生しました。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Symptom
+
+This website is created with GitHub Pages through GitHub Actions.
+R packages are managed with renv.
+When using packages from [r-universe](https://r-universe.dev/search), renv sometimes did not work correctly in the GitHub Actions environment.
+
+Specifically, after writing an article that used the `rnaturalearthhires` package, the build produced the following error.
+
+:::::
+
 ```
 # Downloading packages -------------------------------------------------------
 - Querying repositories for available source packages ... Done!
 Error: code 22]
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 このエラーは、GitHub Actionsの環境でrenvがr-universeのパッケージを正しく認識できないことが原因でした。
 
@@ -31,6 +49,19 @@ Error: code 22]
 
 `renv.lock` ファイルを確認すると、"Repositories"の部分に、r-universeのURLが含まれていませんでした。
 このため、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できないことが原因でした。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This error occurred because renv could not correctly recognize the r-universe package in the GitHub Actions environment.
+
+## Solution
+
+When I checked the `renv.lock` file, the r-universe URL was not included in the "Repositories" section.
+Because of this, renv in the GitHub Actions environment could not recognize the r-universe package.
+
+:::::
 
 ```{.r filename="renv.lock"}
 {
@@ -46,7 +77,17 @@ Error: code 22]
   "Packages": {
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 以下のコードをローカル環境で実行して、`renv.lock` ファイルの "Repositories" の部分に、r-universeのURLを追加することで、GitHub Actionsの環境でrenvがr-universeのパッケージを認識できるようになりました。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+By running the following code locally and adding the r-universe URL to the "Repositories" section of `renv.lock`, renv in the GitHub Actions environment became able to recognize the r-universe package.
+
+:::::
 
 ```{r}
 options(
@@ -58,10 +99,23 @@ options(
 renv::snapshot(force = TRUE)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 このコードでは、`options()`関数を使って、CRANとr-universeのリポジトリを指定しています。
 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
 
 このコードを実行すると、`renv.lock` ファイルの "Repositories" の部分に、r-universeのURLが追加されます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This code uses the `options()` function to specify the CRAN and r-universe repositories.
+Then it runs `renv::snapshot(force = TRUE)` to update the `renv.lock` file.
+
+After running this code, the r-universe URL is added to the "Repositories" section of `renv.lock`.
+
+:::::
 
 ```{.r filename="renv.lock"}
 {
@@ -81,4 +135,17 @@ renv::snapshot(force = TRUE)
   "Packages": {
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 その後、変更をコミットして、GitHub Actionsでビルドすると、エラーが解消されて、r-universeのパッケージを利用できるようになりました。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+After that, commit the change and build with GitHub Actions.
+The error should be resolved, and the r-universe package can be used.
+
+:::::
+
+

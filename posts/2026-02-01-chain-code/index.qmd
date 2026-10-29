@@ -1,16 +1,18 @@
 ---
 title: "Chain codeについて"
+title-en: "Notes on Chain Code"
 description: "Chain codeについてのメモです"
+description-en: "A note on chain code."
 date: "2026-02-01"
 date-modified: "2026-02-01"
 draft: false
 categories: [r]
 bibliography: references.bib
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Notes on Chain Code](../../en/posts/2026-02-01-chain-code/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Chain code（チェインコード）は、2次元画像中の輪郭上の画素について、ある座標から隣接する座標への移動方向を符号化し、それを連続的に記録することで、形状を1次元のコード列として表現する方法です。
 主に画像処理やコンピュータビジョンの分野で使用され、輪郭抽出や形状認識に役立ちます。
@@ -22,6 +24,25 @@ Chain codeの基本的な概念は、Freeman [-@freeman1974]によって提案�
 :::
 
 例えば、よく用いられる8方向のチェインコードは以下のようになります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Chain code is a method for representing a shape as a one-dimensional sequence of codes.
+It encodes the movement direction from one coordinate to an adjacent coordinate for pixels on a contour in a two-dimensional image, then records those directions continuously.
+It is mainly used in image processing and computer vision, and it is useful for contour extraction and shape recognition.
+
+::: callout-note
+## Basic Paper on Chain Code
+
+The basic concept of chain code was proposed by Freeman [-@freeman1974].
+The concept existed before this paper, but this paper helped make the name "chain code" widely known.
+:::
+
+For example, a commonly used eight-direction chain code is as follows.
+
+:::::
 
 ```{r}
 #| code-fold: true
@@ -43,11 +64,11 @@ axis(1, at = c(-1, 0, 1), cex.axis = 2)
 axis(2, at = c(-1, 0, 1), las = 1, cex.axis = 2)
 
 
-# グリッド線を引く
+# Draw grid lines
 abline(h = -1:1, col = "lightgray")
 abline(v = -1:1, col = "lightgray")
 
-# ベクトルを描く
+# Draw vectors
 length_arrow <- 0.2
 lwd_arrow <- 5
 arrows(0, 0, 1, 0, length = length_arrow, lwd = lwd_arrow) # 0
@@ -59,7 +80,7 @@ arrows(0, 0, -1, -1, length = length_arrow, lwd = lwd_arrow) # 5
 arrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6
 arrows(0, 0, 1, -1, length = length_arrow, lwd = lwd_arrow) # 7
 
-# ラベルをつける
+# Add labels
 cex_text <- 3
 text(1, 0, "0", cex = cex_text, pos = 4)
 text(1, 1, "1", cex = cex_text, pos = 4)
@@ -70,6 +91,8 @@ text(-1, -1, "5", cex = cex_text, pos = 2)
 text(0, -1, "6", cex = cex_text, pos = 1)
 text(1, -1, "7", cex = cex_text, pos = 4)
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 このコードは、中心点から8方向への移動を示しています。 各方向には0から7までの番号が割り当てられています。
 この番号を使って、形状の輪郭を辿る際の移動を符号化します。
@@ -89,6 +112,32 @@ text(1, -1, "7", cex = cex_text, pos = 4)
 
 例えば、以下のような輪郭形状があるとします。
 猫の顔のイメージです。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This code shows movement from the center point in eight directions.
+Numbers from 0 to 7 are assigned to the directions.
+These numbers are used to encode movement while tracing the contour of a shape.
+
+::: {.callout-note}
+## Other Chain Codes
+
+This article introduces the eight-direction chain code, but four-direction chain codes also exist.
+In a four-direction chain code, numbers are assigned only to the four directions up, down, left, and right.
+Four-direction chain codes require less computation, but they may be unsuitable for representing fine shape details.
+
+Also, this article uses a scheme where the rightward direction is 0, but the numbering scheme can differ by paper or implementation.
+When using chain codes, it is important to check which scheme is being used.
+:::
+
+## Example of Representing a Contour with Chain Code
+
+Suppose we have the following contour shape.
+It is an image of a cat face.
+
+:::::
 
 ```{r}
 df_contour <- data.frame(
@@ -118,12 +167,25 @@ lines(df_contour$x, df_contour$y, lwd = 3)
 points(df_contour$x, df_contour$y, pch = 19, cex = 1.5)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 この輪郭をchain codeで表現すると、以下のようになります。
 開始点を(0,0)とし、時計回りに輪郭を辿るとします。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Representing this contour with chain code gives the following.
+Assume that the starting point is `(0, 0)` and the contour is traced clockwise.
+
+:::::
 
 ```
 (0,0),6,7,0,0,0,1,2,2,3,5,4,3,5,6
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-note}
 ## 輪郭を辿る方向
@@ -134,6 +196,23 @@ points(df_contour$x, df_contour$y, pch = 19, cex = 1.5)
 ここで、各数字は前述の8方向のチェインコードに対応しています。 例えば、最初の「6」は(0,0)から(0,-1)への移動を示し、次の「7」は(0,-1)から(1,-1)への移動を示します。
 
 先ほどの図にベクトルを重ねてみます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+## Direction of Contour Tracing
+
+This example traces the contour clockwise, but it is also possible to trace it counterclockwise.
+:::
+
+Each number corresponds to the eight-direction chain code described above.
+For example, the first `6` indicates movement from `(0, 0)` to `(0, -1)`, and the next `7` indicates movement from `(0, -1)` to `(1, -1)`.
+
+Now overlay the vectors on the previous figure.
+
+:::::
 
 ```{r}
 plot(
@@ -156,9 +235,9 @@ axis(2, at = -2:2, las = 1, cex.axis = 1.5)
 abline(h = -3:3, col = "lightgray")
 abline(v = -1:6, col = "lightgray")
 
-points(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = "red") # 開始点
+points(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = "red") # starting point
 
-# ベクトルを描く
+# Draw vectors
 length_arrow <- 0.2
 lwd_arrow <- 2
 arrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6
@@ -176,7 +255,7 @@ arrows(2, 1, 1, 2, length = length_arrow, lwd = lwd_arrow) # 3
 arrows(1, 2, 0, 1, length = length_arrow, lwd = lwd_arrow) # 5
 arrows(0, 1, 0, 0, length = length_arrow, lwd = lwd_arrow) # 6
 
-# ラベルをつける
+# Add labels
 text(
   df_contour$x[-1] +
     c(0, -0.5, -0.5, -0.5, -0.5, -0.5, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0),
@@ -205,17 +284,29 @@ text(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## 座標をchain codeに変換する
 
 Rで座標データをchain codeに変換してみます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Converting Coordinates to Chain Code
+
+Now convert coordinate data to chain code in R.
+
+:::::
+
 ```{r}
-# x, yの差分を計算
+# Calculate differences in x and y
 dx <- df_contour$x[2:length(df_contour$x)] -
   df_contour$x[1:(length(df_contour$x) - 1)]
 dy <- df_contour$y[2:length(df_contour$y)] -
   df_contour$y[1:(length(df_contour$y) - 1)]
-# 差分に基づいてchain codeを決定
+# Determine chain code based on the differences
 chain_code <- c()
 for (i in seq_along(dx)) {
   if (dx[i] == 1 && dy[i] == 0) {
@@ -239,13 +330,23 @@ for (i in seq_along(dx)) {
 print(chain_code)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 このコードを関数化すると以下のようになります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Writing this as a function gives the following.
+
+:::::
 
 ```{r}
 coords_to_chain_code <- function(x, y) {
   dx <- x[2:length(x)] - x[1:(length(x) - 1)]
   dy <- y[2:length(y)] - y[1:(length(y) - 1)]
-  # 変位が1より大きい場合はエラー
+  # Error if any displacement is larger than 1
   if (any(abs(dx) > 1) || any(abs(dy) > 1)) {
     stop("Invalid step detected: not 8-connected")
   }
@@ -273,7 +374,17 @@ coords_to_chain_code <- function(x, y) {
 }
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 先ほどの座標データに対して関数を適用してみます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Apply the function to the coordinate data from above.
+
+:::::
 
 ```{r}
 result_chain_code <- coords_to_chain_code(
@@ -283,6 +394,8 @@ result_chain_code <- coords_to_chain_code(
 print(result_chain_code)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 同じchain codeが得られることが確認できます。
 
 ## Chain codeを座標に変換する
@@ -290,12 +403,25 @@ print(result_chain_code)
 今度は、chain codeから座標に変換する方法を示します。
 まずは、普通に書いてみます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The same chain code is obtained.
+
+## Converting Chain Code to Coordinates
+
+Next, convert chain code back to coordinates.
+First, write it directly.
+
+:::::
+
 ```{r}
 chain_code <- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)
-# 開始点の座標
+# Coordinates of the starting point
 start_x <- 0
 start_y <- 0
-# 座標への変換
+# Convert to coordinates
 x_coords <- c(start_x)
 y_coords <- c(start_y)
 for (code in chain_code) {
@@ -331,7 +457,17 @@ df_from_chain <- data.frame(x = x_coords, y = y_coords)
 print(df_from_chain)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 プロットしてみます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Plot the result.
+
+:::::
 
 ```{r}
 plot(
@@ -347,7 +483,17 @@ plot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 関数化します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Now turn it into a function.
+
+:::::
 
 ```{r}
 chain_code_to_coords <- function(chain_code, start_x = 0, start_y = 0) {
@@ -386,7 +532,17 @@ chain_code_to_coords <- function(chain_code, start_x = 0, start_y = 0) {
 }
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 先ほどのchain codeを使って関数を適用してみます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Apply the function to the chain code from above.
+
+:::::
 
 ```{r}
 result_coords <- chain_code_to_coords(

@@ -1,15 +1,17 @@
 ---
 title: "Quartoを用いた解析プロジェクト管理について"
+title-en: "Managing Analysis Projects with Quarto"
 description: "QuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。"
+description-en: "A summary of managing analysis projects with Quarto's book format."
 date: "2026-02-11"
 date-modified: "2026-02-25"
 draft: false
 categories: [quarto]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Managing Analysis Projects with Quarto](../../en/posts/2026-02-11-quarto-project-management/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-warning}
 この記事は書きかけの状態で公開しています。時間があるときに更新します。
@@ -59,6 +61,62 @@ QuartoのBook形式は、複数のqmdファイルをまとめて一つのドキ�
 今回は、実際に近い例として、解析がデータの前処理、解析、可視化などのステップに分かれているプロジェクトを考えます。
 例えば、ある解析プロジェクトで、以下のように解析フォルダを管理していたとします。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-warning}
+This article is published while still in progress.
+I will update it when I have time.
+:::
+
+[Quarto](https://quarto.org/) is an open-source tool for creating documents and websites using languages such as R and Python.
+With Quarto, it is easy to create HTML documents that can be read in a browser.
+I wondered whether this could be used to manage analysis projects that have a fixed sequence of steps, so I am leaving this note.
+
+::: {.callout-note}
+## Assumptions
+
+- This article assumes that **R code is executed in qmd files**.
+- I will touch on the basic usage of Quarto as much as possible, but for details please see the [official documentation](https://quarto.org/).
+:::
+
+## Problems in Analysis Projects
+
+In many analysis projects, several steps are executed in order.
+Examples include data preprocessing, analysis, visualization, and report creation.
+
+It is common to manage these steps by separating scripts for each process.
+However, as the number of scripts increases, it becomes harder to know the correct execution order.
+
+Until now, I have managed the order by numbering file names, such as `00_data_preprocessing.R`, `01_analysis.R`, and `02_visualization.R`.
+However, as the number of files increases, managing the numbers becomes cumbersome and mistakes become more likely.
+For example, when a new analysis is added and the order changes, the numbers in all file names need to be changed.
+
+Also, even within a single qmd file, code cells can be executed individually.
+When running the file from top to bottom later, errors can occur because required variables do not exist.
+For example, if an analysis cell is executed without first running the preprocessing cell, the required data does not exist and an error occurs.
+
+To solve these problems, I considered managing analysis projects with Quarto's book format.
+I am still trying this approach, but I summarize the method below.
+
+## What Is Quarto's Book Format?
+
+Quarto's book format is a feature that can combine multiple qmd files and output them as one document.
+For example, the well-known R introduction [R for Data Science (2e)](https://r4ds.hadley.nz/) is created with Quarto's book format.
+
+Recently, many R-related books have also been created in Quarto's book format.
+If you look at [R for Data Science (2e)](https://r4ds.hadley.nz/), you can see that pages are arranged in order like an actual book, with sections throughout.
+
+I thought that analysis code that needs to be executed in order might be manageable in the same way with the book format.
+
+## Example Structure of an Existing Analysis Project
+
+Here, consider a realistic project where the analysis is divided into steps such as data preprocessing, analysis, and visualization.
+For example, suppose an analysis folder is managed as follows.
+
+:::::
+
 ```plaintext
 notebooks/
 ├── 01_data_preprocessing_AA.qmd
@@ -68,6 +126,8 @@ notebooks/
 ├── 05_visualization_EE.qmd
 └── 06_visualization_FF.qmd
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 このように、各ステップごとにqmdファイルを分けて管理しています。
 しかし、ある時、`02_data_preprocessing_BB`の前に新しい前処理ステップを追加したいとします。
@@ -79,3 +139,22 @@ notebooks/
 
 `Ctrl+Shift+P`でコマンドパレットを開き、"Quarto: Create New Book Project"を選択します。
 プロジェクト名を入力し、保存先フォルダを指定します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+In this structure, qmd files are separated by step.
+However, suppose you later want to add a new preprocessing step before `02_data_preprocessing_BB`.
+In that case, all file name numbers need to be changed, which is very tedious.
+
+## Creating a Quarto Book
+
+To solve this problem, manage the analysis project with Quarto's book format.
+
+Open the command palette with `Ctrl+Shift+P` and select "Quarto: Create New Book Project."
+Enter the project name and specify the folder where it should be saved.
+
+:::::
+
+

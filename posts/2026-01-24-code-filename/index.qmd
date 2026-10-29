@@ -1,15 +1,17 @@
 ---
 title: "Quartoでコードブロックのファイル名を表示する"
+title-en: "Showing File Names on Code Blocks in Quarto"
 description: "Quartoでコードブロックのファイル名を表示する方法についてのメモです"
+description-en: "A note on how to show file names on code blocks in Quarto."
 date: "2026-01-24"
 date-modified: "2026-01-24"
 draft: false
 categories: [quarto]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Showing File Names on Code Blocks in Quarto](../../en/posts/2026-01-24-code-filename/index.qmd)
-:::
+::: {.content-visible unless-profile="en"}
 
 コードブロックにファイル名を表示する方法についてのメモです。
 コードブロックに`filename`属性を追加することで、ファイル名を表示できます。
@@ -24,14 +26,47 @@ print("Hello, World!")
 
 以下のように表示されます。
 
+:::
+
+::: {.content-visible when-profile="en"}
+
+This is a note on how to show file names on code blocks.
+You can show a file name by adding the `filename` attribute to a code block.
+
+Write it like this:
+
+```` markdown
 ```{.python filename="example.py"}
 print("Hello, World!")
 ```
+````
+
+It is displayed as follows.
+
+:::
+
+```{.python filename="example.py"}
+print("Hello, World!")
+```
+
+::: {.content-visible unless-profile="en"}
 
 ちなみに```` ```{.python} ````の部分は、シンタックスハイライトはするが、実行はしないという意味です。
 ```` ```python ````と同じ意味ですが、ファイル名を表示する場合は、前者の形式で記述する必要があります。
 
 ## 参考
+
+:::
+
+::: {.content-visible when-profile="en"}
+
+The ```` ```{.python} ```` part means that syntax highlighting is applied, but the code is not executed.
+It has the same meaning as ```` ```python ````.
+However, when displaying a file name, you need to use the former form.
+
+## References
+
+:::
 
 - [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html#code-filename)
 - [Markdown Basics - Quarto](https://quarto.org/docs/authoring/markdown-basics.html#source-code)

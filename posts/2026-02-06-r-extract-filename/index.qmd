@@ -1,15 +1,17 @@
 ---
 title: "Rでファイル名を抽出する方法"
+title-en: "Extracting File Names in R"
 description: "basename(), `file.path_sans_ext()`を使ってRでファイル名を抽出する方法についてまとめます。"
+description-en: "How to extract file names in R with `basename()` and `file.path_sans_ext()`."
 date: "2026-02-06"
 date-modified: "2026-02-06"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Extracting File Names in R](../../en/posts/2026-02-06-r-extract-filename/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Rでファイルパスを扱う際に、ファイル名だけを抽出したり、拡張子を除いたファイル名を取得したりすることがあります。
 ここでは、`basename()`や`tools::file_path_sans_ext()`を使って、Rでファイル名を抽出する方法についてまとめます。
@@ -18,11 +20,26 @@ Rでファイルパスを扱う際に、ファイル名だけを抽出したり�
 
 ファイルパスからファイル名を抽出するには、`basename()`関数を使用します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+When handling file paths in R, you may want to extract only the file name or obtain the file name without its extension.
+This article summarizes how to extract file names in R using `basename()` and `tools::file_path_sans_ext()`.
+
+## Extracting the File Name
+
+Use the `basename()` function to extract a file name from a file path.
+
+:::::
+
 ```{r}
 file_path <- "/path/to/your/file/data.csv"
 file_name <- basename(file_path)
 print(file_name)
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ディレクトリパスを含むファイルパスから、ファイル名だけが抽出されました。
 
@@ -30,12 +47,26 @@ print(file_name)
 
 拡張子を除いたファイル名を取得するには、`tools`パッケージの`file_path_sans_ext()`関数を使用します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The file name alone is extracted from the file path that includes the directory path.
+
+## Extracting the File Name Without the Extension
+
+Use the `file_path_sans_ext()` function from the `tools` package to obtain a file name without its extension.
+
+:::::
+
 ```{r}
 library(tools)
 file_path <- "/path/to/your/file/data.csv"
 file_name_no_ext <- file_path_sans_ext(basename(file_path))
 print(file_name_no_ext)
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 これにより、拡張子を除いたファイル名が取得できます。
 
@@ -53,6 +84,28 @@ print(file_name_no_ext)
 
 データと対応する画像ファイル名などを結び付けてデータフレームにまとめる場合などに便利です。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This obtains the file name without the extension.
+
+::: {.callout-note}
+## About the Name `file_path_sans_ext()`
+
+The function name is a little long and hard to remember, but it becomes easier if you remember its meaning.
+`sans` is French for "without."
+It corresponds to the English word `without`.
+Also, `ext` is short for "extension."
+Therefore, `file_path_sans_ext()` means "file path without extension."
+:::
+
+## Example
+
+This is useful when combining data with corresponding image file names and storing them in a data frame.
+
+:::::
+
 ```{r}
 file_paths <- c(
   "/path/to/your/file/data1.csv",
@@ -65,4 +118,16 @@ df <- data.frame(value = c(10, 20, 30), file_name = file_names_no_ext)
 print(df)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 このようにして、ファイル名をデータフレームに含めることができます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+In this way, file names can be included in a data frame.
+
+:::::
+
+

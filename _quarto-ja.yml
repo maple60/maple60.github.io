@@ -1,0 +1,11 @@
+lang: ja
+
+project:
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/**/*.qmd"
+  resources: 
+    - posts/
+    - "*.qmd"
+    - "*.png"

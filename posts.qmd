@@ -2,14 +2,48 @@
 title: "Blog"
 description: "Japanese posts and translated English articles."
 listing:
-  contents:
-    - "posts/**/*.qmd"
-    - "!en/posts/**/*.qmd"
-    - "!starter-template/posts/**/*.qmd"
-  sort: "date desc"
-  type: default
-  categories: true
-  date-format: iso
+  - id: listing-ja
+    contents:
+      - "posts/**/*.qmd"
+      - "!en/posts/**/*.qmd"
+      - "!starter-template/posts/**/*.qmd"
+    sort: "date desc"
+    type: table
+    fields: [date, title, description]
+    field-links: [title]
+    categories: true
+    date-format: iso
+  - id: listing-en
+    contents:
+      - "posts/**/*.qmd"
+      - "!en/posts/**/*.qmd"
+      - "!starter-template/posts/**/*.qmd"
+    sort: "date desc"
+    type: table
+    fields: [date, title-en, description-en]
+    field-links: [title-en]
+    field-display-names:
+      date: Date
+      title-en: Title
+      description-en: Description
+    categories: true
+    date-format: iso
 ---
 
-Most posts are written in Japanese. Translated English versions are listed separately on [English Posts](en/posts.qmd).
+::: {.content-visible unless-profile="en"}
+すべての記事は日本語と英語の両方で読めます。英語版は[English Posts](en/posts.html)から参照できます。
+:::
+
+::: {.content-visible when-profile="en"}
+Every post is available in both Japanese and English. The Japanese archive is on [Posts](../posts.html).
+:::
+
+::: {.content-visible unless-profile="en"}
+::: {#listing-ja}
+:::
+:::
+
+::: {.content-visible when-profile="en"}
+::: {#listing-en}
+:::
+:::

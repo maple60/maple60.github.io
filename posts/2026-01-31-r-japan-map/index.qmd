@@ -1,50 +1,113 @@
 ---
 title: "Rで日本地図を描く"
+title-en: "Drawing a Map of Japan in R"
 description: "rnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。"
+description-en: "How to draw a map of Japan in R using the rnaturalearth and rnaturalearthhires packages."
 date: "2026-01-31"
 date-modified: "2026-01-31"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Drawing a Map of Japan in R](../../en/posts/2026-01-31-r-japan-map/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 ## パッケージのインストールと読み込み
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Installing and Loading Packages
+
+:::::
 
 ```{.r}
 install.packages("rnaturalearth")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 renvを使用している場合は、以下のコマンドでインストールします。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+If you use renv, install it with the following command.
+
+:::::
 
 ```{.r}
 renv::install("necountries")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 その後、パッケージを読み込みます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Then load the package.
+
+:::::
 
 ```{r}
 library(rnaturalearth)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## 日本地図の描画
 
 地図を描画するには、rnaturalearthdataパッケージも必要です。以下のコードで日本の地図を取得し、描画します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Drawing a Map of Japan
+
+To draw the map, the rnaturalearthdata package is also required.
+The following code obtains and draws a map of Japan.
+
+:::::
+
 ```{.r}
 install.packages("rnaturalearthdata")
-renv::install("rnaturalearthdata") # renvを使用している場合
+renv::install("rnaturalearthdata") # when using renv
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ライブラリを読み込まなくても問題ありませんが、念のため読み込みます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+It should work without explicitly loading the library, but I load it just in case.
+
+:::::
 
 ```{r}
 library(rnaturalearthdata)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 `ne_countries()`関数を使って日本の地図データを取得し、`plot()`関数で描画します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Use the `ne_countries()` function to obtain map data for Japan, then draw it with `plot()`.
+
+:::::
 
 ```{r}
 japan <- ne_countries(
@@ -54,6 +117,8 @@ japan <- ne_countries(
 )
 plot(japan["geometry"])
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 引数は、以下のように設定しています。  
 
@@ -82,11 +147,55 @@ plot(japan["geometry"])
 パッケージのサイズがCRANの推奨を超えているため、CRANからのインストールができないようです。
 :::
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The arguments are set as follows.
+
+- `scale = "medium"`: obtains medium-resolution map data. `small` and `large` are also available.
+- `country = "Japan"`: specifies map data for Japan.
+- `returnclass = "sf"`: returns the map data as an sf object.
+
+This lets you draw a map of Japan using R.
+Customize the map style and details as needed.
+
+::: {.callout-note}
+## Official Documentation
+
+For details on the `ne_countries()` function, see the official documentation.
+
+- [Get natural earth world country polygons - ne_countries • rnaturalearth](https://ropensci.github.io/rnaturalearth/reference/ne_countries.html)
+:::
+
+## Drawing a Prefecture-Level Map of Japan
+
+To draw a prefecture-level map of Japan, use the `rnaturalearthhires` package.
+Install it from GitHub or R-universe.
+
+::: {.callout-note}
+## Why It Cannot Be Installed from CRAN
+
+It seems that the package cannot be installed from CRAN because its size exceeds the recommended CRAN limit.
+:::
+
+:::::
+
 ```{.r}
 remotes::install_github("ropensci/rnaturalearthhires")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 または、以下のコードでインストールします。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Or install it with the following code.
+
+:::::
 
 ```{.r}
 install.packages(
@@ -96,19 +205,49 @@ install.packages(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 もしくは、renvを使用している場合は、以下のコマンドでインストールします。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+If you use renv, install it with the following command.
+
+:::::
 
 ```{.r}
 renv::install("ropensci/rnaturalearthhires")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 パッケージを読み込みます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Load the package.
+
+:::::
 
 ```{r}
 library(rnaturalearthhires)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 県別の日本地図を取得し、描画します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Obtain a prefecture-level map of Japan and draw it.
+
+:::::
 
 ```{r}
 japan_prefectures <- ne_states(
@@ -117,6 +256,8 @@ japan_prefectures <- ne_states(
 )
 plot(japan_prefectures["name_ja"])
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 海岸線もきれいに描画されていますね。
 
@@ -132,3 +273,26 @@ plot(japan_prefectures["name_ja"])
 
 - [High Resolution World Vector Map Data from Natural Earth used in rnaturalearth • rnaturalearthhires](https://docs.ropensci.org/rnaturalearthhires/index.html)
 - [rnaturalearthhires - GitHub](https://github.com/ropensci/rnaturalearthhires)
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The coastline is drawn neatly as well.
+
+::: {.callout-note}
+## Official Documentation
+
+For details on the `ne_states()` function, see the official documentation.
+
+- [Get natural earth world state (admin level 1) polygons - ne_states • rnaturalearth](https://ropensci.github.io/rnaturalearth/reference/ne_states.html)
+:::
+
+## References
+
+- [High Resolution World Vector Map Data from Natural Earth used in rnaturalearth • rnaturalearthhires](https://docs.ropensci.org/rnaturalearthhires/index.html)
+- [rnaturalearthhires - GitHub](https://github.com/ropensci/rnaturalearthhires)
+
+:::::
+
+

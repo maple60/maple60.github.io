@@ -60,10 +60,22 @@ jobs:
         with:
           cache-version: 2 # Update this if you update renv
 
-      - name: Render and Publish
+      # The English profile writes to _site/en, so it must render after the
+      # Japanese one (a full Japanese render clears _site).
+      - name: Render Japanese site
+        run: quarto render
+        env:
+          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
+
+      - name: Render English site
+        run: quarto render --profile en
+        env:
+          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
+
+      - name: Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python

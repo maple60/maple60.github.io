@@ -1,14 +1,10 @@
+profile:
+  default: ja
+  group:
+    - [ja, en]
+
 project:
   type: website
-  output-dir: _site
-  render:
-    - "*.qmd"
-    - "posts/**/*.qmd"
-    - "en/**/*.qmd"
-  resources: 
-    - posts/
-    - "*.qmd"
-    - "*.png"
 
 website:
   title: "Maple60’s website"
@@ -24,13 +20,13 @@ website:
         text: Works
       - text: English
         menu:
-          - href: en/index.qmd
+          - href: en/index.html
             text: English Home
-          - href: en/posts.qmd
+          - href: en/posts.html
             text: English Posts
-          - href: en/works.qmd
+          - href: en/works.html
             text: English Works
-          - href: en/recommendations.qmd
+          - href: en/recommendations.html
             text: English Recommendations
       - href: recommendations.qmd
         text: Recommendations

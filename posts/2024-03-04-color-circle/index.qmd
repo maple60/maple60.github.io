@@ -1,19 +1,33 @@
 ---
 title: "Rで色相環を作成する"
+title-en: "Creating a Color Wheel in R"
 description: "Rで色相環を作成するコードの紹介"
+description-en: "Code for drawing a color wheel in R."
 date: "2024-03-04"
 date-modified: "2024-03-04"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Creating a Color Wheel in R](../../en/posts/2024-03-04-color-circle/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。
 Rで実現しました。
 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+I originally wrote this code while trying several things with an algorithm called DeepFlow and looking for a figure to insert into the output.
+The implementation uses R.
+
+When this kind of figure is drawn as a vector graphic such as PDF or SVG, the file becomes extremely heavy.
+It is better to draw it as a raster image such as PNG or JPEG. PNG is often a good choice because transparency is frequently useful.
+
+:::::
 
 ```r
 len <- 1000

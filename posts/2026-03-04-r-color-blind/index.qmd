@@ -1,15 +1,17 @@
 ---
 title: "Rで色覚異常のシミュレーションを行う方法"
+title-en: "Simulating Color Vision Deficiency in R"
 description: "Rで`colorspace`パッケージを使って色覚異常のシミュレーションをする方法をまとめます"
+description-en: "How to simulate color vision deficiency in R with the `colorspace` package."
 date: "2026-03-04"
 date-modified: "2026-03-04"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Simulating Color Vision Deficiency in R](../../en/posts/2026-03-04-r-color-blind/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 ## 色覚多様性
 
@@ -48,20 +50,75 @@ Rの`colorspace`パッケージを使うと、色覚異常のシミュレーシ�
 インストールされていなかったら、以下のコードを実行してインストールしてください。
 その後、`library(colorspace)`でパッケージを読み込みます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Color Vision Diversity
+
+People differ in how they perceive colors.
+Cases where color perception differs greatly from that of many people are called **color vision deficiency**.
+
+::: {.callout-note}
+In Japanese, color vision deficiency used to be commonly called a term equivalent to "color blindness," but today a term closer to "color vision deficiency" is more common.
+This is probably because wording that literally includes "blindness" may create the misconception that no colors can be distinguished at all.
+"Color vision deficiency" itself seems to be a medical term, and expressions such as color vision deficiency or color vision diversity are generally preferred.
+
+It can sometimes feel as if many Japanese terms are being changed too aggressively, but it may still be important to choose expressions that do not make the listener uncomfortable.
+:::
+
+::: {.callout-note}
+In English, this is called "color blindness" or "color vision deficiency."
+In papers, "color vision deficiency" is common, and it is often abbreviated as CVD.
+:::
+
+## Types of Color Vision Deficiency
+
+The main types are as follows.
+
+- **Protanopia**: a type where cones sensitive to red, or L cones, are absent. Red appears darker, and distinguishing red from green becomes difficult.
+- **Deuteranopia**: a type where cones sensitive to green, or M cones, are absent. Distinguishing red from green becomes difficult, but the change in brightness is not as large as in protanopia.
+- **Tritanopia**: a type where cones sensitive to blue, or S cones, are absent. Distinguishing colors such as blue and yellow becomes difficult.
+
+Many cases are protanopia or deuteranopia.
+Because these relate to distinguishing red and green, they are sometimes grouped as red-green color vision deficiency.
+
+There is also achromatopsia, in which all cones do not function, but it is very rare.
+
+## Simulating Color Vision Deficiency in R
+
+With the `colorspace` package in R, color vision deficiency can be simulated easily.
+If it is not installed, run the following code to install it.
+Then load the package with `library(colorspace)`.
+
+:::::
+
 ```{r}
-# install.packages("colorspace") もしインストールされていなかったら
-# renv::install("colorspace") renvを使っている場合
+# install.packages("colorspace") if it is not installed
+# renv::install("colorspace") when using renv
 library(colorspace)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 色のベクトルを用意し、`deutan()` (2型色覚), `protan()` (1型色覚), `tritan()` (3型色覚)を使って、色覚異常のシミュレーションを行います。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Prepare a vector of colors, then use `deutan()` for deuteranopia, `protan()` for protanopia, and `tritan()` for tritanopia to simulate color vision deficiency.
+
+:::::
+
 ```{r}
-colors <- c("red", "green", "blue", "yellow") # 赤、緑、青、黄の色ベクトル
-colors_protan <- protan(colors) # 1型色覚のシミュレーション
-colors_deutan <- deutan(colors) # 2型色覚のシミュレーション
-colors_tritan <- tritan(colors) # 3型色覚のシミュレーション
+colors <- c("red", "green", "blue", "yellow") # color vector: red, green, blue, yellow
+colors_protan <- protan(colors) # simulation of protanopia
+colors_deutan <- deutan(colors) # simulation of deuteranopia
+colors_tritan <- tritan(colors) # simulation of tritanopia
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-note}
 ## 色覚異常の程度
@@ -72,6 +129,22 @@ colors_tritan <- tritan(colors) # 3型色覚のシミュレーション
 :::
 
 プロットしてみます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+## Severity of Color Vision Deficiency
+
+The simulation functions have an argument called `severity`.
+The default is `severity = 1`, which simulates complete color vision deficiency.
+By adjusting this argument from 0 to 1, the degree of color vision deficiency can be simulated.
+:::
+
+Plot the colors.
+
+:::::
 
 ```{r}
 par(mfrow = c(1, 4))
@@ -89,6 +162,8 @@ barplot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ProtanopiaとDeuteranopiaは、赤と緑の区別が難しくなっていることがわかります。
 また、黄色は赤と緑の混合色であるため、ProtanopiaとDeuteranopiaの両方で、黄色も赤や緑と区別が難しくなっています。
 
@@ -96,6 +171,20 @@ Tritanopiaは、青と黄色の区別が難しくなるといわれますが、S
 緑と青が区別しにくくなっていることがわかります。
 
 棒グラフだとまだわかりにくいかもしれませんが、プロットの点が多い場合などは致命的な問題になることもあります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+In protanopia and deuteranopia, red and green become difficult to distinguish.
+Because yellow is a mixture of red and green, yellow also becomes harder to distinguish from red or green in both protanopia and deuteranopia.
+
+Tritanopia is said to make blue and yellow difficult to distinguish, but because S cones are absent, distinctions among blue, cyan, and green may also become weaker.
+You can see that green and blue become harder to distinguish.
+
+This may still be hard to see in a bar plot, but when there are many plotted points, it can become a serious problem.
+
+:::::
 
 ```{r}
 set.seed(1)
@@ -108,10 +197,20 @@ plot(x, y, col = colors_deutan, pch = 16, cex = 2, main = "Deuteranopia")
 plot(x, y, col = colors_tritan, pch = 16, cex = 2, main = "Tritanopia")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 Rのバージョン4以降のデフォルトカラーパレットでも検証してみます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Now test the default color palette from R version 4 and later.
+
+:::::
+
 ```{r}
-colors_default <- palette() # Rのデフォルトカラーパレット
+colors_default <- palette() # R's default color palette
 colors_default_protan <- protan(colors_default)
 colors_default_deutan <- deutan(colors_default)
 colors_default_tritan <- tritan(colors_default)
@@ -155,6 +254,8 @@ plot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## 色覚多様性への配慮
 
 ### カラーパレットを選ぶ際の注意点
@@ -163,6 +264,21 @@ plot(
 このような問題を避けるためには、色覚異常の人にも区別しやすいカラーパレットを選ぶことが重要です。
 一番簡単な方法は、`palette("Okabe-Ito")`のような、色覚異常の人にも区別しやすいカラーパレットを使用することです。
 このカラーパレットは、色覚異常の人にも区別しやすい色の組み合わせが選ばれています。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Considering Color Vision Diversity
+
+### Points to Note When Choosing a Color Palette
+
+For people with color vision deficiency, certain color combinations can be difficult to distinguish.
+To avoid this problem, it is important to choose color palettes that are easy to distinguish even for people with color vision deficiency.
+The easiest method is to use a palette such as `palette("Okabe-Ito")`, which is designed to be distinguishable for people with color vision deficiency.
+This palette uses color combinations that are easy to distinguish.
+
+:::::
 
 ```{r}
 colors_okabe_ito <- palette("Okabe-Ito")
@@ -192,7 +308,17 @@ barplot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 散布図は以下のようになります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The scatter plots are as follows.
+
+:::::
 
 ```{r}
 par(mfrow = c(2, 2))
@@ -223,6 +349,8 @@ plot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ### 色覚異常の人にとって重要な情報を色以外の方法で伝える
 
 色覚異常の人にとって、色だけで情報を伝えるのは難しいことがあります。
@@ -230,6 +358,20 @@ plot(
 
 例えば、グラフの点の形を変える、線の種類を変える、テキストで説明するなどの方法があります。
 個人的には、`pch`引数を使って点の形を変える方法が簡単で効果的だと思い、よく利用しています。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Convey Important Information with Methods Other Than Color
+
+For people with color vision deficiency, conveying information only with color can be difficult.
+Therefore, it is also important to communicate important information through methods other than color.
+
+Examples include changing point shapes in graphs, changing line types, and adding text explanations.
+Personally, I often use the `pch` argument to change point shapes because it is easy and effective.
+
+:::::
 
 ```{r}
 set.seed(1)
@@ -254,10 +396,23 @@ points(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## 明度差を確保する
 
 赤と緑の区別が難しい場合でも、明度差があれば区別しやすくなります。
 例えば、以下のような赤と緑の組み合わせは、明度差が小さいため、protanopiaやdeuteranopiaの人にとって区別が難しいです。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Ensure Sufficient Brightness Contrast
+
+Even when red and green are difficult to distinguish, sufficient brightness contrast can make them easier to tell apart.
+For example, the following red and green combination has little brightness contrast, so it is difficult for people with protanopia or deuteranopia to distinguish.
+
+:::::
 
 ```{r}
 colors <- c("#932922", "#526907")
@@ -272,7 +427,17 @@ barplot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 一方、以下のような赤と緑の組み合わせは、明度差が大きいため、protanopiaやdeuteranopiaの人にとって区別しやすいです。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+On the other hand, the following red and green combination has a large brightness difference, making it easier for people with protanopia or deuteranopia to distinguish.
+
+:::::
 
 ```{r}
 colors <- c("#FF4B00", "#03AF7A")
@@ -287,8 +452,25 @@ barplot(
 )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 それでも、色覚異常の人にとっては、多くの人よりも区別は難しいため、明度差だけに頼るのではなく、色以外の方法も併用することが重要です。
 
 また、明度差を確保することは、グレースケール印刷の面でも重要です。
 明度差が小さいと、色覚多様性に関係なく、グレースケール印刷の際に区別が難しくなります。
 そのような意味でも明度差に配慮することは重要です。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Even so, people with color vision deficiency may still find the colors harder to distinguish than many other people do.
+Therefore, it is important not to rely only on brightness contrast, but also to use methods other than color.
+
+Maintaining brightness contrast is also important for grayscale printing.
+When brightness contrast is small, it becomes difficult to distinguish elements in grayscale printing regardless of color vision diversity.
+In that sense as well, paying attention to brightness contrast is important.
+
+:::::
+
+

@@ -1,15 +1,17 @@
 ---
 title: "Rでベクトルを作成する"
+title-en: "Creating Vectors in R"
 description: "Rでベクトルを作成するいろいろな方法をまとめます"
+description-en: "A summary of several ways to create vectors in R."
 date: "2024-06-18"
 date-modified: "2024-06-18"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Creating Vectors in R](../../en/posts/2024-06-18-r-vector/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Rでベクトルを作成するいろいろな方法をまとめます。
 ここで紹介する関数は以下になります。
@@ -28,15 +30,50 @@ Rで最も簡単なベクトルの作成方法は`c()`と`:`を使用するこ�
 `c()`の中にカンマ(`,`)区切りで値を並べるとベクトルになります。
 `c`はcombine(結合する)に由来しています。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This post summarizes several ways to create vectors in R.
+The functions introduced here are:
+
+- `c()`
+- `:`
+- `seq()`
+- `seq_len()`
+- `seq_along()`
+- `rep()`
+
+## `c()` and `:`
+
+The simplest ways to create vectors in R are `c()` and `:`.
+
+If you list values separated by commas inside `c()`, the result is a vector.
+The name `c` comes from "combine."
+
+:::::
+
 ```{r}
 c(1, 2, 3)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 `[start]:[end]`という感じで、始点と終点を指定してベクトルを作成することもできます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+You can also create a vector by specifying a start and end point in the form `[start]:[end]`.
+
+:::::
 
 ```{r}
 1:3
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 これらは非常に頻繁に使用するので、覚えておくと便利です。
 
@@ -46,52 +83,132 @@ c(1, 2, 3)
 
 最も基本的な使い方は、始めと終わりの数を指定してベクトルを作成する方法です。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+These are used very frequently, so they are worth remembering.
+
+## `seq()`
+
+The `seq()` function comes from "sequence." As the name suggests, it arranges values according to the arguments supplied inside `()`.
+
+The most basic use is to create a vector by specifying the first and last values.
+
+:::::
+
 ```{r}
 seq(1, 3) # seq(start, end)
 ```
 
 ```{r}
-seq(from = 1, to = 3) # 丁寧な書き方
+seq(from = 1, to = 3) # explicit form
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 値を一つだけ指定すると、1からその数まで1ずつ増加するベクトルを作成します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+If you specify only one value, `seq()` creates a vector that increases by 1 from 1 to that value.
+
+:::::
 
 ```{r}
 seq(3)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 1から始まる場合は、`seq_len()`関数を使用したほうが速く動きます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+When the sequence starts from 1, `seq_len()` is faster.
+
+:::::
+
 ```{r}
-seq_len(5) # 1~5までのベクトル
+seq_len(5) # vector from 1 to 5
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ### 上昇幅を指定してベクトルを作成する
 
 デフォルトでは1ずつ上昇しますが、引数`by`を変更すると上昇数値を変更できます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Creating a Vector with a Specified Step Size
+
+By default, the value increases by 1, but you can change the step size with the `by` argument.
+
+:::::
+
 ```{r}
-seq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加
+seq(from = 1, to = 3, by = 0.5) # increase by 0.5
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ### 長さを指定してベクトルを作成する
 
 引数`length.out`を指定すると、長さを指定してベクトルを作成できます。
 始めと終わりの値を等間隔に分割してくれます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Creating a Vector with a Specified Length
+
+If you specify the `length.out` argument, you can create a vector with a specified length.
+R divides the range between the first and last values into equal intervals.
+
+:::::
+
 ```{r}
-seq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル
+seq(from = 1, to = 3, length.out = 6) # vector of length 6
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 あるベクトルと同じ長さのベクトルを作成するには`seq_along()`を使用します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Use `seq_along()` to create a vector with the same length as another vector.
+
+:::::
 
 ```{r}
 x <- seq_along(c("A", "B", "C", "D", "E"))
 seq_along(x)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 これは、`for`ループを使用する際に便利です。
 `for`ループを書く時、下のように書くことが多いと思います。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This is useful when writing `for` loops.
+It is common to write a `for` loop like this:
+
+:::::
 
 ```{r}
 x <- c("A", "B", "C", "D", "E")
@@ -100,7 +217,17 @@ for (i in 1:length(x)) {
 }
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 これを`seq_along()`を用いて書き直すと、以下のようになります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Using `seq_along()`, it can be rewritten as follows.
+
+:::::
 
 ```{r}
 x <- c("A", "B", "C", "D", "E")
@@ -109,6 +236,8 @@ for (i in seq_along(x)) {
 }
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 あまり違いはありませんが、ループに用いるベクトルの長さが0(空ベクトル)の場合の処理が変わります。
 
 ## `rep()`
@@ -116,35 +245,91 @@ for (i in seq_along(x)) {
 同じ値を繰り返すベクトルを作成するには、`rep()`関数を使用します。
 repeatに由来します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+There is not much visible difference, but the behavior changes when the vector used in the loop has length 0, that is, when it is an empty vector.
+
+## `rep()`
+
+Use the `rep()` function to create a vector by repeating the same value.
+The name comes from "repeat."
+
+:::::
+
 ```{r}
-rep(3, 5) # 3を5回繰り返す
+rep(3, 5) # repeat 3 five times
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ベクトルを繰り返すこともできます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+You can also repeat a vector.
+
+:::::
+
 ```{r}
-rep(1:3, 3) # 1~3を3回繰り返す
-rep(1:3, times = 3) # 上と同じ
+rep(1:3, 3) # repeat 1 to 3 three times
+rep(1:3, times = 3) # same as above
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 それぞれの値をまとめて繰り返すこともできます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Each value can also be repeated as a block.
+
+:::::
+
 ```{r}
-rep(1:3, each = 3) # それぞれの値を3回繰り返す
+rep(1:3, each = 3) # repeat each value three times
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 繰り返す回数を値ごとに指定できます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+You can specify the number of repeats for each value.
+
+:::::
+
 ```{r}
-rep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回
+rep(1:3, c(1, 2, 1)) # 1 once, 2 twice, 3 once
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 長さを指定することもできます。
 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+You can also specify the length.
+Because the length takes priority, the repetition is truncated if needed.
+
+:::::
+
 ```{r}
-rep(1:3, length.out = 5) # 長さ5まで繰り返す
+rep(1:3, length.out = 5) # repeat up to length 5
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ## 活用例
 
@@ -152,12 +337,41 @@ rep(1:3, length.out = 5) # 長さ5まで繰り返す
 例えば、A~Cまでのグループをデータシートの各行に振りたい時は`rep(c("A", "B", "C"), each = 5)`とすれば、簡単にグループを作成することができます。
 また、サインカーブなどの関数を描画したいときは、以下のようにすると簡単に関数を描画できます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Examples
+
+These vector creation methods are useful when creating IDs or groups in data frames, or when interpolating points for plots.
+For example, if you want to assign groups A to C to rows in a data sheet, `rep(c("A", "B", "C"), each = 5)` makes that easy.
+
+If you want to draw a function such as a sine curve, you can do it simply as follows.
+
+:::::
+
 ```{r}
 x <- seq(from = 0, to = pi, length.out = 100)
 plot(x, sin(x))
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## まとめ
 
 個人的には`c()`や`:`はほぼ毎日出てきますが、`seq()`系や`rep()`はたまに使うといった程度なので、ふと長いベクトルが必要なときにサクッとできないことも多いです。
 調べればすぐに分かりますが、必要なときに簡単に作成できると便利だと思いました。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Summary
+
+Personally, I use `c()` and `:` almost every day, while I use the `seq()` family and `rep()` only occasionally.
+Because of that, when I suddenly need a long vector, I sometimes cannot produce it immediately.
+It is easy to look up, but it is useful to be able to create the needed vector quickly.
+
+:::::
+
+
