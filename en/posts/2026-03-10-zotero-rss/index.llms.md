@@ -12,9 +12,7 @@ Modified
 
 2026-03-10
 
-> **NOTE:**
->
-> Original Japanese version: [ZoteroでRSSフィードを作成する方法](../../../posts/2026-03-10-zotero-rss/index.llms.md)
+[日本語版](../../../posts/2026-03-10-zotero-rss/)
 
 ## What Is Zotero?
 

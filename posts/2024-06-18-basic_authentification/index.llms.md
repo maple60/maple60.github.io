@@ -4,17 +4,15 @@ misc
 
 BASIIC認証を使用したときの注意点についてのメモ
 
-Published
+公開
 
 2024-06-18
 
-Modified
+更新日
 
 2024-06-18
 
-> **NOTE:**
->
-> English version: [Things I Got Stuck on with BASIC Authentication](../../en/posts/2024-06-18-basic_authentification/index.llms.md)
+[English version](../../en/posts/2024-06-18-basic_authentification/)
 
 BASIC認証を使用したときのメモです。
 

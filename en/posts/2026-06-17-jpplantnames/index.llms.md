@@ -2,10 +2,6 @@
 
 r
 
-package
-
-taxonomy
-
 A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches.
 
 Published
@@ -16,9 +12,7 @@ Modified
 
 2026-06-17
 
-> **NOTE:**
->
-> Original Japanese version: [jpplantnames Rパッケージについて](../../../posts/2026-06-17-jpplantnames/index.llms.md)
+[日本語版](../../../posts/2026-06-17-jpplantnames/)
 
 This is a short overview of the `jpplantnames` R package, which I recently created. See the documentation below.
 
@@ -48,252 +42,57 @@ You can get a scientific name from a Japanese plant name with [`scientific_name(
 scientific_name("コナラ")
 ```
 
-> **NOTE:**
->
-> ``` text
-> [1] "Quercus serrata"
-> ```
-
-If you also want author information, set `with_author = TRUE`.
-
 ``` downlit
 scientific_name("コナラ", with_author = TRUE)
 ```
-
-> **NOTE:**
->
-> ``` text
-> [1] "Quercus serrata Murray"
-> ```
-
-You can also pass a vector when you want to retrieve scientific names for multiple Japanese names at once.
 
 ``` downlit
 scientific_name(c("コナラ", "アカマツ", "イチョウ"))
 ```
 
-> **NOTE:**
->
-> ``` text
-> [1] "Quercus serrata"  "Pinus densiflora" "Ginkgo biloba"
-> ```
-
-## Getting a Japanese Name from a Scientific Name
-
-Use [`japanese_name_search()`](https://maple60.github.io/jpplantnames/reference/japanese_name_search.html) when you want to retrieve Japanese names from a scientific name.
-
 ``` downlit
 japanese_name_search("Quercus serrata", field = "scientific")
 ```
-
-> **NOTE:**
->
-> ``` text
->                      和名                   別名                                        学名 source
-> 1                  コナラ                 コナラ                             Quercus serrata     GL
-> 2                  コナラ                 ハハソ                             Quercus serrata     GL
-> 3                  コナラ                   ナラ                             Quercus serrata     GL
-> 4            シダレコナラ           シダレコナラ                Quercus serrata f. dependens     GL
-> 5            テリハコナラ           テリハコナラ                 Quercus serrata f. donarium     GL
-> 6            ナガミコナラ           ナガミコナラ               Quercus serrata f. longicarpa     GL
-> ...
-> 31           マルバコナラ           ビワバコナラ Quercus serrata var. pseudovariabilis     YL
-> ```
-
-In this search, all records whose scientific name contains `"Quercus serrata"` are returned. If you want Japanese names that exactly match a specific scientific name, set `exact = TRUE`.
 
 ``` downlit
 japanese_name_search("Quercus serrata", field = "scientific", exact = TRUE)
 ```
 
-> **NOTE:**
->
-> ``` text
->     和名           別名             学名 source
-> 1 コナラ         コナラ Quercus serrata     GL
-> 2 コナラ         ハハソ Quercus serrata     GL
-> 3 コナラ           ナラ Quercus serrata     GL
-> 4 コナラ         コナラ Quercus serrata     YL
-> 5 コナラ アツカワコナラ Quercus serrata     YL
-> 6 コナラ           ナラ Quercus serrata     YL
-> 7 コナラ         ハハソ Quercus serrata     YL
-> ```
-
-Even with exact matching, multiple records may be returned. This happens because multiple Japanese names and aliases may be registered for the same species, such as Konara.
-
-## Searching for Ambiguous Japanese Names
-
-When field notes are digitized, typos may appear in Japanese plant names. For example, `"コナラ"` might accidentally be entered as `"コラナ"`. In such cases, you can use [`japanese_name_suggest()`](https://maple60.github.io/jpplantnames/reference/japanese_name_suggest.html) to search for likely correct Japanese names from an ambiguous input.
-
 ``` downlit
 japanese_name_suggest("コラナ")
 ```
-
-> **NOTE:**
->
-> ``` text
->     query matched_value distance     score match_type   和名           別名             学名 source
-> 1  コラナ        コナラ        1 0.3333333      fuzzy コナラ         コナラ Quercus serrata     GL
-> 2  コラナ        コナラ        1 0.3333333      fuzzy コナラ         ハハソ Quercus serrata     GL
-> 3  コラナ        コナラ        1 0.3333333      fuzzy コナラ           ナラ Quercus serrata     GL
-> 4  コラナ        コナラ        1 0.3333333      fuzzy コナラ         コナラ Quercus serrata     WF
-> 5  コラナ        コナラ        1 0.3333333      fuzzy コナラ         ハハソ Quercus serrata     WF
-> 6  コラナ        ガラナ        1 0.3333333      fuzzy ガラナ         ガラナ  Paullinia cupana     WF
-> ```
-
-Another possible typo is entering `"タロヨウ"` instead of `"タラヨウ"`.
 
 ``` downlit
 japanese_name_suggest("タロヨウ")
 ```
 
-> **NOTE:**
->
-> ``` text
->      query matched_value distance score match_type       和名       別名                                  学名 source
-> 1  タロヨウ      タラヨウ        1  0.25      fuzzy   タラヨウ   タラヨウ                       Ilex latifolia     GL
-> 2  タロヨウ      タラヨウ        1  0.25      fuzzy   タラヨウ   タラヨウ                       Ilex latifolia     WF
-> 3  タロヨウ      タラヨウ        1  0.25      fuzzy   タラヨウ   タラヨウ                       Ilex latifolia     YL
-> 4  タロヨウ    キタゴヨウ        2  0.40      fuzzy キタゴヨウ キタゴヨウ    Pinus parviflora var. pentaphylla     GL
-> 5  タロヨウ    キタゴヨウ        2  0.40      fuzzy キタゴヨウ キタゴヨウ    Pinus parviflora var. pentaphylla     WF
-> ```
-
-This fuzzy search compares the entered Japanese name with Japanese names in the checklist and calculates a string distance for each candidate. In the current implementation, when the `stringdist` package is available, it uses [`stringdist::stringdist()`](https://rdrr.io/pkg/stringdist/man/stringdist.html) with `method = "osa"`. `osa` means Optimal String Alignment distance, or restricted Damerau-Levenshtein distance, which considers adjacent character transpositions in addition to insertions, deletions, and substitutions. This makes it possible to suggest close candidates for Japanese names that include simple typos or swapped character order.
-
-## Matching Scientific Names Against GBIF
-
-You can match scientific names against [GBIF](https://www.gbif.org/) (Global Biodiversity Information Facility) with [`gbif_match()`](https://maple60.github.io/jpplantnames/reference/gbif_match.html).
-
 ``` downlit
 gbif_match("Quercus serrata")
 ```
-
-> **NOTE:**
->
-> ``` text
->             input usageKey         scientificName   canonicalName    rank   status confidence
-> 1 Quercus serrata  2879649 Quercus serrata Murray Quercus serrata SPECIES ACCEPTED         97
->   matchType kingdom   family   genus         species
-> 1     EXACT Plantae Fagaceae Quercus Quercus serrata
-> ```
-
-## Matching Scientific Names Against WFO
-
-You can also match scientific names against another database, [WFO](https://wfoplantlist.org/) (World Flora Online).
 
 ``` downlit
 wfo_accepted_name("Quercus serrata")
 ```
 
-> **NOTE:**
->
-> ``` text
->             input matched_wfo_id           matched_name matched_name_no_author matched_rank
-> 1 Quercus serrata wfo-0000293164 Quercus serrata Murray        Quercus serrata      species
->   matched_role accepted_wfo_id          accepted_name accepted_name_no_author accepted_rank
-> 1     accepted  wfo-0000293164 Quercus serrata Murray         Quercus serrata       species
->   accepted_role is_accepted n_candidates match_status cached
-> 1      accepted        TRUE           10    ambiguous   TRUE
-> ```
-
-Use [`wfo_suggest()`](https://maple60.github.io/jpplantnames/reference/wfo_suggest.html) when you want to search by partial match.
-
 ``` downlit
 wfo_suggest("Quercus serrata")
 ```
-
-> **NOTE:**
->
-> ``` text
->              input         wfo_id                                      name
-> 1  Quercus serrata wfo-0000293164                    Quercus serrata Murray
-> 2  Quercus serrata wfo-0000293165                     Quercus serrata Roxb.
-> 3  Quercus serrata wfo-0001062616                    Quercus serrata Thunb.
-> 4  Quercus serrata wfo-0000293167      Quercus serrata var. attenuata Blume
-> 5  Quercus serrata wfo-0000293168 Quercus serrata var. brevipetiolata (A.DC.) Nakai
-> ...
-> ```
-
-## Getting Species Information from a Japanese Name
-
-You can also retrieve species-related information from a Japanese name. Use [`japanese_name_info()`](https://maple60.github.io/jpplantnames/reference/japanese_name_info.html) for this. It is usually convenient to store the result in a variable. Printing the object gives a short summary.
 
 ``` downlit
 jp_info <- japanese_name_info("コナラ")
 print(jp_info)
 ```
 
-> **NOTE:**
->
-> ``` text
-> Japanese name info: コナラ
->
-> Japanese-name checklist:
->   Scientific name: Quercus serrata Murray
->   Candidates: 9
->   Status: matched
->
-> Use x$summary, x$japanese_name, x$wfo, and x$gbif for data frames.
-> ```
-
-This is a **short report saying that the Japanese name `"コナラ"` matched `Quercus serrata Murray` in the checklist and had 9 candidate rows**.
-
-The object is a list, so you can access detailed information with `$`. Use `$summary` to expand the short report as a data frame.
-
 ``` downlit
 jp_info$summary
 ```
 
-> **NOTE:**
->
-> ``` text
->    input matched japanese_name scientific_name scientific_name_with_author n_japanese_name_candidates match_status
-> 1 コナラ    TRUE        コナラ Quercus serrata      Quercus serrata Murray                          9      matched
-> ```
-
-Use `$japanese_name` to expand the Japanese-name information as a data frame.
-
 ``` downlit
 jp_info$japanese_name
 ```
-
-> **NOTE:**
->
-> ``` text
->   input  query is_preferred   和名           別名                                        学名 source
-> 1 コナラ コナラ         TRUE コナラ         コナラ                             Quercus serrata     GL
-> 2 コナラ コナラ        FALSE コナラ         ハハソ                             Quercus serrata     GL
-> 3 コナラ コナラ        FALSE コナラ           ナラ                             Quercus serrata     GL
-> 4 コナラ コナラ        FALSE コナラ         コナラ Quercus serrata subsp. serrata var. serrata     WF
-> 5 コナラ コナラ        FALSE コナラ         ハハソ Quercus serrata subsp. serrata var. serrata     WF
-> 6 コナラ コナラ        FALSE コナラ         コナラ                             Quercus serrata     YL
-> 7 コナラ コナラ        FALSE コナラ アツカワコナラ                             Quercus serrata     YL
-> 8 コナラ コナラ        FALSE コナラ           ナラ                             Quercus serrata     YL
-> 9 コナラ コナラ        FALSE コナラ         ハハソ                             Quercus serrata     YL
-> ```
-
-If you want to compare the result with GBIF or WFO data, set `wfo = TRUE` or `gbif = TRUE`.
 
 ``` downlit
 jp_info <- japanese_name_info("コナラ", wfo = TRUE, gbif = TRUE)
 jp_info$wfo
 jp_info$gbif
 ```
-
-> **NOTE:**
->
-> ``` text
->             input matched_wfo_id           matched_name matched_name_no_author matched_rank
-> 1 Quercus serrata wfo-0000293164 Quercus serrata Murray        Quercus serrata      species
->   matched_role accepted_wfo_id          accepted_name accepted_name_no_author accepted_rank
-> 1     accepted  wfo-0000293164 Quercus serrata Murray         Quercus serrata       species
->   accepted_role is_accepted n_candidates match_status cached
-> 1      accepted        TRUE           10    ambiguous   TRUE
->
->             input usageKey         scientificName   canonicalName    rank   status confidence
-> 1 Quercus serrata  2879649 Quercus serrata Murray Quercus serrata SPECIES ACCEPTED         97
->   matchType kingdom   family   genus         species
-> 1     EXACT Plantae Fagaceae Quercus Quercus serrata
-> ```
-
-In short, `japanese_name_info` is a helper that brings together the functions introduced above.

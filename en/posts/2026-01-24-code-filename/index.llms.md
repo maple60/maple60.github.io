@@ -12,9 +12,7 @@ Modified
 
 2026-01-24
 
-> **NOTE:**
->
-> Original Japanese version: [Quartoでコードブロックのファイル名を表示する](../../../posts/2026-01-24-code-filename/index.llms.md)
+[日本語版](../../../posts/2026-01-24-code-filename/)
 
 This is a note on how to show file names on code blocks. You can show a file name by adding the `filename` attribute to a code block.
 

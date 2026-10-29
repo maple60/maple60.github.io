@@ -14,9 +14,7 @@ Modified
 
 2026-02-25
 
-> **NOTE:**
->
-> Original Japanese version: [QuartoのサイトをGitHub Actionsでビルドする際、code linkingが正しく動作しない問題の対処法](../../../posts/2026-02-23-github-actions-quarto-code-linking/index.llms.md)
+[日本語版](../../../posts/2026-02-23-github-actions-quarto-code-linking/)
 
 ## Symptom
 

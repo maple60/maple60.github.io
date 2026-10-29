@@ -4,17 +4,15 @@ r
 
 `cumsum`関数で累積和を求めます
 
-Published
+公開
 
 2024-03-14
 
-Modified
+更新日
 
 2024-03-14
 
-> **NOTE:**
->
-> English version: [Calculating Cumulative Sums in R](../../en/posts/2024-03-14-cumsum/index.llms.md)
+[English version](../../en/posts/2024-03-14-cumsum/)
 
 Rで累積和を求める方法です。 累積和は階段状に前に値を足していくものになります。 例えば、1,2,3だったら、最初は1より前はないので1、2つ目は\\1+2=3\\、3つ目は\\3+3=6\\になるので、結果は1,3,6ということになります。 Rでは`cumsum`関数を用いて以下のように簡単に計算ができます。
 

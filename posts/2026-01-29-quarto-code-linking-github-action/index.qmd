@@ -1,15 +1,17 @@
 ---
 title: "Github ActionsでQuartoのコードリンク機能を有効にする方法"
+title-en: "Enabling Quarto Code Linking in GitHub Actions"
 description: "Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです"
+description-en: "A note on enabling code linking when building a Quarto website with GitHub Actions."
 date: "2026-01-29"
 date-modified: "2026-01-29"
 draft: false
 categories: [r, quarto]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Enabling Quarto Code Linking in GitHub Actions](../../en/posts/2026-01-29-quarto-code-linking-github-action/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Quartoでウェブサイトを作成する際に、`code-link`オプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。
 この問題を解決した際のメモを残します。
@@ -47,13 +49,57 @@ GitHub ActionsでQuartoのwebsiteをビルドする方法については、以�
 
 `_quarto.yml`ファイルを一部抜粋します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+When creating a website with Quarto, code links did not work after the site was built with GitHub Actions, even though the `code-link` option was enabled.
+This is a note on how I solved that problem.
+Please note that the explanation is somewhat loosely organized.
+
+::: {.callout-caution}
+The `code-link` option is supported only by the knitr engine.
+For that reason, it works only for R code blocks.
+:::
+
+## What Is the `code-link` Option?
+
+The `code-link` option automatically adds documentation links to functions used inside Quarto code blocks.
+When this option is enabled, function names inside code blocks are displayed with links, and clicking them opens the corresponding documentation page.
+
+For example, if you write `plot()`, a link appears when you hover over the function, and clicking it takes you to the official R documentation page for `plot()`.
+If everything is working, the link should be added correctly.
+
+::: {.callout-note}
+See the following official documentation for the `code-link` option.
+
+- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html#code-linking)
+- [HTML Options - Quarto](https://quarto.org/docs/reference/formats/html.html#code)
+:::
+
+## Current Situation
+
+I currently build this Quarto website with GitHub Actions.
+
+::: {.callout-note}
+See the following official documentation for building a Quarto website with GitHub Actions.
+
+- [GitHub Pages - Quarto](https://quarto.org/docs/publishing/github-pages.html#github-action)
+:::
+
+Here is an excerpt from `_quarto.yml`.
+
+:::::
+
 ```{.yaml filename="_quarto.yml"}
 format:
   html:
     code-link: true
-    code-line-numbers: false 
+    code-line-numbers: false
     code-annotations: false
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 これで`code-link`は有効化されるはずです。
 実際に、**ローカル環境でビルドした際には、コードブロック内の関数にドキュメントリンクが追加されていました。**
@@ -68,6 +114,24 @@ GitHub Actionsのビルドでは、code linkingに必要な[downlit](https://dow
 
 そこで、以下のように`.github/workflows/publish.yml`ファイルを修正しました。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This should enable `code-link`.
+In fact, **when I built the site locally, documentation links were added to functions inside code blocks.**
+
+However, **when the site was built with GitHub Actions, code links were not added.**
+When I checked the source code, links to the functions had not been generated.
+
+## Possible Cause and Solution
+
+I suspected that the [downlit](https://downlit.r-lib.org/) package, which is required for code linking, was not working properly during the GitHub Actions build.
+
+So I modified `.github/workflows/publish.yml` as follows.
+
+:::::
+
 ```{.yaml filename=".github/workflows/publish.yml"}
 on:
   workflow_dispatch:
@@ -118,6 +182,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+::::: {.content-visible unless-profile="en"}
+
 これは、Quartoドキュメントの[Example: Knitr with renv](https://quarto.org/docs/publishing/github-pages.html#example-knitr-with-renv)を参考にしつつ、生じたエラーをもとに調整したものです。
 
 `r-version: "4.5.2"`と`Install system dependencies`の部分が具体的な変更点です。
@@ -130,10 +197,30 @@ jobs:
 
 `_quarto.yml`内で`freeze: auto`が設定されていることを確認します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This was adjusted based on errors I encountered, while using the Quarto documentation's [Example: Knitr with renv](https://quarto.org/docs/publishing/github-pages.html#example-knitr-with-renv) as a reference.
+
+The concrete changes were the `r-version: "4.5.2"` setting and the `Install system dependencies` step.
+
+## Steps Toward the Actual Fix
+
+The concrete flow is as follows.
+
+### 1. Check `freeze`
+
+Check that `freeze: auto` is set in `_quarto.yml`.
+
+:::::
+
 ```{.yaml filename="_quarto.yml"}
 execute:
   freeze: auto
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-note}
 freezeオプションについては以下の公式ドキュメントを参照してください。
@@ -143,9 +230,25 @@ freezeオプションについては以下の公式ドキュメントを参照�
 
 その後、一度ローカル環境でサイトをレンダリングします。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+See the following official documentation for the `freeze` option.
+
+- [Managing Execution - Quarto](https://quarto.org/docs/projects/code-execution.html#freeze)
+:::
+
+After that, render the site once in the local environment.
+
+:::::
+
 ```{.bash filename="Terminal"}
 quarto render
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 レンダリング後、`_freeze`フォルダが生成されていることを確認します。
 
@@ -154,9 +257,24 @@ quarto render
 まだ`renv`を使用していない場合、プロジェクトに`renv`をセットアップします。
 もし、`renv`パッケージがインストールされていない場合、以下のコマンドでインストールします。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+After rendering, confirm that the `_freeze` folder has been generated.
+
+### 2. Set Up renv
+
+If you are not already using `renv`, set it up in the project.
+If the `renv` package is not installed, install it with the following command.
+
+:::::
+
 ```{.r}
 install.packages("renv")
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-note}
 `renv`パッケージについては以下の公式ドキュメントを参照してください。
@@ -166,9 +284,25 @@ install.packages("renv")
 
 インストールが完了したら、以下のコマンドで`renv`を初期化します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+See the following official documentation for the `renv` package.
+
+- [Introduction to renv - renv](https://rstudio.github.io/renv/articles/renv.html)
+:::
+
+After installation, initialize `renv` with the following command.
+
+:::::
+
 ```{.r}
 renv::init()
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 `renv`が初期化されると、プロジェクトに`renv.lock`ファイルなどの関連ファイルやフォルダが生成されます。
 これらのファイルはGitHubリポジトリにコミットします。
@@ -181,13 +315,43 @@ renv::init()
 
 以下のコマンドを実行します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+When `renv` is initialized, related files and folders such as `renv.lock` are generated in the project.
+Commit these files to the GitHub repository.
+
+::: {.callout-note}
+Directories such as `renv/library` are included in `renv/.gitignore`, so they are not committed.
+The default settings are fine.
+:::
+
+### 3. Initialize the Publishing Site and Create the Branch
+
+Run the following command.
+
+:::::
+
 ```{.bash filename="Terminal"}
 quarto publish gh-pages
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ### 4. Github Actionsワークフローファイルの作成
 
 `.github/workflows/publish.yml`ファイルを作成し、以下のように設定します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### 4. Create the GitHub Actions Workflow File
+
+Create `.github/workflows/publish.yml` and configure it as follows.
+
+:::::
 
 ```{.yaml filename=".github/workflows/publish.yml"}
 on:
@@ -240,6 +404,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 このファイルで行っていることを簡単に列挙すると以下の通りです。
 
 - リポジトリのチェックアウト
@@ -251,6 +417,23 @@ jobs:
 
 また、以下の部分のRのバージョンについては、`renv`で使用しているRのバージョンに合わせることで、問題が起こりにくくなると思います。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+In short, this file does the following:
+
+- Checks out the repository
+- Sets up Quarto
+- Installs R
+- Installs required system dependencies
+- Installs R packages with `renv`
+- Renders and publishes the Quarto document
+
+For the R version in the following part, it is probably safer to match the version of R used by `renv`.
+
+:::::
+
 ```{.yaml filename=".github/workflows/publish.yml"}
       - name: Install R
         uses: r-lib/actions/setup-r@v2
@@ -258,7 +441,18 @@ jobs:
           r-version: "4.5.2"
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 また、`Install system dependencies`の部分はエラーを見ながら追加した部分ですが、その他エラーを見ながら調整してください。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The `Install system dependencies` section was added while checking errors.
+Adjust it as needed based on the errors you see.
+
+:::::
 
 ```{.yaml filename=".github/workflows/publish.yml"}
       - name: Install system dependencies
@@ -275,15 +469,29 @@ jobs:
             pandoc
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ### 5. Githubリポジトリへのコミットとプッシュ
 
 ここまでの変更をGithubリポジトリにコミットし、プッシュします。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### 5. Commit and Push to the GitHub Repository
+
+Commit and push the changes so far to the GitHub repository.
+
+:::::
 
 ```{.bash filename="Terminal"}
 git add .
 git commit -m "Set up GitHub Actions for Quarto with code-linking"
 git push origin main
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 私は最近は[GitHub Desktop](https://github.com/apps/desktop)を使用しているため、GUIでコミットとプッシュを行いました。
 
@@ -300,6 +508,27 @@ GitHub上でActionsタブを確認します。
 
 例えば、`Error: Error: Error installing package 'tiff':`のエラーが生じたときには、`libtiff-dev`を追加することで解決しました。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Recently I have been using [GitHub Desktop](https://github.com/apps/desktop), so I committed and pushed through the GUI.
+
+This triggers GitHub Actions and builds the Quarto website.
+Check the Actions tab on GitHub.
+
+The [official documentation example](https://quarto.org/docs/publishing/github-pages.html#github-action) does not include the `Install system dependencies` section.
+
+However, in my environment, without this section the build failed with an error in the `Install R Dependencies` step.
+
+Specifically, I saw errors such as `Error: Error: Error installing package 'tiff':`.
+
+If this kind of error appears, try adding the `Install system dependencies` section.
+
+For example, when the `Error: Error: Error installing package 'tiff':` error appeared, adding `libtiff-dev` solved it.
+
+:::::
+
 ```{.yaml filename=".github/workflows/publish.yml"}
       - name: Install system dependencies
         run: |
@@ -307,6 +536,8 @@ GitHub上でActionsタブを確認します。
           sudo apt-get install -y \
             libtiff-dev \
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 このような試行錯誤を何度か繰り返し、最終的な`.github/workflows/publish.yml`ファイルが先述のように完成しました。
 
@@ -322,14 +553,46 @@ GitHub上でActionsタブを確認します。
 
 `Render and Publish`のステップで以下のような警告が出ていました。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+After repeating this kind of trial and error several times, the final `.github/workflows/publish.yml` file became the one shown earlier.
+
+::: {.callout-note}
+Each build action took about eight minutes.
+Persistent trial and error may be necessary.
+I do not know whether my `.github/workflows/publish.yml` file can be used as-is, but I hope it is a useful reference.
+:::
+
+### 6. Add the `downlit` and `xml2` Packages to `renv`
+
+After the steps above, I thought that the GitHub Actions build of the Quarto website would finish without errors and that code links would work correctly, but it still did not work.
+
+The `Render and Publish` step showed the following warning.
+
+:::::
+
 ```{.bash}
 Warning message:
-The downlit and xml2 packages are required for code linking 
+The downlit and xml2 packages are required for code linking
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 どうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。
 
 そこで、レンダリングする`.qmd`ファイルの先頭に以下のように追記しました。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+It seems that these packages were included in my local environment, but they were not recognized as explicit dependencies in the GitHub Actions build environment.
+
+So I added the following lines to the beginning of the `.qmd` file to be rendered.
+
+:::::
 
 ```{.r}
 renv::install(c("downlit", "xml2"))
@@ -337,6 +600,8 @@ library(downlit)
 library(xml2)
 renv::snapshot()
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 この状態でいったんローカルでビルドし、`renv.lock`ファイルが更新されたことを確認します。
 その後、`renv.lock`ファイルをGitHubリポジトリにコミットし、プッシュします。
@@ -345,12 +610,27 @@ renv::snapshot()
 
 その後、先ほど挿入した
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+In this state, I built locally once and confirmed that the `renv.lock` file had been updated.
+Then I committed and pushed the `renv.lock` file to the GitHub repository.
+When I checked the GitHub Actions log, the previous warning no longer appeared.
+When I checked the website actually built on GitHub, code links were working correctly.
+
+After that, code links continued to work even after I removed the lines I had inserted:
+
+:::::
+
 ```{.r}
 renv::install(c("downlit", "xml2"))
 library(downlit)
 library(xml2)
 renv::snapshot()
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 を消去しても問題なくコードリンクが機能していました。
 
@@ -363,3 +643,21 @@ renv::snapshot()
 
 とりとめのない文章になってしまいましたが、Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモを残しました。
 この記事が同じ問題に直面している方の参考になれば幸いです。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+I do not know whether this is the best way, but in my case it worked.
+There may be a better method.
+:::
+
+## Closing Note
+
+This article ended up somewhat scattered, but I wanted to leave a note on enabling code linking when building a Quarto website with GitHub Actions.
+I hope it helps someone facing the same problem.
+
+:::::
+
+

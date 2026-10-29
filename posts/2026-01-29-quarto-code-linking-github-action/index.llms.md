@@ -6,17 +6,15 @@ quarto
 
 Github ActionsでQuartoのwebsiteをビルドする際に、コードリンク機能を有効にする方法についてのメモです
 
-Published
+公開
 
 2026-01-29
 
-Modified
+更新日
 
 2026-01-29
 
-> **NOTE:**
->
-> English version: [Enabling Quarto Code Linking in GitHub Actions](../../en/posts/2026-01-29-quarto-code-linking-github-action/index.llms.md)
+[English version](../../en/posts/2026-01-29-quarto-code-linking-github-action/)
 
 Quartoでウェブサイトを作成する際に、`code-link`オプションを有効にしていても、Github Actionsでビルドした際にコードリンクが機能しませんでした。 この問題を解決した際のメモを残します。 まとまりのない文章になってしまっていること、あらかじめご了承ください。
 
@@ -53,7 +51,7 @@ Quartoでウェブサイトを作成する際に、`code-link`オプションを
 format:
   html:
     code-link: true
-    code-line-numbers: false 
+    code-line-numbers: false
     code-annotations: false
 ```
 
@@ -319,7 +317,7 @@ git push origin main
 
 ``` bash
 Warning message:
-The downlit and xml2 packages are required for code linking 
+The downlit and xml2 packages are required for code linking
 ```
 
 どうやら、ローカルの環境には含まれているものの、GItHub Actionsのビルド環境には明示的依存として認識されていなかったようです。

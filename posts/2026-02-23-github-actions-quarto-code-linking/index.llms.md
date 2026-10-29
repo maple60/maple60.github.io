@@ -6,17 +6,15 @@ github
 
 Quartoでサイトを構築する際、GitHub Actionsでビルドするとcode-linkingが正しく動作しない問題が発生することがあります。本記事では、その原因と対処法について説明します。
 
-Published
+公開
 
 2026-02-25
 
-Modified
+更新日
 
 2026-02-25
 
-> **NOTE:**
->
-> English version: [Fixing Code Linking Problems When Building a Quarto Site with GitHub Actions](../../en/posts/2026-02-23-github-actions-quarto-code-linking/index.llms.md)
+[English version](../../en/posts/2026-02-23-github-actions-quarto-code-linking/)
 
 ## 症状
 
@@ -34,7 +32,7 @@ Modified
 
 ``` bash
 Warning message:
-The downlit and xml2 packages are required for code linking 
+The downlit and xml2 packages are required for code linking
 ```
 
 ## 対処法

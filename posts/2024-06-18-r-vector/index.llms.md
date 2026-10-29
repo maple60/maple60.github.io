@@ -4,17 +4,15 @@ r
 
 Rでベクトルを作成するいろいろな方法をまとめます
 
-Published
+公開
 
 2024-06-18
 
-Modified
+更新日
 
 2024-06-18
 
-> **NOTE:**
->
-> English version: [Creating Vectors in R](../../en/posts/2024-06-18-r-vector/index.llms.md)
+[English version](../../en/posts/2024-06-18-r-vector/)
 
 Rでベクトルを作成するいろいろな方法をまとめます。 ここで紹介する関数は以下になります。
 
@@ -60,7 +58,7 @@ seq(1, 3) # seq(start, end)
     [1] 1 2 3
 
 ``` downlit
-seq(from = 1, to = 3) # 丁寧な書き方
+seq(from = 1, to = 3) # explicit form
 ```
 
     [1] 1 2 3
@@ -76,7 +74,7 @@ seq(3)
 1から始まる場合は、[`seq_len()`](https://rdrr.io/r/base/seq.html)関数を使用したほうが速く動きます。
 
 ``` downlit
-seq_len(5) # 1~5までのベクトル
+seq_len(5) # vector from 1 to 5
 ```
 
     [1] 1 2 3 4 5
@@ -86,7 +84,7 @@ seq_len(5) # 1~5までのベクトル
 デフォルトでは1ずつ上昇しますが、引数`by`を変更すると上昇数値を変更できます。
 
 ``` downlit
-seq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加
+seq(from = 1, to = 3, by = 0.5) # increase by 0.5
 ```
 
     [1] 1.0 1.5 2.0 2.5 3.0
@@ -96,7 +94,7 @@ seq(from = 1, to = 3, by = 0.5) # 0.5ずつ増加
 引数`length.out`を指定すると、長さを指定してベクトルを作成できます。 始めと終わりの値を等間隔に分割してくれます。
 
 ``` downlit
-seq(from = 1, to = 3, length.out = 6) # 長さ6のベクトル
+seq(from = 1, to = 3, length.out = 6) # vector of length 6
 ```
 
     [1] 1.0 1.4 1.8 2.2 2.6 3.0
@@ -147,7 +145,7 @@ for (i in seq_along(x)) {
 同じ値を繰り返すベクトルを作成するには、[`rep()`](https://rdrr.io/r/base/rep.html)関数を使用します。 repeatに由来します。
 
 ``` downlit
-rep(3, 5) # 3を5回繰り返す
+rep(3, 5) # repeat 3 five times
 ```
 
     [1] 3 3 3 3 3
@@ -155,13 +153,13 @@ rep(3, 5) # 3を5回繰り返す
 ベクトルを繰り返すこともできます。
 
 ``` downlit
-rep(1:3, 3) # 1~3を3回繰り返す
+rep(1:3, 3) # repeat 1 to 3 three times
 ```
 
     [1] 1 2 3 1 2 3 1 2 3
 
 ``` downlit
-rep(1:3, times = 3) # 上と同じ
+rep(1:3, times = 3) # same as above
 ```
 
     [1] 1 2 3 1 2 3 1 2 3
@@ -169,7 +167,7 @@ rep(1:3, times = 3) # 上と同じ
 それぞれの値をまとめて繰り返すこともできます。
 
 ``` downlit
-rep(1:3, each = 3) # それぞれの値を3回繰り返す
+rep(1:3, each = 3) # repeat each value three times
 ```
 
     [1] 1 1 1 2 2 2 3 3 3
@@ -177,7 +175,7 @@ rep(1:3, each = 3) # それぞれの値を3回繰り返す
 繰り返す回数を値ごとに指定できます。
 
 ``` downlit
-rep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回
+rep(1:3, c(1, 2, 1)) # 1 once, 2 twice, 3 once
 ```
 
     [1] 1 2 2 3
@@ -185,7 +183,7 @@ rep(1:3, c(1, 2, 1)) # 1は1回、2は2回、3は1回
 長さを指定することもできます。 長さが優先されるので、繰り返しが途中の場合は切り捨てられます。
 
 ``` downlit
-rep(1:3, length.out = 5) # 長さ5まで繰り返す
+rep(1:3, length.out = 5) # repeat up to length 5
 ```
 
     [1] 1 2 3 1 2

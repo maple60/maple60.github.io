@@ -4,17 +4,15 @@ r
 
 Rで色相環を作成するコードの紹介
 
-Published
+公開
 
 2024-03-04
 
-Modified
+更新日
 
 2024-03-04
 
-> **NOTE:**
->
-> English version: [Creating a Color Wheel in R](../../en/posts/2024-03-04-color-circle/index.llms.md)
+[English version](../../en/posts/2024-03-04-color-circle/)
 
 もともとはDeepFlowというアルゴリズムを色々試していたときに、成果物に挿入しようと思って模索したときに作ったコードです。 Rで実現しました。 PDFやSVGといったベクタ形式で描画するとありえないくらい重くなるので、pngやjpegなどラスタ画像(透過すること多いのでPNGがおすすめ)で描画することが必要です。
 

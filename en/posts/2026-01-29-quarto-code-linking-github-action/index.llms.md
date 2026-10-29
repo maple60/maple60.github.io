@@ -14,9 +14,7 @@ Modified
 
 2026-01-29
 
-> **NOTE:**
->
-> Original Japanese version: [Github ActionsでQuartoのコードリンク機能を有効にする方法](../../../posts/2026-01-29-quarto-code-linking-github-action/index.llms.md)
+[日本語版](../../../posts/2026-01-29-quarto-code-linking-github-action/)
 
 When creating a website with Quarto, code links did not work after the site was built with GitHub Actions, even though the `code-link` option was enabled. This is a note on how I solved that problem. Please note that the explanation is somewhat loosely organized.
 

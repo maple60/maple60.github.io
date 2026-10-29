@@ -4,17 +4,15 @@ python
 
 OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。
 
-Published
+公開
 
 2026-06-01
 
-Modified
+更新日
 
 2026-06-18
 
-> **NOTE:**
->
-> English version: [Using OpenAlex from Python](../../en/posts/2026-06-01-openalex-python/index.llms.md)
+[English version](../../en/posts/2026-06-01-openalex-python/)
 
 ## はじめに
 

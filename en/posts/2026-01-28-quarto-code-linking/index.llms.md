@@ -12,9 +12,7 @@ Modified
 
 2026-01-28
 
-> **NOTE:**
->
-> Original Japanese version: [Quartoのコードブロック内の関数にドキュメントリンクをつける方法](../../../posts/2026-01-28-quarto-code-linking/index.llms.md)
+[日本語版](../../../posts/2026-01-28-quarto-code-linking/)
 
 This is a note on how to automatically add documentation links to functions used inside Quarto code blocks. With the `code-link` option, links can be added to the documentation corresponding to functions inside code blocks.
 

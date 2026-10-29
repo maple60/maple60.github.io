@@ -4,17 +4,15 @@ r
 
 rnaturalearthパッケージとrnaturalearthhiresパッケージを使ってRで日本地図を描く方法を紹介します。
 
-Published
+公開
 
 2026-01-31
 
-Modified
+更新日
 
 2026-01-31
 
-> **NOTE:**
->
-> English version: [Drawing a Map of Japan in R](../../en/posts/2026-01-31-r-japan-map/index.llms.md)
+[English version](../../en/posts/2026-01-31-r-japan-map/)
 
 ## パッケージのインストールと読み込み
 
@@ -34,13 +32,15 @@ renv::install("necountries")
 library(rnaturalearth)
 ```
 
+    Warning: package 'rnaturalearth' was built under R version 4.5.3
+
 ## 日本地図の描画
 
 地図を描画するには、rnaturalearthdataパッケージも必要です。以下のコードで日本の地図を取得し、描画します。
 
 ``` downlit
 install.packages("rnaturalearthdata")
-renv::install("rnaturalearthdata") # renvを使用している場合
+renv::install("rnaturalearthdata") # when using renv
 ```
 
 ライブラリを読み込まなくても問題ありませんが、念のため読み込みます。
@@ -49,6 +49,7 @@ renv::install("rnaturalearthdata") # renvを使用している場合
 library(rnaturalearthdata)
 ```
 
+    Warning: package 'rnaturalearthdata' was built under R version 4.5.3
 
     Attaching package: 'rnaturalearthdata'
 
@@ -116,6 +117,8 @@ renv::install("ropensci/rnaturalearthhires")
 ``` downlit
 library(rnaturalearthhires)
 ```
+
+    Warning: package 'rnaturalearthhires' was built under R version 4.5.3
 
 県別の日本地図を取得し、描画します。
 

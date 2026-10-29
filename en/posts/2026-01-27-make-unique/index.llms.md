@@ -12,9 +12,7 @@ Modified
 
 2026-01-27
 
-> **NOTE:**
->
-> Original Japanese version: [Rでベクトルの重複を取り除く方法](../../../posts/2026-01-27-make-unique/index.llms.md)
+[日本語版](../../../posts/2026-01-27-make-unique/)
 
 ## Using the `make.unique()` Function
 

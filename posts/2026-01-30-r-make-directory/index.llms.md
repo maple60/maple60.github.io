@@ -4,17 +4,15 @@ r
 
 `dir.create()`関数を使用してRでディレクトリを作成する方法についてのメモです
 
-Published
+公開
 
 2026-01-30
 
-Modified
+更新日
 
 2026-01-30
 
-> **NOTE:**
->
-> English version: [Creating Directories in R](../../en/posts/2026-01-30-r-make-directory/index.llms.md)
+[English version](../../en/posts/2026-01-30-r-make-directory/)
 
 Rでは、`dir.create()`関数を使用してディレクトリを作成することができます。
 

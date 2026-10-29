@@ -4,17 +4,15 @@ r
 
 Rで大津の二値化を実装
 
-Published
+公開
 
 2026-03-11
 
-Modified
+更新日
 
 2026-03-11
 
-> **NOTE:**
->
-> English version: [Implementing Otsu’s Thresholding in R](../../en/posts/2026-03-11-r-otsu-thresholding/index.llms.md)
+[English version](../../en/posts/2026-03-11-r-otsu-thresholding/)
 
 ## 大津の二値化とは
 
@@ -71,15 +69,15 @@ Modified
 > `magick`は、Rで画像処理を行うためのパッケージです。 画像の読み込み、変換、編集など、様々な機能を提供しています。 `magick`自体はもともとRの画像処理ライブラリではなく、CやC++で書かれたImageMagickという画像処理ライブラリのRバインディングです。
 
 ``` downlit
-#renv::install("magick") もしインストールされていなかったら
+# renv::install("magick") if it is not installed
 library(magick)
 ```
 
-    Linking to ImageMagick 6.9.12.98
-    Enabled features: fontconfig, freetype, fftw, heic, lcms, pango, raw, webp, x11
-    Disabled features: cairo, ghostscript, rsvg
+    Warning: package 'magick' was built under R version 4.5.3
 
-    Using 4 threads
+    Linking to ImageMagick 6.9.13.29
+    Enabled features: cairo, freetype, fftw, ghostscript, heic, lcms, pango, raw, rsvg, webp
+    Disabled features: fontconfig, x11
 
 ``` downlit
 img <- image_read("bird.jpg")
@@ -101,8 +99,8 @@ plot(img_gray)
 次に、グレースケール画像のピクセル値を取得します。
 
 ``` downlit
-dat <- image_data(img_gray, channels = "gray") # ピクセル値を取得
-vals <- as.integer(dat) # ピクセル値を整数に変換
+dat <- image_data(img_gray, channels = "gray") # obtain pixel values
+vals <- as.integer(dat) # convert pixel values to integers
 ```
 
 ## ヒストグラムの作成
@@ -124,47 +122,47 @@ h <- hist(vals, breaks = (-0.5):(255.5))
 ``` downlit
 list_otsu <- lapply(seq_along(h$counts), function(i) {
   t <- i - 1 # 0..L-1
-  p <- h$counts / sum(h$counts) # ヒストグラムを確率分布に変換
+  p <- h$counts / sum(h$counts) # convert histogram to probability distribution
   L <- length(p)
-  idx0 <- if (t >= 0) 0:t else integer(0) # 画素値の添字（0基準）
+  idx0 <- if (t >= 0) 0:t else integer(0) # pixel-value indices, zero-based
   idx1 <- if (t + 1 <= L - 1) (t + 1):(L - 1) else integer(0)
 
-  # p は1基準なので +1 して参照
+  # p is one-based in R, so add 1 when indexing
   omega_0 <- sum(p[idx0 + 1])
   omega_1 <- 1 - omega_0
 
-  # 総平均
+  # total mean
   mu_t <- sum((0:(L - 1)) * p)
 
-  # クラス平均（空クラスなら計算しない）
+  # class means; do not calculate for empty classes
   mu_0 <- if (omega_0 > 0) sum(idx0 * p[idx0 + 1]) / omega_0 else 0
   mu_1 <- if (omega_1 > 0) sum(idx1 * p[idx1 + 1]) / omega_1 else 0
 
-  # クラス内分散（空クラスは寄与0にする）
+  # within-class variance; empty classes contribute 0
   var_0 <- if (omega_0 > 0) sum((idx0 - mu_0)^2 * p[idx0 + 1]) / omega_0 else 0
   var_1 <- if (omega_1 > 0) sum((idx1 - mu_1)^2 * p[idx1 + 1]) / omega_1 else 0
   var_w <- omega_0 * var_0 + omega_1 * var_1
 
-  # クラス間分散（空クラスの項は0）
+  # between-class variance; terms for empty classes are 0
   term0 <- if (omega_0 > 0) omega_0 * (mu_0 - mu_t)^2 else 0
   term1 <- if (omega_1 > 0) omega_1 * (mu_1 - mu_t)^2 else 0
   var_b <- term0 + term1
 
-  # 全体分散
+  # total variance
   var_T <- sum(p * ((0:(L - 1)) - mu_t)^2)
 
   c(
     t = t,
-    omega_0 = omega_0, # クラス0の確率
-    omega_1 = omega_1, # クラス1の確率
-    mu_0 = mu_0, # クラス0の平均
-    mu_1 = mu_1, # クラス1の平均
-    mu_t = mu_t, # 総平均
-    var_0 = var_0, # クラス0の分散
-    var_1 = var_1, # クラス1の分散
-    var_w = var_w, # クラス内分散
-    var_b = var_b, # クラス間分散
-    var_T = var_T # 全体分散
+    omega_0 = omega_0, # probability of class 0
+    omega_1 = omega_1, # probability of class 1
+    mu_0 = mu_0, # mean of class 0
+    mu_1 = mu_1, # mean of class 1
+    mu_t = mu_t, # total mean
+    var_0 = var_0, # variance of class 0
+    var_1 = var_1, # variance of class 1
+    var_w = var_w, # within-class variance
+    var_b = var_b, # between-class variance
+    var_T = var_T # total variance
   )
 })
 df_otsu <- as.data.frame(do.call(rbind, list_otsu))

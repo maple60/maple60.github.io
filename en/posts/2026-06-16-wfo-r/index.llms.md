@@ -2,10 +2,6 @@
 
 r
 
-api
-
-taxonomy
-
 Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names.
 
 Published
@@ -16,9 +12,7 @@ Modified
 
 2026-06-16
 
-> **NOTE:**
->
-> Original Japanese version: [WFO Plant List APIをRから利用する方法](../../../posts/2026-06-16-wfo-r/index.llms.md)
+[日本語版](../../../posts/2026-06-16-wfo-r/)
 
 [The World Flora Online](https://www.worldfloraonline.org/) is a global database of plant information. It also provides an API as the [WFO Plant List API](https://list.worldfloraonline.org/), so this article shows how to access it from R and retrieve accepted names from scientific names.
 
@@ -106,134 +100,22 @@ Convert the returned JSON into an R `list`. This makes the API response usable f
 x <- resp_body_json(resp, simplifyVector = FALSE)
 ```
 
-> **NOTE:**
->
-> The native pipe operator `|>` in base R can make the code easier to read.
->
-> ``` downlit
-> resp <- request(endpoint) |>
->   req_body_json(
->     list(query = query),
->     auto_unbox = TRUE
->   ) |>
->   req_perform()
-> ```
->
-> This pipe operator was introduced in R 4.1.0. It passes the object on the left as the first argument of the function on the right. The `%>%` magrittr pipe operator, originally advocated by Hadley Wickham, was widely used before this, but with the introduction of R’s native pipe operator, using `|>` is now often recommended.
->
-> The following documentation is useful for understanding the pipe operator.
->
-> - [Differences between the base R and magrittr pipes](https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/)
-
-## Checking the Result
-
-The `x` object stores the API response as an R list.
-
 ``` downlit
 print(x)
 ```
-
-> **NOTE:**
->
-> ``` r
-> $data
-> $data$taxonNameSuggestion
-> $data$taxonNameSuggestion[[1]]
-> $data$taxonNameSuggestion[[1]]$id
-> [1] "wfo-0000293164"
->
-> $data$taxonNameSuggestion[[1]]$fullNameStringHtml
-> [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
->
-> $data$taxonNameSuggestion[[1]]$currentPreferredUsage
-> $data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName
-> $data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
-> [1] "wfo-0000293164"
->
-> $data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$fullNameStringHtml
-> [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
->
->
->
->
-> $data$taxonNameSuggestion[[2]]
-> $data$taxonNameSuggestion[[2]]$id
-> [1] "wfo-0000293165"
-> ...
-> ```
-
-Ten candidates were returned because the query specified `limit: 10`. Let’s inspect the first result.
 
 ``` downlit
 x$data$taxonNameSuggestion[[1]]
 ```
 
-> **NOTE:**
->
-> ``` r
-> $id
-> [1] "wfo-0000293164"
->
-> $fullNameStringHtml
-> [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
->
-> $currentPreferredUsage
-> $currentPreferredUsage$hasName
-> $currentPreferredUsage$hasName$id
-> [1] "wfo-0000293164"
->
-> $currentPreferredUsage$hasName$fullNameStringHtml
-> [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
-> ```
-
-The three fields `id`, `fullNameStringHtml`, and `currentPreferredUsage` were returned.
-
-The field to focus on is `hasName` inside `currentPreferredUsage`. This field contains the scientific name of the current taxon.
-
 ``` downlit
 x$data$taxonNameSuggestion[[1]]$currentPreferredUsage
 ```
-
-> **NOTE:**
->
-> ``` r
-> $hasName
-> $hasName$id
-> [1] "wfo-0000293164"
->
-> $hasName$fullNameStringHtml
-> [1] "<span class=\"wfo-name-full\" ><span class=\"wfo-name\"><i>Quercus</i> <i>serrata</i></span> <span class=\"wfo-name-authors\" >Murray</span></span>"
-> ```
-
-In this example, the `hasName` field inside `currentPreferredUsage` displays the scientific name “*Quercus serrata* Murray”.
 
 ``` downlit
 x$data$taxonNameSuggestion[[1]]$id
 x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id
 ```
-
-> **NOTE:**
->
-> ``` r
-> [1] "wfo-0000293164"
-> [1] "wfo-0000293164"
-> ```
-
-Comparing `x$data$taxonNameSuggestion[[1]]$id` with `x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id`, the two values are identical.
-
-This shows that the searched scientific name `"Quercus serrata"` is currently treated as `"Quercus serrata"`.
-
-In this way, you can retrieve an accepted name from a searched scientific name.
-
-## Creating a Function to Retrieve Accepted Names
-
-In practical work, it is useful to wrap the process in functions.
-
-Here, I turn the steps above into functions and create a function that retrieves the accepted name from a scientific name. First, create `get_wfo_suggestions()`, which retrieves candidates from a scientific name.
-
-In addition to the query above, this function also retrieves fields such as `fullNameStringNoAuthorsPlain`, `authorsString`, and `rank`. The `rank` field is especially important because it shows the taxonomic rank of the searched name. For example, it lets you distinguish whether the name is at the rank of `species`, `subspecies`, `variety`, and so on.
-
-When retrieving an accepted name, it is often useful to look for an accepted name at the same rank as the searched name, so this function also retrieves rank information.
 
 ``` downlit
 get_wfo_suggestions <- function(
@@ -365,106 +247,10 @@ result <- get_wfo_suggestions("Quercus serrata")
 print(result)
 ```
 
-> **NOTE:**
->
-> ``` r
->              input             id
-> 1  Quercus serrata wfo-0000293164
-> 2  Quercus serrata wfo-0000293165
-> 3  Quercus serrata wfo-0001062616
-> 4  Quercus serrata wfo-0000293167
-> 5  Quercus serrata wfo-0000293168
-> 6  Quercus serrata wfo-0000293169
-> 7  Quercus serrata wfo-0000809955
-> 8  Quercus serrata wfo-0000804579
-> 9  Quercus serrata wfo-0000804580
-> 10 Quercus serrata wfo-1200020125
->                                                       name
-> 1                                   Quercus serrata Murray
-> 2                                    Quercus serrata Roxb.
-> 3                                   Quercus serrata Thunb.
-> 4                     Quercus serrata var. attenuata Blume
-> 5        Quercus serrata var. brevipetiolata (A.DC.) Nakai
-> 6                     Quercus serrata var. chinensis Wenz.
-> 7              Quercus serrata f. concolor (Sugim.) H.Ohba
-> 8                     Quercus serrata var. concolor Sugim.
-> 9  Quercus serrata var. donarium (Nakai) Kitam. & T.Horik.
-> 10                   Quercus serrata var. longicarpa Uyeki
->                         name_no_author                   authors    rank
-> 1                      Quercus serrata                    Murray species
-> 2                      Quercus serrata                     Roxb. species
-> 3                      Quercus serrata                    Thunb. species
-> 4       Quercus serrata var. attenuata                     Blume variety
-> 5  Quercus serrata var. brevipetiolata             (A.DC.) Nakai variety
-> 6       Quercus serrata var. chinensis                     Wenz. variety
-> 7          Quercus serrata f. concolor           (Sugim.) H.Ohba    form
-> 8        Quercus serrata var. concolor                    Sugim. variety
-> 9        Quercus serrata var. donarium (Nakai) Kitam. & T.Horik. variety
-> 10     Quercus serrata var. longicarpa                     Uyeki variety
->       accepted_id                              accepted_name
-> 1  wfo-0000293164                     Quercus serrata Murray
-> 2  wfo-0000814085 Castanopsis indica (Roxb. ex Lindl.) A.DC.
-> 3            <NA>                                       <NA>
-> 4  wfo-0000289386                Quercus acutissima Carruth.
-> 5  wfo-0000807317            Quercus serrata subsp. serrata
-> 6  wfo-0000293817                   Quercus variabilis Blume
-> 7  wfo-0000293164                     Quercus serrata Murray
-> 8  wfo-0000293164                     Quercus serrata Murray
-> 9  wfo-0000807317            Quercus serrata subsp. serrata
-> 10           <NA>                                       <NA>
->           accepted_name_no_author        accepted_authors accepted_rank
-> 1                 Quercus serrata                  Murray       species
-> 2              Castanopsis indica (Roxb. ex Lindl.) A.DC.       species
-> 3                            <NA>                    <NA>          <NA>
-> 4              Quercus acutissima                Carruth.       species
-> 5  Quercus serrata subsp. serrata                    <NA>    subspecies
-> 6              Quercus variabilis                   Blume       species
-> 7                 Quercus serrata                  Murray       species
-> 8                 Quercus serrata                  Murray       species
-> 9  Quercus serrata subsp. serrata                    <NA>    subspecies
-> 10                           <NA>                    <NA>          <NA>
->    is_accepted
-> 1         TRUE
-> 2        FALSE
-> 3        FALSE
-> 4        FALSE
-> 5        FALSE
-> 6        FALSE
-> 7        FALSE
-> 8        FALSE
-> 9        FALSE
-> 10       FALSE
-> ```
-
-Use `get_accepted_name()` to retrieve the row that contains the accepted name for a scientific name.
-
 ``` downlit
 accepted_name <- get_accepted_name("Quercus serrata")
 print(accepted_name)
 ```
-
-> **NOTE:**
->
-> ``` r
->             input             id                   name  name_no_author
-> 1 Quercus serrata wfo-0000293164 Quercus serrata Murray Quercus serrata
->   authors    rank    accepted_id          accepted_name
-> 1  Murray species wfo-0000293164 Quercus serrata Murray
->   accepted_name_no_author accepted_authors accepted_rank is_accepted
-> 1         Quercus serrata           Murray       species        TRUE
-> ```
-
-## Notes on Using the API
-
-The WFO Plant List API is publicly available, but sending a large number of requests in a short time may **place load on the server**. Searching a small number of names for learning or checking is fine, but when processing many scientific names at once, keep the following points in mind.
-
-- Save or cache results so that the same name is not queried repeatedly.
-- Add [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) in loops when needed to avoid continuous access.
-- For large datasets, consider using the published download data or a local workflow instead of trying to retrieve all data through the API.
-- Do not accept candidates returned by the API without review; check `rank`, WFO ID, `currentPreferredUsage`, and accepted name.
-- Because `taxonNameSuggestion()` is for candidate search, make the candidate-review rules explicit when doing strict bulk matching.
-
-For example, when running a loop, you can add [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) as follows to avoid continuous access.
 
 ``` downlit
 for (nm in names) {

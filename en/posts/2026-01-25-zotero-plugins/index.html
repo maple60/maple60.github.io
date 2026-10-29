@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -14,10 +14,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -28,23 +31,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -94,15 +97,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../works.html"> 
+    <a class="nav-link" href="../../works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -111,25 +114,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">    
         <li>
-    <a class="dropdown-item" href="../../../en/index.html">
+    <a class="dropdown-item" href="../../en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/posts.html">
+    <a class="dropdown-item" href="../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/works.html">
+    <a class="dropdown-item" href="../../en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/recommendations.html">
+    <a class="dropdown-item" href="../../en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../recommendations.html"> 
+    <a class="nav-link" href="../../recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -153,13 +156,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#better-bibtex-for-zotero" id="toc-better-bibtex-for-zotero" class="nav-link active" data-scroll-target="#better-bibtex-for-zotero">Better BibTeX for Zotero</a></li>
-  <li><a href="#ethereal-style" id="toc-ethereal-style" class="nav-link" data-scroll-target="#ethereal-style">Ethereal Style</a></li>
-  <li><a href="#translate-for-zotero" id="toc-translate-for-zotero" class="nav-link" data-scroll-target="#translate-for-zotero">Translate for Zotero</a></li>
-  <li><a href="#zotcard" id="toc-zotcard" class="nav-link" data-scroll-target="#zotcard">ZotCard</a></li>
+  <li><a href="#better-bibtex-for-zotero-1" id="toc-better-bibtex-for-zotero-1" class="nav-link active" data-scroll-target="#better-bibtex-for-zotero-1">Better BibTeX for Zotero</a></li>
+  <li><a href="#ethereal-style-1" id="toc-ethereal-style-1" class="nav-link" data-scroll-target="#ethereal-style-1">Ethereal Style</a></li>
+  <li><a href="#translate-for-zotero-1" id="toc-translate-for-zotero-1" class="nav-link" data-scroll-target="#translate-for-zotero-1">Translate for Zotero</a></li>
+  <li><a href="#zotcard-1" id="toc-zotcard-1" class="nav-link" data-scroll-target="#zotcard-1">ZotCard</a></li>
   <li><a href="#zotero-attanger" id="toc-zotero-attanger" class="nav-link" data-scroll-target="#zotero-attanger">Zotero Attanger</a></li>
-  <li><a href="#zotero-reading-list" id="toc-zotero-reading-list" class="nav-link" data-scroll-target="#zotero-reading-list">Zotero Reading List</a></li>
-  <li><a href="#zotseek" id="toc-zotseek" class="nav-link" data-scroll-target="#zotseek">ZotSeek</a></li>
+  <li><a href="#zotero-reading-list-1" id="toc-zotero-reading-list-1" class="nav-link" data-scroll-target="#zotero-reading-list-1">Zotero Reading List</a></li>
+  <li><a href="#zotseek-1" id="toc-zotseek-1" class="nav-link" data-scroll-target="#zotseek-1">ZotSeek</a></li>
   <li><a href="#thanks" id="toc-thanks" class="nav-link" data-scroll-target="#thanks">Thanks</a></li>
   </ul>
 </nav>
@@ -206,18 +209,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Original Japanese version: <a href="../../../posts/2026-01-25-zotero-plugins/index.html">導入しているZoteroプラグインのまとめ</a></p>
-</div>
+<div class="callout-note">
+<p><a href="../../../posts/2026-01-25-zotero-plugins/">日本語版</a></p>
 </div>
 <p>This is a summary of the plugins I use with the reference manager Zotero. I have tried several plugins, and I find the following useful. They are listed in alphabetical order.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -233,15 +226,15 @@ Note
 <p>I plan to write separate articles about individual plugins little by little.</p>
 </div>
 </div>
-<section id="better-bibtex-for-zotero" class="level2">
-<h2 class="anchored" data-anchor-id="better-bibtex-for-zotero">Better BibTeX for Zotero</h2>
+<section id="better-bibtex-for-zotero-1" class="level2">
+<h2 class="anchored" data-anchor-id="better-bibtex-for-zotero-1">Better BibTeX for Zotero</h2>
 <ul>
 <li><a href="https://retorque.re/zotero-better-bibtex/">Website</a></li>
 </ul>
 <p>This plugin is useful when exporting reference information from Zotero in BibTeX format. In particular, it can customize citation keys and automatically update BibTeX files. Rather than using it by itself, I often use it together with other software and tools.</p>
 </section>
-<section id="ethereal-style" class="level2">
-<h2 class="anchored" data-anchor-id="ethereal-style">Ethereal Style</h2>
+<section id="ethereal-style-1" class="level2">
+<h2 class="anchored" data-anchor-id="ethereal-style-1">Ethereal Style</h2>
 <ul>
 <li><a href="https://github.com/MuiseDestiny/zotero-style">GitHub repository</a></li>
 </ul>
@@ -261,15 +254,15 @@ Note
 </div>
 </div>
 </section>
-<section id="translate-for-zotero" class="level2">
-<h2 class="anchored" data-anchor-id="translate-for-zotero">Translate for Zotero</h2>
+<section id="translate-for-zotero-1" class="level2">
+<h2 class="anchored" data-anchor-id="translate-for-zotero-1">Translate for Zotero</h2>
 <ul>
 <li><a href="https://github.com/windingwind/zotero-pdf-translate">GitHub repository</a></li>
 </ul>
 <p>This plugin translates PDFs, EPUB files, and other documents. By selecting the part you want to translate, it displays translation results using Google Translate or DeepL. The translation results can be saved as notes or annotations.</p>
 </section>
-<section id="zotcard" class="level2">
-<h2 class="anchored" data-anchor-id="zotcard">ZotCard</h2>
+<section id="zotcard-1" class="level2">
+<h2 class="anchored" data-anchor-id="zotcard-1">ZotCard</h2>
 <ul>
 <li><a href="https://github.com/018/zotcard">GitHub repository</a></li>
 </ul>
@@ -295,15 +288,15 @@ Note
 </div>
 </div>
 </section>
-<section id="zotero-reading-list" class="level2">
-<h2 class="anchored" data-anchor-id="zotero-reading-list">Zotero Reading List</h2>
+<section id="zotero-reading-list-1" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-reading-list-1">Zotero Reading List</h2>
 <ul>
 <li><a href="https://github.com/Dominic-DallOsto/zotero-reading-list">GitHub repository</a></li>
 </ul>
 <p>This plugin manages the reading status of references. It assigns statuses such as New, To Read, In Progress, Read, and Not Reading. You can also add custom statuses yourself.</p>
 </section>
-<section id="zotseek" class="level2">
-<h2 class="anchored" data-anchor-id="zotseek">ZotSeek</h2>
+<section id="zotseek-1" class="level2">
+<h2 class="anchored" data-anchor-id="zotseek-1">ZotSeek</h2>
 <ul>
 <li><a href="https://github.com/introfini/ZotSeek">GitHub repository</a></li>
 </ul>
@@ -392,7 +385,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

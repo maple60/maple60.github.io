@@ -12,9 +12,7 @@ Modified
 
 2024-03-04
 
-> **NOTE:**
->
-> Original Japanese version: [Rで色相環を作成する](../../../posts/2024-03-04-color-circle/index.llms.md)
+[日本語版](../../../posts/2024-03-04-color-circle/)
 
 I originally wrote this code while trying several things with an algorithm called DeepFlow and looking for a figure to insert into the output. The implementation uses R.
 

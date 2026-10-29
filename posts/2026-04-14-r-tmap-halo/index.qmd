@@ -1,15 +1,17 @@
 ---
 title: "Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法"
+title-en: "Displaying Haloed Text on Maps with the R Package tmap"
 description: "`tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました"
+description-en: "Starting with `tmap` 4.3, `tm_text` supports decorations such as text halos."
 date: "2026-04-14"
 date-modified: "2026-04-14"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Displaying Haloed Text on Maps with the R Package tmap](../../en/posts/2026-04-14-r-tmap-halo/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Rの[`tmap`パッケージ](https://r-tmap.github.io/tmap/index.html)で地図の上に縁取り文字を表示する方法を紹介します。
 `tmap`パッケージの[Changelog](https://r-tmap.github.io/tmap/news/index.html)によると、バージョン4.3から`tm_text`関数で文字の縁取りなどの装飾が実装されたようです。
@@ -21,46 +23,109 @@ Rの[`tmap`パッケージ](https://r-tmap.github.io/tmap/index.html)で地図�
 2026年4月14日時点では、まだ`tmap`のCRAN版は4.3ではないため、開発版をインストールする必要があります。
 renvを使っている場合は、以下のようにしてインストールできます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This article introduces how to display haloed text on maps with the [`tmap` package](https://r-tmap.github.io/tmap/index.html) in R.
+According to the `tmap` package [Changelog](https://r-tmap.github.io/tmap/news/index.html), decorations such as text halos seem to have been implemented in the `tm_text` function starting from version 4.3.
+
+I tried it right away.
+
+## Installing the Development Version of `tmap`
+
+As of April 14, 2026, the CRAN version of `tmap` was not yet 4.3, so the development version needed to be installed.
+If you use renv, install it as follows.
+
+:::::
+
 ```{.r}
 renv::install("r-tmap/tmap")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 その後、`library()`で読み込み、バージョンを確認します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Then load it with `library()` and check the version.
+
+:::::
 
 ```{r}
 library(tmap)
 packageVersion("tmap")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ## 縁取り文字の表示
 
 アジアの国名を表示してみます。
 まずは、縁取りなしの場合です。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Displaying Haloed Text
+
+Display country names in Africa.
+First, here is the map without halos.
+
+:::::
+
 ```{r}
-Asia <- World[World$continent == "Africa", ]
-tm_shape(Asia) +
+Africa <- World[World$continent == "Africa", ]
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 少し重なりが多いため、`remove_overlap = TRUE`を指定して、重なりをなくします。
 表示されなくなってしまった国には申し訳ないですが、見やすくなります。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Because there is a lot of overlap, specify `remove_overlap = TRUE` to remove overlaps.
+I feel bad for the countries that disappear, but the map becomes easier to read.
+
+:::::
+
 ```{r}
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(remove_overlap = TRUE))
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 これに、文字の縁取りをつけてみます。
 `opt_tm_text`の引数で、`halo = TRUE`を指定します。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Now add halos to the text.
+Specify `halo = TRUE` in the arguments of `opt_tm_text`.
+
+:::::
+
 ```{r}
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(halo = TRUE, remove_overlap = TRUE))
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 白い縁取りがついて、塗りつぶしのある地図の上でも見やすくなりました。
 オプションとしては、以下のようなものがあります。
@@ -73,8 +138,25 @@ tm_shape(Asia) +
 
 たとえば、赤い縁取りをつけてみます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+White halos are added, making the text easier to read even on a filled map.
+The options include the following.
+
+- `halo`: specifies whether to enable halos. The default is `FALSE`.
+- `halo.col`: specifies the halo color. The default is `NA`.
+- `halo.width`: specifies the halo width. The default is `0.05`.
+- `halo.blur`: specifies the amount of halo blur. The default is `0`.
+- `halo.alpha`: specifies the halo transparency. The default is `0.8`.
+
+For example, add red halos.
+
+:::::
+
 ```{r}
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text(
     "name",
@@ -88,6 +170,8 @@ tm_shape(Asia) +
     )
   )
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ::: {.callout-note}
 ## haloとは
@@ -104,11 +188,34 @@ ArcGISではそのまま「halo」と呼ばれていますが([参考](https://w
 
 `halo`では縁取りが付きましたが、`shadow`オプションを使うと、文字に影をつけることもできます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+::: {.callout-note}
+## What Is a Halo?
+
+A halo is an option that makes text easier to read on a map by drawing a line around the text.
+In ArcGIS it is called a "halo" as-is ([reference](https://www.esri.com/about/newsroom/arcuser/polishing-your-halo)), while in QGIS it is called a "buffer" ([reference](https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html)).
+
+The word may be unfamiliar in Japanese.
+Translated into Japanese, it means something like a glow or ring of light, and the corresponding kanji appears to be **暈** ([reference](https://ja.wikipedia.org/wiki/%E6%9A%88)).
+The image is that light is shining around the text.
+:::
+
+## Adding Shadows to Text
+
+The `halo` option adds outlines, while the `shadow` option adds shadows to text.
+
+:::::
+
 ```{r}
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(shadow = TRUE, remove_overlap = TRUE))
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 少し違いが分かりにくいですが、文字の下に影がついて、地図の上でも見やすくなります。
 `shadow`オプションの引数は以下の通りです。
@@ -120,8 +227,24 @@ tm_shape(Asia) +
 
 影の効果をわかりやすくするために、少し大げさに影をつけてみます。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The difference is a little hard to see, but a shadow is added below the text, making it easier to read on the map.
+The arguments for the `shadow` option are as follows.
+
+- `shadow`: specifies whether to enable the shadow. The default is `FALSE`.
+- `shadow.col`: specifies the shadow color. The default is `NA`.
+- `shadow.offset.x`: specifies the horizontal offset of the shadow. The default is `0.05`.
+- `shadow.offset.y`: specifies the vertical offset of the shadow. The default is `0.05`.
+
+To make the shadow effect easier to see, add a slightly exaggerated shadow.
+
+:::::
+
 ```{r}
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text(
     "name",
@@ -135,6 +258,8 @@ tm_shape(Asia) +
   )
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 縁取りは文字の周りに線がつくのに対して、影は文字の下に別の文字が表示されるイメージです。
 どちらも地図の上で文字を見やすくするためのオプションですが、好みや地図のデザインによって使い分けると良さそうです。
 
@@ -145,3 +270,22 @@ tm_shape(Asia) +
 - [Use halos to make maps more readable](https://www.esri.com/about/newsroom/arcuser/polishing-your-halo)
 - [6.8. Labelling Features — QGIS in Mineral Exploration 1.1 documentation](https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html)
 - [暈 - Wikipedia](https://ja.wikipedia.org/wiki/%E6%9A%88)
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+A halo draws a line around the text, whereas a shadow gives the impression of another copy of the text displayed underneath.
+Both options make text easier to read on a map, and it seems useful to choose between them depending on preference and map design.
+
+## References
+
+- [Changelog • tmap](https://r-tmap.github.io/tmap/news/index.html)
+- [Map layer: text - tm_text • tmap](https://r-tmap.github.io/tmap/reference/tm_text.html)
+- [Use halos to make maps more readable](https://www.esri.com/about/newsroom/arcuser/polishing-your-halo)
+- [6.8. Labelling Features - QGIS in Mineral Exploration 1.1 documentation](https://qgis-in-mineral-exploration.readthedocs.io/en/latest/source/geological_data/labelling.html)
+- [暈 - Wikipedia](https://ja.wikipedia.org/wiki/%E6%9A%88)
+
+:::::
+
+

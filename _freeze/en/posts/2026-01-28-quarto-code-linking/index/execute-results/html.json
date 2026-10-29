@@ -1,0 +1,15 @@
+{
+  "hash": "5fd26f8f11a9c8b1e34d329ef0a6f537",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Adding Documentation Links to Functions in Quarto Code Blocks\"\ndescription: \"A note on using the `code-link` option to add documentation links to functions in Quarto code blocks.\"\ndate: \"2026-01-28\"\ndate-modified: \"2026-01-28\"\ndraft: false\nlang: en\ncategories: [r]\n---\n\n::: {.callout-note}\nOriginal Japanese version: [Quartoのコードブロック内の関数にドキュメントリンクをつける方法](../../../posts/2026-01-28-quarto-code-linking/index.qmd)\n:::\n\nThis is a note on how to automatically add documentation links to functions used inside Quarto code blocks.\nWith the `code-link` option, links can be added to the documentation corresponding to functions inside code blocks.\n\nAdd the following setting to the `_quarto.yml` file.\n\n```{.yaml filename=\"_quarto.yml\"}\nformat:\n  html:\n    code-link: true\n```\n\nWith this setting, function names in code blocks are displayed with links in HTML output.\n\n## Example\n\nWhen functions are used in inline code or code blocks, links are added automatically.\nFor example, write an R code block as follows.\n\n- Example sentence: If you use the `unique()` function like this, you can remove duplicate values from a vector.\n\nLinks are also added inside code blocks.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- c(\"apple\", \"banana\", \"apple\", \"orange\", \"banana\")\nunique_x <- unique(x)\nprint(unique_x)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"apple\"  \"banana\" \"orange\"\n```\n\n\n:::\n:::\n\n\nWhen you hover over each function, an underline appears to indicate that it has a link.\nClicking it takes you to the corresponding documentation page.\nIn this example, links are probably added to the `c()`, `unique()`, and `print()` functions.\n\n## Notes\n\n- The `code-link` option is supported only by the [knitr](https://yihui.org/knitr/) engine. Links do not seem to be generated when using other engines, because Quarto internally uses the [downlit](https://downlit.r-lib.org/) package. In short, it works only for R code blocks.\n- It seems that `code-link` cannot be used together with the `code-line-numbers` or `code-annotations` options. If those options are enabled, the `code-link` option is ignored.\n\n::: {.callout-tip}\nThe `code-line-numbers` option adds line numbers to code blocks.\n\nThe `code-annotations` option adds annotations to code blocks.\n:::\n\n## References\n\n- [knitr - Elegant, flexible, and fast dynamic report generation with R - Yihui Xie | 谢益辉](https://yihui.org/knitr/)\n- [CRAN: Package knitr](https://cran.r-project.org/web/packages/knitr/index.html)\n- [HTML Code Blocks - Quarto](https://quarto.org/docs/output-formats/html-code.html)\n- [Code Annotation - Quarto](https://quarto.org/docs/authoring/code-annotation.html)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -12,9 +12,7 @@ Modified
 
 2026-02-02
 
-> **NOTE:**
->
-> Original Japanese version: [RでLorenz attractorを描く](../../../posts/2026-02-02-r-lorenz-attractor/index.llms.md)
+[日本語版](../../../posts/2026-02-02-r-lorenz-attractor/)
 
 The Lorenz attractor is an example of chaos theory reported by [Edward Lorenz](https://www.lorenz.mit.edu/edward-n-lorenz), and it is a well-known model showing the behavior of a nonlinear dynamical system.
 
@@ -57,6 +55,8 @@ renv::install("deSolve") # if it is not installed yet
 ``` downlit
 library(deSolve)
 ```
+
+    Warning: package 'deSolve' was built under R version 4.5.3
 
 ## Implementing the Lorenz Equations
 
@@ -191,8 +191,11 @@ renv::install("plotly") # when using renv
 library(plotly)
 ```
 
+    Warning: package 'plotly' was built under R version 4.5.3
+
     Loading required package: ggplot2
 
+    Warning: package 'ggplot2' was built under R version 4.5.3
 
     Attaching package: 'plotly'
 

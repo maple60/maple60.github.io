@@ -14,9 +14,7 @@ Modified
 
 2026-01-30
 
-> **NOTE:**
->
-> Original Japanese version: [Quartoで表示される日付型を変更する](../../../posts/2026-01-30-quarto-data-format/index.llms.md)
+[日本語版](../../../posts/2026-01-30-quarto-data-format/)
 
 When Quarto displays dates for blog posts, the default format is the medium date style. This looks like **Jan 30, 2026**. However, there are times when you may want to display dates in an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) style such as **2026-01-30**.
 

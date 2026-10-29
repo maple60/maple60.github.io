@@ -4,17 +4,15 @@ r
 
 imagerパッケージについての基本的な使い方の紹介です
 
-Published
+公開
 
 2026-01-01
 
-Modified
+更新日
 
 2026-01-01
 
-> **NOTE:**
->
-> English version: [Using the R Package imager for Image Processing](../../en/posts/2025-01-01-imager/index.llms.md)
+[English version](../../en/posts/2025-01-01-imager/)
 
 # 概要
 
@@ -33,6 +31,10 @@ install.packages("imager")
 ``` downlit
 library("imager")
 ```
+
+    Warning: package 'imager' was built under R version 4.5.3
+
+    Warning: package 'magrittr' was built under R version 4.5.3
 
 # 画像の読み込みと表示
 

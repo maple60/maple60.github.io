@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-03-04">
 <meta name="description" content="How to simulate color vision deficiency in R with the colorspace package.">
@@ -11,10 +11,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -59,23 +62,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -119,15 +122,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../works.html"> 
+    <a class="nav-link" href="../../works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -136,25 +139,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
 <li>
-    <a class="dropdown-item" href="../../../en/index.html">
+    <a class="dropdown-item" href="../../en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/posts.html">
+    <a class="dropdown-item" href="../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/works.html">
+    <a class="dropdown-item" href="../../en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/recommendations.html">
+    <a class="dropdown-item" href="../../en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../recommendations.html"> 
+    <a class="nav-link" href="../../recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -223,18 +226,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Original Japanese version: <a href="../../../posts/2026-03-04-r-color-blind/index.html">Rで色覚異常のシミュレーションを行う方法</a></p>
-</div>
+</header><div class="callout-note">
+<p><a href="../../../posts/2026-03-04-r-color-blind/">日本語版</a></p>
 </div>
 <section id="color-vision-diversity" class="level2"><h2 class="anchored" data-anchor-id="color-vision-diversity">Color Vision Diversity</h2>
 <p>People differ in how they perceive colors. Cases where color perception differs greatly from that of many people are called <strong>color vision deficiency</strong>.</p>
@@ -283,13 +276,16 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages("colorspace") if it is not installed</span></span>
 <span><span class="co"># renv::install("colorspace") when using renv</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/">colorspace</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'colorspace' was built under R version 4.5.3</code></pre>
 </div>
-<p>Prepare a vector of colors, then use <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan()</a></code> for deuteranopia, <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan()</a></code> for protanopia, and <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan()</a></code> for tritanopia to simulate color vision deficiency.</p>
+</div>
+<p>Prepare a vector of colors, then use <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan()</a></code> for deuteranopia, <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan()</a></code> for protanopia, and <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan()</a></code> for tritanopia to simulate color vision deficiency.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span><span class="op">)</span> <span class="co"># color vector: red, green, blue, yellow</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
-<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span><span class="op">)</span> <span class="co"># color vector: red, green, blue, yellow</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
+<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -306,7 +302,7 @@ Note
 </div>
 <p>Plot the colors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_protan</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_protan</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
@@ -330,7 +326,7 @@ Note
 <p>Tritanopia is said to make blue and yellow difficult to distinguish, but because S cones are absent, distinctions among blue, cyan, and green may also become weaker. You can see that green and blue become harder to distinguish.</p>
 <p>This may still be hard to see in a bar plot, but when there are many plotted points, it can become a serious problem.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -347,10 +343,10 @@ Note
 </div>
 <p>Now test the default color palette from R version 4 and later.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_default</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># R's default color palette</span></span>
-<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_default</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># R's default color palette</span></span>
+<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_default</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
@@ -375,7 +371,7 @@ Note
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="va">colors_default</span>, pch <span class="op">=</span> <span class="fl">16</span>, cex <span class="op">=</span> <span class="fl">2</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="va">colors_default_protan</span>, pch <span class="op">=</span> <span class="fl">16</span>, cex <span class="op">=</span> <span class="fl">2</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
@@ -405,10 +401,10 @@ Note
 <section id="points-to-note-when-choosing-a-color-palette" class="level3"><h3 class="anchored" data-anchor-id="points-to-note-when-choosing-a-color-palette">Points to Note When Choosing a Color Palette</h3>
 <p>For people with color vision deficiency, certain color combinations can be difficult to distinguish. To avoid this problem, it is important to choose color palettes that are easy to distinguish even for people with color vision deficiency. The easiest method is to use a palette such as <code>palette("Okabe-Ito")</code>, which is designed to be distinguishable for people with color vision deficiency. This palette uses color combinations that are easy to distinguish.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_okabe_ito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_okabe_ito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -439,7 +435,7 @@ Note
 </div>
 <p>The scatter plots are as follows.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, col <span class="op">=</span> <span class="va">colors_okabe_ito</span>, pch <span class="op">=</span> <span class="fl">16</span>, cex <span class="op">=</span> <span class="fl">2</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
@@ -476,7 +472,7 @@ Note
 <p>For people with color vision deficiency, conveying information only with color can be difficult. Therefore, it is also important to communicate important information through methods other than color.</p>
 <p>Examples include changing point shapes in graphs, changing line types, and adding text explanations. Personally, I often use the <code>pch</code> argument to change point shapes because it is easy and effective.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">x_circle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">y_circle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">x_square</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
@@ -485,14 +481,14 @@ Note
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_circle</span>,</span>
 <span>  <span class="va">y_circle</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">16</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_square</span>,</span>
 <span>  <span class="va">y_square</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -506,9 +502,9 @@ Note
 </section></section><section id="ensure-sufficient-brightness-contrast" class="level2"><h2 class="anchored" data-anchor-id="ensure-sufficient-brightness-contrast">Ensure Sufficient Brightness Contrast</h2>
 <p>Even when red and green are difficult to distinguish, sufficient brightness contrast can make them easier to tell apart. For example, the following red and green combination has little brightness contrast, so it is difficult for people with protanopia or deuteranopia to distinguish.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#932922"</span>, <span class="st">"#526907"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#932922"</span>, <span class="st">"#526907"</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -516,14 +512,14 @@ Note
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_protan</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_protan</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_protan</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_protan</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_deutan</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  col <span class="op">=</span> <span class="va">colors_deutan</span>,</span>
 <span>  main <span class="op">=</span> <span class="st">"Deuteranopia"</span></span>
@@ -537,9 +533,9 @@ Note
 </div>
 <p>On the other hand, the following red and green combination has a large brightness difference, making it easier for people with protanopia or deuteranopia to distinguish.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF4B00"</span>, <span class="st">"#03AF7A"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF4B00"</span>, <span class="st">"#03AF7A"</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -547,14 +543,14 @@ Note
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_protan</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_protan</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_protan</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_protan</span>, main <span class="op">=</span> <span class="st">"Protanopia"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_deutan</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  col <span class="op">=</span> <span class="va">colors_deutan</span>,</span>
 <span>  main <span class="op">=</span> <span class="st">"Deuteranopia"</span></span>
@@ -643,7 +639,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

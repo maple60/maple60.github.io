@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2024-06-18">
 <meta name="description" content="A summary of several ways to create vectors in R.">
@@ -11,10 +11,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -59,23 +62,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -119,15 +122,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../works.html"> 
+    <a class="nav-link" href="../../works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -136,25 +139,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">
 <li>
-    <a class="dropdown-item" href="../../../en/index.html">
+    <a class="dropdown-item" href="../../en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/posts.html">
+    <a class="dropdown-item" href="../../en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/works.html">
+    <a class="dropdown-item" href="../../en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../en/recommendations.html">
+    <a class="dropdown-item" href="../../en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../recommendations.html"> 
+    <a class="nav-link" href="../../recommendations.html"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -176,13 +179,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#c-and" id="toc-c-and" class="nav-link active" data-scroll-target="#c-and"><code>c()</code> and <code>:</code></a></li>
   <li>
-<a href="#seq" id="toc-seq" class="nav-link" data-scroll-target="#seq"><code>seq()</code></a>
+<a href="#seq-1" id="toc-seq-1" class="nav-link" data-scroll-target="#seq-1"><code>seq()</code></a>
   <ul class="collapse">
 <li><a href="#creating-a-vector-with-a-specified-step-size" id="toc-creating-a-vector-with-a-specified-step-size" class="nav-link" data-scroll-target="#creating-a-vector-with-a-specified-step-size">Creating a Vector with a Specified Step Size</a></li>
   <li><a href="#creating-a-vector-with-a-specified-length" id="toc-creating-a-vector-with-a-specified-length" class="nav-link" data-scroll-target="#creating-a-vector-with-a-specified-length">Creating a Vector with a Specified Length</a></li>
   </ul>
 </li>
-  <li><a href="#rep" id="toc-rep" class="nav-link" data-scroll-target="#rep"><code>rep()</code></a></li>
+  <li><a href="#rep-1" id="toc-rep-1" class="nav-link" data-scroll-target="#rep-1"><code>rep()</code></a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></nav>
@@ -223,18 +226,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Original Japanese version: <a href="../../../posts/2024-06-18-r-vector/index.html">Rでベクトルを作成する</a></p>
-</div>
+</header><div class="callout-note">
+<p><a href="../../../posts/2024-06-18-r-vector/">日本語版</a></p>
 </div>
 <p>This post summarizes several ways to create vectors in R. The functions introduced here are:</p>
 <ul>
@@ -264,7 +257,7 @@ Note
 </div>
 </div>
 <p>These are used very frequently, so they are worth remembering.</p>
-</section><section id="seq" class="level2"><h2 class="anchored" data-anchor-id="seq"><code>seq()</code></h2>
+</section><section id="seq-1" class="level2"><h2 class="anchored" data-anchor-id="seq-1"><code>seq()</code></h2>
 <p>The <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> function comes from “sequence.” As the name suggests, it arranges values according to the arguments supplied inside <code>()</code>.</p>
 <p>The most basic use is to create a vector by specifying the first and last values.</p>
 <div class="cell">
@@ -346,7 +339,7 @@ Note
 </div>
 </div>
 <p>There is not much visible difference, but the behavior changes when the vector used in the loop has length 0, that is, when it is an empty vector.</p>
-</section></section><section id="rep" class="level2"><h2 class="anchored" data-anchor-id="rep"><code>rep()</code></h2>
+</section></section><section id="rep-1" class="level2"><h2 class="anchored" data-anchor-id="rep-1"><code>rep()</code></h2>
 <p>Use the <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> function to create a vector by repeating the same value. The name comes from “repeat.”</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span> <span class="co"># repeat 3 five times</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -476,7 +469,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

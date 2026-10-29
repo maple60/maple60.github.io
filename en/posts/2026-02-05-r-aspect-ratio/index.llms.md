@@ -12,9 +12,7 @@ Modified
 
 2026-02-04
 
-> **NOTE:**
->
-> Original Japanese version: [Rのプロットのアスペクト比を設定する方法](../../../posts/2026-02-05-r-aspect-ratio/index.llms.md)
+[日本語版](../../../posts/2026-02-05-r-aspect-ratio/)
 
 In R plotting functions such as [`plot()`](https://rdrr.io/r/graphics/plot.default.html), the aspect ratio can be set with the `asp` parameter. The aspect ratio specifies how many times the unit length of the y-axis is relative to the unit length of the x-axis.
 

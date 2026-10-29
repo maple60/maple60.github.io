@@ -12,9 +12,7 @@ Modified
 
 2024-06-18
 
-> **NOTE:**
->
-> Original Japanese version: [BASIIC認証でつまったこと](../../../posts/2024-06-18-basic_authentification/index.llms.md)
+[日本語版](../../../posts/2024-06-18-basic_authentification/)
 
 This is a short note from when I used BASIC authentication.
 

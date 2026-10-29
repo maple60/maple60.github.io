@@ -12,9 +12,7 @@ Modified
 
 2026-01-01
 
-> **NOTE:**
->
-> Original Japanese version: [画像処理のためのRパッケージimagerの使い方](../../../posts/2025-01-01-imager/index.llms.md)
+[日本語版](../../../posts/2025-01-01-imager/)
 
 # Overview
 
@@ -33,6 +31,10 @@ Load the package as follows.
 ``` downlit
 library("imager")
 ```
+
+    Warning: package 'imager' was built under R version 4.5.3
+
+    Warning: package 'magrittr' was built under R version 4.5.3
 
 # Loading and Displaying Images
 

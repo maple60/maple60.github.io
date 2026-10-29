@@ -2,10 +2,6 @@
 
 python
 
-openalex
-
-api
-
 A note on calling the OpenAlex API from Python to retrieve paper metadata.
 
 Published
@@ -16,9 +12,7 @@ Modified
 
 2026-06-18
 
-> **NOTE:**
->
-> Original Japanese version: [OpenAlexをPythonから使ってみる](../../../posts/2026-06-01-openalex-python/index.llms.md)
+[日本語版](../../../posts/2026-06-01-openalex-python/)
 
 ## Introduction
 

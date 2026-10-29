@@ -1,0 +1,17 @@
+{
+  "hash": "bc55e46fc870ff0a99beda3c3d4dc0e5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Setting the Aspect Ratio of R Plots\"\ndescription: \"How to adjust the aspect ratio of R plots with the `asp` parameter.\"\ndate: \"2026-02-04\"\ndate-modified: \"2026-02-04\"\ndraft: false\nlang: en\ncategories: [r]\n---\n\n::: {.callout-note}\nOriginal Japanese version: [Rのプロットのアスペクト比を設定する方法](../../../posts/2026-02-05-r-aspect-ratio/index.qmd)\n:::\n\nIn R plotting functions such as `plot()`, the aspect ratio can be set with the `asp` parameter.\nThe aspect ratio specifies how many times the unit length of the y-axis is relative to the unit length of the x-axis.\n\n## Example of the `asp` Parameter\n\nYou can adjust the aspect ratio by specifying the `asp` parameter inside `plot()`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(1:10, 1:10) # default aspect ratio\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n\n```{.r .cell-code}\nplot(1:10, 1:10, asp = 1) # aspect ratio 1:1\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-2.png){width=672}\n:::\n:::\n\n\nIn the example above, `asp = 1` is set, so the unit lengths of the x-axis and y-axis are equal.\nIf `asp = 2` is set, the unit length of the y-axis becomes twice that of the x-axis.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(1:10, 1:10, asp = 2)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\n## Adjusting the Aspect Ratio Including the Plot Region\n\nThis is useful when making a 1:1 plot, such as when drawing a 1:1 line.\nDepending on the shape of the plot region, the actual display may not become square.\nIn that case, you can also use `par(pty = \"s\")` to set the plot region to a square.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npar(pty = \"s\") # set the plot region to a square\n\nx <- rnorm(10, mean = 1, sd = 0.1) * 1:10\ny <- rnorm(10, mean = 1, sd = 0.1) * 1:10\n\nplot(x, y, asp = 1)\nplot(x, y, asp = 1)\nabline(0, 1, lty = 2)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n\n```{.r .cell-code}\npar(pty = \"m\") # restore the plot region setting\n```\n:::\n\n\n::: {.callout-note}\n## Supplement\n\n- `rnorm()`: generates random numbers following a normal distribution. Here it generates random numbers with mean 1 and standard deviation 0.1.\n- `abline(0, 1, lty = 2)`: draws the line y = x as a dashed line. `lty = 2` means a dashed line.\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

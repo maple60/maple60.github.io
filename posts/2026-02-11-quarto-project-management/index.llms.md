@@ -4,17 +4,15 @@ quarto
 
 QuartoのBook形式で解析プロジェクトを管理する方法についてまとめます。
 
-Published
+公開
 
 2026-02-11
 
-Modified
+更新日
 
 2026-02-25
 
-> **NOTE:**
->
-> English version: [Managing Analysis Projects with Quarto](../../en/posts/2026-02-11-quarto-project-management/index.llms.md)
+[English version](../../en/posts/2026-02-11-quarto-project-management/)
 
 > **WARNING:**
 >
@@ -24,8 +22,8 @@ Modified
 
 > **NOTE:**
 >
-> - ここでは、**qmdファイルでRコードを実行する**ことを前提としています。  
-> - Quartoの基本的な使い方についてもできるだけ触れますが、詳細は[公式ドキュメント](https://quarto.org/)をご覧ください。  
+> - ここでは、**qmdファイルでRコードを実行する**ことを前提としています。\
+> - Quartoの基本的な使い方についてもできるだけ触れますが、詳細は[公式ドキュメント](https://quarto.org/)をご覧ください。\
 
 ## 解析における課題
 

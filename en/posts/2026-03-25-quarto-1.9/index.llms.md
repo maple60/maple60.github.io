@@ -14,9 +14,7 @@ Modified
 
 2026-03-25
 
-> **NOTE:**
->
-> Original Japanese version: [Quarto 1.9がリリースされました](../../../posts/2026-03-25-quarto-1.9/index.llms.md)
+[日本語版](../../../posts/2026-03-25-quarto-1.9/)
 
 Quarto 1.9 was released on March 24, 2026. See the [official blog post](https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/). Several interesting features were added, such as publishing to [Posit Connect Cloud](https://connect.posit.cloud/) and support for [Typst](https://typst.app/).
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,23 +30,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
@@ -93,15 +96,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts.html"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../works.html"> 
+    <a class="nav-link" href="./works.html"> 
 <span class="menu-text">Works</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -110,25 +113,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-english">    
         <li>
-    <a class="dropdown-item" href="../en/index.html">
+    <a class="dropdown-item" href="./en/index.html">
  <span class="dropdown-text">English Home</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/posts.html">
+    <a class="dropdown-item" href="./en/posts.html">
  <span class="dropdown-text">English Posts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/works.html">
+    <a class="dropdown-item" href="./en/works.html">
  <span class="dropdown-text">English Works</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../en/recommendations.html">
+    <a class="dropdown-item" href="./en/recommendations.html">
  <span class="dropdown-text">English Recommendations</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../recommendations.html"> 
+    <a class="nav-link active" href="./recommendations.html" aria-current="page"> 
 <span class="menu-text">Recommendations</span></a>
   </li>  
 </ul>
@@ -159,15 +162,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#information-collection-and-task-management" id="toc-information-collection-and-task-management" class="nav-link" data-scroll-target="#information-collection-and-task-management">Information Collection and Task Management</a></li>
   <li><a href="#images-video-and-streaming" id="toc-images-video-and-streaming" class="nav-link" data-scroll-target="#images-video-and-streaming">Images, Video, and Streaming</a></li>
   <li><a href="#security-and-networking" id="toc-security-and-networking" class="nav-link" data-scroll-target="#security-and-networking">Security and Networking</a></li>
-  <li><a href="#ai" id="toc-ai" class="nav-link" data-scroll-target="#ai">AI</a></li>
+  <li><a href="#ai-1" id="toc-ai-1" class="nav-link" data-scroll-target="#ai-1">AI</a></li>
   </ul></li>
   <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R Packages</a></li>
   <li><a href="#zotero-plugins" id="toc-zotero-plugins" class="nav-link" data-scroll-target="#zotero-plugins">Zotero Plugins</a></li>
   <li><a href="#books-and-online-resources" id="toc-books-and-online-resources" class="nav-link" data-scroll-target="#books-and-online-resources">Books and Online Resources</a>
   <ul class="collapse">
   <li><a href="#plants-and-morphology" id="toc-plants-and-morphology" class="nav-link" data-scroll-target="#plants-and-morphology">Plants and Morphology</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#r-1" id="toc-r-1" class="nav-link" data-scroll-target="#r-1">R</a></li>
+  <li><a href="#python-1" id="toc-python-1" class="nav-link" data-scroll-target="#python-1">Python</a></li>
   <li><a href="#statistics-visualization-and-computer-science" id="toc-statistics-visualization-and-computer-science" class="nav-link" data-scroll-target="#statistics-visualization-and-computer-science">Statistics, Visualization, and Computer Science</a></li>
   </ul></li>
   </ul>
@@ -210,7 +213,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Original Japanese version: <a href="../recommendations.html">おすすめ</a></p>
+<p>日本語版: <a href="../recommendations.html">おすすめ</a></p>
 </div>
 </div>
 <p>This page collects tools, services, books, and online resources that I use personally or want to keep as references. The list focuses on resources that are available online and useful for research, writing, programming, data analysis, and everyday knowledge work. I update it as my workflow changes.</p>
@@ -268,8 +271,8 @@ Note
 <li><a href="https://element.io/">Element</a>: An open-source chat app based on the Matrix protocol.</li>
 </ul>
 </section>
-<section id="ai" class="level3">
-<h3 class="anchored" data-anchor-id="ai">AI</h3>
+<section id="ai-1" class="level3">
+<h3 class="anchored" data-anchor-id="ai-1">AI</h3>
 <ul>
 <li><a href="https://lmstudio.ai/">LM Studio</a>: A local AI chat tool that is useful for trying local LLMs.</li>
 </ul>
@@ -305,8 +308,8 @@ Note
 <li><a href="https://www.biodiversitylibrary.org/bibliography/15368">Contributions to Morphometrics</a>: A classic resource on morphometrics.</li>
 </ul>
 </section>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
+<section id="r-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-1">R</h3>
 <p>These are high-quality R books and resources that can be read online.</p>
 <ul>
 <li><a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a>: An introductory book on data science with R, covering data handling, visualization, modeling, and more. License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/us/">CC BY-NC-ND 3.0</a>.</li>
@@ -323,8 +326,8 @@ Note
 <li><a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis (3e)</a>: An introductory book on ggplot2.</li>
 </ul>
 </section>
-<section id="python" class="level3">
-<h3 class="anchored" data-anchor-id="python">Python</h3>
+<section id="python-1" class="level3">
+<h3 class="anchored" data-anchor-id="python-1">Python</h3>
 <ul>
 <li><a href="https://allendowney.github.io/ThinkPython/">Think Python</a>: An introductory book on Python.</li>
 <li><a href="https://greenteapress.com/wp/think-python-2e/">Think Python, 2nd edition</a>: The second edition of Think Python.</li>
@@ -426,7 +429,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

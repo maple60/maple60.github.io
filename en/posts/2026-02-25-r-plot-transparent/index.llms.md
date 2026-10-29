@@ -12,9 +12,7 @@ Modified
 
 2026-02-25
 
-> **NOTE:**
->
-> Original Japanese version: [Rのプロットで色に透明度を指定する方法](../../../posts/2026-02-25-r-plot-transparent/index.llms.md)
+[日本語版](../../../posts/2026-02-25-r-plot-transparent/)
 
 This article summarizes how to specify transparency for colors in R plots. For example, when drawing a scatter plot, it can be difficult to see where points overlap. Suppose we draw the following scatter plot.
 

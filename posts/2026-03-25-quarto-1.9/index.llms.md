@@ -6,17 +6,15 @@ quarto
 
 Quarto 1.9がリリースされました。気になる機能をまとめます。
 
-Published
+公開
 
 2026-03-25
 
-Modified
+更新日
 
 2026-03-25
 
-> **NOTE:**
->
-> English version: [Quarto 1.9 Has Been Released](../../en/posts/2026-03-25-quarto-1.9/index.llms.md)
+[English version](../../en/posts/2026-03-25-quarto-1.9/)
 
 2026年3月24日にQuarto 1.9がリリースされました ([公式ブログはこちら](https://quarto.org/docs/blog/posts/2026-03-24-1.9-release/))。 [Posit Connect Cloud](https://connect.posit.cloud/)へのpublish機能の追加や、[Typst](https://typst.app/)への対応など、気になる機能がいくつか追加されました。
 
@@ -43,7 +41,7 @@ quarto --version
 
 ``` yaml
 website:
-  title: "Maple60’s website"
+  title: "Maple60's website"
   llms-txt: true
 ```
 

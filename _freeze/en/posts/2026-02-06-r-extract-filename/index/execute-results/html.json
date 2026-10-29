@@ -1,0 +1,15 @@
+{
+  "hash": "afab252b7cae9eaafab41abd2037568c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Extracting File Names in R\"\ndescription: \"How to extract file names in R with `basename()` and `file.path_sans_ext()`.\"\ndate: \"2026-02-06\"\ndate-modified: \"2026-02-06\"\ndraft: false\nlang: en\ncategories: [r]\n---\n\n::: {.callout-note}\nOriginal Japanese version: [Rでファイル名を抽出する方法](../../../posts/2026-02-06-r-extract-filename/index.qmd)\n:::\n\nWhen handling file paths in R, you may want to extract only the file name or obtain the file name without its extension.\nThis article summarizes how to extract file names in R using `basename()` and `tools::file_path_sans_ext()`.\n\n## Extracting the File Name\n\nUse the `basename()` function to extract a file name from a file path.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfile_path <- \"/path/to/your/file/data.csv\"\nfile_name <- basename(file_path)\nprint(file_name)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"data.csv\"\n```\n\n\n:::\n:::\n\n\nThe file name alone is extracted from the file path that includes the directory path.\n\n## Extracting the File Name Without the Extension\n\nUse the `file_path_sans_ext()` function from the `tools` package to obtain a file name without its extension.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tools)\nfile_path <- \"/path/to/your/file/data.csv\"\nfile_name_no_ext <- file_path_sans_ext(basename(file_path))\nprint(file_name_no_ext)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"data\"\n```\n\n\n:::\n:::\n\n\nThis obtains the file name without the extension.\n\n::: {.callout-note}\n## About the Name `file_path_sans_ext()`\n\nThe function name is a little long and hard to remember, but it becomes easier if you remember its meaning.\n`sans` is French for \"without.\"\nIt corresponds to the English word `without`.\nAlso, `ext` is short for \"extension.\"\nTherefore, `file_path_sans_ext()` means \"file path without extension.\"\n:::\n\n## Example\n\nThis is useful when combining data with corresponding image file names and storing them in a data frame.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nfile_paths <- c(\n  \"/path/to/your/file/data1.csv\",\n  \"/path/to/your/file/data2.csv\",\n  \"/path/to/your/file/data3.csv\"\n)\nfile_names <- basename(file_paths)\nfile_names_no_ext <- file_path_sans_ext(file_names)\ndf <- data.frame(value = c(10, 20, 30), file_name = file_names_no_ext)\nprint(df)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n  value file_name\n1    10     data1\n2    20     data2\n3    30     data3\n```\n\n\n:::\n:::\n\n\nIn this way, file names can be included in a data frame.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

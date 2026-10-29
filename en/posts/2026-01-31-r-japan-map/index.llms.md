@@ -12,9 +12,7 @@ Modified
 
 2026-01-31
 
-> **NOTE:**
->
-> Original Japanese version: [Rで日本地図を描く](../../../posts/2026-01-31-r-japan-map/index.llms.md)
+[日本語版](../../../posts/2026-01-31-r-japan-map/)
 
 ## Installing and Loading Packages
 
@@ -34,6 +32,8 @@ Then load the package.
 library(rnaturalearth)
 ```
 
+    Warning: package 'rnaturalearth' was built under R version 4.5.3
+
 ## Drawing a Map of Japan
 
 To draw the map, the rnaturalearthdata package is also required. The following code obtains and draws a map of Japan.
@@ -49,6 +49,7 @@ It should work without explicitly loading the library, but I load it just in cas
 library(rnaturalearthdata)
 ```
 
+    Warning: package 'rnaturalearthdata' was built under R version 4.5.3
 
     Attaching package: 'rnaturalearthdata'
 
@@ -116,6 +117,8 @@ Load the package.
 ``` downlit
 library(rnaturalearthhires)
 ```
+
+    Warning: package 'rnaturalearthhires' was built under R version 4.5.3
 
 Obtain a prefecture-level map of Japan and draw it.
 

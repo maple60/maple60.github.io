@@ -4,7 +4,7 @@ Recommended tools, services, R packages, Zotero plugins, books, and online learn
 
 > **NOTE:**
 >
-> Original Japanese version: [おすすめ](../recommendations.llms.md)
+> 日本語版: [おすすめ](../recommendations.llms.md)
 
 This page collects tools, services, books, and online resources that I use personally or want to keep as references. The list focuses on resources that are available online and useful for research, writing, programming, data analysis, and everyday knowledge work. I update it as my workflow changes.
 

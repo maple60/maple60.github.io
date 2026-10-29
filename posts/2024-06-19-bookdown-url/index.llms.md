@@ -4,17 +4,15 @@ r
 
 Bookdownで日本語を使うときはURLエンコードに注意です
 
-Published
+公開
 
 2024-06-18
 
-Modified
+更新日
 
 2024-06-18
 
-> **NOTE:**
->
-> English version: [One Cause of 404 Errors in Bookdown: URL Encoding](../../en/posts/2024-06-19-bookdown-url/index.llms.md)
+[English version](../../en/posts/2024-06-19-bookdown-url/)
 
 Rの[{bookdown}](https://bookdown.org)パッケージでドキュメントを作成したときに出会ったエラーについてのメモです。
 

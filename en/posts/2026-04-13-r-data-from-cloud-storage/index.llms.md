@@ -12,9 +12,7 @@ Modified
 
 2026-04-13
 
-> **NOTE:**
->
-> Original Japanese version: [Rで解析データをクラウドストレージから読み込む](../../../posts/2026-04-13-r-data-from-cloud-storage/index.llms.md)
+[日本語版](../../../posts/2026-04-13-r-data-from-cloud-storage/)
 
 This article introduces a way to read raw analysis data from cloud storage.
 

@@ -4,17 +4,15 @@ r
 
 Rで`colorspace`パッケージを使って色覚異常のシミュレーションをする方法をまとめます
 
-Published
+公開
 
 2026-03-04
 
-Modified
+更新日
 
 2026-03-04
 
-> **NOTE:**
->
-> English version: [Simulating Color Vision Deficiency in R](../../en/posts/2026-03-04-r-color-blind/index.llms.md)
+[English version](../../en/posts/2026-03-04-r-color-blind/)
 
 ## 色覚多様性
 
@@ -47,18 +45,20 @@ Modified
 Rの`colorspace`パッケージを使うと、色覚異常のシミュレーションを簡単に行うことができます。 インストールされていなかったら、以下のコードを実行してインストールしてください。 その後、[`library(colorspace)`](https://colorspace.R-Forge.R-project.org/)でパッケージを読み込みます。
 
 ``` downlit
-# install.packages("colorspace") もしインストールされていなかったら
-# renv::install("colorspace") renvを使っている場合
+# install.packages("colorspace") if it is not installed
+# renv::install("colorspace") when using renv
 library(colorspace)
 ```
 
-色のベクトルを用意し、[`deutan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (2型色覚), [`protan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (1型色覚), [`tritan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (3型色覚)を使って、色覚異常のシミュレーションを行います。
+    Warning: package 'colorspace' was built under R version 4.5.3
+
+色のベクトルを用意し、[`deutan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (2型色覚), [`protan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (1型色覚), [`tritan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (3型色覚)を使って、色覚異常のシミュレーションを行います。
 
 ``` downlit
-colors <- c("red", "green", "blue", "yellow") # 赤、緑、青、黄の色ベクトル
-colors_protan <- protan(colors) # 1型色覚のシミュレーション
-colors_deutan <- deutan(colors) # 2型色覚のシミュレーション
-colors_tritan <- tritan(colors) # 3型色覚のシミュレーション
+colors <- c("red", "green", "blue", "yellow") # color vector: red, green, blue, yellow
+colors_protan <- protan(colors) # simulation of protanopia
+colors_deutan <- deutan(colors) # simulation of deuteranopia
+colors_tritan <- tritan(colors) # simulation of tritanopia
 ```
 
 > **NOTE:**
@@ -107,7 +107,7 @@ plot(x, y, col = colors_tritan, pch = 16, cex = 2, main = "Tritanopia")
 Rのバージョン4以降のデフォルトカラーパレットでも検証してみます。
 
 ``` downlit
-colors_default <- palette() # Rのデフォルトカラーパレット
+colors_default <- palette() # R's default color palette
 colors_default_protan <- protan(colors_default)
 colors_default_deutan <- deutan(colors_default)
 colors_default_tritan <- tritan(colors_default)

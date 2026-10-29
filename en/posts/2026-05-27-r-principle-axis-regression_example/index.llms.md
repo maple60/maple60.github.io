@@ -12,9 +12,7 @@ Modified
 
 2026-05-27
 
-> **NOTE:**
->
-> Original Japanese version: [RでPrincipal axis regressionをtrait spaceの回転に応用する](../../../posts/2026-05-27-r-principle-axis-regression_example/index.llms.md)
+[日本語版](../../../posts/2026-05-27-r-principle-axis-regression_example/)
 
 In the previous article, [Understanding the Basics of Bivariate PCA and Principal Axis Regression in R](../2026-05-26-r-principle-axis-regression/), I decomposed the covariance matrix of bivariate data and used the first eigenvector as the principal axis. This article takes that idea one step further and examines how much the principal axis based on species-level representative values differs from the principal axis estimated after including intraspecific variation.
 

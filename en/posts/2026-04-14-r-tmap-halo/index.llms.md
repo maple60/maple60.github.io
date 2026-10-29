@@ -12,9 +12,7 @@ Modified
 
 2026-04-14
 
-> **NOTE:**
->
-> Original Japanese version: [Rの`tmap`パッケージで地図の上に縁取り文字を表示する方法](../../../posts/2026-04-14-r-tmap-halo/index.llms.md)
+[日本語版](../../../posts/2026-04-14-r-tmap-halo/)
 
 This article introduces how to display haloed text on maps with the [`tmap` package](https://r-tmap.github.io/tmap/index.html) in R. According to the `tmap` package [Changelog](https://r-tmap.github.io/tmap/news/index.html), decorations such as text halos seem to have been implemented in the `tm_text` function starting from version 4.3.
 
@@ -32,6 +30,11 @@ Then load it with [`library()`](https://rdrr.io/r/base/library.html) and check t
 
 ``` downlit
 library(tmap)
+```
+
+    Warning: package 'tmap' was built under R version 4.5.3
+
+``` downlit
 packageVersion("tmap")
 ```
 

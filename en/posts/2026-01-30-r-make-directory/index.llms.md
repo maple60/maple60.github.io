@@ -12,9 +12,7 @@ Modified
 
 2026-01-30
 
-> **NOTE:**
->
-> Original Japanese version: [Rでディレクトリを作成する方法](../../../posts/2026-01-30-r-make-directory/index.llms.md)
+[日本語版](../../../posts/2026-01-30-r-make-directory/)
 
 In R, you can create directories with the `dir.create()` function.
 

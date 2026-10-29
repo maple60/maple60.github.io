@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-06-16">
 <meta name="description" content="The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。">
@@ -11,10 +11,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -72,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -89,17 +92,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
   }
 }</script>
 </head>
@@ -112,8 +115,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="サーチ"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -160,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -171,16 +174,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
    
   <ul>
 <li><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" id="toc-パッケージのインストール" class="nav-link active" data-scroll-target="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">パッケージのインストール</a></li>
   <li><a href="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A" id="toc-エンドポイントの指定" class="nav-link" data-scroll-target="#%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A">エンドポイントの指定</a></li>
   <li><a href="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90" id="toc-学名から検索するクエリの作成" class="nav-link" data-scroll-target="#%E5%AD%A6%E5%90%8D%E3%81%8B%E3%82%89%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B%E3%82%AF%E3%82%A8%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90">学名から検索するクエリの作成</a></li>
   <li><a href="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6api%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" id="toc-リクエストを作成してapiに送信する" class="nav-link" data-scroll-target="#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6api%E3%81%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B">リクエストを作成してAPIに送信する</a></li>
-  <li><a href="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D" id="toc-結果の確認" class="nav-link" data-scroll-target="#%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D">結果の確認</a></li>
-  <li><a href="#accepted-name%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90" id="toc-accepted-nameを取得する関数の作成" class="nav-link" data-scroll-target="#accepted-name%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%96%A2%E6%95%B0%E3%81%AE%E4%BD%9C%E6%88%90">Accepted nameを取得する関数の作成</a></li>
-  <li><a href="#api%E5%88%A9%E7%94%A8%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F" id="toc-api利用時の注意" class="nav-link" data-scroll-target="#api%E5%88%A9%E7%94%A8%E6%99%82%E3%81%AE%E6%B3%A8%E6%84%8F">API利用時の注意</a></li>
+  <li><a href="#checking-the-result" id="toc-checking-the-result" class="nav-link" data-scroll-target="#checking-the-result">Checking the Result</a></li>
+  <li><a href="#creating-a-function-to-retrieve-accepted-names" id="toc-creating-a-function-to-retrieve-accepted-names" class="nav-link" data-scroll-target="#creating-a-function-to-retrieve-accepted-names">Creating a Function to Retrieve Accepted Names</a></li>
+  <li><a href="#notes-on-using-the-api" id="toc-notes-on-using-the-api" class="nav-link" data-scroll-target="#notes-on-using-the-api">Notes on Using the API</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -202,14 +205,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">公開</div>
     <div class="quarto-title-meta-contents">
       <p class="date">2026-06-16</p>
     </div>
   </div>
   
     <div>
-    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
       <p class="date-modified">2026-06-16</p>
     </div>
@@ -219,18 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>English version: <a href="../../en/posts/2026-06-16-wfo-r/index.html">Using the WFO Plant List API from R</a></p>
-</div>
+</header><div class="callout-note">
+<p><a href="../../en/posts/2026-06-16-wfo-r/">English version</a></p>
 </div>
 <p><a href="https://www.worldfloraonline.org/">The World Flora Online</a>という、世界中の植物のデータベースがあります。 <a href="https://list.worldfloraonline.org/">WFO Plant List API</a>という形でAPIも提供されているので、Rからアクセスし、学名からaccepted nameを取得する方法を紹介してみます。</p>
 <section id="パッケージのインストール" class="level2"><h2 class="anchored" data-anchor-id="パッケージのインストール">パッケージのインストール</h2>
@@ -240,12 +233,12 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages(c("httr2", "jsonlite"))</span></span>
 <span><span class="co"># renv::install(c("httr2", "jsonlite")) # renvを使用している場合はこちら</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr2.r-lib.org">httr2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="エンドポイントの指定" class="level2"><h2 class="anchored" data-anchor-id="エンドポイントの指定">エンドポイントの指定</h2>
 <p>APIのエンドポイントは、以下のURLになります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">endpoint</span> <span class="op">&lt;-</span> <span class="st">"https://list.worldfloraonline.org/gql.php"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">endpoint</span> <span class="op">&lt;-</span> <span class="st">"https://list.worldfloraonline.org/gql.php"</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="学名から検索するクエリの作成" class="level2"><h2 class="anchored" data-anchor-id="学名から検索するクエリの作成">学名から検索するクエリの作成</h2>
 <p>どのように検索するかを、GraphQLのクエリとして記述します。 ここでは、“Quercus serrata”(和名はコナラ)という学名を検索するクエリを作成します。</p>
@@ -266,7 +259,7 @@ Note
 <span><span class="st">    }</span></span>
 <span><span class="st">  }</span></span>
 <span><span class="st">}</span></span>
-<span><span class="st">'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="st">'</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>このクエリの意味は、以下のようになります。</p>
 <ul>
@@ -282,7 +275,7 @@ Note
 </section><section id="リクエストを作成してapiに送信する" class="level2"><h2 class="anchored" data-anchor-id="リクエストを作成してapiに送信する">リクエストを作成してAPIに送信する</h2>
 <p><code><a href="https://httr2.r-lib.org/reference/request.html">httr2::request()</a></code>関数を使って、APIに送るリクエストの土台を作ります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">endpoint</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">req</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">endpoint</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>GraphQLの<code>query</code>をJSONとして入れる。</p>
 <div class="cell">
@@ -290,15 +283,15 @@ Note
 <span>  <span class="va">req</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>query <span class="op">=</span> <span class="va">query</span><span class="op">)</span>,</span>
 <span>  auto_unbox <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>実際にWFOへ送信します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="va">req</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>返ってきたJSONをRの<code>list</code>に変換します。 これで、APIからのレスポンスをRで扱えるようになります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="va">resp</span>, simplifyVector <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/resp_body_raw.html">resp_body_json</a></span><span class="op">(</span><span class="va">resp</span>, simplifyVector <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -311,28 +304,15 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>baseRなどのパイプ演算子<code>|&gt;</code> (native pipe operator)を使うと、コードがより読みやすくなります。</p>
+</div>
+</div>
+</section><section id="checking-the-result" class="level2"><h2 class="anchored" data-anchor-id="checking-the-result">Checking the Result</h2>
+<p>The <code>x</code> object stores the API response as an R list.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr2.r-lib.org/reference/request.html">request</a></span><span class="op">(</span><span class="va">endpoint</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_body.html">req_body_json</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>query <span class="op">=</span> <span class="va">query</span><span class="op">)</span>,</span>
-<span>    auto_unbox <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html">req_perform</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>このパイプ演算子はR4.1.0から導入されたもので、左側のオブジェクトを右側の関数の最初の引数として渡すことができます。 もともとは、<code>httr2</code>パッケージの作者であるHadley Wickham氏が提唱した<code>%&gt;%</code> (magrittr pipe operator)が広く使われていましたが、Rのネイティブなパイプ演算子が導入されたことで、今後は<code>|&gt;</code>を使うことが推奨されるようになっています。</p>
-<p>パイプ演算子については、以下のドキュメントが参考になります。</p>
-<ul>
-<li><a href="https://tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">Differences between the base R and magrittr pipes</a></li>
-</ul>
-</div>
-</div>
-</section><section id="結果の確認" class="level2"><h2 class="anchored" data-anchor-id="結果の確認">結果の確認</h2>
-<p><code>x</code>オブジェクトには、APIからのレスポンスがRのリスト形式で格納されています。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -341,41 +321,18 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>id</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>fullNameStringHtml</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>currentPreferredUsage</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName<span class="sc">$</span>id</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">1</span>]]<span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName<span class="sc">$</span>fullNameStringHtml</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">2</span>]]</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>data<span class="sc">$</span>taxonNameSuggestion[[<span class="dv">2</span>]]<span class="sc">$</span>id</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293165"</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
 </div>
 </div>
-<p>候補が10件返ってきました。 これは、クエリで<code>limit: 10</code>と指定したためです。 一つ目を見てみます。</p>
+<p>Ten candidates were returned because the query specified <code>limit: 10</code>. Let’s inspect the first result.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -384,30 +341,18 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>id</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>fullNameStringHtml</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>currentPreferredUsage</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName<span class="sc">$</span>id</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>currentPreferredUsage<span class="sc">$</span>hasName<span class="sc">$</span>fullNameStringHtml</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
 </div>
 </div>
-<p><code>id</code>, <code>fullNameStringHtml</code>, <code>currentPreferredUsage</code>の3つのフィールドが返ってきました。</p>
-<p>ここで注目するのは、<code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドです。 このフィールドには、現在の分類群の学名が含まれています。</p>
+<p>The three fields <code>id</code>, <code>fullNameStringHtml</code>, and <code>currentPreferredUsage</code> were returned.</p>
+<p>The field to focus on is <code>hasName</code> inside <code>currentPreferredUsage</code>. This field contains the scientific name of the current taxon.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -417,21 +362,16 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>hasName</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>hasName<span class="sc">$</span>id</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span>hasName<span class="sc">$</span>fullNameStringHtml</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-full</span><span class="sc">\"</span><span class="st"> &gt;&lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name</span><span class="sc">\"</span><span class="st">&gt;&lt;i&gt;Quercus&lt;/i&gt; &lt;i&gt;serrata&lt;/i&gt;&lt;/span&gt; &lt;span class=</span><span class="sc">\"</span><span class="st">wfo-name-authors</span><span class="sc">\"</span><span class="st"> &gt;Murray&lt;/span&gt;&lt;/span&gt;"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
 </div>
-<p>この例では、<code>currentPreferredUsage</code>の中の<code>hasName</code>フィールドに、“<em>Quercus serrata</em> Murray”という学名が表示されています。</p>
+<p>In this example, the <code>hasName</code> field inside <code>currentPreferredUsage</code> displays the scientific name “<em>Quercus serrata</em> Murray”.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span>
-<span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span><span class="op">$</span><span class="va">hasName</span><span class="op">$</span><span class="va">id</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">taxonNameSuggestion</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">currentPreferredUsage</span><span class="op">$</span><span class="va">hasName</span><span class="op">$</span><span class="va">id</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -440,23 +380,22 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"wfo-0000293164"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
 </div>
 </div>
-<p><code>x$data$taxonNameSuggestion[[1]]$id</code>と<code>x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id</code>を比較すると、両者は一致しています。</p>
-<p>このことから、検索した学名”Quercus serrata”は、現在の分類群としても”Quercus serrata”であることがわかります。</p>
-<p>このようにすることで、検索した学名からaccepted nameを取得することができます。</p>
-</section><section id="accepted-nameを取得する関数の作成" class="level2"><h2 class="anchored" data-anchor-id="accepted-nameを取得する関数の作成">Accepted nameを取得する関数の作成</h2>
-<p>実務的には、処理を関数化しておくと便利です。</p>
-<p>今回の一連の処理を関数化したうえで、学名からaccepted nameを取得する関数を作成してみます。 まずは、学名から候補を取得する関数<code>get_wfo_suggestions()</code>を作成します。</p>
-<p>この関数では、先ほどのクエリに加え、<code>fullNameStringNoAuthorsPlain</code>、<code>authorsString</code>、<code>rank</code>などのフィールドも取得するようにしています。 特に、<code>rank</code>は、検索した名前がどのランクの分類群であるかを示すために重要です。 例えば、<code>species</code>(種)か、<code>subspecies</code>(亜種)か、<code>variety</code>(変種)かなどのランクを知ることができます。</p>
-<p>Accepted nameを取得するときは、検索した名前と同じランクのaccepted nameを探すことが多いので、ランクの情報も取得するようにしています。</p>
+<p>Comparing <code>x$data$taxonNameSuggestion[[1]]$id</code> with <code>x$data$taxonNameSuggestion[[1]]$currentPreferredUsage$hasName$id</code>, the two values are identical.</p>
+<p>This shows that the searched scientific name <code>"Quercus serrata"</code> is currently treated as <code>"Quercus serrata"</code>.</p>
+<p>In this way, you can retrieve an accepted name from a searched scientific name.</p>
+</section><section id="creating-a-function-to-retrieve-accepted-names" class="level2"><h2 class="anchored" data-anchor-id="creating-a-function-to-retrieve-accepted-names">Creating a Function to Retrieve Accepted Names</h2>
+<p>In practical work, it is useful to wrap the process in functions.</p>
+<p>Here, I turn the steps above into functions and create a function that retrieves the accepted name from a scientific name. First, create <code>get_wfo_suggestions()</code>, which retrieves candidates from a scientific name.</p>
+<p>In addition to the query above, this function also retrieves fields such as <code>fullNameStringNoAuthorsPlain</code>, <code>authorsString</code>, and <code>rank</code>. The <code>rank</code> field is especially important because it shows the taxonomic rank of the searched name. For example, it lets you distinguish whether the name is at the rank of <code>species</code>, <code>subspecies</code>, <code>variety</code>, and so on.</p>
+<p>When retrieving an accepted name, it is often useful to look for an accepted name at the same rank as the searched name, so this function also retrieves rank information.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_wfo_suggestions</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_wfo_suggestions</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span></span>
 <span>  <span class="va">name</span>,</span>
 <span>  <span class="va">limit</span> <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  <span class="va">endpoint</span> <span class="op">=</span> <span class="st">"https://list.worldfloraonline.org/gql.php"</span></span>
@@ -552,11 +491,11 @@ Note
 <span>  <span class="va">out</span><span class="op">$</span><span class="va">is_accepted</span> <span class="op">&lt;-</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">out</span><span class="op">$</span><span class="va">accepted_id</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">out</span><span class="op">$</span><span class="va">id</span> <span class="op">==</span> <span class="va">out</span><span class="op">$</span><span class="va">accepted_id</span></span>
 <span></span>
 <span>  <span class="va">out</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>つぎに、学名からaccepted nameを取得する関数<code>get_accepted_name()</code>を作成します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_accepted_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">rank</span> <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">get_accepted_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">name</span>, <span class="va">rank</span> <span class="op">=</span> <span class="st">"species"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu">get_wfo_suggestions</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
@@ -573,14 +512,35 @@ Note
 <span>  <span class="op">}</span></span>
 <span></span>
 <span>  <span class="va">hit</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>get_accepted_name()</code>関数は、学名とランクを引数に取り、<code>get_wfo_suggestions()</code>関数を呼び出して候補を取得します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">get_wfo_suggestions</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">get_wfo_suggestions</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">None</span>実行結果
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<p>Use <code>get_accepted_name()</code> to retrieve the row that contains the accepted name for a scientific name.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">accepted_name</span> <span class="op">&lt;-</span> <span class="fu">get_accepted_name</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">accepted_name</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -592,117 +552,25 @@ Note
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>             input             id</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  Quercus serrata wfo<span class="dv">-0000293164</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  Quercus serrata wfo<span class="dv">-0000293165</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>  Quercus serrata wfo<span class="dv">-0001062616</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  Quercus serrata wfo<span class="dv">-0000293167</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  Quercus serrata wfo<span class="dv">-0000293168</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  Quercus serrata wfo<span class="dv">-0000293169</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  Quercus serrata wfo<span class="dv">-0000809955</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  Quercus serrata wfo<span class="dv">-0000804579</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  Quercus serrata wfo<span class="dv">-0000804580</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> Quercus serrata wfo<span class="dv">-1200020125</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                                                      name</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>                                   Quercus serrata Murray</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>                                    Quercus serrata Roxb.</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>                                   Quercus serrata Thunb.</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>                     Quercus serrata var. attenuata Blume</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>        Quercus serrata var. <span class="fu">brevipetiolata</span> (A.DC.) Nakai</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>                     Quercus serrata var. chinensis Wenz.</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>              Quercus serrata f. <span class="fu">concolor</span> (Sugim.) H.Ohba</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>                     Quercus serrata var. concolor Sugim.</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  Quercus serrata var. <span class="fu">donarium</span> (Nakai) Kitam. <span class="sc">&amp;</span> T.Horik.</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>                   Quercus serrata var. longicarpa Uyeki</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>                        name_no_author                   authors    rank</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>                      Quercus serrata                    Murray species</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>                      Quercus serrata                     Roxb. species</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>                      Quercus serrata                    Thunb. species</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>       Quercus serrata var. attenuata                     Blume variety</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  Quercus serrata var. <span class="fu">brevipetiolata</span>             (A.DC.) Nakai variety</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>       Quercus serrata var. chinensis                     Wenz. variety</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>          Quercus serrata f. <span class="fu">concolor</span>           (Sugim.) H.Ohba    form</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>        Quercus serrata var. concolor                    Sugim. variety</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>        Quercus serrata var. <span class="fu">donarium</span> (Nakai) Kitam. <span class="sc">&amp;</span> T.Horik. variety</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>     Quercus serrata var. longicarpa                     Uyeki variety</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>      accepted_id                              accepted_name</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  wfo<span class="dv">-0000293164</span>                     Quercus serrata Murray</span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>  wfo<span class="dv">-0000814085</span> Castanopsis <span class="fu">indica</span> (Roxb. ex Lindl.) A.DC.</span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                                       <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>  wfo<span class="dv">-0000289386</span>                Quercus acutissima Carruth.</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata </span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>  wfo<span class="dv">-0000293817</span>                   Quercus variabilis Blume</span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>  wfo<span class="dv">-0000293164</span>                     Quercus serrata Murray</span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>  wfo<span class="dv">-0000293164</span>                     Quercus serrata Murray</span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  wfo<span class="dv">-0000807317</span>            Quercus serrata subsp. serrata </span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>           <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                                       <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>          accepted_name_no_author        accepted_authors accepted_rank</span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>                 Quercus serrata                  Murray       species</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>              Castanopsis <span class="fu">indica</span> (Roxb. ex Lindl.) A.DC.       species</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>                            <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                    <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>          <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>              Quercus acutissima                Carruth.       species</span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>  Quercus serrata subsp. serrata                    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>    subspecies</span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>              Quercus variabilis                   Blume       species</span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>                 Quercus serrata                  Murray       species</span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>                 Quercus serrata                  Murray       species</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>  Quercus serrata subsp. serrata                    <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>    subspecies</span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>                           <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>                    <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>          <span class="er">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span></span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>   is_accepted</span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>         <span class="cn">TRUE</span></span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span>        <span class="cn">FALSE</span></span>
-<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>       <span class="cn">FALSE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
 </div>
 </div>
-<p><code>get_accepted_name()</code>関数を使って、学名からaccepted nameが含まれる行を取得します。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">accepted_name</span> <span class="op">&lt;-</span> <span class="fu">get_accepted_name</span><span class="op">(</span><span class="st">"Quercus serrata"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">accepted_name</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>実行結果
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>            input             id                   name  name_no_author</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Quercus serrata wfo<span class="dv">-0000293164</span> Quercus serrata Murray Quercus serrata</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  authors    rank    accepted_id          accepted_name</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>  Murray species wfo<span class="dv">-0000293164</span> Quercus serrata Murray</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  accepted_name_no_author accepted_authors accepted_rank is_accepted</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>         Quercus serrata           Murray       species        <span class="cn">TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section><section id="api利用時の注意" class="level2"><h2 class="anchored" data-anchor-id="api利用時の注意">API利用時の注意</h2>
-<p>WFO Plant List APIは公開APIとして利用できますが、短時間に大量のリクエストを送ると<strong>サーバーに負担をかける可能性</strong>があります。学習用・確認用として少数の名前を検索する場合は問題ありませんが、多数の学名を一括処理する場合には、以下の点に注意します。</p>
+</section><section id="notes-on-using-the-api" class="level2"><h2 class="anchored" data-anchor-id="notes-on-using-the-api">Notes on Using the API</h2>
+<p>The WFO Plant List API is publicly available, but sending a large number of requests in a short time may <strong>place load on the server</strong>. Searching a small number of names for learning or checking is fine, but when processing many scientific names at once, keep the following points in mind.</p>
 <ul>
-<li>同じ名前を何度も問い合わせないように、結果を保存・キャッシュする。</li>
-<li>ループ処理では必要に応じて <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> を入れ、連続アクセスを避ける。</li>
-<li>大量データの処理では、APIを使って全データを取得しようとせず、公開されているダウンロードデータやローカル環境での利用を検討する。</li>
-<li>APIから返された候補はそのまま採用せず、<code>rank</code>、WFO ID、<code>currentPreferredUsage</code>、accepted name を確認する。</li>
-<li>
-<code>taxonNameSuggestion()</code> は候補検索用なので、厳密な一括照合では候補の確認ルールを明示する。</li>
+<li>Save or cache results so that the same name is not queried repeatedly.</li>
+<li>Add <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> in loops when needed to avoid continuous access.</li>
+<li>For large datasets, consider using the published download data or a local workflow instead of trying to retrieve all data through the API.</li>
+<li>Do not accept candidates returned by the API without review; check <code>rank</code>, WFO ID, <code>currentPreferredUsage</code>, and accepted name.</li>
+<li>Because <code>taxonNameSuggestion()</code> is for candidate search, make the candidate-review rules explicit when doing strict bulk matching.</li>
 </ul>
-<p>例えば、ループ処理をする場合は、以下のように <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> を入れて、連続アクセスを避けることができます。</p>
+<p>For example, when running a loop, you can add <code><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a></code> as follows to avoid continuous access.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">nm</span> <span class="kw">in</span> <span class="va">names</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">nm</span> <span class="kw">in</span> <span class="va">names</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu">get_accepted_name</span><span class="op">(</span><span class="va">nm</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># サーバー負荷を下げるため少し待つ</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>また、WFO Plant Listでは、APIと同じデータをZenodoからダウンロードでき、DOI付きで引用可能です。そのため、多数の名前を処理する研究用途や、再現性を重視する解析では、APIだけに依存するのではなく、使用したWFO Plant Listのリリース版を明記し、Zenodo上のデータを利用・引用することも検討します。</p>
 <p>Zenodo Link: <a href="https://doi.org/10.5281/zenodo.18007552"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.18007552.svg" alt="DOI"></a></p>
@@ -733,12 +601,12 @@ Note
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "コピーしました");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "コピーしました");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -781,7 +649,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

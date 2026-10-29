@@ -1,0 +1,8 @@
+---
+title: "My Post"
+description: "Post description"
+date: "2026-01-01"
+date-modified: "2026-01-01"
+draft: true
+categories: []
+---

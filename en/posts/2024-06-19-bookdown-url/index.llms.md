@@ -12,9 +12,7 @@ Modified
 
 2024-06-18
 
-> **NOTE:**
->
-> Original Japanese version: [Bookdownで404エラーが出たときの原因の一つはURLエンコード](../../../posts/2024-06-19-bookdown-url/index.llms.md)
+[日本語版](../../../posts/2024-06-19-bookdown-url/)
 
 This is a note about an error I encountered when creating a document with the [{bookdown}](https://bookdown.org) package in R.
 

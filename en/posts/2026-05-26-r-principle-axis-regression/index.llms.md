@@ -12,9 +12,7 @@ Modified
 
 2026-05-30
 
-> **NOTE:**
->
-> Original Japanese version: [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](../../../posts/2026-05-26-r-principle-axis-regression/index.llms.md)
+[日本語版](../../../posts/2026-05-26-r-principle-axis-regression/)
 
 **Principal axis regression** (PAR) is used to describe the main direction of variation in bivariate data as a line, using an idea similar to principal component analysis (PCA). In the literature, related bivariate line-fitting methods are often discussed as major axis (MA) or standardised major axis (SMA) methods ([Warton et al. 2006](#ref-warton2006)). This article focuses on an MA-like approach that uses the first eigenvector of the covariance matrix as the principal axis.
 

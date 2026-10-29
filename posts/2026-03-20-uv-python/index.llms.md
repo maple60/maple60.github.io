@@ -6,17 +6,15 @@ uv
 
 Pythonの環境管理ツールであるuvを使用して、最低限の環境管理方法をまとめます
 
-Published
+公開
 
 2026-03-20
 
-Modified
+更新日
 
 2026-03-20
 
-> **NOTE:**
->
-> English version: [Minimal Python Environment Management with uv](../../en/posts/2026-03-20-uv-python/index.llms.md)
+[English version](../../en/posts/2026-03-20-uv-python/)
 
 ## uvとは
 
@@ -110,19 +108,9 @@ uv venv
 
 ## Linux/Mac
 
-``` bash
-source .venv/bin/activate
-```
+## Running Code Inside the Virtual Environment
 
-## Windows
-
-``` powershell
-.venv\Scripts\activate
-```
-
-## 仮想環境内でコードを実行する
-
-`.py`ファイルであれば、`uv run`コマンドを使用して、仮想環境内でコードを実行することができます。
+For `.py` files, use the `uv run` command to run code inside the virtual environment.
 
 ``` bash
 uv run main.py

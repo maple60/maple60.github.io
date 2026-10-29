@@ -12,9 +12,7 @@ Modified
 
 2026-03-04
 
-> **NOTE:**
->
-> Original Japanese version: [Rで色覚異常のシミュレーションを行う方法](../../../posts/2026-03-04-r-color-blind/index.llms.md)
+[日本語版](../../../posts/2026-03-04-r-color-blind/)
 
 ## Color Vision Diversity
 
@@ -52,7 +50,9 @@ With the `colorspace` package in R, color vision deficiency can be simulated eas
 library(colorspace)
 ```
 
-Prepare a vector of colors, then use [`deutan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) for deuteranopia, [`protan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) for protanopia, and [`tritan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) for tritanopia to simulate color vision deficiency.
+    Warning: package 'colorspace' was built under R version 4.5.3
+
+Prepare a vector of colors, then use [`deutan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) for deuteranopia, [`protan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) for protanopia, and [`tritan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) for tritanopia to simulate color vision deficiency.
 
 ``` downlit
 colors <- c("red", "green", "blue", "yellow") # color vector: red, green, blue, yellow

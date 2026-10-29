@@ -4,17 +4,15 @@ r
 
 [`adjustcolor()`](https://rdrr.io/r/grDevices/adjustcolor.html)や[`rgb()`](https://rdrr.io/r/grDevices/rgb.html)を使い、Rのプロットで色に透明度を指定する方法についてまとめます。
 
-Published
+公開
 
 2026-02-25
 
-Modified
+更新日
 
 2026-02-25
 
-> **NOTE:**
->
-> English version: [Specifying Transparency for Colors in R Plots](../../en/posts/2026-02-25-r-plot-transparent/index.llms.md)
+[English version](../../en/posts/2026-02-25-r-plot-transparent/)
 
 Rのプロットで、色に透明度を指定する方法についてまとめます。 例えば、散布図を描くときに、点が重なっている部分がわかりづらいことがあります。 例えば、以下のような散布図を描いたとします。
 
@@ -76,7 +74,7 @@ plot(x, y, pch = 16, col = adjustcolor("blue", alpha.f = 0.5))
 ``` downlit
 plot(x, y, pch = 16, col = adjustcolor("blue", alpha.f = 0.9))
 
-# 95%信頼区間を描く
+# Draw a 95% confidence interval
 model <- lm(y ~ x)
 ord <- order(x)
 x_sorted <- x[ord]
@@ -90,7 +88,7 @@ polygon(
   border = NA
 )
 
-# 回帰線を描く
+# Draw regression line
 abline(model, col = adjustcolor("blue", alpha.f = 0.8), lwd = 5)
 ```
 

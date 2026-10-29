@@ -12,9 +12,7 @@ Modified
 
 2026-01-25
 
-> **NOTE:**
->
-> Original Japanese version: [導入しているZoteroプラグインのまとめ](../../../posts/2026-01-25-zotero-plugins/index.llms.md)
+[日本語版](../../../posts/2026-01-25-zotero-plugins/)
 
 This is a summary of the plugins I use with the reference manager Zotero. I have tried several plugins, and I find the following useful. They are listed in alphabetical order.
 

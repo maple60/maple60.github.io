@@ -12,9 +12,7 @@ Modified
 
 2026-02-03
 
-> **NOTE:**
->
-> Original Japanese version: [QuartoのPDF出力で日本語を使う](../../../posts/2026-02-03-quarto-japanese/index.llms.md)
+[日本語版](../../../posts/2026-02-03-quarto-japanese/)
 
 When outputting PDFs with [Quarto](https://quarto.org/), Japanese may not be displayed correctly with the default settings. This is because the LaTeX settings do not support Japanese by default. This article introduces settings for using Japanese in Quarto.
 
@@ -61,34 +59,3 @@ format:
     CJKmainfont: "BIZ UDPGothic"  # specify the Japanese font to use
 ---
 ```
-
-For `CJKmainfont`, specify the name of a Japanese font installed on the system. Examples include `"BIZ UDPGothic"` and `"Noto Sans CJK JP"`.
-
-You can also specify `mainfont: "Font Name"`, but in that case letters and numbers are also displayed with the specified font, so care is needed.
-
-> **NOTE:**
->
-> `CJKmainfont` is an option that specifies the font used to display Japanese in LaTeX. The letters C, J, and K stand for Chinese, Japanese, and Korean. These languages contain many characters, so dedicated fonts are required.
-
-> **NOTE:**
->
-> To check font files available to LaTeX, run the following command in a terminal.
->
-> ### Windows
->
-> ``` bash
-> Get-ChildItem C:\Windows\Fonts | Select-Object Name
-> ```
->
-> ### macOS/Linux
->
-> I have not confirmed this, but I think the following command can be used.
->
-> ``` bash
-> ls /Library/Fonts/
-> ```
-
-## References
-
-- [PDF Basics - Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
-- [PDF Options - Quarto](https://quarto.org/docs/reference/formats/pdf.html)

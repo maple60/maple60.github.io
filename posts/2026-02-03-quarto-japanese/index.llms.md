@@ -4,17 +4,15 @@ quarto
 
 CJKmainfontオプションを設定することで、Quartoで日本語を正しく表示する方法を紹介します。
 
-Published
+公開
 
 2026-02-03
 
-Modified
+更新日
 
 2026-02-03
 
-> **NOTE:**
->
-> English version: [Using Japanese in Quarto PDF Output](../../en/posts/2026-02-03-quarto-japanese/index.llms.md)
+[English version](../../en/posts/2026-02-03-quarto-japanese/)
 
 [Quarto](https://quarto.org/)でPDFを出力する際、デフォルトの設定では日本語が正しく表示されないことがあります。 これは、LaTeXの設定が日本語に対応していないためです。 この記事では、Quartoで日本語を使うための設定方法を紹介します。
 
@@ -42,7 +40,7 @@ QuartoでPDFを出力するには、YAMLヘッダーに以下のように`format
 
 ``` yaml
 ---
-title: "ドキュメントのタイトル"
+title: "Document Title"
 format: pdf
 ---
 ```
@@ -55,10 +53,10 @@ format: pdf
 
 ``` yaml
 ---
-title: "ドキュメントのタイトル"
+title: "Document Title"
 format:
   pdf:
-    CJKmainfont: "BIZ UDPGothic"  # 使用する日本語フォントを指定
+    CJKmainfont: "BIZ UDPGothic"  # specify the Japanese font to use
 ---
 ```
 
@@ -75,20 +73,8 @@ CJKmainfontには、システムにインストールされている日本語フ
 > LaTeXで利用できるフォントファイルを確認するには、ターミナルで以下のコマンドを実行します。
 >
 > ### Windowsの場合
->
-> ``` bash
-> Get-ChildItem C:\Windows\Fonts | Select-Object Name
-> ```
->
-> ### macOS/Linuxの場合
->
-> 未確認ですが、以下のコマンドで確認できると思いました。
->
-> ``` bash
-> ls /Library/Fonts/
-> ```
 
-## 参考
+## References
 
-- [PDF Basics – Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
-- [PDF Options – Quarto](https://quarto.org/docs/reference/formats/pdf.html)
+- [PDF Basics - Quarto](https://quarto.org/docs/output-formats/pdf-basics.html)
+- [PDF Options - Quarto](https://quarto.org/docs/reference/formats/pdf.html)

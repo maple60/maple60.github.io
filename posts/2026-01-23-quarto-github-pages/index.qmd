@@ -1,14 +1,16 @@
 ---
 title: "QuartoでGitHub Pagesにブログを公開するときの注意点"
+title-en: "Notes on Publishing a Quarto Blog with GitHub Pages"
 description: "単純にQuartoでレンダリングするだけではうまくいかないようです"
+description-en: "Rendering with Quarto alone does not seem to be enough."
 date: "2026-01-23"
 draft: true
 categories: [r,quarto,github]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Notes on Publishing a Quarto Blog with GitHub Pages](../../en/posts/2026-01-23-quarto-github-pages/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 Quartoでブログを作成して、GitHub Pagesで公開しようとしたときの注意点についてのメモです。
 
@@ -20,11 +22,29 @@ Quartoでは、デフォルトではレンダリング先が`_site/`となるた
 
 Quartoの設定ファイル（`_quarto.yml`）で以下のように指定する必要があります。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This is a note on things to watch when creating a blog with Quarto and publishing it with GitHub Pages.
+
+## Render to `docs/`
+
+For GitHub Pages, the publishing source can be either the repository root or the `docs/` folder.
+In Quarto, the default render destination is `_site/`, so the site cannot be published directly through GitHub Pages as-is.
+For that reason, the output directory needs to be changed to `docs/`.
+
+In the Quarto configuration file, `_quarto.yml`, specify it as follows.
+
+:::::
+
 ```yaml
 project:
   type: website
   output-dir: docs # for GitHub Pages
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 これで、Quartoでレンダリングした際に`docs/`フォルダに出力されるようになります。
 
@@ -41,21 +61,64 @@ Quartoで作成したサイトはJekyllとは互換性がないため、`.nojeky
 
 - Mac/Linux:
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+With this setting, Quarto outputs rendered files into the `docs/` folder.
+
+Next, in the GitHub repository settings, set the GitHub Pages source to `docs/`.
+Then the Quarto blog can be published with GitHub Pages.
+
+## Add a `.nojekyll` File
+
+GitHub Pages enables a static site generator called Jekyll by default.
+Sites created with Quarto are not compatible with Jekyll, so an empty file named `.nojekyll` needs to be added to the `docs/` folder.
+This disables Jekyll and allows GitHub Pages to display the Quarto site correctly.
+
+The `.nojekyll` file can be created with the following commands.
+
+- Mac/Linux:
+
+:::::
+
 ```bash
 touch .nojekyll
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 - Windows (PowerShell):
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+- Windows PowerShell:
+
+:::::
 
 ```powershell
 New-Item .nojekyll -ItemType File
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 - Windows (コマンドプロンプト):
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+- Windows Command Prompt:
+
+:::::
 
 ```cmd
 type nul > .nojekyll
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 もしくは、手動で空のテキストファイルを作成し、名前を`.nojekyll`に変更しても構いません。
 
@@ -66,3 +129,21 @@ Quartoには、GitHub Pagesに直接公開するための`quarto publish gh-page
 ## 参考
 
 - [Quarto Documentation – GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Alternatively, you can manually create an empty text file and rename it to `.nojekyll`.
+
+## Use the Publish Command
+
+Quarto also provides the `quarto publish gh-pages` command for publishing directly to GitHub Pages.
+
+## Reference
+
+- [Quarto Documentation - GitHub Pages](https://quarto.org/docs/publishing/github-pages.html)
+
+:::::
+
+

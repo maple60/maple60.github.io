@@ -12,9 +12,7 @@ Modified
 
 2026-02-25
 
-> **NOTE:**
->
-> Original Japanese version: [Quartoを用いた解析プロジェクト管理について](../../../posts/2026-02-11-quarto-project-management/index.llms.md)
+[日本語版](../../../posts/2026-02-11-quarto-project-management/)
 
 > **WARNING:**
 >

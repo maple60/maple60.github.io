@@ -4,17 +4,15 @@ zotero
 
 文献管理ソフトZoteroで導入しているプラグインのまとめです
 
-Published
+公開
 
 2026-01-25
 
-Modified
+更新日
 
 2026-01-25
 
-> **NOTE:**
->
-> English version: [A Summary of Zotero Plugins I Use](../../en/posts/2026-01-25-zotero-plugins/index.llms.md)
+[English version](../../en/posts/2026-01-25-zotero-plugins/)
 
 文献管理ソフトZoteroで使用しているプラグインのまとめです。 いろいろ試しましたが、以下のプラグインが便利だと感じています。 (アルファベット順)
 

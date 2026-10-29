@@ -4,17 +4,15 @@ zotero
 
 Zoteroを使って論文雑誌のRSSフィードを作成する方法についてまとめます。
 
-Published
+公開
 
 2026-03-10
 
-Modified
+更新日
 
 2026-03-10
 
-> **NOTE:**
->
-> English version: [Creating RSS Feeds in Zotero](../../en/posts/2026-03-10-zotero-rss/index.llms.md)
+[English version](../../en/posts/2026-03-10-zotero-rss/)
 
 ## Zoteroとは
 

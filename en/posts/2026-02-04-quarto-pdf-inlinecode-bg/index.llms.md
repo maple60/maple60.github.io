@@ -14,9 +14,7 @@ Modified
 
 2026-02-04
 
-> **NOTE:**
->
-> Original Japanese version: [QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法](../../../posts/2026-02-04-quarto-pdf-inlinecode-bg/index.llms.md)
+[日本語版](../../../posts/2026-02-04-quarto-pdf-inlinecode-bg/)
 
 Unlike HTML output, Quarto PDF output does not provide a default setting for adding background color to inline code blocks.
 

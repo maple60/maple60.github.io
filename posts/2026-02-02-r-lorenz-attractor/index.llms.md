@@ -4,17 +4,15 @@ r
 
 deSolveパッケージを使ってLorenz方程式を解き、Lorenz attractorを描画する方法を紹介します。また、scatterplot3dやplotlyパッケージを使用して3Dプロットを作成する方法も示します
 
-Published
+公開
 
 2026-02-02
 
-Modified
+更新日
 
 2026-02-02
 
-> **NOTE:**
->
-> English version: [Drawing the Lorenz Attractor in R](../../en/posts/2026-02-02-r-lorenz-attractor/index.llms.md)
+[English version](../../en/posts/2026-02-02-r-lorenz-attractor/)
 
 Lorenz attractorは、[Edward Lorenz](https://www.lorenz.mit.edu/edward-n-lorenz)氏によって報告されたカオス理論の一例であり、非線形力学系の挙動を示す有名なモデルです。
 
@@ -22,8 +20,8 @@ Lorenz attractorは、[Edward Lorenz](https://www.lorenz.mit.edu/edward-n-lorenz
 
 > **NOTE:**
 >
-> Lorenz attractorとLorenz方程式の違いは以下です。  
-> - **Lorenz方程式**: 非線形常微分方程式のセットであり、特定のパラメータ値に基づいてシステムの時間発展を記述します。  
+> Lorenz attractorとLorenz方程式の違いは以下です。\
+> - **Lorenz方程式**: 非線形常微分方程式のセットであり、特定のパラメータ値に基づいてシステムの時間発展を記述します。\
 > - **Lorenz attractor**: その長時間挙動として現れる集合であり、Lorenz方程式の解が時間とともに収束する特定のパターンを示します。
 
 ## Lorenz方程式の定義
@@ -43,19 +41,21 @@ Lorenz方程式は以下の3つの常微分方程式から構成されます。
 まず、[deSolve](https://cran.r-project.org/web/packages/deSolve/index.html)パッケージをインストールし、読み込みます。
 
 ``` downlit
-install.packages("deSolve")  # まだインストールしていない場合
+install.packages("deSolve")  # if it is not installed yet
 library(deSolve)
 ```
 
 [renv](https://rstudio.github.io/renv/articles/renv.html)パッケージを使用している場合は、以下のようにします。
 
 ``` downlit
-renv::install("deSolve") # まだインストールしていない場合
+renv::install("deSolve") # if it is not installed yet
 ```
 
 ``` downlit
 library(deSolve)
 ```
+
+    Warning: package 'deSolve' was built under R version 4.5.3
 
 ## Lorenz方程式の実装
 
@@ -116,8 +116,8 @@ Rの[scatterplot3d](https://cran.r-project.org/web/packages/scatterplot3d/index.
 まだインストールしていない場合は、以下のコマンドでインストールしてください。
 
 ``` downlit
-install.packages("scatterplot3d")  # まだインストールしていない場合
-renv::install("scatterplot3d") # renvを使用している場合
+install.packages("scatterplot3d")  # if it is not installed yet
+renv::install("scatterplot3d") # when using renv
 ```
 
 ``` downlit
@@ -149,28 +149,28 @@ s3d <- scatterplot3d(
   zlab = "Z",
   main = "Lorenz Attractor with Projections"
 )
-s3d$points3d(out$x, out$y, out$z, type = "l", col = "#FF4B00") # Lorenz attractor本体
+s3d$points3d(out$x, out$y, out$z, type = "l", col = "#FF4B00") # main Lorenz attractor
 s3d$points3d(
   out$x,
   out$y,
   rep(min(out$z), nrow(out)),
   type = "l",
   col = adjustcolor("gray50", alpha.f = 0.5)
-) # x-y平面への投影
+) # projection onto the x-y plane
 s3d$points3d(
   out$x,
   rep(max(out$y), nrow(out)),
   out$z,
   type = "l",
   col = adjustcolor("gray50", alpha.f = 0.5)
-) # x-z平面への投影
+) # projection onto the x-z plane
 s3d$points3d(
   rep(min(out$x), nrow(out)),
   out$y,
   out$z,
   type = "l",
   col = adjustcolor("gray50", alpha.f = 0.5)
-) # y-z平面への投影
+) # projection onto the y-z plane
 ```
 
 ![](index_files/figure-html/unnamed-chunk-7-1.png)
@@ -182,16 +182,19 @@ Rの[plotly](https://cran.r-project.org/web/packages/plotly/index.html)パッケ
 まだインストールしていない場合は、以下のコマンドでインストールしてください。
 
 ``` downlit
-install.packages("plotly")  # まだインストールしていない場合
-renv::install("plotly") # renvを使用している場合
+install.packages("plotly")  # if it is not installed yet
+renv::install("plotly") # when using renv
 ```
 
 ``` downlit
 library(plotly)
 ```
 
+    Warning: package 'plotly' was built under R version 4.5.3
+
     Loading required package: ggplot2
 
+    Warning: package 'ggplot2' was built under R version 4.5.3
 
     Attaching package: 'plotly'
 
@@ -246,11 +249,11 @@ fig
 また、時間フレームによるアニメーションも追加できます。 描画フレームを間引いて軽量化しています。
 
 ``` downlit
-idx <- seq(1, nrow(out), by = 10) # フレーム数を減らすために間引き
+idx <- seq(1, nrow(out), by = 10) # thin frames to reduce the number of frames
 out2 <- out[idx, ]
 
 fig <- plot_ly() %>%
-  # 静的な軌跡（線）
+  # Static trajectory line
   add_trace(
     data = out,
     x = ~x,
@@ -260,7 +263,7 @@ fig <- plot_ly() %>%
     mode = "lines",
     line = list(color = "gray")
   ) %>%
-  # 動く点
+  # Moving point
   add_trace(
     data = out2,
     x = ~x,
@@ -272,8 +275,8 @@ fig <- plot_ly() %>%
     marker = list(size = 3, color = "#FF4B00")
   ) %>%
   animation_opts(
-    frame = 50, # 1フレームの表示時間（ms）
-    transition = 0 # 補間アニメーションを切ることで軽量化する
+    frame = 50, # display time per frame in milliseconds
+    transition = 0 # disable interpolation animation to make it lighter
   )
 
 fig

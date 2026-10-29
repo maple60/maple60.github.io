@@ -14,9 +14,7 @@ Modified
 
 2026-03-20
 
-> **NOTE:**
->
-> Original Japanese version: [Pythonで最低限のuvによる環境管理](../../../posts/2026-03-20-uv-python/index.llms.md)
+[日本語版](../../../posts/2026-03-20-uv-python/)
 
 ## What Is uv?
 
@@ -99,30 +97,6 @@ This command creates a virtual environment named `.venv` in the project root dir
 Use the `uv add` command to add packages needed for the project.
 
     uv add numpy
-
-This command adds the `numpy` package to the project. The added package is recorded in the `pyproject.toml` file.
-
-### Activating the Virtual Environment
-
-Run the following command in the project root directory to activate the virtual environment.
-
-The activation command is displayed in the terminal when the virtual environment is created, so you can usually run it as shown there.
-
-## Linux/Mac
-
-``` bash
-source .venv/bin/activate
-```
-
-## Windows
-
-``` powershell
-.venv\Scripts\activate
-```
-
-## Running Code Inside the Virtual Environment
-
-For `.py` files, use the `uv run` command to run code inside the virtual environment.
 
 ``` bash
 uv run main.py

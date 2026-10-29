@@ -6,11 +6,11 @@ github-pages
 
 A sample first post for this Quarto site
 
-Published
+公開
 
 2026-01-01
 
-Modified
+更新日
 
 2026-01-01
 

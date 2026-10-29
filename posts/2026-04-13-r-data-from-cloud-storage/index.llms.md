@@ -4,23 +4,21 @@ r
 
 解析の生データをクラウドストレージから読み込む方法を紹介します
 
-Published
+公開
 
 2026-04-13
 
-Modified
+更新日
 
 2026-04-13
 
-> **NOTE:**
->
-> English version: [Reading Analysis Data from Cloud Storage in R](../../en/posts/2026-04-13-r-data-from-cloud-storage/index.llms.md)
+[English version](../../en/posts/2026-04-13-r-data-from-cloud-storage/)
 
 解析の生データをクラウドストレージから読み込む方法を紹介します。
 
 この記事では、以下のような管理方法を前提とします。
 
-- 解析の生データ: クラウドストレージ（[Google Drive](https://workspace.google.com/products/drive/)、\[OneDrive(https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage)\]、[Dropbox](https://www.dropbox.com/)など）に保存  
+- 解析の生データ: クラウドストレージ（[Google Drive](https://workspace.google.com/products/drive/)、\[OneDrive(https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage)\]、[Dropbox](https://www.dropbox.com/)など）に保存\
 - 解析コード: [GitHub](https://github.com/)などのソースコード管理サービスに保存
 
 このように分けることで、データとコードを分離して管理できます。 また、生データを Git管理下に置かなくても、クラウドストレージを使ってバックアップや共有をしやすくなります。
@@ -71,7 +69,7 @@ if (identical(data_dir, "")) {
 
 ### 保存場所
 
-`.Renviron` は、**このプロジェクト専用の設定として使うなら、プロジェクトのルートディレクトリに置く**とわかりやすいです。  
+`.Renviron` は、**このプロジェクト専用の設定として使うなら、プロジェクトのルートディレクトリに置く**とわかりやすいです。\
 一方で、複数のプロジェクトで共通して使いたい設定は、ユーザー単位の `.Renviron` に書く方法もあります。
 
 ### パスの書き方
@@ -80,20 +78,20 @@ if (identical(data_dir, "")) {
 
 ### Gitで管理しない
 
-`.Renviron` は、通常は **Git 管理下に置かない**方がよいです。  
+`.Renviron` は、通常は **Git 管理下に置かない**方がよいです。\
 そのため、`.gitignore` に `.Renviron` を追加して、誤ってコミットしないようにしておきます。
 
 ``` text
 .Renviron
 ```
 
-ただし、`.gitignore` は未追跡ファイルを無視するための設定です。  
-すでに Git にコミット済みの `.Renviron` には、そのままでは効果がありません。  
+ただし、`.gitignore` は未追跡ファイルを無視するための設定です。\
+すでに Git にコミット済みの `.Renviron` には、そのままでは効果がありません。\
 誤って追跡してしまった場合は、別途 Git 側で追跡対象から外す必要があります。
 
 ### 共有方法
 
-`.Renviron` は各自のローカル環境で作成することになるため、リポジトリには含めません。  
+`.Renviron` は各自のローカル環境で作成することになるため、リポジトリには含めません。\
 その代わり、`README.md` などに `.Renviron` の作成方法を記載しておくと、共同研究者や将来の自分が環境を再構築しやすくなります。
 
 ## まとめ

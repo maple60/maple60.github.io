@@ -4,19 +4,17 @@ r
 
 共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます
 
-Published
+公開
 
 2026-05-26
 
-Modified
+更新日
 
 2026-05-30
 
-> **NOTE:**
->
-> English version: [Understanding the Basics of Bivariate PCA and Principal Axis Regression in R](../../en/posts/2026-05-26-r-principle-axis-regression/index.llms.md)
+[English version](../../en/posts/2026-05-26-r-principle-axis-regression/)
 
-**Principal axis regression** (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます ([Warton et al. 2006](#ref-warton2006))。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。
+**Principal axis regression** (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます ([Warton ほか 2006年](#ref-warton2006))。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。
 
 本記事では、共分散行列の第1固有ベクトルを主軸として使う、major axis regressionに近い実装を扱います。 以下では、RでPrincipal axis regressionを実装してみます。
 
@@ -52,13 +50,13 @@ n <- 100
 beta <- 1.5
 alpha <- 1
 
-# 主軸方向のスコア
+# Scores along the principal-axis direction
 t <- rnorm(n, mean = 0, sd = 2)
 
-# 主軸に直交するノイズ
+# Noise orthogonal to the principal axis
 e <- rnorm(n, mean = 0, sd = 0.5)
 
-# 主軸方向ベクトルと直交方向ベクトル
+# Direction vector for the principal axis and the orthogonal direction
 v1 <- c(1, beta) / sqrt(1 + beta^2)
 v2 <- c(-beta, 1) / sqrt(1 + beta^2)
 
@@ -115,20 +113,20 @@ eigen_result
 eigen_values <- eigen_result$values
 eigen_vectors <- eigen_result$vectors
 
-print(paste("第1主軸の固有値:", eigen_values[1]))
+print(paste("Eigenvalue of the first principal axis:", eigen_values[1]))
 ```
 
-    [1] "第1主軸の固有値: 3.33354798737934"
+    [1] "Eigenvalue of the first principal axis: 3.33354798737934"
 
 ``` downlit
-print(paste("第2主軸の固有値:", eigen_values[2]))
+print(paste("Eigenvalue of the second principal axis:", eigen_values[2]))
 ```
 
-    [1] "第2主軸の固有値: 0.233149107828597"
+    [1] "Eigenvalue of the second principal axis: 0.233149107828597"
 
 ``` downlit
 print(paste(
-  "第1主軸の固有ベクトル: (",
+  "Eigenvector of the first principal axis: (",
   eigen_vectors[1, 1],
   ", ",
   eigen_vectors[2, 1],
@@ -137,11 +135,11 @@ print(paste(
 ))
 ```
 
-    [1] "第1主軸の固有ベクトル: (0.566379566968877, 0.824144517739545)"
+    [1] "Eigenvector of the first principal axis: (0.566379566968877, 0.824144517739545)"
 
 ``` downlit
 print(paste(
-  "第2主軸の固有ベクトル: (",
+  "Eigenvector of the second principal axis: (",
   eigen_vectors[1, 2],
   ", ",
   eigen_vectors[2, 2],
@@ -150,7 +148,7 @@ print(paste(
 ))
 ```
 
-    [1] "第2主軸の固有ベクトル: (-0.824144517739545, 0.566379566968877)"
+    [1] "Eigenvector of the second principal axis: (-0.824144517739545, 0.566379566968877)"
 
 > **NOTE:**
 >
@@ -165,18 +163,18 @@ print(paste(
 ここで、\\\bar{x}\\と\\\bar{y}\\はそれぞれ\\x\\と\\y\\の平均値です。 また、\\b\\は固有ベクトルの比率で計算されます。 第1主軸を赤、第2主軸を青で描きます。
 
 ``` downlit
-# 第1主軸と第2主軸の傾き
+# Slopes of the first and second principal axes
 major_axis_slope <- eigen_vectors[2, 1] / eigen_vectors[1, 1]
 minor_axis_slope <- eigen_vectors[2, 2] / eigen_vectors[1, 2]
 
-# データの中心を通るように切片を計算
+# Calculate intercepts so that the lines pass through the data center
 major_axis_intercept <- mean(y) - major_axis_slope * mean(x)
 minor_axis_intercept <- mean(y) - minor_axis_slope * mean(x)
 
-# データポイントと主要な変動方向をプロット
+# Plot data points and the main directions of variation
 plot(x, y, asp = 1, pch = 16, main = "Principal Axis Regression")
 
-# 第1主軸の線を追加
+# Add the first principal axis
 abline(
   a = major_axis_intercept,
   b = major_axis_slope,
@@ -184,7 +182,7 @@ abline(
   lwd = 3
 )
 
-# 第2主軸の線を追加
+# Add the second principal axis
 abline(
   a = minor_axis_intercept,
   b = minor_axis_slope,
@@ -233,11 +231,11 @@ abline(
 \\\mathbf{z}\_i\\を視覚的に表すと、以下のようになります。
 
 ``` downlit
-# 平均中心化した座標
+# Mean-centered coordinates
 z <- scale(cbind(x, y), center = TRUE, scale = FALSE)
 plot(x, y, asp = 1, pch = 16)
 abline(h = mean(y), v = mean(x), col = "#D55E00", lwd = 2, lty = 2)
-# 平均点から各点へのベクトルを描画
+# Draw vectors from the mean point to each point
 for (i in 1:n) {
   segments(mean(x), mean(y), x[i], y[i], col = "gray70")
 }
@@ -266,27 +264,27 @@ for (i in 1:n) {
 視覚的に表すと、以下のようになります。
 
 ``` downlit
-# 平均中心化した座標
+# Mean-centered coordinates
 z <- scale(cbind(x, y), center = TRUE, scale = FALSE)
 
-# 平均点
+# Mean point
 mx <- mean(x)
 my <- mean(y)
 
-u <- c(0.8, 0.6) # 方向ベクトル u
-u <- u / sqrt(sum(u^2)) # 念のため単位ベクトルに正規化
+u <- c(0.8, 0.6) # direction vector u
+u <- u / sqrt(sum(u^2)) # normalize to a unit vector just in case
 
-# 各点の u 方向への射影スカラー s_i
+# Projection scalar s_i for each point in direction u
 s <- as.vector(z %*% u)
-# 射影点：平均点 + s_i u
+# Projected point: mean point + s_i u
 proj_x <- mx + s * u[1]
 proj_y <- my + s * u[2]
 
-# 描画
+# Draw
 plot(x, y, asp = 1, pch = 16, type = "n")
-usr <- par("usr") # 描画範囲
+usr <- par("usr") # plotting range
 
-# 1刻みのグリッド
+# Grid with spacing of 1
 abline(
   v = seq(floor(usr[1]), ceiling(usr[2]), by = 1),
   col = "gray70",
@@ -298,10 +296,10 @@ abline(
   lty = "dotted"
 )
 
-# 平均を通る縦横線
+# Vertical and horizontal lines through the mean
 abline(h = my, v = mx, col = "#D55E00", lwd = 2, lty = 2)
 
-# 方向 u を表す直線
+# Line representing direction u
 if (abs(u[1]) < .Machine$double.eps) {
   abline(
     v = mx,
@@ -319,12 +317,13 @@ if (abs(u[1]) < .Machine$double.eps) {
   )
 }
 
-# 各点の平均中心化ベクトル z_i
+# Mean-centered vector z_i for each point
 for (i in seq_along(x)) {
   segments(mx, my, x[i], y[i], col = "gray90")
 }
 
-# 各点から射影点への垂線：u 方向では説明できない残差
+# Perpendicular from each point to the projection point:
+# residual not explained by direction u
 for (i in seq_along(x)) {
   segments(
     x[i],
@@ -336,7 +335,7 @@ for (i in seq_along(x)) {
   )
 }
 
-# 平均点から射影点まで：s_i u
+# From mean point to projected point: s_i u
 for (i in seq_along(x)) {
   segments(
     mx,
@@ -348,10 +347,10 @@ for (i in seq_along(x)) {
   )
 }
 
-# 元の点
+# Original points
 points(x, y, pch = 16, col = adjustcolor("black", alpha.f = 0.5))
 
-# 方向ベクトル u の矢印
+# Arrow for direction vector u
 arrows(
   mx,
   my,
@@ -499,11 +498,11 @@ plot(x, y, asp = 1, pch = 16)
 次に、共分散行列を計算し、固有値と固有ベクトルを求めます。 固有ベクトルの符号は任意なので、ここでは第1主軸の \\x\\ 成分が正になるようにそろえておきます。
 
 ``` downlit
-# 共分散行列と固有ベクトル
+# Covariance matrix and eigenvectors
 S <- cov(cbind(x, y))
 eg <- eigen(S, symmetric = TRUE)
 
-# 第1主軸の方向
+# Direction of the first principal axis
 u1 <- eg$vectors[, 1]
 if (u1[1] < 0) {
   u1 <- -u1
@@ -517,22 +516,22 @@ if (u1[1] < 0) {
 次に、比較用の方向を1つ用意し、それぞれの方向について、各点を直線上へ射影した点を計算します。 方向ベクトルは、向きだけを表すように単位ベクトルへ正規化しておきます。
 
 ``` downlit
-# データの中心
+# Data center
 center <- c(mean(x), mean(y))
 
-u0 <- c(1, 0.4) # 比較用の方向ベクトル
-u0 <- u0 / sqrt(sum(u0^2)) # 正規化して単位ベクトルにする
+u0 <- c(1, 0.4) # comparison direction vector
+u0 <- u0 / sqrt(sum(u0^2)) # normalize to a unit vector
 
-# 直線上の射影点を計算する関数
+# Function to calculate projected points on the line
 get_foot_points <- function(x, y, u, center) {
   X <- cbind(x - center[1], y - center[2])
-  score <- as.vector(X %*% u) # 各点の射影スコアを計算
-  foot_centered <- outer(score, u) # スコアに基づいて射影点を計算
-  foot <- sweep(foot_centered, 2, center, "+") # 中心を足す
+  score <- as.vector(X %*% u) # calculate projection scores for each point
+  foot_centered <- outer(score, u) # calculate projected points from the scores
+  foot <- sweep(foot_centered, 2, center, "+") # add the center
   foot
 }
 
-# 各点の射影点を計算
+# Calculate projected points for each point
 foot0 <- get_foot_points(x, y, u0, center)
 foot1 <- get_foot_points(x, y, u1, center)
 ```
@@ -556,7 +555,7 @@ segments(x, y, foot0[, 1], foot0[, 2], col = "gray70")
 
 ``` downlit
 plot(x, y, asp = 1, pch = 16, xlab = "x", ylab = "y")
-# 比較用の方向の線と距離
+# Line and distances for the comparison direction
 abline(
   a = center[2] - (u0[2] / u0[1]) * center[1],
   b = u0[2] / u0[1],
@@ -565,7 +564,7 @@ abline(
 )
 segments(x, y, foot0[, 1], foot0[, 2], col = "gray70")
 
-# 第1主軸の線と距離
+# Line and distances for the first principal-axis direction
 abline(
   a = center[2] - (u1[2] / u1[1]) * center[1],
   b = u1[2] / u1[1],
@@ -580,14 +579,14 @@ segments(x, y, foot1[, 1], foot1[, 2], col = 3)
 このときの各点から直線までの距離の二乗和を計算して比較します。
 
 ``` downlit
-# 比較用の方向に対する、直線からの距離の二乗和
+# Sum of squared distances from the line for the comparison direction
 sum(rowSums((cbind(x, y) - foot0)^2))
 ```
 
     [1] 117.576
 
 ``` downlit
-# 第1主軸の方向に対する、直線からの距離の二乗和
+# Sum of squared distances from the line for the first principal-axis direction
 sum(rowSums((cbind(x, y) - foot1)^2))
 ```
 
@@ -604,14 +603,14 @@ if (u2[1] < 0) {
 }
 
 plot(x, y, asp = 1, pch = 16, xlab = "x", ylab = "y")
-# 第1主軸の線
+# First principal-axis line
 abline(
   a = center[2] - (u1[2] / u1[1]) * center[1],
   b = u1[2] / u1[1],
   col = 2,
   lwd = 3
 )
-# 第2主軸の線
+# Second principal-axis line
 abline(
   a = center[2] - (u2[2] / u2[1]) * center[1],
   b = u2[2] / u2[1],
@@ -638,4 +637,4 @@ abline(
 
 ## 参考文献
 
-Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. “Bivariate Line-Fitting Methods for Allometry.” *Biological Reviews* 81 (2): 259–91. <https://doi.org/10.1017/S1464793106007007>.
+Warton, David I., Ian J. Wright, Daniel S. Falster, と Mark Westoby. 2006年. 「Bivariate Line-Fitting Methods for Allometry」. *Biological Reviews* 81 (2): 259–91. <https://doi.org/10.1017/S1464793106007007>.

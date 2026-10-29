@@ -4,7 +4,7 @@ Public GitHub projects, tools, and repository-based outputs.
 
 > **NOTE:**
 >
-> Original Japanese version: [Works](../works.llms.md)
+> 日本語版: [Works](../works.llms.md)
 
 This page lists public repositories that are useful as project outputs, tools, templates, or reproducible research examples. Repository names, summaries, project pages, primary languages, and update dates are based on public GitHub metadata. The list was checked on 2026-06-12.
 

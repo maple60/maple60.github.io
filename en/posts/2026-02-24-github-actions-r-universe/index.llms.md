@@ -14,9 +14,7 @@ Modified
 
 2026-02-24
 
-> **NOTE:**
->
-> Original Japanese version: [GitHub Actionsとrenvを使ってr-universeのパッケージを利用する際の注意点](../../../posts/2026-02-24-github-actions-r-universe/index.llms.md)
+[日本語版](../../../posts/2026-02-24-github-actions-r-universe/)
 
 ## Symptom
 
@@ -62,15 +60,17 @@ renv::snapshot(force = TRUE)
 
     The following package(s) will be updated in the lockfile:
 
-    # https://packagemanager.posit.co/cran/__linux__/noble/latest ----------------
-    - Rcpp      [repo: CRAN -> https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 1.1.1 -> 1.1.1-1]
-    - S7        [repo: CRAN -> https://packagemanager.posit.co/cran/__linux__/noble/latest; ver: 0.2.1 -> 0.2.1-1]
-    - yyjsonr   [* -> 0.1.22]
+    # CRAN -----------------------------------------------------------------------
+    - cluster    [2.1.8.2 -> 2.1.8.1]
+    - foreign    [0.8-91 -> 0.8-90]
+    - lattice    [0.22-9 -> 0.22-7]
+    - mgcv       [1.9-4 -> 1.9-3]
+    - survival   [3.8-6 -> 3.8-3]
 
     The version of R recorded in the lockfile will be updated:
-    - R         [4.5.3 -> 4.5.2]
+    - R          [4.5.3 -> 4.5.2]
 
-    - Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".
+    - Lockfile written to "~/github/maple60.github.io/renv.lock".
 
 This code uses the [`options()`](https://rdrr.io/r/base/options.html) function to specify the CRAN and r-universe repositories. Then it runs `renv::snapshot(force = TRUE)` to update the `renv.lock` file.
 

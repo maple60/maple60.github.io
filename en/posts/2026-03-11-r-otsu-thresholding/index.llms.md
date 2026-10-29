@@ -12,9 +12,7 @@ Modified
 
 2026-03-11
 
-> **NOTE:**
->
-> Original Japanese version: [Rで大津の二値化を行う方法](../../../posts/2026-03-11-r-otsu-thresholding/index.llms.md)
+[日本語版](../../../posts/2026-03-11-r-otsu-thresholding/)
 
 ## What Is Otsu’s Thresholding?
 
@@ -75,11 +73,11 @@ First, load the image. Manually implementing image loading is difficult, so I us
 library(magick)
 ```
 
-    Linking to ImageMagick 6.9.12.98
-    Enabled features: fontconfig, freetype, fftw, heic, lcms, pango, raw, webp, x11
-    Disabled features: cairo, ghostscript, rsvg
+    Warning: package 'magick' was built under R version 4.5.3
 
-    Using 4 threads
+    Linking to ImageMagick 6.9.13.29
+    Enabled features: cairo, freetype, fftw, ghostscript, heic, lcms, pango, raw, rsvg, webp
+    Disabled features: fontconfig, x11
 
 ``` downlit
 img <- image_read("bird.jpg")

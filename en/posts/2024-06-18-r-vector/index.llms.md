@@ -12,9 +12,7 @@ Modified
 
 2024-06-18
 
-> **NOTE:**
->
-> Original Japanese version: [Rでベクトルを作成する](../../../posts/2024-06-18-r-vector/index.llms.md)
+[日本語版](../../../posts/2024-06-18-r-vector/)
 
 This post summarizes several ways to create vectors in R. The functions introduced here are:
 

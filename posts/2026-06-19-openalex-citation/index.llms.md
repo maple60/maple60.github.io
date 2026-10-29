@@ -4,17 +4,15 @@ python
 
 OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。
 
-Published
+公開
 
 2026-06-19
 
-Modified
+更新日
 
 2026-06-19
 
-> **NOTE:**
->
-> English version: [Retrieving Paper References with the OpenAlex API from Python](../../en/posts/2026-06-19-openalex-citation/index.llms.md)
+[English version](../../en/posts/2026-06-19-openalex-citation/)
 
 ## APIキーの準備 (初めて利用する場合)
 

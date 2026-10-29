@@ -1,15 +1,17 @@
 ---
 title: "画像処理のためのRパッケージimagerの使い方"
+title-en: "Using the R Package imager for Image Processing"
 description: "imagerパッケージについての基本的な使い方の紹介です"
+description-en: "A basic introduction to using the imager package."
 date: "2026-01-01"
 date-modified: "2026-01-01"
 draft: false
 categories: [r]
+filters:
+  - ../../filters/language-title.lua
 ---
 
-::: {.callout-note}
-English version: [Using the R Package imager for Image Processing](../../en/posts/2025-01-01-imager/index.qmd)
-:::
+::::: {.content-visible unless-profile="en"}
 
 # 概要
 
@@ -20,23 +22,66 @@ Rで画像解析をしたいとなったときに、`{imager}`というパッケ
 
 インストールは普通に`install.packages()`でOK。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+# Overview
+
+When I wanted to do image analysis in R, I learned that there is a package called `{imager}`.
+This post records what I tried.
+
+# Loading the Package
+
+Installation can be done normally with `install.packages()`.
+
+:::::
+
 ```{r eval=FALSE}
 install.packages("imager")
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 読み込みは以下のようにする。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Load the package as follows.
+
+:::::
+
 ```{r message=FALSE}
 library("imager")
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 # 画像の読み込みと表示
 
 画像の読み込みには`load.image()`を使う。
 サンプル画像が5枚(動画が1つ)用意されている。
 サンプルの確認は以下のようにする。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+# Loading and Displaying Images
+
+Use `load.image()` to load an image.
+The package provides five sample images and one video.
+You can check the samples as follows.
+
+:::::
+
 ```{r}
 list.files(system.file('extdata', package = 'imager'))
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 ボートのサンプル画像もあるのだが、ここには保存されていないようだ。
 
@@ -45,28 +90,74 @@ list.files(system.file('extdata', package = 'imager'))
 今回はオウムのサンプル画像を読み込み、それを表示させる。
 表示は通常の`plot()`でOK。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+There is also a sample image of boats, but it does not seem to be stored here.
+
+By the way, `system.file()` returns where a specified package is stored on the computer.
+With `package = 'imager'`, the package is specified, and the first argument, `extdata`, specifies the location of the extra data.
+
+Here, I load the sample parrot image and display it.
+The usual `plot()` function is enough for display.
+
+:::::
+
 ```{r}
 file <- system.file('extdata/parrots.png', package = 'imager')
 img <- load.image(file)
 plot(img)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 複数枚の画像をまとめて読み込むには、`load.dir()`を使う。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Use `load.dir()` to load multiple images at once.
+
+:::::
+
 ```{r}
 dir <- system.file('extdata/', package = 'imager')
 list_img <- load.dir(dir)
 plot(list_img)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 サンプルではなく、自分の画像を表示させるときは、適切なパスを指定すればちゃんと読み込める。
 `load.dir()`の場合も同様。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+When displaying your own image rather than a sample, specify the appropriate path and it should load correctly.
+The same applies to `load.dir()`.
+
+:::::
 
 ```r
 file <- "/imagefile/hoge.jpg"
 img <- load.image(file)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 また、サンプルを読み込むときは、専用の関数がある。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+There are also dedicated functions for loading sample images.
+
+:::::
 
 ```{r}
 # sketch of birds by Leonardo, from Wikimedia
@@ -85,6 +176,8 @@ plot(load.example("hubble"))
 plot(boats)
 ```
 
+::::: {.content-visible unless-profile="en"}
+
 ボートだけはそのまま読み込める。
 なにか適当に試したいときはboatsが便利。
 
@@ -93,9 +186,25 @@ plot(boats)
 画像はcimgという形式で保存される。
 コンソールにそのままオブジェクトを入力すると、基本情報が出力される。
 
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Only `boats` can be loaded directly.
+When you want to try something quickly, `boats` is convenient.
+
+# Checking Image Information
+
+Images are stored in the `cimg` format.
+If you type the object directly in the console, basic information is printed.
+
+:::::
+
 ```{r}
 boats
 ```
+
+::::: {.content-visible unless-profile="en"}
 
 `boats`は通常の画像形式で、幅256ピクセル、高さ384ピクセル、深さ1、チャンネル数が3となる。
 
@@ -118,6 +227,35 @@ boats
 `FALSE`の場合は3チャンネルが保持されたままグレースケールに変換される。
 あとで色をつけたいときは`FALSE`にしておくと良いかもしれない。
 基本的にはデフォルトのままにしておくと良いと思う。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+`boats` is a normal image with width 256 pixels, height 384 pixels, depth 1, and 3 channels.
+
+Here, depth refers to frames.
+For a video, images appear as a sequence, so the depth corresponds to the number of frames.
+
+The number of channels is 3 for a color image, meaning RGB, and 1 for a grayscale image.
+
+# Grayscale Conversion
+
+Grayscale conversion can be done easily with `grayscale()`.
+
+The second argument is `method`.
+The default is `"Luma"`, which converts to grayscale using a linear approximation of luminance.
+Another option is `"XYZ"`, in which case the image is assumed to be in the sRGB color space and CIE luminance is used.
+If you do not have a particular reason to choose otherwise, leaving it omitted is fine.
+
+The third argument is surprisingly important.
+It is `drop = TRUE`.
+When it is `TRUE`, the image is output with one channel.
+When it is `FALSE`, the image is converted to grayscale while keeping three channels.
+If you want to add color later, `FALSE` may be useful.
+In most cases, the default should be fine.
+
+:::::
 
 ```{r}
 img_gray <- grayscale(boats)

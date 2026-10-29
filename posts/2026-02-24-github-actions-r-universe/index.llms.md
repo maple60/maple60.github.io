@@ -6,17 +6,15 @@ r
 
 GitHub ActionsでGitHub Pagesを利用しており、renvおよびr-universeを利用している場合、GitHub Actionsの環境でrenvが正しく動作しないことがあります。この記事では、その原因と対処法について説明します。
 
-Published
+公開
 
 2026-02-24
 
-Modified
+更新日
 
 2026-02-24
 
-> **NOTE:**
->
-> English version: [Notes on Using r-universe Packages with GitHub Actions and renv](../../en/posts/2026-02-24-github-actions-r-universe/index.llms.md)
+[English version](../../en/posts/2026-02-24-github-actions-r-universe/)
 
 ## 症状
 
@@ -60,7 +58,19 @@ options(
 renv::snapshot(force = TRUE)
 ```
 
-    - Lockfile written to "~/work/maple60.github.io/maple60.github.io/renv.lock".
+    The following package(s) will be updated in the lockfile:
+
+    # CRAN -----------------------------------------------------------------------
+    - cluster    [2.1.8.2 -> 2.1.8.1]
+    - foreign    [0.8-91 -> 0.8-90]
+    - lattice    [0.22-9 -> 0.22-7]
+    - mgcv       [1.9-4 -> 1.9-3]
+    - survival   [3.8-6 -> 3.8-3]
+
+    The version of R recorded in the lockfile will be updated:
+    - R          [4.5.3 -> 4.5.2]
+
+    - Lockfile written to "~/github/maple60.github.io/renv.lock".
 
 このコードでは、[`options()`](https://rdrr.io/r/base/options.html)関数を使って、CRANとr-universeのリポジトリを指定しています。 その後、`renv::snapshot(force = TRUE)`を実行して、`renv.lock` ファイルを更新しています。
 

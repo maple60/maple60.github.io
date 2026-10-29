@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.19">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-05-26">
 <meta name="description" content="共分散行列・固有値・固有ベクトルから2変量データの主軸を求めます">
@@ -11,10 +11,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -91,10 +94,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-abbe66e69a7bd4eaf91592867d04aab6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3bf87aa0936644e36c039a966049ce37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,19 +111,19 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
   }
-}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -156,8 +159,8 @@ window.Quarto = {
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="サーチ"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -204,7 +207,7 @@ window.Quarto = {
 </ul>
 </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -215,7 +218,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
    
   <ul>
 <li><a href="#principal-axis-regression%E3%81%AE%E6%A6%82%E8%A6%81" id="toc-principal-axis-regressionの概要" class="nav-link active" data-scroll-target="#principal-axis-regression%E3%81%AE%E6%A6%82%E8%A6%81">Principal axis regressionの概要</a></li>
@@ -260,14 +263,14 @@ window.Quarto = {
 
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">公開</div>
     <div class="quarto-title-meta-contents">
       <p class="date">2026-05-26</p>
     </div>
   </div>
   
     <div>
-    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
       <p class="date-modified">2026-05-30</p>
     </div>
@@ -277,20 +280,10 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</header><div class="callout-note">
+<p><a href="../../en/posts/2026-05-26-r-principle-axis-regression/">English version</a></p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>English version: <a href="../../en/posts/2026-05-26-r-principle-axis-regression/index.html">Understanding the Basics of Bivariate PCA and Principal Axis Regression in R</a></p>
-</div>
-</div>
-<p><strong>Principal axis regression</strong> (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton et al. 2006</a>)</span>。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。</p>
+<p><strong>Principal axis regression</strong> (PAR)は、主成分分析 (PCA)と似たような考え方で、2変量データの主要な変動方向を直線として捉えるために使用されます。 文献では、関連する2変量のline-fitting方法として、major axis (MA) や standardised major axis (SMA) がよく扱われます <span class="citation" data-cites="warton2006">(<a href="#ref-warton2006" role="doc-biblioref">Warton ほか 2006年</a>)</span>。本記事ではこのうち、共分散行列の第1固有ベクトルを主軸として使うMAに近い考え方を扱います。</p>
 <p>本記事では、共分散行列の第1固有ベクトルを主軸として使う、major axis regressionに近い実装を扱います。 以下では、RでPrincipal axis regressionを実装してみます。</p>
 <section id="principal-axis-regressionの概要" class="level2"><h2 class="anchored" data-anchor-id="principal-axis-regressionの概要">Principal axis regressionの概要</h2>
 <p>Principal axis regressionは、データの<strong>共分散行列</strong>を計算し、その<strong>固有値</strong>と<strong>固有ベクトル</strong>を求めることで、データの主要な変動方向を特定します。 <strong>第1固有ベクトルはもっとも分散が大きい方向</strong>、<strong>第2固有ベクトルはそれに直交する方向</strong>を表します。</p>
@@ -311,7 +304,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ノート
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -326,20 +319,20 @@ Note
 <span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1.5</span></span>
 <span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span></span>
-<span><span class="co"># 主軸方向のスコア</span></span>
+<span><span class="co"># Scores along the principal-axis direction</span></span>
 <span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 主軸に直交するノイズ</span></span>
+<span><span class="co"># Noise orthogonal to the principal axis</span></span>
 <span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 主軸方向ベクトルと直交方向ベクトル</span></span>
+<span><span class="co"># Direction vector for the principal axis and the orthogonal direction</span></span>
 <span><span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">beta</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">beta</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">+</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
@@ -360,7 +353,7 @@ Note
 <p>Rでは、<code><a href="https://rdrr.io/r/stats/cor.html">cov()</a></code>関数を使用して共分散行列を簡単に計算することができます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cov_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">cov_matrix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">cov_matrix</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         x        y
 x 1.227713 1.447200
@@ -371,7 +364,7 @@ y 1.447200 2.338984</code></pre>
 <p>共分散行列の固有値と固有ベクトルを計算するためには、<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>関数を使用します。 ちなみに、固有値はデータの変動の大きさを表し、固有ベクトルはその変動の方向を表します。 Rの<code><a href="https://rdrr.io/r/base/eigen.html">eigen()</a></code>は固有値を大きい順に返すため、<code>vectors</code>の1列目が第1主軸、2列目が第2主軸に対応します。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eigen_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">cov_matrix</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">eigen_result</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">eigen_result</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>eigen() decomposition
 $values
@@ -388,35 +381,35 @@ $vectors
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eigen_values</span> <span class="op">&lt;-</span> <span class="va">eigen_result</span><span class="op">$</span><span class="va">values</span></span>
 <span><span class="va">eigen_vectors</span> <span class="op">&lt;-</span> <span class="va">eigen_result</span><span class="op">$</span><span class="va">vectors</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"第1主軸の固有値:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Eigenvalue of the first principal axis:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "第1主軸の固有値: 3.33354798737934"</code></pre>
+<pre><code>[1] "Eigenvalue of the first principal axis: 3.33354798737934"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"第2主軸の固有値:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Eigenvalue of the second principal axis:"</span>, <span class="va">eigen_values</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "第2主軸の固有値: 0.233149107828597"</code></pre>
+<pre><code>[1] "Eigenvalue of the second principal axis: 0.233149107828597"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span></span>
-<span>  <span class="st">"第1主軸の固有ベクトル: ("</span>,</span>
+<span>  <span class="st">"Eigenvector of the first principal axis: ("</span>,</span>
 <span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span>,</span>
 <span>  <span class="st">", "</span>,</span>
 <span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span>,</span>
 <span>  <span class="st">")"</span>,</span>
 <span>  sep <span class="op">=</span> <span class="st">""</span></span>
-<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "第1主軸の固有ベクトル: (0.566379566968877, 0.824144517739545)"</code></pre>
+<pre><code>[1] "Eigenvector of the first principal axis: (0.566379566968877, 0.824144517739545)"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span></span>
-<span>  <span class="st">"第2主軸の固有ベクトル: ("</span>,</span>
+<span>  <span class="st">"Eigenvector of the second principal axis: ("</span>,</span>
 <span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span>,</span>
 <span>  <span class="st">", "</span>,</span>
 <span>  <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">]</span>,</span>
 <span>  <span class="st">")"</span>,</span>
 <span>  sep <span class="op">=</span> <span class="st">""</span></span>
-<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "第2主軸の固有ベクトル: (-0.824144517739545, 0.566379566968877)"</code></pre>
+<pre><code>[1] "Eigenvector of the second principal axis: (-0.824144517739545, 0.566379566968877)"</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -425,7 +418,7 @@ $vectors
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>固有ベクトルの符号について
+<span class="screen-reader-only">ノート</span>固有ベクトルの符号について
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -439,18 +432,18 @@ a = \bar{y} - b \bar{x}
 \]</span></p>
 <p>ここで、<span class="math inline">\(\bar{x}\)</span>と<span class="math inline">\(\bar{y}\)</span>はそれぞれ<span class="math inline">\(x\)</span>と<span class="math inline">\(y\)</span>の平均値です。 また、<span class="math inline">\(b\)</span>は固有ベクトルの比率で計算されます。 第1主軸を赤、第2主軸を青で描きます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第1主軸と第2主軸の傾き</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Slopes of the first and second principal axes</span></span>
 <span><span class="va">major_axis_slope</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">minor_axis_slope</span> <span class="op">&lt;-</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">eigen_vectors</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span></span>
 <span></span>
-<span><span class="co"># データの中心を通るように切片を計算</span></span>
+<span><span class="co"># Calculate intercepts so that the lines pass through the data center</span></span>
 <span><span class="va">major_axis_intercept</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">major_axis_slope</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">minor_axis_intercept</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">minor_axis_slope</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># データポイントと主要な変動方向をプロット</span></span>
+<span><span class="co"># Plot data points and the main directions of variation</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, main <span class="op">=</span> <span class="st">"Principal Axis Regression"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 第1主軸の線を追加</span></span>
+<span><span class="co"># Add the first principal axis</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">major_axis_intercept</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">major_axis_slope</span>,</span>
@@ -458,13 +451,13 @@ a = \bar{y} - b \bar{x}
 <span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 第2主軸の線を追加</span></span>
+<span><span class="co"># Add the second principal axis</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">minor_axis_intercept</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">minor_axis_slope</span>,</span>
 <span>  col <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
@@ -499,14 +492,14 @@ x_i - \bar{x}, \quad y_i - \bar{y}
 \]</span></p>
 <p><span class="math inline">\(\mathbf{z}_i\)</span>を視覚的に表すと、以下のようになります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 平均中心化した座標</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mean-centered coordinates</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co"># 平均点から各点へのベクトルを描画</span></span>
+<span><span class="co"># Draw vectors from the mean point to each point</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
@@ -531,27 +524,27 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <p>図で考えると、各点から <span class="math inline">\(\mathbf{u}\)</span> の方向に引いた直線へ垂線を下ろします。 その交点が、点を <span class="math inline">\(\mathbf{u}\)</span> 方向の直線上に射影した位置です。 <span class="math inline">\(s_i\)</span> は、データ全体の平均点からその射影点までの、<span class="math inline">\(\mathbf{u}\)</span> 方向に沿った距離を表します。</p>
 <p>視覚的に表すと、以下のようになります。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 平均中心化した座標</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mean-centered coordinates</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 平均点</span></span>
+<span><span class="co"># Mean point</span></span>
 <span><span class="va">mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="va">my</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.6</span><span class="op">)</span> <span class="co"># 方向ベクトル u</span></span>
-<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="va">u</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># 念のため単位ベクトルに正規化</span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.6</span><span class="op">)</span> <span class="co"># direction vector u</span></span>
+<span><span class="va">u</span> <span class="op">&lt;-</span> <span class="va">u</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># normalize to a unit vector just in case</span></span>
 <span></span>
-<span><span class="co"># 各点の u 方向への射影スカラー s_i</span></span>
+<span><span class="co"># Projection scalar s_i for each point in direction u</span></span>
 <span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">z</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span></span>
-<span><span class="co"># 射影点：平均点 + s_i u</span></span>
+<span><span class="co"># Projected point: mean point + s_i u</span></span>
 <span><span class="va">proj_x</span> <span class="op">&lt;-</span> <span class="va">mx</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">proj_y</span> <span class="op">&lt;-</span> <span class="va">my</span> <span class="op">+</span> <span class="va">s</span> <span class="op">*</span> <span class="va">u</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span></span>
-<span><span class="co"># 描画</span></span>
+<span><span class="co"># Draw</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, type <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span>
-<span><span class="va">usr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span> <span class="co"># 描画範囲</span></span>
+<span><span class="va">usr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span> <span class="co"># plotting range</span></span>
 <span></span>
-<span><span class="co"># 1刻みのグリッド</span></span>
+<span><span class="co"># Grid with spacing of 1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">usr</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  col <span class="op">=</span> <span class="st">"gray70"</span>,</span>
@@ -563,10 +556,10 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <span>  lty <span class="op">=</span> <span class="st">"dotted"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 平均を通る縦横線</span></span>
+<span><span class="co"># Vertical and horizontal lines through the mean</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">my</span>, v <span class="op">=</span> <span class="va">mx</span>, col <span class="op">=</span> <span class="st">"#D55E00"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 方向 u を表す直線</span></span>
+<span><span class="co"># Line representing direction u</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">u</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>    v <span class="op">=</span> <span class="va">mx</span>,</span>
@@ -584,12 +577,13 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 各点の平均中心化ベクトル z_i</span></span>
+<span><span class="co"># Mean-centered vector z_i for each point</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">mx</span>, <span class="va">my</span>, <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">y</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray90"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 各点から射影点への垂線：u 方向では説明できない残差</span></span>
+<span><span class="co"># Perpendicular from each point to the projection point:</span></span>
+<span><span class="co"># residual not explained by direction u</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
 <span>    <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
@@ -601,7 +595,7 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 平均点から射影点まで：s_i u</span></span>
+<span><span class="co"># From mean point to projected point: s_i u</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span></span>
 <span>    <span class="va">mx</span>,</span>
@@ -613,10 +607,10 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 元の点</span></span>
+<span><span class="co"># Original points</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/adjustcolor.html">adjustcolor</a></span><span class="op">(</span><span class="st">"black"</span>, alpha.f <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 方向ベクトル u の矢印</span></span>
+<span><span class="co"># Arrow for direction vector u</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/arrows.html">arrows</a></span><span class="op">(</span></span>
 <span>  <span class="va">mx</span>,</span>
 <span>  <span class="va">my</span>,</span>
@@ -625,7 +619,7 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 <span>  col <span class="op">=</span> <span class="st">"#0072B2"</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>  length <span class="op">=</span> <span class="fl">0.2</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -655,16 +649,16 @@ s_i = \mathbf{u}^T \mathbf{z}_i = u_x (x_i - \bar{x}) + u_y (y_i - \bar{y})
 \]</span></p>
 <p>つまり、共分散行列は、任意の方向 <span class="math inline">\(\mathbf{u}\)</span> に対して、<strong>その方向に射影したときのばらつきがどれくらいかを計算するための情報を持っている</strong>と考えることができます。</p>
 <div class="callout callout-style-default callout-note callout-titled" title="なぜ$\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}$になるのか">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>なぜ<span class="math inline">\(\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}\)</span>になるのか
+<span class="screen-reader-only">ノート</span>なぜ<span class="math inline">\(\mathrm{Var}(s)=\mathbf{u}^{\mathrm{T}}\Sigma\mathbf{u}\)</span>になるのか
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>平均中心化した点を</p>
 <p><span class="math display">\[
@@ -760,7 +754,7 @@ u_y
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ノート
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -799,7 +793,7 @@ Note
 <span><span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="va">beta</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">beta</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">+</span> <span class="va">t</span> <span class="op">*</span> <span class="va">v1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">e</span> <span class="op">*</span> <span class="va">v2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
@@ -809,15 +803,15 @@ Note
 </div>
 <p>次に、共分散行列を計算し、固有値と固有ベクトルを求めます。 固有ベクトルの符号は任意なので、ここでは第1主軸の <span class="math inline">\(x\)</span> 成分が正になるようにそろえておきます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 共分散行列と固有ベクトル</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Covariance matrix and eigenvectors</span></span>
 <span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">eg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">S</span>, symmetric <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 第1主軸の方向</span></span>
+<span><span class="co"># Direction of the first principal axis</span></span>
 <span><span class="va">u1</span> <span class="op">&lt;-</span> <span class="va">eg</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">u1</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="va">u1</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -825,7 +819,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+ノート
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -834,24 +828,24 @@ Note
 </div>
 <p>次に、比較用の方向を1つ用意し、それぞれの方向について、各点を直線上へ射影した点を計算します。 方向ベクトルは、向きだけを表すように単位ベクトルへ正規化しておきます。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># データの中心</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Data center</span></span>
 <span><span class="va">center</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># 比較用の方向ベクトル</span></span>
-<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="va">u0</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u0</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># 正規化して単位ベクトルにする</span></span>
+<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span> <span class="co"># comparison direction vector</span></span>
+<span><span class="va">u0</span> <span class="op">&lt;-</span> <span class="va">u0</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">u0</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># normalize to a unit vector</span></span>
 <span></span>
-<span><span class="co"># 直線上の射影点を計算する関数</span></span>
+<span><span class="co"># Function to calculate projected points on the line</span></span>
 <span><span class="va">get_foot_points</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u</span>, <span class="va">center</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="va">y</span> <span class="op">-</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="va">score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span> <span class="co"># 各点の射影スコアを計算</span></span>
-<span>  <span class="va">foot_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">score</span>, <span class="va">u</span><span class="op">)</span> <span class="co"># スコアに基づいて射影点を計算</span></span>
-<span>  <span class="va">foot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">foot_centered</span>, <span class="fl">2</span>, <span class="va">center</span>, <span class="st">"+"</span><span class="op">)</span> <span class="co"># 中心を足す</span></span>
+<span>  <span class="va">score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">u</span><span class="op">)</span> <span class="co"># calculate projection scores for each point</span></span>
+<span>  <span class="va">foot_centered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">score</span>, <span class="va">u</span><span class="op">)</span> <span class="co"># calculate projected points from the scores</span></span>
+<span>  <span class="va">foot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">foot_centered</span>, <span class="fl">2</span>, <span class="va">center</span>, <span class="st">"+"</span><span class="op">)</span> <span class="co"># add the center</span></span>
 <span>  <span class="va">foot</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># 各点の射影点を計算</span></span>
+<span><span class="co"># Calculate projected points for each point</span></span>
 <span><span class="va">foot0</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u0</span>, <span class="va">center</span><span class="op">)</span></span>
-<span><span class="va">foot1</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u1</span>, <span class="va">center</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">foot1</span> <span class="op">&lt;-</span> <span class="fu">get_foot_points</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">u1</span>, <span class="va">center</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>データの上に、比較用の直線と各点からその直線への射影点をプロットしてみます。</p>
 <div class="cell">
@@ -862,7 +856,7 @@ Note
 <span>  col <span class="op">=</span> <span class="st">"gray30"</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
@@ -873,7 +867,7 @@ Note
 <p>次に、ここに第1主軸の線と、各点から第1主軸への射影点を追加してみます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
-<span><span class="co"># 比較用の方向の線と距離</span></span>
+<span><span class="co"># Line and distances for the comparison direction</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u0</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u0</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
@@ -882,14 +876,14 @@ Note
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot0</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="st">"gray70"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># 第1主軸の線と距離</span></span>
+<span><span class="co"># Line and distances for the first principal-axis direction</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/segments.html">segments</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">foot1</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span>, col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
@@ -899,13 +893,13 @@ Note
 </div>
 <p>このときの各点から直線までの距離の二乗和を計算して比較します。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 比較用の方向に対する、直線からの距離の二乗和</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Sum of squared distances from the line for the comparison direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot0</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 117.576</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 第1主軸の方向に対する、直線からの距離の二乗和</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Sum of squared distances from the line for the first principal-axis direction</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">-</span> <span class="va">foot1</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23.08176</code></pre>
 </div>
@@ -919,20 +913,20 @@ Note
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, asp <span class="op">=</span> <span class="fl">1</span>, pch <span class="op">=</span> <span class="fl">16</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span>
-<span><span class="co"># 第1主軸の線</span></span>
+<span><span class="co"># First principal-axis line</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  col <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># 第2主軸の線</span></span>
+<span><span class="co"># Second principal-axis line</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span></span>
 <span>  a <span class="op">=</span> <span class="va">center</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">u2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span> <span class="op">*</span> <span class="va">center</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  b <span class="op">=</span> <span class="va">u2</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">u2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>  col <span class="op">=</span> <span class="fl">4</span>,</span>
 <span>  lwd <span class="op">=</span> <span class="fl">3</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
@@ -955,7 +949,7 @@ Note
 </ul></section><section id="参考文献" class="level2"><h2 class="anchored" data-anchor-id="参考文献">参考文献</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-warton2006" class="csl-entry" role="listitem">
-Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. <span>“Bivariate Line-Fitting Methods for Allometry.”</span> <em>Biological Reviews</em> 81 (2): 259–91. <a href="https://doi.org/10.1017/S1464793106007007">https://doi.org/10.1017/S1464793106007007</a>.
+Warton, David I., Ian J. Wright, Daniel S. Falster, と Mark Westoby. 2006年. <span>「Bivariate Line-Fitting Methods for Allometry」</span>. <em>Biological Reviews</em> 81 (2): 259–91. <a href="https://doi.org/10.1017/S1464793106007007">https://doi.org/10.1017/S1464793106007007</a>.
 </div>
 </div>
 
@@ -985,12 +979,12 @@ Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. <spa
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "コピーしました");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "コピーしました");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -1033,7 +1027,7 @@ Warton, David I., Ian J. Wright, Daniel S. Falster, and Mark Westoby. 2006. <spa
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/maple60\.github\.io\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -4,17 +4,15 @@ quarto
 
 Quartoでコードブロックのファイル名を表示する方法についてのメモです
 
-Published
+公開
 
 2026-01-24
 
-Modified
+更新日
 
 2026-01-24
 
-> **NOTE:**
->
-> English version: [Showing File Names on Code Blocks in Quarto](../../en/posts/2026-01-24-code-filename/index.llms.md)
+[English version](../../en/posts/2026-01-24-code-filename/)
 
 コードブロックにファイル名を表示する方法についてのメモです。 コードブロックに`filename`属性を追加することで、ファイル名を表示できます。
 

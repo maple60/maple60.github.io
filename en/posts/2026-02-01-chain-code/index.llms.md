@@ -12,9 +12,7 @@ Modified
 
 2026-02-01
 
-> **NOTE:**
->
-> Original Japanese version: [Chain codeについて](../../../posts/2026-02-01-chain-code/index.llms.md)
+[日本語版](../../../posts/2026-02-01-chain-code/)
 
 Chain code is a method for representing a shape as a one-dimensional sequence of codes. It encodes the movement direction from one coordinate to an adjacent coordinate for pixels on a contour in a two-dimensional image, then records those directions continuously. It is mainly used in image processing and computer vision, and it is useful for contour extraction and shape recognition.
 

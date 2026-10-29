@@ -4,27 +4,25 @@ r
 
 Chain codeについてのメモです
 
-Published
+公開
 
 2026-02-01
 
-Modified
+更新日
 
 2026-02-01
 
-> **NOTE:**
->
-> English version: [Notes on Chain Code](../../en/posts/2026-02-01-chain-code/index.llms.md)
+[English version](../../en/posts/2026-02-01-chain-code/)
 
 Chain code（チェインコード）は、2次元画像中の輪郭上の画素について、ある座標から隣接する座標への移動方向を符号化し、それを連続的に記録することで、形状を1次元のコード列として表現する方法です。 主に画像処理やコンピュータビジョンの分野で使用され、輪郭抽出や形状認識に役立ちます。
 
 > **NOTE:**
 >
-> Chain codeの基本的な概念は、Freeman ([1974](#ref-freeman1974))によって提案されました。 この論文よりも前に概念は存在していましたが、この論文でchain codeの名が広く知られるきっかけとなりました。
+> Chain codeの基本的な概念は、Freeman ([1974年](#ref-freeman1974))によって提案されました。 この論文よりも前に概念は存在していましたが、この論文でchain codeの名が広く知られるきっかけとなりました。
 
 例えば、よく用いられる8方向のチェインコードは以下のようになります。
 
-Code
+コード
 
 ``` downlit
 plot(
@@ -45,11 +43,11 @@ axis(1, at = c(-1, 0, 1), cex.axis = 2)
 axis(2, at = c(-1, 0, 1), las = 1, cex.axis = 2)
 
 
-# グリッド線を引く
+# Draw grid lines
 abline(h = -1:1, col = "lightgray")
 abline(v = -1:1, col = "lightgray")
 
-# ベクトルを描く
+# Draw vectors
 length_arrow <- 0.2
 lwd_arrow <- 5
 arrows(0, 0, 1, 0, length = length_arrow, lwd = lwd_arrow) # 0
@@ -61,7 +59,7 @@ arrows(0, 0, -1, -1, length = length_arrow, lwd = lwd_arrow) # 5
 arrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6
 arrows(0, 0, 1, -1, length = length_arrow, lwd = lwd_arrow) # 7
 
-# ラベルをつける
+# Add labels
 cex_text <- 3
 text(1, 0, "0", cex = cex_text, pos = 4)
 text(1, 1, "1", cex = cex_text, pos = 4)
@@ -150,9 +148,9 @@ axis(2, at = -2:2, las = 1, cex.axis = 1.5)
 abline(h = -3:3, col = "lightgray")
 abline(v = -1:6, col = "lightgray")
 
-points(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = "red") # 開始点
+points(df_contour$x[1], df_contour$y[1], pch = 19, cex = 2, col = "red") # starting point
 
-# ベクトルを描く
+# Draw vectors
 length_arrow <- 0.2
 lwd_arrow <- 2
 arrows(0, 0, 0, -1, length = length_arrow, lwd = lwd_arrow) # 6
@@ -170,7 +168,7 @@ arrows(2, 1, 1, 2, length = length_arrow, lwd = lwd_arrow) # 3
 arrows(1, 2, 0, 1, length = length_arrow, lwd = lwd_arrow) # 5
 arrows(0, 1, 0, 0, length = length_arrow, lwd = lwd_arrow) # 6
 
-# ラベルをつける
+# Add labels
 text(
   df_contour$x[-1] +
     c(0, -0.5, -0.5, -0.5, -0.5, -0.5, 0, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0),
@@ -206,12 +204,12 @@ text(
 Rで座標データをchain codeに変換してみます。
 
 ``` downlit
-# x, yの差分を計算
+# Calculate differences in x and y
 dx <- df_contour$x[2:length(df_contour$x)] -
   df_contour$x[1:(length(df_contour$x) - 1)]
 dy <- df_contour$y[2:length(df_contour$y)] -
   df_contour$y[1:(length(df_contour$y) - 1)]
-# 差分に基づいてchain codeを決定
+# Determine chain code based on the differences
 chain_code <- c()
 for (i in seq_along(dx)) {
   if (dx[i] == 1 && dy[i] == 0) {
@@ -243,7 +241,7 @@ print(chain_code)
 coords_to_chain_code <- function(x, y) {
   dx <- x[2:length(x)] - x[1:(length(x) - 1)]
   dy <- y[2:length(y)] - y[1:(length(y) - 1)]
-  # 変位が1より大きい場合はエラー
+  # Error if any displacement is larger than 1
   if (any(abs(dx) > 1) || any(abs(dy) > 1)) {
     stop("Invalid step detected: not 8-connected")
   }
@@ -291,10 +289,10 @@ print(result_chain_code)
 
 ``` downlit
 chain_code <- c(6, 7, 0, 0, 0, 1, 2, 2, 3, 5, 4, 3, 5, 6)
-# 開始点の座標
+# Coordinates of the starting point
 start_x <- 0
 start_y <- 0
-# 座標への変換
+# Convert to coordinates
 x_coords <- c(start_x)
 y_coords <- c(start_y)
 for (code in chain_code) {
@@ -448,6 +446,6 @@ plot(
 
 ![](index_files/figure-html/unnamed-chunk-10-1.png)
 
-## References
+## 参考文献
 
-Freeman, Herbert. 1974. “Computer Processing of Line-Drawing Images.” *ACM Comput. Surv.* 6 (1): 5797. <https://doi.org/10.1145/356625.356627>.
+Freeman, Herbert. 1974年. 「Computer Processing of Line-Drawing Images」. *ACM Comput. Surv.* 6 (1): 5797. <https://doi.org/10.1145/356625.356627>.

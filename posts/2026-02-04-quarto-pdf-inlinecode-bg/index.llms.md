@@ -6,17 +6,15 @@ latex
 
 LaTeXのxcolorパッケージを利用して、QuartoでPDF出力時にインラインコードブロックに背景色を付ける方法のメモです。
 
-Published
+公開
 
 2026-02-04
 
-Modified
+更新日
 
 2026-02-04
 
-> **NOTE:**
->
-> English version: [Adding Background Color to Inline Code Blocks in Quarto PDF Output](../../en/posts/2026-02-04-quarto-pdf-inlinecode-bg/index.llms.md)
+[English version](../../en/posts/2026-02-04-quarto-pdf-inlinecode-bg/)
 
 QuartoでPDFを出力する際はHTML出力と異なり、インラインコードブロックに背景色を付ける設定がデフォルトでは用意されていません。
 
@@ -28,7 +26,7 @@ QuartoでPDFを出力する際はHTML出力と異なり、インラインコー�
 
 ``` yaml
 ---
-format: 
+format:
   pdf:
     include-in-header: preamble.tex
 ---
@@ -55,9 +53,9 @@ format:
 
 > **NOTE:**
 >
-> - `\usepackage{xcolor}`: xcolorパッケージを読み込みます。これにより、色の定義や背景色の設定が可能になります。  
-> - `\definecolor{inlinecodebg}{RGB}{245,245,245}`: `inlinecodebg`という名前で背景色を定義しています。ここでは薄いグレーを指定していますが、RGB値を変更することで好きな色に変更できます。  
-> - `\let\OldTexttt\texttt`と`\renewcommand{\texttt}[1]{...}`: 既存の`\texttt`コマンドを保存し、新たに背景色付きの`\texttt`コマンドを定義しています。これにより、インラインコードブロックが背景色付きで表示されるようになります。  
+> - `\usepackage{xcolor}`: xcolorパッケージを読み込みます。これにより、色の定義や背景色の設定が可能になります。\
+> - `\definecolor{inlinecodebg}{RGB}{245,245,245}`: `inlinecodebg`という名前で背景色を定義しています。ここでは薄いグレーを指定していますが、RGB値を変更することで好きな色に変更できます。\
+> - `\let\OldTexttt\texttt`と`\renewcommand{\texttt}[1]{...}`: 既存の`\texttt`コマンドを保存し、新たに背景色付きの`\texttt`コマンドを定義しています。これにより、インラインコードブロックが背景色付きで表示されるようになります。\
 >   ここで、`\OldTextt`を使う理由は、元の`\texttt`コマンドの機能を保持しつつ、新しい機能を追加するためです。
 >
 > また、`\textt`は等幅フォント(typewriter text)でテキストを表示するためのLaTeXコマンドであり、Quartoではインラインコードブロックに対応しています。

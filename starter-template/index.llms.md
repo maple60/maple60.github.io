@@ -22,6 +22,6 @@ Replace this text with a short explanation of who you are, what you publish, and
 
 ## Recent Posts
 
-| Date | Title | Description |
+| 日付 | 題名 | 説明 |
 |----|----|----|
 | 2026-01-01 | [Welcome](../starter-template/posts/2026-01-01-welcome/index.llms.md) | A sample first post for this Quarto site |

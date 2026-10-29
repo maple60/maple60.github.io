@@ -4,17 +4,15 @@ r
 
 [`make.unique()`](https://rdrr.io/r/base/make.unique.html)関数を使ってベクトルの重複を取り除く方法についてのメモです
 
-Published
+公開
 
 2026-01-27
 
-Modified
+更新日
 
 2026-01-27
 
-> **NOTE:**
->
-> English version: [Removing Duplicate Vector Elements in R](../../en/posts/2026-01-27-make-unique/index.llms.md)
+[English version](../../en/posts/2026-01-27-make-unique/)
 
 ## `make.unique()`関数の使用法
 

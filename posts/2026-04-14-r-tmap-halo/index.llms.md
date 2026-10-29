@@ -4,17 +4,15 @@ r
 
 `tmap` 4.3から`tm_text`で文字の縁取りなどの装飾が実装されました
 
-Published
+公開
 
 2026-04-14
 
-Modified
+更新日
 
 2026-04-14
 
-> **NOTE:**
->
-> English version: [Displaying Haloed Text on Maps with the R Package tmap](../../en/posts/2026-04-14-r-tmap-halo/index.llms.md)
+[English version](../../en/posts/2026-04-14-r-tmap-halo/)
 
 Rの[`tmap`パッケージ](https://r-tmap.github.io/tmap/index.html)で地図の上に縁取り文字を表示する方法を紹介します。 `tmap`パッケージの[Changelog](https://r-tmap.github.io/tmap/news/index.html)によると、バージョン4.3から`tm_text`関数で文字の縁取りなどの装飾が実装されたようです。
 
@@ -32,6 +30,11 @@ renv::install("r-tmap/tmap")
 
 ``` downlit
 library(tmap)
+```
+
+    Warning: package 'tmap' was built under R version 4.5.3
+
+``` downlit
 packageVersion("tmap")
 ```
 
@@ -42,8 +45,8 @@ packageVersion("tmap")
 アジアの国名を表示してみます。 まずは、縁取りなしの場合です。
 
 ``` downlit
-Asia <- World[World$continent == "Africa", ]
-tm_shape(Asia) +
+Africa <- World[World$continent == "Africa", ]
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name")
 ```
@@ -53,7 +56,7 @@ tm_shape(Asia) +
 少し重なりが多いため、`remove_overlap = TRUE`を指定して、重なりをなくします。 表示されなくなってしまった国には申し訳ないですが、見やすくなります。
 
 ``` downlit
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(remove_overlap = TRUE))
 ```
@@ -63,7 +66,7 @@ tm_shape(Asia) +
 これに、文字の縁取りをつけてみます。 `opt_tm_text`の引数で、`halo = TRUE`を指定します。
 
 ``` downlit
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(halo = TRUE, remove_overlap = TRUE))
 ```
@@ -81,7 +84,7 @@ tm_shape(Asia) +
 たとえば、赤い縁取りをつけてみます。
 
 ``` downlit
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text(
     "name",
@@ -109,7 +112,7 @@ tm_shape(Asia) +
 `halo`では縁取りが付きましたが、`shadow`オプションを使うと、文字に影をつけることもできます。
 
 ``` downlit
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text("name", options = opt_tm_text(shadow = TRUE, remove_overlap = TRUE))
 ```
@@ -126,7 +129,7 @@ tm_shape(Asia) +
 影の効果をわかりやすくするために、少し大げさに影をつけてみます。
 
 ``` downlit
-tm_shape(Asia) +
+tm_shape(Africa) +
   tm_polygons() +
   tm_text(
     "name",
