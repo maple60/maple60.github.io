@@ -28,6 +28,6 @@ function Pandoc(doc)
     text = "English version"
   end
   local link = pandoc.Link(text, href)
-  table.insert(doc.blocks, 1, pandoc.Div({pandoc.Para({link})}, pandoc.Attr("", {"callout-note"})))
+  table.insert(doc.blocks, 1, pandoc.Div({pandoc.Para({link})}, pandoc.Attr("", {"language-switch"})))
   return doc
 end
