@@ -1,0 +1,15 @@
+{
+  "hash": "7b310e288d54f27c375016febb7035ba",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Removing Duplicate Vector Elements in R\"\ndescription: \"A note on using the `make.unique()` function to make duplicate vector elements unique.\"\ndate: \"2026-01-27\"\ndate-modified: \"2026-01-27\"\ndraft: false\nlang: en\ncategories: [r]\n---\n\n::: {.callout-note}\nOriginal Japanese version: [Rでベクトルの重複を取り除く方法](../../../posts/2026-01-27-make-unique/index.qmd)\n:::\n\n## Using the `make.unique()` Function\n\nThis is a note on how to handle duplicate elements in a vector in R and turn them into unique elements.\nWith the `make.unique()` function, duplicate elements can be automatically converted into unique values by adding suffixes.\nThe usage is as follows.\n\n```{.r}\nmake.unique(names, sep = \".\")\n```\n\n- `names`: a character vector you want to make unique\n- `sep`: the separator used before the suffix added to duplicate elements; the default is a dot, `.`\n\n## Example\n\nSuppose we have the following vector.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- c(\"apple\", \"banana\", \"apple\", \"orange\", \"banana\")\n```\n:::\n\n\nApplying `make.unique()` to this vector gives the following result.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nunique_x <- make.unique(x)\nprint(unique_x)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"apple\"    \"banana\"   \"apple.1\"  \"orange\"   \"banana.1\"\n```\n\n\n:::\n:::\n\n\nBecause `apple` and `banana` are duplicated, `.1` is added after the repeated words.\n\n## Closing Note\n\nI cannot remember exactly where I used this function, but I remembered using it before and left this note.\nThe opportunities to use it may be limited, but it can be useful to know.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
