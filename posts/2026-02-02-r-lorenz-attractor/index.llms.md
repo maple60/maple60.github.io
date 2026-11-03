@@ -28,13 +28,17 @@ Lorenz attractorは、[Edward Lorenz](https://www.lorenz.mit.edu/edward-n-lorenz
 
 Lorenz方程式は以下の3つの常微分方程式から構成されます。
 
-\\ \begin{align} \frac{dx}{dt} &= \sigma (y - x) \\ \frac{dy}{dt} &= x(\rho - z) - y \\ \frac{dz}{dt} &= xy - \beta z \end{align} \\
+$$\begin{align}
+  \frac{dx}{dt} &= \sigma (y - x) \\
+  \frac{dy}{dt} &= x(\rho - z) - y \\
+  \frac{dz}{dt} &= xy - \beta z
+\end{align}$$
 
-ここで、\\x\\、\\y\\、および\\z\\はシステムの状態変数であり、\\\sigma\\、\\\rho\\、および\\\beta\\はパラメータです。一般的に使用されるパラメータ値は以下の通りです。
+ここで、$x$、$y$、および$z$はシステムの状態変数であり、$\sigma$、$\rho$、および$\beta$はパラメータです。一般的に使用されるパラメータ値は以下の通りです。
 
-- \\\sigma = 10\\
-- \\\rho = 28\\
-- \\\beta = \frac{8}{3}\\
+- $\sigma = 10$
+- $\rho = 28$
+- $\beta = \frac{8}{3}$
 
 ## deSolveパッケージのインストールと読み込み
 

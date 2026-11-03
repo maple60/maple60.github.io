@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="dcterms.date" content="2026-03-04">
 <meta name="description" content="Rでcolorspaceパッケージを使って色覚異常のシミュレーションをする方法をまとめます">
@@ -71,14 +71,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-01532bdd092c4797119adf24cf6f52f0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-5079ba121a8301132dd4d6219cc4caa4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -106,17 +107,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 </head>
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="ウェブサイト"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Maple60’s website</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="サーチ"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -169,12 +169,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </a>
 </div>
+            <div id="quarto-search" class="" title="サーチ"></div>
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">目次</h2>
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active"><h2 id="toc-title">目次</h2>
    
   <ul>
 <li><a href="#%E8%89%B2%E8%A6%9A%E5%A4%9A%E6%A7%98%E6%80%A7" id="toc-色覚多様性" class="nav-link active" data-scroll-target="#%E8%89%B2%E8%A6%9A%E5%A4%9A%E6%A7%98%E6%80%A7">色覚多様性</a></li>
@@ -191,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content" tabindex="-1"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Rで色覚異常のシミュレーションを行う方法</h1>
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
@@ -280,12 +281,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: package 'colorspace' was built under R version 4.5.3</code></pre>
 </div>
 </div>
-<p>色のベクトルを用意し、<code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan()</a></code> (2型色覚), <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan()</a></code> (1型色覚), <code><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan()</a></code> (3型色覚)を使って、色覚異常のシミュレーションを行います。</p>
+<p>色のベクトルを用意し、<code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan()</a></code> (2型色覚), <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan()</a></code> (1型色覚), <code><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan()</a></code> (3型色覚)を使って、色覚異常のシミュレーションを行います。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span><span class="op">)</span> <span class="co"># color vector: red, green, blue, yellow</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
-<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of protanopia</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of deuteranopia</span></span>
+<span><span class="va">colors_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span> <span class="co"># simulation of tritanopia</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -344,9 +345,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Rのバージョン4以降のデフォルトカラーパレットでも検証してみます。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_default</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># R's default color palette</span></span>
-<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
-<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
+<span><span class="va">colors_default_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_default</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors_default</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span>
@@ -402,9 +403,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>色覚異常の人にとって、特定の色の組み合わせは区別が難しいことがあります。 このような問題を避けるためには、色覚異常の人にも区別しやすいカラーパレットを選ぶことが重要です。 一番簡単な方法は、<code>palette("Okabe-Ito")</code>のような、色覚異常の人にも区別しやすいカラーパレットを使用することです。 このカラーパレットは、色覚異常の人にも区別しやすい色の組み合わせが選ばれています。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors_okabe_ito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span><span class="op">(</span><span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
-<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
+<span><span class="va">colors_okabe_ito_tritan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">tritan</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors_okabe_ito</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -481,14 +482,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_circle</span>,</span>
 <span>  <span class="va">y_circle</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">16</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span></span>
 <span>  <span class="va">x_square</span>,</span>
 <span>  <span class="va">y_square</span>,</span>
-<span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>  col <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  cex <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -503,8 +504,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>赤と緑の区別が難しい場合でも、明度差があれば区別しやすくなります。 例えば、以下のような赤と緑の組み合わせは、明度差が小さいため、protanopiaやdeuteranopiaの人にとって区別が難しいです。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#932922"</span>, <span class="st">"#526907"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -534,8 +535,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>一方、以下のような赤と緑の組み合わせは、明度差が大きいため、protanopiaやdeuteranopiaの人にとって区別しやすいです。</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF4B00"</span>, <span class="st">"#03AF7A"</span><span class="op">)</span></span>
-<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
-<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_protan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">protan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
+<span><span class="va">colors_deutan</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html">deutan</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">colors</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">colors</span>, main <span class="op">=</span> <span class="st">"Original"</span><span class="op">)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -644,7 +645,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -653,8 +655,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -668,6 +731,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -830,44 +894,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -965,6 +1039,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
+  </script><script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
   </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

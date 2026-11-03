@@ -29,13 +29,17 @@ Below is a method for drawing the Lorenz attractor in R using the [deSolve](http
 
 The Lorenz equations consist of the following three ordinary differential equations.
 
-\\ \begin{align} \frac{dx}{dt} &= \sigma (y - x) \\ \frac{dy}{dt} &= x(\rho - z) - y \\ \frac{dz}{dt} &= xy - \beta z \end{align} \\
+$$\begin{align}
+  \frac{dx}{dt} &= \sigma (y - x) \\
+  \frac{dy}{dt} &= x(\rho - z) - y \\
+  \frac{dz}{dt} &= xy - \beta z
+\end{align}$$
 
-Here, \\x\\, \\y\\, and \\z\\ are the state variables of the system, and \\\sigma\\, \\\rho\\, and \\\beta\\ are parameters. Commonly used parameter values are as follows.
+Here, $x$, $y$, and $z$ are the state variables of the system, and $\sigma$, $\rho$, and $\beta$ are parameters. Commonly used parameter values are as follows.
 
-- \\\sigma = 10\\
-- \\\rho = 28\\
-- \\\beta = \frac{8}{3}\\
+- $\sigma = 10$
+- $\rho = 28$
+- $\beta = \frac{8}{3}$
 
 ## Installing and Loading the deSolve Package
 

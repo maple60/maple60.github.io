@@ -52,7 +52,7 @@ library(colorspace)
 
     Warning: package 'colorspace' was built under R version 4.5.3
 
-色のベクトルを用意し、[`deutan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (2型色覚), [`protan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (1型色覚), [`tritan()`](https://rdrr.io/pkg/colorspace/man/simulate_cvd.html) (3型色覚)を使って、色覚異常のシミュレーションを行います。
+色のベクトルを用意し、[`deutan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (2型色覚), [`protan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (1型色覚), [`tritan()`](https://colorspace.R-Forge.R-project.org/reference/simulate_cvd.html) (3型色覚)を使って、色覚異常のシミュレーションを行います。
 
 ``` downlit
 colors <- c("red", "green", "blue", "yellow") # color vector: red, green, blue, yellow

@@ -42,9 +42,9 @@ A very simple summary of the flow is:
 >
 > Within-class variance, between-class variance, and total variance are important concepts for analyzing image histograms. These variances have the following relationship.
 >
-> \\ \sigma_T^2 = \sigma_W^2 + \sigma_B^2 \\
+> $$\sigma_T^2 = \sigma_W^2 + \sigma_B^2$$
 >
-> Here, \\\sigma_T^2\\ represents total variance, \\\sigma_W^2\\ represents within-class variance, and \\\sigma_B^2\\ represents between-class variance.
+> Here, $\sigma_T^2$ represents total variance, $\sigma_W^2$ represents within-class variance, and $\sigma_B^2$ represents between-class variance.
 >
 > Therefore, maximizing between-class variance means minimizing within-class variance. It can also be understood as making each class tightly grouped.
 

@@ -26,17 +26,17 @@ The articles reflect what I checked at the time of publication or update. Please
 | Date | Title | Description |
 |----|----|----|
 |   | [ ](./posts/00-template/index.qmd) |   |
+|   | [ ](./posts/2026-11-03-tailscale-rustdesk-windows11/index.qmd) |   |
 | 2026-06-19 | [Retrieving Paper References with the OpenAlex API from Python](posts/2026-06-19-openalex-citation/index.llms.md) | Use the OpenAlex API from Python to retrieve the references cited by a paper. |
 | 2026-06-17 | [A Quick Introduction to the jpplantnames R Package](posts/2026-06-17-jpplantnames/index.llms.md) | A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches. |
 | 2026-06-16 | [Using the WFO Plant List API from R](posts/2026-06-16-wfo-r/index.llms.md) | Use the World Flora Online Plant List API from R to retrieve accepted names from scientific names. |
 | 2026-06-01 | [Using OpenAlex from Python](posts/2026-06-01-openalex-python/index.llms.md) | A note on calling the OpenAlex API from Python to retrieve paper metadata. |
-| 2026-05-27 | [Applying Principal Axis Regression to Trait-Space Rotation in R](posts/2026-05-27-r-principle-axis-regression_example/index.llms.md) | Using the first eigenvector of a covariance matrix to examine the difference between an interspecific axis and an axis that includes intraspecific variation. |
 
 | Date | Title | Description |
 |----|----|----|
 |   | [ ](./posts/00-template/index.qmd) |   |
+|   | [ ](./posts/2026-11-03-tailscale-rustdesk-windows11/index.qmd) |   |
 | 2026-06-19 | [OpenAlex APIをPythonから呼び出して論文の引用文献を取得する](posts/2026-06-19-openalex-citation/index.llms.md) | OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。 |
 | 2026-06-17 | [jpplantnames Rパッケージについて](posts/2026-06-17-jpplantnames/index.llms.md) | jpplantnames Rパッケージについて簡単にまとめます。 |
 | 2026-06-16 | [WFO Plant List APIをRから利用する方法](posts/2026-06-16-wfo-r/index.llms.md) | The World Flora Online (WFO)のAPIをRから利用して、学名からaccepted nameを取得します。 |
 | 2026-06-01 | [OpenAlexをPythonから使ってみる](posts/2026-06-01-openalex-python/index.llms.md) | OpenAlex APIをPythonから呼び出し、論文メタデータを取得するためのメモです。 |
-| 2026-05-27 | [RでPrincipal axis regressionをtrait spaceの回転に応用する](posts/2026-05-27-r-principle-axis-regression_example/index.llms.md) | 共分散行列の第1固有ベクトルを使って、種間軸と種内変異を含む軸のずれを調べます |

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-11-03">
+<meta name="description" content="Tailscale VPN内でRustDeskの直接IPアクセスを使う構築手順と、pingは通るのに接続できず、両PCの再起動で解決したトラブルシューティングの記録。">
+
+<title>Tailscale + RustDeskでWindows 11に高速・安全にリモート接続する – Maple60’s website</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5079ba121a8301132dd4d6219cc4caa4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "一致なし",
+    "search-matching-documents-text": "一致した文書",
+    "search-copy-link-title": "検索へのリンクをコピー",
+    "search-hide-matches-text": "追加の検索結果を非表示",
+    "search-more-match-text": "追加の検索結果",
+    "search-more-matches-text": "追加の検索結果",
+    "search-clear-button-title": "消去",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "検索",
+    "search-label": "サーチ"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="ウェブサイト">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Maple60’s website</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../works.html"> 
+<span class="menu-text">Works</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-english" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">English</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-english">    
+        <li>
+    <a class="dropdown-item" href="../../en/index.html">
+ <span class="dropdown-text">English Home</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../en/posts.html">
+ <span class="dropdown-text">English Posts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../en/works.html">
+ <span class="dropdown-text">English Works</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../en/recommendations.html">
+ <span class="dropdown-text">English Recommendations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../recommendations.html"> 
+<span class="menu-text">Recommendations</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+            <div id="quarto-search" class="" title="サーチ"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#背景" id="toc-背景" class="nav-link active" data-scroll-target="#背景">背景</a></li>
+  <li><a href="#システム構成" id="toc-システム構成" class="nav-link" data-scroll-target="#システム構成">システム構成</a></li>
+  <li><a href="#環境構築の手順" id="toc-環境構築の手順" class="nav-link" data-scroll-target="#環境構築の手順">環境構築の手順</a>
+  <ul class="collapse">
+  <li><a href="#tailscaleをインストールする" id="toc-tailscaleをインストールする" class="nav-link" data-scroll-target="#tailscaleをインストールする">1. Tailscaleをインストールする</a></li>
+  <li><a href="#rustdeskをインストールする" id="toc-rustdeskをインストールする" class="nav-link" data-scroll-target="#rustdeskをインストールする">2. RustDeskをインストールする</a></li>
+  <li><a href="#windowsファイアウォールを設定する" id="toc-windowsファイアウォールを設定する" class="nav-link" data-scroll-target="#windowsファイアウォールを設定する">3. Windowsファイアウォールを設定する</a></li>
+  <li><a href="#スリープと自動起動を確認する" id="toc-スリープと自動起動を確認する" class="nav-link" data-scroll-target="#スリープと自動起動を確認する">4. スリープと自動起動を確認する</a></li>
+  </ul></li>
+  <li><a href="#接続を確認する" id="toc-接続を確認する" class="nav-link" data-scroll-target="#接続を確認する">接続を確認する</a></li>
+  <li><a href="#実際に遭遇したトラブル" id="toc-実際に遭遇したトラブル" class="nav-link" data-scroll-target="#実際に遭遇したトラブル">実際に遭遇したトラブル</a>
+  <ul class="collapse">
+  <li><a href="#tailscale-pingは成功tcp接続は失敗" id="toc-tailscale-pingは成功tcp接続は失敗" class="nav-link" data-scroll-target="#tailscale-pingは成功tcp接続は失敗">Tailscale pingは成功、TCP接続は失敗</a></li>
+  <li><a href="#rustdeskは待ち受けていた" id="toc-rustdeskは待ち受けていた" class="nav-link" data-scroll-target="#rustdeskは待ち受けていた">RustDeskは待ち受けていた</a></li>
+  <li><a href="#tsmpは成功icmpはタイムアウト" id="toc-tsmpは成功icmpはタイムアウト" class="nav-link" data-scroll-target="#tsmpは成功icmpはタイムアウト">TSMPは成功、ICMPはタイムアウト</a></li>
+  <li><a href="#ファイアウォールとアクセス制御を調べた" id="toc-ファイアウォールとアクセス制御を調べた" class="nav-link" data-scroll-target="#ファイアウォールとアクセス制御を調べた">ファイアウォールとアクセス制御を調べた</a></li>
+  <li><a href="#両pcの再起動後に接続できた" id="toc-両pcの再起動後に接続できた" class="nav-link" data-scroll-target="#両pcの再起動後に接続できた">両PCの再起動後に接続できた</a></li>
+  </ul></li>
+  <li><a href="#接続できない場合のチェックリスト" id="toc-接続できない場合のチェックリスト" class="nav-link" data-scroll-target="#接続できない場合のチェックリスト">接続できない場合のチェックリスト</a></li>
+  <li><a href="#研究室の解析用pcを35人で共用する場合" id="toc-研究室の解析用pcを35人で共用する場合" class="nav-link" data-scroll-target="#研究室の解析用pcを35人で共用する場合">研究室の解析用PCを3〜5人で共用する場合</a></li>
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
+  <li><a href="#参考資料" id="toc-参考資料" class="nav-link" data-scroll-target="#参考資料">参考資料</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tailscale + RustDeskでWindows 11に高速・安全にリモート接続する</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">windows</div>
+    <div class="quarto-category">tailscale</div>
+    <div class="quarto-category">rustdesk</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tailscale VPN内でRustDeskの直接IPアクセスを使う構築手順と、pingは通るのに接続できず、両PCの再起動で解決したトラブルシューティングの記録。
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">公開</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-11-03</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">更新日</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-11-03</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../posts/2026-11-03-tailscale-rustdesk-windows11/slides.html">説明用スライドはこちら</a></p>
+<section id="背景" class="level2">
+<h2 class="anchored" data-anchor-id="背景">背景</h2>
+<p>外出先から自宅のWindows 11 PCを操作するため、<a href="https://tailscale.com/">Tailscale</a>と<a href="https://rustdesk.com/">RustDesk</a>でリモートデスクトップ環境を構築しました。 重視したのは、高速で低遅延な接続、セキュリティ、ルーターのポート開放<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>やIPアドレスの手動固定<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>が不要なこと、構成が簡単なことです。</p>
+<p>今回はRustDeskのIDによる接続ではなく、TailscaleのVPN内でRustDeskの<strong>直接IPアクセス</strong>を利用しました。 設定後は快適に操作できましたが、途中で「Tailscaleのping<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>は成功するのにRustDeskには接続できない」状態になりました。</p>
+<p>なお、RustDeskの通常のID接続も、サーバーによる接続先の仲介後にP2P通信<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>できる場合があります。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">ノート</span>TailscaleとRustDeskの役割
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tailscale：PC同士を安全につなぐ</strong></p>
+<p>WireGuardを使ったVPN（仮想プライベートネットワーク）を構築し、端末間の通信を暗号化します。 各PCに仮想IPアドレスを割り当て、外出先から接続できる通信経路を用意します。</p>
+<p><strong>RustDesk：接続先の画面を表示して操作する</strong></p>
+<p>オープンソースのリモートデスクトップソフトウェアです。 今回はTailscaleの仮想IPアドレスに直接接続し、画面転送とキーボード・マウス操作を行います。</p>
+</div>
+</div>
+</section>
+<section id="システム構成" class="level2">
+<h2 class="anchored" data-anchor-id="システム構成">システム構成</h2>
+<p>接続元・接続先はどちらもWindows 11で、両方に<a href="https://tailscale.com/">Tailscale</a>と<a href="https://rustdesk.com/">RustDesk</a>をインストールしました。 接続先の受信制御にはWindows Defenderファイアウォールを使います。</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>IPアドレスは通信相手を指定するためのアドレス、ポートは同じPC上のサービスを識別する番号です。 VPNはインターネット上に仮想的なネットワークを作る仕組みで、Tailscaleのネットワークを<strong>Tailnet</strong>と呼びます。 Tailscaleが仮想IPアドレスと端末間の暗号化通信を、RustDeskが画面転送やキーボード・マウス操作を担当します。</p>
+<p>P2Pは端末同士が直接通信する方式です。 Tailscaleは直接接続を試み、難しい場合にはDERPなどの中継経路を利用します。 中継時も端末間の暗号化は維持されますが、遅延や速度は経路に左右されます。 RustDeskの「直接IPアクセス」と、Tailscaleの「P2P直接接続」は別の概念です。 前者を使っていても、Tailscale側は中継になり得ます。 詳しくは<a href="https://tailscale.com/docs/reference/device-connectivity">Tailscaleの接続経路の説明</a>を参照してください。</p>
+<p>以下のIPとPC名はすべて匿名化した説明用の値です。実際の端末を示しません。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>役割</th>
+<th>Tailscale IPv4アドレス</th>
+<th>PC名</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>接続先（自宅PC）</td>
+<td><code>100.101.102.103</code></td>
+<td><code>desktop-example</code></td>
+</tr>
+<tr class="even">
+<td>接続元（外出先PC）</td>
+<td><code>100.101.102.104</code></td>
+<td><code>laptop-example</code></td>
+</tr>
+</tbody>
+</table>
+<p>この範囲は文書専用の予約アドレスではありません。<strong>実行時は自分の端末の値に置き換えてください。</strong> 以下のPowerShellコードは通常のコードブロックであり、記事の生成時には実行しません。</p>
+</section>
+<section id="環境構築の手順" class="level2">
+<h2 class="anchored" data-anchor-id="環境構築の手順">環境構築の手順</h2>
+<section id="tailscaleをインストールする" class="level3">
+<h3 class="anchored" data-anchor-id="tailscaleをインストールする">1. Tailscaleをインストールする</h3>
+<ol type="1">
+<li>両PCに<a href="https://tailscale.com/download/windows">公式サイト</a>からTailscaleをインストールします。</li>
+<li>自分だけで使う場合は同じアカウントでログインし、両PCを同じTailnetに登録します。</li>
+<li>接続先PCのシステムトレイにあるTailscaleメニューで <strong>Run unattended</strong> を有効にします。</li>
+<li><a href="https://login.tailscale.com/admin/machines">管理画面</a>のMachinesで接続先のTailscale IPを確認します。</li>
+<li>接続先のTailscaleメニューで <strong>Allow incoming connections</strong>（着信を許可）が有効か確認します。</li>
+</ol>
+<p>Run unattendedは、WindowsからログアウトしてもTailscaleを動作させるための設定です。 着信許可を有効にしても、Tailnetのアクセス制御で禁止された通信まで許可されるわけではありません。 設定の詳細は<a href="https://tailscale.com/docs/how-to/run-unattended">無人実行</a>と<a href="https://tailscale.com/docs/features/client/manage-preferences">クライアント設定</a>を参照してください。</p>
+<p>TailscaleのIPv4アドレスは通常 <code>100.x.x.x</code> 形式で、標準では <code>100.64.0.0/10</code> の範囲から自動的に割り当てられます。 物理的な接続場所が変わっても安定したアドレスを利用できるため、WindowsのLANアドレスや契約回線のグローバルIPを手動固定する必要はありません。 ただし、管理者によるアドレス変更などは可能です。 詳しくは<a href="https://tailscale.com/docs/concepts/ip-and-dns-addresses">IPアドレスの割り当て</a>を参照してください。</p>
+</section>
+<section id="rustdeskをインストールする" class="level3">
+<h3 class="anchored" data-anchor-id="rustdeskをインストールする">2. RustDeskをインストールする</h3>
+<ol type="1">
+<li>両PCに<a href="https://rustdesk.com/">公式サイト</a>からRustDeskをインストールします。</li>
+<li>接続先PCの「設定」→「セキュリティ」で、必要に応じて設定をロック解除し、「直接IPアクセスを有効にする」をONにします。</li>
+<li>直接IPアクセスのポートが標準の <strong>21118</strong> になっていることを確認します。</li>
+<li>無人アクセスに使う、長く推測されにくい固定パスワードを設定します。</li>
+<li>接続先ではポータブル実行だけで済ませず、インストールしてサービスが稼働していることを確認します。</li>
+</ol>
+<p>画面上の名称はバージョンや表示言語により異なる場合があります。 直接IPアクセスの設定と標準ポートは<a href="https://rustdesk.com/docs/en/self-host/client-configuration/advanced-settings/#direct-access-port">RustDesk公式の詳細設定</a>、基本操作は<a href="https://rustdesk.com/docs/en/client/">クライアントの説明</a>で確認できます。 この構成ではRustDeskのID・中継サーバーを自分で構築する必要はありません。</p>
+<p>接続先のPowerShellで、サービスの状態を確認できます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Service</span> <span class="op">-</span>Name <span class="st">'*rustdesk*'</span> <span class="op">|</span> <span class="fu">Select-Object</span> Name<span class="op">,</span> Status<span class="op">,</span> StartType</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>サービスが見つからなければインストール状態を確認し、<code>Running</code> でなければRustDeskのサービス状態を確認します。 接続元ではRustDeskの接続先欄に、接続先のTailscale IPとポートを入力します。</p>
+<pre class="text"><code>100.101.102.103:21118</code></pre>
+</section>
+<section id="windowsファイアウォールを設定する" class="level3">
+<h3 class="anchored" data-anchor-id="windowsファイアウォールを設定する">3. Windowsファイアウォールを設定する</h3>
+<p>ファイアウォールは、通信元・ポートなどの条件で通信を許可・遮断する仕組みです。 接続先PCで<strong>管理者としてPowerShellを開き</strong>、必要なTCP受信だけを許可します。 次は接続元のTailscale IPv4アドレスに限定する例です。 <code>$SourceTailscaleIP</code> のダミー値を実際の接続元IPに置き換えてから実行してください。 同じ規則を繰り返し追加する必要はありません。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">$SourceTailscaleIP</span> <span class="op">=</span> <span class="st">'100.101.102.104'</span> <span class="co"># 実際の接続元PCのTailscale IPv4に置換</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>New-NetFirewallRule `</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Name <span class="st">'RustDesk-via-Tailscale'</span> `</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>DisplayName <span class="st">'RustDesk via Tailscale'</span> `</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Direction Inbound `</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Protocol TCP `</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>LocalPort <span class="dv">21118</span> `</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>RemoteAddress <span class="va">$SourceTailscaleIP</span> `</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Action Allow</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>これはWindows内の受信許可であり、ルーターのポート転送設定ではありません。 <code>-RemoteAddress</code> は通信元を制限します。構文の詳細は<a href="https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule">New-NetFirewallRule</a>を参照してください。</p>
+<p><strong>限定した許可規則を追加しても、既存の広い許可規則を狭める効果はありません。</strong> <code>wf.msc</code> で「セキュリティが強化されたWindows Defenderファイアウォール」を開き、既存のRustDesk受信規則のプログラム・ポート・スコープを確認します。 通信元が「任意」の規則などがあれば、用途を確認して範囲を見直します。名前にRustDeskを含まない規則もあり得ます。</p>
+<p>また、明示的なブロック規則は許可規則より優先され、組織のポリシーによってローカル規則が適用されない場合もあります。 許可規則を一つ追加すれば必ず接続できるわけではありません。 詳しくは<a href="https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/rules">Microsoftのファイアウォール規則の説明</a>を参照してください。 ファイアウォール全体の無効化は行いません。研究室ではTailscale側のアクセス制御も併用します。</p>
+</section>
+<section id="スリープと自動起動を確認する" class="level3">
+<h3 class="anchored" data-anchor-id="スリープと自動起動を確認する">4. スリープと自動起動を確認する</h3>
+<p>接続先PCのWindows設定で、電源接続時の自動スリープを無効にします。 画面の自動消灯は問題ありませんが、PC本体がスリープすると通常は接続できません。 Tailscaleの無人実行とRustDeskサービスの自動起動も確認します。</p>
+<p>設定後は作業を保存し、両PCを再起動して、ログイン前も含めて接続できるか確認します。 再起動はすべての環境で必須とは限りませんが、今回の事例では再起動後に接続できるようになりました。 長時間解析中のPCは、ジョブの完了などを確認してから再起動してください。</p>
+</section>
+</section>
+<section id="接続を確認する" class="level2">
+<h2 class="anchored" data-anchor-id="接続を確認する">接続を確認する</h2>
+<p>接続元PCのPowerShellで実行します。以下のダミーIPは接続先の実際の値に置き換えてください。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tailscale ping <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">tailscale</span> ping <span class="op">--</span>tsmp <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">tailscale</span> ping <span class="op">--</span>icmp <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">Test</span><span class="op">-</span>NetConnection <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span> <span class="op">-</span>Port <span class="dv">21118</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>通常の <code>tailscale ping</code> は既定でDISCOというTailscale独自の診断を使い、経路を確認できます。 応答が返るだけでP2Pとは判断せず、<code>via</code> に実際のエンドポイントが出るか、<code>DERP(...)</code> などの中継表示かを確認します。 最初は中継で応答し、その後直接接続に切り替わる場合もあります。</p>
+<p>接続先PCでは、RustDeskの待ち受けとループバック（同じPC自身への通信）を確認します。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">-</span>LocalPort <span class="dv">21118</span> <span class="op">-</span>State Listen</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">127.0</span><span class="op">.</span><span class="dv">0.1</span> <span class="op">-</span>Port <span class="dv">21118</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>テスト</th>
+<th>確認できること</th>
+<th>成功・失敗の解釈</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tailscale ping</code></td>
+<td>Tailscale間の応答と接続経路</td>
+<td>エンドポイント経由ならその時点で直接接続。成功してもアプリへの到達は未確認</td>
+</tr>
+<tr class="even">
+<td><code>tailscale ping --tsmp</code></td>
+<td>WireGuardトンネル内の到達性</td>
+<td>OSのIPスタックを迂回するため、WindowsやRustDeskへの到達は保証しない</td>
+</tr>
+<tr class="odd">
+<td><code>tailscale ping --icmp</code></td>
+<td>暗号化経路を通るICMPの到達性</td>
+<td>失敗はICMPの遮断などでも発生。TCPの失敗と同一視しない</td>
+</tr>
+<tr class="even">
+<td>接続元から <code>Test-NetConnection ... -Port 21118</code></td>
+<td>接続先のTCP 21118への接続</td>
+<td><code>TcpTestSucceeded : True</code> ならTCP接続成功。RustDesk認証や画面操作の成功までは保証しない</td>
+</tr>
+<tr class="odd">
+<td>接続先で <code>Get-NetTCPConnection ... -State Listen</code></td>
+<td>ローカルの待ち受け</td>
+<td><code>Listen</code> があっても、外部からの接続許可は別途必要</td>
+</tr>
+<tr class="even">
+<td>接続先で <code>Test-NetConnection 127.0.0.1 ...</code></td>
+<td>IPv4ループバックへのTCP接続</td>
+<td>成功してもTailscale経由での到達性は保証しない</td>
+</tr>
+</tbody>
+</table>
+<p>各pingの違いは<a href="https://tailscale.com/docs/reference/ping-types">Tailscale公式の診断メッセージ解説</a>にまとまっています。 <code>Test-NetConnection</code> の判定では、ping関連の警告と <code>TcpTestSucceeded</code> を区別します。 ICMPに応答しなくてもTCP接続が成功する場合があります。</p>
+</section>
+<section id="実際に遭遇したトラブル" class="level2">
+<h2 class="anchored" data-anchor-id="実際に遭遇したトラブル">実際に遭遇したトラブル</h2>
+<section id="tailscale-pingは成功tcp接続は失敗" class="level3">
+<h3 class="anchored" data-anchor-id="tailscale-pingは成功tcp接続は失敗">Tailscale pingは成功、TCP接続は失敗</h3>
+<p>初期設定後、Tailscaleでは相手PCがオンラインになっていました。 接続元で <code>tailscale ping</code> を実行すると、次のような応答が得られました。 出力は匿名化・抜粋しています。<code>[endpoint]</code> は実際のエンドポイントを伏せた表記です。</p>
+<pre class="text"><code>pong from desktop-example (...) via [endpoint] in 99ms</code></pre>
+<p>この時点ではTailscaleのP2P接続が成立していました。 一方、接続元からTCP 21118を確認すると失敗しました。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span> <span class="op">-</span>Port <span class="dv">21118</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>TcpTestSucceeded : False</code></pre>
+</section>
+<section id="rustdeskは待ち受けていた" class="level3">
+<h3 class="anchored" data-anchor-id="rustdeskは待ち受けていた">RustDeskは待ち受けていた</h3>
+<p>接続先PCで待ち受け状態を確認しました。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Get-NetTCPConnection <span class="op">-</span>LocalPort <span class="dv">21118</span> <span class="op">-</span>State Listen</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>LocalAddress LocalPort State
+::           21118     Listen</code></pre>
+<p><code>::</code> はIPv6の全ローカルアドレスを表します。この表示だけでIPv4の受け付け可否までは判断しません。 実際にIPv4ループバックをテストすると成功しました。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Test-NetConnection <span class="dv">127.0</span><span class="op">.</span><span class="dv">0.1</span> <span class="op">-</span>Port <span class="dv">21118</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<pre class="text"><code>TcpTestSucceeded : True</code></pre>
+<p>一方、接続先PC自身から自分のTailscale IP（<code>100.101.102.103</code>）へ同じTCPテストを行うと失敗しました。 少なくとも、待ち受けがまったく存在しない状態ではなく、通信経路によって結果が異なっていました。 なお、自分宛てのテストは別PCからの通信経路をそのまま再現するものではありません。</p>
+</section>
+<section id="tsmpは成功icmpはタイムアウト" class="level3">
+<h3 class="anchored" data-anchor-id="tsmpは成功icmpはタイムアウト">TSMPは成功、ICMPはタイムアウト</h3>
+<p>接続元PCから、診断方式を変えて確認しました。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tailscale ping <span class="op">--</span>tsmp <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">tailscale</span> ping <span class="op">--</span>icmp <span class="dv">100.101</span><span class="op">.</span><span class="dv">102.103</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>TSMPは成功しましたが、ICMPはタイムアウトしました。 TSMPの成功はTailscale内部の到達性を示す一方、WindowsのIPスタックへの到達性を保証しません。 この結果だけで「Windowsファイアウォールが原因」と断定することもできません。</p>
+</section>
+<section id="ファイアウォールとアクセス制御を調べた" class="level3">
+<h3 class="anchored" data-anchor-id="ファイアウォールとアクセス制御を調べた">ファイアウォールとアクセス制御を調べた</h3>
+<p>接続先にTCP 21118の受信許可規則を追加しましたが、すぐには改善しませんでした。 診断用にICMPv4 Echo Request（pingの要求）の受信も許可しましたが、こちらも改善しませんでした。</p>
+<p>確認できた状態は次のとおりです。</p>
+<ul>
+<li>Tailscaleのネットワークプロファイルは <code>Private</code>、アダプター状態は <code>Up</code>。</li>
+<li>Windowsファイアウォールの実効設定は受信が既定で <code>Block</code> だが、受信許可規則とローカル規則の適用は有効。</li>
+<li>調べた範囲ではRustDesk・Tailscaleを明示的に遮断する受信規則は見つからなかった。</li>
+<li>Tailscale管理画面では、対象通信がアクセス制御で許可されていることを確認した。</li>
+</ul>
+<p>これらは状態確認の結果であり、ネットワークプロファイルの変更や、既定の受信動作の変更を勧めるものではありません。 既定が <code>Block</code> でも、必要な許可規則が適用されれば通信できる設計です。</p>
+</section>
+<section id="両pcの再起動後に接続できた" class="level3">
+<h3 class="anchored" data-anchor-id="両pcの再起動後に接続できた">両PCの再起動後に接続できた</h3>
+<p>最終的に接続元・接続先の両Windows PCを再起動しました。 その後、RustDeskで <code>100.101.102.103:21118</code> に直接IP接続できるようになりました。 操作は体感的に非常に速く、快適でした。</p>
+<p><strong>確認できた事実は「両PCを再起動した後、RustDeskの接続に成功した」ことです。</strong> 正確な原因や、片方だけの再起動でも解決したかは未確認です。 ネットワークアダプター、サービス、通信を検査するフィルタードライバー、ファイアウォールなどの状態が再初期化された可能性はありますが、いずれも推測です。 再起動後の各診断コマンドの結果を、記録にないまま成功として補うこともしません。</p>
+<p>また、NordVPNの接続前後で同様の失敗が発生していたため、NordVPNだけが原因だったとは判断できません。 再起動は今回有効だった対処ですが、すべての接続障害を解決する方法とは限りません。</p>
+</section>
+</section>
+<section id="接続できない場合のチェックリスト" class="level2">
+<h2 class="anchored" data-anchor-id="接続できない場合のチェックリスト">接続できない場合のチェックリスト</h2>
+<p>次の順に確認すると、Tailscale、Windows、RustDeskのどこを調べるべきか整理できます。</p>
+<ol type="1">
+<li><strong>相手PCがオンラインか。</strong> Tailscale管理画面と、接続先の電源・スリープ状態を確認する。</li>
+<li><strong><code>tailscale ping</code> は成功するか。</strong> 失敗ならIP、ログイン状態、ネットワーク接続から確認する。成功時は直接／中継も確認する。</li>
+<li><strong>Tailscaleの着信許可は有効か。</strong> 接続先のAllow incoming connectionsを確認する。</li>
+<li><strong>RustDeskの直接IPアクセスは有効か。</strong> 接続先IPとポートも再確認する。</li>
+<li><strong>TCP 21118で待ち受けているか。</strong> 接続先で <code>Get-NetTCPConnection</code> とサービス状態を確認する。</li>
+<li><strong>Windowsファイアウォールは許可しているか。</strong> 通信元・ポート・適用プロファイル・明示的ブロック・組織ポリシーを確認する。</li>
+<li><strong>Tailscaleのアクセス制御は許可しているか。</strong> 接続元から接続先のTCP 21118への権限を確認する。</li>
+<li><strong>他のVPNやセキュリティソフトの影響はないか。</strong> 組織の規程に従って設定や経路を確認し、原因を決めつけない。</li>
+<li><strong>両PCを再起動して再確認する。</strong> 作業保存・解析ジョブの確認後に実施する。</li>
+</ol>
+<p>ICMPは補助的な診断で、RustDeskのTCP接続にICMP許可は必須ではありません。 必要な場合だけ、接続先の管理者PowerShellで接続元を限定して診断用規則を作成できます。 次もダミーIPを実際の値に置き換えてください。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>New-NetFirewallRule `</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Name <span class="st">'Tailscale-ICMPv4-Diagnostic'</span> `</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>DisplayName <span class="st">'Tailscale ICMPv4 diagnostic'</span> `</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Direction Inbound `</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Protocol ICMPv4 `</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>IcmpType <span class="dv">8</span> `</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>RemoteAddress <span class="st">'100.101.102.104'</span> `</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span>Action Allow</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>この名前で追加した診断用規則が不要になったら、次で削除できます。 別名で作成した場合は実際の規則名を確認し、対象を限定してください。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Remove-NetFirewallRule <span class="op">-</span>Name <span class="st">'Tailscale-ICMPv4-Diagnostic'</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="研究室の解析用pcを35人で共用する場合" class="level2">
+<h2 class="anchored" data-anchor-id="研究室の解析用pcを35人で共用する場合">研究室の解析用PCを3〜5人で共用する場合</h2>
+<p>ここからは今回の構築経験をもとにした運用案です。複数人での運用結果を示すものではありません。</p>
+<p>利用者ごとにTailscaleアカウントを用意し、アカウント自体を共用しないようにします。 組織のTailnetに招待する方法に加え、必要に応じて<a href="https://tailscale.com/docs/features/sharing">デバイス共有</a>で解析用PCだけを共有する方法もあります。 共有先では表示されるIPが異なる場合があるため、利用者側で見える接続先情報を確認します。</p>
+<ul>
+<li>共有対象は解析用PCだけに限定する。</li>
+<li><a href="https://tailscale.com/docs/features/access-control">Tailscaleのアクセス制御</a>で利用者・通信相手・ポートを制限し、Windows側でも必要な通信元だけを許可する。</li>
+<li>RustDeskの固定パスワードは適切に管理し、利用者変更時には権限とパスワードを見直す。</li>
+<li>同じWindowsデスクトップを操作するため、利用時間を調整する。利用者ごとの独立した作業セッションができるとは考えない。</li>
+<li>実行中の長時間解析を停止したり、出力ファイルを削除・上書きしたりしない運用ルールを決める。</li>
+<li>大学・研究機関の情報セキュリティ規程と、VPN・P2P通信に関する規定を確認する。</li>
+<li>プランの人数上限や研究室利用への適用条件は、導入時に<a href="https://tailscale.com/pricing">最新の料金・利用条件</a>を確認する。個人用途の条件をそのまま適用しない。</li>
+</ul>
+<p>RStudioなどのGUI作業を遠隔で行うにはRustDeskが便利です。 一方、複数人が独立して解析ジョブを実行したい場合は、SSH、Linuxサーバー、ジョブ管理システムなども候補になります。 画面を共有する仕組みと、複数人で計算資源を分けて使う仕組みは、用途に応じて選びます。</p>
+</section>
+<section id="まとめ" class="level2">
+<h2 class="anchored" data-anchor-id="まとめ">まとめ</h2>
+<p>Tailscale + RustDeskで、グローバルIPやLANアドレスの手動固定、ルーターの手動ポート開放なしにWindows 11のリモートデスクトップを構築できました。 TailscaleがP2P直接接続できる環境では低遅延な通信を期待できますが、実際の速度は回線や接続経路にも依存します。</p>
+<p>今回のポイントは、<strong>Tailscale pingの成功とRustDeskのTCP接続の成功は別</strong>だったことです。 Windowsファイアウォールは必要な通信だけを許可し、待ち受け、TCP到達性、アクセス制御を分けて確認しました。 最終的には両PCの再起動で解決しましたが、原因は未特定です。 研究室の共有解析PCにも応用できますが、アクセス制御と利用ルールを合わせて設計する必要があります。</p>
+</section>
+<section id="参考資料" class="level2">
+<h2 class="anchored" data-anchor-id="参考資料">参考資料</h2>
+<p>仕様・設定の説明は、以下の公式資料を参照しました（2026年11月3日確認）。</p>
+<ul>
+<li><a href="https://tailscale.com/docs/">Tailscale公式ドキュメント</a></li>
+<li><a href="https://tailscale.com/docs/how-to/run-unattended">Tailscale：Run unattended</a></li>
+<li><a href="https://tailscale.com/docs/reference/ping-types">Tailscale：pingの種類</a></li>
+<li><a href="https://tailscale.com/docs/reference/device-connectivity">Tailscale：接続経路</a></li>
+<li><a href="https://tailscale.com/docs/features/sharing">Tailscale：デバイス共有</a></li>
+<li><a href="https://rustdesk.com/docs/">RustDesk公式ドキュメント</a></li>
+<li><a href="https://rustdesk.com/docs/en/self-host/client-configuration/advanced-settings/">RustDesk：詳細設定</a></li>
+<li><a href="https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/">Microsoft：Windowsファイアウォール</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule">Microsoft：New-NetFirewallRule</a></li>
+</ul>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">脚注</h2>
+
+<ol>
+<li id="fn1"><p>ここでいう「ポート開放」は、インターネット側から届いた特定のポート宛ての通信を、ルーターが家庭内のPCへ転送する設定（ポート転送）です。ポートは、同じPC上のどのサービスに接続するかを識別する番号です。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>IPアドレスは、ネットワーク上で通信相手を識別するためのアドレスです。「手動固定」は、自動割り当てに任せず、使うアドレスを指定することです。今回は、LAN内のIPやインターネット側のグローバルIPを自分で固定せず、Tailscaleが割り当てる仮想IPを使います。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>相手に確認用のメッセージを送り、応答の有無や往復時間を調べる診断です。通常のpingはICMPという通信方式を使いますが、<code>tailscale ping</code> は既定でTailscale独自の方式を使います。応答があっても、RustDeskなど個別のアプリに接続できるとは限りません。 この記事では、成功した設定と、最終的に両PCの再起動で解決するまでの診断をまとめます。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Peer-to-Peerの略で、端末同士が直接データをやり取りする方式です。接続先を見つけるためにサーバーを利用していても、画面転送などのデータ通信は端末間で直接行う場合があります。 <strong>Tailscale経由なら常に速くなる、という比較結果ではありません。</strong> また、今回は速度の定量測定も行っていません。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "コピーしました");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "コピーしました");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"スクロール可能なコード","output":"スクロール可能な出力"};
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://maple60.github.io">Maple60’s Website</a> © 2026 by Maple is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+</div>   
+    <div class="nav-footer-center">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/maple60">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -5,6 +5,7 @@ listing:
   - id: listing-ja
     contents:
       - "posts/**/*.qmd"
+      - "!posts/**/slides.qmd"
       - "!en/posts/**/*.qmd"
       - "!starter-template/posts/**/*.qmd"
     sort: "date desc"
@@ -16,6 +17,7 @@ listing:
   - id: listing-en
     contents:
       - "posts/**/*.qmd"
+      - "!posts/**/slides.qmd"
       - "!en/posts/**/*.qmd"
       - "!starter-template/posts/**/*.qmd"
     sort: "date desc"

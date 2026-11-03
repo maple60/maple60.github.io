@@ -1,0 +1,277 @@
+---
+title: "Tailscale + RustDesk"
+subtitle: "Windows 11のリモート接続環境を構築する"
+date: "2026-11-03"
+lang: ja
+mermaid:
+  theme: neutral
+format:
+  revealjs:
+    theme: simple
+    width: 1280
+    height: 720
+    margin: 0.08
+    center: false
+    slide-number: c/t
+    transition: fade
+    navigation-mode: linear
+    controls: true
+    progress: true
+    history: true
+    toc: false
+    code-copy: true
+    code-link: false
+    code-line-numbers: false
+    css: slides.css
+execute:
+  eval: false
+---
+
+## 目指した接続環境
+
+- 外出先から、自宅のWindows 11 PCを操作する。
+- 高速で低遅延な接続と、セキュリティを両立する。
+- ルーターの手動ポート開放や、IPアドレスの手動固定を避ける。
+- 将来は研究室の解析用PCの共有にも応用する。
+
+::: {.takeaway}
+接続に成功し、操作は体感的に快適だった。
+:::
+
+::: {.small}
+速度の定量測定は未実施。Tailscale経由が常に高速とは限らない。
+:::
+
+::: {.notes}
+ポート開放は、ここではルーターのポート転送を指す。IPアドレスは通信相手を識別するアドレス。通常のRustDesk ID接続でも、接続先の仲介後にP2P通信できる場合がある。
+:::
+
+## TailscaleとRustDeskの役割
+
+### Tailscale：PC同士を安全につなぐ
+
+WireGuardによるVPNを構築し、通信を暗号化する。各PCに仮想IPアドレスを割り当てる。
+
+### RustDesk：画面を表示して操作する
+
+接続先の画面を転送し、キーボード・マウス操作を送る。今回はTailscaleのIPへ直接接続する。
+
+::: {.small}
+VPNは仮想的なネットワーク。Tailscaleのネットワークを「Tailnet」と呼ぶ。
+:::
+
+::: {.notes}
+参考：https://tailscale.com/docs/ 、https://rustdesk.com/docs/en/client/
+:::
+
+## 接続経路
+
+```{mermaid}
+%%| eval: true
+%%| fig-width: 11
+%%| fig-height: 3.1
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#eaf4ec", "primaryTextColor": "#142b3a", "primaryBorderColor": "#287a43", "lineColor": "#526674", "clusterBkg": "#f2f7f3", "clusterBorder": "#bdcfbf", "edgeLabelBackground": "#ffffff", "fontFamily": "Arial, BIZ UDPGothic, BIZ UDPゴシック, sans-serif"}}}%%
+flowchart LR
+    subgraph client["外出先のWindows 11 PC"]
+        r1["RustDesk<br/>画面表示・操作入力"] <--> t1["Tailscale"]
+    end
+    subgraph host["自宅のWindows 11 PC"]
+        t2["Tailscale"] <--> r2["RustDesk<br/>TCP 21118"]
+    end
+    t1 <-->|"WireGuardで暗号化"| t2
+```
+
+- **RustDeskの直接IPアクセス**：IDの代わりにIPとポートを指定する。
+- **TailscaleのP2P直接接続**：端末同士が直接通信する経路。
+- Tailscaleが直接接続できない場合は、DERPなどで中継される。
+
+::: {.small}
+RustDeskで直接IPアクセスを使っていても、Tailscale側は中継になり得る。
+:::
+
+::: {.notes}
+P2PはPeer-to-Peerの略。中継時もTailscaleの端末間暗号化は維持される。参考：https://tailscale.com/docs/reference/device-connectivity
+:::
+
+## セットアップの順序
+
+1. 両PCにTailscaleをインストールし、同じTailnetに登録する。
+2. 接続先で **Run unattended** と **Allow incoming connections** を確認する。
+3. 両PCにRustDeskをインストールする。
+4. 接続先で直接IPアクセス、強固な固定パスワード、サービスを設定する。
+5. TCP 21118の受信制御と自動起動を確認する。
+6. 電源接続時の自動スリープを無効にし、再起動後も接続を確認する。
+
+::: {.notes}
+Run unattendedはログアウト後もTailscaleを動かす設定。画面消灯は問題ない。再起動は全環境で必須ではないが、今回は解決につながった。参考：https://tailscale.com/docs/how-to/run-unattended 、https://tailscale.com/docs/features/client/manage-preferences 、https://rustdesk.com/docs/en/client/
+:::
+
+## RustDeskに入力する接続先
+
+接続先のTailscale IPと、RustDeskの直接IPアクセス用ポートを指定する。
+
+```text
+100.101.102.103:21118
+```
+
+| 役割 | Tailscale IPv4アドレス |
+| --- | --- |
+| 接続先：自宅PC | `100.101.102.103` |
+| 接続元：外出先PC | `100.101.102.104` |
+
+::: {.small}
+IPは説明用のダミー値。実際の端末の値へ置き換える。ポートはサービスを識別する番号。
+:::
+
+::: {.notes}
+Tailscale IPv4は標準では100.64.0.0/10から割り当てられる。WindowsのLAN IPや回線のグローバルIPを手動固定する必要はない。参考：https://tailscale.com/docs/concepts/ip-and-dns-addresses 、https://rustdesk.com/docs/en/self-host/client-configuration/advanced-settings/#direct-access-port
+:::
+
+## ファイアウォールは必要な通信だけ許可
+
+接続先PCの**管理者PowerShell**で実行する。
+
+```powershell
+$SourceTailscaleIP = '100.101.102.104' # 実際の接続元IPへ置換
+New-NetFirewallRule `
+  -Name 'RustDesk-via-Tailscale' `
+  -DisplayName 'RustDesk via Tailscale' `
+  -Direction Inbound -Protocol TCP -LocalPort 21118 `
+  -RemoteAddress $SourceTailscaleIP -Action Allow
+```
+
+- 既存の広い許可規則は、追加だけでは狭まらない。
+- 明示的なブロック・組織ポリシー・Tailscaleのアクセス制御も確認する。
+- ファイアウォール全体を無効化しない。
+
+::: {.notes}
+ファイアウォールは条件に応じて通信を許可・遮断する仕組み。同名規則を繰り返し作成する必要はない。参考：https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule 、https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/rules
+:::
+
+## 診断コマンドの役割
+
+| テスト | 確認できること |
+| --- | --- |
+| `tailscale ping` | Tailscaleの応答・直接／中継の経路 |
+| `tailscale ping --tsmp` | OSのIPスタックを迂回した到達性 |
+| `tailscale ping --icmp` | 暗号化経路を通るICMPの到達性 |
+| `Test-NetConnection ... -Port 21118` | 対象ポートへのTCP接続 |
+| `Get-NetTCPConnection ... -State Listen` | 接続先PC内の待ち受け状態 |
+
+::: {.takeaway}
+Tailscale pingの成功と、RustDeskへの接続成功は別。
+:::
+
+::: {.notes}
+pingは確認用メッセージの応答や往復時間を調べる診断。既定のtailscale pingはDISCOを使用する。TSMPはOSのIPスタックを迂回するためアプリの到達性を保証しない。ICMP失敗だけでTCP失敗とは判断できない。TCP成功もRustDeskの認証成功までは保証しない。参考：https://tailscale.com/docs/reference/ping-types
+:::
+
+## 接続をテストする
+
+**接続元PC**で、ネットワークとTCPを確認する。
+
+```powershell
+tailscale ping 100.101.102.103
+tailscale ping --tsmp 100.101.102.103
+tailscale ping --icmp 100.101.102.103
+Test-NetConnection 100.101.102.103 -Port 21118
+```
+
+**接続先PC**で、待ち受けとlocalhostへの接続を確認する。
+
+```powershell
+Get-NetTCPConnection -LocalPort 21118 -State Listen
+Test-NetConnection 127.0.0.1 -Port 21118
+```
+
+::: {.notes}
+IPはダミー値。127.0.0.1は同じPC自身を示すIPv4ループバック。TcpTestSucceeded : TrueがTCP成功の指標。通常のtailscale pingの応答ではviaの実エンドポイントか中継表示かも確認する。
+:::
+
+## 実際の障害：pingは通るのに接続できない
+
+| 確認項目 | 結果 |
+| --- | --- |
+| Tailscale ping | 成功：エンドポイント経由でP2P成立 |
+| 接続元 → 接続先のTCP 21118 | 失敗：`TcpTestSucceeded : False` |
+| 接続先の待ち受け | `::` のTCP 21118が `Listen` |
+| 接続先 → `127.0.0.1:21118` | TCP成功 |
+| 接続先 → 自分のTailscale IP | TCP失敗 |
+| TSMP ／ ICMP | 成功 ／ タイムアウト |
+
+::: {.notes}
+ユーザーの実体験に基づく。::はIPv6の全ローカルアドレス。表示だけでIPv4の受付可否は判断せず、IPv4ループバックでも確認した。自己宛てテストは別PCからの通信経路をそのまま再現するものではない。
+:::
+
+## 設定を調べても、すぐには改善しなかった
+
+- TCP 21118の受信許可を追加 → 改善せず。
+- 診断用ICMPv4 Echo Requestも許可 → 改善せず。
+- Tailscaleアダプターは **Up**、プロファイルは **Private**。
+- 受信許可規則とローカル規則の適用は有効。
+- 調べた範囲で明示的なブロックは見つからなかった。
+- Tailscale側でも対象通信の許可を確認した。
+
+::: {.small}
+これらの結果だけで、ファイアウォールが原因とは断定できない。
+:::
+
+## 両PCの再起動後に接続成功
+
+::: {.takeaway}
+接続元・接続先を再起動した後、RustDeskで接続できた。
+:::
+
+- 操作は体感的に非常に速く、快適だった。
+- **正確な原因は未特定。** 片方だけの再起動で解決したかも不明。
+- サービス・アダプター・フィルタードライバーなどの再初期化は、可能性にとどまる。
+- NordVPNの接続前後で同様に失敗しており、それだけを原因とは判断できない。
+
+::: {.notes}
+再起動後の各診断コマンドの結果は記録にないため、成功として補わない。再起動はすべての障害を解決する方法ではない。作業や解析ジョブを保存・確認してから実施する。
+:::
+
+## 接続できないときの確認順序
+
+1. 電源・スリープ・Tailscaleでのオンライン状態
+2. `tailscale ping` とTailscaleの着信許可
+3. RustDeskの直接IPアクセス・サービス・TCP待ち受け
+4. Windowsの受信規則とTailscaleのアクセス制御
+5. 他のVPNやセキュリティソフトの影響
+6. 作業を保存し、両PCを再起動して再確認
+
+::: {.small}
+ICMP許可はRustDeskの必須条件ではない。診断用規則は、不要になったら対象を限定して削除する。
+:::
+
+## 研究室で解析用PCを共用する場合
+
+- 利用者ごとにTailscaleアカウントを用意する。
+- 解析用PCだけを共有し、通信相手・ポートを制限する。
+- RustDeskの固定パスワードと利用権限を管理する。
+- 同じデスクトップを操作するため、利用時間を調整する。
+- 実行中の解析ジョブと出力ファイルを保護する。
+- 機関のVPN・P2P規程と、最新のプラン条件を確認する。
+
+::: {.small}
+独立して解析ジョブを実行したい場合は、SSH・Linuxサーバー・ジョブ管理も候補。
+:::
+
+::: {.notes}
+ここは今回の構築経験をもとにした運用案で、複数人での実績を示すものではない。参考：https://tailscale.com/docs/features/sharing 、https://tailscale.com/docs/features/access-control 、https://tailscale.com/pricing
+:::
+
+## まとめ・詳しい手順
+
+- Tailscaleが安全な通信経路、RustDeskが画面操作を担当する。
+- 手動のポート開放・IP固定なしで接続できた。
+- ping、TCP到達性、待ち受けは分けて確認する。
+- 今回は両PCの再起動で解決したが、原因は未特定。
+
+**[ブログ記事へ戻る](index.qmd)**
+
+::: {.small}
+公式資料：[Tailscale](https://tailscale.com/docs/) ／ [RustDesk](https://rustdesk.com/docs/) ／ [Windowsファイアウォール](https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall/)
+
+操作：左右キーで移動 ／ Escで一覧 ／ Sで発表者ビュー
+:::

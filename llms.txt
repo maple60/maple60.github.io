@@ -5,6 +5,7 @@
 - [Works](works.llms.md)
 - [My Website](starter-template/index.llms.md)
 - [おすすめ](recommendations.llms.md)
+- [Tailscale + RustDeskでWindows 11に高速・安全にリモート接続する](posts/2026-11-03-tailscale-rustdesk-windows11/index.llms.md)
 - [jpplantnames Rパッケージについて](posts/2026-06-17-jpplantnames/index.llms.md)
 - [OpenAlexをPythonから使ってみる](posts/2026-06-01-openalex-python/index.llms.md)
 - [Rで2変量PCAとPrincipal axis regressionの基礎を理解する](posts/2026-05-26-r-principle-axis-regression/index.llms.md)
