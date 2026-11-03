@@ -1,0 +1,33 @@
+.reveal {
+  --r-main-font: Arial, "BIZ UDPGothic", "BIZ UDPゴシック", sans-serif;
+  --r-heading-font: Arial, "BIZ UDPGothic", "BIZ UDPゴシック", sans-serif;
+  --r-main-font-size: 30px;
+  --r-background-color: #f7f9fa;
+  --r-main-color: #142b3a;
+  --r-heading-color: #142b3a;
+  --r-link-color: #287a43;
+  --r-link-color-hover: #1c5930;
+  --r-heading-text-transform: none;
+}
+
+.reveal h1 { font-size: 1.9em; }
+.reveal h2 { font-size: 1.38em; margin-bottom: 0.65em; }
+.reveal h3 { font-size: 1em; color: #287a43; margin-top: 0.8em; }
+.reveal .slides { text-align: left; }
+.reveal .slides section li { margin-bottom: 0.35em; }
+.reveal table { font-size: 0.78em; width: 100%; }
+.reveal table th { color: #287a43; }
+.reveal table th, .reveal table td { padding: 0.4em 0.5em; }
+.reveal pre { font-size: 0.64em; width: 100%; }
+.reveal pre code { max-height: none; }
+.reveal .small { font-size: 0.73em; color: #526674; margin-top: 1em; }
+.reveal .takeaway { color: #287a43; font-size: 1.06em; font-weight: bold; margin: 1em 0; }
+.reveal .mermaid { margin: 0 auto; }
+.reveal .mermaid-js p { margin: 0; font-family: Arial, "BIZ UDPGothic", "BIZ UDPゴシック", sans-serif; font-size: 16px; line-height: 1.2; }
+.reveal .mermaid-js foreignObject { overflow: visible; }
+.reveal #title-slide { text-align: left; }
+.reveal #title-slide .title { margin-top: 1.5em; }
+.reveal #title-slide .subtitle { color: #287a43; font-size: 1.12em; }
+
+/* Use the same Latin/Japanese font stack in code and diagram labels. */
+.reveal code, .reveal pre { font-family: var(--r-main-font); }
