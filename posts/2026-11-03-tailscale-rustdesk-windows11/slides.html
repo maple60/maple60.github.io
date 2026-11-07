@@ -308,6 +308,31 @@ flowchart LR
           display:block!important;
       }</style></aside>
 </section>
+<section id="公式ダウンロード先" class="slide level2">
+<h2>公式ダウンロード先</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="brand-logo">
+<a href="https://tailscale.com/download/windows"><img src="tailscale-logo.svg" alt="Tailscale" width="280"></a>
+</div>
+<p><strong><a href="https://tailscale.com/download/windows">Windows版をダウンロード</a></strong></p>
+<p>VPNによる通信経路を用意する。</p>
+</div><div class="column" style="width:50%;">
+<div class="brand-name">
+RustDesk
+</div>
+<p><strong><a href="https://github.com/rustdesk/rustdesk/releases/latest">公式GitHub Releases</a></strong></p>
+<p>画面操作用のクライアントを入れる。</p>
+</div></div>
+<ul>
+<li>両方を接続元・接続先のPCにインストールする。</li>
+<li>RustDeskは通常のIntel・AMD製PCなら <strong>x86-64</strong>、ARM搭載PCなら <strong>ARM64</strong> を選ぶ。</li>
+<li>RustDesk Serverのインストールは不要。</li>
+</ul>
+<div class="small">
+<p>ロゴ出典：<a href="https://tailscale.com/press">Tailscale公式メディアキット</a>。本資料は個人による解説で、各社の公式資料・推奨を示すものではない。</p>
+</div>
+</section>
 <section id="セットアップの順序" class="slide level2">
 <h2>セットアップの順序</h2>
 <ol type="1">
@@ -331,6 +356,43 @@ flowchart LR
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="tailscale無人実行と着信を許可" class="slide level2">
+<h2>Tailscale：無人実行と着信を許可</h2>
+<p>接続先PCのシステムトレイから、Tailscaleの <strong>Preferences</strong> を開く。</p>
+
+<img data-src="tailscale-preferences.png" class="settings-screenshot r-stretch quarto-figure-center" width="550"><p class="caption">Allow incoming connectionsとRun unattendedが有効になっているTailscaleの設定メニュー。</p><ul>
+<li><strong>Allow incoming connections</strong>：他の端末からの着信を許可。</li>
+<li><strong>Run unattended</strong>：Windowsからログアウトしても動作。</li>
+</ul>
+<div class="small">
+<p>Tailscaleのアクセス制御による通信許可も必要。</p>
+</div>
+</section>
+<section id="rustdesk固定パスワードと直接ipアクセス" class="slide level2">
+<h2>RustDesk：固定パスワードと直接IPアクセス</h2>
+<p>接続先PCの「設定」→「セキュリティ」で確認する。</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>固定パスワードを設定</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="rustdesk-password.png" class="settings-screenshot" width="490"></p>
+<figcaption>固定パスワードを使用するが選択されたRustDeskの設定画面。</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>直接IPアクセスをON・ポート21118</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="rustdesk-direct-ip.png" class="settings-screenshot" width="490"></p>
+<figcaption>直接IPアクセスを有効にするがオンで、ポートが21118のRustDesk設定画面。</figcaption>
+</figure>
+</div>
+</div></div>
+<div class="small">
+<p>ほかの項目を画像に合わせる必要はない。サービス・自動起動・受信規則は別途確認する。</p>
+</div>
 </section>
 <section id="rustdeskに入力する接続先" class="slide level2">
 <h2>RustDeskに入力する接続先</h2>

@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
+      "/posts/2026-11-03-quarto-dark-mode/index.html",
       "/posts/2026-06-19-openalex-citation/index.html",
       "/posts/2026-06-17-jpplantnames/index.html",
       "/posts/2026-06-16-wfo-r/index.html",
@@ -42,8 +43,9 @@
     ]
   },
   {
-    "listing": "/posts.html",
+    "listing": "/index.html",
     "items": [
+      "/posts/2026-11-03-quarto-dark-mode/index.html",
       "/posts/2026-06-19-openalex-citation/index.html",
       "/posts/2026-06-17-jpplantnames/index.html",
       "/posts/2026-06-16-wfo-r/index.html",

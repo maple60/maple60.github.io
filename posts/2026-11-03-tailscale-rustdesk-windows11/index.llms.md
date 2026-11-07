@@ -57,11 +57,23 @@ P2Pは端末同士が直接通信する方式です。 Tailscaleは直接接続�
 
 ### 1. Tailscaleをインストールする
 
+[![Tailscale](tailscale-logo.svg)](https://tailscale.com/download/windows)
+
+Tailscaleの公式ロゴ
+
+**[Tailscale Windows版をダウンロード（公式）](https://tailscale.com/download/windows)**
+
+ロゴ出典：[Tailscale公式メディアキット](https://tailscale.com/press)。本記事は個人による解説であり、Tailscaleの公式資料・推奨を示すものではありません。
+
 1.  両PCに[公式サイト](https://tailscale.com/download/windows)からTailscaleをインストールします。
 2.  自分だけで使う場合は同じアカウントでログインし、両PCを同じTailnetに登録します。
 3.  接続先PCのシステムトレイにあるTailscaleメニューで **Run unattended** を有効にします。
 4.  [管理画面](https://login.tailscale.com/admin/machines)のMachinesで接続先のTailscale IPを確認します。
 5.  接続先のTailscaleメニューで **Allow incoming connections**（着信を許可）が有効か確認します。
+
+![Tailscaleの設定メニュー。Allow incoming connectionsとRun unattendedが有効になっている。](tailscale-preferences.png)
+
+TailscaleのPreferencesメニュー。「Allow incoming connections」と「Run unattended」にチェックが入っていることを確認する。
 
 Run unattendedは、WindowsからログアウトしてもTailscaleを動作させるための設定です。 着信許可を有効にしても、Tailnetのアクセス制御で禁止された通信まで許可されるわけではありません。 設定の詳細は[無人実行](https://tailscale.com/docs/how-to/run-unattended)と[クライアント設定](https://tailscale.com/docs/features/client/manage-preferences)を参照してください。
 
@@ -69,11 +81,27 @@ TailscaleのIPv4アドレスは通常 `100.x.x.x` 形式で、標準では `100.
 
 ### 2. RustDeskをインストールする
 
+**[RustDeskをダウンロード（公式GitHub Releases）](https://github.com/rustdesk/rustdesk/releases/latest)** ／ [公式サイト](https://rustdesk.com/)
+
+Windows用のクライアントを選びます。通常のIntel・AMD製CPUのPCでは `x86-64`、ARM搭載PCでは `AArch64 (ARM64)` を選びます。 この構成で必要なのはRustDeskクライアントで、RustDesk Serverのダウンロードは不要です。
+
 1.  両PCに[公式サイト](https://rustdesk.com/)からRustDeskをインストールします。
 2.  接続先PCの「設定」→「セキュリティ」で、必要に応じて設定をロック解除し、「直接IPアクセスを有効にする」をONにします。
 3.  直接IPアクセスのポートが標準の **21118** になっていることを確認します。
 4.  無人アクセスに使う、長く推測されにくい固定パスワードを設定します。
 5.  接続先ではポータブル実行だけで済ませず、インストールしてサービスが稼働していることを確認します。
+
+「セキュリティ」のパスワード設定では、「固定パスワードを使用する」を選び、「固定パスワードを設定」からパスワードを登録します。
+
+![RustDeskのセキュリティ設定。固定パスワードを使用するが選択され、固定パスワードを設定ボタンが表示されている。](rustdesk-password.png)
+
+RustDeskの固定パスワード設定。パスワード自体は画面に表示されない。
+
+同じ設定画面を下へスクロールし、「直接 IP アクセスを有効にする」と、ポート `21118` を確認します。 スクリーンショットに写っているほかの項目を、同じ状態に変更する必要はありません。
+
+![RustDeskのセキュリティ設定。直接IPアクセスを有効にするがオンで、ポートは21118。](rustdesk-direct-ip.png)
+
+RustDeskの直接IPアクセス設定。チェックが入り、ポート21118が指定されている。
 
 画面上の名称はバージョンや表示言語により異なる場合があります。 直接IPアクセスの設定と標準ポートは[RustDesk公式の詳細設定](https://rustdesk.com/docs/en/self-host/client-configuration/advanced-settings/#direct-access-port)、基本操作は[クライアントの説明](https://rustdesk.com/docs/en/client/)で確認できます。 この構成ではRustDeskのID・中継サーバーを自分で構築する必要はありません。
 

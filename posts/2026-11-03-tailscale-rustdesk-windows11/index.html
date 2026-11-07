@@ -80,10 +80,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5079ba121a8301132dd4d6219cc4caa4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-083738b838c084033cb917853db5393f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-be3dbce39cd35dedac29653b0c584b6a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-083738b838c084033cb917853db5393f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,7 +122,187 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a>
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">メインコンテンツにスキップ</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -176,6 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="ダークモードの切り替え" aria-label="ダークモードの切り替え"><i class="bi"></i></button>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="リーダーモードの切り替え">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -222,6 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -331,6 +517,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="環境構築の手順">環境構築の手順</h2>
 <section id="tailscaleをインストールする" class="level3">
 <h3 class="anchored" data-anchor-id="tailscaleをインストールする">1. Tailscaleをインストールする</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://tailscale.com/download/windows"><img src="tailscale-logo.svg" class="img-fluid figure-img" alt="Tailscale" width="220"></a></p>
+<figcaption>Tailscaleの公式ロゴ</figcaption>
+</figure>
+</div>
+<p><strong><a href="https://tailscale.com/download/windows">Tailscale Windows版をダウンロード（公式）</a></strong></p>
+<p>ロゴ出典：<a href="https://tailscale.com/press">Tailscale公式メディアキット</a>。本記事は個人による解説であり、Tailscaleの公式資料・推奨を示すものではありません。</p>
 <ol type="1">
 <li>両PCに<a href="https://tailscale.com/download/windows">公式サイト</a>からTailscaleをインストールします。</li>
 <li>自分だけで使う場合は同じアカウントでログインし、両PCを同じTailnetに登録します。</li>
@@ -338,11 +532,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://login.tailscale.com/admin/machines">管理画面</a>のMachinesで接続先のTailscale IPを確認します。</li>
 <li>接続先のTailscaleメニューで <strong>Allow incoming connections</strong>（着信を許可）が有効か確認します。</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="tailscale-preferences.png" class="img-fluid figure-img" alt="Tailscaleの設定メニュー。Allow incoming connectionsとRun unattendedが有効になっている。" width="500"></p>
+<figcaption>TailscaleのPreferencesメニュー。「Allow incoming connections」と「Run unattended」にチェックが入っていることを確認する。</figcaption>
+</figure>
+</div>
 <p>Run unattendedは、WindowsからログアウトしてもTailscaleを動作させるための設定です。 着信許可を有効にしても、Tailnetのアクセス制御で禁止された通信まで許可されるわけではありません。 設定の詳細は<a href="https://tailscale.com/docs/how-to/run-unattended">無人実行</a>と<a href="https://tailscale.com/docs/features/client/manage-preferences">クライアント設定</a>を参照してください。</p>
 <p>TailscaleのIPv4アドレスは通常 <code>100.x.x.x</code> 形式で、標準では <code>100.64.0.0/10</code> の範囲から自動的に割り当てられます。 物理的な接続場所が変わっても安定したアドレスを利用できるため、WindowsのLANアドレスや契約回線のグローバルIPを手動固定する必要はありません。 ただし、管理者によるアドレス変更などは可能です。 詳しくは<a href="https://tailscale.com/docs/concepts/ip-and-dns-addresses">IPアドレスの割り当て</a>を参照してください。</p>
 </section>
 <section id="rustdeskをインストールする" class="level3">
 <h3 class="anchored" data-anchor-id="rustdeskをインストールする">2. RustDeskをインストールする</h3>
+<p><strong><a href="https://github.com/rustdesk/rustdesk/releases/latest">RustDeskをダウンロード（公式GitHub Releases）</a></strong> ／ <a href="https://rustdesk.com/">公式サイト</a></p>
+<p>Windows用のクライアントを選びます。通常のIntel・AMD製CPUのPCでは <code>x86-64</code>、ARM搭載PCでは <code>AArch64 (ARM64)</code> を選びます。 この構成で必要なのはRustDeskクライアントで、RustDesk Serverのダウンロードは不要です。</p>
 <ol type="1">
 <li>両PCに<a href="https://rustdesk.com/">公式サイト</a>からRustDeskをインストールします。</li>
 <li>接続先PCの「設定」→「セキュリティ」で、必要に応じて設定をロック解除し、「直接IPアクセスを有効にする」をONにします。</li>
@@ -350,6 +552,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>無人アクセスに使う、長く推測されにくい固定パスワードを設定します。</li>
 <li>接続先ではポータブル実行だけで済ませず、インストールしてサービスが稼働していることを確認します。</li>
 </ol>
+<p>「セキュリティ」のパスワード設定では、「固定パスワードを使用する」を選び、「固定パスワードを設定」からパスワードを登録します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rustdesk-password.png" class="img-fluid figure-img" alt="RustDeskのセキュリティ設定。固定パスワードを使用するが選択され、固定パスワードを設定ボタンが表示されている。" width="650"></p>
+<figcaption>RustDeskの固定パスワード設定。パスワード自体は画面に表示されない。</figcaption>
+</figure>
+</div>
+<p>同じ設定画面を下へスクロールし、「直接 IP アクセスを有効にする」と、ポート <code>21118</code> を確認します。 スクリーンショットに写っているほかの項目を、同じ状態に変更する必要はありません。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rustdesk-direct-ip.png" class="img-fluid figure-img" alt="RustDeskのセキュリティ設定。直接IPアクセスを有効にするがオンで、ポートは21118。" width="650"></p>
+<figcaption>RustDeskの直接IPアクセス設定。チェックが入り、ポート21118が指定されている。</figcaption>
+</figure>
+</div>
 <p>画面上の名称はバージョンや表示言語により異なる場合があります。 直接IPアクセスの設定と標準ポートは<a href="https://rustdesk.com/docs/en/self-host/client-configuration/advanced-settings/#direct-access-port">RustDesk公式の詳細設定</a>、基本操作は<a href="https://rustdesk.com/docs/en/client/">クライアントの説明</a>で確認できます。 この構成ではRustDeskのID・中継サーバーを自分で構築する必要はありません。</p>
 <p>接続先のPowerShellで、サービスの状態を確認できます。</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Service</span> <span class="op">-</span>Name <span class="st">'*rustdesk*'</span> <span class="op">|</span> <span class="fu">Select-Object</span> Name<span class="op">,</span> Status<span class="op">,</span> StartType</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
@@ -561,6 +777,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "ダークモードの切り替え");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "ダークモードの切り替え");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

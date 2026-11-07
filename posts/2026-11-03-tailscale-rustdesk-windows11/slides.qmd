@@ -93,6 +93,37 @@ RustDeskで直接IPアクセスを使っていても、Tailscale側は中継に�
 P2PはPeer-to-Peerの略。中継時もTailscaleの端末間暗号化は維持される。参考：https://tailscale.com/docs/reference/device-connectivity
 :::
 
+## 公式ダウンロード先
+
+:::: {.columns}
+::: {.column width="50%"}
+
+<div class="brand-logo"><a href="https://tailscale.com/download/windows"><img src="tailscale-logo.svg" alt="Tailscale" width="280"></a></div>
+
+**[Windows版をダウンロード](https://tailscale.com/download/windows)**
+
+VPNによる通信経路を用意する。
+
+:::
+::: {.column width="50%"}
+
+<div class="brand-name">RustDesk</div>
+
+**[公式GitHub Releases](https://github.com/rustdesk/rustdesk/releases/latest)**
+
+画面操作用のクライアントを入れる。
+
+:::
+::::
+
+- 両方を接続元・接続先のPCにインストールする。
+- RustDeskは通常のIntel・AMD製PCなら **x86-64**、ARM搭載PCなら **ARM64** を選ぶ。
+- RustDesk Serverのインストールは不要。
+
+::: {.small}
+ロゴ出典：[Tailscale公式メディアキット](https://tailscale.com/press)。本資料は個人による解説で、各社の公式資料・推奨を示すものではない。
+:::
+
 ## セットアップの順序
 
 1. 両PCにTailscaleをインストールし、同じTailnetに登録する。
@@ -104,6 +135,44 @@ P2PはPeer-to-Peerの略。中継時もTailscaleの端末間暗号化は維持�
 
 ::: {.notes}
 Run unattendedはログアウト後もTailscaleを動かす設定。画面消灯は問題ない。再起動は全環境で必須ではないが、今回は解決につながった。参考：https://tailscale.com/docs/how-to/run-unattended 、https://tailscale.com/docs/features/client/manage-preferences 、https://rustdesk.com/docs/en/client/
+:::
+
+## Tailscale：無人実行と着信を許可
+
+接続先PCのシステムトレイから、Tailscaleの **Preferences** を開く。
+
+![Allow incoming connectionsとRun unattendedが有効になっているTailscaleの設定メニュー。](tailscale-preferences.png){width=550 .settings-screenshot}
+
+- **Allow incoming connections**：他の端末からの着信を許可。
+- **Run unattended**：Windowsからログアウトしても動作。
+
+::: {.small}
+Tailscaleのアクセス制御による通信許可も必要。
+:::
+
+## RustDesk：固定パスワードと直接IPアクセス
+
+接続先PCの「設定」→「セキュリティ」で確認する。
+
+:::: {.columns}
+::: {.column width="50%"}
+
+**固定パスワードを設定**
+
+![固定パスワードを使用するが選択されたRustDeskの設定画面。](rustdesk-password.png){width=490 .settings-screenshot}
+
+:::
+::: {.column width="50%"}
+
+**直接IPアクセスをON・ポート21118**
+
+![直接IPアクセスを有効にするがオンで、ポートが21118のRustDesk設定画面。](rustdesk-direct-ip.png){width=490 .settings-screenshot}
+
+:::
+::::
+
+::: {.small}
+ほかの項目を画像に合わせる必要はない。サービス・自動起動・受信規則は別途確認する。
 :::
 
 ## RustDeskに入力する接続先

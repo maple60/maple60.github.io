@@ -6,6 +6,7 @@ Japanese posts and translated English articles.
 
 | 日付 | 題名 | 説明 |
 |----|----|----|
+| 2026-11-03 | [Quartoサイトにダークモードと切り替えボタンを追加する](posts/2026-11-03-quarto-dark-mode/index.llms.md) | Quarto標準のテーマ切り替えで、既存の配色を保ちながらダークモードを追加する方法と、多言語サイトでの注意点をまとめます。 |
 | 2026-11-03 | [Tailscale + RustDeskでWindows 11に高速・安全にリモート接続する](posts/2026-11-03-tailscale-rustdesk-windows11/index.llms.md) | Tailscale VPN内でRustDeskの直接IPアクセスを使う構築手順と、pingは通るのに接続できず、両PCの再起動で解決したトラブルシューティングの記録。 |
 | 2026-06-19 | [OpenAlex APIをPythonから呼び出して論文の引用文献を取得する](posts/2026-06-19-openalex-citation/index.llms.md) | OpenAlex APIをPythonから呼び出して、論文の引用文献を取得する方法をまとめます。 |
 | 2026-06-17 | [jpplantnames Rパッケージについて](posts/2026-06-17-jpplantnames/index.llms.md) | jpplantnames Rパッケージについて簡単にまとめます。 |
@@ -47,6 +48,7 @@ Japanese posts and translated English articles.
 
 | Date | Title | Description |
 |----|----|----|
+| 2026-11-03 | [Adding Dark Mode and a Theme Toggle to a Quarto Website](posts/2026-11-03-quarto-dark-mode/index.llms.md) | Add a dark theme and a built-in toggle while preserving an existing light theme, including notes for multilingual Quarto sites. |
 | 2026-11-03 | [ ](posts/2026-11-03-tailscale-rustdesk-windows11/index.llms.md) |   |
 | 2026-06-19 | [Retrieving Paper References with the OpenAlex API from Python](posts/2026-06-19-openalex-citation/index.llms.md) | Use the OpenAlex API from Python to retrieve the references cited by a paper. |
 | 2026-06-17 | [A Quick Introduction to the jpplantnames R Package](posts/2026-06-17-jpplantnames/index.llms.md) | A short overview of the jpplantnames R package for looking up Japanese plant names, scientific names, and external database matches. |
