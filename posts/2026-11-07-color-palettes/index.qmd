@@ -1,0 +1,678 @@
+---
+title: "Okabe-Ito などのカラーパレット一覧（クリックでコピー）"
+title-en: "Color Palettes: Okabe-Ito and More, Click to Copy"
+description: "Okabe-Ito、Paul Tol、viridis などのパレットを色見本で一覧にし、カラーコードをクリックでコピーできるようにしました。R・Python・CSS向けの一括コピーにも対応しています。"
+description-en: "Okabe-Ito, Paul Tol, viridis and other palettes as swatches. Click a color to copy its code, or copy a whole palette for R, Python, or CSS."
+date: "2026-11-07"
+date-modified: "2026-11-07"
+draft: false
+categories: [color, visualization]
+bibliography: references.bib
+css: palette.css
+include-after-body:
+  text: |
+    <script src="palettes-data.js"></script>
+    <script src="palette.js"></script>
+fig-width: 6.5
+fig-height: 3.6
+fig-align: center
+execute:
+  warning: false
+  message: false
+filters:
+  - ../../filters/language-title.lua
+---
+
+::::: {.content-visible unless-profile="en"}
+
+図の色を選ぶたびに、パレットのカラーコードを調べ直すのが面倒でした。
+そこで、よく使うパレットを色見本として一か所にまとめ、**クリックするだけでコピーできる**ようにしました。
+
+## 使い方
+
+- 色見本をクリックすると、その色のコードをクリップボードにコピーします。
+- 下のスイッチで、コピーする形式を HEX・RGB・HSL から選べます。選んだ形式は次回以降も保持されます。
+- 各パレットの下にある「まとめてコピー」で、パレット全体を **R**（`c(...)`）、**Python**（リスト）、**CSS**（カスタムプロパティ）、**JSON** などの形式でコピーできます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+Every time I pick colors for a figure, I end up looking up palette codes again.
+So I gathered the palettes I use most as swatches on one page. **Click a color to copy it.**
+
+## How to use
+
+- Click a swatch to copy that color's code to the clipboard.
+- Use the switch below to choose HEX, RGB, or HSL. Your choice is remembered for next time.
+- "Copy all" under each palette copies the whole palette for **R** (`c(...)`), **Python** (a list), **CSS** (custom properties), or **JSON**.
+
+:::::
+
+::: {data-palette-format="true"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+以下の例は、追加のパッケージを使わず、Rの基本のグラフィックスだけで描きます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+The examples below use only base R graphics, with no extra packages.
+
+:::::
+
+::::: {.content-visible unless-profile="en"}
+
+## 色覚多様性に配慮したパレット
+
+色の見え方には個人差があります。
+赤と緑、青と紫のように、色相だけで区別する配色は、人によっては判別しにくくなります。
+次のパレットは、そうした見え方の違いを考慮して作られています。シミュレーションの方法は[Rで色覚異常のシミュレーションを行う方法](../2026-03-04-r-color-blind/)で紹介しています。
+
+### Okabe-Ito
+
+岡部正隆氏と伊藤啓氏が提案した8色のパレットです [@okabe2008]。
+Nature Methods の記事でも紹介され [@wong2011]、論文の図でよく使われます。
+R（4.0以降）では `palette.colors(palette = "Okabe-Ito")` で取得できます [@rpalette]。^[`palette.colors()` は R 4.0.0 で追加されました。[R の NEWS（Changes in R 4.0.0）](https://github.com/wch/r-source/blob/trunk/doc/NEWS.Rd)の New Features に記載があります。]
+ただし、R の組み込み版は、末尾に灰色（`#999999`）を加えた9色です。^[R の開発版ソース [colorstuff.R](https://github.com/wch/r-source/blob/trunk/src/library/grDevices/R/colorstuff.R) の `.palette_colors_hex` で、`"Okabe-Ito"` は9色（最後が `gray = "#999999"`）として定義されています。]
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Palettes designed for color vision diversity
+
+People perceive color differently. Palettes that rely on hue alone, such as red versus green or blue versus purple, can be hard to tell apart for some readers.
+The palettes below were designed with that in mind. For simulating how they look, see [Simulating Color Vision Deficiency in R](../2026-03-04-r-color-blind/).
+
+### Okabe-Ito
+
+An eight-color palette proposed by Masataka Okabe and Kei Ito [@okabe2008]. It was also introduced in a Nature Methods column [@wong2011] and is common in journal figures.
+In R, `palette.colors(palette = "Okabe-Ito")` returns it (R 4.0 or later) [@rpalette].^[`palette.colors()` was added in R 4.0.0. It is listed under New Features in the [R NEWS (Changes in R 4.0.0)](https://github.com/wch/r-source/blob/trunk/doc/NEWS.Rd).]
+Note that R's built-in version has nine colors: a gray (`#999999`) is added at the end.^[In the development source of R, [colorstuff.R](https://github.com/wch/r-source/blob/trunk/src/library/grDevices/R/colorstuff.R), `.palette_colors_hex` defines `"Okabe-Ito"` with nine colors, ending in `gray = "#999999"`.]
+The leading black is handy for elements that should not depend on hue, such as lines and text.
+
+:::::
+
+::: {data-palette="okabe-ito"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、`mtcars` の車の重さと燃費の散布図を、キャブレターの数（`carb`）で色分けします。R の組み込み版から、黒と灰色を除いた7色を取り出して使います。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a scatter plot of weight against fuel economy in `mtcars`, colored by the number of carburetors (`carb`). It takes the seven colors of R's built-in version that remain after dropping black and gray.
+
+:::::
+
+```{r}
+#| label: ex-okabe-ito
+#| fig-alt: "Scatter plot of car weight against fuel economy, colored by number of carburetors with the Okabe-Ito palette."
+# 9 colors: black, 7 chromatic colors, gray. Keep the 7 chromatic ones.
+okabe_ito <- unname(palette.colors(palette = "Okabe-Ito"))[2:8]
+carb <- factor(mtcars$carb)
+
+par(mar = c(4, 4, 1, 1))
+plot(mtcars$wt, mtcars$mpg, col = okabe_ito[carb], pch = 19, cex = 1.4,
+     xlab = "wt", ylab = "mpg")
+legend("topright", legend = levels(carb), title = "carb", pch = 19,
+       col = okabe_ito[seq_len(nlevels(carb))], bty = "n")
+```
+
+::::: {.content-visible unless-profile="en"}
+
+### Paul Tol: Bright
+
+オランダの宇宙研究機関 SRON の研究者 Paul Tol が整理した配色集の1つです。
+Bright・Vibrant・Muted はいずれも、論文ではなく、SRON のテクニカルノートとして公開された配色集に含まれます [@tol2021]。
+7色で、Okabe-Ito より落ち着いた発色です。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Paul Tol: Bright
+
+One of the schemes compiled by Paul Tol, an instrument scientist at SRON, the Netherlands Institute for Space Research.
+Bright, Vibrant, and Muted all appear in his color-scheme document, which SRON published as a technical note rather than a journal paper [@tol2021].
+It has seven colors with a calmer look than Okabe-Ito.
+
+:::::
+
+::: {data-palette="tol-bright"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、殺虫剤の種類（`spray`）ごとの害虫の数を、箱ひげ図で示します（`InsectSprays`）。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a box plot of insect counts by insecticide type (`spray`) from `InsectSprays`.
+
+:::::
+
+```{r}
+#| label: ex-tol-bright
+#| fig-alt: "Box plots of insect counts for six insecticides, filled with the Tol Bright palette."
+tol_bright <- c("#4477AA", "#66CCEE", "#228833", "#CCBB44",
+                "#EE6677", "#AA3377", "#BBBBBB")
+
+par(mar = c(4, 4, 1, 1))
+boxplot(count ~ spray, data = InsectSprays, col = tol_bright)
+```
+
+::::: {.content-visible unless-profile="en"}
+
+### Paul Tol: Vibrant
+
+Bright より彩度が高く、オレンジを含みます。
+明るい背景でも暗い背景でも目立ちやすい配色です。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Paul Tol: Vibrant
+
+More saturated than Bright, and it includes orange. It stands out on both light and dark backgrounds.
+
+:::::
+
+::: {data-palette="tol-vibrant"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、ヒナの体重の平均を餌（`Diet`）ごとに折れ線で示します。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a line chart of mean chick weight by diet.
+
+:::::
+
+```{r}
+#| label: ex-tol-vibrant
+#| fig-alt: "Line chart of mean chick weight over time for four diets, drawn with the Tol Vibrant palette."
+tol_vibrant <- c("#EE7733", "#0077BB", "#33BBEE", "#EE3377",
+                 "#CC3311", "#009988", "#BBBBBB")
+
+# mean weight at each Time (rows) for each Diet (columns)
+m <- with(ChickWeight, tapply(weight, list(Time, Diet), mean))
+cols <- tol_vibrant[seq_len(ncol(m))]
+
+par(mar = c(4, 4, 1, 1))
+matplot(as.numeric(rownames(m)), m, type = "l", lty = 1, lwd = 2.5,
+        col = cols, xlab = "Time", ylab = "weight")
+legend("topleft", legend = colnames(m), title = "Diet",
+       col = cols, lty = 1, lwd = 2.5, bty = "n")
+```
+
+::::: {.content-visible unless-profile="en"}
+
+### Paul Tol: Muted
+
+10色まで必要な場合に使えるパレットです。彩度を抑えているため、色数が多くても画面がうるさくなりにくい一方、隣り合う色の差は小さめです。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Paul Tol: Muted
+
+For when you need up to ten colors. The lower saturation keeps a crowded plot from looking noisy, at the cost of smaller differences between neighbors. The pale grey at the end suits missing values or an "other" category.
+
+:::::
+
+::: {data-palette="tol-muted"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、世界の地域別の電話の台数（`WorldPhones`）の構成比を、年ごとに積み上げます。地域は7つあるので、Muted の10色のうち7色を使います。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a stacked bar chart of each region's share of telephones worldwide (`WorldPhones`) by year. There are seven regions, so it uses seven of Muted's ten colors.
+
+:::::
+
+```{r}
+#| label: ex-tol-muted
+#| fig-alt: "Stacked bar chart of each world region's share of telephones for seven years, using the Tol Muted palette."
+tol_muted <- c("#CC6677", "#332288", "#DDCC77", "#117733", "#88CCEE",
+               "#882255", "#44AA99", "#999933", "#AA4499", "#DDDDDD")
+
+# rows: regions, columns: years, each column sums to 1
+share <- t(prop.table(WorldPhones, margin = 1))
+
+par(mar = c(4, 4, 1, 6), xpd = TRUE) # xpd lets the legend sit in the margin
+barplot(share, col = tol_muted[seq_len(nrow(share))],
+        ylab = "share of telephones", legend.text = rownames(share),
+        args.legend = list(x = "right", inset = c(-0.2, 0), bty = "n"))
+```
+
+::::: {.content-visible unless-profile="en"}
+
+## 連続値向けのパレット
+
+### viridis
+
+[Matplotlib](https://matplotlib.org/) の旧既定カラーマップ `jet` に代わるものとして、Stéfan van der Walt と Nathaniel Smith が設計しました [@smith2015]。
+Matplotlib 2.0 から既定になり、R では `viridis` パッケージで使えます [@garnier2024]。
+
+のちに論文でも取り上げられ、PLOS ONE の Nuñez らの論文では、viridis が現在の標準的なカラーマップ（"gold standard"）として紹介されています [@nunez2018]。
+また、この論文は、viridis をもとに色覚多様性の観点でさらに最適化した **cividis** を提案しています。
+一方で、viridis は通常の色覚に対して最適なカラーマップで、色覚多様性に特化して最適化したものではない、とも述べています。
+
+このカラーパレットは、低い値から高い値へ、明るさが単調に変化するパレットです。
+ヒートマップなど、数値の大小を色で表す図に向いています。
+ここでは8段階を抜き出しています。上の帯は、8色をなめらかにつないだ見本です。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## A palette for continuous values
+
+### viridis
+
+Stéfan van der Walt and Nathaniel Smith designed it to replace `jet`, Matplotlib's former default colormap [@smith2015].
+It was presented in a SciPy 2015 talk rather than a paper. It became Matplotlib's default in 2.0, and R users can get it from the `viridis` package [@garnier2024].
+It was later discussed in the literature too. A PLOS ONE paper by Nuñez and colleagues describes viridis as the current "gold standard" colormap [@nunez2018].
+The paper proposes **cividis**, a colormap derived from viridis and further optimized for color vision deficiency.
+It also notes that viridis is optimal for viewers with normal color vision, rather than being optimized specifically for color vision deficiency.
+
+Lightness changes monotonically from low to high values, which suits heatmaps and other figures that encode magnitude as color.
+Eight steps are shown here. The ribbon above them blends the eight colors smoothly.
+
+:::::
+
+::: {data-palette="viridis"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、火山の標高データ（`volcano`）をヒートマップで示します。8色の間を補間して256色にしています。
+なお、基本のRの `hcl.colors(256, "viridis")` でも似た配色を使えますが、色の値は少し異なります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a heat map of a volcano's elevation data (`volcano`). The eight colors are interpolated to 256.
+Base R's `hcl.colors(256, "viridis")` gives a similar look, though its color values differ slightly.
+
+:::::
+
+```{r}
+#| label: ex-viridis
+#| fig-alt: "Heat map of a volcano's elevation, colored with viridis."
+viridis_8 <- c("#440154", "#46337E", "#365C8D", "#277F8E",
+               "#1FA187", "#4AC16D", "#9FDA3A", "#FDE725")
+
+# interpolate the 8 colors to 256 steps
+pal <- colorRampPalette(viridis_8, space = "Lab")(256)
+
+par(mar = c(1, 1, 1, 1))
+image(volcano, col = pal, axes = FALSE)
+```
+
+::::: {.content-visible unless-profile="en"}
+
+## ほかのよく見るパレット
+
+これらは色覚多様性への配慮を目的に作られたものではありません。
+使う場合は、色だけに頼らず、線種・マーカー・ラベルなども併用すると安全です。
+
+### Tableau 10
+
+[Tableau](https://www.tableau.com/) が2016年の Tableau 10 で刷新した、標準のカテゴリ向けパレットです [@stone2016]。
+ダッシュボードなどで見慣れた配色で、10色あります。
+R にも `palette.colors(palette = "Tableau 10")` として組み込まれています [@rpalette]。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Other familiar palettes
+
+These were not made for color vision diversity.
+If you use them, combine color with line types, markers, or labels.
+
+### Tableau 10
+
+Tableau's default categorical palette, redesigned for Tableau 10 in 2016 [@stone2016]. It is familiar from dashboards and has ten colors.
+R also ships it as `palette.colors(palette = "Tableau 10")` [@rpalette].
+It is not R's default palette, though. Since R 4.0, the default is a different palette called `"R4"`; "Tableau 10" is one of the built-in palettes you can choose.
+
+:::::
+
+::: {data-palette="tableau-10"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、世界の主要な陸地（`islands`）のうち、面積が大きい10か所を棒グラフにします。R に組み込まれた Tableau 10 の10色を、1本ずつ割り当てます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is a bar chart of the ten largest of the world's major landmasses (`islands`). Each bar takes one of the ten Tableau 10 colors built into R.
+
+:::::
+
+```{r}
+#| label: ex-tableau-10
+#| fig-alt: "Bar chart of the areas of the ten largest landmasses, each bar in a different Tableau 10 color."
+tableau10 <- unname(palette.colors(palette = "Tableau 10"))
+top10 <- sort(islands, decreasing = TRUE)[1:10]
+
+par(mar = c(7, 4, 1, 1)) # leave room for the labels
+barplot(top10 / 1000, col = tableau10, las = 2, ylab = "area (million sq mi)")
+```
+
+::::: {.content-visible unless-profile="en"}
+
+### Flexoki（このサイトの配色）
+
+[Flexoki](https://stephango.com/flexoki) は、Steph Ango さんが開発した配色システムです。
+このサイトの背景色などは、Steph Ango さんの配色システム [Flexoki](https://stephango.com/flexoki) をもとにしています。
+アクセントカラーは、明るい背景向けの 600 と、暗い背景向けの 400 があります。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+### Flexoki (this site's palette)
+
+This site's background and other colors are based on [Flexoki](https://stephango.com/flexoki), a color system by Steph Ango.
+Its accent colors come in 600 for light backgrounds and 400 for dark ones.
+
+:::::
+
+::: {data-palette="flexoki-600"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、Flexoki の紙の色（`#FFFCF0`）を背景にして、600 のアクセントで、Okabe-Ito の例と同じ散布図を描きます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is the same scatter plot as in the Okabe-Ito example, using the 600 accents on Flexoki's paper color (`#FFFCF0`).
+
+:::::
+
+```{r}
+#| label: ex-flexoki-600
+#| fig-alt: "Scatter plot of car weight against fuel economy, colored by number of carburetors with Flexoki 600 accents on a cream background."
+flexoki_600 <- c("#AF3029", "#BC5215", "#AD8301", "#66800B",
+                 "#24837B", "#205EA6", "#5E409D", "#A02F6F")
+carb <- factor(mtcars$carb)
+
+# background (bg), axis lines and text (fg) colors
+op <- par(mar = c(4, 4, 1, 1), bg = "#FFFCF0", fg = "#100F0F",
+          col.axis = "#100F0F", col.lab = "#100F0F")
+plot(mtcars$wt, mtcars$mpg, col = flexoki_600[carb], pch = 19, cex = 1.4,
+     xlab = "wt", ylab = "mpg")
+legend("topright", legend = levels(carb), title = "carb", pch = 19,
+       col = flexoki_600[seq_len(nlevels(carb))], bty = "n", text.col = "#100F0F")
+par(op) # restore the previous settings
+```
+
+::: {data-palette="flexoki-400"}
+:::
+
+::::: {.content-visible unless-profile="en"}
+
+例として、暗い背景（`#1C1B1A`）に 400 のアクセントを使い、同じ散布図を描きます。
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+As an example, here is the same scatter plot with the 400 accents on a dark background (`#1C1B1A`).
+
+:::::
+
+```{r}
+#| label: ex-flexoki-400
+#| fig-alt: "Scatter plot of car weight against fuel economy, colored by number of carburetors with Flexoki 400 accents on a dark background."
+flexoki_400 <- c("#D14D41", "#DA702C", "#D0A215", "#879A39",
+                 "#3AA99F", "#4385BE", "#8B7EC8", "#CE5D97")
+carb <- factor(mtcars$carb)
+
+op <- par(mar = c(4, 4, 1, 1), bg = "#1C1B1A", fg = "#FFFCF0",
+          col.axis = "#FFFCF0", col.lab = "#FFFCF0")
+plot(mtcars$wt, mtcars$mpg, col = flexoki_400[carb], pch = 19, cex = 1.4,
+     xlab = "wt", ylab = "mpg")
+legend("topright", legend = levels(carb), title = "carb", pch = 19,
+       col = flexoki_400[seq_len(nlevels(carb))], bty = "n", text.col = "#FFFCF0")
+par(op)
+```
+
+::::: {.content-visible unless-profile="en"}
+
+## コードで使う
+
+### R
+
+「まとめてコピー」の **R** で得られるベクトルは、`palette()` に設定すると、色を番号や因子で指定する図にそのまま使えます。
+
+```r
+okabe_ito <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+               "#0072B2", "#D55E00", "#CC79A7")
+
+palette(okabe_ito) # set as R's current palette
+plot(mtcars$wt, mtcars$mpg, col = factor(mtcars$carb), pch = 19)
+palette("default") # restore the default
+```
+
+### Python
+
+**Python** でコピーしたリストは、Matplotlib の色サイクルに設定できます。
+
+```python
+import matplotlib.pyplot as plt
+
+okabe_ito = ["#E69F00", "#56B4E9", "#009E73", "#F0E442",
+             "#0072B2", "#D55E00", "#CC79A7"]
+plt.rcParams["axes.prop_cycle"] = plt.cycler(color=okabe_ito)
+```
+
+### CSS
+
+**CSS** でコピーした行は、`:root` に貼り付けるとカスタムプロパティとして使えます。
+
+```css
+:root {
+  --okabe-ito-orange: #E69F00;
+  --okabe-ito-sky-blue: #56B4E9;
+}
+```
+
+## このページの仕組み
+
+このページの色見本は、画像ではなく、ブラウザー上でJavaScriptが描いています（色見本の下のRの図は、レンダリング時にRで作った画像です）。
+ライブラリーは使っておらず、次の3つのファイルだけで動きます。
+
+| ファイル | 役割 |
+|---|---|
+| `palettes-data.js` | 色のデータ（名前とHEX）だけを書いた配列 |
+| `palette.js` | データを読み、色見本とコピー機能を組み立てる |
+| `palette.css` | 見た目。ライト/ダークはサイトのテーマに追従する |
+
+本文には、次のような空のブロックを置いておくだけです。`palette.js` がこの `data-palette` の値でデータを探し、中身を埋めます。
+
+```markdown
+::: {data-palette="okabe-ito"}
+:::
+```
+
+QMDの先頭では、CSSとJavaScriptを読み込んでいます。
+
+```yaml
+css: palette.css
+include-after-body:
+  text: |
+    <script src="palettes-data.js"></script>
+    <script src="palette.js"></script>
+```
+
+パレットを増やしたいときは、`palettes-data.js` に項目を足し、本文に空のブロックを置くだけです。
+コピーには `navigator.clipboard` を使い、使えない環境では `execCommand("copy")` に切り替えます。
+
+実際のファイルを、折りたたみで載せます。各ファイルの先頭に全体の説明を、途中に節ごとの説明をコメントとして入れています。
+
+::: {.callout-note collapse="true" icon="false" title="palettes-data.js（色のデータ）"}
+```{.javascript}
+{{< include palettes-data.js >}}
+```
+:::
+
+::: {.callout-note collapse="true" icon="false" title="palette.js（描画とコピー）"}
+```{.javascript}
+{{< include palette.js >}}
+```
+:::
+
+::: {.callout-note collapse="true" icon="false" title="palette.css（スタイル）"}
+```{.css}
+{{< include palette.css >}}
+```
+:::
+
+## 参考文献
+
+::: {#refs}
+:::
+
+## 参考リンク
+
+- [Paul Tol's Notes: Colour schemes](https://sronpersonalpages.nl/~pault/)
+- [viridisLite](https://sjmgarnier.github.io/viridisLite/)
+- [Flexoki](https://stephango.com/flexoki)
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+## Using them in code
+
+### R
+
+The vector from "Copy all" → **R** can be set with `palette()`, after which it works for plots that specify colors by number or factor.
+
+```r
+okabe_ito <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+               "#0072B2", "#D55E00", "#CC79A7")
+
+palette(okabe_ito) # set as R's current palette
+plot(mtcars$wt, mtcars$mpg, col = factor(mtcars$carb), pch = 19)
+palette("default") # restore the default
+```
+
+### Python
+
+The list from **Python** can be set as Matplotlib's color cycle.
+
+```python
+import matplotlib.pyplot as plt
+
+okabe_ito = ["#E69F00", "#56B4E9", "#009E73", "#F0E442",
+             "#0072B2", "#D55E00", "#CC79A7"]
+plt.rcParams["axes.prop_cycle"] = plt.cycler(color=okabe_ito)
+```
+
+### CSS
+
+Paste the lines from **CSS** into `:root` to use them as custom properties.
+
+```css
+:root {
+  --okabe-ito-orange: #E69F00;
+  --okabe-ito-sky-blue: #56B4E9;
+}
+```
+
+## How this page works
+
+The swatches on this page are drawn in the browser by JavaScript, not generated as images (the R figures below them are images produced by R at render time).
+No libraries are involved. Three files do all the work:
+
+| File | Role |
+|---|---|
+| `palettes-data.js` | An array holding only the color data (names and HEX) |
+| `palette.js` | Reads the data and builds the swatches and copy features |
+| `palette.css` | Appearance. Light and dark follow the site theme |
+
+The text only needs an empty block like the one below. `palette.js` looks up the data by the `data-palette` value and fills the block in.
+
+```markdown
+::: {data-palette="okabe-ito"}
+:::
+```
+
+The front matter of the QMD loads the CSS and JavaScript.
+
+```yaml
+css: palette.css
+include-after-body:
+  text: |
+    <script src="palettes-data.js"></script>
+    <script src="palette.js"></script>
+```
+
+To add a palette, add an entry to `palettes-data.js` and place an empty block in the text.
+Copying uses `navigator.clipboard`, and falls back to `execCommand("copy")` where it is unavailable.
+
+The actual files are included below in collapsible sections. Each starts with an overview comment, and sections inside have their own comments.
+
+::: {.callout-note collapse="true" icon="false" title="palettes-data.js (color data)"}
+```{.javascript}
+{{< include palettes-data.js >}}
+```
+:::
+
+::: {.callout-note collapse="true" icon="false" title="palette.js (rendering and copying)"}
+```{.javascript}
+{{< include palette.js >}}
+```
+:::
+
+::: {.callout-note collapse="true" icon="false" title="palette.css (styles)"}
+```{.css}
+{{< include palette.css >}}
+```
+:::
+
+## References
+
+::: {#refs}
+:::
+
+## Further links
+
+- [Paul Tol's Notes: Colour schemes](https://sronpersonalpages.nl/~pault/)
+- [viridisLite](https://sjmgarnier.github.io/viridisLite/)
+- [Flexoki](https://stephango.com/flexoki)
+
+:::::

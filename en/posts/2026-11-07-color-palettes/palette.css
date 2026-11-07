@@ -1,0 +1,247 @@
+/*
+ * palette.css — styles for the click-to-copy palettes
+ * -------------------------------------------------------------------------
+ * palette.js builds this structure:
+ *
+ *   .palette
+ *     .palette-meta        count, kind chip, source link
+ *     .palette-ribbon      gradient strip (sequential palettes only)
+ *     .palette-grid
+ *       button.palette-swatch  (one per color)
+ *         .palette-name, .palette-value
+ *     .palette-tools       "Copy all" row of .palette-btn
+ *
+ *   .palette-format        HEX / RGB / HSL switch (.palette-seg-btn)
+ *
+ * Theming: everything except the swatches themselves uses Bootstrap's CSS
+ * variables (--bs-body-color, --bs-border-color, ...). Quarto swaps those
+ * when the reader toggles dark mode, so no dark-mode rules are needed here.
+ * The second argument of each var() is a fallback in case a variable is missing.
+ *
+ * The swatch colors come from JS as inline custom properties:
+ *   --sw-bg  the swatch color
+ *   --sw-fg  black or white text, whichever contrasts better
+ */
+
+.palette {
+  margin: 0.75rem 0 2.25rem;
+}
+
+/* ---- meta line ---------------------------------------------------------- */
+
+.palette-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  margin: 0 0 0.7rem;
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.palette-chip {
+  padding: 0.05rem 0.6rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+}
+
+.palette-chip-cvd {
+  border-color: color-mix(in srgb, var(--bs-link-color, #0d6efd) 55%, transparent);
+  color: var(--bs-link-color, #0d6efd);
+}
+
+/* ---- gradient ribbon (sequential palettes) ------------------------------ */
+
+.palette-ribbon {
+  height: 0.9rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 0.45rem;
+}
+
+/* ---- swatches ------------------------------------------------------------ */
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 0.6rem;
+}
+
+/* A swatch is a real <button>, so keyboard focus and Enter/Space work for free. */
+.palette-swatch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0.1rem;
+  min-height: 6.5rem;
+  padding: 0.7rem 0.8rem;
+  /* A faint outline so very light swatches (yellow, grey) and very dark ones
+     (black on a dark page) don't vanish into the background. */
+  border: 1px solid color-mix(in srgb, var(--bs-body-color, #888) 22%, transparent);
+  border-radius: 0.65rem;
+  background: var(--sw-bg);
+  color: var(--sw-fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.palette-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.palette-swatch:active {
+  transform: scale(0.98);
+}
+
+.palette-swatch:focus-visible,
+.palette-btn:focus-visible,
+.palette-seg-btn:focus-visible {
+  outline: 3px solid var(--bs-link-color, #0d6efd);
+  outline-offset: 2px;
+}
+
+.palette-name {
+  font-size: 0.8rem;
+  line-height: 1.25;
+  opacity: 0.88;
+}
+
+.palette-value {
+  font-family: var(--bs-font-monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* "Copied" pill. JS adds .is-copied (or .is-failed) for about 1.4 s and puts
+   the message in data-msg. The pill swaps the swatch's text and background
+   colors, so it is readable on any color. */
+.palette-swatch.is-copied::after,
+.palette-swatch.is-failed::after {
+  content: attr(data-msg);
+  position: absolute;
+  top: 0.55rem;
+  right: 0.6rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: var(--sw-fg);
+  color: var(--sw-bg);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.5;
+  animation: palette-pop 0.18s ease-out;
+}
+
+.palette-swatch.is-copied::after {
+  content: "✓ " attr(data-msg);
+}
+
+@keyframes palette-pop {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- toolbars ------------------------------------------------------------ */
+
+.palette-tools,
+.palette-format {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.palette-tools {
+  margin-top: 0.8rem;
+}
+
+.palette-format {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.palette-tools-label {
+  margin-right: 0.2rem;
+  font-size: 0.82rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.palette-btn {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bs-body-color);
+  font-family: var(--bs-font-monospace, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.palette-btn:hover {
+  background: var(--bs-tertiary-bg, rgba(128, 128, 128, 0.12));
+}
+
+.palette-btn.is-copied {
+  border-color: var(--bs-link-color, #0d6efd);
+  color: var(--bs-link-color, #0d6efd);
+}
+
+/* segmented control for the single-color format */
+.palette-seg {
+  display: inline-flex;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.palette-seg-btn {
+  padding: 0.25rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--bs-body-color);
+  font-family: var(--bs-font-monospace, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.palette-seg-btn + .palette-seg-btn {
+  border-left: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.palette-seg-btn:hover {
+  background: var(--bs-tertiary-bg, rgba(128, 128, 128, 0.12));
+}
+
+.palette-seg-btn[aria-pressed="true"] {
+  background: var(--bs-body-color);
+  color: var(--bs-body-bg);
+}
+
+@media (max-width: 480px) {
+  .palette-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palette-swatch,
+  .palette-swatch.is-copied::after,
+  .palette-swatch.is-failed::after {
+    transition: none;
+    animation: none;
+  }
+}
