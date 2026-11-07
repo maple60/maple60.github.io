@@ -46,8 +46,9 @@ date-format: iso
 format:
   html:
     theme:
-      - default
-      - custom.scss
+      light: [default, custom.scss]
+      dark: [darkly, custom-dark.scss]
+    respect-user-color-scheme: true
     toc: true
     code-link: true
     code-line-numbers: false 

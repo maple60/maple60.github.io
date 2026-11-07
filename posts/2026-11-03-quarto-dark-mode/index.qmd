@@ -1,0 +1,179 @@
+---
+title: "Quartoサイトにダークモードと切り替えボタンを追加する"
+title-en: "Adding Dark Mode and a Theme Toggle to a Quarto Website"
+description: "Quarto標準のテーマ切り替えで、既存の配色を保ちながらダークモードを追加する方法と、多言語サイトでの注意点をまとめます。"
+description-en: "Add a dark theme and a built-in toggle while preserving an existing light theme, including notes for multilingual Quarto sites."
+date: "2026-11-03"
+date-modified: "2026-11-03"
+draft: false
+categories: [quarto, website, css]
+filters:
+  - ../../filters/language-title.lua
+execute:
+  eval: false
+---
+
+::::: {.content-visible unless-profile="en"}
+
+このサイトにダークモードを追加しました。ナビゲーションにある明暗切り替えアイコンから、ライトモードとダークモードを切り替えられます。
+この記事では、既存の明るい配色を残しながら導入する手順をまとめます。
+
+## Quarto標準の切り替えを使う
+
+Quartoでは、HTMLのテーマに `light` と `dark` を指定すると、切り替えコントロールが自動で生成されます。ウェブサイトではナビゲーションに配置されるため、独自のボタンやJavaScriptを追加する必要はありません。
+詳しくは[公式ドキュメントのDark Mode](https://quarto.org/docs/output-formats/html-themes.html#dark-mode)を参照してください。
+
+このサイトの `_quarto.yml` は次のように変更しました。
+
+```yaml
+format:
+  html:
+    theme:
+      light: [default, custom.scss]
+      dark: [darkly, custom-dark.scss]
+    respect-user-color-scheme: true
+```
+
+`light` には従来の `default` と `custom.scss` を指定し、クリーム色の背景を維持しています。`dark` には組み込みの `darkly` と、暗い配色専用のSCSSを指定しました。
+
+`respect-user-color-scheme: true` により、初回表示ではOSやブラウザーの配色設定を尊重します。利用者が切り替えた設定の保存と復元もQuartoに任せます。保存領域を利用できない環境では、設定が保持されない場合があります。
+このオプションはQuarto 1.7以降の機能で、JavaScriptが無効な場合は先に指定したライトテーマで表示されます。
+
+## 配色ファイルを分ける
+
+従来の `custom.scss` には明るい背景色が書かれているため、そのままダークテーマにも読み込むと、暗いテーマの背景を上書きしてしまいます。
+今回はファイルを分け、`custom-dark.scss` を次のようにしました。
+
+```scss
+/*-- scss:defaults --*/
+$body-bg: #1c1b1a;
+$body-color: #e6e4dc;
+$navbar-bg: #282726;
+$footer-bg: #282726;
+$link-color: #8dc8f8;
+$code-color: #e9b4d0;
+
+/*-- scss:rules --*/
+.language-switch {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+body.quarto-dark {
+  color-scheme: dark;
+}
+```
+
+`scss:defaults` でSass変数を設定すると、Bootstrapの部品にも配色が反映されます。本文だけでなく、ナビゲーション、フッター、リンク、インラインコードも調整できます。
+`scss:rules` は通常のCSSを書く場所です。言語切り替えリンクの余白はライト側とそろえ、`color-scheme` でブラウザー標準のフォーム部品などにも暗い配色を伝えています。
+
+Quartoは表示中のモードに応じて `body` に `.quarto-light` または `.quarto-dark` を付けます。個別要素の調整にはこのクラスを使えます。
+
+## 日本語・英語に同じ設定を適用する
+
+このサイトでは、共通設定を `_quarto.yml`、言語別設定を `_quarto-ja.yml` と `_quarto-en.yml` に分けています。テーマ設定を共通ファイルに書くことで、両言語で同じ切り替えを使えます。
+
+ただし、英語版はレンダリング対象の記事を明示的に列挙しているため、新しい記事のパスを `_quarto-en.yml` の `project.render` に追加する必要があります。記事本文は既存の構成に合わせ、プロファイルごとに表示を分けました。
+
+## レンダリングして確認する
+
+```bash
+quarto render
+quarto render --profile en
+```
+
+このサイトでは日本語版が `_site`、英語版が `_site/en` に出力されます。日本語版の全体レンダリングで出力先が作り直されるため、英語版は後に実行します。
+
+確認したい点は次のとおりです。
+
+- ナビゲーションのアイコンで明暗を切り替えられるか。
+- 再読み込みや別ページへの移動後も選択が保持されるか。
+- 保存済み設定のないブラウザーでOSの配色設定が反映されるか。
+- 記事一覧、コード、表、リンクが両方のモードで読めるか。
+- 狭い画面でも切り替えコントロールを操作できるか。
+
+画像や外部の埋め込みコンテンツは、サイトのテーマだけでは配色が変わらない場合があります。白背景の図が気になる場合は、図自体の背景色や、モードごとの画像の用意を別途検討します。
+
+## 参考資料
+
+- [HTML Theming — Quarto](https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
+- [Website Tools — Quarto](https://quarto.org/docs/websites/website-tools.html#dark-mode)
+
+:::::
+
+::::: {.content-visible when-profile="en"}
+
+This site now supports dark mode. Use the appearance icon in the navigation bar to switch between light and dark themes. This post describes how to add the feature while preserving an existing light palette.
+
+## Use Quarto’s built-in toggle
+
+Defining both `light` and `dark` HTML themes makes Quarto generate a toggle automatically. On websites, it appears in the navigation bar. No custom button or JavaScript is needed. See the official [Dark Mode documentation](https://quarto.org/docs/output-formats/html-themes.html#dark-mode).
+
+The shared `_quarto.yml` now contains:
+
+```yaml
+format:
+  html:
+    theme:
+      light: [default, custom.scss]
+      dark: [darkly, custom-dark.scss]
+    respect-user-color-scheme: true
+```
+
+The light variant retains the existing cream background. The dark variant combines the built-in `darkly` theme with a separate customization file.
+
+`respect-user-color-scheme: true` honors the reader’s OS or browser preference on the initial visit. Quarto also handles saving and restoring manual choices; persistence may be unavailable when browser storage is restricted. This option requires Quarto 1.7 or later and JavaScript. With JavaScript disabled, the first theme (light here) is used.
+
+## Keep the palettes separate
+
+The existing `custom.scss` sets a light background explicitly. Loading it into the dark variant would override that variant’s background. Instead, `custom-dark.scss` contains:
+
+```scss
+/*-- scss:defaults --*/
+$body-bg: #1c1b1a;
+$body-color: #e6e4dc;
+$navbar-bg: #282726;
+$footer-bg: #282726;
+$link-color: #8dc8f8;
+$code-color: #e9b4d0;
+
+/*-- scss:rules --*/
+.language-switch {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+body.quarto-dark {
+  color-scheme: dark;
+}
+```
+
+Sass variables in `scss:defaults` feed into Bootstrap styling. They cover the page, navigation, footer, links, and inline code. Regular CSS belongs in `scss:rules`. The language link keeps the same spacing in both modes, while `color-scheme` informs browser-provided controls of the dark palette.
+
+Quarto adds `.quarto-light` or `.quarto-dark` to the document body. These classes can scope further adjustments.
+
+## Share the setting across languages
+
+The shared `_quarto.yml` supplies the theme configuration to both language profiles. Language-specific settings live in `_quarto-ja.yml` and `_quarto-en.yml`.
+
+This site explicitly lists English render targets, so the new article also needs an entry in `project.render` in `_quarto-en.yml`. Its Japanese and English sections follow the existing profile-based content structure.
+
+## Render and check
+
+```bash
+quarto render
+quarto render --profile en
+```
+
+Japanese output goes to `_site`, and English output goes to `_site/en`. Render English last because a full Japanese render recreates the parent output directory.
+
+Check the toggle, persistence after reloading or navigating, system preferences with no saved choice, readable tables and code, and operation on narrow screens.
+
+Images and external embeds may retain their own colors. A figure with a white background may need a separate adjustment or a mode-specific version.
+
+## References
+
+- [HTML Theming — Quarto](https://quarto.org/docs/output-formats/html-themes.html#dark-mode)
+- [Website Tools — Quarto](https://quarto.org/docs/websites/website-tools.html#dark-mode)
+
+:::::

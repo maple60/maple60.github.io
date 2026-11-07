@@ -31,3 +31,19 @@
 
 /* Use the same Latin/Japanese font stack in code and diagram labels. */
 .reveal code, .reveal pre { font-family: var(--r-main-font); }
+
+.reveal .settings-screenshot { max-height: 370px; object-fit: contain; }
+.reveal figure:has(.settings-screenshot) { margin: 0.5em 0; }
+.reveal figure:has(.settings-screenshot) figcaption { display: none; }
+
+.reveal .brand-logo, .reveal .brand-name {
+  box-sizing: border-box;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  margin: 0.4em 0;
+  background: #fff;
+}
+.reveal .brand-logo img { max-width: 100%; height: auto; margin: 0; }
+.reveal .brand-name { font-size: 1.5em; font-weight: bold; }

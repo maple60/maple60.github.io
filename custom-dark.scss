@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+$body-bg: #1c1b1a;
+$body-color: #e6e4dc;
+$navbar-bg: #282726;
+$footer-bg: #282726;
+$link-color: #8dc8f8;
+$code-color: #e9b4d0;
+
+/*-- scss:rules --*/
+.language-switch {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+body.quarto-dark {
+  color-scheme: dark;
+}
