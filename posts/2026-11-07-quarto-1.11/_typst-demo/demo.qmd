@@ -1,0 +1,64 @@
+---
+title: "Typst in Quarto"
+subtitle: "Quarto 1.11 demo"
+format:
+  typst:
+    papersize: a5
+    margin:
+      x: 1.6cm
+      y: 1.8cm
+lof: true
+lot: true
+crossref:
+  lof-title: "Figures"
+  lot-title: "Tables"
+keep-typ: true
+---
+
+# Results
+
+```{r}
+#| label: fig-cars
+#| fig-cap: "Speed and stopping distance."
+#| fig-height: 2.6
+#| echo: false
+plot(cars, pch = 19, col = "#3b6ea5")
+```
+
+```{r}
+#| label: fig-pressure
+#| fig-cap: "Vapor pressure of mercury."
+#| fig-height: 2.6
+#| echo: false
+plot(pressure, type = "b", col = "#b5532f")
+```
+
+| Species | Count |
+|---------|------:|
+| A       |    12 |
+| B       |     7 |
+
+: Sample counts. {#tbl-counts}
+
+See @fig-cars, @fig-pressure and @tbl-counts.
+
+# Proofs
+
+::: {#thm-sum .theorem}
+## Sum of two even numbers
+The sum of two even numbers is even.
+:::
+
+::: {#prf-sum .proof}
+Let $a = 2m$ and $b = 2n$. Then $a + b = 2(m + n)$.
+:::
+
+::: {#rem-terms .remark}
+This also holds for any number of terms.
+:::
+
+::: {#sol-example .solution}
+Take $m = 1, n = 2$, so $a + b = 6$.
+:::
+
+By @thm-sum, the claim follows. The proof is in @prf-sum, a remark is in @rem-terms, and a worked example is in @sol-example.
