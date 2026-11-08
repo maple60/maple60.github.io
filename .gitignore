@@ -3,3 +3,6 @@
 /_site/
 /.venv/
 .env
+
+# Quarto caches (e.g. Typst packages) inside nested folders
+**/.quarto/
