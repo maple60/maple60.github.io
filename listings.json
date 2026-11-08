@@ -6,9 +6,10 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
       "/posts/2026-11-07-color-palettes/index.html",
+      "/posts/2026-11-07-mizu-r-python/index.html",
       "/posts/2026-11-07-quarto-1.11/index.html",
       "/posts/2026-11-03-quarto-dark-mode/index.html",
       "/posts/2026-11-03-tailscale-rustdesk-windows11/index.html",
@@ -52,9 +53,10 @@
     ]
   },
   {
-    "listing": "/posts.html",
+    "listing": "/index.html",
     "items": [
       "/posts/2026-11-07-color-palettes/index.html",
+      "/posts/2026-11-07-mizu-r-python/index.html",
       "/posts/2026-11-07-quarto-1.11/index.html",
       "/posts/2026-11-03-quarto-dark-mode/index.html",
       "/posts/2026-11-03-tailscale-rustdesk-windows11/index.html",
