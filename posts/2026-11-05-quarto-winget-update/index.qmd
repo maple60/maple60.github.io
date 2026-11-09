@@ -1,0 +1,126 @@
+---
+title: "Windows版Quartoをwingetでアップデートする方法"
+description: "公式MSIで導入したQuartoをwingetで更新する手順と、更新後も旧版が呼ばれる場合の確認方法をまとめます。"
+date: "2026-11-05"
+date-modified: "2026-11-05"
+draft: false
+categories: [quarto, Windows]
+---
+
+## はじめに
+
+Quartoの更新には、毎回公式サイトからインストーラーをダウンロードする必要があると思っていました。
+Windowsでは、wingetを使うとPowerShellから更新できます。
+Quarto 1.11への更新をきっかけに確認した方法を、備忘録としてまとめます。
+
+## wingetとは
+
+[winget](https://learn.microsoft.com/ja-jp/windows/package-manager/winget/)は、Windows Package Managerのコマンドラインツールです。
+Windowsでアプリケーションの検索・インストール・更新などを管理できます。
+
+## インストール済みQuartoの確認
+
+Windows 11のPowerShellで、次のコマンドを実行しました。
+
+```powershell
+winget list --id Posit.Quarto
+```
+
+実際の結果は以下のとおりです。
+
+```text
+Name   Id           Version Available Source
+--------------------------------------------
+Quarto Posit.Quarto 1.10.18 1.11.9    winget
+```
+
+- `Version`：インストール済みのバージョン。
+- `Available`：wingetで更新候補として表示されたバージョン。
+- `Source`：パッケージ情報の取得元。ここでは`winget`です。
+
+公式MSIインストーラーで導入したQuarto 1.10.18が認識され、1.11.9が更新候補として表示されました。
+この番号は確認時点のもので、実行時期によって変わります。
+
+[Microsoftの説明](https://learn.microsoft.com/ja-jp/windows/package-manager/winget/list)でも、`list`にはwinget以外の方法で導入したアプリが表示されるとされています。
+ただし、すべての環境でQuartoが同様に認識されるとは限りません。
+
+## Quartoのアップデート
+
+更新候補が表示されたら、更新には次のコマンドを使います。
+
+```powershell
+winget upgrade --id Posit.Quarto --exact
+```
+
+`upgrade`はインストール済みアプリの更新、`--id`は対象IDの指定、`--exact`は完全一致の指定です。
+バージョンを指定していないため、wingetで利用可能な最新バージョンが対象になります。
+実行時には利用規約への同意や、インストーラーによる管理者権限の確認が求められる場合があります。表示内容を確認して進めます。
+オプションの詳細は[Microsoftの公式資料](https://learn.microsoft.com/ja-jp/windows/package-manager/winget/upgrade)を参照してください。
+
+実行すると1.11.9のMSIがダウンロードされ、次のように表示されました（ログ末尾を抜粋）。
+
+```text
+Successfully verified installer hash
+Starting package install...
+Successfully installed
+```
+
+## 更新後の確認
+
+更新が完了したら、PowerShellで次のコマンドを実行します。
+
+```powershell
+quarto --version
+quarto check
+```
+
+`quarto --version`は実際に呼び出されるQuartoのバージョンを表示します。
+`quarto check`はQuartoのインストール状態や、R・Pythonなどの実行環境との連携を診断します。
+
+ただし、今回は更新直後も`quarto --version`が`1.10.18`を返しました。
+`quarto check`も`Quarto 1.10.18`で始まり、旧版で診断していました。
+
+::: {.callout-note}
+## 成功表示後も、呼び出されるバージョンを確認する
+
+調べると、ユーザー用の`AppData\Local\Programs\Quarto`に1.10.18、`C:\Program Files\Quarto`に1.11.9があり、コマンドは旧版を呼んでいました。
+今回の結果は、新版のインストール成功と、通常の`quarto`コマンドの切り替えを分けて確認する必要がある例です。
+:::
+
+古いバージョンが表示される場合は、PowerShellを開き直して再確認します。
+変わらなければ、次のコマンドで呼び出し先を調べます。
+
+```powershell
+Get-Command quarto -All
+where.exe quarto
+```
+
+複数の場所にある場合は、PATHの順序やインストール先を確認します。
+今回の新版をフルパスで実行すると、`1.11.9`が返りました。
+
+```powershell
+& 'C:\Program Files\Quarto\bin\quarto.exe' --version
+```
+
+## 補足
+
+`quarto check`の最後に`Checking Julia installation...`と表示され、「OK」が付かない場合があります。
+今回、1.11.9のJulia項目だけの診断では、この表示のまま正常終了しました。
+表示だけでエラーと判断せず、PowerShellのプロンプトが戻ったか、直後の`$LASTEXITCODE`が`0`かを確認します。
+
+`winget install`はアプリを導入するコマンド、`winget upgrade`は既存アプリを更新するコマンドです。
+今回は導入済みなので`upgrade`を使います。
+
+Quarto本体と、プロジェクトの拡張機能やTinyTeXは別に管理します。
+本体の更新だけで、それらもすべて最新版になるわけではありません。
+必要に応じて[拡張機能](https://quarto.org/docs/extensions/managing.html#updating)や[TinyTeX](https://quarto.org/docs/output-formats/pdf-engine.html)の更新手順を確認してください。
+
+[Quarto側の案内](https://github.com/quarto-dev/quarto-release-bundles#winget-package-for-quarto)によると、wingetのQuartoパッケージ情報はコミュニティが管理しています。
+公式リリースからwingetへの反映が遅れる可能性もあるため、公式サイトの最新版と更新候補が一致するとは限りません。
+
+## 参考リンク
+
+- [Quarto公式サイト](https://quarto.org/)
+- [Quarto GitHub](https://github.com/quarto-dev/quarto-cli)
+- [Quarto release bundles](https://github.com/quarto-dev/quarto-release-bundles)
+- [Microsoft公式wingetドキュメント](https://learn.microsoft.com/ja-jp/windows/package-manager/winget/)
